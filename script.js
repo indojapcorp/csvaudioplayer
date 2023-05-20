@@ -57,10 +57,6 @@ function loadTable(event) {
 
         const tdblank = document.createElement("th");
         var input = document.createTextNode("");
-        //var input = document.createElement('input');
-        //input.type = "hidden";
-        //input.name="rowh"+rowno;
-        //input.value=rowno;
         tdblank.appendChild(input);
         trcolheader.appendChild(tdblank);
 
@@ -147,7 +143,7 @@ function createFavorites() {
   checked.forEach(function (el) {
     favorites.push(el.value);
   });
-  console.log(favorites)
+ // console.log(favorites)
 }
 
 
@@ -160,7 +156,6 @@ function speakRowData(row) {
       selectedData += row.cells[i].innerHTML + " .!  ";
     }
   }
-  console.log("selectedData=" + selectedData);
   var utterance = new SpeechSynthesisUtterance(selectedData);
   window.speechSynthesis.speak(utterance);
 }
@@ -236,7 +231,7 @@ const languageSelect = document.getElementById("language");
 languageSelect.addEventListener("change", () => {
   utterance.lang = languageSelect.value;
   deflang = languages[document.getElementById("language").value].slice(0, 2);
-  console.log(deflang);
+//  console.log(deflang);
 });
 
 
@@ -245,14 +240,13 @@ let selectedData = "";
 function getSelectedData() {
   var table = document.getElementById("myTable");
   var rowCount = table.rows.length;
-  console.log(rowCount);
+//  console.log(rowCount);
   //var selectedData = "";
   selectedData = "";
 
   for (var i = 3; i < rowCount; i++) {
     var row = table.rows[i];
     var checkBox = row.cells[0].getElementsByTagName("input")[0];
-    console.log("checkBox=" + checkBox);
     if (checkBox != undefined && checkBox.checked) {
       for (var j = 1; j < row.cells.length; j++) {
         if (favorites.includes("" + j)) {
@@ -288,7 +282,7 @@ resumeBtn.addEventListener('click', () => {
 // stop the TTS when the stop button is clicked
 stopBtn.addEventListener('click', () => {
   synth.cancel();
-  console.log('stopped');
+//  console.log('stopped');
 });
 
 
