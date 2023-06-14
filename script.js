@@ -1,10 +1,27 @@
+let csvfilename='';
+let recognition;
+//= new webkitSpeechRecognition();
+
+document.addEventListener("DOMContentLoaded", function() {
+  requestMicrophonePermission()
+    .then(function() {
+      console.log("Microphone permission granted.");
+    })
+    .catch(function(error) {
+      console.error("Failed to obtain microphone permission:", error);
+    });
+});
+
 function loadTable(event) {
   const file = event.target.files[0];
+  csvfilename = file.name;
   const reader = new FileReader();
   reader.onload = () => {
     const table = document.querySelector("#myTable");
     const rows = reader.result.split("\n");
     let rowno = 1;
+    downloadCsvBtn.disabled = false;
+
     rows.forEach(row => {
       const cells = row.split(",");
 
@@ -101,6 +118,19 @@ function loadTable(event) {
     });
   };
   reader.readAsText(file);
+  console.log("fname="+csvfilename);
+}
+
+function downloadAsCSV(text) {
+  const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(text.replaceAll(" .! ",""));
+  const link = document.createElement('a');
+  var dwdfilename=csvfilename.replace(".csv","_dwd.csv")
+  link.setAttribute('href', csvContent);
+  link.setAttribute('download', dwdfilename);
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 function filterTable(columnIndex) {
@@ -226,6 +256,9 @@ const playBtn = document.getElementById('playBtn');
 const pauseBtn = document.getElementById('pauseBtn');
 const resumeBtn = document.getElementById('resumeBtn');
 const stopBtn = document.getElementById('stopBtn');
+const downloadCsvBtn = document.getElementById('downloadCsvBtn');
+const searchSpeechSearch = document.getElementById('searchSpeechSearch');
+const searchSpeechSearchStop = document.getElementById('searchSpeechSearchStop');
 
 const languageSelect = document.getElementById("language");
 languageSelect.addEventListener("change", () => {
@@ -285,7 +318,157 @@ stopBtn.addEventListener('click', () => {
 //  console.log('stopped');
 });
 
+downloadCsvBtn.addEventListener('click', () => {
+  selectedData="";
+  // set the text to speak
+  //utterance.text = transcriptTextarea.value.substring(transcriptTextarea.selectionStart, transcriptTextarea.selectionEnd);
+  getSelectedData();
+  downloadAsCSV(selectedData);
+});
 
+searchSpeechSearch.addEventListener('click', () => {
+  startRecognition()
+});
+
+searchSpeechSearchStop.addEventListener('click', () => {
+  stopRecognition()
+});
+
+
+function requestMicrophonePermission() {
+  return new Promise(function(resolve, reject) {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(function(stream) {
+        stream.getTracks().forEach(function(track) {
+          track.stop();
+        });
+        resolve();
+      })
+      .catch(function(error) {
+        reject(error);
+      });
+  });
+}
+
+function startRecognition() {
+  requestMicrophonePermission()
+    .then(function() {
+      recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+      recognition.lang = "en-IN"; // Specify the desired language for speech recognition
+
+      recognition.onresult = function(event) {
+        const speechResult = event.results[0][0].transcript;
+        searchAndSelectWord(speechResult);
+      };
+
+      recognition.onend = function() {
+        recognition.start(); // Restart speech recognition after it ends
+      };
+
+      recognition.start();
+    })
+    .catch(function(error) {
+      console.error(error);
+    });
+    searchSpeechSearch.disabled = true;
+    searchSpeechSearchStop.disabled = false;
+}
+
+        // Define the function to start speech recognition
+        function startRecognitionOld() {
+          recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+
+          recognition.lang = "en-IN";
+
+          recognition.onresult = function(event) {
+            const speechResult = event.results[0][0].transcript;
+            console.log("transcript="+speechResult);
+
+            searchAndSelectWord(speechResult);
+          };
+        
+          recognition.onend = function() {
+            recognition.start(); // Restart speech recognition after it ends
+          };
+        
+          recognition.start();
+          searchSpeechSearch.disabled = true;
+          searchSpeechSearchStop.disabled = false;
+      }
+
+      // Define the function to stop speech recognition
+      function stopRecognition() {
+          recognition.stop();
+          searchSpeechSearch.disabled = false;
+          searchSpeechSearchStop.disabled = true;
+          if (window.getSelection) {
+              if (window.getSelection().empty) {  // Chrome
+                  window.getSelection().empty();
+              } else if (window.getSelection().removeAllRanges) {  // Firefox
+                  window.getSelection().removeAllRanges();
+              }
+          } else if (document.selection) {  // IE?
+              document.selection.empty();
+          }
+
+
+      }
+
+      // recognition.onerror = function (event) {
+      //     console.error(event.error);
+      // }
+
+      function searchAndSelectWord(word) {
+        const table = document.getElementById("myTable"); // Replace "myTable" with the ID of your table element
+      
+        for (let i = 3; i < table.rows.length; i++) {
+          const row = table.rows[i];
+      
+          for (let j = 0; j < row.cells.length; j++) {
+            const cell = row.cells[j];
+            const cellText = cell.textContent.toLowerCase();
+      
+            if (cellText.includes(word.toLowerCase())) {
+              const checkbox = row.cells[0].querySelector('input[type="checkbox"]'); // Assuming the first column contains the checkboxes
+              checkbox.checked = true;
+              // Perform any desired action on the matching cell (e.g., highlight, select, etc.)
+              cell.style.backgroundColor = "yellow";
+            }
+          }
+        }
+      }
+      
+      function searchAndSelectWord2(word) {
+        const textNode = document.createTextNode(word);
+        const searchRange = document.createRange();
+        searchRange.selectNodeContents(document.body);
+      
+        console.log("word="+document.body.textContent);
+        let startOffset = 0;
+        let endOffset = 0;
+        const regex = new RegExp(word, "gi");
+        
+        while (window.find(regex, false, false, false, false, false, false)) {
+          const range = window.getSelection().getRangeAt(0);
+          if (range.compareBoundaryPoints(Range.START_TO_START, searchRange) < 0) {
+            startOffset = range.toString().length;
+          }
+          endOffset = startOffset + range.toString().length;
+        }
+      
+        if (startOffset !== 0 || endOffset !== 0) {
+          const rangeToSelect = document.createRange();
+          rangeToSelect.setStart(textNode, startOffset);
+          rangeToSelect.setEnd(textNode, endOffset);
+      
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(rangeToSelect);
+        }
+      }
+      
+
+      
 function speakText(text) {
   utterance.text = text;
 
