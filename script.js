@@ -2,15 +2,15 @@ let csvfilename='';
 let recognition;
 //= new webkitSpeechRecognition();
 
-document.addEventListener("DOMContentLoaded", function() {
-  requestMicrophonePermission()
-    .then(function() {
-      console.log("Microphone permission granted.");
-    })
-    .catch(function(error) {
-      console.error("Failed to obtain microphone permission:", error);
-    });
-});
+// document.addEventListener("DOMContentLoaded", function() {
+//   requestMicrophonePermission()
+//     .then(function() {
+//       console.log("Microphone permission granted.");
+//     })
+//     .catch(function(error) {
+//       console.error("Failed to obtain microphone permission:", error);
+//     });
+// });
 
 function loadTable(event) {
   const file = event.target.files[0];
@@ -350,7 +350,7 @@ function requestMicrophonePermission() {
   });
 }
 
-function startRecognition() {
+function startRecognitionNew() {
   requestMicrophonePermission()
     .then(function() {
       recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
@@ -373,11 +373,11 @@ function startRecognition() {
     searchSpeechSearch.disabled = true;
     searchSpeechSearchStop.disabled = false;
 }
-
+let speechstop=false;
         // Define the function to start speech recognition
-        function startRecognitionOld() {
+        function startRecognition() {
           recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
-
+          speechstop=true;
           recognition.lang = "en-IN";
 
           recognition.onresult = function(event) {
@@ -388,7 +388,8 @@ function startRecognition() {
           };
         
           recognition.onend = function() {
-            recognition.start(); // Restart speech recognition after it ends
+            if(!speechstop)
+              recognition.start(); // Restart speech recognition after it ends  
           };
 
           recognition.start();
@@ -401,7 +402,7 @@ function startRecognition() {
         if (recognition) {
           recognition.abort();
         }
-      
+        speechstop=true;
           //recognition.stop();
           searchSpeechSearch.disabled = false;
           searchSpeechSearchStop.disabled = true;
