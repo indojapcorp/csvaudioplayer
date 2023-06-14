@@ -355,7 +355,7 @@ function startRecognition() {
     .then(function() {
       recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
       recognition.lang = "en-IN"; // Specify the desired language for speech recognition
-
+      //recognition.lang = languages[document.getElementById("language").value];
       recognition.onresult = function(event) {
         const speechResult = event.results[0][0].transcript;
         searchAndSelectWord(speechResult);
@@ -390,7 +390,7 @@ function startRecognition() {
           recognition.onend = function() {
             recognition.start(); // Restart speech recognition after it ends
           };
-        
+
           recognition.start();
           searchSpeechSearch.disabled = true;
           searchSpeechSearchStop.disabled = false;
@@ -398,7 +398,11 @@ function startRecognition() {
 
       // Define the function to stop speech recognition
       function stopRecognition() {
-          recognition.stop();
+        if (recognition) {
+          recognition.abort();
+        }
+      
+          //recognition.stop();
           searchSpeechSearch.disabled = false;
           searchSpeechSearchStop.disabled = true;
           if (window.getSelection) {
