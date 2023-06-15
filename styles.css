@@ -33,6 +33,20 @@ table {
     width: 5%;
   }
   
+  .totalitemslabel {
+    width: 40%;
+  }
+
+  .table {
+    display: flex;
+  }
+  
+  .column {
+    flex: 1;
+    padding: 10px;
+  }
+
+
     /* Style the popup */
   .popup {
       display: none;

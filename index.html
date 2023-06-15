@@ -10,7 +10,17 @@
 <!--
 <input type="file" id="csvFileInput" accept=".csv" onchange="loadTable(event)">
 -->
+<!---->
+<div>Selected Records: <div id="counterId1">0</span></div>
+
+<div>
 <input type="file" id="csvFileInput" accept=".csv">
+<div class="table">
+    <div class="column">Total Items:<span id="recordCount">0</span></div>
+    <div class="column">Selected Items:<span id="counterId">0</span></div>
+</div>
+  
+</div>
 <br>
 <button onclick="deleteSelectedRows()">Delete Selected</button>
 <button onclick="deleteNonselectedRows()">Delete Unelected</button>

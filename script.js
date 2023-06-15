@@ -1,7 +1,6 @@
-let csvfilename='';
+let csvfilename = '';
 let recognition;
 //= new webkitSpeechRecognition();
-
 // document.addEventListener("DOMContentLoaded", function() {
 //   requestMicrophonePermission()
 //     .then(function() {
@@ -15,32 +14,34 @@ let recognition;
 let csvData = null;
 let tableHeaders = [];
 
-        // Function to read the selected CSV file
-        function readCSVFile(file) {
-          const reader = new FileReader();
-          
-          reader.onload = function(e) {
-              csvData = e.target.result;
-              populateTable();
-              createColumnCheckboxes();
-          };
-          
-          reader.readAsText(file);
-      }
 
-              // Event listener for the file input element
-              const fileInput = document.getElementById("csvFileInput");
-              fileInput.addEventListener("change", function(event) {
-                  const file = fileInput.files[0];
-                  //readCSVFile(file);
-                  loadTable(event);
-                  
-              });
+// Event listener for the file input element
+const fileInput = document.getElementById("csvFileInput");
+fileInput.addEventListener("change", function (event) {
+  const file = fileInput.files[0];
+  //readCSVFile(file);
+  loadTable(event);
+
+});
+
+function updateCounter() {
+  var checkboxes = document.getElementById("myTable").querySelectorAll('input[type="checkbox"]');
+  var counter = 0;
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      counter++;
+    }
+  });
+  console.log(counter);
+  document.getElementById('counterId').textContent = counter;
+}
 
 function loadTable(event) {
   const file = event.target.files[0];
   csvfilename = file.name;
   const reader = new FileReader();
+
+  
   reader.onload = () => {
 
     const table = document.querySelector("#myTable");
@@ -48,6 +49,10 @@ function loadTable(event) {
     let rowno = 1;
     downloadCsvBtn.disabled = false;
 
+    recordCount = rows.length - 1;
+    document.getElementById("recordCount").textContent = recordCount;
+
+    
     rows.forEach(row => {
       const cells = row.split(",");
 
@@ -112,13 +117,12 @@ function loadTable(event) {
         table.appendChild(trcolheader);
       } else {
         const tr = document.createElement("tr");
-
-
         const td = document.createElement("td");
         var input = document.createElement('input');
         input.type = "checkbox";
         input.name = "row" + rowno;
         input.value = rowno;
+        input.setAttribute('onchange', 'updateCounter()');
         td.appendChild(input);
         tr.appendChild(td);
 
@@ -141,16 +145,16 @@ function loadTable(event) {
       }
       rowno++;
     });
-    createColumnCheckboxes();    
+    createColumnCheckboxes();
   };
   reader.readAsText(file);
-  console.log("fname="+csvfilename);
+  console.log("fname=" + csvfilename);
 }
 
 function downloadAsCSV(text) {
-  const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(text.replaceAll(" .! ",""));
+  const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(text.replaceAll(" .! ", ""));
   const link = document.createElement('a');
-  var dwdfilename=csvfilename.replace(".csv","_dwd.csv")
+  var dwdfilename = csvfilename.replace(".csv", "_dwd.csv")
   link.setAttribute('href', csvContent);
   link.setAttribute('download', dwdfilename);
   link.style.display = 'none';
@@ -167,7 +171,7 @@ function filterTable(columnIndex) {
   tr = table.getElementsByTagName("tr");
 
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[columnIndex+1];
+    td = tr[i].getElementsByTagName("td")[columnIndex + 1];
     if (td) {
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
@@ -199,7 +203,7 @@ function createFavorites() {
   checked.forEach(function (el) {
     favorites.push(el.value);
   });
- // console.log(favorites)
+  // console.log(favorites)
 }
 
 
@@ -231,6 +235,7 @@ function deleteSelectedRows() {
       i--;
     }
   }
+  updateCounter(); // Update the selected record count
 }
 
 function deleteNonselectedRows() {
@@ -247,6 +252,7 @@ function deleteNonselectedRows() {
       i--;
     }
   }
+  updateCounter(); // Update the selected record count
 }
 
 
@@ -290,7 +296,7 @@ const languageSelect = document.getElementById("language");
 languageSelect.addEventListener("change", () => {
   utterance.lang = languageSelect.value;
   deflang = languages[document.getElementById("language").value].slice(0, 2);
-//  console.log(deflang);
+  //  console.log(deflang);
 });
 
 
@@ -299,7 +305,7 @@ let selectedDwdData = "";
 function getSelectedData() {
   var table = document.getElementById("myTable");
   var rowCount = table.rows.length;
-//  console.log(rowCount);
+  //  console.log(rowCount);
   //var selectedData = "";
   selectedData = "";
 
@@ -320,7 +326,7 @@ function getSelectedData() {
 
   //alert(selectedData);
 }
- 
+
 function getSelectedDataForDownload() {
   var table = document.getElementById("myTable");
   var rowCount = table.rows.length;
@@ -328,30 +334,30 @@ function getSelectedDataForDownload() {
 
   var firstcheckboxrow = table.rows[0];
 
-//  console.log(rowCount);
+  //  console.log(rowCount);
   //var selectedData = "";
   selectedDwdData = "";
 
   const headerRow = [];
 
   for (let i = 0; i < tableHeaders.length; i++) {
-    var headercheckBox = firstcheckboxrow.cells[i+1].getElementsByTagName("input")[0];
+    var headercheckBox = firstcheckboxrow.cells[i + 1].getElementsByTagName("input")[0];
 
     if (columnCheckboxes[i].checked && headercheckBox.checked) {
-        headerRow.push(encodeURIComponent(tableHeaders[i]));
+      headerRow.push(encodeURIComponent(tableHeaders[i]));
     }
   }
   selectedDwdData += headerRow.join(",") + "\r\n";
 
 
-            // // Add table headers to the CSV content
-            // const headerRow = [];
-            // for (let i = 0; i < favorites.length; i++) {
-            //         headerRow.push(encodeURIComponent(table.rows[2].cells[favorites[i]].innerHTML));
-            // }
-            // selectedDwdData += headerRow.join(",") + "\r\n";
+  // // Add table headers to the CSV content
+  // const headerRow = [];
+  // for (let i = 0; i < favorites.length; i++) {
+  //         headerRow.push(encodeURIComponent(table.rows[2].cells[favorites[i]].innerHTML));
+  // }
+  // selectedDwdData += headerRow.join(",") + "\r\n";
 
-            
+
   for (var i = 3; i < rowCount; i++) {
     var row = table.rows[i];
 
@@ -359,15 +365,15 @@ function getSelectedDataForDownload() {
     const rowData = [];
     if (checkBox != undefined && checkBox.checked) {
       //for (var j = 1; j < row.cells.length; j++) {
-      for (var j = 0; j < columnCheckboxes.length; j++) {  
-        var checkBox = firstcheckboxrow.cells[j+1].getElementsByTagName("input")[0];
+      for (var j = 0; j < columnCheckboxes.length; j++) {
+        var checkBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
 
         //if (favorites.includes("" + j)) {
         //if (columnCheckboxes[j-1] && columnCheckboxes[j-1].checked) {
-          if (columnCheckboxes[j].checked && checkBox.checked) {  
-  
+        if (columnCheckboxes[j].checked && checkBox.checked) {
+
           //selectedData += row.cells[j].innerHTML + ",";
-          rowData.push(row.cells[j+1].innerHTML);
+          rowData.push(row.cells[j + 1].innerHTML);
         }
       }
       selectedDwdData += rowData.join(",") + "\r\n";
@@ -400,11 +406,11 @@ resumeBtn.addEventListener('click', () => {
 // stop the TTS when the stop button is clicked
 stopBtn.addEventListener('click', () => {
   synth.cancel();
-//  console.log('stopped');
+  //  console.log('stopped');
 });
 
 downloadCsvBtn.addEventListener('click', () => {
-  selectedDwdData="";
+  selectedDwdData = "";
   // set the text to speak
   //utterance.text = transcriptTextarea.value.substring(transcriptTextarea.selectionStart, transcriptTextarea.selectionEnd);
   getSelectedDataForDownload();
@@ -421,15 +427,15 @@ searchSpeechSearchStop.addEventListener('click', () => {
 
 
 function requestMicrophonePermission() {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(function(stream) {
-        stream.getTracks().forEach(function(track) {
+      .then(function (stream) {
+        stream.getTracks().forEach(function (track) {
           track.stop();
         });
         resolve();
       })
-      .catch(function(error) {
+      .catch(function (error) {
         reject(error);
       });
   });
@@ -437,128 +443,128 @@ function requestMicrophonePermission() {
 
 function startRecognitionNew() {
   requestMicrophonePermission()
-    .then(function() {
+    .then(function () {
       recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
       recognition.lang = "en-IN"; // Specify the desired language for speech recognition
       //recognition.lang = languages[document.getElementById("language").value];
-      recognition.onresult = function(event) {
+      recognition.onresult = function (event) {
         const speechResult = event.results[0][0].transcript;
         searchAndSelectWord(speechResult);
       };
 
-      recognition.onend = function() {
+      recognition.onend = function () {
         recognition.start(); // Restart speech recognition after it ends
       };
 
       recognition.start();
     })
-    .catch(function(error) {
+    .catch(function (error) {
       console.error(error);
     });
-    searchSpeechSearch.disabled = true;
-    searchSpeechSearchStop.disabled = false;
+  searchSpeechSearch.disabled = true;
+  searchSpeechSearchStop.disabled = false;
 }
-let speechstop=false;
-        // Define the function to start speech recognition
-        function startRecognition() {
-          recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
-          speechstop=true;
-          recognition.lang = "en-IN";
+let speechstop = false;
+// Define the function to start speech recognition
+function startRecognition() {
+  recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+  speechstop = true;
+  recognition.lang = "en-IN";
 
-          recognition.onresult = function(event) {
-            const speechResult = event.results[0][0].transcript;
-            console.log("transcript="+speechResult);
+  recognition.onresult = function (event) {
+    const speechResult = event.results[0][0].transcript;
+    console.log("transcript=" + speechResult);
 
-            searchAndSelectWord(speechResult);
-          };
-        
-          recognition.onend = function() {
-            if(!speechstop)
-              recognition.start(); // Restart speech recognition after it ends  
-          };
+    searchAndSelectWord(speechResult);
+  };
 
-          recognition.start();
-          searchSpeechSearch.disabled = true;
-          searchSpeechSearchStop.disabled = false;
+  recognition.onend = function () {
+    if (!speechstop)
+      recognition.start(); // Restart speech recognition after it ends  
+  };
+
+  recognition.start();
+  searchSpeechSearch.disabled = true;
+  searchSpeechSearchStop.disabled = false;
+}
+
+// Define the function to stop speech recognition
+function stopRecognition() {
+  if (recognition) {
+    recognition.abort();
+  }
+  speechstop = true;
+  //recognition.stop();
+  searchSpeechSearch.disabled = false;
+  searchSpeechSearchStop.disabled = true;
+  if (window.getSelection) {
+    if (window.getSelection().empty) {  // Chrome
+      window.getSelection().empty();
+    } else if (window.getSelection().removeAllRanges) {  // Firefox
+      window.getSelection().removeAllRanges();
+    }
+  } else if (document.selection) {  // IE?
+    document.selection.empty();
+  }
+
+
+}
+
+// recognition.onerror = function (event) {
+//     console.error(event.error);
+// }
+
+function searchAndSelectWord(word) {
+  const table = document.getElementById("myTable"); // Replace "myTable" with the ID of your table element
+
+  for (let i = 3; i < table.rows.length; i++) {
+    const row = table.rows[i];
+
+    for (let j = 0; j < row.cells.length; j++) {
+      const cell = row.cells[j];
+      const cellText = cell.textContent.toLowerCase();
+
+      if (cellText.includes(word.toLowerCase())) {
+        const checkbox = row.cells[0].querySelector('input[type="checkbox"]'); // Assuming the first column contains the checkboxes
+        checkbox.checked = true;
+        // Perform any desired action on the matching cell (e.g., highlight, select, etc.)
+        cell.style.backgroundColor = "yellow";
       }
+    }
+  }
+}
 
-      // Define the function to stop speech recognition
-      function stopRecognition() {
-        if (recognition) {
-          recognition.abort();
-        }
-        speechstop=true;
-          //recognition.stop();
-          searchSpeechSearch.disabled = false;
-          searchSpeechSearchStop.disabled = true;
-          if (window.getSelection) {
-              if (window.getSelection().empty) {  // Chrome
-                  window.getSelection().empty();
-              } else if (window.getSelection().removeAllRanges) {  // Firefox
-                  window.getSelection().removeAllRanges();
-              }
-          } else if (document.selection) {  // IE?
-              document.selection.empty();
-          }
+function searchAndSelectWord2(word) {
+  const textNode = document.createTextNode(word);
+  const searchRange = document.createRange();
+  searchRange.selectNodeContents(document.body);
+
+  console.log("word=" + document.body.textContent);
+  let startOffset = 0;
+  let endOffset = 0;
+  const regex = new RegExp(word, "gi");
+
+  while (window.find(regex, false, false, false, false, false, false)) {
+    const range = window.getSelection().getRangeAt(0);
+    if (range.compareBoundaryPoints(Range.START_TO_START, searchRange) < 0) {
+      startOffset = range.toString().length;
+    }
+    endOffset = startOffset + range.toString().length;
+  }
+
+  if (startOffset !== 0 || endOffset !== 0) {
+    const rangeToSelect = document.createRange();
+    rangeToSelect.setStart(textNode, startOffset);
+    rangeToSelect.setEnd(textNode, endOffset);
+
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(rangeToSelect);
+  }
+}
 
 
-      }
 
-      // recognition.onerror = function (event) {
-      //     console.error(event.error);
-      // }
-
-      function searchAndSelectWord(word) {
-        const table = document.getElementById("myTable"); // Replace "myTable" with the ID of your table element
-      
-        for (let i = 3; i < table.rows.length; i++) {
-          const row = table.rows[i];
-      
-          for (let j = 0; j < row.cells.length; j++) {
-            const cell = row.cells[j];
-            const cellText = cell.textContent.toLowerCase();
-      
-            if (cellText.includes(word.toLowerCase())) {
-              const checkbox = row.cells[0].querySelector('input[type="checkbox"]'); // Assuming the first column contains the checkboxes
-              checkbox.checked = true;
-              // Perform any desired action on the matching cell (e.g., highlight, select, etc.)
-              cell.style.backgroundColor = "yellow";
-            }
-          }
-        }
-      }
-      
-      function searchAndSelectWord2(word) {
-        const textNode = document.createTextNode(word);
-        const searchRange = document.createRange();
-        searchRange.selectNodeContents(document.body);
-      
-        console.log("word="+document.body.textContent);
-        let startOffset = 0;
-        let endOffset = 0;
-        const regex = new RegExp(word, "gi");
-        
-        while (window.find(regex, false, false, false, false, false, false)) {
-          const range = window.getSelection().getRangeAt(0);
-          if (range.compareBoundaryPoints(Range.START_TO_START, searchRange) < 0) {
-            startOffset = range.toString().length;
-          }
-          endOffset = startOffset + range.toString().length;
-        }
-      
-        if (startOffset !== 0 || endOffset !== 0) {
-          const rangeToSelect = document.createRange();
-          rangeToSelect.setStart(textNode, startOffset);
-          rangeToSelect.setEnd(textNode, endOffset);
-      
-          const selection = window.getSelection();
-          selection.removeAllRanges();
-          selection.addRange(rangeToSelect);
-        }
-      }
-      
-
-      
 function speakText(text) {
   utterance.text = text;
 
@@ -671,93 +677,93 @@ function speakMessage(message, PAUSE_MS = 500, lang) {
 }
 
 
-        // Function to populate the table with CSV data
-        function populateTable() {
-          const table = document.getElementById("myTable");
-          table.innerHTML = "";
-          
-          const rows = csvData.split("\n");
-          
-          // Create table headers
-          const headerRow = document.createElement("tr");
-          for (let header of rows[0].split(",")) {
-              const th = document.createElement("th");
-              th.textContent = header;
-              headerRow.appendChild(th);
-              tableHeaders.push(header);
-          }
-          table.appendChild(headerRow);
-          
-          // Create table rows
-          for (let i = 1; i < rows.length; i++) {
-              const row = document.createElement("tr");
-              const rowData = rows[i].split(",");
-              
-              for (let j = 0; j < rowData.length; j++) {
-                  const cell = document.createElement(i === 1 ? "th" : "td");
-                  cell.textContent = rowData[j];
-                  row.appendChild(cell);
-              }
-              
-              table.appendChild(row);
-          }
-      }
+// Function to populate the table with CSV data
+function populateTable() {
+  const table = document.getElementById("myTable");
+  table.innerHTML = "";
 
-        // Function to create checkboxes for column selection
-        function createColumnCheckboxes() {
-          const columnCheckboxes = document.getElementById("columnCheckboxes");
-          columnCheckboxes.innerHTML = "";
+  const rows = csvData.split("\n");
 
-          for (let header of tableHeaders) {
-              const checkbox = document.createElement("input");
-              checkbox.type = "checkbox";
-              checkbox.value = header;
-              checkbox.checked = true;
-              checkbox.onchange = function() {
-                  toggleColumn(header,checkbox.checked);
-              };
+  // Create table headers
+  const headerRow = document.createElement("tr");
+  for (let header of rows[0].split(",")) {
+    const th = document.createElement("th");
+    th.textContent = header;
+    headerRow.appendChild(th);
+    tableHeaders.push(header);
+  }
+  table.appendChild(headerRow);
 
-              const label = document.createElement("label");
-              label.textContent = header;
-              
-              const checkboxContainer = document.createElement("div");
-              checkboxContainer.appendChild(checkbox);
-              checkboxContainer.appendChild(label);
-              
-              columnCheckboxes.appendChild(checkboxContainer);
-          }
+  // Create table rows
+  for (let i = 1; i < rows.length; i++) {
+    const row = document.createElement("tr");
+    const rowData = rows[i].split(",");
+
+    for (let j = 0; j < rowData.length; j++) {
+      const cell = document.createElement(i === 1 ? "th" : "td");
+      cell.textContent = rowData[j];
+      row.appendChild(cell);
+    }
+
+    table.appendChild(row);
+  }
+}
+
+// Function to create checkboxes for column selection
+function createColumnCheckboxes() {
+  const columnCheckboxes = document.getElementById("columnCheckboxes");
+  columnCheckboxes.innerHTML = "";
+
+  for (let header of tableHeaders) {
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = header;
+    checkbox.checked = true;
+    checkbox.onchange = function () {
+      toggleColumn(header, checkbox.checked);
+    };
+
+    const label = document.createElement("label");
+    label.textContent = header;
+
+    const checkboxContainer = document.createElement("div");
+    checkboxContainer.appendChild(checkbox);
+    checkboxContainer.appendChild(label);
+
+    columnCheckboxes.appendChild(checkboxContainer);
+  }
+}
+
+// Function to toggle the display of table columns
+function toggleColumn(header, ischecked) {
+  const table = document.getElementById("myTable");
+  const columnIndex = tableHeaders.indexOf(header) + 1;
+
+  var row = table.rows[0];
+  var checkBox = row.cells[columnIndex].getElementsByTagName("input")[0];
+  if (!ischecked)
+    checkBox.checked = false;
+  for (let row of table.rows) {
+    const cell = row.cells[columnIndex];
+
+    if (cell) {
+      if (cell.style.display === "none") {
+        cell.style.display = "";
+      } else {
+        cell.style.display = "none";
       }
-      
-      // Function to toggle the display of table columns
-      function toggleColumn(header,ischecked) {
-          const table = document.getElementById("myTable");
-          const columnIndex = tableHeaders.indexOf(header)+1;
-          
-          var row = table.rows[0];
-          var checkBox = row.cells[columnIndex].getElementsByTagName("input")[0];
-          if(!ischecked)
-            checkBox.checked = false;
-          for (let row of table.rows) {
-              const cell = row.cells[columnIndex];
-              
-              if (cell) {
-                  if (cell.style.display === "none") {
-                      cell.style.display = "";
-                  } else {
-                      cell.style.display = "none";
-                  }
-              }
-          }
-      }
-      
-      // Function to show the column selection popup
-      function showColumnPopup() {
-          const popup = document.getElementById("columnPopup");
-          popup.style.display = "block";
-      }
-      
-      // Function to hide the column selection popup
-      function hideColumnPopup() {
-          const popup = document.getElementById("columnPopup");
-          popup.style.display = "none";
-      }
+    }
+  }
+}
+
+// Function to show the column selection popup
+function showColumnPopup() {
+  const popup = document.getElementById("columnPopup");
+  popup.style.display = "block";
+}
+
+// Function to hide the column selection popup
+function hideColumnPopup() {
+  const popup = document.getElementById("columnPopup");
+  popup.style.display = "none";
+}
