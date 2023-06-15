@@ -12,11 +12,37 @@ let recognition;
 //     });
 // });
 
+let csvData = null;
+let tableHeaders = [];
+
+        // Function to read the selected CSV file
+        function readCSVFile(file) {
+          const reader = new FileReader();
+          
+          reader.onload = function(e) {
+              csvData = e.target.result;
+              populateTable();
+              createColumnCheckboxes();
+          };
+          
+          reader.readAsText(file);
+      }
+
+              // Event listener for the file input element
+              const fileInput = document.getElementById("csvFileInput");
+              fileInput.addEventListener("change", function(event) {
+                  const file = fileInput.files[0];
+                  //readCSVFile(file);
+                  loadTable(event);
+                  
+              });
+
 function loadTable(event) {
   const file = event.target.files[0];
   csvfilename = file.name;
   const reader = new FileReader();
   reader.onload = () => {
+
     const table = document.querySelector("#myTable");
     const rows = reader.result.split("\n");
     let rowno = 1;
@@ -80,11 +106,10 @@ function loadTable(event) {
         for (let i = 0; i < cells.length; i++) {
           const td = document.createElement("th");
           td.textContent = cells[i];
+          tableHeaders.push(cells[i]);
           trcolheader.appendChild(td);
         }
         table.appendChild(trcolheader);
-
-
       } else {
         const tr = document.createElement("tr");
 
@@ -116,6 +141,7 @@ function loadTable(event) {
       }
       rowno++;
     });
+    createColumnCheckboxes();    
   };
   reader.readAsText(file);
   console.log("fname="+csvfilename);
@@ -269,7 +295,7 @@ languageSelect.addEventListener("change", () => {
 
 
 let selectedData = "";
-
+let selectedDwdData = "";
 function getSelectedData() {
   var table = document.getElementById("myTable");
   var rowCount = table.rows.length;
@@ -287,6 +313,65 @@ function getSelectedData() {
         }
       }
       selectedData += "\n";
+    }
+  }
+  //var utterance = new SpeechSynthesisUtterance(selectedData);
+  //window.speechSynthesis.speak(utterance);
+
+  //alert(selectedData);
+}
+ 
+function getSelectedDataForDownload() {
+  var table = document.getElementById("myTable");
+  var rowCount = table.rows.length;
+  const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+
+  var firstcheckboxrow = table.rows[0];
+
+//  console.log(rowCount);
+  //var selectedData = "";
+  selectedDwdData = "";
+
+  const headerRow = [];
+
+  for (let i = 0; i < tableHeaders.length; i++) {
+    var headercheckBox = firstcheckboxrow.cells[i+1].getElementsByTagName("input")[0];
+
+    if (columnCheckboxes[i].checked && headercheckBox.checked) {
+        headerRow.push(encodeURIComponent(tableHeaders[i]));
+    }
+  }
+  selectedDwdData += headerRow.join(",") + "\r\n";
+
+
+            // // Add table headers to the CSV content
+            // const headerRow = [];
+            // for (let i = 0; i < favorites.length; i++) {
+            //         headerRow.push(encodeURIComponent(table.rows[2].cells[favorites[i]].innerHTML));
+            // }
+            // selectedDwdData += headerRow.join(",") + "\r\n";
+
+            
+  for (var i = 3; i < rowCount; i++) {
+    var row = table.rows[i];
+
+    var checkBox = row.cells[0].getElementsByTagName("input")[0];
+    const rowData = [];
+    if (checkBox != undefined && checkBox.checked) {
+      //for (var j = 1; j < row.cells.length; j++) {
+      for (var j = 0; j < columnCheckboxes.length; j++) {  
+        var checkBox = firstcheckboxrow.cells[j+1].getElementsByTagName("input")[0];
+
+        //if (favorites.includes("" + j)) {
+        //if (columnCheckboxes[j-1] && columnCheckboxes[j-1].checked) {
+          if (columnCheckboxes[j].checked && checkBox.checked) {  
+  
+          //selectedData += row.cells[j].innerHTML + ",";
+          rowData.push(row.cells[j+1].innerHTML);
+        }
+      }
+      selectedDwdData += rowData.join(",") + "\r\n";
+      //selectedData += "\r\n";
     }
   }
   //var utterance = new SpeechSynthesisUtterance(selectedData);
@@ -319,11 +404,11 @@ stopBtn.addEventListener('click', () => {
 });
 
 downloadCsvBtn.addEventListener('click', () => {
-  selectedData="";
+  selectedDwdData="";
   // set the text to speak
   //utterance.text = transcriptTextarea.value.substring(transcriptTextarea.selectionStart, transcriptTextarea.selectionEnd);
-  getSelectedData();
-  downloadAsCSV(selectedData);
+  getSelectedDataForDownload();
+  downloadAsCSV(selectedDwdData);
 });
 
 searchSpeechSearch.addEventListener('click', () => {
@@ -584,3 +669,95 @@ function speakMessage(message, PAUSE_MS = 500, lang) {
     console.error(e)
   }
 }
+
+
+        // Function to populate the table with CSV data
+        function populateTable() {
+          const table = document.getElementById("myTable");
+          table.innerHTML = "";
+          
+          const rows = csvData.split("\n");
+          
+          // Create table headers
+          const headerRow = document.createElement("tr");
+          for (let header of rows[0].split(",")) {
+              const th = document.createElement("th");
+              th.textContent = header;
+              headerRow.appendChild(th);
+              tableHeaders.push(header);
+          }
+          table.appendChild(headerRow);
+          
+          // Create table rows
+          for (let i = 1; i < rows.length; i++) {
+              const row = document.createElement("tr");
+              const rowData = rows[i].split(",");
+              
+              for (let j = 0; j < rowData.length; j++) {
+                  const cell = document.createElement(i === 1 ? "th" : "td");
+                  cell.textContent = rowData[j];
+                  row.appendChild(cell);
+              }
+              
+              table.appendChild(row);
+          }
+      }
+
+        // Function to create checkboxes for column selection
+        function createColumnCheckboxes() {
+          const columnCheckboxes = document.getElementById("columnCheckboxes");
+          columnCheckboxes.innerHTML = "";
+
+          for (let header of tableHeaders) {
+              const checkbox = document.createElement("input");
+              checkbox.type = "checkbox";
+              checkbox.value = header;
+              checkbox.checked = true;
+              checkbox.onchange = function() {
+                  toggleColumn(header,checkbox.checked);
+              };
+
+              const label = document.createElement("label");
+              label.textContent = header;
+              
+              const checkboxContainer = document.createElement("div");
+              checkboxContainer.appendChild(checkbox);
+              checkboxContainer.appendChild(label);
+              
+              columnCheckboxes.appendChild(checkboxContainer);
+          }
+      }
+      
+      // Function to toggle the display of table columns
+      function toggleColumn(header,ischecked) {
+          const table = document.getElementById("myTable");
+          const columnIndex = tableHeaders.indexOf(header)+1;
+          
+          var row = table.rows[0];
+          var checkBox = row.cells[columnIndex].getElementsByTagName("input")[0];
+          if(!ischecked)
+            checkBox.checked = false;
+          for (let row of table.rows) {
+              const cell = row.cells[columnIndex];
+              
+              if (cell) {
+                  if (cell.style.display === "none") {
+                      cell.style.display = "";
+                  } else {
+                      cell.style.display = "none";
+                  }
+              }
+          }
+      }
+      
+      // Function to show the column selection popup
+      function showColumnPopup() {
+          const popup = document.getElementById("columnPopup");
+          popup.style.display = "block";
+      }
+      
+      // Function to hide the column selection popup
+      function hideColumnPopup() {
+          const popup = document.getElementById("columnPopup");
+          popup.style.display = "none";
+      }

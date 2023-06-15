@@ -7,8 +7,10 @@
 <body>
 
 
-
-<input type="file" accept=".csv" onchange="loadTable(event)">
+<!--
+<input type="file" id="csvFileInput" accept=".csv" onchange="loadTable(event)">
+-->
+<input type="file" id="csvFileInput" accept=".csv">
 <br>
 <button onclick="deleteSelectedRows()">Delete Selected</button>
 <button onclick="deleteNonselectedRows()">Delete Unelected</button>
@@ -29,7 +31,14 @@
 <button id="downloadCsvBtn" disabled>Download CSV</button>
 <button id="searchSpeechSearch" >Speech Search</button>
 <button id="searchSpeechSearchStop" disabled>Stop Speech Search</button>
+<button onclick="showColumnPopup()">Select Columns</button>
 <br><br>
+
+<div id="columnPopup" class="popup">
+    <h3>Select Columns to Display</h3>
+    <div id="columnCheckboxes"></div>
+    <button onclick="hideColumnPopup()">Apply</button>
+</div>
 
 <table id="myTable">
 </table>
