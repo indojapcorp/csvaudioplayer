@@ -1,0 +1,211 @@
+id,categoryname,en,ja,jaji,zh,zhji,ko,koji,de,ru,ruji,fr,es,it,ta,taji,te,teji,kn
+1,Feelings,affection,愛情,aijō,喜爱,xǐ'ài,애정,aejeong,die Zuneigung,симпатия,simpatiya,l'affection,el afecto,l'affetto,அன்பு,aṉpu,అభిమానం,abhimānaṁ,ಒಲವು
+2,Feelings,anger,怒り,ikari,愤怒,fènnù,분노,bunno,der Ärger,гнев,gnev,la colère,la ira,la rabbia,கோபம்,kōpam,కోపము,kōpamu,ಕೋಪ
+3,Feelings,boredom,退屈,taikutsu,无聊,wúliáo,지루함,jiluham,die Langeweile,скука,skuka,l'ennui,el aburrimiento,la noia,சலிப்பு,calippu,విసుగు,visugu,ಬೇಸರ
+4,Feelings,confidence,自信,jishin,信任,xìnrèn,자신감,jasingam,das Vertrauen,доверие,doveriye,la confiance,la confianza,la fiducia,நம்பிக்கை,nampikkai,విశ్వాసము,viśvāsamu,ಭರವಸೆ
+5,Feelings,creativity,創造性,sōzō-sei,创造力,chuàngzào lì,창의성,chang-uiseong,die Kreativität,креативность,kreativnost',la créativité,la creatividad,la creatività,படைப்பாற்றல்,paṭaippāṟṟal,సృజనాత్మకత,sr̥janātmakata,ಸೃಜನಶೀಲತೆ
+6,Feelings,crisis,危機,kiki,危机,wéijī,위기,wigi,die Krise,кризис,krizis,la crise,la crisis,la crisi,நெருக்கடி,nerukkaṭi,సంక్షోభము,saṅkṣōbhamu,ಬಿಕ್ಕಟ್ಟು
+7,Feelings,curiosity,好奇心,kōkishin,好奇心,hàoqí xīn,호기심,hogisim,die Neugier,любопытство,lyubopytstvo,la curiosité,la curiosidad,la curiosità,ஆர்வம்,ārvam,తెలుసుకోవాలనే ఆసక్తి,kutūhalaṁ,ಕುತೂಹಲ
+8,Feelings,defeat,敗北,haiboku,失败,shībài,패배,paebae,die Niederlage,поражение,porazheniye,la défaite,la derrota,la sconfitta,தோல்வி,tōlvi,ఓటమి,ōṭami,ಸೋಲು
+9,Feelings,depression,意気消沈,iki shōchin,抑郁,yìyù,우울증,uuljeung,die Depression,депрессия,depressiya,la dépression,la depresión,la depressione,மன அழுத்தம்,maṉa aḻuttam,అణచి వేయబడిన స్థితి,kruṅgubāṭu,ಖಿನ್ನತೆ
+10,Feelings,despair,絶望,zetsubō,绝望,juéwàng,절망,jeolmang,die Verzweiflung,отчаяние,otchayaniye,le désespoir,la desesperación,la disperazione,நம்பிக்கையின்மை,nampikkaiyiṉmai,పూర్తి నిరాశ,tīvra nairāśyaṁ,ಹತಾಶೆ
+11,Feelings,disappointment,失望,shitsubō,失望,shīwàng,실망,silmang,die Enttäuschung,разочарование,razocharovaniye,la déception,la decepción,la delusione,ஏமாற்றம்,ēmāṟṟam,ఆశాభంగం,āśābhaṅgaṁ,ನಿರಾಶೆ
+12,Feelings,distrust,不信,fushin,不信任,bù xìnrèn,불신,bulsin,das Misstrauen,недоверие,nedoveriye,la méfiance,la desconfianza,la diffidenza,அவநம்பிக்கை,avanampikkai,నమ్మకం లేకుండుట,apanam'makaṁ,ಅಪನಂಬಿಕೆ
+13,Feelings,doubt,猜疑心,saigi kokoro,疑问,yíwèn,의심,uisim,der Zweifel,сомнение,somneniye,le doute,la duda,il dubbio,சந்தேகம்,cantēkam,సందేహము,sandēhaṁ,ಅನುಮಾನ
+14,Feelings,dream,夢,yume,梦想,mèngxiǎng,꿈,kkum,der Traum,сон,son,le rêve,el sueño,il sogno,கனவு,kaṉavu,కల,kala,ಕನಸು
+15,Feelings,fatigue,疲労,hirō,疲劳,píláo,피로,pilo,die Müdigkeit,усталость,ustalost',la fatigue,la fatiga,la fatica,சோர்வு,cōrvu,ఆయాసము,alupu,ಆಯಾಸ
+16,Feelings,fear,恐怖,kyōfu,恐惧,kǒngjù,공포,gongpo,die Angst,страх,strakh,la peur,el miedo,la paura,பயம்,payam,భయము,bhayaṁ,ಭಯ
+17,Feelings,fight,戦い,tatakai,争吵,zhēngchǎo,싸움,ssaum,der Streit,ссора,ssora,la lutte,la discusión,la lite,சண்டை,caṇṭai,పోరాటము,pōṭlāṭa,ಜಗಳ
+18,Feelings,friendship,友情,yūjō,友谊,yǒuyì,우정,ujeong,die Freundschaft,дружба,druzhba,l'amitié,la amistad,l'amicizia,நட்பு,naṭpu,స్నేహము,snēhaṁ,ಸ್ನೇಹ
+19,Feelings,fun,楽しみ,tanoshimi,乐趣,lèqù,재미,jaemi,der Spaß,удовольствие,udovol'stviye,le plaisir,la diversión,il divertimento,வேடிக்கை,vēṭikkai,వినోదము,vinōdaṁ,ವಿನೋದ
+20,Feelings,grief,悲しみ,kanashimi,悲伤,bēishāng,슬픔,seulpeum,die Trauer,печаль,pechal',la douleur,el dolor,l'affizione,ஆழ்ந்த துக்கம்,āḻnta tukkam,వ్యసనము,vicāraṁ,ದುಃಖ
+21,Feelings,grimace,しかめっ面,shikamettsura,鬼脸,guǐliǎn,찡그린 표정,jjing-geulin pyojeong,die Grimasse,гримаса,grimasa,la grimace,la mueca,la smorfia,முக நெளிப்பு,muka neḷippu,అపహాస్యము,vekkirinta,ಗಂಟು ಮೋರೆ
+22,Feelings,happiness,幸福,kōfuku,幸福,xìngfú,행복,haengbog,das Glück,счастье,schast'ye,le bonheur,la suerte,la felicità,மகிழ்ச்சி,makiḻcci,ఆనందము,ānandaṁ,ಸಂತೋಷ
+23,Feelings,hope,希望,kibō,希望,xīwàng,희망,huimang,die Hoffnung,надежда,nadezhda,l'espoir,la esperanza,la speranza,நம்பிக்கை,nampikkai,ఆశ,āśa,ಅಭಿಲಾಷೆ
+24,Feelings,hunger,飢餓,kiga,饥饿,jī'è,배고픔,baegopeum,der Hunger,голод,golod,la faim,el hambre,la fame,பசி,paci,ఆకలి,ākali,ಹಸಿವು
+25,Feelings,interest,関心,kanshin,兴趣,xìngqù,관심,gwansim,das Interesse,интерес,interes,l'intérêt,el interés,l'interesse,ஆர்வம்,ārvam,ఆసక్తి,āsakti,ಆಸಕ್ತಿ
+26,Feelings,joy,喜び,yorokobi,喜悦,xǐyuè,기쁨,gippeum,die Freude,радость,radost',la joie,la alegría,la gioia,மகிழ்ச்சி,makiḻcci,సంతోషము,santōṣamu,ಆನಂದ
+27,Feelings,kiss,キス,kisu,吻,wěn,키스,kiseu,der Kuss,поцелуй,potseluy,le baiser,el beso,il bacio,முத்தம்,muttam,ముద్దు,muddu,ಮುತ್ತು
+28,Feelings,loneliness,孤独,kodoku,寂寞,jìmò,외로움,oeloum,die Einsamkeit,одиночество,odinochestvo,la solitude,la soledad,la solitudine,தனிமை,taṉimai,ఒంటరితనము,ēkākitanaṁ,ಒಂಟಿತನ
+29,Feelings,love,愛,ai,爱,ài,사랑,salang,die Liebe,любовь,lyubov',l'amour,el amor,l'amore,அன்பு,aṉpu,ప్రేమ,prēma,ಪ್ರೀತಿ
+30,Feelings,melancholy,憂鬱,yūutsu,忧郁,yōuyù,우울,uul,die Melancholie,меланхолия,melankholiya,la mélancolie,la melancolía,la malinconia,துக்கம்,tukkam,వ్యసనము,digulu,ಖೇದ
+31,Feelings,mood,気分,kibun,心情,xīnqíng,분위기,bun-wigi,die Stimmung,настроение,nastroyeniye,l'humeur,el estado de ánimo,lo stato d'animo,மனநிலை,maṉanilai,మానసిక స్థితి,mānasika sthiti,ಮನಸ್ಥಿತಿ
+32,Feelings,optimism,楽観,rakkan,乐观,lèguān,낙관론,naggwanlon,der Optimismus,оптимизм,optimizm,l'optimisme,el optimismo,l'ottimismo,நம்பிக்கை,nampikkai,ఆశావాదము,āśāvādamu,ಆಶಾಭಾವನೆ
+33,Feelings,panic,パニック,panikku,恐慌,kǒnghuāng,공포,gongpo,die Panik,паника,panika,la panique,el pánico,il panico,பெரும் அச்சம்,perum accam,భీతి,bhīti,ಭಯ
+34,Feelings,perplexity,当惑,tōwaku,困惑,kùnhuò,당혹감,danghoggam,die Ratlosigkeit,растерянность,rasteryannost',la perplexité,la perplejidad,la perplessità,குழப்பம்,kuḻappam,కలవరము,kalavaraṁ,ದಿಗ್ಭ್ರಮೆ
+35,Feelings,rage,激怒,gekido,愤怒,fènnù,분노,bunno,die Wut,ярость,yarost',la rage,la rabia,la rabbia,ஆத்திரம்,āttiram,విపరీతమైన కోరిక,krōdhaṁ,ವಿಕೋಪ
+36,Feelings,rejection,拒絶,kyozetsu,拒绝,jùjué,거부,geobu,die Ablehnung,отказ,otkaz,le refus,el rechazo,la disapprovazione,நிராகரிப்பு,nirākarippu,నిరాకరణ,tiraskāraṁ,ತಿರಸ್ಕಾರ
+37,Feelings,relationship,関係,kankei,关系,guānxì,관계,gwangye,die Beziehung,отношение,otnosheniye,la relation,la relación,il rapporto,உறவு,uṟavu,సంబంధము,anubandhaṁ,ಸಂಬಂಧ
+38,Feelings,request,リクエスト,rikuesuto,请求,qǐngqiú,요청,yocheong,die Aufforderung,требование,trebovaniye,la demande,la petición,la richiesta,விண்ணப்பம்,viṇṇappam,అభ్యర్థన,vinnapaṁ,ಕೋರಿಕೆ
+39,Feelings,scream,悲鳴,himei,大叫,dà jiào,비명,bimyeong,der Schrei,крик,krik,le cri,el grito,il grido,அலறல்,alaṟal,అరుపు,kevvukēka,ಕೂಗು
+40,Feelings,security,安心,anshin,安全,ānquán,안도감,andogam,die Geborgenheit,безопасность,bezopasnost',la sécurité,la seguridad,la sicurezza,பாதுகாப்பு,pātukāppu,భద్రత,bhadrata,ಭದ್ರತೆ
+41,Feelings,shock,ショック,shokku,惊恐,jīng kǒng,충격,chung-gyeog,der Schreck,испуг,ispug,le choc,el susto,lo spavento,அதிர்ச்சி,atircci,తీవ్రమైన చికాకు దెబ్బ,ṣāk,ಅಘಾತ
+42,Feelings,smile,笑顔,egao,微笑,wéixiào,미소,miso,das Lächeln,улыбка,ulybka,le sourire,la sonrisa,il sorriso,புன்னகை,puṉṉakai,మందహాసము,cirunavvu,ಮುಗುಳ್ನಗೆ
+43,Feelings,tenderness,優しさ,yasashi-sa,温柔,wēnróu,다정,dajeong,die Zärtlichkeit,нежность,nezhnost',la tendresse,la ternura,la tenerezza,மென்மை,meṉmai,అపరిపక్వత,mamata,ಕೋಮಲತೆ
+44,Feelings,thought,思考,shikō,思维,sīwéi,생각,saeng-gag,der Gedanke,мысль,mysl',la pensée,el pensamiento,il pensiero,சிந்தனை,cintaṉai,ఆలోచన,ālōcana,ಆಲೋಚನೆ
+45,Feelings,thoughtfulness,心遣い,kokorodzukai,思考,sīkǎo,사려 깊음,salyeo gip-eum,die Nachdenklichkeit,задумчивость,zadumchivost',la réflexion,la reflexión,la riflessione,நன்றாக சிந்தித்து நடத்தல்,naṉṟāka cintittu naṭattal,ఆలోచనాపరత్వము,vivēkamu,ಪರಹಿತ ಚಿಂತನೆ
+46,Animals,German shepherd,ジャーマンシェパード,jāmanshepādo,德国牧羊犬,déguó mùyáng quǎn,독일산 셰퍼드,dog-ilsan syepeodeu,der Schäferhund,овчарка,ovcharka,le berger allemand,el pastor alemán,il pastore tedesco,ஜெர்மன் ஷெப்பர்ட் நாய்,jermaṉ ṣepparṭ nāy,జర్మన్ షెపర్డ్,jarman ṣeparḍ,ಜರ್ಮನ್ ಶೆಪರ್ಡ್
+47,Animals,animal,動物,dōbutsu,动物,dòngwù,동물,dongmul,das Tier,животное,zhivotnoye,l'animal,el animal,l'animale,மிருகம்,mirukam,జంతువు,jantuvu,ಪ್ರಾಣಿ
+48,Animals,beak,くちばし,kuchibashi,鸟嘴,niǎo zuǐ,부리,buli,der Schnabel,клюв,klyuv,le bec,el pico,il becco,பறவையலகு,paṟavaiyalaku,పక్షిముక్కు,pakṣimukku,ಕೊಕ್ಕು
+49,Animals,beaver,ビーバー,bībā,海狸,hǎilí,비버,bibeo,der Biber,бобр,bobr,le castor,el castor,il castoro,நீர்நாய்,nīrnāy,ఉభయచరము,bīvar,ಬೀವರ್
+50,Animals,bite,噛みつき,kamitsuki,咬,yǎo,물림,mullim,der Biss,укус,ukus,la morsure,la mordedura,il morso,கடி,kaṭi,కాటు,kāṭu,ಕಡಿತ
+51,Animals,boar,イノシシ,inoshishi,野猪,yězhū,멧돼지,mesdwaeji,das Wildschwein,кабан,kaban,le sanglier,el jabalí,il cinghiale,காட்டுப் பன்றி,kāṭṭup paṉṟi,మగ పంది,aḍavipandi,ಕಾಡುಹಂದಿ
+52,Animals,cage,檻,ori,笼,lóng,우리,uli,der Käfig,клетка,kletka,la cage,la jaula,la gabbia,கூண்டு,kūṇṭu,పంజరము,pan̄jaramu,ಪಂಜರ
+53,Animals,calf,子牛,koushi,小牛,xiǎo niú,송아지,song-aji,das Kalb,теленок,telenok,le veau,el becerro,il vitello,கன்றுக்குட்டி,kaṉṟukkuṭṭi,కోడెదూడ,kōḍedūḍa,ಕರು
+54,Animals,cat,猫,neko,猫,māo,고양이,goyang-i,die Katze,кошка,koshka,le chat,el gato,il gatto,பூனை,pūṉai,పిల్లి,pilli,ಬೆಕ್ಕು
+55,Animals,chick,ひよこ,hiyoko,小鸡,xiǎo jī,병아리,byeong-ali,das Küken,цыпленок,tsyplenok,le poussin,el pollito,il pulcino,கோழிக்குஞ்சு,kōḻikkuñcu,అప్పుడే పుట్టిన కోడి పిల్ల,kōḍi pilla,ಕೋಳಿ ಮರಿ
+56,Animals,chicken,鶏,niwatori,鸡,jī,닭,dalg,das Huhn,курица,kuritsa,le poulet,el pollo,il pollo,கோழி,kōḻi,కోడి,kōḍi,ಕೋಳಿ
+57,Animals,deer,鹿,shika,鹿,lù,사슴,saseum,das Reh,олень,olen',le cerf,el corzo,il capriolo,மான்,māṉ,జింక,jiṅka,ಜಿಂಕೆ
+58,Animals,dog,犬,inu,狗,gǒu,개,gae,der Hund,собака,sobaka,le chien,el perro,il cane,நாய்,nāy,కుక్క,kukka,ನಾಯಿ
+59,Animals,dolphin,イルカ,iruka,海豚,hǎitún,돌고래,dolgolae,der Delfin,дельфин,del'fin,le dauphin,el delfín,il delfino,டால்பின்,ṭālpiṉ,తిమింగలము,ḍālphin,ಡಾಲ್ಫಿನ್
+60,Animals,duck,カモ,kamo,鸭子,yāzi,오리,oli,die Ente,утка,utka,le canard,el pato,l'anatra,வாத்து,vāttu,బాతు,bātu,ಬಾತು
+61,Animals,eagle,ワシ,washi,老鹰,lǎoyīng,독수리,dogsuli,der Adler,орел,orel,l'aigle,el águila,l'aquila,கழுகு,kaḻuku,గరుడపక్షి,ḍēga,ಗರುಡ
+62,Animals,feather,羽,hane,羽毛,yǔmáo,깃털,gisteol,die Feder,перо,pero,la plume,la pluma,la piuma,இறகு,iṟaku,రెక్క,īka,ಪುಕ್ಕ
+63,Animals,flamingo,フラミンゴ,furamingo,火烈鸟,huǒ liè niǎo,홍학,honghag,der Flamingo,фламинго,flamingo,le flamant rose,el flamenco,il fenicottero,செந்நாரை,cennārai,రాజహంస,phlemiṅgō,ಫ್ಲೆಮಿಂಗೊ
+64,Animals,foal,子馬,kouma,小马驹,xiǎo mǎ jū,망아지,mang-aji,das Fohlen,жеребенок,zherebenok,le poulain,el potro,il puledro,குதிரைக் குட்டி,kutiraik kuṭṭi,గాడిదపిల్ల,gāḍidapilla,ಕುದುರೆ ಮರಿ
+65,Animals,food,食べ物,tabemono,食物,shíwù,음식,eumsig,das Futter,корм,korm,l'aliment,el alimento,il mangime,உணவு,uṇavu,ఆహారము,āhāramu,ಆಹಾರ
+66,Animals,fox,キツネ,kitsune,狐狸,húlí,여우,yeou,der Fuchs,лиса,lisa,le renard,el zorro,la volpe,நரி,nari,నక్క,nakka,ನರಿ
+67,Animals,goat,ヤギ,yagi,山羊,shānyáng,염소,yeomso,die Ziege,коза,koza,la chèvre,la cabra,la capra,வெள்ளாடு,veḷḷāṭu,మేక,mēka,ಮೇಕೆ
+68,Animals,goose,ガチョウ,gachō,鹅,é,거위,geowi,die Gans,гусь,gus',l'oie,el ganso,l'oca,பெண் வாத்து,peṇ vāttu,హంస,bātu,ಬಾತುಕೋಳಿ
+69,Animals,hare,野ウサギ,nousagi,兔,tù,토끼,tokki,der Hase,заяц,zayats,le lièvre,la liebre,la lepre,பெரிய முயல்,periya muyal,కుందేలు,kundēlu,ಮೊಲ
+70,Animals,hen,めんどり,mendori,母鸡,mǔ jī,암탉,amtalg,die Henne,курица,kuritsa,la poule,la gallina,la gallina,கோழி,kōḻi,ఆడకోడి,kōṭipeṭṭa,ಕೋಳಿ
+71,Animals,heron,鷺,sagi,苍鹭,cāng lù,왜가리,waegali,der Reiher,цапля,tsaplya,le héron,la garza,l'airone,சாம்பல் நாரை,cāmpal nārai,నారాయణపక్షి,koṅga,ಕ್ರೌಂಚ ಪಕ್ಷಿ
+72,Animals,horn,角,tsuno,角,jiǎo,뿔,ppul,das Horn,рог,rog,la corne,el cuerno,il corno,கொம்பு,kompu,కొమ్ము,kom'mu,ಕೊಂಬು
+73,Animals,horseshoe,馬蹄,batei,马蹄铁,mǎtítiě,말굽,malgub,das Hufeisen,подкова,podkova,le fer à cheval,la herradura,il ferro di cavallo,குதிரை லாடம்,kutirai lāṭam,గుర్రపు నాడా,gurrapu nāḍā,ಲಾಳ
+74,Animals,lamb,子羊,kohitsuji,羔羊,gāoyáng,새끼 양,saekki yang,das Lamm,ягненок,yagnenok,l'agneau,el cordero,l'agnello,செம்மறி ஆட்டு குட்டி,cem'maṟi āṭṭu kuṭṭi,గొఱ్ఱె పిల్ల,goṟṟe pilla,ಕುರಿಮರಿ
+75,Animals,leash,リーシュ,rīshu,拴狗带,shuān gǒu dài,가죽끈,gajugkkeun,die Hundeleine,поводок,povodok,la laisse,la correa,il guinzaglio,தோல்வார்,tōlvār,వేటగాడు,paṭṭī,ಸರಪಳಿ
+76,Animals,lobster,ロブスター,robusutā,龙虾,lóngxiā,바닷가재,badasgajae,der Hummer,омар,omar,le homard,la langosta,l'aragosta,சிங்க இறால்,ciṅka iṟāl,ఎండ్రకాయలాంటి సముద్రపు పీత,samudrapu pīta,ಏಡಿ
+77,Animals,love of animals,動物の愛,dōbutsu no ai,动物爱好者,dòngwù àihào zhě,동물의 사랑,dongmul-ui salang,die Tierliebe,любовь к животным,lyubov' k zhivotnym,l'amour des animaux,el amor por los animales,l'amore per gli animali,விலங்குகள்மீது அன்பு,vilaṅkukaḷmītu aṉpu,జంతువుల ప్రేమ,jantu prēma,ಪ್ರಾಣಿ ಪ್ರೀತಿ
+78,Animals,monkey,猿,saru,猴子,hóuzi,원숭이,wonsung-i,der Affe,обезьяна,obez'yana,le singe,el mono,la scimmia,குரங்கு,kuraṅku,కోతి,kōti,ಕೋತಿ
+79,Animals,muzzle,口輪,kuchiwa,口套,kǒu tào,입마개,ibmagae,der Maulkorb,намордник,namordnik,le museau,el bozal,il muso,வாய்க்கட்டு,vāykkaṭṭu,తుపాకీ గొట్టము,cikkaṁ,ಬಾಯಿ ಕುಕ್ಕೆ
+80,Animals,nest,巣,su,巢,cháo,둥지,dungji,das Nest,гнездо,gnezdo,le nid,el nido,il nido,கூடு,kūṭu,పక్షిగూడు,pakṣigūḍu,ಗೂಡು
+81,Animals,owl,フクロウ,fukurō,猫头鹰,māotóuyīng,올빼미,olppaemi,die Eule,сова,sova,le hibou,el búho,il gufo,ஆந்தை,āntai,గుడ్ల గూబ,guḍla gūba,ಗೂಬೆ
+82,Animals,parrot,オウム,ōmu,鹦鹉,yīngwǔ,앵무새,aengmusae,der Papagei,попугай,popugay,le perroquet,el loro,il pappagallo,கிளி,kiḷi,శుకము,ciluka,ಗಿಣಿ
+83,Animals,peacock,クジャク,kujaku,孔雀,kǒngquè,공작,gongjag,der Pfau,павлин,pavlin,le paon,el pavo real,il pavone,ஆண் மயில்,āṇ mayil,నెమలి,nemali,ನವಿಲು
+84,Animals,pelican,ペリカン,perikan,鹈鹕,tí hú,펠리컨,pellikeon,der Pelikan,пеликан,pelikan,le pélican,el pelícano,il pellicano,நாரை,nārai,గూడకొంగ,gūḍakoṅga,ನೀರು ಕೋಳಿ
+85,Animals,penguin,ペンギン,pengin,企鹅,qì'é,펭귄,peng-gwin,der Pinguin,пингвин,pingvin,le pingouin,el pingüino,il pinguino,பென்குவின்,peṉkuviṉ,కాళ్లపై నడిచే సముద్రపు పక్షి,peṅgḍin,ಪೆಂಗ್ವಿನ್
+86,Animals,pet,ペット,petto,宠物,chǒngwù,애완 동물,aewan dongmul,das Haustier,домашнее животное,domashneye zhivotnoye,l'animal de compagnie,la mascota,l'animale domestico,செல்லப் பிராணி,cellap pirāṇi,పెంపుడు జంతువు,pempuḍu jantuvu,ಸಾಕುಪ್ರಾಣಿ
+87,Animals,pigeon,ハト,hato,鸽子,gēzi,비둘기,bidulgi,die Taube,голубь,golub',le pigeon,la paloma,il piccione,புறா,puṟā,పావురము,pāvuramu,ಪಾರಿವಾಳ
+88,Animals,rabbit,ウサギ,usagi,家兔,jiā tù,토끼,tokki,das Kaninchen,кролик,krolik,le lapin,el conejo,il coniglio,முயல்,muyal,కుందేలు,kundēlu,ಕುಂದಿಲಿ/ಮೊಲ
+89,Animals,rooster,おんどり,ondori,公鸡,gōngjī,수탉,sutalg,der Hahn,петух,petukh,le coq,el gallo,il gallo,சேவல்,cēval,పక్షులు నిద్రించు చోటు,kōṭipun̄ju,ಹುಂಜ
+90,Animals,sea lion,アシカ,ashika,海狮,hǎishī,바다사자,badasaja,der Seelöwe,морской лев,morskoy lev,le lion de mer,el león marino,l'otaria,கடல் சிங்கம்,kaṭal ciṅkam,సముద్ర సింహము,samudra sinhamu,ಸಮುದ್ರಸಿಂಹ
+91,Animals,seagull,鴎,kamome,海鸥,hǎi'ōu,갈매기,galmaegi,die Möwe,чайка,chayka,la mouette,la gaviota,il gabbiano,கடற்பறவை,kaṭaṟpaṟavai,సముద్రపు కాకి,samudrapu kāki,ಕಡಲ ಗಲ್ ಹಕ್ಕಿ
+92,Animals,seal,アザラシ,azarashi,海豹,hǎibào,물개,mulgae,der Seehund,тюлень,tyulen',le phoque,la foca,la foca,கடல் நாய்,kaṭal nāy,ఉభయచరము,sīl mr̥gaṁ,ಸೀಲ್
+93,Animals,sheep,羊,hitsuji,羊,yáng,양,yang,das Schaf,овца,ovtsa,le mouton,la oveja,la pecora,செம்மறியாடு,cem'maṟiyāṭu,గొర్రె,gorre,ಕುರಿ
+94,Animals,snake,ヘビ,hebi,蛇,shé,뱀,baem,die Schlange,змея,zmeya,le serpent,la serpiente,il serpente,பாம்பு,pāmpu,పాము,pāmu,ಹಾವು
+95,Animals,stork,コウノトリ,kōnotori,鹤,hè,황새,hwangsae,der Storch,аист,aist,la cigogne,la cigüeña,la cicogna,நாரை,nārai,కొంగ,koṅga,ಕೊಕ್ಕರೆ
+96,Animals,swan,白鳥,Shiratori,天鹅,tiān'é,백조,baegjo,der Schwan,лебедь,lebed',le cygne,el cisne,il cigno,அன்ன பறவை,aṉṉa paṟavai,హంస,hansa,ಹಂಸ
+97,Animals,trout,鱒,masu,鳟鱼,zūn yú,송어,song-eo,die Forelle,форель,forel',la truite,la trucha,la trota,திரௌத்து மீன்,tirauttu mīṉ,జల్ల చేప,jalla cēpa,ಟ್ರೌಟ್ ಮೀನು
+98,Animals,turkey,七面鳥,shichimenchō,火鸡,huǒ jī,칠면조,chilmyeonjo,der Truthahn,индюк,indyuk,la dinde,el pavo,il tacchino,வான்கோழி,vāṉkōḻi,సీమ కోడి,ṭarkī kōḍi,ಟರ್ಕಿ ಕೋಳಿ
+99,Animals,turtle,カメ,kame,乌龟,wūguī,거북,geobug,die Schildkröte,черепаха,cherepakha,la tortue,la tortuga,la tartaruga,கடல் ஆமை,kaṭal āmai,సముద్రపు తాబేలు,tābēlu,ಆಮೆ
+100,Animals,vulture,ハゲワシ,hagewashi,秃鹫,tūjiù,독수리,dogsuli,der Geier,коршун,korshun,le vautour,el buitre,l'avvoltoio,கழுகு,kaḻuku,రాబందు,rābandu,ರಣಹದ್ದು
+101,Animals,wolf,オオカミ,ōkami,狼,láng,늑대,neugdae,der Wolf,волк,volk,le loup,el lobo,il lupo,ஓநாய்,ōnāy,తోడేలు,tōḍēlu,ತೋಳ
+102,Sports,acrobatics,アクロバット,akurobatto,杂技,zájì,곡예,gog-ye,die Akrobatik,акробатика,akrobatika,les acrobaties,las acrobacias,le acrobazie,களரி பயிற்சி,kaḷari payiṟci,విన్యాసాలు,vin'yāsālu,ದೊಂಬರಾಟ
+103,Sports,aerobics,エアロビクス,earobikusu,健美操,jiànměi cāo,에어로빅,eeolobig,das Aerobic,аэробика,aerobika,l'aérobic,el aeróbic,l'aerobica,ஏரோபிக்ஸ் உடற்பயிற்சி,ērōpiks uṭaṟpayiṟci,ప్రాణ వాయువును ఎక్కువగా పీల్చే వ్యాయామ ప్రక్రియలు,gāli kasarattulu,ಏರೊಬಿಕ್ಸ್
+104,Sports,athletics,陸上競技,rikujō kyōgi,田径,tiánjìng,운동 경기,undong gyeong-gi,die Leichtathletik,легкая атлетика,legkaya atletika,l'athlétisme,el atletismo,l'atletica,தடகளம்,taṭakaḷam,వ్యాయామ క్రీడలు,athleṭiks,ವ್ಯಾಯಾಮ
+105,Sports,badminton,バドミントン,badominton,羽毛球,yǔmáoqiú,배드민턴,baedeuminteon,das Badminton,бадминтон,badminton,le badminton,el bádminton,il volano,பூப்பந்தாட்டம்,pūppantāṭṭam,బ్యాట్మింటన్,byāḍmiṇṭan,ಬ್ಯಾಡ್ ಮಿಂಟನ್
+106,Sports,balance,バランス,baransu,平衡,pínghéng,균형,gyunhyeong,die Balance,равновесие,ravnovesiye,l'équilibre,el equilibrio,l'equilibrio,சமநிலை,camanilai,సమతుల్యత,byālens,ಸಮತೋಲ/ತಕ್ಕಡಿ
+107,Sports,ball,ボール,bōru,球,qiú,공,gong,der Ball,мяч,myach,la balle,el balón,la palla,பந்து,pantu,బంతి,banti,ಚೆಂಡು
+108,Sports,baseball,野球,yakyū,棒球,bàngqiú,야구,yagu,das Baseballspiel,бейсбол,beysbol,le base-ball,el béisbol,il baseball,பேஸ்பால்,pēspāl,బేస్ బాలు,bēs bāl,ಬೇಸ್ ಬಾಲ್
+109,Sports,basketball,バスケットボール,basukettobōru,篮球,lánqiú,농구,nong-gu,der Basketball,баскетбол,basketbol,le basket-ball,el baloncesto,la pallacanestro,கூடைப்பந்தாட்டம்,kūṭaippantāṭṭam,బాస్కెట్ బాల్,bāskeṭ bāl,ಬ್ಯಾಸ್ಕೆಟ್ ಬಾಲ್
+110,Sports,billiard ball,ビリヤードボール,biriyādobōru,台球,táiqiú,당구 공,dang-gu gong,die Billardkugel,бильярдный шар,bil'yardnyy shar,la boule de billard,la bola de billar,la palla da biliardo,பில்லியார்டு பந்து,pilliyārṭu pantu,బిలియర్డ్స్ బంతి,biliyarḍs bāl,ಬಿಲಿಯರ್ಡ್ ಚೆಂಡು
+111,Sports,billiards,ビリヤード,biriyādo,台球,táiqiú,당구,dang-gu,das Billiard,бильярд,bil'yard,le billard,el billar,biliardo,பில்லியார்டுகள்,pilliyārṭukaḷ,బిలియర్డ్స్,biliyarḍs,ಬಿಲಿಯರ್ಡ್ಸ್
+112,Sports,boxing,ボクシング,bokushingu,拳击,quánjí,권투,gwontu,der Boxsport,бокс,boks,la boxe,el boxeo,il pugilato,குத்துச் சண்டை,kuttuc caṇṭai,మల్ల యుద్ధము,bākpiṅg,ಮುಷ್ಟಿಕಾಳಗ
+113,Sports,boxing glove,ボクシング​​グローブ,bokushingu gurōbu,拳击手套,quánjí shǒutào,권투 장갑,gwontu jang-gab,der Boxhandschuh,боксерская перчатка,bokserskaya perchatka,le gant de boxe,el guante de boxeo,il guantone da box,குத்துச்சண்டை கையுறை,kuttuccaṇṭai kaiyuṟai,మల్లయుద్దము యొక్క చేతితొడుగు,bākpiṅg glōv,ಮುಷ್ಟಿಕಾಳಗದ ಕೈಚೀಲ
+114,Sports,callisthenics,体操,taisō,体操,tǐcāo,건강 체조,geongang chejo,die Gymnastik,гимнастика,gimnastika,la gymnastique,la gimnasia,la ginnastica,காலிஸ்தனிக் உடற் பயிற்சி,kālistaṉik uṭaṟ payiṟci,ఓ రకమైన వ్యాయామ క్రీడలు,kālistheniks,ಅಂಗಸಾಧನೆಗಳು
+115,Sports,canoe,カヌー,kanū,独木舟,dú mùzhōu,카누,kanu,das Kanu,каноэ,kanoe,le canoë,la canoa,la canoa,இலேசான படகு,ilēcāṉa paṭaku,ఓ రకమైన ఓడ,ō rakamaina ōḍa,ತೋಡು ದೋಣಿ
+116,Sports,car race,カーレース,kārēsu,赛车,sàichē,자동차 경주,jadongcha gyeongju,das Autorennen,автомобильные гонки,avtomobil'nyye gonki,la course automobile,la carrera de coches,l'auto da corsa,கார் பந்தயம்,kār pantayam,కారు రేసు,kāru rēsu,ಕಾರುಗಳ ಓಟದ ಪಂದ್ಯ
+117,Sports,catamaran,カタマラン,katamaran,双体船,shuāng tǐ chuán,쌍동선,ssangdongseon,der Katamaran,катамаран,katamaran,le catamaran,el catamarán,il catamarano,கட்டுமரம்,kaṭṭumaram,దుంగలతో కట్టిన ఓ పలక,keṭamārān,ತೆಪ್ಪ
+118,Sports,climbing,クライミング,kuraimingu,攀登,pāndēng,등산,deungsan,das Klettern,скалолазание,skalolazaniye,l'escalade,la escalada,l'arrampicata,ஏறுதல்,ēṟutal,ఎక్కుట,ekkuṭa,ಹತ್ತುವುದು
+119,Sports,cricket,クリケット,kuriketto,板球,bǎn qiú,크리켓,keulikes,das Kricket,крикет,kriket,le cricket,el críquet,il cricket,கிரிக்கெட்,kirikkeṭ,క్రికెట్,krikeṭ,ಕ್ರಿಕೆಟ್
+120,Sports,cross-country skiing,クロスカントリー,kurosukantorī,越野滑雪,yuèyě huáxuě,크로스 컨트리 스키,keuloseu keonteuli seuki,der Skilanglauf,бег на лыжах на длинные дистанции,beg na lyzhakh na dlinnyye distantsii,le ski de fond,el esquí de fondo,lo sci di fondo,திறந்தவெளிப் பனிச்சறுக்கு,tiṟantaveḷip paṉiccaṟukku,అంతర దేశ స్కీయింగ్,krās kaṇṭrī skīyiṅg,ಬಯಲು ಸ್ಕೀಯಿಂಗ್
+121,Sports,cup,カップ,kappu,奖杯,jiǎngbēi,우승컵,useungkeob,der Pokal,кубок,kubok,la coupe,la copa,la coppa,கோப்பை,kōppai,గిన్నె,kap,ಕಪ್
+122,Sports,defense,防御,bōgyo,防守,fángshǒu,방어,bang-eo,die Abwehr,защита,zashchita,la défense,la defensa,la difesa,பாதுகாப்பு,pātukāppu,రక్షణ,rakṣaṇa,ರಕ್ಷಣೆ
+123,Sports,dumbbell,ダンベル,danberu,哑铃,yǎlíng,덤벨,deombel,die Hantel,гантель,gantel',l'haltère,la mancuerna,il manubrio,சப்பளக்கட்டை,cappaḷakkaṭṭai,మూగఘటం,ḍambel,ಕಬ್ಬಿಣದ ದಂಡ
+124,Sports,equestrian,馬術,bajutsu,马术,mǎshù,승마,seungma,der Reitsport,конный спорт,konnyy sport,l'équitation,la hípica,l'equitazione,குதிரைச்சவாரி,kutiraiccavāri,అశ్వికుడు,īkvesṭriyan,ಕುದುರೆ ಸವಾರಿ ಕ್ರೀಡೆ
+125,Sports,exercise,エクササイズ,ekusasaizu,锻炼,duànliàn,운동,undong,die Übung,упражнение,uprazhneniye,l'exercice,el ejercicio,l'esercizio,உடற்பயிற்சி,uṭaṟpayiṟci,వ్యాయామము,vyāyāmaṁ,ವ್ಯಾಯಾಮ
+126,Sports,exercise ball,エクササイズボール,ekusasaizubōru,健身球,jiànshēn qiú,운동 공,undong gong,der Gymnastikball,гимнастический мяч,gimnasticheskiy myach,le ballon e gymnastique,la pelota de ejercicio,palla da ginnastica,உடற்பயிற்சி பந்து,uṭaṟpayiṟci pantu,వ్యాయామపు బంతి,vyāyāmapu banti,ವ್ಯಾಯಾಮದ ಚೆಂಡು
+127,Sports,exercise machine,運動器具,undō kigu,运动机,yùndòng jī,운동 기계,undong gigye,das Trainingsgerät,тренажер,trenazher,l'appareil d'exercice,la máquina de ejercicio,attrezzi da palestra,உடற்பயிற்சி இயந்திரம்,uṭaṟpayiṟci iyantiram,వ్యాయామ యంత్రము,vyāyāma yantraṁ,ವ್ಯಾಯಾಮ ಯಂತ್ರ
+128,Sports,fencing,フェンシング,fenshingu,击剑,jíjiàn,펜싱,pensing,der Fechtsport,фехтование,fekhtovaniye,l'escrime,la esgrima,la scherma,வாள்வீச்சு,vāḷvīccu,రక్షణ కంచె,phensiṅg,ಕತ್ತಿವರಸೆ
+129,Sports,fin,足ひれ,ashi hire,脚蹼,jiǎopǔ,물갈퀴,mulgalkwi,die Flosse,ласты,lasty,la palme,la aleta,la pinna,துடுப்பு,tuṭuppu,పొలుసు,phin,ಈಜುರೆಕ್ಕೆ
+130,Sports,fishing,釣り,tsuri,钓鱼,diàoyú,낚시,nakksi,der Angelsport,рыбалка,rybalka,la pêche à la ligne,la pesca,la pesca,மீன்பிடி,mīṉpiṭi,చేపలు పట్టడము,cēpalu paṭṭaḍamu,ಮೀನು ಹಿಡಿಯುವುದು
+131,Sports,fitness,フィットネス,fittonesu,健身,jiànshēn,체력,chelyeog,die Fitness,фитнес,fitnes,la remise en forme,la forma física / el fitness,il fitness,திடகாத்திரம்,tiṭakāttiram,యుక్తత,dhr̥ḍhatvaṁ,ಸಾಮರ್ಥ್ಯ
+132,Sports,football club,サッカークラブ,sakkākurabu,足球俱乐部,zúqiú jùlèbù,축구 클럽,chuggu keulleob,der Fußballclub,футбольный клуб,futbol'nyy klub,le club de football,el club de fútbol,la squadra di calcio,கால்பந்து கிளப்,kālpantu kiḷap,ఫుట్ బాల్ క్లబ్,phuṭ bāl klab,ಕಾಲ್ಚೆಂಡಿನ ಸಂಘ
+133,Sports,frisbee,フリスビー,furisubī,飞盘,fēipán,프리스비,peuliseubi,der Frisbee,летающий диск,letayushchiy disk,le frisbee,el disco volador,il frisbee,ஃப்ரிஸ்பீ,ḥprispī,ఫ్రిస్బీ,phrisbī,ಫ್ರಿಸ್ ಬೀ
+134,Sports,glider,グライダー,guraidā,滑翔机,huáxiángjī,글라이더,geullaideo,das Segelflugzeug,планер,planer,le planeur,el planeador,l'aliante,மிதவை வானூர்தி,mitavai vāṉūrti,జారుడు జీవి,glayiḍar,ಹಾಯಿ ವಿಮಾನ
+135,Sports,goal,ゴール,gōru,球门,qiúmén,골문,golmun,das Tor,ворота,vorota,le but,el gol,la porta,இலக்கு,ilakku,గోల్,gōl,ಗುರಿಗಂಬಗಳು
+136,Sports,goalkeeper,ゴールキーパー,gōrukīpā,守门员,shǒuményuán,골키퍼,golkipeo,der Torwart,вратарь,vratar',le gardien de but,el portero,il portiere,கோல்கீப்பர்,kōlkīppar,గోల్ కీపర్,gōl kīpar,ಗೋಲುರಕ್ಷಕ
+137,Sports,golf club,ゴルフクラブ,Gorufukurabu,高尔夫球棒杆,gāo'ěrfū qiú bàng gān,골프 클럽,golpeu keulleob,der Golfschläger,клюшка для гольфа,klyushka dlya gol'fa,le club de golf,el club de golf,la mazza da golf,குழிப்பந்தாட்ட மன்றம்,kuḻippantāṭṭa maṉṟam,గోల్ఫ్ క్లబ్,gōlph klab,ಗಾಲ್ಫ್ ದಾಂಡು
+138,Sports,gymnastics,体操競技,taisō kyōgi,体操,tǐcāo,체조,chejo,das Turnen,физкультура,fizkul'tura,la gymnastique,la gimnasia,la ginnastica,சீருடற்பயிற்சி,cīruṭaṟpayiṟci,శారీరక\, ఆరోగ్య వ్యాయామములు,jimnāsṭiks,ಕಸರತ್ತು
+139,Sports,handstand,逆立ち,sakadachi,手倒立,shǒu dàolì,물구나무서기,mulgunamuseogi,der Handstand,стойка на руках,stoyka na rukakh,l'équilibre sur les mains,el pino,la verticale,கையால் நிற்பது,kaiyāl niṟpatu,చేతి ధృఢత్వము,cētulapai nilabaḍaḍaṁ,ಕೈಮೇಲೆ ನಿಲ್ಲುವುದು
+140,Sports,hang-glider,ハンググライダー,hanguguraidā,滑翔机,huáxiángjī,행글라이더,haeng-geullaideo,der Drachenflieger,дельтапланерист,del'taplanerist,le deltaplane,el ala delta,il deltaplano,தொங்கு-மிதவை வானூர்தி,toṅku-mitavai vāṉūrti,వేలాడే జారుడుజీవి,hyaṅg glayiḍar,ಕೈಯಲ್ಲಿ ಹಿಡಿದು ಹಾರುವ ಹಾಯಿ ವಿಮಾನ
+141,Sports,high jump,高跳び,takatobi,跳高,tiàogāo,높은 점프,nop-eun jeompeu,der Hochsprung,прыжки в высоту,pryzhki v vysotu,le saut en hauteur,el salto de altura,il salto in alto,உயரம் தாண்டுதல்,uyaram tāṇṭutal,ఎత్తుకు ఎగురుట,hai jamp,ಎತ್ತರ ನೆಗೆತ
+142,Sports,horse race,競馬,keiba,赛马,sàimǎ,경마,gyeongma,das Pferderennen,скачки,skachki,la course de chevaux,la carrera de caballos,la corsa di cavalli,குதிரைப்பந்தயம்,kutiraippantayam,గుర్రపు స్వారీ,gurrapu svārī,ಕುದುರೆಪಂದ್ಯ
+143,Sports,hot air balloon,熱気球,nekkikyū,热气球,rè qìqiú,열기구,yeolgigu,der Heißluftballon,монгольфьер,mongol'f'yer,la montgolfière,el globo de aire caliente,la mongolfiera,வெப்பக் காற்று பலூன்,veppak kāṟṟu palūṉ,వేడి గాలి గుమ్మటం,vēḍi gāli gum'maṭaṁ,ಬಿಸಿ ಗಾಳಿ ಆಕಾಶಬುಟ್ಟಿ
+144,Sports,hunt,狩り,kari,狩猎,shòuliè,사냥,sanyang,die Jagd,охота,okhota,la chasse,la caza,la caccia,வேட்டை,vēṭṭai,వేటాడు,vēṭa,ಬೇಟೆ
+145,Sports,ice hockey,アイスホッケー,aisuhokkē,冰球,bīngqiú,아이스 하키,aiseu haki,das Eishockey,хоккей с шайбой,khokkey s shayboy,le hockey sur glace,el hockey sobre hielo,l' hockey su ghiaccio,பனிக்கட்டி ஹாக்கி,paṉikkaṭṭi hākki,మంచు హాకీ,ais hākī,ನೀರ್ಗಲ್ಲ ಹಾಕಿ
+146,Sports,ice skate,アイススケート,aisusukēto,溜冰鞋,liūbīng xié,아이스 스케이트,aiseu seukeiteu,der Schlittschuh,конек,konek,le patin à glace,el patín,i pattini da ghiaccio,பனிச் சறுக்கு,paṉic caṟukku,మంచు స్కేట్,ais skēṭ,ನೀರ್ಗಲ್ಲ ಜಾರಾಟ
+147,Sports,javelin throw,やり投げ,yarinage,标枪,biāoqiāng,창던지기,changdeonjigi,der Speerwurf,метание копья,metaniye kop'ya,le lancer du javelot,el lanzamiento de jabalina,il lancio del giavellotto,ஈட்டி எறிதல்,īṭṭi eṟital,జావెలిన్ త్రో,jāvelin trō,ಭಲ್ಲೆಯ ಎಸೆತ
+148,Sports,jogging,ジョギング,jogingu,慢跑,mànpǎo,조깅,joging,das Jogging,бег трусцой,beg trustsoy,le jogging,el footing,il jogging,மெது ஓட்டம்,metu ōṭṭam,జాగింగ్,jāgiṅg,ಓಟ
+149,Sports,jump,ジャンプ,janpu,跳,tiào,점프,jeompeu,der Sprung,прыжок,pryzhok,le saut,el salto,il salto,குதித்தல்,kutittal,ఎగురుట,eguruṭa,ನೆಗೆತ
+150,Sports,kayak,カヤック,kayakku,皮艇,pí tǐng,카약,kayag,der Kajak,байдарка,baydarka,le kayak,el kayak,il kayak,பனிக்கடற் படகு,paṉikkaṭaṟ paṭaku,పైభాగం కప్పు వేయబడిన చిన్న పడవ,cinna paḍava,ಕಾಯಾಕ್
+151,Sports,kick,キック,kikku,开球,kāi qiú,차기,chagi,der Tritt,удар ногой,udar nogoy,le coup de pied,la patada,il calcio,உதை,utai,కాలితో తన్ను,kālitō tannu,ಒದೆತ
+152,Sports,life jacket,ライフジャケット,raifu jaketto,救生衣,jiùshēngyī,구명 조끼,gumyeong jokki,die Schwimmweste,спасательный жилет,spasatel'nyy zhilet,le gilet de sauvetage,el chaleco salvavidas,il giubbotto di salvataggio,காப்புச்சட்டை,kāppuccaṭṭai,జీవితకవచము,laiph jākeṭ,ತೇಲು ಕವಚ
+153,Sports,marathon,マラソン,marason,马拉松,mǎlāsōng,마라톤,malaton,der Marathonlauf,марафонский бег,marafonskiy beg,le marathon,el maratón,la maratona,நெடுந்தூர ஓட்டப்போட்டி,neṭuntūra ōṭṭappōṭṭi,మారథాన్,mārathān,ಮ್ಯಾರಥಾನ್
+154,Sports,martial arts,武術,bujutsu,武术,wǔshù,무술,musul,der Kampfsport,боевые искусства,boyevyye iskusstva,les arts martiaux,las artes marciales,le arti marziali,தற்காப்புக் கலை,taṟkāppuk kalai,యుద్ధ కళలు,pōrāṭa vidyalu,ಯುದ್ದೋಚಿತ ಕಲೆಗಳು
+155,Sports,mini golf,ミニゴルフ,mini gorufu,迷你高尔夫球场,mínǐ gāo'ěrfū qiúchǎng,미니 골프,mini golpeu,das Minigolf,мини-гольф,mini-gol'f,le mini-golf,el mini-golf,il mini golf,சிறிய குழிப்பந்தாட்டம்,ciṟiya kuḻippantāṭṭam,మినీ గోల్ఫ్,minī gōlph,ಮಿನಿ ಗಾಲ್ಫ್
+156,Sports,momentum,運動量,undōryō,跳跃,tiàoyuè,운동량,undonglyang,der Schwung,взмах,vzmakh,l'élan,el impulso,lo slancio,உத்வேகம்,utvēkam,చాలనవేగము,gati vēgaṁ,ರಭಸ
+157,Sports,parachute,パラシュート,parashūto,降落伞,jiàngluòsǎn,낙하산,naghasan,der Fallschirm,парашют,parashyut,le parachute,el paracaídas,il paracadute,பாராசூட்,pārācūṭ,గొడుగు వంటి పరికరము,pyārācūṭ,ದುಮುಕು ಕೊಡೆ/ ಪ್ಯಾರಾಚೂಟ್
+158,Sports,paragliding,パラグライダー,paraguraidā,滑翔伞,huáxiáng sǎn,패러 글라이딩,paeleo geullaiding,das Paragleiten,парапланеризм,paraplanerizm,le parapente,el parapente,il parapendio,வான்சறுக்கு,vāṉcaṟukku,పాకుడు,pyārā glayiḍiṅg,ಪ್ಯಾರಾಗ್ಲೈಡಿಂಗ್
+159,Sports,runner,ランナー,ran'nā,女跑步者,nǚ pǎobù zhě,달리는 사람,dallineun salam,die Läuferin,бегунья,begun'ya,la coureuse,el corredor,il corridore,ஓடுபவர்,ōṭupavar,రన్నర్,rannar,ಓಟಗಾರ
+160,Sports,sail,帆,ho,帆,fān,돛,doch,das Segel,парус,parus,la voile,la vela,la vela,பாய் மரத்துணி,pāy marattuṇi,తెరచాప,teracāpa,ಹಾಯಿ
+161,Sports,sailboat,ヨット,yotto,帆船,fānchuán,범선,beomseon,das Segelboot,парусник,parusnik,le voilier,el velero,la barca a vela,பாய்மரப் படகு,pāymarap paṭaku,తెరచాపగల నావ,teracāpagala nāva,ಹಾಯಿ ದೋಣಿ
+162,Sports,sailing ship,帆船,hansen,帆船,fānchuán,범선,beomseon,das Segelschiff,парусная лодка,parusnaya lodka,le voilier,el velero,il veliero,பாய்மர கப்பல்,pāymara kappal,నౌకాయాన నౌక,payanin̄cē nauka,ಹಾಯಿ ಹಡಗು
+163,Sports,shape,体調,taichō,状况,zhuàngkuàng,모양,moyang,die Kondition,форма,forma,la forme physique,la forma,la forma,உருவம்,uruvam,ఆకారము,ākāramu,ಆಕಾರ
+164,Sports,ski course,スキーコース,sukīkōsu,滑雪教程,huáxuě jiàochéng,스키 코스,seuki koseu,der Skikurs,лыжная дистанция,lyzhnaya distantsiya,le cours de ski,el curso de esquí,il corso di sci,பனிச் சறுக்குப் பயிற்சி திசை,paṉic caṟukkup payiṟci ticai,స్కీ కోర్సు,skī kōrsu,ಸ್ಕಿ ವೈಹಾಳಿಪಥ
+165,Sports,skipping rope,縄跳び,nawatobi,跳绳,tiàoshéng,줄넘기 줄,julneomgi jul,das Springseil,скакалка,skakalka,la corde à sauter,la cuerda de saltar,la corda per saltare,கெந்துகயிறு,kentukayiṟu,ఎగురుతూ ఆడే ఆటలో వాడు తాడు,skippiṅg tāḍu,ಜಿಗಿ ಹಗ್ಗ
+166,Sports,snowboard,スノーボード,sunōbōdo,滑雪板,huáxuěbǎn,스노보드,seunobodeu,das Snowboard,сноуборд,snoubord,le snowboard,la tabla de snowboard,lo snowboard,பனிப் பலகை,paṉip palakai,మంచు పటము,snō bōrḍ,ನೀರ್ಗಲ್ಲು ಹಲಗೆ
+167,Sports,snowboarder,スノーボーダー,sunōbōdā,滑雪板者,huáxuěbǎn zhě,스노보드를 타는 사람,seunobodeuleul taneun salam,der Snowboardfahrer,сноубордист,snoubordist,le snowboarder,el snowboarder,lo snowboarder,பனிப்பலகை செலுத்துனர்,paṉippalakai celuttuṉar,మంచును అధిరోహించువారు,snō bōrḍar,ನೀರ್ಗಲ್ಲುಹಲಗೆ ಓಟಗಾರ
+168,Sports,sports,スポーツ,supōtsu,体育,tǐyù,스포츠,seupocheu,der Sport,спорт,sport,le sport,los deportes,lo sport,விளையாட்டு,viḷaiyāṭṭu,క్రీడలు,krīḍalu,ಕ್ರೀಡೆ
+169,Sports,squash player,スカッシュプレーヤー,sukasshupurēyā,壁球运动员,bìqiú yùndòngyuán,스쿼시 선수,seukwosi seonsu,der Squashspieler,игрок в сквош,igrok v skvosh,le joueur de squash,el jugador de squash,il giocatore di squash,ஸ்குவாஷ் வீரர்,skuvāṣ vīrar,స్క్వాష్ ఆటగాడు,skvāṣ āṭagāḍu,ಸ್ಕ್ವಾಶ್ ಆಟಗಾರ
+170,Sports,strength training,筋力トレーニング,kinryoku torēningu,体力训练,tǐlì xùnliàn,근력 훈련,geunlyeog hunlyeon,das Krafttraining,силовая тренировка,silovaya trenirovka,la musculation,el entrenamiento de la fuerza,il sollevamento pesi,வலிமைப் பயிற்சி,valimaip payiṟci,బలం శిక్షణ,dāruḍhya śikṣaṇa,ಸಾಮರ್ಥ್ಯ ಶಿಕ್ಷಣ
+171,Sports,stretching,ストレッチ,sutoretchi,伸展,shēnzhǎn,스트레칭,seuteuleching,das Stretching,растяжение,rastyazheniye,le stretching,el estiramiento,lo stretching,உடலை நீட்டிப் பயிற்சி எடுத்தல்,uṭalai nīṭṭip payiṟci eṭuttal,సాగతీత,sāgatīta,ನೀಳ ಮಾಡುವುದು
+172,Sports,surfboard,サーフボード,sāfubōdo,冲浪板,chōnglàng bǎn,서핑 보드,seoping bodeu,das Surfbrett,доска для серфинга,doska dlya serfinga,la planche de surf,la tabla de surf,la tavola da surf,அலை பலகை,alai palakai,సర్ఫ్ బోర్డు,sarph bōrḍu,ತೆರೆನೊರೆ ಸವಾರಿ ಹಲಗೆ
+173,Sports,surfer,サーファー,sāfā,冲浪者,chōnglàng zhě,파도타기를 하는 사람,padotagileul haneun salam,der Surfer,серфингист,serfingist,le surfer,el surfista,il surfista,அலை பலகையைச் செலுத்துநர்,alai palakaiyaic celuttunar,సర్ఫర్,sarphar,ತೆರೆನೊರೆ ಸವಾರ
+174,Sports,surfing,サーフィン,sāfin,冲浪,chōnglàng,파도타기,padotagi,das Surfing,серфинг,serfing,le surf,el surf,il surfing,அலையாடல்,alaiyāṭal,సర్ఫింగ్,sarphiṅg,ತೆರೆನೊರೆ ಸವಾರಿ
+175,Sports,table tennis,卓球,takkyū,乒乓球,pīngpāng qiú,탁구,taggu,das Tischtennis,настольный теннис,nastol'nyy tennis,le tennis de table,el pimpón,il ping-pong,டேபிள் டென்னிஸ்,ṭēpiḷ ṭeṉṉis,టేబుల్ టెన్నిస్,ṭēbul ṭennis,ಟೇಬಲ್ ಟೆನ್ನಿಸ್
+176,Sports,table tennis ball,ピンポンボール,pinponbōru,乒乓球,pīngpāng qiú,탁구 공,taggu gong,der Tischtennisball,мячик для настольного тенниса,myachik dlya nastol'nogo tennisa,la balle de tennis de table,la pelota de pimpón,la pallina da ping-pong,டேபிள் டென்னிஸ் பந்து,ṭēpiḷ ṭeṉṉis pantu,టేబుల్ టెన్నిస్ బంతి,ṭēbul ṭennis banti,ಟೇಬಲ್ ಟೆನ್ನಿಸ್ ಚೆಂಡು
+177,Sports,target,的,-teki,靶子,bǎzi,과녁,gwanyeog,die Zielscheibe,мишень,mishen',la cible,el objetivo,il bersaglio,இலக்கு,ilakku,గురి,lakṣyaṁ,ಗುರಿ
+178,Sports,team,チーム,chīmu,团队,tuánduì,팀,tim,die Mannschaft,команда,komanda,l'équipe,el equipo,la squadra,அணி,aṇi,జట్టు,jaṭṭu,ತಂಡ
+179,Sports,tennis,テニス,tenisu,网球,wǎngqiú,테니스,teniseu,das Tennis,теннис,tennis,le tennis,el tenis,il tennis,டென்னிஸ்,ṭeṉṉis,టెన్నిస్,ṭennis,ಟೆನ್ನಿಸ್
+180,Sports,tennis ball,テニスボール,tenisubōru,网球,wǎngqiú,테니스 공,teniseu gong,der Tennisball,теннисный мяч,tennisnyy myach,la balle de tennis,la pelota de tenis,la palla da tennis,டென்னிஸ் பந்து,ṭeṉṉis pantu,టెన్నిస్ బంతి,ṭennis banti,ಟೆನ್ನಿಸ್ ಚೆಂಡು
+181,Sports,tennis player,テニス選手,tenisu senshu,网球运动员,wǎngqiú yùndòngyuán,테니스 선수,teniseu seonsu,der Tennisspieler,теннисист,tennisist,le joueur de tennis,el jugador de tenis,il tennista,டென்னிஸ் வீரர்,ṭeṉṉis vīrar,టెన్నిస్ క్రీడాకారులు,ṭennis plēyar,ಟೆನ್ನಿಸ್ ಆಟಗಾರ
+182,Sports,tennis racket,テニスラケット,tenisuraketto,网球拍,wǎngqiú pāi,테니스 라켓,teniseu lakes,der Tennisschläger,теннисная ракетка,tennisnaya raketka,la raquette de tennis,la raqueta de tenis,la racchetta da tennis,டென்னிஸ் மட்டை,ṭeṉṉis maṭṭai,టెన్నిస్ రాకెట్,ṭennis rākeṭ,ಟೆನ್ನಿಸ್ ದಾಂಡು
+183,Sports,treadmill,トレッドミル,toreddomiru,跑步机,pǎobù jī,러닝 머신,leoning meosin,das Laufband,беговая дорожка,begovaya dorozhka,le tapis roulant,la cinta de correr,il tapis roulant,ஓடுபொறி,ōṭupoṟi,ట్రెడ్ మిల్,ṭreḍ mil,ಮೆಟ್ಟು ಯಂತ್ರ
+184,Sports,volleyball player,バレーボール選手,barēbōru senshu,排球运动员,páiqiú yùndòngyuán,배구 선수,baegu seonsu,der Volleyballspieler,волейболист,voleybolist,le joueur de volley-ball,el jugador de voleibol,il giocatore di pallavolo,கைப்பந்து வீரர்,kaippantu vīrar,వాలీబాల్ క్రీడాకారుడు,vālībāl plēyar,ವಾಲಿಬಾಲ್ ಆಟಗಾರ
+185,Sports,water ski,水上スキー,minakami sukī,滑水,huá shuǐ,수상 스키,susang seuki,der Wasserski,водные лыжи,vodnyye lyzhi,le ski nautique,el esquí acuático,lo sci d'acqua,நீர் சறுக்கு,nīr caṟukku,నీటి స్కీ,vāṭar skī,ನೀರು ಜಾರಾಟ
+186,Sports,whistle,笛,fue,哨子,shàozi,호루라기,holulagi,die Trillerpfeife,свисток,svistok,le coup de sifflet,el silbato,il fischietto,ஊதல்,ūtal,ఈల,īla,ಪೀಪಿ
+187,Sports,wind surfer,ウインドサーファー,uindosāfā,风帆冲浪者,fēngfān chōnglàng zhě,윈드서핑을 하는 사람,windeuseoping-eul haneun salam,der Windsurfer,виндсерфинг,vindserfing,le véliplanchiste,el surfista,il windsurf,காற்று உலாவர்,kāṟṟu ulāvar,వాయు చోదకుడు,viṇḍ sarphar,(ಗಾಳಿ ಸಹಾಯದ) ತೆರೆನೊರೆ ಸವಾರ
+188,Sports,wrestling,レスリング,resuringu,摔跤,shuāijiāo,레슬링,leseulling,der Ringkampf,борьба,bor'ba,la lutte,la lucha,il wrestling,மல்யுத்தம்,malyuttam,కుస్తీ,kustī,ಕುಸ್ತಿ
+189,Sports,yoga,ヨガ,yoga,瑜伽,yújiā,요가,yoga,das Yoga,йога,yoga,le yoga,el yoga,lo yoga,யோகாசனம்,yōkācaṉam,యోగా,yōgā,ಯೋಗ
+190,Music,accordion,アコーディオン,akōdion,手风琴,shǒufēngqín,아코디언,akodieon,das Akkordeon,аккордеон,akkordeon,l'accordéon,el acordeón,la fisarmonica,அக்கார்டியன்,akkārṭiyaṉ,అకార్డియన్-ఒకరకము వాద్య యంత్రము,akārḍiyan,ಅಕ್ಕಾರ್ಡಿಯನ್
+191,Music,balalaika,バラライカ,bararaika,巴拉莱卡琴,bā lā láikǎ qín,발랄라이카,ballallaika,die Balalaika,балалайка,balalayka,la balalaïka,la balalaica,la balalaika,பலேலெய்கா,palēleykā,బాలలైకా -ఒకరకము వాద్య యంత్రము,bālalaikā,ಬಲಲೈಕಾ
+192,Music,band,バンド,bando,乐队,yuèduì,밴드,baendeu,die Band,ансамбль,ansambl',le groupe,la banda,la banda,இசைக்குழு,icaikkuḻu,మేళము,mēḷamu,ವಾದ್ಯ ವೃಂದ
+193,Music,banjo,バンジョー,banjō,班卓琴,bān zhuō qín,밴조,baenjo,das Banjo,банджо,bandzho,le banjo,el banjo,il banjo,பாஞ்சோ இசைக்கருவி,pāñcō icaikkaruvi,బాంజో,bān̄jō,ಬಾಂಜೊ
+194,Music,clarinet,クラリネット,kurarinetto,单簧管,dānhuángguǎn,클라리넷,keullalines,die Klarinette,кларнет,klarnet,la clarinette,el clarinete,il clarinetto,க்ளாரினெட்,kḷāriṉeṭ,సన్నాయి వాయిద్యం,sannāyi,ಕ್ಲಾರಿನೆಟ್
+195,Music,concert,コンサート,konsāto,演唱会,yǎnchàng huì,콘서트,konseoteu,das Konzert,концерт,kontsert,le concert,el concierto,il concerto,கச்சேரி,kaccēri,కచ్చేరి,kaccēri,ಸಂಗೀತ ಕಛೇರಿ
+196,Music,drum,太鼓,taiko,鼓,gǔ,드럼,deuleom,die Trommel,барабан,baraban,le tambour,el tambor,il tamburo,டிரம்,ṭiram,డ్రమ్,ḍram,ಮದ್ದಲೆ
+197,Music,drums,ドラム,doramu,打击乐器,dǎjí yuèqì,드럼,deuleom,das Schlagzeug,ударный инструмент,udarnyy instrument,la batterie,la batería,la batteria,டிரம்ஸ்,ṭirams,డ్రమ్ములు,ḍram'mulu,ತಾಳ ವಾದ್ಯಗಳು
+198,Music,flute,フルート,furūto,长笛,chángdí,플루트,peulluteu,die Flöte,флейта,fleyta,la flûte,la flauta,il flauto,புல்லாங்குழல்,pullāṅkuḻal,వేణువు,vēṇuvu,ಕೊಳಲು
+199,Music,grand piano,グランドピアノ,gurando piano,大钢琴,dà gāngqín,그랜드 피아노,geulaendeu piano,der Flügel,рояль,royal',le piano à queue,el piano de cola,il pianoforte a coda,பெரும் பியானோ,perum piyāṉō,గ్రాండ్ పియానో,grāṇḍ piyānō,ಪಿಯಾನೊ
+200,Music,guitar,ギター,gitā,吉他,jítā,기타,gita,die Gitarre,гитара,gitara,la guitare,la guitarra,la chitarra,கிடார்,kiṭār,గిటార్,giṭār,ಗಿಟಾರ್
+201,Music,hall,ホール,hōru,礼堂,lǐtáng,홀,hol,der Saal,зал,zal,la salle,la sala,la sala,அரங்கு,araṅku,సభా మందిరం,hālu,ಸಭಾಂಗಣ
+202,Music,keyboard,キーボード,kībōdo,电子琴,diànzǐqín,키보드,kibodeu,das Keyboard,клавишный инструмент,klavishnyy instrument,le synthétiseur,el teclado,la tastiera,விசைப்பலகை,vicaippalakai,కీబోర్డ్,kībōrḍ,ಕೀಲಿ ಮಣೆ
+203,Music,mouth organ,ハーモニカ,hāmonika,口风琴,kǒu fēngqín,하모니카,hamonika,die Mundharmonika,губная гармошка,gubnaya garmoshka,l'harmonica,la armónica,l'armonica a bocca,மவுத் ஆர்கன்,mavut ārkaṉ,నోటితో ఊదు వాద్యము,maut ārgan,ಮೌತ್ ಆರ್ಗನ್
+204,Music,music,音楽,ongaku,乐谱,yuèpǔ,음악,eum-ag,die Musik,музыка,muzyka,la musique,la música,la musica,இசை,icai,సంగీతం,saṅgītaṁ,ಸಂಗೀತ
+205,Music,music stand,譜面台,fumen-dai,乐谱架,yuèpǔ jià,악보대,agbodae,der Notenständer,пюпитр,pyupitr,le pupitre,el atril,il leggio,இசை தாள்தாங்கி,icai tāḷtāṅki,మ్యూజిక్ స్టాండ్,myūjik sṭāṇḍ,ಸಂಗೀತದ ಹಾಳೆಯ ನಿಲುವು
+206,Music,note,音符,onpu,音符,yīnfú,음표,eumpyo,die Note,нота,nota,la note,la nota,la nota,இசைக் குறிப்பு,icaik kuṟippu,సూచన,svaraṁ,ಸ್ವರ
+207,Music,organ,オルガン,orugan,管风琴,guǎnfēngqín,오르간,oleugan,die Orgel,орган,organ,l'orgue,el órgano,l'organo,இசை ஆர்கன்,icai ārkaṉ,అవయవము,ārgān,ಆರ್ಗನ್
+208,Music,piano,ピアノ,piano,钢琴,gāngqín,피아노,piano,das Klavier,фортепиано,fortepiano,le piano,el piano,il pianoforte,பியானோ,piyāṉō,పియానో,piyānō,ಪಿಯಾನೊ
+209,Music,saxophone,サクソフォン,sakusofon,萨克斯风,sàkèsī fēng,색소폰,saegsopon,das Saxofon,саксофон,saksofon,le saxophone,el saxofón,il sassofono,சாக்சஃபோன்,cākcaḥpōṉ,శాక్సోఫోను,śāksōphōn,ಸ್ಯಾಕ್ಸೊಫೋನ್
+210,Music,singer,歌手,kashu,歌手,gēshǒu,가수,gasu,der Sänger,певец,pevets,le chanteur,el cantante,il cantante,பாடகர்,pāṭakar,గాయకుడు,gāyakuḍu,ಹಾಡುಗಾರ

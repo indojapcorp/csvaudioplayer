@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+th {
+  top: 0;
+  background-color: #f2f2f2;
+}
+
+tbody {
+  display: block;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+}
+</style>
+</head>
+<body>
+
+<table>
+  <thead>
+  </thead>
+  <tbody id="tableBody">
+    <!-- Dummy Rows will be populated here -->
+  </tbody>
+</table>
+
+<script>
+  // JavaScript code to populate the table with dummy rows
+  window.onload = function() {
+    var tableBody = document.getElementById("tableBody");
+    
+    var head = document.createElement("thead");
+    // Create header rows
+    for (var i = 1; i <= 3; i++) {
+      var row = document.createElement("tr");
+      
+      var column1 = document.createElement("th");
+      column1.textContent = "Header " + i;
+      row.appendChild(column1);
+      
+      var column2 = document.createElement("th");
+      column2.textContent = "Header " + i;
+      row.appendChild(column2);
+      
+      var column3 = document.createElement("th");
+      column3.textContent = "Header " + i;
+      row.appendChild(column3);
+      head.appendChild(row);
+      //tableBody.appendChild(row);
+    }
+    tableBody.appendChild(head);
+    // Create dummy rows
+    for (var i = 1; i <= 80; i++) {
+      var row = document.createElement("tr");
+      
+      var column1 = document.createElement("td");
+      column1.textContent = "Row " + i + ", Column 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consequat fringilla malesuada.";
+      row.appendChild(column1);
+      
+      var column2 = document.createElement("td");
+      column2.textContent = "Row " + i + ", Column 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consequat fringilla malesuada.";
+      row.appendChild(column2);
+      
+      var column3 = document.createElement("td");
+      column3.textContent = "Row " + i + ", Column 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consequat fringilla malesuada.";
+      row.appendChild(column3);
+      
+      tableBody.appendChild(row);
+    }
+  };
+</script>
+
+</body>
+</html>

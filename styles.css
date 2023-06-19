@@ -3,31 +3,35 @@ table {
     border-collapse: collapse;
   }
   
+  tbody {
+    display: block;
+  }
+
   th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    white-space: pre-wrap;
+    /* word-break: break-all;  Added property */
+  }
+
+  thold, tdold {
     text-align: left;
     padding: 8px;
     border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
+    white-space: pre-wrap;
   }
   
   th {
     background-color: #f2f2f2;
+    word-wrap: break-word;
   }
   
   th:first-child, td:first-child {
     width: 5%;
   }
   
-  th:nth-child(2), td:nth-child(2) {
-    width: 20%;
-  }
-  
-  th:nth-child(3), td:nth-child(3) {
-    width: 35%;
-  }
-  
-  th:nth-child(4), td:nth-child(4) {
-    width: 35%;
-  }
   
   th:last-child, td:last-child {
     width: 5%;
@@ -37,7 +41,7 @@ table {
     width: 40%;
   }
 
-  .table {
+  .table2 {
     display: flex;
   }
   
@@ -46,6 +50,10 @@ table {
     padding: 10px;
   }
 
+  thead {
+    position: sticky;
+    top: 0;
+  }
 
     /* Style the popup */
   .popup {
@@ -59,4 +67,23 @@ table {
       border: 1px solid black;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
       z-index: 9999;
+      max-width: 400px;
+      max-height: 400px;
+      overflow-y: scroll;      
+  }
+
+  .filecolpopup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    max-width: 400px;
+    max-height: 400px;
+    overflow-y: scroll;  
   }

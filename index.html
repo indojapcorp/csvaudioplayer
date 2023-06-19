@@ -10,8 +10,9 @@
 <!--
 <input type="file" id="csvFileInput" accept=".csv" onchange="loadTable(event)">
 -->
-<!---->
+<!--
 <div>Selected Records: <div id="counterId1">0</span></div>
+-->
 
 <div>
 <input type="file" id="csvFileInput" accept=".csv">
@@ -25,15 +26,6 @@
 <button onclick="deleteSelectedRows()">Delete Selected</button>
 <button onclick="deleteNonselectedRows()">Delete Unelected</button>
 
-<label for="language">Language:</label>
-<select id="language">
-    <option value="English">English</option>
-    <option value="Español">Español</option>
-    <option value="Français">Français</option>
-    <option value="Deutsch">Deutsch</option>
-    <option value="Italiano">Italiano</option>
-    <option value="日本語">日本語</option>
-</select>
 <button id="playBtn" >Play</button>
 <button id="pauseBtn" disabled>Pause</button>
 <button id="resumeBtn" disabled>Resume</button>
@@ -46,12 +38,29 @@
 
 <div id="columnPopup" class="popup">
     <h3>Select Columns to Display</h3>
+    <button onclick="checkAll()">Check All</button>
+    <button onclick="uncheckAll()">Uncheck All</button>
     <div id="columnCheckboxes"></div>
     <button onclick="hideColumnPopup()">Apply</button>
 </div>
-
+<div id="colpopup" class="filecolpopup">
+    <h3>Select Columns to Display</h3>
+    <button onclick="checkAllFileCols()">Check All</button>
+    <button onclick="uncheckAllFileCols()">Uncheck All</button>
+    <div id="checkboxes"></div>
+    <button onclick="populateTableNew()">Populate Table</button>
+  </div>
 <table id="myTable">
 </table>
+
+<table>
+    <thead>
+    </thead>
+    <tbody id="myTable2">
+      <!-- Dummy Rows will be populated here -->
+    </tbody>
+  </table>
+  
 <script src="script.js"></script>
 </body>
 </html>

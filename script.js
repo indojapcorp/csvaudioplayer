@@ -1,17 +1,7 @@
 let csvfilename = '';
 let recognition;
-//= new webkitSpeechRecognition();
-// document.addEventListener("DOMContentLoaded", function() {
-//   requestMicrophonePermission()
-//     .then(function() {
-//       console.log("Microphone permission granted.");
-//     })
-//     .catch(function(error) {
-//       console.error("Failed to obtain microphone permission:", error);
-//     });
-// });
 
-let csvData = null;
+//let csvData = null;
 let tableHeaders = [];
 
 
@@ -19,13 +9,18 @@ let tableHeaders = [];
 const fileInput = document.getElementById("csvFileInput");
 fileInput.addEventListener("change", function (event) {
   const file = fileInput.files[0];
-  //readCSVFile(file);
-  loadTable(event);
-
+  readCSV(event);
+  //loadTable(event);
 });
+// create HTML table with two columns english and japanese.
+// first column has english text , second column has Japanese text.
+// render the table with few sample rows.
+// Add speak button and on click of it speak the contents of the table using javascript TTS. 
+
 
 function updateCounter() {
-  var checkboxes = document.getElementById("myTable").querySelectorAll('input[type="checkbox"]');
+  //var checkboxes = document.getElementById("myTable").querySelectorAll('input[type="checkbox"]');
+  var checkboxes = document.getElementById("myTable").querySelectorAll('input[type="checkbox"][name^="row"]');
   var counter = 0;
   checkboxes.forEach(function(checkbox) {
     if (checkbox.checked) {
@@ -34,121 +29,6 @@ function updateCounter() {
   });
   console.log(counter);
   document.getElementById('counterId').textContent = counter;
-}
-
-function loadTable(event) {
-  const file = event.target.files[0];
-  csvfilename = file.name;
-  const reader = new FileReader();
-
-  
-  reader.onload = () => {
-
-    const table = document.querySelector("#myTable");
-    const rows = reader.result.split("\n");
-    let rowno = 1;
-    downloadCsvBtn.disabled = false;
-
-    recordCount = rows.length - 1;
-    document.getElementById("recordCount").textContent = recordCount;
-
-    
-    rows.forEach(row => {
-      const cells = row.split(",");
-
-      if (rowno == 1) {
-        const trcolcheck = document.createElement("tr");
-
-        const td = document.createElement("th");
-        var input = document.createElement('input');
-        input.type = "checkbox";
-        input.id = "allcol";
-        input.setAttribute('onclick', 'selectAll(this)');
-        td.appendChild(input);
-        trcolcheck.appendChild(td);
-
-        for (let i = 0; i < cells.length; i++) {
-          const td = document.createElement("th");
-          var input = document.createElement('input');
-          input.type = "checkbox";
-          input.id = "col" + (i + 1);
-          input.value = (i + 1);
-          input.onchange = () => createFavorites();
-          //input.placeholder="Filter Column "+i;
-          td.appendChild(input);
-          trcolcheck.appendChild(td);
-        }
-        table.appendChild(trcolcheck);
-
-
-        const trcolsearch = document.createElement("tr");
-
-        const tdsearchblank = document.createElement("th");
-        var input = document.createTextNode("");
-
-        tdsearchblank.appendChild(input);
-        trcolsearch.appendChild(tdsearchblank);
-
-        for (let i = 0; i < cells.length; i++) {
-          const td = document.createElement("th");
-          var input = document.createElement('input');
-          input.type = "text";
-          input.id = "input_" + i;
-          input.setAttribute('onkeyup', 'filterTable(' + i + ')');
-          input.placeholder = "Filter Column " + i;
-          td.appendChild(input);
-          trcolsearch.appendChild(td);
-        }
-        table.appendChild(trcolsearch);
-
-        const trcolheader = document.createElement("tr");
-
-        const tdblank = document.createElement("th");
-        var input = document.createTextNode("");
-        tdblank.appendChild(input);
-        trcolheader.appendChild(tdblank);
-
-        for (let i = 0; i < cells.length; i++) {
-          const td = document.createElement("th");
-          td.textContent = cells[i];
-          tableHeaders.push(cells[i]);
-          trcolheader.appendChild(td);
-        }
-        table.appendChild(trcolheader);
-      } else {
-        const tr = document.createElement("tr");
-        const td = document.createElement("td");
-        var input = document.createElement('input');
-        input.type = "checkbox";
-        input.name = "row" + rowno;
-        input.value = rowno;
-        input.setAttribute('onchange', 'updateCounter()');
-        td.appendChild(input);
-        tr.appendChild(td);
-
-        for (let i = 0; i < cells.length; i++) {
-          const td = document.createElement("td");
-          td.textContent = cells[i];
-          tr.appendChild(td);
-        }
-
-        const tdplay = document.createElement("th");
-        var input = document.createElement('button');
-        //input.type = "button";
-        input.innerText = "Play";
-        input.id = "button" + rowno;
-        input.setAttribute('onclick', 'speakRowData(this.parentNode.parentNode)');
-        tdplay.appendChild(input);
-        tr.appendChild(tdplay);
-
-        table.appendChild(tr);
-      }
-      rowno++;
-    });
-    createColumnCheckboxes();
-  };
-  reader.readAsText(file);
-  console.log("fname=" + csvfilename);
 }
 
 function downloadAsCSV(text) {
@@ -183,12 +63,28 @@ function filterTable(columnIndex) {
 }
 
 function selectAll(source) {
-  var checkboxes = document.getElementsByTagName("input");
-  for (var i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].type == "checkbox" && checkboxes[i].name.includes("row")) {
-      checkboxes[i].checked = source.checked;
-    }
+  //var checkboxes = document.getElementById("myTable").getElementsByTagName("input");
+ // var checkboxes = document.getElementById("myTable").querySelectorAll('tr:not([style*="display: none;"])').querySelectorAll('input[type="checkbox"][name^="row"]')
+  //var tr = document.getElementById("myTable").getElementsByTagName("tr");
+  var tr = document.getElementById("myTable").querySelectorAll('tr:not([style*="display: none;"])');
+
+  tr.forEach(function(row) {
+    //const tdElements = row.querySelectorAll('td');
+    if(row.cells[0]){
+    var checkbox = row.cells[0].querySelector('input[type="checkbox"]');
+    if(checkbox)
+      checkbox.checked = source.checked;
   }
+  });
+  updateCounter();
+  // console.log("checkboxes len="+checkboxes.length);
+  // console.log("tr len="+tr.length);
+  // for (var i = 0; i < checkboxes.length; i++) {
+  //   //if (tr[i].style.display != "none" && checkboxes[i].type == "checkbox" && checkboxes[i].name.includes("row")) {
+  //     if (checkboxes[i].type == "checkbox" && checkboxes[i].name.includes("row")) {
+  //     checkboxes[i].checked = source.checked;
+  //   }
+  // }
 }
 
 
@@ -208,18 +104,42 @@ function createFavorites() {
 
 
 
-function speakRowData(row) {
-  var selectedData = "";
-  for (var i = 1; i < row.cells.length; i++) {
-
-    if (favorites.includes("" + i)) {
-      selectedData += row.cells[i].innerHTML + " .!  ";
-    }
-  }
-  var utterance = new SpeechSynthesisUtterance(selectedData);
-  window.speechSynthesis.speak(utterance);
+function speakRowDataWorkingBefHighlight(row) {
+    var table = document.getElementById("myTable");
+    const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+    const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
+    var firstcheckboxrow = table.rows[0];
+        for (var j = 0; j < columnCheckboxes.length; j++) {
+          var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
+          var collang = columnLanguages[j].value;
+          if (columnCheckboxes[j].checked && colspkcheckBox.checked) {
+            utterances.push(createUtterance(row.cells[j + 1].innerHTML, collang));
+          }
+        }
+    speakUtterances();
 }
 
+function speakRowData(row) {
+  speakcells = [];
+  speakcellslang = [];
+  currentCellIndex = 0;  
+
+  var table = document.getElementById("myTable");
+  const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+  const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
+  var firstcheckboxrow = table.rows[0];
+  var speakcellsIndex = 0;
+      for (var j = 0; j < columnCheckboxes.length; j++) {
+        var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
+        var collang = columnLanguages[j].value;
+        if (columnCheckboxes[j].checked && colspkcheckBox.checked) {
+          speakcells[speakcellsIndex] = row.cells[j + 1];
+          speakcellslang[speakcellsIndex] = collang;
+          speakcellsIndex++;
+        }
+      }
+  speakAndHighlight();
+}
 
 function deleteSelectedRows() {
   var table = document.getElementById("myTable");
@@ -255,18 +175,6 @@ function deleteNonselectedRows() {
   updateCounter(); // Update the selected record count
 }
 
-
-
-// Define the language options
-const languages = {
-  "English": "en-US",
-  "Español": "es-ES",
-  "Français": "fr-FR",
-  "Deutsch": "de-DE",
-  "Italiano": "it-IT",
-  "日本語": "ja-JP"
-};
-
 // Define the text-to-speech voice options
 const voices = {
   "English": "Alex",
@@ -282,7 +190,7 @@ let ttsUtterance = null;
 let ttsPaused = false;
 let deflang = 'en';
 const synth = window.speechSynthesis;
-const utterance = new SpeechSynthesisUtterance();
+//const utterance = new SpeechSynthesisUtterance();
 
 const playBtn = document.getElementById('playBtn');
 const pauseBtn = document.getElementById('pauseBtn');
@@ -291,13 +199,6 @@ const stopBtn = document.getElementById('stopBtn');
 const downloadCsvBtn = document.getElementById('downloadCsvBtn');
 const searchSpeechSearch = document.getElementById('searchSpeechSearch');
 const searchSpeechSearchStop = document.getElementById('searchSpeechSearchStop');
-
-const languageSelect = document.getElementById("language");
-languageSelect.addEventListener("change", () => {
-  utterance.lang = languageSelect.value;
-  deflang = languages[document.getElementById("language").value].slice(0, 2);
-  //  console.log(deflang);
-});
 
 
 let selectedData = "";
@@ -349,15 +250,6 @@ function getSelectedDataForDownload() {
   }
   selectedDwdData += headerRow.join(",") + "\r\n";
 
-
-  // // Add table headers to the CSV content
-  // const headerRow = [];
-  // for (let i = 0; i < favorites.length; i++) {
-  //         headerRow.push(encodeURIComponent(table.rows[2].cells[favorites[i]].innerHTML));
-  // }
-  // selectedDwdData += headerRow.join(",") + "\r\n";
-
-
   for (var i = 3; i < rowCount; i++) {
     var row = table.rows[i];
 
@@ -386,26 +278,230 @@ function getSelectedDataForDownload() {
   //alert(selectedData);
 }
 
+let utterances = []; // Array to store the SpeechSynthesisUtterance objects
+
+    // Function to create a SpeechSynthesisUtterance object
+    function createUtterance(text, lang) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = lang;
+      return utterance;
+    }
+
+    var speakcells = [];
+    var speakcellslang = [];
+    var currentCellIndex = 0;
+    var utterance = new SpeechSynthesisUtterance();
+    var stopped = false;
+
+    function speakThis() {
+      var table = document.getElementById("myTable");
+      var rowCount = table.rows.length;
+      const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+      const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
+      var firstcheckboxrow = table.rows[0];
+      var speakcellsIndex = 0;
+      for (var i = 3; i < rowCount; i++) {
+        var row = table.rows[i];
+    
+        var checkBox = row.cells[0].getElementsByTagName("input")[0];
+        const rowData = [];
+        if (checkBox != undefined && checkBox.checked) {
+          for (var j = 0; j < columnCheckboxes.length; j++) {
+            var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
+            var collang = columnLanguages[j].value;
+            if (columnCheckboxes[j].checked && colspkcheckBox.checked) {
+              speakcells[speakcellsIndex] = row.cells[j + 1];
+              speakcellslang[speakcellsIndex] = collang;
+              speakcellsIndex++;
+            }
+          }
+        }
+      }
+      speakAndHighlight();
+    }
+
+    function speakAndHighlight() {
+
+      if (currentCellIndex >= speakcells.length || stopped) {
+        stopped = false;
+        currentCellIndex = 0;
+        playBtn.disabled = false;
+        pauseBtn.disabled = true;
+        resumeBtn.disabled = true;
+        stopBtn.disabled = true;  
+        return; // All cells have been spoken
+      }
+
+      playBtn.disabled = true;
+      pauseBtn.disabled = false;
+      resumeBtn.disabled = true;
+      stopBtn.disabled = false;
+      var currentCell = speakcells[currentCellIndex];
+      utterance.text = currentCell.innerText;
+      utterance.lang = speakcellslang[currentCellIndex];
+      synth.speak(utterance);
+
+      // Highlight the text in the current cell
+      currentCell.style.backgroundColor = 'yellow';
+      var table = document.getElementById("myTable");
+
+        // Scroll to the cell being spoken
+  var cellRect = currentCell.getBoundingClientRect();
+  var tableRect = table.getBoundingClientRect();
+  var cellTop = cellRect.top - tableRect.top;
+  var cellLeft = cellRect.left - tableRect.left;
+  var cellCenterX = cellLeft + cellRect.width / 2;
+  var cellCenterY = cellTop + cellRect.height / 2;
+  var scrollX = cellCenterX - window.innerWidth / 2;
+  var scrollY = cellCenterY - window.innerHeight / 2;
+
+  window.scrollTo({
+    top: scrollY,
+    left: scrollX,
+    behavior: 'smooth'
+  });
+
+      // When the speech ends, move to the next cell
+      utterance.onend = function() {
+        currentCell.style.backgroundColor = ''; // Reset highlighting
+        currentCellIndex++;
+        speakAndHighlight(); // Speak the next cell
+      };
+    }
+
+    function pause() {
+      playBtn.disabled = true;
+      pauseBtn.disabled = true;
+      resumeBtn.disabled = false;
+      stopBtn.disabled = false;
+
+      synth.pause();
+    }
+
+    function resume() {
+      playBtn.disabled = true;
+      pauseBtn.disabled = false;
+      resumeBtn.disabled = true;
+      stopBtn.disabled = false;
+
+      synth.resume();
+    }
+
+    function stop() {
+      stopped = true;
+      playBtn.disabled = false;
+      pauseBtn.disabled = true;
+      resumeBtn.disabled = true;
+      stopBtn.disabled = true;
+
+      synth.cancel();
+      currentCellIndex = 0;  
+      // Reset cell highlighting
+      for (var i = 0; i < speakcells.length; i++) {
+        speakcells[i].style.backgroundColor = '';
+      }
+      speakcells = [];
+      speakcellslang = [];
+    }
+
+function speakThisWorkingBefHighlight() {
+  var table = document.getElementById("myTable");
+  var rowCount = table.rows.length;
+  const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+  const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
+  var firstcheckboxrow = table.rows[0];
+
+  for (var i = 3; i < rowCount; i++) {
+    var row = table.rows[i];
+
+    var checkBox = row.cells[0].getElementsByTagName("input")[0];
+    const rowData = [];
+    if (checkBox != undefined && checkBox.checked) {
+      for (var j = 0; j < columnCheckboxes.length; j++) {
+        var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
+        var collang = columnLanguages[j].value;
+        if (columnCheckboxes[j].checked && colspkcheckBox.checked) {
+          //speakTextNew(row.cells[j + 1].innerHTML,collang);
+          console.log(collang);
+          var utterance = createUtterance(row.cells[j + 1].innerHTML, collang);
+          utterances.push(utterance);
+          //highlightText(utterance, row.cells[j + 1]);
+        }
+      }
+    }
+  }
+  speakUtterances();
+}
+
+function highlightText(utterance, cell) {
+  var originalColor = cell.style.backgroundColor;
+
+  utterance.onstart = function() {
+    cell.style.backgroundColor = "yellow";
+  };
+
+  utterance.onend = function() {
+    cell.style.backgroundColor = originalColor;
+  };
+}
+
+
+function speakUtterances() {
+
+  if (utterances.length === 0) {
+    // Enable the speak button and disable the other buttons
+    playBtn.disabled = false;
+    pauseBtn.disabled = true;
+    resumeBtn.disabled = true;
+    stopBtn.disabled = true;
+    return;
+  }
+
+  const currentUtterance = utterances.shift();
+
+  // Enable the pause and resume buttons
+  playBtn.disabled = true;
+  pauseBtn.disabled = false;
+  resumeBtn.disabled = true;
+  stopBtn.disabled = false;
+
+  currentUtterance.onstart = function() {
+    // Remove the onstart event listener to prevent multiple executions
+    currentUtterance.onstart = null;
+  };
+
+  currentUtterance.onend = function() {
+    // Enable the resume button and speak the next utterance
+    resumeBtn.disabled = false;
+    speakUtterances();
+  };
+
+  // Speak the current utterance
+  speechSynthesis.speak(currentUtterance);
+}
+
 playBtn.addEventListener('click', () => {
-  // set the text to speak
-  //utterance.text = transcriptTextarea.value.substring(transcriptTextarea.selectionStart, transcriptTextarea.selectionEnd);
-  getSelectedData();
-  speakText(selectedData);
+  // getSelectedData();
+  // speakText(selectedData);
+  speakThis();
 });
 
 // pause the TTS when the pause button is clicked
 pauseBtn.addEventListener('click', () => {
-  synth.pause();
+  //synth.pause();
+  pause();
 });
 
 // resume the TTS when the resume button is clicked
 resumeBtn.addEventListener('click', () => {
-  synth.resume();
+  //synth.resume();
+  resume();
 });
 
 // stop the TTS when the stop button is clicked
 stopBtn.addEventListener('click', () => {
-  synth.cancel();
+  //synth.cancel();
+  stop();
   //  console.log('stopped');
 });
 
@@ -534,193 +630,19 @@ function searchAndSelectWord(word) {
   }
 }
 
-function searchAndSelectWord2(word) {
-  const textNode = document.createTextNode(word);
-  const searchRange = document.createRange();
-  searchRange.selectNodeContents(document.body);
-
-  console.log("word=" + document.body.textContent);
-  let startOffset = 0;
-  let endOffset = 0;
-  const regex = new RegExp(word, "gi");
-
-  while (window.find(regex, false, false, false, false, false, false)) {
-    const range = window.getSelection().getRangeAt(0);
-    if (range.compareBoundaryPoints(Range.START_TO_START, searchRange) < 0) {
-      startOffset = range.toString().length;
-    }
-    endOffset = startOffset + range.toString().length;
-  }
-
-  if (startOffset !== 0 || endOffset !== 0) {
-    const rangeToSelect = document.createRange();
-    rangeToSelect.setStart(textNode, startOffset);
-    rangeToSelect.setEnd(textNode, endOffset);
-
-    const selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(rangeToSelect);
-  }
-}
-
-
-
-function speakText(text) {
-  utterance.text = text;
-
-  var words = text.split(" ");
-  var currentWord = 0;
-  utterance.voice = speechSynthesis.getVoices()
-    .find(voice => voice.name === voices[document.getElementById("language").value]);
-
-  var words = text.split(" ");
-  var currentWord = 0;
-  var startOffset = 0;
-  var endOffset = 0;
-  var intervalId = null;
-
-  // add event listeners to utterance
-  utterance.onstart = () => {
-    playBtn.disabled = true;
-    pauseBtn.disabled = false;
-    resumeBtn.disabled = true;
-    stopBtn.disabled = false;
-  };
-
-  utterance.onpause = () => {
-    playBtn.disabled = true;
-    pauseBtn.disabled = true;
-    resumeBtn.disabled = false;
-    stopBtn.disabled = false;
-  };
-
-  utterance.onresume = () => {
-    playBtn.disabled = true;
-    pauseBtn.disabled = false;
-    resumeBtn.disabled = true;
-    stopBtn.disabled = false;
-  };
-
-  utterance.onend = () => {
-    playBtn.disabled = false;
-    pauseBtn.disabled = true;
-    resumeBtn.disabled = true;
-    stopBtn.disabled = true;
-    window.getSelection().empty();
-  };
-
-  // speak the text
-  synth.speak(utterance);
-}
-
-
-function speakMessage(message, PAUSE_MS = 500, lang) {
-  try {
-    const messageParts = message.split(/\r?\n/)
-
-
-
-
-    let currentIndex = 0
-
-    const speak = (textToSpeak) => {
-      const utterance = new SpeechSynthesisUtterance();
-      const voices = window.speechSynthesis.getVoices();
-      utterance.voice = speechSynthesis.getVoices()
-        .find(voice => voice.name === voices[document.getElementById("language").value]);
-      utterance.volume = 1; // 0 to 1
-      utterance.rate = 1; // 0.1 to 10
-      utterance.pitch = 1; // 0 to 2
-      utterance.text = textToSpeak;
-      utterance.lang = lang;
-
-      // add event listeners to utterance
-
-
-      utterance.onstart = () => {
-        playBtn.disabled = true;
-        pauseBtn.disabled = false;
-        resumeBtn.disabled = true;
-        stopBtn.disabled = false;
-      };
-
-      utterance.onpause = () => {
-        playBtn.disabled = true;
-        pauseBtn.disabled = true;
-        resumeBtn.disabled = false;
-        stopBtn.disabled = false;
-      };
-
-      utterance.onresume = () => {
-        playBtn.disabled = true;
-        pauseBtn.disabled = false;
-        resumeBtn.disabled = true;
-        stopBtn.disabled = false;
-      };
-
-
-      utterance.onend = function () {
-        currentIndex++;
-        if (currentIndex < messageParts.length) {
-          setTimeout(() => {
-            speak(messageParts[currentIndex])
-          }, PAUSE_MS)
-        }
-      };
-      //speechSynthesis.speak(msg);
-      synth.speak(utterance);
-    }
-    speak(messageParts[0])
-  } catch (e) {
-    console.error(e)
-  }
-}
-
-
-// Function to populate the table with CSV data
-function populateTable() {
-  const table = document.getElementById("myTable");
-  table.innerHTML = "";
-
-  const rows = csvData.split("\n");
-
-  // Create table headers
-  const headerRow = document.createElement("tr");
-  for (let header of rows[0].split(",")) {
-    const th = document.createElement("th");
-    th.textContent = header;
-    headerRow.appendChild(th);
-    tableHeaders.push(header);
-  }
-  table.appendChild(headerRow);
-
-  // Create table rows
-  for (let i = 1; i < rows.length; i++) {
-    const row = document.createElement("tr");
-    const rowData = rows[i].split(",");
-
-    for (let j = 0; j < rowData.length; j++) {
-      const cell = document.createElement(i === 1 ? "th" : "td");
-      cell.textContent = rowData[j];
-      row.appendChild(cell);
-    }
-
-    table.appendChild(row);
-  }
-}
+var columnHeaderLngDict = {}
 
 // Function to create checkboxes for column selection
 function createColumnCheckboxes() {
   const columnCheckboxes = document.getElementById("columnCheckboxes");
   columnCheckboxes.innerHTML = "";
-
   for (let header of tableHeaders) {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.value = header;
     checkbox.checked = true;
     checkbox.onchange = function () {
-      toggleColumn(header, checkbox.checked);
+      //toggleColumn(header, checkbox.checked);
     };
 
     const label = document.createElement("label");
@@ -730,8 +652,62 @@ function createColumnCheckboxes() {
     checkboxContainer.appendChild(checkbox);
     checkboxContainer.appendChild(label);
 
+    columnHeaderLngDict[header]='en';
+
+    const langlabel = document.createElement("label");
+    langlabel.textContent = "Languge";
+    checkboxContainer.appendChild(langlabel);
+    const combobox = document.createElement('select');
+    combobox.name = 'popupCombobox';
+    const languages = ['English', 'Spanish', 'French', 'German','Japanese','Chinese','Korean','Italian','Hindi']; // Add your desired languages here
+    const languagesval = ['en', 'sp', 'fr' ,'de','ja','zh','ko','it','hi']; // Add your desired languages here
+    //for (const language of languages) {
+    languages.forEach(function (language, i) {
+
+      const option = document.createElement('option');
+      //option.value = language.toLowerCase();
+      option.value = languagesval[i];
+      option.textContent = language;
+      combobox.appendChild(option);
+    });
+    combobox.onchange = function () {
+      columnHeaderLngDict[header] = combobox.value;
+      console.log(columnHeaderLngDict);
+    };
+    checkboxContainer.appendChild(combobox);
+
+
     columnCheckboxes.appendChild(checkboxContainer);
   }
+}
+
+// Function to toggle the display of table columns
+function toggleColumnApply() {
+  const table = document.getElementById("myTable");
+  const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+
+
+  tableHeaders.forEach(function (header, i) {
+    const columnIndex = tableHeaders.indexOf(header) + 1;
+
+    var row = table.rows[0];
+    var checkBox = row.cells[columnIndex].getElementsByTagName("input")[0];
+    if (!columnCheckboxes[i].checked)
+      checkBox.checked = false;
+
+    for (let row of table.rows) {
+      const cell = row.cells[columnIndex];
+      if (cell ) {
+        if (columnCheckboxes[i].checked) {
+          cell.style.display = "";
+        } else {
+          cell.style.display = "none";
+        }
+      }
+    }
+  });
+
+
 }
 
 // Function to toggle the display of table columns
@@ -766,4 +742,234 @@ function showColumnPopup() {
 function hideColumnPopup() {
   const popup = document.getElementById("columnPopup");
   popup.style.display = "none";
+  toggleColumnApply();
+}
+
+// Function to hide the column selection popup
+function checkAll() {
+  const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+
+  tableHeaders.forEach(function (header,i) {
+    columnCheckboxes[i].checked = true;
+  });
+}
+
+// Function to hide the column selection popup
+function uncheckAll() {
+  const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+  tableHeaders.forEach(function (header,i) {
+    columnCheckboxes[i].checked = false;
+  });
+}
+
+
+// Function to hide the column selection popup
+function checkAllFileCols() {
+  //const columnCheckboxes = document.getElementById("checkboxes").getElementsByTagName("input");
+  var checkboxes = document.getElementsByName("column");
+
+  checkboxes.forEach(function (chkbox) {
+    chkbox.checked = true;
+  });
+}
+
+// Function to hide the column selection popup
+function uncheckAllFileCols() {
+  var checkboxes = document.getElementsByName("column");
+
+  checkboxes.forEach(function (chkbox) {
+    chkbox.checked = false;
+  });
+}
+
+
+//filecolpopup related
+
+
+var headers; // Declare headers as a global variable
+var csvData;
+var lines;
+// Function to display the popup with header checkboxes
+function showFileColPopup(headers) {
+
+var popup = document.getElementById("colpopup");
+var checkboxes = document.getElementById("checkboxes");
+checkboxes.innerHTML = "";
+
+// Create checkboxes for each header
+headers.forEach(function (header) {
+var checkbox = document.createElement("input");
+checkbox.type = "checkbox";
+checkbox.name = "column";
+checkbox.value = header;
+checkbox.checked = true;
+checkboxes.appendChild(checkbox);
+
+var label = document.createElement("label");
+label.appendChild(document.createTextNode(header));
+checkboxes.appendChild(label);
+checkboxes.appendChild(document.createElement("br"));
+});
+
+popup.style.display = "block";
+}
+
+// Function to show the popup
+function showcolPopup() {
+  var popup = document.getElementById("colpopup");
+  popup.style.display = "block";
+  }
+
+  
+// Function to hide the popup
+function hideFileColPopup() {
+var popup = document.getElementById("colpopup");
+popup.style.display = "none";
+}
+
+// Function to read the selected CSV file
+function readCSV(event) {
+var file = event.target.files[0];
+csvfilename = file.name;
+var reader = new FileReader();
+
+reader.onload = function (e) {
+var contents = e.target.result;
+lines = contents.split("\n");
+headers = lines[0].split(",");
+
+var popup = document.getElementById("colpopup");
+popup.style.display = "block";
+
+showFileColPopup(headers);
+};
+
+reader.readAsText(file);
+}
+
+// Function to populate the table with selected columns
+function populateTableNew() {
+var checkboxes = document.getElementsByName("column");
+var selectedColumns = [];
+
+// Get the selected checkboxes
+checkboxes.forEach(function (checkbox) {
+if (checkbox.checked) {
+selectedColumns.push(checkbox.value);
+tableHeaders.push(checkbox.value);
+}
+});
+
+// Populate the table
+var table = document.getElementById("myTable");
+table.innerHTML = "";
+
+var thead = document.createElement("thead");
+//start
+//var trcolcheck = table.insertRow();
+var trcolcheck =  document.createElement("tr");
+const td = document.createElement("th");
+var input = document.createElement('input');
+input.type = "checkbox";
+input.id = "allcol";
+input.setAttribute('onclick', 'selectAll(this)');
+td.appendChild(input);
+trcolcheck.appendChild(td);
+
+selectedColumns.forEach(function (column,i) {
+  const td = document.createElement("th");
+  var input = document.createElement('input');
+  input.type = "checkbox";
+  input.id = "col" + (i + 1);
+  input.value = (i + 1);
+  input.onchange = () => createFavorites();
+  //input.placeholder="Filter Column "+i;
+  td.appendChild(input);
+  trcolcheck.appendChild(td);
+});
+trcolcheck.appendChild(document.createElement("th"));
+
+thead.appendChild(trcolcheck);
+
+
+//var trcolsearch = table.insertRow();
+var trcolsearch = document.createElement("tr");
+const tdsearchblank = document.createElement("th");
+var input = document.createTextNode("");
+
+tdsearchblank.appendChild(input);
+trcolsearch.appendChild(tdsearchblank);
+selectedColumns.forEach(function (column,i) {
+  const td = document.createElement("th");
+  var input = document.createElement('input');
+  input.type = "text";
+  input.id = "input_" + i;
+  input.setAttribute('onkeyup', 'filterTable(' + i + ')');
+  input.placeholder = "Filter Column " + i;
+  td.appendChild(input);
+  trcolsearch.appendChild(td);
+});
+trcolsearch.appendChild(document.createElement("th"));
+thead.appendChild(trcolsearch);
+
+//end
+//var headerRow = table.insertRow();
+var headerRow = document.createElement("tr");
+const tdheaderblank = document.createElement("th");
+var blankheaderinput = document.createTextNode("");
+tdheaderblank.appendChild(blankheaderinput);
+headerRow.appendChild(tdheaderblank);
+
+selectedColumns.forEach(function (column) {
+var headerCell = document.createElement("th");
+headerCell.innerHTML = column;
+headerRow.appendChild(headerCell);
+});
+headerRow.appendChild(document.createElement("th"));
+
+thead.appendChild(headerRow);
+table.appendChild(thead);
+csvData = [];
+
+for (var i = 1; i < lines.length; i++) {
+var row = lines[i].split(",");
+csvData.push(row);
+}
+
+recordCount = csvData.length;
+document.getElementById("recordCount").textContent = recordCount;
+
+csvData.forEach(function (row,rowno) {
+//var tr = table.insertRow();
+var tr = document.createElement("tr");
+const td = document.createElement("td");
+var input = document.createElement('input');
+input.type = "checkbox";
+input.name = "row" + rowno;
+input.value = rowno;
+input.setAttribute('onchange', 'updateCounter()');
+td.appendChild(input);
+tr.appendChild(td);
+
+selectedColumns.forEach(function (column) {
+  var cell = document.createElement("td");
+  cell.textContent = row[headers.indexOf(column)];
+  //cell.innerHTML = row[headers.indexOf(column)];
+  tr.appendChild(cell);
+  });
+
+const tdplay = document.createElement("td");
+var input = document.createElement('button');
+//input.type = "button";
+input.innerText = "Play";
+input.id = "button" + rowno;
+input.setAttribute('onclick', 'speakRowData(this.parentNode.parentNode)');
+tdplay.appendChild(input);
+tr.appendChild(tdplay);
+table.appendChild(tr);
+});
+
+downloadCsvBtn.disabled = false;
+hideFileColPopup();
+createColumnCheckboxes();
 }

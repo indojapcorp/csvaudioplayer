@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text-to-Speech Table</title>
+</head>
+<body>
+  <table id="myTable">
+    <thead>
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- JavaScript will populate rows here -->
+    </tbody>
+  </table>
+
+  <button id="speakBtn">Speak</button>
+  <button id="pauseBtn" disabled>Pause</button>
+  <button id="resumeBtn" disabled>Resume</button>
+  <button id="stopBtn" disabled>Stop</button>
+
+  <script>
+    // Create dummy data
+    var dummyData = [
+      ['Row 1 Data 1', 'Row 1 Data 2', 'Row 1 Data 3'],
+      ['Row 2 Data 1', 'Row 2 Data 2', 'Row 2 Data 3'],
+      // Add more rows as needed
+    ];
+
+    // Populate the table with dummy data
+    var table = document.getElementById('myTable');
+    var tbody = table.getElementsByTagName('tbody')[0];
+
+    for (var i = 0; i < dummyData.length; i++) {
+      var row = document.createElement('tr');
+
+      for (var j = 0; j < dummyData[i].length; j++) {
+        var cell = document.createElement('td');
+        cell.innerText = dummyData[i][j];
+        row.appendChild(cell);
+      }
+
+      tbody.appendChild(row);
+    }
+
+    // Text-to-Speech functionality
+    var playBtn = document.getElementById('speakBtn');
+    var pauseBtn = document.getElementById('pauseBtn');
+    var resumeBtn = document.getElementById('resumeBtn');
+    var stopButton = document.getElementById('stopBtn');
+    var cells = document.getElementsByTagName('td');
+    var currentCellIndex = 0;
+    var synth = window.speechSynthesis;
+    var utterance = new SpeechSynthesisUtterance();
+    var stopped = false;
+    function speakAndHighlight() {
+
+      if (currentCellIndex >= cells.length || stopped) {
+        console.log("return");
+        stopped = false;
+        currentCellIndex = 0;
+        return; // All cells have been spoken
+      }
+
+      playBtn.disabled = true;
+      pauseBtn.disabled = false;
+      resumeBtn.disabled = true;
+      stopButton.disabled = false;
+
+      var currentCell = cells[currentCellIndex];
+      utterance.text = currentCell.innerText;
+      synth.speak(utterance);
+
+      // Highlight the text in the current cell
+      currentCell.style.backgroundColor = 'yellow';
+
+      // When the speech ends, move to the next cell
+      utterance.onend = function() {
+        console.log("onend");
+        currentCell.style.backgroundColor = ''; // Reset highlighting
+        currentCellIndex++;
+        speakAndHighlight(); // Speak the next cell
+      };
+    }
+
+
+    function pause() {
+      playBtn.disabled = true;
+      pauseBtn.disabled = true;
+      resumeBtn.disabled = false;
+      stopButton.disabled = false;
+
+      synth.pause();
+    }
+
+    function resume() {
+      playBtn.disabled = true;
+      pauseBtn.disabled = false;
+      resumeBtn.disabled = true;
+      stopButton.disabled = false;
+
+      synth.resume();
+    }
+
+    function stop() {
+      stopped = true;
+      playBtn.disabled = false;
+      pauseBtn.disabled = true;
+      resumeBtn.disabled = true;
+      stopButton.disabled = true;
+
+      synth.cancel();
+      currentCellIndex = 0;
+
+      // Reset cell highlighting
+      for (var i = 0; i < cells.length; i++) {
+        cells[i].style.backgroundColor = '';
+      }
+    }
+
+    playBtn.addEventListener('click', speakAndHighlight);
+    pauseBtn.addEventListener('click', pause);
+    resumeBtn.addEventListener('click', resume);
+    stopButton.addEventListener('click', stop);
+  </script>
+</body>
+</html>
