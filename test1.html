@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML Table with Select and Textarea Elements</title>
+  <script>
+    function addColumn() {
+      var table = document.getElementById("myTable");
+      var rows = table.getElementsByTagName("tr");
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var cell = row.insertCell(-1);
+        
+        var select = document.createElement("select");
+        var textarea = document.createElement("textarea");
+        
+        // Add options to the select element
+        var options = ["Option 1", "Option 2", "Option 3"];
+        for (var j = 0; j < options.length; j++) {
+          var option = document.createElement("option");
+          option.text = options[j];
+          select.add(option);
+        }
+        
+        cell.appendChild(select);
+        cell.appendChild(textarea);
+      }
+    }
+  </script>
+</head>
+<body>
+  <table id="myTable">
+    <tr>
+      <td>
+        <select>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+        <textarea></textarea>
+      </td>
+    </tr>
+  </table>
+  
+  <button onclick="addColumn()">Add Column</button>
+</body>
+</html>

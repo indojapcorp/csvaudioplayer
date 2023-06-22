@@ -830,6 +830,10 @@ popup.style.display = "none";
 // Function to read the selected CSV file
 function readCSV(event) {
 var file = event.target.files[0];
+
+if(!file)
+  return;
+  
 csvfilename = file.name;
 var reader = new FileReader();
 
@@ -851,7 +855,6 @@ reader.readAsText(file);
 function populateTableNew() {
 var checkboxes = document.getElementsByName("column");
 var selectedColumns = [];
-
 // Get the selected checkboxes
 checkboxes.forEach(function (checkbox) {
 if (checkbox.checked) {
@@ -932,9 +935,23 @@ table.appendChild(thead);
 csvData = [];
 
 for (var i = 1; i < lines.length; i++) {
-var row = lines[i].split(",");
-csvData.push(row);
-}
+  if(lines[i].length==0)
+    continue;
+
+  var row = lines[i].split(",");
+  
+  if(row.length==1)
+    console.log("blank row==="+row);
+    csvData.push(row);  
+  }
+
+console.log("lines="+lines);
+//csvData.push(lines); 
+// for (var i = 1; i < lines.length; i++) {
+//   var row = lines[i];
+//   csvData.push(row);  
+//   }
+
 
 recordCount = csvData.length;
 document.getElementById("recordCount").textContent = recordCount;
@@ -973,3 +990,196 @@ downloadCsvBtn.disabled = false;
 hideFileColPopup();
 createColumnCheckboxes();
 }
+
+
+//translation related start
+
+var transpopup = document.getElementById('transpopup');
+var transpopupButton = document.getElementById('popupButton');
+var translateButton = document.getElementById('translateButton');
+var transapplyButton = document.getElementById('applyButton');
+var srctxtPopup = document.getElementById('srctext-popup');
+var tratextPopup = document.getElementById('tratext-popup');
+var srclangSelect = document.getElementById('srclang');
+var tgtlangSelect = document.getElementById('tgtlang');
+var srclangval = 'en';
+var tgtlangval = 'en';
+
+transpopupButton.addEventListener('click', function () {
+    transpopup.classList.add('active');
+    //srctxtPopup.value = srctxt.value;
+});
+
+srclangSelect.addEventListener("change", () => {
+    srclangval = document.getElementById("srclang").value;
+});
+
+// tgtlangSelect.addEventListener("change", () => {
+//     tgtlangval = document.getElementById("tgtlang").value;
+// });
+
+
+translateButton.addEventListener('click', function () {
+  var table = document.getElementById("transpopup-table");
+  var rows = table.getElementsByTagName("tr");
+    var totalcols = rows[0].getElementsByTagName("td").length;
+
+    translate(srclangval, totalcols);
+});
+
+transapplyButton.addEventListener('click', function () {
+
+  var totaldata="";
+  lines = [];
+  tableHeaders = [];
+
+  var srcText = $("#srctext-popup").val();
+
+  var table = document.getElementById("transpopup-table");
+  var rows = table.getElementsByTagName("tr");
+    var totalcols = rows[0].getElementsByTagName("td").length;
+    var srcLines = srcText.split("\n");
+    //lines[0] = ['word'];
+    headers = ['word'];
+    console.log("totalcols=="+totalcols);
+    totaldata ="word,";
+    // for(i=0;i<totalcols;i++){
+    //   lines[0].push('trans-'+i);
+    //   headers.push('trans-'+i);
+    // }
+
+    // for (var j = 0; j < srcLines.length; j++) {
+    //   lines[j+1]=[];
+    //   lines[j+1].push(srcLines[j]);
+
+    // for(i=0;i<totalcols;i++){
+    //     var tgtText = $("#tratext-popup-"+(i+1)).val();
+    //     var tgtLines = tgtText.split("\n");
+    //     lines[j+1].push(tgtLines[j]);
+    //   }
+    // }
+
+    for(i=0;i<totalcols;i++){
+      totaldata = totaldata+ "trans-"+i +",";
+      headers.push('trans-'+i);
+    }
+    totaldata = totaldata+ "\n";
+
+    for (var j = 0; j < srcLines.length; j++) {
+    totaldata = totaldata + srcLines[j]+",";
+    for(i=0;i<totalcols;i++){
+        var tgtText = $("#tratext-popup-"+(i+1)).val();
+        var tgtLines = tgtText.split("\n");
+        totaldata = totaldata + tgtLines[j]+",";
+      }
+      totaldata = totaldata+ "\n";
+    }
+
+    lines=totaldata.split("\n");
+
+        var popup = document.getElementById("colpopup");
+        popup.style.display = "block";
+
+        showFileColPopup(headers);
+        console.log("linesssssddds=="+totaldata);
+        console.log("linessssss length=="+lines.length);
+
+
+        // $("#myTable").empty();
+        // for (var i = 0; i < srcLines.length; i++) {
+        //     var srcRow = "<tr><td>" + srcLines[i] + "</td><td>" + tgtLines[i] + "</td></tr>";
+        //     $("#myTable").append(srcRow);
+        // }
+    transpopup.classList.remove('active'); // Close the transpopup
+});
+
+async function translate(sourceLang, totalcols) {
+
+  document.getElementById('translateButton').disabled = true;
+    var sourceText = $('textarea#srctext-popup').val();
+
+    for(i=0;i<totalcols;i++){
+      var tgtlangselectElement = document.getElementById("tgtlang-"+(i+1));
+      var targetLang = tgtlangselectElement.value;
+    var finalstr = "";
+    //var sourceText = encodeURIComponent(document.getElementById('srctext-popup').value);
+
+    var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText);
+    console.log(url);
+    // $.getJSON(url, function (data) {
+    //     $.each(data[0], function (index, val) {
+    //         finalstr += val[0];
+    //     });
+    //     $('textarea#tratext-popup').val(finalstr);
+    // });
+
+    await $.ajax({
+      url: url,
+      type: "GET",
+      dataType: "json",
+      success: function (response) {
+          var translatedText = response[0][0][0];
+          console.log('tratext-popup-'+(i+1));
+          document.getElementById('tratext-popup-'+(i+1)).value = translatedText;
+      },
+      error: function (error) {
+          console.log("Translation failed: " + error);
+      },
+      complete: function () {
+          // Enable the translate button after the translation is complete
+          document.getElementById('translateButton').disabled = false;
+      }
+  });
+    }
+
+}        
+
+function addTransColumn() {
+  var table = document.getElementById("transpopup-table");
+  var rows = table.getElementsByTagName("tr");
+  var columnNumber = rows[0].getElementsByTagName("td").length + 1;
+
+  // Assuming you have a select element with the id "mySelect"
+var selectElement = document.getElementById("srclang");
+var options = selectElement.options;
+
+
+
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i];
+    var cell = row.insertCell(-1);
+    
+    var tralable = document.createElement("label");
+    tralable.for = "traselect-";
+    tralable.textContent = "Translation Language:";
+    var traselect = document.createElement("select");
+    traselect.id = "tgtlang-"+columnNumber;
+    var tratextarea = document.createElement("textarea");
+    tratextarea.id = "tratext-popup-"+columnNumber;
+    tratextarea.rows = 4;
+    tratextarea.cols = 30;
+    tratextarea.readOnly = true;
+    // Add options to the select element
+    // var options = ["Option 1", "Option 2", "Option 3"];
+    // for (var j = 0; j < options.length; j++) {
+    //   var option = document.createElement("option");
+    //   option.text = options[j];
+    //   traselect.add(option);
+    // }
+    // Convert options to an array and use forEach to iterate over them
+    Array.from(options).forEach(function(option) {
+      var traoption = document.createElement("option");
+      traoption.value = option.value;
+      traoption.text = option.text;
+      traselect.add(traoption);
+    });
+
+    cell.appendChild(tralable);
+    cell.appendChild(traselect);
+    cell.appendChild(tratextarea);
+    cell.appendChild(document.createElement("br"));
+    
+
+  }
+}
+//translation related end
