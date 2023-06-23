@@ -636,7 +636,9 @@ var columnHeaderLngDict = {}
 function createColumnCheckboxes() {
   const columnCheckboxes = document.getElementById("columnCheckboxes");
   columnCheckboxes.innerHTML = "";
-  for (let header of tableHeaders) {
+  //for (let header of tableHeaders) {
+  tableHeaders.forEach(function (header, i) {
+
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.value = header;
@@ -659,26 +661,38 @@ function createColumnCheckboxes() {
     checkboxContainer.appendChild(langlabel);
     const combobox = document.createElement('select');
     combobox.name = 'popupCombobox';
-    const languages = ['English', 'Spanish', 'French', 'German','Japanese','Chinese','Korean','Italian','Hindi']; // Add your desired languages here
-    const languagesval = ['en', 'sp', 'fr' ,'de','ja','zh','ko','it','hi']; // Add your desired languages here
-    //for (const language of languages) {
-    languages.forEach(function (language, i) {
+    // const languages = ['English', 'Spanish', 'French', 'German','Japanese','Chinese','Korean','Italian','Hindi']; // Add your desired languages here
+    // const languagesval = ['en', 'sp', 'fr' ,'de','ja','zh','ko','it','hi']; // Add your desired languages here
 
-      const option = document.createElement('option');
-      //option.value = language.toLowerCase();
-      option.value = languagesval[i];
-      option.textContent = language;
-      combobox.appendChild(option);
+    // languages.forEach(function (language, i) {
+
+    //   const option = document.createElement('option');
+    //   //option.value = language.toLowerCase();
+    //   option.value = languagesval[i];
+    //   option.textContent = language;
+    //   combobox.appendChild(option);
+    // });
+    // combobox.onchange = function () {
+    //   columnHeaderLngDict[header] = combobox.value;
+    //   console.log(columnHeaderLngDict);
+    // };
+    var selectElement = document.getElementById("srclang");
+
+    var options = selectElement.options;
+    Array.from(options).forEach(function(option) {
+      var traoption = document.createElement("option");
+      traoption.value = option.value;
+      traoption.text = option.text;
+      combobox.add(traoption);
     });
-    combobox.onchange = function () {
-      columnHeaderLngDict[header] = combobox.value;
-      console.log(columnHeaderLngDict);
-    };
+
+    combobox.value = headersLanguage[i];
+
     checkboxContainer.appendChild(combobox);
 
 
     columnCheckboxes.appendChild(checkboxContainer);
-  }
+  });
 }
 
 // Function to toggle the display of table columns
@@ -789,6 +803,7 @@ function uncheckAllFileCols() {
 var headers; // Declare headers as a global variable
 var csvData;
 var lines;
+var headersLanguage; // Declare headers as a global variable
 // Function to display the popup with header checkboxes
 function showFileColPopup(headers) {
 
@@ -841,6 +856,10 @@ reader.onload = function (e) {
 var contents = e.target.result;
 lines = contents.split("\n");
 headers = lines[0].split(",");
+headersLanguage =[];
+headers.forEach(function(){
+  headersLanguage.push('en');
+});
 
 var popup = document.getElementById("colpopup");
 popup.style.display = "block";
@@ -998,6 +1017,7 @@ var transpopup = document.getElementById('transpopup');
 var transpopupButton = document.getElementById('popupButton');
 var translateButton = document.getElementById('translateButton');
 var transapplyButton = document.getElementById('applyButton');
+var transcancelButton = document.getElementById('canceltransButton');
 var srctxtPopup = document.getElementById('srctext-popup');
 var tratextPopup = document.getElementById('tratext-popup');
 var srclangSelect = document.getElementById('srclang');
@@ -1007,6 +1027,7 @@ var tgtlangval = 'en';
 
 transpopupButton.addEventListener('click', function () {
     transpopup.classList.add('active');
+    resetPopup();
     //srctxtPopup.value = srctxt.value;
 });
 
@@ -1018,13 +1039,18 @@ srclangSelect.addEventListener("change", () => {
 //     tgtlangval = document.getElementById("tgtlang").value;
 // });
 
+transcancelButton.addEventListener('click', function () {
+  transpopup.classList.remove('active'); // Close the transpopup
+});
+
 
 translateButton.addEventListener('click', function () {
   var table = document.getElementById("transpopup-table");
   var rows = table.getElementsByTagName("tr");
     var totalcols = rows[0].getElementsByTagName("td").length;
 
-    translate(srclangval, totalcols);
+    if(transCheck())
+      translate(srclangval, totalcols);
 });
 
 transapplyButton.addEventListener('click', function () {
@@ -1039,8 +1065,17 @@ transapplyButton.addEventListener('click', function () {
   var rows = table.getElementsByTagName("tr");
     var totalcols = rows[0].getElementsByTagName("td").length;
     var srcLines = srcText.split("\n");
+
+
+    var srcLang = document.getElementById("srclang").value;
+
+
     //lines[0] = ['word'];
     headers = ['word'];
+
+
+    headersLanguage = [srcLang];
+
     console.log("totalcols=="+totalcols);
     totaldata ="word,";
     // for(i=0;i<totalcols;i++){
@@ -1062,8 +1097,13 @@ transapplyButton.addEventListener('click', function () {
     for(i=0;i<totalcols;i++){
       totaldata = totaldata+ "trans-"+i +",";
       headers.push('trans-'+i);
+      var tgtlangselectElement = document.getElementById("tgtlang-"+(i+1));
+      var targetLang = tgtlangselectElement.value;
+      headersLanguage.push(targetLang);
     }
     totaldata = totaldata+ "\n";
+
+    console.log("headersLanguage=="+headersLanguage);
 
     for (var j = 0; j < srcLines.length; j++) {
     totaldata = totaldata + srcLines[j]+",";
@@ -1159,6 +1199,12 @@ var options = selectElement.options;
     tratextarea.rows = 4;
     tratextarea.cols = 30;
     tratextarea.readOnly = true;
+    var delButton = document.createElement("button");
+    delButton.textContent = 'Delete';
+    delButton.id = "delbutton" + columnNumber;
+    delButton.setAttribute('onclick', 'removeTransColumn('+columnNumber+')');
+
+
     // Add options to the select element
     // var options = ["Option 1", "Option 2", "Option 3"];
     // for (var j = 0; j < options.length; j++) {
@@ -1177,9 +1223,68 @@ var options = selectElement.options;
     cell.appendChild(tralable);
     cell.appendChild(traselect);
     cell.appendChild(tratextarea);
+    cell.appendChild(delButton);
     cell.appendChild(document.createElement("br"));
     
 
   }
 }
+
+
+function removeTransColumn(colnum) {
+  var table = document.getElementById("transpopup-table");
+  var rows = table.getElementsByTagName("tr");
+  rows[0].deleteCell(colnum-1);
+}
+
+function resetPopup() {
+  // Reset the select elements and textareas in the popup
+  var table = document.getElementById("transpopup-table");
+  var rows = table.getElementsByTagName("tr");
+  var columnNumber = rows[0].getElementsByTagName("td").length-1;
+
+    for (var i = columnNumber; i > 0; i--) {
+      rows[0].deleteCell(i);
+    }
+
+  // var popup = document.getElementById("popup");
+  // var selects = popup.getElementsByTagName("select");
+  // var textareas = popup.getElementsByTagName("textarea");
+
+  // for (var i = 0; i < selects.length; i++) {
+  //   selects[i].selectedIndex = 0;
+  // }
+
+  // for (var j = 0; j < textareas.length; j++) {
+  //   textareas[j].value = "";
+  // }
+}
+
+
+function transCheck() {
+  var sourceText = $('textarea#srctext-popup').val();
+  var table = document.getElementById("transpopup-table");
+  var rows = table.getElementsByTagName("tr");
+  
+  var allSelected = true;
+  var allFilled = true;
+  
+  for (var i = 0; i < rows.length; i++) {
+    var select = rows[i].getElementsByTagName("select")[0];
+    var selectedIndex = select.selectedIndex;
+
+    if (selectedIndex === 0) {
+      allSelected = false;
+    }
+  }
+
+  if (!allSelected || document.getElementById("srclang").selectedIndex === 0 || sourceText == "") {
+    alert("All select elements must have a value selected and the text area should not be empty.");
+    return false;
+  }
+
+  console.log("ok");
+  return true;
+}
+
 //translation related end

@@ -99,7 +99,9 @@ table {
     align-items: center;
     justify-content: center;
     z-index: 9999;
+    max-height: 400px;
     visibility: hidden;
+    overflow: auto;
 }
 
 
@@ -112,5 +114,6 @@ table {
     padding: 20px;
     border-radius: 5px;
     max-width: 400px;
+    overflow: auto;
     text-align: center;
 }
