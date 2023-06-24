@@ -964,7 +964,6 @@ for (var i = 1; i < lines.length; i++) {
     csvData.push(row);  
   }
 
-console.log("lines="+lines);
 //csvData.push(lines); 
 // for (var i = 1; i < lines.length; i++) {
 //   var row = lines[i];
@@ -1026,6 +1025,11 @@ var srclangval = 'en';
 var tgtlangval = 'en';
 
 transpopupButton.addEventListener('click', function () {
+
+  selectedDwdData = "";
+  getSelectedDataForDownload();
+  srctxtPopup.value = selectedDwdData;
+
     transpopup.classList.add('active');
     resetPopup();
     //srctxtPopup.value = srctxt.value;
@@ -1047,7 +1051,7 @@ transcancelButton.addEventListener('click', function () {
 translateButton.addEventListener('click', function () {
   var table = document.getElementById("transpopup-table");
   var rows = table.getElementsByTagName("tr");
-    var totalcols = rows[0].getElementsByTagName("td").length;
+  var totalcols = rows[0].getElementsByTagName("td").length;
 
     if(transCheck())
       translate(srclangval, totalcols);
@@ -1072,11 +1076,7 @@ transapplyButton.addEventListener('click', function () {
 
     //lines[0] = ['word'];
     headers = ['word'];
-
-
     headersLanguage = [srcLang];
-
-    console.log("totalcols=="+totalcols);
     totaldata ="word,";
     // for(i=0;i<totalcols;i++){
     //   lines[0].push('trans-'+i);
@@ -1103,8 +1103,6 @@ transapplyButton.addEventListener('click', function () {
     }
     totaldata = totaldata+ "\n";
 
-    console.log("headersLanguage=="+headersLanguage);
-
     for (var j = 0; j < srcLines.length; j++) {
     totaldata = totaldata + srcLines[j]+",";
     for(i=0;i<totalcols;i++){
@@ -1121,9 +1119,6 @@ transapplyButton.addEventListener('click', function () {
         popup.style.display = "block";
 
         showFileColPopup(headers);
-        console.log("linesssssddds=="+totaldata);
-        console.log("linessssss length=="+lines.length);
-
 
         // $("#myTable").empty();
         // for (var i = 0; i < srcLines.length; i++) {
@@ -1135,7 +1130,7 @@ transapplyButton.addEventListener('click', function () {
 
 async function translate(sourceLang, totalcols) {
 
-  document.getElementById('translateButton').disabled = true;
+  //document.getElementById('translateButton').disabled = true;
     var sourceText = $('textarea#srctext-popup').val();
 
     for(i=0;i<totalcols;i++){
@@ -1152,24 +1147,37 @@ async function translate(sourceLang, totalcols) {
     //     });
     //     $('textarea#tratext-popup').val(finalstr);
     // });
+    var translatedText="";
+          await  $.getJSON(url, function (data) {
+                //$('textarea#resultText').val(data[0][0][0]);
 
-    await $.ajax({
-      url: url,
-      type: "GET",
-      dataType: "json",
-      success: function (response) {
-          var translatedText = response[0][0][0];
-          console.log('tratext-popup-'+(i+1));
-          document.getElementById('tratext-popup-'+(i+1)).value = translatedText;
-      },
-      error: function (error) {
-          console.log("Translation failed: " + error);
-      },
-      complete: function () {
-          // Enable the translate button after the translation is complete
-          document.getElementById('translateButton').disabled = false;
-      }
-  });
+                $.each(data[0], function (index, val) {
+                    translatedText += val[0];
+                });
+
+                document.getElementById('tratext-popup-'+(i+1)).value = translatedText;
+
+                //  console.log(finalstr);
+                //$('textarea#resultText').val(finalstr);
+              });
+
+  //   await $.ajax({
+  //     url: url,
+  //     type: "GET",
+  //     dataType: "json",
+  //     success: function (response) {
+  //         var translatedText = response[0][0][0];
+  //         console.log('tratext-popup-'+(i+1));
+  //         document.getElementById('tratext-popup-'+(i+1)).value = translatedText;
+  //     },
+  //     error: function (error) {
+  //         console.log("Translation failed: " + error);
+  //     },
+  //     complete: function () {
+  //         // Enable the translate button after the translation is complete
+  //         document.getElementById('translateButton').disabled = false;
+  //     }
+  // });
     }
 
 }        
