@@ -16,10 +16,25 @@
 
   <script>
     function searchExamples() {
+  var searchWord = document.getElementById("searchInput").value.toLowerCase();
+  var apiUrl = `https://tatoeba.org/en/api_v0/search?from=eng&query=${encodeURIComponent(searchWord)}`;
+      console.log(apiUrl);
+  fetch(apiUrl, { mode: 'no-cors' })
+    .then(response => response.text())
+    .then(data => {
+      // Handle the response data as needed
+      console.log("data="+data);
+    })
+    .catch(error => {
+      console.error("Error fetching examples:", error);
+    });
+}
+
+    function searchExamples2() {
       var searchWord = document.getElementById("searchInput").value.toLowerCase();
-      var apiUrl = `https://tatoeba.org/api/v1/sentences/search?query=${encodeURIComponent(searchWord)}`;
-      
-      fetch(apiUrl)
+      var apiUrl = `https://tatoeba.org/en/api_v0/search?from=eng&query=${encodeURIComponent(searchWord)}`;
+      console.log(apiUrl)
+      fetch(apiUrl,{ mode: 'no-cors' })
         .then(response => response.json())
         .then(data => {
           var matchingExamples = data.sentences.map(sentence => sentence.text);

@@ -31,7 +31,8 @@ thead {
 </head>
 <body>
 <table>
-  <thead>
+  <thead id="tableHead">
+    <!-- Additional header row will be populated here -->
   </thead>
   <tbody id="tableBody">
     <!-- Dummy Rows will be populated here -->
@@ -40,9 +41,13 @@ thead {
 <script>
   // JavaScript code to populate the table with dummy rows
   window.onload = function() {
-    var tableBody = document.getElementById("tableBody");
+    var tableHead = document.getElementById("tableHead");
     
-    var head = document.createElement("thead");
+    // Create additional header row
+    var additionalRow = document.createElement("tr");
+    
+    
+    var tableBody = document.getElementById("tableBody");
 
     var additionalHeader = document.createElement("th");
     additionalHeader.setAttribute("colspan", "3");
@@ -50,7 +55,8 @@ thead {
     var button = document.createElement("button");
     button.textContent = "Click Me";
     additionalHeader.appendChild(button);
-    head.appendChild(additionalHeader);
+    //tableBody.appendChild(additionalHeader);
+
 
     // Create header rows
     for (var i = 1; i <= 3; i++) {
@@ -67,10 +73,10 @@ thead {
       var column3 = document.createElement("th");
       column3.textContent = "Header " + i;
       row.appendChild(column3);
-      head.appendChild(row);
-      //tableBody.appendChild(row);
+      
+      tableBody.appendChild(row);
     }
-    tableBody.appendChild(head);
+    
     // Create dummy rows
     for (var i = 1; i <= 80; i++) {
       var row = document.createElement("tr");
@@ -91,6 +97,5 @@ thead {
     }
   };
 </script>
-
 </body>
 </html>

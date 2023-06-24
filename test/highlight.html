@@ -56,6 +56,9 @@
     var synth = window.speechSynthesis;
     var utterance = new SpeechSynthesisUtterance();
     var stopped = false;
+    var counter = 1;
+    var maxCounter = 2; // Speak each cell thrice
+
     function speakAndHighlight() {
 
       if (currentCellIndex >= cells.length || stopped) {
@@ -77,11 +80,22 @@
       // Highlight the text in the current cell
       currentCell.style.backgroundColor = 'yellow';
 
+
       // When the speech ends, move to the next cell
       utterance.onend = function() {
-        console.log("onend");
-        currentCell.style.backgroundColor = ''; // Reset highlighting
-        currentCellIndex++;
+
+    console.log("onend");
+    if (counter < maxCounter) {
+      counter++;
+    } else {
+      currentCell.style.backgroundColor = ''; // Reset highlighting
+      currentCellIndex++;
+      counter = 1; // Reset the counter for the next cell
+    }
+
+
+        // currentCell.style.backgroundColor = ''; // Reset highlighting
+        // currentCellIndex++;
         speakAndHighlight(); // Speak the next cell
       };
     }

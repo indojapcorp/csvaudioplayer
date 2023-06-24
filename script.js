@@ -108,7 +108,7 @@ function speakRowDataWorkingBefHighlight(row) {
     var table = document.getElementById("myTable");
     const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
     const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
-    var firstcheckboxrow = table.rows[0];
+    var firstcheckboxrow = table.rows[1];
         for (var j = 0; j < columnCheckboxes.length; j++) {
           var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
           var collang = columnLanguages[j].value;
@@ -127,7 +127,7 @@ function speakRowData(row) {
   var table = document.getElementById("myTable");
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
   const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
-  var firstcheckboxrow = table.rows[0];
+  var firstcheckboxrow = table.rows[1];
   var speakcellsIndex = 0;
       for (var j = 0; j < columnCheckboxes.length; j++) {
         var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
@@ -192,14 +192,26 @@ let deflang = 'en';
 const synth = window.speechSynthesis;
 //const utterance = new SpeechSynthesisUtterance();
 
-const playBtn = document.getElementById('playBtn');
-const pauseBtn = document.getElementById('pauseBtn');
-const resumeBtn = document.getElementById('resumeBtn');
-const stopBtn = document.getElementById('stopBtn');
+// const playBtn = document.getElementById('playBtn');
+// const pauseBtn = document.getElementById('pauseBtn');
+// const resumeBtn = document.getElementById('resumeBtn');
+// const stopBtn = document.getElementById('stopBtn');
 const downloadCsvBtn = document.getElementById('downloadCsvBtn');
 const searchSpeechSearch = document.getElementById('searchSpeechSearch');
 const searchSpeechSearchStop = document.getElementById('searchSpeechSearchStop');
 
+var playBtn,pauseBtn,resumeBtn,stopBtn;
+var counter = 1;
+var maxCellSpeakCounter = document.getElementById('maxCellSpeakCounter'); // Speak each cell thrice
+var speakSilenceTime = document.getElementById('speakSilenceTime'); //milisecond
+
+function initButton(){
+   playBtn = document.getElementById('playBtn');
+   pauseBtn = document.getElementById('pauseBtn');
+   resumeBtn = document.getElementById('resumeBtn');
+   stopBtn = document.getElementById('stopBtn');
+   console.log("playBtn=="+playBtn);
+}
 
 let selectedData = "";
 let selectedDwdData = "";
@@ -233,7 +245,7 @@ function getSelectedDataForDownload() {
   var rowCount = table.rows.length;
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
 
-  var firstcheckboxrow = table.rows[0];
+  var firstcheckboxrow = table.rows[1];
 
   //  console.log(rowCount);
   //var selectedData = "";
@@ -298,7 +310,7 @@ let utterances = []; // Array to store the SpeechSynthesisUtterance objects
       var rowCount = table.rows.length;
       const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
       const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
-      var firstcheckboxrow = table.rows[0];
+      var firstcheckboxrow = table.rows[1];
       var speakcellsIndex = 0;
       for (var i = 3; i < rowCount; i++) {
         var row = table.rows[i];
@@ -319,7 +331,6 @@ let utterances = []; // Array to store the SpeechSynthesisUtterance objects
       }
       speakAndHighlight();
     }
-
     function speakAndHighlight() {
 
       if (currentCellIndex >= speakcells.length || stopped) {
@@ -363,9 +374,21 @@ let utterances = []; // Array to store the SpeechSynthesisUtterance objects
 
       // When the speech ends, move to the next cell
       utterance.onend = function() {
-        currentCell.style.backgroundColor = ''; // Reset highlighting
-        currentCellIndex++;
-        speakAndHighlight(); // Speak the next cell
+
+        if (counter < maxCellSpeakCounter.value) {
+          counter++;
+        } else {
+          currentCell.style.backgroundColor = ''; // Reset highlighting
+          currentCellIndex++;
+          counter = 1; // Reset the counter for the next cell
+        }
+    
+        // currentCell.style.backgroundColor = ''; // Reset highlighting
+        // currentCellIndex++;
+        //speakAndHighlight(); // Speak the next cell
+
+        setTimeout(speakAndHighlight, speakSilenceTime.value);
+
       };
     }
 
@@ -409,7 +432,7 @@ function speakThisWorkingBefHighlight() {
   var rowCount = table.rows.length;
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
   const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
-  var firstcheckboxrow = table.rows[0];
+  var firstcheckboxrow = table.rows[1];
 
   for (var i = 3; i < rowCount; i++) {
     var row = table.rows[i];
@@ -480,30 +503,24 @@ function speakUtterances() {
   speechSynthesis.speak(currentUtterance);
 }
 
-playBtn.addEventListener('click', () => {
-  // getSelectedData();
-  // speakText(selectedData);
-  speakThis();
-});
+// playBtn.addEventListener('click', () => {
+//   speakThis();
+// });
 
-// pause the TTS when the pause button is clicked
-pauseBtn.addEventListener('click', () => {
-  //synth.pause();
-  pause();
-});
+// // pause the TTS when the pause button is clicked
+// pauseBtn.addEventListener('click', () => {
+//   pause();
+// });
 
-// resume the TTS when the resume button is clicked
-resumeBtn.addEventListener('click', () => {
-  //synth.resume();
-  resume();
-});
+// // resume the TTS when the resume button is clicked
+// resumeBtn.addEventListener('click', () => {
+//   resume();
+// });
 
-// stop the TTS when the stop button is clicked
-stopBtn.addEventListener('click', () => {
-  //synth.cancel();
-  stop();
-  //  console.log('stopped');
-});
+// // stop the TTS when the stop button is clicked
+// stopBtn.addEventListener('click', () => {
+//   stop();
+// });
 
 downloadCsvBtn.addEventListener('click', () => {
   selectedDwdData = "";
@@ -704,7 +721,7 @@ function toggleColumnApply() {
   tableHeaders.forEach(function (header, i) {
     const columnIndex = tableHeaders.indexOf(header) + 1;
 
-    var row = table.rows[0];
+    var row = table.rows[1];
     var checkBox = row.cells[columnIndex].getElementsByTagName("input")[0];
     if (!columnCheckboxes[i].checked)
       checkBox.checked = false;
@@ -729,7 +746,7 @@ function toggleColumn(header, ischecked) {
   const table = document.getElementById("myTable");
   const columnIndex = tableHeaders.indexOf(header) + 1;
 
-  var row = table.rows[0];
+  var row = table.rows[1];
   var checkBox = row.cells[columnIndex].getElementsByTagName("input")[0];
   if (!ischecked)
     checkBox.checked = false;
@@ -887,8 +904,43 @@ var table = document.getElementById("myTable");
 table.innerHTML = "";
 
 var thead = document.createElement("thead");
+//var thead = document.getElementsByTagName("thead")[0];
 //start
 //var trcolcheck = table.insertRow();
+
+
+//Buttons row start
+var trcolbuttons =  document.createElement("tr");
+var thcolbuttons =  document.createElement("th");
+thcolbuttons.setAttribute("colspan", selectedColumns.length+2);
+trcolbuttons.appendChild(thcolbuttons);
+
+var playBtn = document.createElement('button');
+playBtn.innerText = "Play";
+playBtn.id = "playBtn";
+playBtn.setAttribute('onclick', 'speakThis()');
+thcolbuttons.appendChild(playBtn);
+
+var pauseBtn = document.createElement('button');
+pauseBtn.innerText = "Pause";
+pauseBtn.id = "pauseBtn";
+pauseBtn.setAttribute('onclick', 'pause()');
+thcolbuttons.appendChild(pauseBtn);
+
+var resumeBtn = document.createElement('button');
+resumeBtn.innerText = "Resume";
+resumeBtn.id = "resumeBtn";
+resumeBtn.setAttribute('onclick', 'resume()');
+thcolbuttons.appendChild(resumeBtn);
+
+var stopBtn = document.createElement('button');
+stopBtn.innerText = "Stop";
+stopBtn.id = "stopBtn";
+stopBtn.setAttribute('onclick', 'stop()');
+thcolbuttons.appendChild(stopBtn);
+thead.appendChild(trcolbuttons);
+//Buttons Row end
+
 var trcolcheck =  document.createElement("tr");
 const td = document.createElement("th");
 var input = document.createElement('input');
@@ -951,6 +1003,8 @@ headerRow.appendChild(document.createElement("th"));
 
 thead.appendChild(headerRow);
 table.appendChild(thead);
+initButton();
+
 csvData = [];
 
 for (var i = 1; i < lines.length; i++) {
