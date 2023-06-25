@@ -47,20 +47,188 @@ function filterTable(columnIndex) {
   var input, filter, table, tr, td, i;
   input = document.getElementById("input_" + columnIndex);
   filter = input.value.toUpperCase();
+  var filterType = determineFilterType(filter);
+
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
-
+  var displayTRCount=0;
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[columnIndex + 1];
     if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      var cellText = td.innerHTML.toUpperCase();
+      var shouldDisplay = applyFilter(cellText, filter, filterType);
+      
+      if (shouldDisplay) {
         tr[i].style.display = "";
+        displayTRCount++;
       } else {
         tr[i].style.display = "none";
       }
+
+
+      // if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      //   tr[i].style.display = "";
+      // } else {
+      //   tr[i].style.display = "none";
+      // }
     }
   }
+  recordCount = displayTRCount;
+  document.getElementById("recordCount").textContent = recordCount;
 }
+
+function determineFilterType(filter) {
+  if (filter.startsWith("^")) {
+    return "starts-with";
+  } else if (filter.startsWith("$")) {
+    return "ends-with";
+  } else if (filter.startsWith(">")) {
+    return "length-greater";
+  } else if (filter.startsWith(">")) {
+    return "length-smaller";
+  } else if (filter.startsWith("=")) {
+    return "length-equals";
+  } else {
+    return "default";
+  }
+}
+
+function applyFilter(cellText, filter, filterType) {
+  switch (filterType) {
+    case "starts-with":
+      var startingText = filter.substring(1);
+      return cellText.startsWith(startingText);
+    case "ends-with":
+      var endingText = filter.substring(1);
+      return cellText.endsWith(endingText);
+    case "length-greater":
+      var lengthThreshold = parseInt(filter.substring(1));
+      return cellText.length > lengthThreshold;
+    case "length-smaller":
+      var lengthThreshold = parseInt(filter.substring(1));
+      return cellText.length < lengthThreshold;  
+    case "length-equals":
+      var lengthThreshold = parseInt(filter.substring(1));
+      return cellText.length == lengthThreshold;    
+    default:
+      filter = filter.replace(/^[\^|\$|>]/, ""); // Remove the filter type character
+      return cellText.indexOf(filter) > -1;
+  }
+}
+
+// Sort table function
+function sortTable(columnIndex) {
+  var table = document.getElementById("myTable");
+  var rows = Array.from(table.rows).slice(4); // Exclude the header rows
+
+  var dir = table.getAttribute("data-sort-dir") || "asc"; // Get the sorting direction from the data attribute
+
+//  var dir = "asc"; // Set the sorting direction to ascending by default
+
+  if (table.rows[3].getElementsByTagName("TH")[columnIndex].innerHTML.includes("&#9650;")) {
+    dir = "desc";
+  }
+
+
+  rows.sort(function(a, b) {
+    var cellA = a.getElementsByTagName("TD")[columnIndex].innerText.toLowerCase();
+    var cellB = b.getElementsByTagName("TD")[columnIndex].innerText.toLowerCase();
+
+    if (cellA < cellB) return -1;
+    if (cellA > cellB) return 1;
+    return 0;
+  });
+
+  if (dir === "desc") {
+    rows.reverse();
+    dir = "asc"; // Update the sorting direction to ascending
+  } else {
+    dir = "desc"; // Update the sorting direction to descending
+  }
+
+
+  // Re-append sorted rows to the table
+  for (var i = 0; i < rows.length; i++) {
+    table.appendChild(rows[i]);
+  }
+
+  // Update the sorting indicator in the table header
+  var th = table.rows[3].getElementsByTagName("TH")[columnIndex];
+  // if (dir === "asc") {
+  //   th.innerHTML = th.innerHTML.replace("&#9660;", "&#9650;");
+  // } else if (dir === "desc") {
+  //   th.innerHTML = th.innerHTML.replace("&#9650;", "&#9660;");
+  // }
+  //th.innerHTML = th.innerHTML.replace("▲▼", "&#9660;");
+  //th.innerHTML += (dir === "asc") ? "&#9650;" : "&#9660;";
+  table.setAttribute("data-sort-dir", dir); // Set the updated sorting direction in the data attribute
+
+  // if (dir === "asc") {
+  //   th.innerHTML = th.innerHTML.replace("▲▼", "▲");
+  // } else if (dir === "desc") {
+  //   th.innerHTML = th.innerHTML.replace("▲▼", "▼");
+  // }
+
+
+}
+
+    // Sort table function
+    function sortTableNormal(columnIndex) {
+      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      table = document.getElementById("myTable");
+      switching = true;
+      dir = "asc"; // Set the sorting direction to ascending by default
+
+      while (switching) {
+        switching = false;
+        rows = table.rows;
+
+        console.log("col ind="+columnIndex);
+        for (i = 4; i < rows.length - 1; i++) {
+          shouldSwitch = false;
+          x = rows[i].getElementsByTagName("TD")[columnIndex];
+          y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+
+          // Compare the cell values for sorting
+          if (dir === "asc") {
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          } else if (dir === "desc") {
+            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+        }
+
+        if (shouldSwitch) {
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+          switchcount++;
+        } else {
+          if (switchcount === 0 && dir === "asc") {
+            dir = "desc";
+            switching = true;
+          }
+        }
+      }
+
+      // Update the sorting indicator in the table header
+      var th = table.rows[3].getElementsByTagName("TH")[columnIndex];
+      if (dir === "asc") {
+        th.innerHTML = th.innerHTML.replace("&#9660;", "&#9650;");
+      } else if (dir === "desc") {
+        th.innerHTML = th.innerHTML.replace("&#9650;", "&#9660;");
+      }
+
+      // if (dir === "asc") {
+      //   th.innerHTML = th.innerHTML.replace("▼", "▲");
+      // } else if (dir === "desc") {
+      //   th.innerHTML = th.innerHTML.replace("▲", "▼");
+      // }
+    }
 
 function selectAll(source) {
   //var checkboxes = document.getElementById("myTable").getElementsByTagName("input");
@@ -200,7 +368,7 @@ const downloadCsvBtn = document.getElementById('downloadCsvBtn');
 const searchSpeechSearch = document.getElementById('searchSpeechSearch');
 const searchSpeechSearchStop = document.getElementById('searchSpeechSearchStop');
 
-var playBtn,pauseBtn,resumeBtn,stopBtn;
+var playBtn,pauseBtn,resumeBtn,stopBtn,playingCellSpan;
 var counter = 1;
 var maxCellSpeakCounter = document.getElementById('maxCellSpeakCounter'); // Speak each cell thrice
 var speakSilenceTime = document.getElementById('speakSilenceTime'); //milisecond
@@ -210,6 +378,8 @@ function initButton(){
    pauseBtn = document.getElementById('pauseBtn');
    resumeBtn = document.getElementById('resumeBtn');
    stopBtn = document.getElementById('stopBtn');
+   playingCellSpan = document.getElementById("playingCellSpan");
+   speakSilenceTime.value = 500;
    console.log("playBtn=="+playBtn);
 }
 
@@ -304,9 +474,12 @@ let utterances = []; // Array to store the SpeechSynthesisUtterance objects
     var currentCellIndex = 0;
     var utterance = new SpeechSynthesisUtterance();
     var stopped = false;
-
+    var originalFontSize = '';//table.style.fontSize; // Store the original font size    
+    var cellsTotalSpeakTime = 0;
+    var currentCellSpeakTime = 0;
     function speakThis() {
       var table = document.getElementById("myTable");
+      originalFontSize = table.style.fontSize; // Store the original font size    
       var rowCount = table.rows.length;
       const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
       const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
@@ -329,6 +502,7 @@ let utterances = []; // Array to store the SpeechSynthesisUtterance objects
           }
         }
       }
+      cellsTotalSpeakTime = getTotalSpeakTime();
       speakAndHighlight();
     }
     function speakAndHighlight() {
@@ -343,16 +517,25 @@ let utterances = []; // Array to store the SpeechSynthesisUtterance objects
         return; // All cells have been spoken
       }
 
+
       playBtn.disabled = true;
       pauseBtn.disabled = false;
       resumeBtn.disabled = true;
       stopBtn.disabled = false;
+
       var currentCell = speakcells[currentCellIndex];
+
+      currentCellSpeakTime = currentCellSpeakTime+getApproximateSpeakTime(currentCell.innerText);
+
+      playingCellSpan.textContent = "   Playing " +(currentCellIndex+1)+ " / " + speakcells.length +"       "+formatTime(currentCellSpeakTime)+" / "+formatTime(cellsTotalSpeakTime);
+
+
       utterance.text = currentCell.innerText;
       utterance.lang = speakcellslang[currentCellIndex];
       synth.speak(utterance);
 
       // Highlight the text in the current cell
+      currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
       currentCell.style.backgroundColor = 'yellow';
       var table = document.getElementById("myTable");
 
@@ -375,19 +558,27 @@ let utterances = []; // Array to store the SpeechSynthesisUtterance objects
       // When the speech ends, move to the next cell
       utterance.onend = function() {
 
+
         if (counter < maxCellSpeakCounter.value) {
           counter++;
         } else {
+          // currentCell.style.fontSize = originalFontSize; // Reset font size
+          // currentCell.style.backgroundColor = ''; // Reset highlighting
+          // currentCellIndex++;
+          counter = 1; // Reset the counter for the next cell
+          //playingCellSpan.textContent = "";
+        }
+
+        setTimeout(function () {
+          currentCell.style.fontSize = originalFontSize; // Reset font size
           currentCell.style.backgroundColor = ''; // Reset highlighting
           currentCellIndex++;
-          counter = 1; // Reset the counter for the next cell
-        }
-    
-        // currentCell.style.backgroundColor = ''; // Reset highlighting
-        // currentCellIndex++;
-        //speakAndHighlight(); // Speak the next cell
+          playingCellSpan.textContent = "";
+          speakAndHighlight(); // Speak the next cell
+        }, speakSilenceTime.value);
 
-        setTimeout(speakAndHighlight, speakSilenceTime.value);
+        
+        //setTimeout(speakAndHighlight, speakSilenceTime.value);
 
       };
     }
@@ -427,6 +618,52 @@ let utterances = []; // Array to store the SpeechSynthesisUtterance objects
       speakcellslang = [];
     }
 
+    function getApproximateSpeakTime(text) {
+      // Adjust this value according to the average speech rate (in seconds per word)
+      var averageSpeechRate = 0.5;
+
+      // Split the text into words and calculate the approximate speak time
+      var words = text.split(' ');
+      var speakTime = words.length * averageSpeechRate;
+      return speakTime + (speakSilenceTime.value/1000);
+    }
+
+    function getTotalSpeakTime() {
+      var totalSpeakTime = 0;
+
+      for (var i = 0; i < speakcells.length; i++) {
+        var cell = speakcells[i];     
+          var cellSpeakTime = getApproximateSpeakTime(cell.innerText);
+          totalSpeakTime += cellSpeakTime+0.4;
+      }
+
+      return totalSpeakTime;
+    }
+
+    function formatTime(seconds) {
+      var hours = Math.floor(seconds / 3600);
+      var minutes = Math.floor((seconds % 3600) / 60);
+      var remainingSeconds = Math.floor(seconds % 60);
+    
+      var formattedTime = '';
+    
+      if (hours > 0) {
+        formattedTime += hours + 'hr:';
+      }
+    
+      if (minutes < 10) {
+        formattedTime += '0';
+      }
+      formattedTime += minutes + 'min:';
+    
+      if (remainingSeconds < 10) {
+        formattedTime += '0';
+      }
+      formattedTime += remainingSeconds +"sec";
+    
+      return formattedTime;
+    }
+    
 function speakThisWorkingBefHighlight() {
   var table = document.getElementById("myTable");
   var rowCount = table.rows.length;
@@ -938,6 +1175,12 @@ stopBtn.innerText = "Stop";
 stopBtn.id = "stopBtn";
 stopBtn.setAttribute('onclick', 'stop()');
 thcolbuttons.appendChild(stopBtn);
+
+var playingCellSpan = document.createElement('span');
+playingCellSpan.innerText = "";
+playingCellSpan.id = "playingCellSpan";
+thcolbuttons.appendChild(playingCellSpan);
+
 thead.appendChild(trcolbuttons);
 //Buttons Row end
 
@@ -994,9 +1237,12 @@ var blankheaderinput = document.createTextNode("");
 tdheaderblank.appendChild(blankheaderinput);
 headerRow.appendChild(tdheaderblank);
 
-selectedColumns.forEach(function (column) {
+selectedColumns.forEach(function (column,i) {
 var headerCell = document.createElement("th");
-headerCell.innerHTML = column;
+headerCell.setAttribute('class','sortable');
+headerCell.innerHTML = column + "&#9650;&#9660;";
+headerCell.setAttribute('onclick', 'sortTable(' + (i+1) + ')');
+
 headerRow.appendChild(headerCell);
 });
 headerRow.appendChild(document.createElement("th"));

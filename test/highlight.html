@@ -45,7 +45,7 @@
 
       tbody.appendChild(row);
     }
-
+    var originalFontSize = table.style.fontSize; // Store the original font size    
     // Text-to-Speech functionality
     var playBtn = document.getElementById('speakBtn');
     var pauseBtn = document.getElementById('pauseBtn');
@@ -74,6 +74,10 @@
       stopButton.disabled = false;
 
       var currentCell = cells[currentCellIndex];
+
+      currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
+
+
       utterance.text = currentCell.innerText;
       synth.speak(utterance);
 
@@ -88,15 +92,15 @@
     if (counter < maxCounter) {
       counter++;
     } else {
-      currentCell.style.backgroundColor = ''; // Reset highlighting
-      currentCellIndex++;
       counter = 1; // Reset the counter for the next cell
     }
 
-
-        // currentCell.style.backgroundColor = ''; // Reset highlighting
-        // currentCellIndex++;
-        speakAndHighlight(); // Speak the next cell
+    setTimeout(function () {
+    currentCell.style.fontSize = originalFontSize; // Reset font size
+    currentCell.style.backgroundColor = ''; // Reset highlighting
+    currentCellIndex++;
+    speakAndHighlight(); // Speak the next cell
+  }, 2000);
       };
     }
 

@@ -117,3 +117,8 @@ table {
     overflow: auto;
     text-align: center;
 }
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
