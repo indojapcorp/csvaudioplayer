@@ -37,6 +37,11 @@ table {
     width: 5%;
   }
   
+  th.resize {
+    resize: horizontal;
+    overflow: auto;
+  }
+
   .totalitemslabel {
     width: 40%;
   }
@@ -121,4 +126,6 @@ table {
 .sortable {
   cursor: pointer;
   user-select: none;
+  resize: horizontal;
+  overflow: auto;
 }

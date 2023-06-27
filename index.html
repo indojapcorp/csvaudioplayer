@@ -7,6 +7,30 @@
 </head>
 <body>
 
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const thElements = document.querySelectorAll('th.resize');
+        let currentTh;
+
+        thElements.forEach(th => {
+            th.addEventListener('mousedown', (e) => {
+                currentTh = e.target;
+                document.addEventListener('mousemove', resizeColumn);
+                document.addEventListener('mouseup', stopResize);
+            });
+        });
+
+        function resizeColumn(e) {
+            const width = e.pageX - currentTh.parentElement.offsetLeft;
+            currentTh.style.width = width + 'px';
+        }
+
+        function stopResize() {
+            document.removeEventListener('mousemove', resizeColumn);
+            document.removeEventListener('mouseup', stopResize);
+        }
+    });
+</script>
 
 <!--
 <input type="file" id="csvFileInput" accept=".csv" onchange="loadTable(event)">
@@ -57,13 +81,15 @@
     <button onclick="checkAll()">Check All</button>
     <button onclick="uncheckAll()">Uncheck All</button>
     <div id="columnCheckboxes"></div>
-    <button onclick="hideColumnPopup()">Apply</button>
+    <button onclick="hideColumnPopup()">Cancel</button>
+    <button onclick="hideAndApplyColumnPopup()">Apply</button>
 </div>
 <div id="colpopup" class="filecolpopup">
     <h3>Select Columns to Display</h3>
     <button onclick="checkAllFileCols()">Check All</button>
     <button onclick="uncheckAllFileCols()">Uncheck All</button>
     <div id="checkboxes"></div>
+    <button onclick="hideFileColPopup()">Cancel</button>
     <button onclick="populateTableNew()">Populate Table</button>
   </div>
 <table id="myTable">

@@ -8,9 +8,13 @@ let tableHeaders = [];
 // Event listener for the file input element
 const fileInput = document.getElementById("csvFileInput");
 fileInput.addEventListener("change", function (event) {
+  showcolPopup();
   const file = fileInput.files[0];
   readCSV(event);
   //loadTable(event);
+});
+fileInput.addEventListener("click", function (event) {
+  showcolPopup();
 });
 // create HTML table with two columns english and japanese.
 // first column has english text , second column has Japanese text.
@@ -57,24 +61,20 @@ function filterTable(columnIndex) {
     if (td) {
       var cellText = td.innerHTML.toUpperCase();
       var shouldDisplay = applyFilter(cellText, filter, filterType);
-      
       if (shouldDisplay) {
         tr[i].style.display = "";
         displayTRCount++;
       } else {
         tr[i].style.display = "none";
       }
-
-
-      // if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-      //   tr[i].style.display = "";
-      // } else {
-      //   tr[i].style.display = "none";
-      // }
     }
   }
   recordCount = displayTRCount;
   document.getElementById("recordCount").textContent = recordCount;
+}
+
+function isNumeric(value) {
+  return /^\d+$/.test(value);
 }
 
 function determineFilterType(filter) {
@@ -88,12 +88,15 @@ function determineFilterType(filter) {
     return "length-smaller";
   } else if (filter.startsWith("=")) {
     return "length-equals";
+  } else if (filter.startsWith("%")) {
+    return "numeric";
   } else {
     return "default";
   }
 }
 
 function applyFilter(cellText, filter, filterType) {
+  console.log("cellText:"+cellText+" filter:"+filter+" filterType:"+filterType);
   switch (filterType) {
     case "starts-with":
       var startingText = filter.substring(1);
@@ -109,7 +112,14 @@ function applyFilter(cellText, filter, filterType) {
       return cellText.length < lengthThreshold;  
     case "length-equals":
       var lengthThreshold = parseInt(filter.substring(1));
-      return cellText.length == lengthThreshold;    
+      return cellText.length == lengthThreshold;  
+    case "numeric":
+      return isNumeric(cellText);
+      // if (isNumeric(cellText)) {
+      //   console.log("numeric");
+      //   return true;
+      // }
+      // return false;
     default:
       filter = filter.replace(/^[\^|\$|>]/, ""); // Remove the filter type character
       return cellText.indexOf(filter) > -1;
@@ -134,9 +144,17 @@ function sortTable(columnIndex) {
     var cellA = a.getElementsByTagName("TD")[columnIndex].innerText.toLowerCase();
     var cellB = b.getElementsByTagName("TD")[columnIndex].innerText.toLowerCase();
 
-    if (cellA < cellB) return -1;
-    if (cellA > cellB) return 1;
-    return 0;
+    if (isNumeric(cellA) && isNumeric(cellB)) {
+      return parseFloat(cellA) - parseFloat(cellB);
+    } else {
+      if (cellA < cellB) return -1;
+      if (cellA > cellB) return 1;
+      return 0;
+    }
+
+    // if (cellA < cellB) return -1;
+    // if (cellA > cellB) return 1;
+    // return 0;
   });
 
   if (dir === "desc") {
@@ -1008,6 +1026,12 @@ function showColumnPopup() {
 
 // Function to hide the column selection popup
 function hideColumnPopup() {
+  const popup = document.getElementById("columnPopup");
+  popup.style.display = "none";
+}
+
+// Function to hide the column selection popup
+function hideAndApplyColumnPopup() {
   const popup = document.getElementById("columnPopup");
   popup.style.display = "none";
   toggleColumnApply();
