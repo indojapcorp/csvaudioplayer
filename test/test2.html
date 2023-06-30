@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Category Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+  
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  
+    input {
+      width: 100%;
+    }
+  
+    .category-dropdown {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+  
+    .category-dropdown button {
+      width: 100%;
+      text-align: left;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Category</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" onclick="showDropdown(this)" onkeyup="filterCategories(this)" onblur="hideDropdown(this)">
+        <div class="category-dropdown"></div>
+      </td>
+    </tr>
+    <!-- Add 4 rows with category1 -->
+    <tr>
+      <td>category1</td>
+    </tr>
+    <tr>
+      <td>category1</td>
+    </tr>
+    <tr>
+      <td>category1</td>
+    </tr>
+    <tr>
+      <td>category1</td>
+    </tr>
+    <!-- Add 4 rows with category2 -->
+    <tr>
+      <td>category2</td>
+    </tr>
+    <tr>
+      <td>category2</td>
+    </tr>
+    <tr>
+      <td>category2</td>
+    </tr>
+    <tr>
+      <td>category2</td>
+    </tr>
+    <!-- Add 4 rows with category3 -->
+    <tr>
+      <td>category3</td>
+    </tr>
+    <tr>
+      <td>category3</td>
+    </tr>
+    <tr>
+      <td>category3</td>
+    </tr>
+    <tr>
+      <td>category3</td>
+    </tr>
+  </table>
+
+  <script>
+    //const allRows = Array.from(document.querySelectorAll('table tr:not(:first-child)'));
+    const allRows = Array.from(document.querySelectorAll('table tr:not(:nth-child(-n+2))'));
+
+    function showDropdown(inputField) {
+  const dropdown = inputField.parentElement.querySelector('.category-dropdown');
+  dropdown.innerHTML = '';
+  const categories = allRows.map(row => row.querySelector('td:first-child').textContent.trim());
+  const uniqueCategories = [...new Set(categories)];
+
+  if (uniqueCategories.length > 0) {
+    for (const category of uniqueCategories) {
+      const button = document.createElement('button');
+      button.textContent = category;
+      dropdown.appendChild(button);
+    }
+    dropdown.style.display = 'block';
+    dropdown.addEventListener('click', (event) => {
+      console.log('click');
+      const target = event.target;
+      if (target.nodeName === 'BUTTON') {
+        inputField.value = target.textContent;
+        filterCategories(inputField);
+        hideDropdown(inputField);
+      }
+    });
+  }
+}
+
+    function showDropdownOld(inputField) {
+      const dropdown = inputField.parentElement.querySelector('.category-dropdown');
+      dropdown.innerHTML = '';
+      const categories = allRows.map(row => row.querySelector('td:first-child').textContent.trim());
+      const uniqueCategories = [...new Set(categories)];
+  
+      if (uniqueCategories.length > 0) {
+        for (const category of uniqueCategories) {
+          const button = document.createElement('button');
+          button.textContent = category;
+          console.log("category="+category);
+          button.setAttribute('onclick', () => {
+              console.log("dsfsd");
+            inputField.value = category;
+            console.log("inputField.value="+inputField.value);
+            filterCategories(inputField); // Filter rows based on the selected category
+            hideDropdown(inputField);
+          });
+          dropdown.appendChild(button);
+        }
+        dropdown.style.display = 'block';
+      }
+    }
+  
+    function hideDropdown(inputField) {
+      const dropdown = inputField.parentElement.querySelector('.category-dropdown');
+      dropdown.style.display = 'none';
+    }
+  
+    function filterCategories(inputField) {
+      const filterValue = inputField.value.trim().toLowerCase();
+      const filteredRows = allRows.filter(row => {
+        const category = row.querySelector('td:first-child').textContent.trim().toLowerCase();
+        return category.includes(filterValue);
+      });
+  
+      allRows.forEach(row => {
+        if (filteredRows.includes(row)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

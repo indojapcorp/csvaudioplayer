@@ -76,7 +76,15 @@
 
 <br><br>
 
-<div id="columnPopup" class="popup">
+<div id="colpopup" class="filecolpopup">
+    <h3>Select File Columns to Display</h3>
+    <button onclick="checkAllFileCols()">Check All</button>
+    <button onclick="uncheckAllFileCols()">Uncheck All</button>
+    <div id="checkboxes"></div>
+    <button onclick="hideFileColPopup()">Cancel</button>
+    <button onclick="populateTableNew()">Populate Table</button>
+  </div>
+  <div id="columnPopup" class="popup">
     <h3>Select Columns to Display</h3>
     <button onclick="checkAll()">Check All</button>
     <button onclick="uncheckAll()">Uncheck All</button>
@@ -84,14 +92,7 @@
     <button onclick="hideColumnPopup()">Cancel</button>
     <button onclick="hideAndApplyColumnPopup()">Apply</button>
 </div>
-<div id="colpopup" class="filecolpopup">
-    <h3>Select Columns to Display</h3>
-    <button onclick="checkAllFileCols()">Check All</button>
-    <button onclick="uncheckAllFileCols()">Uncheck All</button>
-    <div id="checkboxes"></div>
-    <button onclick="hideFileColPopup()">Cancel</button>
-    <button onclick="populateTableNew()">Populate Table</button>
-  </div>
+
 <table id="myTable">
 </table>
 
@@ -399,6 +400,5 @@
 <!--
 <script src="translationpopup.js"></script>
 -->
-
 </body>
 </html>

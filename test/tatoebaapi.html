@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Example Search</title>
+  <style>
+    #searchInput {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Example Search</h1>
+  <input type="text" id="searchInput" placeholder="Enter a word">
+  <button onclick="searchExamples()">Search</button>
+  <div id="results"></div>
+
+  <script>
+    function searchExamples() {
+  var searchWord = document.getElementById("searchInput").value.toLowerCase();
+  var apiUrl = `https://tatoeba.org/en/api_v0/search?from=eng&query=${encodeURIComponent(searchWord)}`;
+      console.log(apiUrl);
+  fetch(apiUrl, { mode: 'no-cors' })
+    .then(response => response.text())
+    .then(data => {
+      // Handle the response data as needed
+      console.log("data="+data);
+    })
+    .catch(error => {
+      console.error("Error fetching examples:", error);
+    });
+}
+
+    function searchExamples2() {
+      var searchWord = document.getElementById("searchInput").value.toLowerCase();
+      var apiUrl = `https://tatoeba.org/en/api_v0/search?from=eng&query=${encodeURIComponent(searchWord)}`;
+      console.log(apiUrl)
+      fetch(apiUrl,{ mode: 'no-cors' })
+        .then(response => response.json())
+        .then(data => {
+          var matchingExamples = data.sentences.map(sentence => sentence.text);
+
+          displayResults(matchingExamples);
+        })
+        .catch(error => {
+          console.error("Error fetching examples:", error);
+        });
+    }
+
+    function displayResults(results) {
+      var resultsContainer = document.getElementById("results");
+      resultsContainer.innerHTML = "";
+
+      if (results.length === 0) {
+        resultsContainer.innerHTML = "No matching examples found.";
+      } else {
+        for (var i = 0; i < results.length; i++) {
+          var exampleDiv = document.createElement("div");
+          exampleDiv.innerHTML = results[i];
+          resultsContainer.appendChild(exampleDiv);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -48,6 +48,8 @@ function downloadAsCSV(text) {
 }
 
 function filterTable(columnIndex) {
+  //hideDropdown(inputField);
+
   var input, filter, table, tr, td, i;
   input = document.getElementById("input_" + columnIndex);
   filter = input.value.toUpperCase();
@@ -84,19 +86,22 @@ function determineFilterType(filter) {
     return "ends-with";
   } else if (filter.startsWith(">")) {
     return "length-greater";
-  } else if (filter.startsWith(">")) {
+  } else if (filter.startsWith("<")) {
     return "length-smaller";
   } else if (filter.startsWith("=")) {
     return "length-equals";
   } else if (filter.startsWith("%")) {
     return "numeric";
-  } else {
+  } else if (filter.startsWith("!")) {
+    return "hiragana";
+  }  else if (filter.startsWith("#")) {
+    return "katakana";
+  }  else {
     return "default";
   }
 }
 
 function applyFilter(cellText, filter, filterType) {
-  console.log("cellText:"+cellText+" filter:"+filter+" filterType:"+filterType);
   switch (filterType) {
     case "starts-with":
       var startingText = filter.substring(1);
@@ -115,6 +120,12 @@ function applyFilter(cellText, filter, filterType) {
       return cellText.length == lengthThreshold;  
     case "numeric":
       return isNumeric(cellText);
+    case "hiragana":
+      var hiraganaRegex = /^[\u3040-\u309F]+$/;
+      return hiraganaRegex.test(cellText);
+    case "katakana":
+      var katakanaRegex = /^[\u30A0-\u30FF]+$/;
+      return katakanaRegex.test(cellText);
       // if (isNumeric(cellText)) {
       //   console.log("numeric");
       //   return true;
@@ -398,7 +409,6 @@ function initButton(){
    stopBtn = document.getElementById('stopBtn');
    playingCellSpan = document.getElementById("playingCellSpan");
    speakSilenceTime.value = 500;
-   console.log("playBtn=="+playBtn);
 }
 
 let selectedData = "";
@@ -1085,7 +1095,7 @@ var headersLanguage; // Declare headers as a global variable
 // Function to display the popup with header checkboxes
 function showFileColPopup(headers) {
 
-var popup = document.getElementById("colpopup");
+var filecolpopup = document.getElementById("colpopup");
 var checkboxes = document.getElementById("checkboxes");
 checkboxes.innerHTML = "";
 
@@ -1101,23 +1111,40 @@ checkboxes.appendChild(checkbox);
 var label = document.createElement("label");
 label.appendChild(document.createTextNode(header));
 checkboxes.appendChild(label);
+
+
+// is category start
+var isCategorycheckbox = document.createElement("input");
+isCategorycheckbox.type = "checkbox";
+isCategorycheckbox.name = "categorycolumn";
+//isCategorycheckbox.value = "Is Category Col?";
+isCategorycheckbox.checked = false;
+checkboxes.appendChild(isCategorycheckbox);
+
+var isCategorylabel = document.createElement("label");
+isCategorylabel.appendChild(document.createTextNode("Is Category Col?"));
+checkboxes.appendChild(isCategorylabel);
+// is category end
+
+
+
 checkboxes.appendChild(document.createElement("br"));
 });
 
-popup.style.display = "block";
+filecolpopup.style.display = "block";
 }
 
 // Function to show the popup
 function showcolPopup() {
-  var popup = document.getElementById("colpopup");
-  popup.style.display = "block";
+  var filecolpopup = document.getElementById("colpopup");
+  filecolpopup.style.display = "block";
   }
 
   
 // Function to hide the popup
 function hideFileColPopup() {
-var popup = document.getElementById("colpopup");
-popup.style.display = "none";
+  var filecolpopup = document.getElementById("colpopup");
+  filecolpopup.style.display = "none";
 }
 
 // Function to read the selected CSV file
@@ -1139,8 +1166,8 @@ headers.forEach(function(){
   headersLanguage.push('en');
 });
 
-var popup = document.getElementById("colpopup");
-popup.style.display = "block";
+var filecolpopup = document.getElementById("colpopup");
+filecolpopup.style.display = "block";
 
 showFileColPopup(headers);
 };
@@ -1148,18 +1175,52 @@ showFileColPopup(headers);
 reader.readAsText(file);
 }
 
+function showHintPopup(colnum) {
+  document.getElementById("hintPopup_"+colnum).style.display = "block";
+}
+
+function hideHintPopup(colnum) {
+  document.getElementById("hintPopup_"+colnum).style.display = "none";
+}
+var searchHint = `Search Hint:<br>
+^ starts-with<br>
+$ ends-with<br>
+> length-greater<br>
+< length-smaller<br>
+= length-equals<br>
+% numeric<br>
+! hiragana<br>
+# katakana`;
+
 // Function to populate the table with selected columns
 function populateTableNew() {
 var checkboxes = document.getElementsByName("column");
+var categorycolumncheckboxes = document.getElementsByName("categorycolumn");
 var selectedColumns = [];
+var isCategorySelectedForColumns = [];
+
+csvData = [];
+
+for (var i = 1; i < lines.length; i++) {
+  if(lines[i].length==0)
+    continue;
+
+  var row = lines[i].split(",");
+  
+  if(row.length==1)
+    console.log("blank row==="+row);
+    csvData.push(row);  
+}
+
+
 // Get the selected checkboxes
-checkboxes.forEach(function (checkbox) {
+checkboxes.forEach(function (checkbox,i) {
 if (checkbox.checked) {
 selectedColumns.push(checkbox.value);
 tableHeaders.push(checkbox.value);
+isCategorySelectedForColumns.push(categorycolumncheckboxes[i].checked);
 }
 });
-
 // Populate the table
 var table = document.getElementById("myTable");
 table.innerHTML = "";
@@ -1173,7 +1234,7 @@ var thead = document.createElement("thead");
 //Buttons row start
 var trcolbuttons =  document.createElement("tr");
 var thcolbuttons =  document.createElement("th");
-thcolbuttons.setAttribute("colspan", selectedColumns.length+2);
+thcolbuttons.setAttribute("colspan", selectedColumns.length+3);
 trcolbuttons.appendChild(thcolbuttons);
 
 var playBtn = document.createElement('button');
@@ -1229,7 +1290,7 @@ selectedColumns.forEach(function (column,i) {
   trcolcheck.appendChild(td);
 });
 trcolcheck.appendChild(document.createElement("th"));
-
+//trcolcheck.appendChild(document.createElement("th"));
 thead.appendChild(trcolcheck);
 
 
@@ -1241,16 +1302,40 @@ var input = document.createTextNode("");
 tdsearchblank.appendChild(input);
 trcolsearch.appendChild(tdsearchblank);
 selectedColumns.forEach(function (column,i) {
+
   const td = document.createElement("th");
   var input = document.createElement('input');
   input.type = "text";
   input.id = "input_" + i;
+  //input.id = "searchInput";
+  input.setAttribute('class', 'search-input');
+  //input.setAttribute('placeholder', 'Search ...');
+
   input.setAttribute('onkeyup', 'filterTable(' + i + ')');
   input.placeholder = "Filter Column " + i;
-  td.appendChild(input);
+  if(isCategorySelectedForColumns[i]==true){
+    input.setAttribute('onclick', 'showDropdown(this,"'+column+'")');
+    input.setAttribute('onkeydown', 'hideDropdown(this)');
+    td.appendChild(input);
+    var catdiv = document.createElement('div');
+    catdiv.setAttribute('class', 'category-dropdown');
+    td.appendChild(catdiv);  
+  }else{
+    input.setAttribute('onmouseover', 'showHintPopup(' + i + ')');
+    input.setAttribute('onmouseout', 'hideHintPopup(' + i + ')');  
+    input.setAttribute('onclick', 'hideHintPopup(' + i + ');');
+    td.appendChild(input);
+    var hintdiv = document.createElement('div');
+    hintdiv.id="hintPopup_"+ i;
+    hintdiv.innerText = searchHint;
+    hintdiv.setAttribute('class', 'hint-popup');
+    td.appendChild(hintdiv);
+  }
+
   trcolsearch.appendChild(td);
 });
 trcolsearch.appendChild(document.createElement("th"));
+//trcolsearch.appendChild(document.createElement("th"));
 thead.appendChild(trcolsearch);
 
 //end
@@ -1269,34 +1354,34 @@ headerCell.setAttribute('onclick', 'sortTable(' + (i+1) + ')');
 
 headerRow.appendChild(headerCell);
 });
+
+// const tdheaderplaycnt = document.createElement("th");
+// tdheaderplaycnt.textContent = 'PlayCnt'
+// headerRow.appendChild(tdheaderplaycnt);
 headerRow.appendChild(document.createElement("th"));
 
 thead.appendChild(headerRow);
 table.appendChild(thead);
 initButton();
 
-csvData = [];
+// csvData = [];
 
-for (var i = 1; i < lines.length; i++) {
-  if(lines[i].length==0)
-    continue;
-
-  var row = lines[i].split(",");
-  
-  if(row.length==1)
-    console.log("blank row==="+row);
-    csvData.push(row);  
-  }
-
-//csvData.push(lines); 
 // for (var i = 1; i < lines.length; i++) {
-//   var row = lines[i];
-//   csvData.push(row);  
-//   }
+//   if(lines[i].length==0)
+//     continue;
+
+//   var row = lines[i].split(",");
+  
+//   if(row.length==1)
+//     console.log("blank row==="+row);
+//     csvData.push(row);  
+// }
 
 
 recordCount = csvData.length;
 document.getElementById("recordCount").textContent = recordCount;
+
+//var uniqueCategories = [...new Set()];
 
 csvData.forEach(function (row,rowno) {
 //var tr = table.insertRow();
@@ -1310,12 +1395,18 @@ input.setAttribute('onchange', 'updateCounter()');
 td.appendChild(input);
 tr.appendChild(td);
 
-selectedColumns.forEach(function (column) {
+
+selectedColumns.forEach(function (column,i) {
   var cell = document.createElement("td");
   cell.textContent = row[headers.indexOf(column)];
+  
   //cell.innerHTML = row[headers.indexOf(column)];
   tr.appendChild(cell);
   });
+
+  // const tdplaycnt = document.createElement("td");
+  // tdplaycnt.textContent = '0';
+  // tr.appendChild(tdplaycnt);
 
 const tdplay = document.createElement("td");
 var input = document.createElement('button');
@@ -1333,6 +1424,59 @@ hideFileColPopup();
 createColumnCheckboxes();
 }
 
+function showDropdown(inputField,column) {
+  console.log("showDropdown column="+column);
+  var uniqueCategories = new Set();
+  csvData.forEach(function (row) {
+      uniqueCategories.add(row[headers.indexOf(column)]);
+  });
+  // uniqueCategories.forEach(function(category) {
+  //   console.log("category===="+category);
+  // });
+
+  const dropdown = inputField.parentElement.querySelector('.category-dropdown');
+  dropdown.innerHTML = '';
+  console.log("uniqueCategories.length ="+uniqueCategories.length );
+
+  if (uniqueCategories.size > 0) {
+    for (const category of uniqueCategories) {
+      const button = document.createElement('button');
+      button.textContent = category;
+      dropdown.appendChild(button);
+    }
+    dropdown.style.display = 'block';
+    dropdown.addEventListener('click', (event) => {
+      const target = event.target;
+      if (target.nodeName === 'BUTTON') {
+        inputField.value = target.textContent;
+        filterTable(headers.indexOf(column));
+        hideDropdown(inputField);
+        console.log("hideDropdown");
+      }
+    });
+  }
+}
+
+function hideDropdown(inputField) {
+  const dropdown = inputField.parentElement.querySelector('.category-dropdown');
+  dropdown.style.display = 'none';
+}
+
+function filterCategories(inputField) {
+  const filterValue = inputField.value.trim().toLowerCase();
+  const filteredRows = allRows.filter(row => {
+    const category = row.querySelector('td:first-child').textContent.trim().toLowerCase();
+    return category.includes(filterValue);
+  });
+
+  allRows.forEach(row => {
+    if (filteredRows.includes(row)) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
 
 //translation related start
 
@@ -1439,8 +1583,8 @@ transapplyButton.addEventListener('click', function () {
 
     lines=totaldata.split("\n");
 
-        var popup = document.getElementById("colpopup");
-        popup.style.display = "block";
+        var filecolpopup = document.getElementById("colpopup");
+        filecolpopup.style.display = "block";
 
         showFileColPopup(headers);
 

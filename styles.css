@@ -36,6 +36,10 @@ table {
   th:last-child, td:last-child {
     width: 5%;
   }
+
+  th:nth-last-child(2) , td:nth-last-child(2) {
+    width: 5%;
+  }
   
   th.resize {
     resize: horizontal;
@@ -128,4 +132,37 @@ table {
   user-select: none;
   resize: horizontal;
   overflow: auto;
+}
+
+.category-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.category-dropdown button {
+  width: 100%;
+  text-align: left;
+  padding: 8px;
+}
+
+.search-input {
+  width: 200px;
+}
+
+.hint-popup {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 250px;
+  font-family: Arial, sans-serif;
+}
+
+.search-input:hover + .hint-popup {
+  display: block;
 }

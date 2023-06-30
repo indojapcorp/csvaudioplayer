@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        th.resize {
+            resize: horizontal;
+            overflow: auto;
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const thElements = document.querySelectorAll('th.resize');
+            let currentTh;
+
+            thElements.forEach(th => {
+                th.addEventListener('mousedown', (e) => {
+                    currentTh = e.target;
+                    document.addEventListener('mousemove', resizeColumn);
+                    document.addEventListener('mouseup', stopResize);
+                });
+            });
+
+            function resizeColumn(e) {
+                const width = e.pageX - currentTh.parentElement.offsetLeft;
+                currentTh.style.width = width + 'px';
+            }
+
+            function stopResize() {
+                document.removeEventListener('mousemove', resizeColumn);
+                document.removeEventListener('mouseup', stopResize);
+            }
+        });
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th class="resize">Column 1</th>
+            <th class="resize">Column 2</th>
+            <th class="resize">Column 3</th>
+            <th class="resize">Column 4</th>
+            <th class="resize">Column 5</th>
+            <th class="resize">Column 6</th>
+            <th class="resize">Column 7</th>
+            <th class="resize">Column 8</th>
+            <th class="resize">Column 9</th>
+            <th class="resize">Column 10</th>
+        </tr>
+        <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+            <td>Data 3</td>
+            <td>Data 4</td>
+            <td>Data 5</td>
+            <td>Data 6</td>
+            <td>Data 7</td>
+            <td>Data 8</td>
+            <td>Data 9</td>
+            <td>Data 10</td>
+        </tr>
+        <tr>
+            <td>Data 11</td>
+            <td>Data 12</td>
+            <td>Data 13</td>
+            <td>Data 14</td>
+            <td>Data 15</td>
+            <td>Data 16</td>
+            <td>Data 17</td>
+            <td>Data 18</td>
+            <td>Data 19</td>
+            <td>Data 20</td>
+        </tr>
+    </table>
+</body>
+</html>

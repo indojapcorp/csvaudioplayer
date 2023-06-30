@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grammar Checker</title>
+  <script>
+    function checkGrammar() {
+      var srcTextarea = document.getElementById("srctext");
+      var outTextarea = document.getElementById("outtext");
+
+      var srcText = srcTextarea.value;
+      performGrammarCorrection(srcText, function (error, correctedText) {
+        if (error) {
+          outTextarea.value = "Error occurred while checking grammar.";
+        } else {
+          outTextarea.value = correctedText;
+        }
+      });
+    }
+
+    function performGrammarCorrection(text, callback) {
+      // Send the text to the LanguageTool API for grammar correction
+      fetch('https://api.languagetool.org/v2/check', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        },
+        body: new URLSearchParams({
+          text: text,
+          language: 'en-US',
+          disabledRules: 'UPPERCASE_SENTENCE_START'
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.matches) {
+          // Extract the corrections from the API response
+          var corrections = data.matches.map(match => ({
+            offset: match.offset,
+            length: match.length,
+            replacement: match.replacements[0].value
+          }));
+
+          // Apply the corrections to the text
+          var correctedText = applyCorrections(text, corrections);
+          callback(null, correctedText);
+        } else {
+          callback(new Error('Error occurred while checking grammar.'));
+        }
+      })
+      .catch(error => {
+        callback(error);
+      });
+    }
+
+    function applyCorrections(text, corrections) {
+      var correctedText = text;
+      for (var i = corrections.length - 1; i >= 0; i--) {
+        var correction = corrections[i];
+        correctedText = correctedText.slice(0, correction.offset) +
+          correction.replacement + correctedText.slice(correction.offset + correction.length);
+      }
+      return correctedText;
+    }
+  </script>
+</head>
+<body>
+  <h1>Grammar Checker</h1>
+  <textarea id="srctext" rows="5" cols="50"></textarea>
+  <br>
+  <button onclick="checkGrammar()">Check Grammar</button>
+  <br>
+  <textarea id="outtext" rows="5" cols="50" readonly></textarea>
+</body>
+</html>

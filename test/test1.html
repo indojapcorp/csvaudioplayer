@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Category Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+  
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  
+    input {
+      width: 100%;
+    }
+  
+    .category-dropdown {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+  
+    .category-dropdown button {
+      width: 100%;
+      text-align: left;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Category</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" onclick="showDropdown(this)" onblur="hideDropdown(this)">
+        <div class="category-dropdown"></div>
+      </td>
+    </tr>
+    <!-- Add 4 rows with category1 -->
+    <tr>
+      <td>category1</td>
+    </tr>
+    <tr>
+      <td>category1</td>
+    </tr>
+    <tr>
+      <td>category1</td>
+    </tr>
+    <tr>
+      <td>category1</td>
+    </tr>
+    <!-- Add 4 rows with category2 -->
+    <tr>
+      <td>category2</td>
+    </tr>
+    <tr>
+      <td>category2</td>
+    </tr>
+    <tr>
+      <td>category2</td>
+    </tr>
+    <tr>
+      <td>category2</td>
+    </tr>
+    <!-- Add 4 rows with category3 -->
+    <tr>
+      <td>category3</td>
+    </tr>
+    <tr>
+      <td>category3</td>
+    </tr>
+    <tr>
+      <td>category3</td>
+    </tr>
+    <tr>
+      <td>category3</td>
+    </tr>
+  </table>
+
+  <script>
+    function showDropdown(inputField) {
+      const dropdown = inputField.parentElement.querySelector('.category-dropdown');
+      dropdown.innerHTML = '';
+//      const categories = Array.from(document.querySelectorAll('td:not(:first-child)')).map(td => td.textContent.trim());
+      const categories = Array.from(document.querySelectorAll('table tr:not(:first-child) td:first-child')).map(td => td.textContent.trim());
+
+      console.log("categories="+document.querySelectorAll('td:not(:first-child)').length);
+
+      const uniqueCategories = [...new Set(categories)];
+
+      if (uniqueCategories.length > 0) {
+        for (const category of uniqueCategories) {
+          const button = document.createElement('button');
+          button.textContent = category;
+          button.addEventListener('click', () => {
+            inputField.value = category;
+            hideDropdown(inputField);
+          });
+          dropdown.appendChild(button);
+        }
+        dropdown.style.display = 'block';
+      }
+    }
+
+    function hideDropdown(inputField) {
+      const dropdown = inputField.parentElement.querySelector('.category-dropdown');
+      dropdown.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
