@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pronunciation Test</title>
+    <style>
+        .result-icon {
+            font-size: 24px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+    <script>
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        var recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = "ja-JP"; // Set speech recognition language to Japanese
+        var isRecording = false;
+
+        function requestMicrophonePermission() {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(function(stream) {
+                    // Microphone permission granted
+                    startRecording();
+                })
+                .catch(function(error) {
+                    console.error('Failed to get microphone access:', error);
+                });
+        }
+
+        function startRecording() {
+            // Start recording logic goes here
+            console.log("Starting recording");
+        }
+
+        function startStopRecording(button) {
+            var buttonText = button.innerHTML;
+
+            if (buttonText === "◉") { // Recording icon
+                // Request microphone permission and start recording
+                //requestMicrophonePermission();
+                recognition.start();
+            } else if (buttonText === "■") { // Stop recording icon
+                // Stop recording logic goes here
+                console.log("Stop recording");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Pronunciation Test</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Text</th>
+                <th>Recording</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Word 1</td>
+                <td>
+                    <button onclick="startStopRecording(this)">◉</button>
+                </td>
+                <td id="result1"></td>
+            </tr>
+            <tr>
+                <td>Word 2</td>
+                <td>
+                    <button onclick="startStopRecording(this)">◉</button>
+                </td>
+                <td id="result2"></td>
+            </tr>
+            <!-- Add more rows for additional words -->
+        </tbody>
+    </table>
+</body>
+</html>

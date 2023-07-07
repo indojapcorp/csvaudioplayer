@@ -1410,11 +1410,23 @@ selectedColumns.forEach(function (column,i) {
 
 const tdplay = document.createElement("td");
 var input = document.createElement('button');
-//input.type = "button";
 input.innerText = "Play";
 input.id = "button" + rowno;
 input.setAttribute('onclick', 'speakRowData(this.parentNode.parentNode)');
 tdplay.appendChild(input);
+
+var recinput = document.createElement('button');
+recinput.textContent = "\u25C9"; 
+recinput.id = "recbutton" + rowno;
+recinput.setAttribute('onclick', 'startStopRecording(this,this.parentNode.parentNode)');
+tdplay.appendChild(recinput);
+
+var resultspan = document.createElement('label');
+resultspan.innerHTML = "";
+resultspan.id = "resultrecbutton" + rowno;
+tdplay.appendChild(resultspan);
+
+
 tr.appendChild(tdplay);
 table.appendChild(tr);
 });
@@ -1764,3 +1776,184 @@ function transCheck() {
 }
 
 //translation related end
+
+
+//recording test start
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+var recordingrecognition = new SpeechRecognition();
+recordingrecognition.continuous = false;
+recordingrecognition.interimResults = true;
+recordingrecognition.lang = "en-IN"; // Set speech recordingrecognition language to Japanese
+var recordingIsRecording = false;
+var recordingFinalTranscript = "";
+
+recordingrecognition.onresult = function(event) {
+    var interimTranscript = "";
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+        if (event.results[i].isFinal) {
+            recordingFinalTranscript += event.results[i][0].transcript;
+        } else {
+            interimTranscript += event.results[i][0].transcript;
+        }
+    }
+    // Optionally, you can use interimTranscript if you want to display partial results during speech recordingrecognition
+
+    // Display only the final transcript
+    console.log("Final Transcript:", recordingFinalTranscript);
+};
+
+recordingrecognition.onend = function() {
+    // Stop recording
+    var button = this.button;
+    //button.innerHTML = "◉"; // Recording icon
+    button.innerHTML = "\u25C9";
+    recordingIsRecording = false;
+    console.log("this.cellId="+this.cellId);
+    var resultCell = document.getElementById(this.cellId);
+    var recordedSpeech = recordingFinalTranscript.toLowerCase();
+    var expectedSpeech = this.expectedSpeech.toLowerCase();
+
+    getRowCellData(this.row);
+    var currentCell = speakcells[0];
+    expectedSpeech = currentCell.innerText;
+    //utterance.lang = speakcellslang[currentCellIndex];
+    console.log("this.expectedSpeech="+expectedSpeech);
+
+    var icon = document.createElement("span");
+    icon.classList.add("result-icon");
+
+    if (recordedSpeech === expectedSpeech) {
+        icon.innerHTML = "&#10004;"; // Checkmark icon
+        icon.classList.add("correct");
+    } else {
+        icon.innerHTML = "&#10006;"; // Crossmark icon
+        icon.classList.add("incorrect");
+    }
+
+    resultCell.innerHTML = "";
+    resultCell.appendChild(icon);
+};
+
+function startRecording(button,row) {
+  console.log("In buttonText=");
+  var cellId = "result"+button.getAttribute('id');
+  var expectedSpeech = button.parentElement.parentElement.firstElementChild.innerText; // Get text from first column of the corresponding row
+
+  // Start recording
+ // button.innerHTML = "■"; // Stop recording icon
+  button.innerHTML = "\u25A0"; // Stop recording icon
+  recordingrecognition.expectedSpeech = expectedSpeech;
+  recordingrecognition.cellId = cellId;
+  recordingrecognition.button = button;
+  recordingrecognition.row = row;
+  recordingFinalTranscript = ""; // Reset final transcript
+  recordingrecognition.start();
+  recordingIsRecording = true;
+}
+
+function startStopRecording(button,row) { //WithoutMicRequest
+     var cellId = "result"+button.getAttribute('id');
+     var expectedSpeech = button.parentElement.parentElement.firstElementChild.innerText; // Get text from first column of the corresponding row
+    var buttonText = button.innerHTML;
+    console.log("buttonText="+buttonText);
+
+    //if (buttonText === "◉") { // Recording icon
+    if (buttonText === "\u25C9") {
+
+      console.log("In buttonText=");
+      //requestMicrophonePermissionRecording(button,row);
+        // Start recording
+        button.innerHTML = "\u25A0"; // Stop recording icon
+        recordingrecognition.expectedSpeech = expectedSpeech;
+        recordingrecognition.cellId = cellId;
+        recordingrecognition.button = button;
+        recordingrecognition.row=row;
+        recordingFinalTranscript = ""; // Reset final transcript
+        recordingrecognition.start();
+        recordingIsRecording = true;
+    } //else if (buttonText === "■") { // Stop recording icon
+    else if (buttonText === "\u25A0") { // Stop recording icon
+        // Stop recording
+        //button.innerHTML = "◉"; // Recording icon
+        button.innerHTML = "\u25C9"; // Recording icon
+        recordingrecognition.stop();
+    }
+}
+
+function startStopRecordingWithMicRequest(button,row) { //WithMicRequest
+ var buttonText = button.innerHTML;
+ console.log("buttonText="+buttonText);
+
+ //if (buttonText === "◉") { // Recording icon
+ if (buttonText === "\u25C9") {
+
+   console.log("In start buttonText=");
+   requestMicrophonePermissionRecording(button,row);
+     // Start recording
+ } //else if (buttonText === "■") { // Stop recording icon
+ else if (buttonText === "\u25A0") { // Stop recording icon
+     // Stop recording
+     //button.innerHTML = "◉"; // Recording icon
+     console.log("In stop buttonText=");
+     button.innerHTML = "\u25C9"; // Recording icon
+     recordingrecognition.stop();
+ }
+}
+
+function getRowCellData(row) {
+  speakcells = [];
+  speakcellslang = [];
+  currentCellIndex = 0;  
+
+  var table = document.getElementById("myTable");
+  const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+  const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
+  var firstcheckboxrow = table.rows[1];
+  var speakcellsIndex = 0;
+      for (var j = 0; j < columnCheckboxes.length; j++) {
+        var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
+        var collang = columnLanguages[j].value;
+        if (columnCheckboxes[j].checked && colspkcheckBox.checked) {
+          speakcells[speakcellsIndex] = row.cells[j + 1];
+          speakcellslang[speakcellsIndex] = collang;
+          speakcellsIndex++;
+        }
+      }
+}
+
+function clearResults() {
+  var resultIcons = document.getElementsByClassName("result-icon");
+  for (var i = resultIcons.length - 1; i >= 0; i--) {
+      var resultIcon = resultIcons[i];
+      resultIcon.parentNode.removeChild(resultIcon);
+  }
+}
+
+function requestMicrophonePermissionRecording(button,row) {
+  navigator.permissions.query({ name: 'microphone' })
+      .then(function(permissionStatus) {
+          if (permissionStatus.state === 'granted') {
+            console.log("granted");
+              // Microphone permission already granted
+              startRecording(button,row);
+          } else if (permissionStatus.state === 'prompt') {
+            console.log("prompt");
+              // Microphone permission not yet granted, show permission prompt
+              navigator.mediaDevices.getUserMedia({ audio: true })
+                  .then(function(stream) {
+                      // Microphone permission granted
+                      permissionStatus.state = 'granted';
+                      console.log("state set to granted");
+                      startRecording(button,row);
+                  })
+                  .catch(function(error) {
+                      console.error('Failed to get microphone access:', error);
+                  });
+          }
+      })
+      .catch(function(error) {
+          console.error('Failed to query microphone permission:', error);
+      });
+}
+//recording test end

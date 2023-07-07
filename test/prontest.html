@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pronunciation Test</title>
+    <script>
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        var recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        var isRecording = false;
+
+        recognition.onend = function(event) {
+            console.log("end");
+        };
+
+        recognition.onresult = function(event) {
+            console.log("result");
+            if (!isRecording) return;
+
+            var recordedSpeech = event.results[0][0].transcript.toLowerCase();
+            var word = event.target.word.toLowerCase();
+            console.log("word="+word);
+
+            var icon = document.createElement("span");
+            icon.classList.add("result-icon");
+
+            if (recordedSpeech === word) {
+                icon.innerHTML = "&#10004;"; // Checkmark icon
+                icon.classList.add("correct");
+            } else {
+                icon.innerHTML = "&#10006;"; // Crossmark icon
+                icon.classList.add("incorrect");
+            }
+
+            var resultCell = document.getElementById(event.target.cellId);
+            resultCell.innerHTML = '';
+            resultCell.appendChild(icon);
+        }
+
+        function startRecording(cellId, word) {
+            isRecording = true;
+            recognition.word = word;
+            recognition.cellId = cellId;
+            recognition.start();
+        }
+
+        function stopRecording() {
+            isRecording = false;
+            recognition.stop();
+        }
+    </script>
+    <style>
+        .result-icon {
+            font-size: 24px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pronunciation Test</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Word</th>
+                <th>Test Start</th>
+                <th>Test End</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" id="word1" name="word1"></td>
+                <td><button onclick="startRecording('result1', document.getElementById('word1').value)">Test Start</button></td>
+                <td><button onclick="stopRecording()">Test End</button></td>
+                <td id="result1"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="word2" name="word2"></td>
+                <td><button onclick="startRecording('result2', document.getElementById('word2').value)">Test Start</button></td>
+                <td><button onclick="stopRecording()">Test End</button></td>
+                <td id="result2"></td>
+            </tr>
+            <!-- Add more rows for additional words -->
+        </tbody>
+    </table>
+
+    <script>
+        // You can add more rows with additional words to the table
+    </script>
+</body>
+</html>

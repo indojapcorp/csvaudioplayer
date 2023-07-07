@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pronunciation Test</title>
+    <style>
+        .result-icon {
+            font-size: 24px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+    <script>
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        var recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = true;
+        recognition.lang = "en-IN"; // Set speech recognition language to Japanese
+        var isRecording = false;
+        var finalTranscript = "";
+
+        recognition.onresult = function(event) {
+            var interimTranscript = "";
+            for (var i = event.resultIndex; i < event.results.length; ++i) {
+                if (event.results[i].isFinal) {
+                    finalTranscript += event.results[i][0].transcript;
+                } else {
+                    interimTranscript += event.results[i][0].transcript;
+                }
+            }
+            // Optionally, you can use interimTranscript if you want to display partial results during speech recognition
+
+            // Display only the final transcript
+            console.log("Final Transcript:", finalTranscript);
+        };
+
+        recognition.onend = function() {
+            // Stop recording
+            var button = this.button;
+            button.innerHTML = "◉"; // Recording icon
+            isRecording = false;
+
+            var resultCell = document.getElementById(this.cellId);
+            var recordedSpeech = finalTranscript.toLowerCase();
+            var expectedSpeech = this.expectedSpeech.toLowerCase();
+            var icon = document.createElement("span");
+            icon.classList.add("result-icon");
+
+            if (recordedSpeech === expectedSpeech) {
+                icon.innerHTML = "&#10004;"; // Checkmark icon
+                icon.classList.add("correct");
+            } else {
+                icon.innerHTML = "&#10006;"; // Crossmark icon
+                icon.classList.add("incorrect");
+            }
+
+            resultCell.innerHTML = "";
+            resultCell.appendChild(icon);
+        };
+
+        function startStopRecording(button) {
+            var cellId = button.getAttribute('data-cellId');
+            var expectedSpeech = button.parentElement.parentElement.firstElementChild.innerText; // Get text from first column of the corresponding row
+            var buttonText = button.innerHTML;
+
+            if (buttonText === "◉") { // Recording icon
+                // Start recording
+                button.innerHTML = "■"; // Stop recording icon
+                recognition.expectedSpeech = expectedSpeech;
+                recognition.cellId = cellId;
+                recognition.button = button;
+                finalTranscript = ""; // Reset final transcript
+                recognition.start();
+                isRecording = true;
+            } else if (buttonText === "■") { // Stop recording icon
+                // Stop recording
+                button.innerHTML = "◉"; // Recording icon
+                recognition.stop();
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Pronunciation Test</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Text</th>
+                <th>Recording</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hello</td>
+                <td>
+                    <button onclick="startStopRecording(this)"
+                            data-cellId="result1"
+                            data-speech="Word 1">◉</button>
+                </td>
+                <td id="result1"></td>
+            </tr>
+            <tr>
+                <td>India</td>
+                <td>
+                    <button onclick="startStopRecording(this)"
+                            data-cellId="result2"
+                            data-speech="Word 2">◉</button>
+                </td>
+                <td id="result2"></td>
+            </tr>
+            <tr>
+                <td>Japan</td>
+                <td>
+                    <button onclick="startStopRecording(this)"
+                            data-cellId="result3"
+                            data-speech="Word 3">◉</button>
+                </td>
+                <td id="result3"></td>
+            </tr>
+
+            <!-- Add more rows for additional words -->
+        </tbody>
+    </table>
+</body>
+</html>

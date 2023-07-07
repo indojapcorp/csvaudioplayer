@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pronunciation Test</title>
+    <style>
+        .result-icon {
+            font-size: 24px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+    <script>
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        var recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        var isRecording = false;
+
+        recognition.onresult = function(event) {
+            console.log("onresult=");
+
+            var recordedSpeech = event.results[0][0].transcript.toLowerCase();
+            var expectedSpeech = event.target.expectedSpeech.toLowerCase();
+            var icon = document.createElement("span");
+            icon.classList.add("result-icon");
+            console.log("recordedSpeech="+recordedSpeech);
+
+            if (recordedSpeech === expectedSpeech) {
+                icon.innerHTML = "&#10004;"; // Checkmark icon
+                icon.classList.add("correct");
+            } else {
+                icon.innerHTML = "&#10006;"; // Crossmark icon
+                icon.classList.add("incorrect");
+            }
+
+            var resultCell = document.getElementById(event.target.cellId);
+            resultCell.innerHTML = '';
+            resultCell.appendChild(icon);
+
+            // Change button icon back to recording
+            var button = event.target.button;
+            button.innerHTML = "◉"; // Recording icon
+            isRecording = false;
+        }
+
+        function startStopRecording(button) {
+            var cellId = button.getAttribute('data-cellId');
+            var expectedSpeech = button.parentElement.parentElement.firstElementChild.innerText; // Get text from first column of the corresponding row
+            var buttonText = button.innerHTML;
+
+            if (buttonText === "◉") { // Recording icon
+                console.log("expectedSpeech="+expectedSpeech);
+                if(isRecording)
+                    recognition.stop();
+                // Start recording
+                button.innerHTML = "■"; // Stop recording icon
+                recognition.expectedSpeech = expectedSpeech;
+                recognition.lang = "en-IN"; // Set speech recognition language to Japanese
+                recognition.button = button;
+                recognition.cellId = cellId;
+                recognition.start();
+                isRecording = true;
+            } else if (buttonText === "■") { // Stop recording icon
+                console.log("stop=");
+
+                // Stop recording
+                button.innerHTML = "◉"; // Recording icon
+                recognition.stop();
+                isRecording = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Pronunciation Test</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Text</th>
+                <th>Recording</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Hello</td>
+                <td>
+                    <button onclick="startStopRecording(this)"
+                            data-cellId="result1"
+                            data-speech="Word 1">◉</button>
+                </td>
+                <td id="result1"></td>
+            </tr>
+            <tr>
+                <td>India</td>
+                <td>
+                    <button onclick="startStopRecording(this)"
+                            data-cellId="result2"
+                            data-speech="Word 2">◉</button>
+                </td>
+                <td id="result2"></td>
+            </tr>
+            <!-- Add more rows for additional words -->
+        </tbody>
+    </table>
+</body>
+</html>
