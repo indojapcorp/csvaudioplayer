@@ -1814,12 +1814,6 @@ recordingrecognition.onend = function() {
     var recordedSpeech = recordingFinalTranscript.toLowerCase();
     var expectedSpeech = this.expectedSpeech.toLowerCase();
 
-    getRowCellData(this.row);
-    var currentCell = speakcells[0];
-    expectedSpeech = currentCell.innerText;
-    //utterance.lang = speakcellslang[currentCellIndex];
-    console.log("this.expectedSpeech="+expectedSpeech);
-
     var icon = document.createElement("span");
     icon.classList.add("result-icon");
 
@@ -1835,29 +1829,21 @@ recordingrecognition.onend = function() {
     resultCell.appendChild(icon);
 };
 
-function startRecording(button,row) {
-  console.log("In buttonText=");
-  var cellId = "result"+button.getAttribute('id');
-  var expectedSpeech = button.parentElement.parentElement.firstElementChild.innerText; // Get text from first column of the corresponding row
-
-  // Start recording
- // button.innerHTML = "■"; // Stop recording icon
-  button.innerHTML = "\u25A0"; // Stop recording icon
-  recordingrecognition.expectedSpeech = expectedSpeech;
-  recordingrecognition.cellId = cellId;
-  recordingrecognition.button = button;
-  recordingrecognition.row = row;
-  recordingFinalTranscript = ""; // Reset final transcript
-  recordingrecognition.start();
-  recordingIsRecording = true;
-}
-
 function startStopRecording(button,row) { //WithoutMicRequest
      var cellId = "result"+button.getAttribute('id');
      var expectedSpeech = button.parentElement.parentElement.firstElementChild.innerText; // Get text from first column of the corresponding row
     var buttonText = button.innerHTML;
     console.log("buttonText="+buttonText);
-
+    getRowCellData(row);
+    var currentCell = speakcells[0];
+    var speechLang = speakcellslang[0];
+    if(speechLang == 'en'){
+      recordingrecognition.lang = "en-IN"; 
+    }else{
+      recordingrecognition.lang = speechLang; 
+    }  
+    expectedSpeech = currentCell.innerText;
+    
     //if (buttonText === "◉") { // Recording icon
     if (buttonText === "\u25C9") {
 
@@ -1881,27 +1867,8 @@ function startStopRecording(button,row) { //WithoutMicRequest
     }
 }
 
-function startStopRecordingWithMicRequest(button,row) { //WithMicRequest
- var buttonText = button.innerHTML;
- console.log("buttonText="+buttonText);
-
- //if (buttonText === "◉") { // Recording icon
- if (buttonText === "\u25C9") {
-
-   console.log("In start buttonText=");
-   requestMicrophonePermissionRecording(button,row);
-     // Start recording
- } //else if (buttonText === "■") { // Stop recording icon
- else if (buttonText === "\u25A0") { // Stop recording icon
-     // Stop recording
-     //button.innerHTML = "◉"; // Recording icon
-     console.log("In stop buttonText=");
-     button.innerHTML = "\u25C9"; // Recording icon
-     recordingrecognition.stop();
- }
-}
-
 function getRowCellData(row) {
+  clearRowResults(row);
   speakcells = [];
   speakcellslang = [];
   currentCellIndex = 0;  
@@ -1930,30 +1897,12 @@ function clearResults() {
   }
 }
 
-function requestMicrophonePermissionRecording(button,row) {
-  navigator.permissions.query({ name: 'microphone' })
-      .then(function(permissionStatus) {
-          if (permissionStatus.state === 'granted') {
-            console.log("granted");
-              // Microphone permission already granted
-              startRecording(button,row);
-          } else if (permissionStatus.state === 'prompt') {
-            console.log("prompt");
-              // Microphone permission not yet granted, show permission prompt
-              navigator.mediaDevices.getUserMedia({ audio: true })
-                  .then(function(stream) {
-                      // Microphone permission granted
-                      permissionStatus.state = 'granted';
-                      console.log("state set to granted");
-                      startRecording(button,row);
-                  })
-                  .catch(function(error) {
-                      console.error('Failed to get microphone access:', error);
-                  });
-          }
-      })
-      .catch(function(error) {
-          console.error('Failed to query microphone permission:', error);
-      });
+function clearRowResults(row) {
+  var resultIcons = row.getElementsByClassName("result-icon");
+  for (var i = resultIcons.length - 1; i >= 0; i--) {
+      var resultIcon = resultIcons[i];
+      resultIcon.parentNode.removeChild(resultIcon);
+  }
 }
+
 //recording test end
