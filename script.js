@@ -1843,6 +1843,15 @@ recordingrecognition.onend = async function() {
 
     resultCell.innerHTML = "";
     resultCell.appendChild(icon);
+
+    if (recordedSpeech != expectedSpeech) {
+      var spokenText = document.createElement("div");
+      spokenText.classList.add("spoken-text");
+      spokenText.textContent = recordedSpeech;
+      resultCell.appendChild(spokenText);
+      console.log("adding spokenText");
+    }
+
 };
 
 function startStopRecording(button,row) { //WithoutMicRequest
@@ -1911,6 +1920,11 @@ function clearResults() {
       var resultIcon = resultIcons[i];
       resultIcon.parentNode.removeChild(resultIcon);
   }
+  var spokentextDivs = document.getElementsByClassName("spoken-text");
+  for (var i = spokentextDivs.length - 1; i >= 0; i--) {
+      var spokentextDiv = spokentextDivs[i];
+      spokentextDiv.parentNode.removeChild(spokentextDiv);
+  }
 }
 
 function clearRowResults(row) {
@@ -1918,6 +1932,11 @@ function clearRowResults(row) {
   for (var i = resultIcons.length - 1; i >= 0; i--) {
       var resultIcon = resultIcons[i];
       resultIcon.parentNode.removeChild(resultIcon);
+  }
+  var spokentextDivs = row.getElementsByClassName("spoken-text");
+  for (var i = spokentextDivs.length - 1; i >= 0; i--) {
+      var spokentextDiv = spokentextDivs[i];
+      spokentextDiv.parentNode.removeChild(spokentextDiv);
   }
 }
 

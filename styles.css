@@ -181,3 +181,7 @@ table {
 .incorrect {
     color: red;
 }
+.spoken-text {
+  margin-top: 5px;
+  font-size: 14px;
+}
