@@ -1800,19 +1800,35 @@ recordingrecognition.onresult = function(event) {
     // Optionally, you can use interimTranscript if you want to display partial results during speech recordingrecognition
 
     // Display only the final transcript
-    console.log("Final Transcript:", recordingFinalTranscript);
+    //console.log("Final Transcript:", recordingFinalTranscript);
 };
 
-recordingrecognition.onend = function() {
+recordingrecognition.onend = async function() {
     // Stop recording
     var button = this.button;
     //button.innerHTML = "◉"; // Recording icon
     button.innerHTML = "\u25C9";
     recordingIsRecording = false;
-    console.log("this.cellId="+this.cellId);
     var resultCell = document.getElementById(this.cellId);
     var recordedSpeech = recordingFinalTranscript.toLowerCase();
     var expectedSpeech = this.expectedSpeech.toLowerCase();
+
+    if (recordingrecognition.lang === 'ja' || recordingrecognition.lang === 'ja-JP') {
+      try {
+          var parts = await convertToHiragana(expectedSpeech + "#####" + recordedSpeech);
+
+          if (parts.length === 2 && parts[0] === parts[1]) {
+              expectedSpeech = parts[0];
+              recordedSpeech = parts[1];
+          }
+      } catch (error) {
+          console.log("Error:", error);
+      }
+  }
+
+  // console.log("expectedSpeech=" + expectedSpeech);
+  // console.log("recordedSpeech=" + recordedSpeech);
+
 
     var icon = document.createElement("span");
     icon.classList.add("result-icon");
@@ -1905,4 +1921,43 @@ function clearRowResults(row) {
   }
 }
 
+async function convertToHiragana(sentence) {
+  var appId = "b4cf281c36eab27083cff91633e536f6100388c124766f9949fb635fab6c7b3b";
+  var requestId = "record003";
+  console.log("sentence=" + sentence);
+
+  var requestData = {
+      "app_id": appId,
+      "request_id": requestId,
+      "sentence": sentence,
+      "output_type": "hiragana"
+  };
+
+  return new Promise(function (resolve, reject) {
+      $.ajax({
+          url: "https://labs.goo.ne.jp/api/hiragana",
+          type: "POST",
+          dataType: "json",
+          contentType: "application/json",
+          data: JSON.stringify(requestData),
+          success: function (response) {
+              //console.log("response.converted=" + response.converted);
+
+              var parts = response.converted.split("#####");
+              console.log("parts.length=" + parts.length);
+              if (parts.length === 2 && parts[0] === parts[1]) {
+                  //console.log("The string at index 0 is equal to the string at index 1.");
+                  resolve(parts);
+              } else {
+                  //console.log("The string does not meet the conditions.");
+                  reject("The string does not meet the conditions.");
+              }
+          },
+          error: function (error) {
+              console.log("Error:", error);
+              reject(error);
+          }
+      });
+  });
+}
 //recording test end

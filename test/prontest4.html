@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>Pronunciation Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/kuroshiro.min.js"></script>
+    <script src="../js/kuroshiro-analyzer-kuromoji.min.js"></script>
+    <script src="https://unpkg.com/wanakana@5.1.0/wanakana.min.js"></script>
     <style>
         .result-icon {
             font-size: 24px;
@@ -19,12 +23,81 @@
         }
     </style>
     <script>
+
+async function convertToHiragana(sentence) {
+  var appId = "b4cf281c36eab27083cff91633e536f6100388c124766f9949fb635fab6c7b3b";
+  var requestId = "record003";
+  //var sentence = document.getElementById("sentence").value;
+  console.log("sentence="+sentence);
+
+  var requestData = {
+    "app_id": appId,
+    "request_id": requestId,
+    "sentence": sentence,
+    "output_type": "hiragana"
+  };
+
+  $.ajax({
+    url: "https://labs.goo.ne.jp/api/hiragana",
+    type: "POST",
+    dataType: "json",
+    contentType: "application/json",
+    data: JSON.stringify(requestData),
+    success: function(response) {
+
+        console.log("response.converted="+response.converted);
+
+        var parts = response.converted.split("#####");
+        console.log("parts.length="+parts.length);
+        if (parts.length === 2 && parts[0] === parts[1]) {
+        console.log("The string at index 0 is equal to the string at index 1.");
+        return parts;
+        } else {
+        console.log("The string does not meet the conditions.");
+        }
+    },
+    error: function(error) {
+      console.log("Error:", error);
+    }
+  });
+  return ;
+}
+
+async function customConvert(sentence) {
+      try {
+        var parts = await convertToHiragana(sentence);
+        return parts;
+        console.log("parts.length =", parts.length);
+        // Perform further operations with 'parts' here
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    }
+
+        function toHiragana(text){
+//            console.log("wanakana="+wanakana.toRomaji(text));
+
+            var kuroshiro = new Kuroshiro();//https://github.com/indojapcorp/tts/tree/main/js/dict
+            //kuroshiro.convert("text", {mode:"okurigana", to:"hiragana"});
+            console.log("text="+text);
+                    //kuroshiro.init(new KuromojiAnalyzer({ dictPath: "https://indojapcorp.github.io/tts/js/dict/" }))
+                    kuroshiro.init(new KuromojiAnalyzer({ dictPath: "dict/" }))
+                        .then(function () {
+                            return kuroshiro.convert(text, { mode: "furigana", to: "romaji" });
+                            //return kuroshiro.convert(text, { mode: "spaced", to: "romaji" });
+                            return kuroshiro.convert(text, { mode: "okurigana", to: "hiragana" });
+                        })
+                        .then(function (result) {
+                            console.log("result="+result);
+                        });
+
+        }
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
         var recordingrecognition = new SpeechRecognition();
         recordingrecognition.continuous = false;
         recordingrecognition.interimResults = true;
-        recordingrecognition.lang = "en-IN"; // Set speech recordingrecognition language to Japanese
+        //recordingrecognition.lang = "en-IN"; // Set speech recordingrecognition language to Japanese
         var recordingIsRecording = false;
         var recordingFinalTranscript = "";
 
@@ -38,12 +111,12 @@
                 }
             }
             // Optionally, you can use interimTranscript if you want to display partial results during speech recordingrecognition
-
+            //toHiragana(recordingFinalTranscript);
             // Display only the final transcript
             console.log("Final Transcript:", recordingFinalTranscript);
         };
 
-        recordingrecognition.onend = function() {
+        recordingrecognition.onend = async function() {
             // Stop recording
             var button = this.button;
             button.innerHTML = "◉"; // Recording icon
@@ -51,6 +124,18 @@
             var resultCell = document.getElementById(this.cellId);
             var recordedSpeech = recordingFinalTranscript.toLowerCase();
             var expectedSpeech = this.expectedSpeech.toLowerCase();
+
+            if(recordingrecognition.lang == 'ja-JP'){
+                var parts = customConvert(expectedSpeech+"#####"+recordingFinalTranscript);
+                if (parts.length === 2 && parts[0] === parts[1]) {
+                    expectedSpeech=parts[0];
+                    recordedSpeech=parts[1];
+                }
+            }
+
+            console.log("expectedSpeech="+expectedSpeech);
+            console.log("recordedSpeech="+recordedSpeech);
+
             var icon = document.createElement("span");
             icon.classList.add("result-icon");
 
@@ -66,17 +151,19 @@
             resultCell.appendChild(icon);
         };
 
-        function startStopRecording(button) {
+        function startStopRecording(button,lang='en-IN') {
             var cellId = "result"+button.getAttribute('id');
             var expectedSpeech = button.parentElement.parentElement.firstElementChild.innerText; // Get text from first column of the corresponding row
             var buttonText = button.innerHTML;
 
             if (buttonText === "◉") { // Recording icon
+                console.log("lang="+lang);
                 // Start recording
                 button.innerHTML = "■"; // Stop recording icon
                 recordingrecognition.expectedSpeech = expectedSpeech;
                 recordingrecognition.cellId = cellId;
                 recordingrecognition.button = button;
+                recordingrecognition.lang = lang;
                 recordingFinalTranscript = ""; // Reset final transcript
                 recordingrecognition.start();
                 recordingIsRecording = true;
@@ -102,9 +189,9 @@
         </thead>
         <tbody>
             <tr>
-                <td>Hello</td>
+                <td>とうきょう</td>
                 <td>
-                    <button onclick="startStopRecording(this)"
+                    <button onclick="startStopRecording(this,'ja-JP')"
                             id="b1"
                             >◉</button>
                 </td>

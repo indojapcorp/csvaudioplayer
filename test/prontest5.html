@@ -2,7 +2,11 @@
 <html>
 <head>
     <title>Pronunciation Test</title>
-    <style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/kuroshiro.min.js"></script>
+    <script src="../js/kuroshiro-analyzer-kuromoji.min.js"></script>
+
+<style>
         .result-icon {
             font-size: 24px;
             display: inline-block;
@@ -48,7 +52,7 @@
 
             if (buttonText === "◉") { // Recording icon
                 // Request microphone permission and start recording
-                //requestMicrophonePermission();
+                requestMicrophonePermission();
                 recognition.start();
             } else if (buttonText === "■") { // Stop recording icon
                 // Stop recording logic goes here

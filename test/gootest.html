@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Japanese Hiragana Conversion</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function convertToHiragana() {
+      var appId = "b4cf281c36eab27083cff91633e536f6100388c124766f9949fb635fab6c7b3b";
+      var requestId = "record003";
+      var sentence = document.getElementById("sentence").value;
+
+      var requestData = {
+        "app_id": appId,
+        "request_id": requestId,
+        "sentence": sentence,
+        "output_type": "hiragana"
+      };
+
+      $.ajax({
+        url: "https://labs.goo.ne.jp/api/hiragana",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(requestData),
+        success: function(response) {
+          // Clear previous results
+          $("#result-table").empty();
+
+          // Display response attributes in a table
+          var table = "<table><tr><th>Request ID</th><th>Output Type</th><th>Converted</th></tr>";
+          table += "<tr><td>" + response.request_id + "</td><td>" + response.output_type + "</td><td>" + response.converted + "</td></tr>";
+          table += "</table>";
+          $("#result-table").html(table);
+        },
+        error: function(error) {
+          console.log("Error:", error);
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Japanese Hiragana Conversion</h1>
+  <form>
+    <label for="sentence">Enter Japanese Text:</label>
+    <input type="text" id="sentence" name="sentence">
+    <button type="button" onclick="convertToHiragana()">Convert</button>
+  </form>
+  <div id="result-table"></div>
+</body>
+</html>

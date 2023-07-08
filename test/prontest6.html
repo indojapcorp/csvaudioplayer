@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pronunciation Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/kuroshiro.min.js"></script>
+    <script src="../js/kuroshiro-analyzer-kuromoji.min.js"></script>
+    <script src="https://unpkg.com/wanakana@5.1.0/wanakana.min.js"></script>
+    <style>
+        .result-icon {
+            font-size: 24px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+    <script>
+
+        async function convertToHiragana(sentence) {
+            var appId = "b4cf281c36eab27083cff91633e536f6100388c124766f9949fb635fab6c7b3b";
+            var requestId = "record003";
+            console.log("sentence=" + sentence);
+
+            var requestData = {
+                "app_id": appId,
+                "request_id": requestId,
+                "sentence": sentence,
+                "output_type": "hiragana"
+            };
+
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                    url: "https://labs.goo.ne.jp/api/hiragana",
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(requestData),
+                    success: function (response) {
+                        console.log("response.converted=" + response.converted);
+
+                        var parts = response.converted.split("#####");
+                        console.log("parts.length=" + parts.length);
+                        if (parts.length === 2 && parts[0] === parts[1]) {
+                            console.log("The string at index 0 is equal to the string at index 1.");
+                            resolve(parts);
+                        } else {
+                            console.log("The string does not meet the conditions.");
+                            reject("The string does not meet the conditions.");
+                        }
+                    },
+                    error: function (error) {
+                        console.log("Error:", error);
+                        reject(error);
+                    }
+                });
+            });
+        }
+
+        async function customConvert(expectedSpeech, recordedSpeech) {
+            try {
+                var parts = await convertToHiragana(expectedSpeech + "#####" + recordedSpeech);
+                console.log("parts.length =", parts.length);
+                return parts;
+            } catch (error) {
+                console.log("Error:", error);
+                throw error;
+            }
+        }
+
+        function toHiragana(text) {
+            var kuroshiro = new Kuroshiro();
+            kuroshiro.init(new KuromojiAnalyzer({ dictPath: "dict/" }))
+                .then(function () {
+                    return kuroshiro.convert(text, { mode: "furigana", to: "romaji" });
+                    //return kuroshiro.convert(text, { mode: "spaced", to: "romaji" });
+                    return kuroshiro.convert(text, { mode: "okurigana", to: "hiragana" });
+                })
+                .then(function (result) {
+                    console.log("result=" + result);
+                });
+        }
+
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        var recordingrecognition = new SpeechRecognition();
+        recordingrecognition.continuous = false;
+        recordingrecognition.interimResults = true;
+        var recordingIsRecording = false;
+        var recordingFinalTranscript = "";
+
+        recordingrecognition.onresult = function (event) {
+            var interimTranscript = "";
+            for (var i = event.resultIndex; i < event.results.length; ++i) {
+                if (event.results[i].isFinal) {
+                    recordingFinalTranscript += event.results[i][0].transcript;
+                } else {
+                    interimTranscript += event.results[i][0].transcript;
+                }
+            }
+            console.log("Final Transcript:", recordingFinalTranscript);
+        };
+
+        recordingrecognition.onend = async function () {
+            var button = this.button;
+            button.innerHTML = "◉";
+            recordingIsRecording = false;
+            var resultCell = document.getElementById(this.cellId);
+            var recordedSpeech = recordingFinalTranscript.toLowerCase();
+            var expectedSpeech = this.expectedSpeech.toLowerCase();
+
+            if (recordingrecognition.lang === 'ja-JP') {
+                try {
+                    var parts = await convertToHiragana(expectedSpeech + "#####" + recordedSpeech);
+
+                    if (parts.length === 2 && parts[0] === parts[1]) {
+                        expectedSpeech = parts[0];
+                        recordedSpeech = parts[1];
+                    }
+                } catch (error) {
+                    console.log("Error:", error);
+                }
+            }
+
+            console.log("expectedSpeech=" + expectedSpeech);
+            console.log("recordedSpeech=" + recordedSpeech);
+
+            var icon = document.createElement("span");
+            icon.classList.add("result-icon");
+
+            if (recordedSpeech === expectedSpeech) {
+                icon.innerHTML = "&#10004;";
+                icon.classList.add("correct");
+            } else {
+                icon.innerHTML = "&#10006;";
+                icon.classList.add("incorrect");
+            }
+
+            resultCell.innerHTML = "";
+            resultCell.appendChild(icon);
+        };
+
+        function startStopRecording(button, lang = 'en-IN') {
+            var cellId = "result" + button.getAttribute('id');
+            var expectedSpeech = button.parentElement.parentElement.firstElementChild.innerText;
+            var buttonText = button.innerHTML;
+
+            if (buttonText === "◉") {
+                console.log("lang=" + lang);
+                button.innerHTML = "■";
+                recordingrecognition.expectedSpeech = expectedSpeech;
+                recordingrecognition.cellId = cellId;
+                recordingrecognition.button = button;
+                recordingrecognition.lang = lang;
+                recordingFinalTranscript = "";
+                recordingrecognition.start();
+                recordingIsRecording = true;
+            } else if (buttonText === "■") {
+                button.innerHTML = "◉";
+                recordingrecognition.stop();
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Pronunciation Test</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Text</th>
+                <th>Recording</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>とうきょう</td>
+                <td>
+                    <button onclick="startStopRecording(this, 'ja-JP')" id="b1">◉</button>
+                </td>
+                <td id="resultb1"></td>
+            </tr>
+            <tr>
+                <td>India</td>
+                <td>
+                    <button onclick="startStopRecording(this)" id="b2">◉</button>
+                </td>
+                <td id="resultb2"></td>
+            </tr>
+           <tr>
+  <td>Japan</td>
+  <td>
+    <button onclick="startStopRecording(this)" id="b3">◉</button>
+  </td>
+  <td id="resultb3"></td>
+</tr>
+<!-- Add more rows for additional words -->
+</tbody>
+</table>
+</body>
+</html>
