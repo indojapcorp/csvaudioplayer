@@ -3,9 +3,27 @@ let recognition;
 //let csvData = null;
 let tableHeaders = [];
 //event listener for studyList selection start
+const fetchURL = window.location.origin.includes('localhost')
+    ? '/data/'
+    : '/csvaudioplayer/data/';
 
 const studyListsElement = document.getElementById("studyLists");
 studyListsElement.setAttribute('onchange', 'studyListsChanged()');
+// Create a map of filepath and displayvalue
+const fileMap = new Map();
+fileMap.set(fetchURL+'50langvocab_all.csv', '50langvocab_all');
+fileMap.set(fetchURL+'50langvocab_german_french.csv', '50langvocab_german_french');
+fileMap.set(fetchURL+'50langvocab_japanese.csv', '50langvocab_japanese');
+fileMap.set(fetchURL+'GRE_1300.csv', 'GRE_1300');
+
+// Fill the options of selectElement using forEach
+fileMap.forEach((displayValue, filePath) => {
+  const option = document.createElement('option');
+  option.text = displayValue;
+  option.value = filePath;
+  studyListsElement.appendChild(option);
+});
+
 
 function studyListsChanged() {
   const studyListsElement = document.getElementById("studyLists");
@@ -1776,7 +1794,6 @@ recordingrecognition.onend = async function () {
     spokenText.classList.add("spoken-text");
     spokenText.textContent = recordedSpeech;
     resultCell.appendChild(spokenText);
-    console.log("adding spokenText");
   }
 
 };
@@ -1785,7 +1802,6 @@ function startStopRecording(button, row) { //WithoutMicRequest
   var cellId = "result" + button.getAttribute('id');
   var expectedSpeech = button.parentElement.parentElement.firstElementChild.innerText; // Get text from first column of the corresponding row
   var buttonText = button.innerHTML;
-  console.log("buttonText=" + buttonText);
   getRowCellData(row);
   var currentCell = speakcells[0];
   var speechLang = speakcellslang[0];
@@ -1798,8 +1814,6 @@ function startStopRecording(button, row) { //WithoutMicRequest
 
   //if (buttonText === "◉") { // Recording icon
   if (buttonText === "\u25C9") {
-
-    console.log("In buttonText=");
     //requestMicrophonePermissionRecording(button,row);
     // Start recording
     button.innerHTML = "\u25A0"; // Stop recording icon
