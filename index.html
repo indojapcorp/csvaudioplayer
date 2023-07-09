@@ -32,62 +32,71 @@
                 document.removeEventListener('mouseup', stopResize);
             }
 
-            const selectElement = document.getElementById('studyLists');
+        //     const selectElement = document.getElementById('studyLists');
 
-            // Fetch the file names from the "/data/" folder
-            fetch('/csvaudioplayer/data/')
-                .then(response => response.text())
-                .then(data => {
-                    // Create a new DOMParser
-                    const parser = new DOMParser();
+        //     // Fetch the file names from the "/data/" folder
+        //     fetch('/csvaudioplayer/data/')
+        //         .then(response => response.text())
+        //         .then(data => {
+        //             // Create a new DOMParser
+        //             const parser = new DOMParser();
 
-                    // Parse the HTML response
-                    const doc = parser.parseFromString(data, 'text/html');
+        //             // Parse the HTML response
+        //             const doc = parser.parseFromString(data, 'text/html');
 
-                    // Get the anchor elements representing the file names
-                    //const anchorElements = doc.querySelectorAll('a');
-                    const anchorElements = doc.querySelectorAll('a[href$=".csv"]');
+        //             // Get the anchor elements representing the file names
+        //             //const anchorElements = doc.querySelectorAll('a');
+        //             const anchorElements = doc.querySelectorAll('a[href$=".csv"]');
 
-                    // Extract the file names from the anchor elements
-                    // const fileNames = Array.from(anchorElements).map(anchor => anchor.textContent);
-                    // const filePaths = Array.from(anchorElements).map(anchor => anchor.href);
+        //             // Extract the file names from the anchor elements
+        //             // const fileNames = Array.from(anchorElements).map(anchor => anchor.textContent);
+        //             // const filePaths = Array.from(anchorElements).map(anchor => anchor.href);
 
-                    const optionSel = document.createElement('option');
-                    optionSel.text = "Select File";
+        //             const optionSel = document.createElement('option');
+        //             optionSel.text = "Select File";
 
-                        // Set the option value as the relative path of the file
-                        optionSel.value = '';
+        //             // Set the option value as the relative path of the file
+        //             optionSel.value = '';
 
-                        selectElement.appendChild(optionSel);
-
-
-                    anchorElements.forEach(anchor => {
-
-                        const fileName = anchor.getAttribute('href');
-
-                        if (fileName.endsWith('.csv')) {
-
-                        const option = document.createElement('option');
-                        option.text = anchor.textContent;
-
-                        // Set the option value as the relative path of the file
-                        option.value = '/data/' + fileName;
-
-                        selectElement.appendChild(option);
-                        }
-                    });
+        //             selectElement.appendChild(optionSel);
 
 
-                })
-                .catch(error => {
-                    console.error('Error fetching file names:', error);
-                });
+        //             anchorElements.forEach(anchor => {
 
-        });
+        //                 const fileName = anchor.getAttribute('href');
+
+        //                 if (fileName.endsWith('.csv')) {
+
+        //                     const option = document.createElement('option');
+        //                     option.text = anchor.textContent;
+
+        //                     // Set the option value as the relative path of the file
+        //                     option.value = '/data/' + fileName;
+
+        //                     selectElement.appendChild(option);
+        //                 }
+        //             });
+
+
+        //         })
+        //         .catch(error => {
+        //             console.error('Error fetching file names:', error);
+        //         });
+
+        // });
     </script>
 
     <div>
+        <select id="studyLists">
+            <option value="">Select File</option>
+            <option value="/csvaudioplayer/data/50langvocab_all.csv">50langvocab_all.csv</option>
+            <option value="/csvaudioplayer/data/50langvocab_german_french.csv">50langvocab_german_french.csv</option>
+            <option value="/csvaudioplayer/data/50langvocab_japanese.csv">50langvocab_japanese.csv</option>
+            <option value="/csvaudioplayer/data/GRE_1300.csv">GRE_1300.csv</option>
+        </select>
+        <!--
         <select id="studyLists"></select>
+        -->
         <input type="file" id="csvFileInput" accept=".csv">
         <div class="table">
             <div class="column">Total Items:<span id="recordCount">0</span></div>
