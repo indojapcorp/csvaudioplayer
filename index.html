@@ -34,7 +34,7 @@
 
             const selectElement = document.getElementById('studyLists');
 
-            // Fetch the file names from the "/data/studylists/" folder
+            // Fetch the file names from the "/data/" folder
             fetch('/data/')
                 .then(response => response.text())
                 .then(data => {
