@@ -1,0 +1,2262 @@
+id,categoryname,en,ja,jaji
+1,Feelings,affection,愛情,aijō
+2,Feelings,anger,怒り,ikari
+3,Feelings,boredom,退屈,taikutsu
+4,Feelings,confidence,自信,jishin
+5,Feelings,creativity,創造性,sōzō-sei
+6,Feelings,crisis,危機,kiki
+7,Feelings,curiosity,好奇心,kōkishin
+8,Feelings,defeat,敗北,haiboku
+9,Feelings,depression,意気消沈,iki shōchin
+10,Feelings,despair,絶望,zetsubō
+11,Feelings,disappointment,失望,shitsubō
+12,Feelings,distrust,不信,fushin
+13,Feelings,doubt,猜疑心,saigi kokoro
+14,Feelings,dream,夢,yume
+15,Feelings,fatigue,疲労,hirō
+16,Feelings,fear,恐怖,kyōfu
+17,Feelings,fight,戦い,tatakai
+18,Feelings,friendship,友情,yūjō
+19,Feelings,fun,楽しみ,tanoshimi
+20,Feelings,grief,悲しみ,kanashimi
+21,Feelings,grimace,しかめっ面,shikamettsura
+22,Feelings,happiness,幸福,kōfuku
+23,Feelings,hope,希望,kibō
+24,Feelings,hunger,飢餓,kiga
+25,Feelings,interest,関心,kanshin
+26,Feelings,joy,喜び,yorokobi
+27,Feelings,kiss,キス,kisu
+28,Feelings,loneliness,孤独,kodoku
+29,Feelings,love,愛,ai
+30,Feelings,melancholy,憂鬱,yūutsu
+31,Feelings,mood,気分,kibun
+32,Feelings,optimism,楽観,rakkan
+33,Feelings,panic,パニック,panikku
+34,Feelings,perplexity,当惑,tōwaku
+35,Feelings,rage,激怒,gekido
+36,Feelings,rejection,拒絶,kyozetsu
+37,Feelings,relationship,関係,kankei
+38,Feelings,request,リクエスト,rikuesuto
+39,Feelings,scream,悲鳴,himei
+40,Feelings,security,安心,anshin
+41,Feelings,shock,ショック,shokku
+42,Feelings,smile,笑顔,egao
+43,Feelings,tenderness,優しさ,yasashi-sa
+44,Feelings,thought,思考,shikō
+45,Feelings,thoughtfulness,心遣い,kokorodzukai
+46,Animals,German shepherd,ジャーマンシェパード,jāmanshepādo
+47,Animals,animal,動物,dōbutsu
+48,Animals,beak,くちばし,kuchibashi
+49,Animals,beaver,ビーバー,bībā
+50,Animals,bite,噛みつき,kamitsuki
+51,Animals,boar,イノシシ,inoshishi
+52,Animals,cage,檻,ori
+53,Animals,calf,子牛,koushi
+54,Animals,cat,猫,neko
+55,Animals,chick,ひよこ,hiyoko
+56,Animals,chicken,鶏,niwatori
+57,Animals,deer,鹿,shika
+58,Animals,dog,犬,inu
+59,Animals,dolphin,イルカ,iruka
+60,Animals,duck,カモ,kamo
+61,Animals,eagle,ワシ,washi
+62,Animals,feather,羽,hane
+63,Animals,flamingo,フラミンゴ,furamingo
+64,Animals,foal,子馬,kouma
+65,Animals,food,食べ物,tabemono
+66,Animals,fox,キツネ,kitsune
+67,Animals,goat,ヤギ,yagi
+68,Animals,goose,ガチョウ,gachō
+69,Animals,hare,野ウサギ,nousagi
+70,Animals,hen,めんどり,mendori
+71,Animals,heron,鷺,sagi
+72,Animals,horn,角,tsuno
+73,Animals,horseshoe,馬蹄,batei
+74,Animals,lamb,子羊,kohitsuji
+75,Animals,leash,リーシュ,rīshu
+76,Animals,lobster,ロブスター,robusutā
+77,Animals,love of animals,動物の愛,dōbutsu no ai
+78,Animals,monkey,猿,saru
+79,Animals,muzzle,口輪,kuchiwa
+80,Animals,nest,巣,su
+81,Animals,owl,フクロウ,fukurō
+82,Animals,parrot,オウム,ōmu
+83,Animals,peacock,クジャク,kujaku
+84,Animals,pelican,ペリカン,perikan
+85,Animals,penguin,ペンギン,pengin
+86,Animals,pet,ペット,petto
+87,Animals,pigeon,ハト,hato
+88,Animals,rabbit,ウサギ,usagi
+89,Animals,rooster,おんどり,ondori
+90,Animals,sea lion,アシカ,ashika
+91,Animals,seagull,鴎,kamome
+92,Animals,seal,アザラシ,azarashi
+93,Animals,sheep,羊,hitsuji
+94,Animals,snake,ヘビ,hebi
+95,Animals,stork,コウノトリ,kōnotori
+96,Animals,swan,白鳥,Shiratori
+97,Animals,trout,鱒,masu
+98,Animals,turkey,七面鳥,shichimenchō
+99,Animals,turtle,カメ,kame
+100,Animals,vulture,ハゲワシ,hagewashi
+101,Animals,wolf,オオカミ,ōkami
+102,Sports,acrobatics,アクロバット,akurobatto
+103,Sports,aerobics,エアロビクス,earobikusu
+104,Sports,athletics,陸上競技,rikujō kyōgi
+105,Sports,badminton,バドミントン,badominton
+106,Sports,balance,バランス,baransu
+107,Sports,ball,ボール,bōru
+108,Sports,baseball,野球,yakyū
+109,Sports,basketball,バスケットボール,basukettobōru
+110,Sports,billiard ball,ビリヤードボール,biriyādobōru
+111,Sports,billiards,ビリヤード,biriyādo
+112,Sports,boxing,ボクシング,bokushingu
+113,Sports,boxing glove,ボクシング​​グローブ,bokushingu gurōbu
+114,Sports,callisthenics,体操,taisō
+115,Sports,canoe,カヌー,kanū
+116,Sports,car race,カーレース,kārēsu
+117,Sports,catamaran,カタマラン,katamaran
+118,Sports,climbing,クライミング,kuraimingu
+119,Sports,cricket,クリケット,kuriketto
+120,Sports,cross-country skiing,クロスカントリー,kurosukantorī
+121,Sports,cup,カップ,kappu
+122,Sports,defense,防御,bōgyo
+123,Sports,dumbbell,ダンベル,danberu
+124,Sports,equestrian,馬術,bajutsu
+125,Sports,exercise,エクササイズ,ekusasaizu
+126,Sports,exercise ball,エクササイズボール,ekusasaizubōru
+127,Sports,exercise machine,運動器具,undō kigu
+128,Sports,fencing,フェンシング,fenshingu
+129,Sports,fin,足ひれ,ashi hire
+130,Sports,fishing,釣り,tsuri
+131,Sports,fitness,フィットネス,fittonesu
+132,Sports,football club,サッカークラブ,sakkākurabu
+133,Sports,frisbee,フリスビー,furisubī
+134,Sports,glider,グライダー,guraidā
+135,Sports,goal,ゴール,gōru
+136,Sports,goalkeeper,ゴールキーパー,gōrukīpā
+137,Sports,golf club,ゴルフクラブ,Gorufukurabu
+138,Sports,gymnastics,体操競技,taisō kyōgi
+139,Sports,handstand,逆立ち,sakadachi
+140,Sports,hang-glider,ハンググライダー,hanguguraidā
+141,Sports,high jump,高跳び,takatobi
+142,Sports,horse race,競馬,keiba
+143,Sports,hot air balloon,熱気球,nekkikyū
+144,Sports,hunt,狩り,kari
+145,Sports,ice hockey,アイスホッケー,aisuhokkē
+146,Sports,ice skate,アイススケート,aisusukēto
+147,Sports,javelin throw,やり投げ,yarinage
+148,Sports,jogging,ジョギング,jogingu
+149,Sports,jump,ジャンプ,janpu
+150,Sports,kayak,カヤック,kayakku
+151,Sports,kick,キック,kikku
+152,Sports,life jacket,ライフジャケット,raifu jaketto
+153,Sports,marathon,マラソン,marason
+154,Sports,martial arts,武術,bujutsu
+155,Sports,mini golf,ミニゴルフ,mini gorufu
+156,Sports,momentum,運動量,undōryō
+157,Sports,parachute,パラシュート,parashūto
+158,Sports,paragliding,パラグライダー,paraguraidā
+159,Sports,runner,ランナー,ran'nā
+160,Sports,sail,帆,ho
+161,Sports,sailboat,ヨット,yotto
+162,Sports,sailing ship,帆船,hansen
+163,Sports,shape,体調,taichō
+164,Sports,ski course,スキーコース,sukīkōsu
+165,Sports,skipping rope,縄跳び,nawatobi
+166,Sports,snowboard,スノーボード,sunōbōdo
+167,Sports,snowboarder,スノーボーダー,sunōbōdā
+168,Sports,sports,スポーツ,supōtsu
+169,Sports,squash player,スカッシュプレーヤー,sukasshupurēyā
+170,Sports,strength training,筋力トレーニング,kinryoku torēningu
+171,Sports,stretching,ストレッチ,sutoretchi
+172,Sports,surfboard,サーフボード,sāfubōdo
+173,Sports,surfer,サーファー,sāfā
+174,Sports,surfing,サーフィン,sāfin
+175,Sports,table tennis,卓球,takkyū
+176,Sports,table tennis ball,ピンポンボール,pinponbōru
+177,Sports,target,的,-teki
+178,Sports,team,チーム,chīmu
+179,Sports,tennis,テニス,tenisu
+180,Sports,tennis ball,テニスボール,tenisubōru
+181,Sports,tennis player,テニス選手,tenisu senshu
+182,Sports,tennis racket,テニスラケット,tenisuraketto
+183,Sports,treadmill,トレッドミル,toreddomiru
+184,Sports,volleyball player,バレーボール選手,barēbōru senshu
+185,Sports,water ski,水上スキー,minakami sukī
+186,Sports,whistle,笛,fue
+187,Sports,wind surfer,ウインドサーファー,uindosāfā
+188,Sports,wrestling,レスリング,resuringu
+189,Sports,yoga,ヨガ,yoga
+190,Music,accordion,アコーディオン,akōdion
+191,Music,balalaika,バラライカ,bararaika
+192,Music,band,バンド,bando
+193,Music,banjo,バンジョー,banjō
+194,Music,clarinet,クラリネット,kurarinetto
+195,Music,concert,コンサート,konsāto
+196,Music,drum,太鼓,taiko
+197,Music,drums,ドラム,doramu
+198,Music,flute,フルート,furūto
+199,Music,grand piano,グランドピアノ,gurando piano
+200,Music,guitar,ギター,gitā
+201,Music,hall,ホール,hōru
+202,Music,keyboard,キーボード,kībōdo
+203,Music,mouth organ,ハーモニカ,hāmonika
+204,Music,music,音楽,ongaku
+205,Music,music stand,譜面台,fumen-dai
+206,Music,note,音符,onpu
+207,Music,organ,オルガン,orugan
+208,Music,piano,ピアノ,piano
+209,Music,saxophone,サクソフォン,sakusofon
+210,Music,singer,歌手,kashu
+211,Music,string,弦楽器,gengakki
+212,Music,trumpet,トランペット,toranpetto
+213,Music,trumpeter,トランペット奏者,toranpetto sōsha
+214,Music,violin,バイオリン,baiorin
+215,Music,violin case,バイオリンケース,baiorinkēsu
+216,Music,xylophone,木琴,mokkin
+217,Office,ball pen,ボールペン,bōrupen
+218,Office,break,休憩,kyūkei
+219,Office,briefcase,ブリーフケース,burīfukēsu
+220,Office,coloring pencil,色鉛筆,iroenpitsu
+221,Office,conference,会議,kaigi
+222,Office,conference room,会議室,kaigijitsu
+223,Office,copy,コピー,kopī
+224,Office,directory,ディレクトリ,direkutori
+225,Office,file,ファイル,fairu
+226,Office,filing cabinet,ファイルキャビネット,fairukyabinetto
+227,Office,fountain pen,万年筆,man'nenhitsu
+228,Office,letter tray,レタートレイ,retātorei
+229,Office,marker,マーカー,mākā
+230,Office,notebook,ノート,nōto
+231,Office,notepad,メモ帳,memochō
+232,Office,office,事務所,jimusho
+233,Office,office chair,事務用椅子,jimu-yō isu
+234,Office,overtime,残業,zangyō
+235,Office,paper clip,ペーパークリップ,pēpākurippu
+236,Office,pencil,鉛筆,enpitsu
+237,Office,punch,パンチ,panchi
+238,Office,safe,金庫,kinko
+239,Office,sharpener,鉛筆削り,enpitsukezuri
+240,Office,shredded paper,シュレッダー紙,shureddā-shi
+241,Office,shredder,シュレッダー,shureddā
+242,Office,spiral binding,らせん綴じ,rasentoji
+243,Office,staple,ホッチキスの針,hotchikisunohari
+244,Office,stapler,ホッチキス,hotchikisu
+245,Office,typewriter,タイプライター,taipuraitā
+246,Office,workstation,ワークステーション,wākusutēshon
+247,Beverages,alcohol,アルコール,arukōru
+248,Beverages,beer,ビール,bīru
+249,Beverages,beer bottle,ビール瓶,bīru bin
+250,Beverages,cap,蓋,futa
+251,Beverages,cappuccino,カプチーノ,kapuchīno
+252,Beverages,champagne,シャンパン,shanpan
+253,Beverages,champagne glass,シャンパングラス,shanpangurasu
+254,Beverages,cocktail,カクテル,kakuteru
+255,Beverages,coffee,コー​​ヒー,kō hī
+256,Beverages,cork,コルク,koruku
+257,Beverages,corkscrew,栓抜き,sen nuki
+258,Beverages,fruit juice,フルーツジュース,furūtsujūsu
+259,Beverages,funnel,漏斗,jōgo
+260,Beverages,ice cube,アイスキューブ,aisukyūbu
+261,Beverages,jug,水差し,mizusashi
+262,Beverages,kettle,やかん,yakan
+263,Beverages,liquor,酒,sake
+264,Beverages,milk,牛乳,gyūnyū
+265,Beverages,mug,マグカップ,magukappu
+266,Beverages,orange juice,オレンジジュース,orenjijūsu
+267,Beverages,pitcher,水差し,mizusashi
+268,Beverages,plastic cup,プラスチック製のコップ,purasuchikku-sei no koppu
+269,Beverages,red wine,赤ワイン,akawain
+270,Beverages,straw,ストロー,sutorō
+271,Beverages,tea,紅茶,kōcha
+272,Beverages,teapot,ティーポット,tīpotto
+273,Beverages,thermos flask,魔法瓶,mahōbin
+274,Beverages,thirst,のどの渇き,nodo no kawaki
+275,Beverages,water,水,mizu
+276,Beverages,whiskey,ウイスキー,uisukī
+277,Beverages,white wine,白ワイン,shiro wain
+278,Beverages,wine,ワイン,wain
+279,People,age,年齢,nenrei
+280,People,aunt,叔母,oba
+281,People,baby,赤ちゃん,akachan
+282,People,babysitter,ベビーシッター,bebīshittā
+283,People,boy,少年,shōnen
+284,People,brother,兄弟,kyōdai
+285,People,child,子,ko
+286,People,couple,夫婦,fūfu
+287,People,daughter,娘,musume
+288,People,divorce,離婚,rikon
+289,People,embryo,胎児,taiji
+290,People,engagement,婚約,kon'yaku
+291,People,extended family,大家族,dai kazoku
+292,People,family,家族,kazoku
+293,People,flirt,浮気者,uwaki-sha
+294,People,gentleman,紳士,shinshi
+295,People,girl,女の子,on'nanoko
+296,People,girlfriend,女友達,on'na tomodachi
+297,People,granddaughter,孫娘,magomusume
+298,People,grandfather,祖父,sofu
+299,People,grandma,おばあちゃん,o bāchan
+300,People,grandmother,祖母,sobo
+301,People,grandparents,祖父母,sofubo
+302,People,grandson,男孫,otoko mago
+303,People,groom,新郎,shinrō
+304,People,group,グループ,gurūpu
+305,People,helper,ヘルパー,herupā
+306,People,infant,幼児,yōji
+307,People,lady,女性,josei
+308,People,marriage proposal,プロポーズ,puropōzu
+309,People,matrimony,結婚,kekkon
+310,People,mother,母,haha
+311,People,nap,昼寝,hirune
+312,People,neighbor,隣人,rinjin
+313,People,newlyweds,新婚夫婦,shinkon fūfu
+314,People,couple1,夫婦,fūfu
+315,People,parents,両親,ryōshin
+316,People,partner,パートナー,pātonā
+317,People,party,パーティー,pātī
+318,People,people,人,hito
+319,People,bride,縁談,endan
+320,People,queue,行列,gyōretsu
+321,People,reception,レセプション,resepushon
+322,People,rendezvous,ランデブー,randebū
+323,People,siblings,兄弟姉妹,keiteishimai
+324,People,sister,姉妹,shimai
+325,People,son,息子,musuko
+326,People,twin,双子,futago
+327,People,uncle,叔父,oji
+328,People,wedding,結婚式,kekkonshiki
+329,People,youth,若者,wakamono
+330,Time,alarm clock,目覚まし時計,mezamashidokei
+331,Time,ancient history,古代史,kodai-shi
+332,Time,antique,アンティーク,antīku
+333,Time,appointment book,スケジュール帳,sukejūru-chō
+334,Time,autumn / fall,秋,aki
+335,Time,break,休憩,kyūkei
+336,Time,calendar,カレンダー,karendā
+337,Time,century,世紀,seiki
+338,Time,clock,時計,tokei
+339,Time,coffee break,コー​​ヒータイム,kō hītaimu
+340,Time,date,日付,hidzuke
+341,Time,digital clock,デジタル時計,dejitarudokei
+342,Time,eclipse,日食,nisshoku
+343,Time,end,終わり,owari
+344,Time,future,将来,shōrai
+345,Time,history,歴史,rekishi
+346,Time,hourglass,砂時計,sunadokei
+347,Time,middle ages,中世,chūsei
+348,Time,month,月,tsuki
+349,Time,morning,朝,asa
+350,Time,past,過去,kako
+351,Time,pocket watch,懐中時計,kaichūdokei
+352,Time,punctuality,時間厳守,jikan genshu
+353,Time,rush,ラッシュ,rasshu
+354,Time,seasons,季節,kisetsu
+355,Time,spring,春,haru
+356,Time,sundial,日時計,hidokei
+357,Time,sunrise,日の出,hinode
+358,Time,sunset,夕焼け,yūyake
+359,Time,time,時間,jikan
+360,Time,time1,時間,jikan
+361,Time,waiting time,待機時間,taiki jikan
+362,Time,weekend,週末,shūmatsu
+363,Time,year,年,toshi
+364,Environment,agriculture,農業,nōgyō
+365,Environment,air pollution,大気汚染,taiki osen
+366,Environment,anthill,蟻塚,aridzuka
+367,Environment,canal,運河,unga
+368,Environment,coast,海岸,kaigan
+369,Environment,continent,大陸,tairiku
+370,Environment,creek,小川,Ogawa
+371,Environment,dam,ダム,damu
+372,Environment,desert,砂漠,sabaku
+373,Environment,dune,砂丘,sakyū
+374,Environment,field,野原,nohara
+375,Environment,forest,森,Mori
+376,Environment,glacier,氷河,hyōga
+377,Environment,heath,荒れ地,arechi
+378,Environment,island,島,shima
+379,Environment,jungle,ジャングル,janguru
+380,Environment,landscape,風景,fūkei
+381,Environment,mountains,山々,yamayama
+382,Environment,nature park,自然公園,shizen kōen
+383,Environment,peak,山頂,sanchō
+384,Environment,pile,山と積もる,yama to tsumoru
+385,Environment,protest march,抗議の行進,kōgi no kōshin
+386,Environment,recycling,リサイクル,risaikuru
+387,Environment,sea,海,umi
+388,Environment,smoke,煙,kemuri
+389,Environment,vineyard,ブドウ園,budō-en
+390,Environment,volcano,火山,kazan
+391,Environment,waste,廃棄物,haiki-mono
+392,Environment,water level,水位,suii
+393,Packaging,aluminum foil,アルミ箔,arumi haku
+394,Packaging,barrel,樽,taru
+395,Packaging,basket,手提げかご,tesage kago
+396,Packaging,bottle,瓶,bin
+397,Packaging,box,箱,hako
+398,Packaging,box of chocolates,チョコレートの箱,chokorēto no hako
+399,Packaging,cardboard,段ボール,dan bōru
+400,Packaging,content,中身,nakami
+401,Packaging,crate,かご,kago
+402,Packaging,envelope,封筒,fūtō
+403,Packaging,knot,結び目,musubime
+404,Packaging,metal box,金属製の箱,kinzoku-sei no hako
+405,Packaging,oil drum,石油ドラム缶,sekiyu doramukan
+406,Packaging,packaging,包装,hōsō
+407,Packaging,paper,紙,kami
+408,Packaging,paper bag,紙袋,kamibukuro
+409,Packaging,plastic,プラスチック,purasuchikku
+410,Packaging,tin / can,錫／缶,suzu/ kan
+411,Packaging,tote bag,トートバッグ,tōtobaggu
+412,Packaging,wine barrel,ワイン樽,waintaru
+413,Packaging,wine bottle,ワインボトル,wain botoru
+414,Packaging,wooden box,木箱,kibako
+415,Tools,anchor,いかり,ikari
+416,Tools,anvil,おなとこ,ona toko
+417,Tools,blade,刃,ha
+418,Tools,board,板,ita
+419,Tools,bolt,ボルト,boruto
+420,Tools,bottle opener,栓抜き,sen nuki
+421,Tools,broom,ほうき,hōki
+422,Tools,brush,ブラシ,burashi
+423,Tools,bucket,バケツ,baketsu
+424,Tools,buzz saw,丸鋸,marunoko
+425,Tools,can opener,缶切り,kankiri
+426,Tools,chain,鎖,kusari
+427,Tools,chainsaw,チェーンソー,chēnsō
+428,Tools,chisel,彫刻刀,chōkokutō
+429,Tools,circular saw blade,丸鋸の刃,marunoko no ha
+430,Tools,drill machine,電気ドリル,denki doriru
+431,Tools,dustpan,ちりとり,chiritori
+432,Tools,garden hose,ホース,hōsu
+433,Tools,grater,おろし金,oroshigane
+434,Tools,hammer,ハンマー,hanmā
+435,Tools,hinge,ちょうつがい,chō tsugai
+436,Tools,hook,フック,fukku
+437,Tools,ladder,はしご,hashigo
+438,Tools,letter scale,手紙ばかり,tegami bakari
+439,Tools,magnet,磁石,jishaku
+440,Tools,mortar,モルタル,morutaru
+441,Tools,nail,釘,kugi
+442,Tools,needle,針,hari
+443,Tools,network,ネットワーク,nettowāku
+444,Tools,nut,ナット,natto
+445,Tools,palette-knife,パレット　,paretto
+446,Tools,pallet,こて,kote
+447,Tools,pitchfork,ピッチフォーク,pitchifōku
+448,Tools,planer,かんな,kan'na
+449,Tools,pliers,ペンチ,penchi
+450,Tools,pushcart,手押し車,teoshi-sha
+451,Tools,rake,熊手,kumade
+452,Tools,repair,修理,shūri
+453,Tools,rope,縄,nawa
+454,Tools,ruler,定規,jōgi
+455,Tools,saw,のこぎり,nokogiri
+456,Tools,scissors,はさみ,hasami
+457,Tools,screw,ネジ,neji
+458,Tools,screwdriver,スクリュードライバー,sukuryūdoraibā
+459,Tools,sewing thread,縫糸,nuiito
+460,Tools,shovel,シャベル,shaberu
+461,Tools,spinning wheel,糸車,itoguruma
+462,Tools,spiral spring,渦巻バネ,uzumakibane
+463,Tools,spool,糸巻き,itomaki
+464,Tools,steel cable,スチールケーブル,suchīrukēburu
+465,Tools,tape,テープ,tēpu
+466,Tools,thread,スレッド,sureddo
+467,Tools,tool,道具,dōgu
+468,Tools,toolbox,道具箱,dōgu-bako
+469,Tools,trowel,こて,kote
+470,Tools,tweezers,ピンセット,pinsetto
+471,Tools,vise,万力,manriki
+472,Tools,welding equipment,溶接装置,yōsetsu sōchi
+473,Tools,wheelbarrow,手押し車,teoshi-sha
+474,Tools,wire,ワイヤー,waiyā
+475,Tools,wood chip,木片,mokuhen
+476,Tools,wrench,レンチ,renchi
+477,Traffic,accident,事故,jiko
+478,Traffic,barrier,バリア,baria
+479,Traffic,bicycle,自転車,jitensha
+480,Traffic,boat,ボート,bōto
+481,Traffic,bus,バス,basu
+482,Traffic,cable car,ケーブルカー,kēburukā
+483,Traffic,car,車,kuruma
+484,Traffic,caravan,キャラバン,kyaraban
+485,Traffic,coach,長距離バス,chōkyori basu
+486,Traffic,congestion,混雑,konzatsu
+487,Traffic,country road,田舎の道路,inaka no dōro
+488,Traffic,cruise ship,クルーズ船,kurūzu-sen
+489,Traffic,curve,曲線,kyokusen
+490,Traffic,dead end,行き止まり,ikidomari
+491,Traffic,departure,出発,shuppatsu
+492,Traffic,emergency brake,非常ブレーキ,hijō burēki
+493,Traffic,entrance,入り口,iriguchi
+494,Traffic,escalator,エスカレーター,esukarētā
+495,Traffic,excess baggage,制限超過手荷物,seigen chōka tenimotsu
+496,Traffic,exit,出口,deguchi
+497,Traffic,ferry,フェリー,ferī
+498,Traffic,fire truck,消防車,shōbōsha
+499,Traffic,flight,フライト,furaito
+500,Traffic,freight car,貨車,kasha
+501,Traffic,gas / petrol,ガソリン,gasorin
+502,Traffic,handbrake,ハンドブレーキ,handoburēki
+503,Traffic,helicopter,ヘリコプター,herikoputā
+504,Traffic,highway,高速道路,kōzokudōro
+505,Traffic,houseboat,屋形船,yakatabune
+506,Traffic,ladies' bicycle,婦人用自転車,fujin-yō jitensha
+507,Traffic,left turn,左折,sasetsu
+508,Traffic,level crossing,平面交差,heimen kōsa
+509,Traffic,locomotive,機関車,kikansha
+510,Traffic,map,地図,chizu
+511,Traffic,metro,地下鉄,chikatetsu
+512,Traffic,moped,モペット,mopetto
+513,Traffic,motorboat,モーターボート,mōtābōto
+514,Traffic,motorcycle,オートバイ,ōtobai
+515,Traffic,motorcycle helmet,オートバイのヘルメット,ōtobai no herumetto
+516,Traffic,motorcyclist,オートバイ族,ōtobai-zoku
+517,Traffic,mountain bike,マウンテンバイク,mauntenbaiku
+518,Traffic,mountain pass,峠,tōge
+519,Traffic,no-passing zone,追い越し禁止地区,oikoshi kinshi chiku
+520,Traffic,non-smoking,禁煙,kin'en
+521,Traffic,one-way street,一方通行,ippōtsūkō
+522,Traffic,parking meter,パーキングメーター,pākingumētā
+523,Traffic,passenger,乗客,jōkyaku
+524,Traffic,passenger jet,ジェット旅客機,jettoryokyakuki
+525,Traffic,pedestrian,歩行者,hokō-sha
+526,Traffic,plane,飛行機,hikōki
+527,Traffic,pothole,あなぼこ,ana bo ko
+528,Traffic,propeller aircraft,セスナ,sesuna
+529,Traffic,rail,線路,senro
+530,Traffic,railway bridge,鉄道橋,tetsudōbashi
+531,Traffic,ramp,斜面,shamen
+532,Traffic,right of way,通行権,tsūkō-ken
+533,Traffic,road,道路,dōro
+534,Traffic,roundabout,迂回,ukai
+535,Traffic,row of seats,椅子の列,isu no retsu
+536,Traffic,scooter,スクーター,sukūtā
+537,Traffic,scooter1,スクーター,sukūtā
+538,Traffic,signpost,道標,michishirube
+539,Traffic,sled,そり,sori
+540,Traffic,snowmobile,スノーモービル,sunōmōbiru
+541,Traffic,speed,スピード,supīdo
+542,Traffic,speed limit,制限速度,seigen sokudo
+543,Traffic,station,駅,eki
+544,Traffic,steamer,蒸し器,mushiki
+545,Traffic,stop,止まれ,tomare
+546,Traffic,street sign,道路標識,dōrohyōji
+547,Traffic,stroller,ベビーカー,bebīkā
+548,Traffic,subway station,地下鉄の駅,chikatetsu no eki
+549,Traffic,taxi,タクシー,takushī
+550,Traffic,ticket,切符,kippu
+551,Traffic,timetable,時刻表,jigokuhyō
+552,Traffic,track,トラック,torakku
+553,Traffic,track switch,トラックスイッチ,torakku suitchi
+554,Traffic,tractor,トラクター,torakutā
+555,Traffic,traffic,交通,kōtsū
+556,Traffic,traffic jam,交通渋滞,kōtsū jūtai
+557,Traffic,traffic light,信号,shingō
+558,Traffic,traffic sign,交通標識,kōtsū hyōshiki
+559,Traffic,train,電車,densha
+560,Traffic,train ride,列車の旅,ressha no tabi
+561,Traffic,tram,路面電車,romen densha
+562,Traffic,transport,輸送,yusō
+563,Traffic,tricycle,三輪車,sanrinsha
+564,Traffic,truck,トラック,torakku
+565,Traffic,two-way traffic,双方向のトラフィック,sōhōkō no torafikku
+566,Traffic,underpass,地下道,chikadō
+567,Traffic,wheel,車輪,sharin
+568,Traffic,zeppelin,飛行船,hikōsen
+569,Fruits,almond,アーモンド,āmondo
+570,Fruits,apple,リンゴ,ringo
+571,Fruits,apricot,杏,anzu
+572,Fruits,banana,バナナ,banana
+573,Fruits,banana peel,バナナの皮,banananokawa
+574,Fruits,berry,ベリー,berī
+575,Fruits,blackberry,ブラックベリー,burakkuberī
+576,Fruits,blood orange,ブラッドオレンジ,buraddoorenji
+577,Fruits,blueberry,ブルーベリー,burūberī
+578,Fruits,cherry,サクランボ,sakuranbo
+579,Fruits,fig,イチジク,ichijiku
+580,Fruits,fruit,フルーツ,furūtsu
+581,Fruits,fruit salad,フルーツサラダ,furūtsusarada
+582,Fruits,fruits,果物,kudamono
+583,Fruits,gooseberry,グーズベリー,gūzuberī
+584,Fruits,grape,ブドウ,budō
+585,Fruits,grapefruit,グレープフルーツ,gurēpufurūtsu
+586,Fruits,kiwi,キウイ,kiui
+587,Fruits,lemon,レモン,remon
+588,Fruits,lime,ライム,raimu
+589,Fruits,lychee,レイシ,reishi
+590,Fruits,mandarin,みかん,mikan
+591,Fruits,mango,マンゴー,mangō
+592,Fruits,melon,メロン,meron
+593,Fruits,nectarine,ネクタリン,nekutarin
+594,Fruits,orange,オレンジ,orenji
+595,Fruits,papaya,パパイヤ,papaiya
+596,Fruits,peach,桃,momo
+597,Fruits,pear,梨,nashi
+598,Fruits,pineapple,パイナップル,painappuru
+599,Fruits,plum,梅,ume
+600,Fruits,plum1,梅,ume
+601,Fruits,pomegranate,ザクロ,zakuro
+602,Fruits,prickly pear,ウチワサボテン,uchiwasaboten
+603,Fruits,quince,マルメロ,marumero
+604,Fruits,raspberry,ラズベリー,razuberī
+605,Fruits,redcurrant,赤すぐり,akasuguri
+606,Fruits,star fruit,スターフルーツ,sutāfurūtsu
+607,Fruits,strawberry,イチゴ,ichigo
+608,Fruits,watermelon,スイカ,suika
+609,Leisure,angler,釣り人,tsurihito
+610,Leisure,aquarium,水族館,suizokukan
+611,Leisure,bath towel,バスタオル,basu taoru
+612,Leisure,beach ball,ビーチボール,bīchibōru
+613,Leisure,belly dance,ベリーダンス,berīdansu
+614,Leisure,bingo,ビンゴ,Bingo
+615,Leisure,board,ボード,bōdo
+616,Leisure,bowling,ボーリング,bōringu
+617,Leisure,cable car,ケーブルカー,kēburukā
+618,Leisure,camping,キャンプ,kyanpu
+619,Leisure,camping stove,キャンプストーブ,kyanpusutōbu
+620,Leisure,canoe trip,カヌートリップ,kanūtorippu
+621,Leisure,card game,トランプゲーム,toranpugēmu
+622,Leisure,carnival,カーニバル,kānibaru
+623,Leisure,carousel,回転木馬,kaiten mokuba
+624,Leisure,carving,彫刻,chōkoku
+625,Leisure,chess game,チェスゲーム,chesugēmu
+626,Leisure,chess piece,チェスの駒,chesunokoma
+627,Leisure,crime novel,犯罪小説,hanzai shōsetsu
+628,Leisure,crossword puzzle,クロスワードパズル,kurosuwādopazuru
+629,Leisure,dice,さいころ,sai koro
+630,Leisure,dance,ダンス,dansu
+631,Leisure,darts,ダーツ,dātsu
+632,Leisure,deckchair,デッキチェア,dekkichea
+633,Leisure,dinghy,ディンギー,dingī
+634,Leisure,discotheque,ディスコ,disuko
+635,Leisure,dominoes,ドミノ,domino
+636,Leisure,embroidery,刺繍,shishū
+637,Leisure,fair,フェア,fea
+638,Leisure,ferris wheel,観覧車,kanran-sha
+639,Leisure,festival,祭り,matsuri
+640,Leisure,fireworks,花火,hanabi
+641,Leisure,game,ゲーム,gēmu
+642,Leisure,golf,ゴルフ,gorufu
+643,Leisure,halma,ハルマ,Haruma
+644,Leisure,hike,ハイキング,haikingu
+645,Leisure,hobby,趣味,shumi
+646,Leisure,holidays,休日,kyūjitsu
+647,Leisure,journey,旅,tabi
+648,Leisure,king,王様,ōsama
+649,Leisure,leisure time,余暇,yoka
+650,Leisure,loom,機織り,hataori
+651,Leisure,pedal boat,足漕ぎボート,ashikogi bōto
+652,Leisure,picture book,絵本,ehon
+653,Leisure,playground,遊び場,asobiba
+654,Leisure,playing card,トランプ,toranpu
+655,Leisure,puzzle,パズル,pazuru
+656,Leisure,reading,読書,dokusho
+657,Leisure,relaxation,リラックス,rirakkusu
+658,Leisure,restaurant,レストラン,resutoran
+659,Leisure,rocking horse,揺り木馬,yuri mokuba
+660,Leisure,roulette,ルーレット,rūretto
+661,Leisure,seesaw,シーソー,shīsō
+662,Leisure,show,ショー,shō
+663,Leisure,skateboard,スケートボード,sukētobōdo
+664,Leisure,ski lift,スキーリフト,sukīrifuto
+665,Leisure,skittle,スキトルズ,sukitoruzu
+666,Leisure,sleeping bag,寝袋,nebukuro
+667,Leisure,spectator,観客,kankyaku
+668,Leisure,story,物語,monogatari
+669,Leisure,swimming pool,プール,pūru
+670,Leisure,swing,ブランコ,buranko
+671,Leisure,table football,テーブルサッカー,tēburusakkā
+672,Leisure,tent,テント,tento
+673,Leisure,tourism,観光,kankō
+674,Leisure,tourist,観光客,kankōkyaku
+675,Leisure,toy,おもちゃ,omocha
+676,Leisure,vacation,休暇,kyūka
+677,Leisure,walk,散歩,sanpo
+678,Leisure,zoo,動物園,dōbu~tsuen
+679,Military,aircraft carrier,空母,kūbo
+680,Military,ammunition,弾薬,dan'yaku
+681,Military,armor,鎧,yoroi
+682,Military,army,軍隊,guntai
+683,Military,arrest,逮捕,taiho
+684,Military,atomic bomb,原子爆弾,genshi bakudan
+685,Military,attack,攻撃,kōgeki
+686,Military,barbed wire,有刺鉄線,yūshitessen
+687,Military,blast,爆風,bakufū
+688,Military,bomb,爆弾,bakudan
+689,Military,cannon,大砲,taihō
+690,Military,cartridge,カートリッジ,kātorijji
+691,Military,coat of arms,紋章,monshō
+692,Military,defense,防衛,bōei
+693,Military,destruction,破壊,hakai
+694,Military,fight,戦い,tatakai
+695,Military,fighter-bomber,戦闘爆撃機,sentōbakugeki-ki
+696,Military,gas mask,ガスマスク,gasumasuku
+697,Military,guard,ガード,gādo
+698,Military,hand grenade,手榴弾,shuryūdan
+699,Military,handcuffs,手錠,tejō
+700,Military,helmet,ヘルメット,herumetto
+701,Military,march,行進,kōshin
+702,Military,medal,勲章,kunshō
+703,Military,military,軍事,gunji
+704,Military,navy,海軍,kaigun
+705,Military,peace,平和,heiwa
+706,Military,pilot,パイロット,pairotto
+707,Military,pistol,ピストル,pisutoru
+708,Military,revolver,リボルバー,riborubā
+709,Military,rifle,ライフル,raifuru
+710,Military,rocket,ロケット,roketto
+711,Military,shooter,砲手,hōshu
+712,Military,shot,発砲,happō
+713,Military,soldier,兵士,heishi
+714,Military,submarine,潜水艦,sensuikan
+715,Military,surveillance,監視,kanshi
+716,Military,sword,剣,ken
+717,Military,tank,戦車,sensha
+718,Military,uniform,制服,seifuku
+719,Military,victory,勝利,shōri
+720,Military,winner,勝者,shōsha
+721,Clothing,anorak,アノラック,anorakku
+722,Clothing,backpack,リュックサック,ryukkusakku
+723,Clothing,bathrobe,バスローブ,basurōbu
+724,Clothing,belt,ベルト,beruto
+725,Clothing,bib,よだれかけ,yodarekake
+726,Clothing,bikini,ビキニ,Bikini
+727,Clothing,blazer,ブレザー,burezā
+728,Clothing,blouse,ブラウス,burausu
+729,Clothing,boots,ブーツ,būtsu
+730,Clothing,bow,弓,yumi
+731,Clothing,bracelet,ブレスレット,buresuretto
+732,Clothing,brooch,ブローチ,burōchi
+733,Clothing,button,ボタン,botan
+734,Clothing,cap,野球帽,yakyū-bō
+735,Clothing,cap1,野球帽,yakyū-bō
+736,Clothing,cloakroom,クローク,kurōku
+737,Clothing,clothes,服,fuku
+738,Clothing,clothes peg,洗濯バサミ,sentakubasami
+739,Clothing,collar,襟,eri
+740,Clothing,crown,王冠,ōkan
+741,Clothing,cufflink,カフスボタン,kafusubotan
+742,Clothing,diaper,おむつ,omutsu
+743,Clothing,dress,ドレス,doresu
+744,Clothing,earring,イヤリング,iyaringu
+745,Clothing,fashion,ファッション,fasshon
+746,Clothing,flip-flops,スリッパ,surippa
+747,Clothing,fur,毛皮,kegawa
+748,Clothing,glove,グローブ,gurōbu
+749,Clothing,gumboots,ゴム長靴,gomu nagagutsu
+750,Clothing,hair slide,ヘアークリップ,heākurippu
+751,Clothing,handbag,ハンドバッグ,handobaggu
+752,Clothing,hanger,ハンガー,hangā
+753,Clothing,hat,帽子,bōshi
+754,Clothing,headscarf,ヘッドスカーフ,heddosukāfu
+755,Clothing,hiking boot,ハイキングブーツ,haikingubūtsu
+756,Clothing,hood,フード,fūdo
+757,Clothing,jacket,ジャケット,jaketto
+758,Clothing,jeans,ジーンズ,jīnzu
+759,Clothing,jewelry,宝石,hōseki
+760,Clothing,laundry,洗濯,sentaku
+761,Clothing,laundry basket,洗濯物かご,sentakubutsu kago
+762,Clothing,leather boots,革靴,kawagutsu
+763,Clothing,mask,マスク,masuku
+764,Clothing,mitten,ミトン,miton
+765,Clothing,muffler,マフラー,mafurā
+766,Clothing,pants,パンツ,pantsu
+767,Clothing,pearl,真珠,shinju
+768,Clothing,poncho,ポンチョ,poncho
+769,Clothing,press button,押しボタン,oshi botan
+770,Clothing,pyjamas,パジャマ,pajama
+771,Clothing,ring,指輪,yubiwa
+772,Clothing,sandal,サンダル,sandaru
+773,Clothing,scarf,スカーフ,sukāfu
+774,Clothing,shirt,シャツ,shatsu
+775,Clothing,shoe,靴,kutsu
+776,Clothing,shoe sole,靴底,kutsuzoko
+777,Clothing,silk,絹,kinu
+778,Clothing,ski boots,スキー靴,sukī kutsu
+779,Clothing,skirt,スカート,sukāto
+780,Clothing,slipper,スリッパ,surippa
+781,Clothing,sneaker,スニーカー,sunīkā
+782,Clothing,snow boot,スノーブーツ,sunōbūtsu
+783,Clothing,sock,靴下,kutsushita
+784,Clothing,special offer,特別オファー,tokubetsu ofā
+785,Clothing,stain,シミ,shimi
+786,Clothing,stockings,ストッキング,sutokkingu
+787,Clothing,straw hat,麦わら帽子,mugiwarabōshi
+788,Clothing,stripes,縞,shima
+789,Clothing,suit,スーツ,sūtsu
+790,Clothing,sunglasses,サングラス,sangurasu
+791,Clothing,sweater,セーター,sētā
+792,Clothing,swimsuit,水着,mizugi
+793,Clothing,tie,ネクタイ,nekutai
+794,Clothing,top,トップ,toppu
+795,Clothing,trunks,トランクス,torankusu
+796,Clothing,underwear,下着,shitagi
+797,Clothing,vest,ベスト,besuto
+798,Clothing,waistcoat,チョッキ,chokki
+799,Clothing,watch,腕時計,udedokei
+800,Clothing,wedding dress,ウェディングドレス,u~edingudoresu
+801,Clothing,winter clothes,冬服,fuyufuku
+802,Clothing,zip,チャック,chakku
+803,Communication,address,住所,jūsho
+804,Communication,alphabet,アルファベット,arufabetto
+805,Communication,answering machine,留守番電話,rusuban denwa
+806,Communication,antenna,アンテナ,antena
+807,Communication,call,呼び出し,yobidashi
+808,Communication,CD,シーディー,shīdī
+809,Communication,communication,通信,tsūshin
+810,Communication,confidentiality,秘密厳守,himitsu genshu
+811,Communication,connection,接続,setsuzoku
+812,Communication,discussion,議論,giron
+813,Communication,email,メール,mēru
+814,Communication,entertainment,エンターテインメント,entāteinmento
+815,Communication,express item,至急便,shikyūbin
+816,Communication,fax machine,ファクシミリ,fakushimiri
+817,Communication,film industry,映画業界,eiga gyōkai
+818,Communication,font,フォント,fonto
+819,Communication,greeting,挨拶,aisatsu
+820,Communication,greeting1,挨拶,aisatsu
+821,Communication,greeting card,挨拶状,aisatsu-jō
+822,Communication,headphones,ヘッドフォン,heddo fon
+823,Communication,icon,アイコン,aikon
+824,Communication,information,情報,jōhō
+825,Communication,internet,インターネット,intānetto
+826,Communication,interview,インタビュー,intabyū
+827,Communication,keyboard,キーボード,kībōdo
+828,Communication,letter,手紙,tegami
+829,Communication,letter1,手紙,tegami
+830,Communication,magazine,雑誌,zasshi
+831,Communication,medium,仲介者,chūkai-sha
+832,Communication,microphone,マイク,maiku
+833,Communication,mobile phone,携帯電話,geitaidenwa
+834,Communication,modem,モデム,modemu
+835,Communication,monitor,モニター,monitā
+836,Communication,mouse pad,マウスパッド,mausu paddo
+837,Communication,news,ニュース,nyūsu
+838,Communication,newspaper,新聞,shinbun
+839,Communication,noise,ノイズ,noizu
+840,Communication,note,メモ,memo
+841,Communication,note1,メモ,memo
+842,Communication,payphone,公衆電話,kōshūdenwa
+843,Communication,photo,写真,shashin
+844,Communication,photo album,アルバム,arubamu
+845,Communication,picture postcard,絵葉書,ehagaki
+846,Communication,post office box,私書箱,shishobako
+847,Communication,radio,ラジオ,rajio
+848,Communication,receiver,レシーバー,reshībā
+849,Communication,remote control,リモートコントロール,rimōtokontorōru
+850,Communication,satellite,衛星,eisei
+851,Communication,screen,画面,gamen
+852,Communication,sign,記号,kigō
+853,Communication,signature,署名,shomei
+854,Communication,smartphone,スマートフォン,sumātofon
+855,Communication,speaker,スピーカー,supīkā
+856,Communication,stamp,スタンプ,sutanpu
+857,Communication,stationary,文房具,bunbōgu
+858,Communication,telephone call,通話,tsūwa
+859,Communication,telephone conversation,電話での会話,denwa de no kaiwa
+860,Communication,television camera,テレビカメラ,terebi kamera
+861,Communication,text,テキスト,tekisuto
+862,Communication,tv,テレビ,terebi
+863,Communication,video cassette,ビデオカセット,bideokasetto
+864,Communication,walkie talkie,トランシーバー,toranshībā
+865,Communication,web page,ウェブページ,u~ebupēji
+866,Communication,word,ワード,wādo
+867,Technology,air pump,空気ポンプ,kūki ponpu
+868,Technology,aerial photo,個体発生の写真,kotai hassei no shashin
+869,Technology,ball bearing,ボールベアリング,bōrubearingu
+870,Technology,battery,バッテリー,batterī
+871,Technology,bicycle chain,自転車のチェーン,jitensha no chēn
+872,Technology,cable,ケーブル,kēburu
+873,Technology,cable reel,ケーブルリール,kēbururīru
+874,Technology,camera,カメラ,kamera
+875,Technology,cassette,カセット,kasetto
+876,Technology,charger,充電器,jūden-ki
+877,Technology,cockpit,コックピット,kokkupitto
+878,Technology,cogwheel,はめば歯車,hameba haguruma
+879,Technology,combination lock,ダイヤル錠,daiyaru jō
+880,Technology,computer,コンピューター,konpyūtā
+881,Technology,crane,クレーン,kurēn
+882,Technology,desktop,デスクトップ,desuku toppu
+883,Technology,drilling rig,掘削リグ,kussaku rigu
+884,Technology,drive,運転,unten
+885,Technology,DVD,DVD,DVD
+886,Technology,electric motor,電気モーター,denki mōtā
+887,Technology,energy,エネルギー,enerugī
+888,Technology,excavator,掘削機,kussaku-ki
+889,Technology,fax machine,ファクシミリ,fakushimiri
+890,Technology,film camera,フィルムカメラ,firumu kamera
+891,Technology,floppy disk,フロッピーディスク,furoppīdisuku
+892,Technology,goggles,ゴーグル,gōguru
+893,Technology,hard disk,ハードディスク,hādodisuku
+894,Technology,joystick,ジョイスティック,joisutikku
+895,Technology,key,鍵,kagi
+896,Technology,landing,着陸,chakuriku
+897,Technology,laptop,ノートパソコン,nōtopasokon
+898,Technology,lawnmower,芝刈り機,shibakariki
+899,Technology,lens,レンズ,renzu
+900,Technology,machine,機会,kikai
+901,Technology,marine propeller,船用プロペラ,sen'yō puropera
+902,Technology,mine,炭坑,tankō
+903,Technology,multiple socket,複数のソケット,fukusū no soketto
+904,Technology,printer,プリンター,purintā
+905,Technology,program,プログラム,puroguramu
+906,Technology,propeller,プロペラ,puropera
+907,Technology,pump,ポンプ,ponpu
+908,Technology,record player,レコードプレーヤー,rekōdopurēyā
+909,Technology,remote control,リモコン,rimokon
+910,Technology,robot,ロボット,robotto
+911,Technology,satellite antenna,衛星アンテナ,eisei antena
+912,Technology,sewing machine,ミシン,mishin
+913,Technology,slide film,スライドフィルム,suraidofirumu
+914,Technology,solar technology,太陽光技術,taiyōkō gijutsu
+915,Technology,space shuttle,スペースシャトル,supēsushatoru
+916,Technology,steamroller,強圧,kyōatsu
+917,Technology,suspension,サスペンション,sasupenshon
+918,Technology,switch,スイッチ,suitchi
+919,Technology,tape measure,巻き尺,makijaku
+920,Technology,technology,技術,gijutsu
+921,Technology,telephone,電話,denwa
+922,Technology,telephoto lens,望遠レンズ,bōen renzu
+923,Technology,telescope,望遠鏡,bōenkyō
+924,Technology,usb flash drive,USBフラッシュドライブ,USB furasshudoraibu
+925,Technology,valve,バルブ,barubu
+926,Technology,video camera,ビデオカメラ,bideokamera
+927,Technology,voltage,電圧,den'atsu
+928,Technology,water wheel,水車,suisha
+929,Technology,wind turbine,風力タービン,fūryoku tābin
+930,Technology,windmill,風車,kazaguruma
+931,Apartment,air conditioner,エアコン,eakon
+932,Apartment,apartment,アパート,apāto
+933,Apartment,balcony,バルコニー,barukonī
+934,Apartment,basement,地下,chika
+935,Apartment,bath tub,浴槽,yokusō
+936,Apartment,bathroom,風呂場,furo-ba
+937,Apartment,bell,鈴,suzu
+938,Apartment,blind,ブラインド,buraindo
+939,Apartment,chimney,煙突,entotsu
+940,Apartment,cleaning agent,洗浄剤,senjō-zai
+941,Apartment,cooler,アイスボックス,aisu bokkusu
+942,Apartment,counter,カウンター,kauntā
+943,Apartment,crack,亀裂,kiretsu
+944,Apartment,cushion,クッション,kusshon
+945,Apartment,door,ドア,doa
+946,Apartment,door knocker,訪問者,hōmon-sha
+947,Apartment,dustbin,ごみ箱,gomibako
+948,Apartment,elevator,エレベーター,erebētā
+949,Apartment,entrance,入り口,iriguchi
+950,Apartment,fence,塀,hei
+951,Apartment,fire alarm,火災警報器,kasai keihō-ki
+952,Apartment,fireplace,暖炉,danro
+953,Apartment,flower pot,植木鉢,uekibachi
+954,Apartment,garage,ガレ​​ージ,gare ̄ji
+955,Apartment,garden,庭,niwa
+956,Apartment,heating,加熱,kanetsu
+957,Apartment,house,家,ie
+958,Apartment,house number,家屋番号,kaoku bangō
+959,Apartment,ironing board,アイロン台,airondai
+960,Apartment,kitchen,台所,daidokoro
+961,Apartment,landlord,家主,yanushi
+962,Apartment,light switch,電気のスイッチ,denki no suitchi
+963,Apartment,living room,居間,ima
+964,Apartment,mailbox,郵便受け,yūbin'uke
+965,Apartment,marble,大理石,dairiseki
+966,Apartment,outlet,コンセント,konsento
+967,Apartment,pool,プール,pūru
+968,Apartment,porch,ポーチ,pōchi
+969,Apartment,radiator,ラジエーター,rajiētā
+970,Apartment,relocation,移転,iten
+971,Apartment,renting,賃借,chinshaku
+972,Apartment,restroom,トイレ,toire
+973,Apartment,roof tiles,屋根瓦,yanekawara
+974,Apartment,shower,シャワー,shawā
+975,Apartment,stairs,階段,kaidan
+976,Apartment,stove,レンジ,renji
+977,Apartment,study,勉級,Tsutomu-kyū
+978,Apartment,tap,蛇口,jaguchi
+979,Apartment,tile,タイル,tairu
+980,Apartment,toilet,トイレ,toire
+981,Apartment,vacuum cleaner,掃除機,zōjiki
+982,Apartment,wall,壁,kabe
+983,Apartment,wallpaper,壁紙,kabegami
+984,Apartment,window,窓,mado
+985,Food,appetite,食欲,shokuyoku
+986,Food,appetizer,前菜,zensai
+987,Food,bacon,ベーコン,bēkon
+988,Food,birthday cake,誕生日ケーキ,tanjōbi kēki
+989,Food,biscuit,ビスケット,bisuketto
+990,Food,bratwurst,ブラートヴルスト,burātovurusuto
+991,Food,bread,パン,pan
+992,Food,breakfast,朝食,chōshoku
+993,Food,bun,ロールパン,rōrupan
+994,Food,butter,バター,batā
+995,Food,cafeteria,カフェテリア,kafeteria
+996,Food,cake,ケーキ,kēki
+997,Food,candy,キャンディ,kyandi
+998,Food,cashew nut,カシューナッツ,kashūnattsu
+999,Food,cheese,チーズ,chīzu
+1000,Food,chewing gum,チューインガム,chūingamu
+1001,Food,chicken,チキン,chikin
+1002,Food,chocolate,チョコレート,chokorēto
+1003,Food,coconut,ココナッツ,kokonattsu
+1004,Food,coffee beans,コー​​ヒー豆,kō hī mame
+1005,Food,cream,クリーム,kurīmu
+1006,Food,cumin,クミン,kumin
+1007,Food,dessert,デザート,dezāto
+1008,Food,dessert1,デザート,dezāto
+1009,Food,dinner,夕食,yūshoku
+1010,Food,dish,皿,sara
+1011,Food,dough,生地,kiji
+1012,Food,egg,卵,tamago
+1013,Food,flour,小麦粉,komugiko
+1014,Food,French fries,フライドポテト,furaidopoteto
+1015,Food,fried egg,目玉焼き,medamayaki
+1016,Food,hazelnut,ヘーゼルナッツ,hēzerunattsu
+1017,Food,ice cream,アイスクリーム,aisukurīmu
+1018,Food,ketchup,ケチャップ,kechappu
+1019,Food,lasagna,ラザニア,razania
+1020,Food,licorice,甘草,kanzō
+1021,Food,lunch,ランチ,ranchi
+1022,Food,macaroni,マカロニ,makaroni
+1023,Food,mashed potatoes,マッシュポテト,masshupoteto
+1024,Food,meat,肉,niku
+1025,Food,mushroom,キノコ,kinoko
+1026,Food,noodle,麺,men
+1027,Food,oatmeal,オートミール,ōtomīru
+1028,Food,paella,パエリヤ,paeriya
+1029,Food,pancake,ホットケーキ,hottokēki
+1030,Food,peanut,ピーナッツ,pīnattsu
+1031,Food,pepper,コショウ,koshō
+1032,Food,pepper shaker,ペッパーシェーカー,peppāshēkā
+1033,Food,peppermill,ペッパーミル,peppāmiru
+1034,Food,gherkin,ピクルス,pikurusu
+1035,Food,pie,パイ,pai
+1036,Food,pizza,ピザ,piza
+1037,Food,popcorn,ポップコーン,poppukōn
+1038,Food,potato,ジャガイモ,jagaimo
+1039,Food,potato chips,ポテトチップ,potetochippu
+1040,Food,praline,プラリーヌ,purarīnu
+1041,Food,pretzel sticks,プレッツェルスティック,purettsu~erusutikku
+1042,Food,raisin,レーズン,rēzun
+1043,Food,rice,米,Amerika
+1044,Food,roast pork,ローストポーク,rōsutopōku
+1045,Food,salad,サラダ,sarada
+1046,Food,salami,サラミ,sarami
+1047,Food,salmon,シャケ,shake
+1048,Food,salt shaker,塩瓶,shio bin
+1049,Food,sandwich,サンドイッチ,sandoitchi
+1050,Food,sauce,ソース,sōsu
+1051,Food,sausage,ソーセージ,sōsēji
+1052,Food,sesame,ごま,goma
+1053,Food,soup,スープ,sūpu
+1054,Food,spaghetti,スパゲッティ,supagetti
+1055,Food,spice,香辛料,kōshinryō
+1056,Food,steak,ステーキ,sutēki
+1057,Food,strawberry tart,イチゴタルト,ichigotaruto
+1058,Food,sugar,砂糖,satō
+1059,Food,sundae,サンデー,sandē
+1060,Food,sunflower seeds,ひまわりの種,himawarinotane
+1061,Food,sushi,寿司,sushi
+1062,Food,tart,タルト,taruto
+1063,Food,toast,トースト,tōsuto
+1064,Food,waffle,ワッフル,waffuru
+1065,Food,waiter,ウェイター,u~eitā
+1066,Food,walnut,クルミ,kurumi
+1067,Occupations,architect,建築家,kenchikka
+1068,Occupations,astronaut,宇宙飛行士,uchū hikō-shi
+1069,Occupations,barber,理髪師,rihatsu-shi
+1070,Occupations,blacksmith,鍛冶屋,Kajiya
+1071,Occupations,boxer,ボクサー,bokusā
+1072,Occupations,bullfighter,闘牛士,tōgyū-shi
+1073,Occupations,bureaucrat,官僚,kanryō
+1074,Occupations,business trip,出張,shutchō
+1075,Occupations,businessman,会社員,kaishain
+1076,Occupations,butcher,肉屋,nikuya
+1077,Occupations,car mechanic,自動車修理工,jidōsha shūrikō
+1078,Occupations,caretaker,管理人,kanrinin
+1079,Occupations,cleaning lady,掃除婦,sōji-fu
+1080,Occupations,clown,ピエロ,piero
+1081,Occupations,colleague,同僚,dōryō
+1082,Occupations,conductor,指揮者,shiki-sha
+1083,Occupations,cook,シェフ,shefu
+1084,Occupations,cowboy,カウボーイ,kaubōi
+1085,Occupations,dentist,歯医者,haisha
+1086,Occupations,detective,探偵,tantei
+1087,Occupations,diver,潜水夫,sensui otto
+1088,Occupations,doctor,博士,hakase
+1089,Occupations,doctor1,博士,hakase
+1090,Occupations,electrician,電気技師,denki gishi
+1091,Occupations,female student,女子学生,joshi gakusei
+1092,Occupations,fireman,消防士,shōbō-shi
+1093,Occupations,fisherman,漁師,ryōshi
+1094,Occupations,football player,サッカー選手,sakkā senshu
+1095,Occupations,gangster,やくざ,yakuza
+1096,Occupations,gardener,植木屋,ueki-ya
+1097,Occupations,golfer,ゴルファー,gorufā
+1098,Occupations,guitarist,ギタリスト,gitarisuto
+1099,Occupations,hunter,猟師,ryōshi
+1100,Occupations,interior designer,インテリアデザイナー,interiadezainā
+1101,Occupations,judge,裁判官,saibankan
+1102,Occupations,kayaker,カヤッカー,kayakkā
+1103,Occupations,magician,マジシャン,majishan
+1104,Occupations,male student,男子生徒,danshi seito
+1105,Occupations,marathon runner,マラソンランナー,marasonran'nā
+1106,Occupations,musician,音楽家,ongakuka
+1107,Occupations,nun,修道女,shūdō on'na
+1108,Occupations,occupation,職業,shokugyō
+1109,Occupations,ophthalmologist,眼科医,gankai
+1110,Occupations,optician,検眼士,kengan-shi
+1111,Occupations,painter,画家,gaka
+1112,Occupations,paper boy,新聞少年,shinbun shōnen
+1113,Occupations,photographer,カメラマン,kameraman
+1114,Occupations,pirate,海賊,kaizoku
+1115,Occupations,plumber,配管工,haikan kō
+1116,Occupations,policeman,警官,keikan
+1117,Occupations,porter,運搬人,unpan hito
+1118,Occupations,prisoner,囚人,shūjin
+1119,Occupations,secretary,秘書,hisho
+1120,Occupations,spy,スパイ,supai
+1121,Occupations,surgeon,外科医,gekai
+1122,Occupations,teacher,教師,kyōshi
+1123,Occupations,thief,泥棒,dorobō
+1124,Occupations,truck driver,トラック運転手,torakku untenshu
+1125,Occupations,unemployment,失業,shitsugyō
+1126,Occupations,waitress,ウエートレス,uētoresu
+1127,Occupations,window cleaner,窓拭き,madofuki
+1128,Occupations,work,仕事,shigoto
+1129,Occupations,worker,労働者,rōdō-sha
+1130,Vegetables,Brussels sprout,芽キャベツ,mekyabetsu
+1131,Vegetables,artichoke,アーティチョーク,ātichōku
+1132,Vegetables,asparagus,アスパラガス,asuparagasu
+1133,Vegetables,avocado,アボカド,abokado
+1134,Vegetables,beans,豆,mame
+1135,Vegetables,bell pepper,ピーマン,pīman
+1136,Vegetables,broccoli,ブロッコリー,burokkorī
+1137,Vegetables,cabbage,キャベツ,kyabetsu
+1138,Vegetables,cabbage turnip,キャベツカブラ,kyabetsukabura
+1139,Vegetables,carrot,ニンジン,ninjin
+1140,Vegetables,cauliflower,カリフラワー,karifurawā
+1141,Vegetables,celery,セロリ,serori
+1142,Vegetables,chicory,チコリ,chikori
+1143,Vegetables,chili,チリ,Chiri
+1144,Vegetables,corn,トウモロコシ,tōmorokoshi
+1145,Vegetables,cucumber,キュウリ,kyūri
+1146,Vegetables,eggplant,茄子,nasu
+1147,Vegetables,fennel,フェンネル,fen'neru
+1148,Vegetables,garlic,ニンニク,nin'niku
+1149,Vegetables,green cabbage,グリーンキャベッジ,gurīnkyabejji
+1150,Vegetables,kale,ケール,kēru
+1151,Vegetables,leek,ネギ,negi
+1152,Vegetables,lettuce,レタス,retasu
+1153,Vegetables,okra,オクラ,okura
+1154,Vegetables,olive,オリーブ,orību
+1155,Vegetables,onion,タマネギ,tamanegi
+1156,Vegetables,parsley,パセリ,paseri
+1157,Vegetables,pea,エンドウ豆,endō mame
+1158,Vegetables,pumpkin,カボチャ,kabocha
+1159,Vegetables,pumpkin seeds,カボチャの種,kabochanotane
+1160,Vegetables,radish,大根,daikon
+1161,Vegetables,red cabbage,紫キャベツ,Murasaki kyabetsu
+1162,Vegetables,red pepper,赤唐辛子,akatōkarashi
+1163,Vegetables,spinach,ほうれん草,hōrensō
+1164,Vegetables,sweet potato,サツマイモ,satsumaimo
+1165,Vegetables,tomato,トマト,tomato
+1166,Vegetables,vegetables,野菜,yasai
+1167,Vegetables,zucchini,ズッキーニ,zukkīni
+1168,Objects,aerosol can,エアゾール缶,eazōru kan
+1169,Objects,ashtray,灰皿,haizara
+1170,Objects,baby scale,ベビースケール,bebīsukēru
+1171,Objects,ball,ボール,bōru
+1172,Objects,balloon,風船,fūsen
+1173,Objects,bangle,バングル,banguru
+1174,Objects,binocular,双眼鏡,sōgankyō
+1175,Objects,blanket,毛布,mōfu
+1176,Objects,blender,ブレンダー,burendā
+1177,Objects,book,本,hon
+1178,Objects,bulb,電球,denkyū
+1179,Objects,can,缶,kan
+1180,Objects,candle,ろうそく,rōsoku
+1181,Objects,candleholder,燭台,shokudai
+1182,Objects,case,ケース,kēsu
+1183,Objects,catapult,パチンコ,pachinko
+1184,Objects,cigar,葉巻,hamaki
+1185,Objects,cigarette,たばこ,tabako
+1186,Objects,coffee mill,コー​​ヒーミル,kō hīmiru
+1187,Objects,comb,櫛,kushi
+1188,Objects,cup,カップ,kappu
+1189,Objects,dish towel,布巾,fukin
+1190,Objects,doll,人形,ningyō
+1191,Objects,dwarf,こびと,ko bito
+1192,Objects,egg cup,卵カップ,tamago kappu
+1193,Objects,electric shaver,電動髭剃り,dendō higesori
+1194,Objects,fan,扇子,sensu
+1195,Objects,film,フイルム,fuirumu
+1196,Objects,fire extinguisher,消火器,shōkaki
+1197,Objects,flag,旗,hata
+1198,Objects,garbage bag,ごみ袋,gomi-bukuro
+1199,Objects,glass shard,ガラス破片,garasu hahen
+1200,Objects,glasses,メガネ,megane
+1201,Objects,hair dryer,ヘアドライヤー,headoraiyā
+1202,Objects,hole,穴,ana
+1203,Objects,hose,ホース,hōsu
+1204,Objects,iron,アイロン,airon
+1205,Objects,juice squeezer,ジュース絞り器,jūsu shiboriki
+1206,Objects,key,鍵,kagi
+1207,Objects,key chain,キーホールダー,kīhōrudā
+1208,Objects,knife,ナイフ,naifu
+1209,Objects,lantern,提灯,chōchin
+1210,Objects,lexicon,辞書,jisho
+1211,Objects,lid,蓋,futa
+1212,Objects,lifebuoy,救命浮き輪,kyūmei uki wa
+1213,Objects,lighter,ライター,raitā
+1214,Objects,lipstick,口紅,kuchibeni
+1215,Objects,luggage,荷物,nimotsu
+1216,Objects,magnifying glass,虫眼鏡,mushimegane
+1217,Objects,match,マッチ,matchi
+1218,Objects,milk bottle,哺乳瓶,honyū bin
+1219,Objects,milk jug,ミルクジャグ,mirukujagu
+1220,Objects,miniature,ミニチュア,minichua
+1221,Objects,mirror,鏡,kagami
+1222,Objects,mixer,ミキサー,mikisā
+1223,Objects,mouse trap,ネズミ取り器,nezumi tori-ki
+1224,Objects,necklace,ネックレス,nekkuresu
+1225,Objects,newspaper stand,新聞売り場,shinbun uriba
+1226,Objects,pacifier,おしゃぶり,oshaburi
+1227,Objects,padlock,南京錠,nankinjō
+1228,Objects,parasol,パラソル,parasoru
+1229,Objects,passport,パスポート,pasupōto
+1230,Objects,pennant,ペナント,penanto
+1231,Objects,picture frame,額縁,gakubuchi
+1232,Objects,pipe,パイプ,paipu
+1233,Objects,pot,鍋,nabe
+1234,Objects,rubber band,輪ゴム,wagomu
+1235,Objects,rubber duck,ゴム製のカモのおもちゃ,gomu-sei no kamo no omocha
+1236,Objects,saddle,サドル,sadoru
+1237,Objects,safety pin,安全ピン,anzenpin
+1238,Objects,saucer,ソーサー,sōsā
+1239,Objects,shoe brush,靴ブラシ,kutsu burashi
+1240,Objects,sieve,ふるい,furui
+1241,Objects,soap,石鹸,sekken
+1242,Objects,soap bubble,シャボン玉,shabontama
+1243,Objects,soap dish,ソープディッシュ,sōpudisshu
+1244,Objects,sponge,スポンジ,suponji
+1245,Objects,sugar bowl,砂糖壷,satō tsubo
+1246,Objects,suitcase,スーツケース,sūtsukēsu
+1247,Objects,tape measure,巻き尺,makijaku
+1248,Objects,teddy bear,テディベア,tedibea
+1249,Objects,thimble,指ぬき,yubinuki
+1250,Objects,tobacco,タバコ,tabako
+1251,Objects,toilet paper,トイレットペーパー,toirettopēpā
+1252,Objects,torch,懐中電灯,kaijūdentō
+1253,Objects,towel,タオル,taoru
+1254,Objects,tripod,三脚,sankyaku
+1255,Objects,umbrella,傘,kasa
+1256,Objects,vase,花瓶,kabin
+1257,Objects,walking stick,杖,tsue
+1258,Objects,water pipe,水道管,suidō-kan
+1259,Objects,watering can,じょうろ,jōro
+1260,Objects,wreath,花輪,hanawa
+1261,Education,archeology,考古学,kōkogaku
+1262,Education,atom,原子,genshi
+1263,Education,board,ボード,bōdo
+1264,Education,calculation,計算,keisan
+1265,Education,calculator,電卓,dentaku
+1266,Education,certificate,証明書,shōmei-sho
+1267,Education,chalk,チョーク,chōku
+1268,Education,class,クラス,kurasu
+1269,Education,compass,コンパス,konpasu
+1270,Education,compass1,コンパス,konpasu
+1271,Education,country,国,kuni
+1272,Education,course,コー​​ス,kō su
+1273,Education,diploma,卒業証書,sotsugyō shōsho
+1274,Education,direction,方位,hōi
+1275,Education,education,教育,kyōiku
+1276,Education,filter,フィルタ,firuta
+1277,Education,formula,式,shiki
+1278,Education,geography,地理,chiri
+1279,Education,grammar,文法,bunpō
+1280,Education,knowledge,知識,chishiki
+1281,Education,language,言語,gengo
+1282,Education,lesson,レッスン,ressun
+1283,Education,library,図書館,toshokan
+1284,Education,literature,文学,bungaku
+1285,Education,mathematics,数学,sūgaku
+1286,Education,microscope,顕微鏡,kenbikyō
+1287,Education,number,数,kazu
+1288,Education,number1,数,kazu
+1289,Education,pressure,圧力,atsuryoku
+1290,Education,prism,プリズム,purizumu
+1291,Education,professor,教授,kyōju
+1292,Education,pyramid,ピラミッド,piramiddo
+1293,Education,radioactivity,放射能,hōshanō
+1294,Education,scales,はかり,hakari
+1295,Education,space,宇宙,uchū
+1296,Education,statistics,統計,tōkei
+1297,Education,studies,研究,kenkyū
+1298,Education,syllable,音節,onsetsu
+1299,Education,table,テーブル,tēburu
+1300,Education,translation,翻訳,hon'yaku
+1301,Education,triangle,三角形,sankakkei
+1302,Education,umlaut,ウムラウト,umurauto
+1303,Education,university,大学,daigaku
+1304,Education,world map,世界地図,sekai chizu
+1305,Body,arm,腕,ude
+1306,Body,back,背中,senaka
+1307,Body,bald head,はげ頭,hageatama
+1308,Body,beard,あごひげ,agohige
+1309,Body,blood,血,chi
+1310,Body,bone,骨,hone
+1311,Body,bottom,お尻,o shiri
+1312,Body,braid,三つ編み,mittsuami
+1313,Body,brain,脳,nō
+1314,Body,breast,乳房,chibusa
+1315,Body,ear,耳,mimi
+1316,Body,eye,目,me
+1317,Body,face,顔,kao
+1318,Body,finger,指,yubi
+1319,Body,fingerprint,指紋,shimon
+1320,Body,fist,拳,ken
+1321,Body,foot,足,ashi
+1322,Body,hair,髪,kami
+1323,Body,haircut,散髪,sanpatsu
+1324,Body,hand,手,te
+1325,Body,head,頭,atama
+1326,Body,heart,心臓,shinzō
+1327,Body,index finger,人差し指,hitosashiyubi
+1328,Body,kidney,腎臓,jinzō
+1329,Body,knee,膝,hiza
+1330,Body,leg,足,ashi
+1331,Body,lip,唇,kuchibiru
+1332,Body,mouth,口,kuchi
+1333,Body,ringlet,巻き毛,makike
+1334,Body,skeleton,骸骨,gaikotsu
+1335,Body,skin,皮膚,hifu
+1336,Body,skull,頭蓋骨,zugaikotsu
+1337,Body,tattoo,入れ墨,irezumi
+1338,Body,throat,のど,nodo
+1339,Body,thumb,親指,oyayubi
+1340,Body,toe,つま先,tsumasaki
+1341,Body,tongue,舌,shita
+1342,Body,tooth,歯,ha
+1343,Body,wig,かつら,katsura
+1344,Nature,arc,アーク,āku
+1345,Nature,barn,納屋,naya
+1346,Nature,bay,湾,wan
+1347,Nature,beach,砂浜,sunahama
+1348,Nature,bubble,泡,awa
+1349,Nature,cave,洞窟,dōkutsu
+1350,Nature,farm,農場,nōjō
+1351,Nature,fire,火,hi
+1352,Nature,footprint,足跡,ashiato
+1353,Nature,globe,地球儀,chikyūgi
+1354,Nature,harvest,収穫,shūkaku
+1355,Nature,hay bales,干し草俵,hoshikusa tawara
+1356,Nature,lake,湖,mizūmi
+1357,Nature,leaf,葉,ha
+1358,Nature,mountain,山,yama
+1359,Nature,ocean,海,umi
+1360,Nature,panorama,パノラマ,panorama
+1361,Nature,rock,岩,iwa
+1362,Nature,spring,春,haru
+1363,Nature,swamp,沼,numa
+1364,Nature,tree,木,ki
+1365,Nature,tree trunk,木の幹,ki no kan
+1366,Nature,valley,谷,tani
+1367,Nature,view,景色,keshiki
+1368,Nature,water jet,噴水,funsui
+1369,Nature,waterfall,滝,taki
+1370,Nature,wave,波,nami
+1371,Finances,ATM,ATM,ATM
+1372,Finances,account,口座,kōza
+1373,Finances,bank,銀行,ginkō
+1374,Finances,bill,請求書,seikyū-sho
+1375,Finances,check,小切手,kogitte
+1376,Finances,checkout,チェックアウト,Chekkuauto
+1377,Finances,coin,硬貨,kōka
+1378,Finances,currency,通貨,tsūka
+1379,Finances,diamond,ダイヤモンド,daiyamondo
+1380,Finances,dollar,ドル,doru
+1381,Finances,donation,寄付,kifu
+1382,Finances,euro,ユーロ,yūro
+1383,Finances,exchange rate,為替レート,kawase rēto
+1384,Finances,gold,金,kin
+1385,Finances,luxury,豪華,gōka
+1386,Finances,market price,市場価格,ichiba kakaku
+1387,Finances,membership,メンバーシップ,menbāshippu
+1388,Finances,money,お金,okane
+1389,Finances,percentage,割合,wariai
+1390,Finances,piggy bank,貯金箱,chokin-bako
+1391,Finances,price tag,値札,nefuda
+1392,Finances,purse,財布,saifu
+1393,Finances,receipt,領収書,ryōshū-sho
+1394,Finances,stock exchange,証券取引所,shōkentorihikisho
+1395,Finances,trade,貿易,bōeki
+1396,Finances,treasure,宝,takara
+1397,Finances,wallet,財布,saifu
+1398,Finances,wealth,富,tomi
+1399,Furniture,armchair,肘掛け椅子,hijikake isu
+1400,Furniture,bed,ベッド,beddo
+1401,Furniture,bedding,寝具,shingu
+1402,Furniture,bookshelf,本棚,hondana
+1403,Furniture,carpet,カーペット,kāpetto
+1404,Furniture,chair,椅子,isu
+1405,Furniture,chest of drawers,箪笥,tansu
+1406,Furniture,cradle,ゆりかご,yuri kago
+1407,Furniture,cupboard,食器棚,shokkitana
+1408,Furniture,curtain,緞帳,donchō
+1409,Furniture,curtain1,緞帳,donchō
+1410,Furniture,desk,机,tsukue
+1411,Furniture,fan,扇風機,senpūki
+1412,Furniture,mat,マット,matto
+1413,Furniture,playpen,ベビーサークル,bebīsākuru
+1414,Furniture,rocking chair,ロッキングチェア,rokkinguchea
+1415,Furniture,safe,金庫,kinko
+1416,Furniture,seat,座席,zaseki
+1417,Furniture,shelf,棚,tana
+1418,Furniture,side table,サイドテーブル,saidotēburu
+1419,Furniture,sofa,ソファ,sofa
+1420,Furniture,stool,スツール,sutsūru
+1421,Furniture,table,テーブル,tēburu
+1422,Furniture,table lamp,電気スタンド,denki sutando
+1423,Furniture,wastepaper basket,屑籠,kuzu kago
+1424,Religion,Easter,イースター,īsutā
+1425,Religion,Easter egg,イースターエッグ,īsutāeggu
+1426,Religion,angel,天使,tenshi
+1427,Religion,bell,ベル,beru
+1428,Religion,bible,聖書,seisho
+1429,Religion,bishop,司教,shikyō
+1430,Religion,blessing,祝福,shukufuku
+1431,Religion,Buddhism,仏教,bukkyō
+1432,Religion,Christianity,キリスト教,kirisutokyō
+1433,Religion,Christmas gift,クリスマスギフト,kurisumasu gifuto
+1434,Religion,Christmas tree,クリスマスツリー,kurisumasutsurī
+1435,Religion,church,教会,kyōkai
+1436,Religion,coffin,棺,hitsugi
+1437,Religion,creation,創造,sōzō
+1438,Religion,crucifix,十字架,jūjika
+1439,Religion,devil,悪魔,akuma
+1440,Religion,god,神,kami
+1441,Religion,Hinduism,ヒンドゥー教,hindo~ū kyō
+1442,Religion,Islam,イスラム教,Isuramukyō
+1443,Religion,Judaism,ユダヤ教,Yudaya kyō
+1444,Religion,meditation,瞑想,meisō
+1445,Religion,mummy,ミイラ,mīra
+1446,Religion,Muslim,イスラム教徒,Isuramu kyōto
+1447,Religion,pope,ローマ法王,rōma hōō
+1448,Religion,prayer,祈り,inori
+1449,Religion,priest,聖職者,seishoku-sha
+1450,Religion,religion,宗教,shūkyō
+1451,Religion,service,礼拝,reihai
+1452,Religion,synagogue,ユダヤ教,Yudaya kyō
+1453,Religion,temple,寺院,jiin
+1454,Religion,tomb,墓,haka
+1455,Plants,bamboo,竹,take
+1456,Plants,blossom,花,hana
+1457,Plants,bouquet of flowers,花束,hanataba
+1458,Plants,branch,枝,eda
+1459,Plants,bud,つぼみ,tsubomi
+1460,Plants,cactus,サボテン,saboten
+1461,Plants,clover,クローバー,kurōbā
+1462,Plants,cone,松ぼっくり,matsubokkuri
+1463,Plants,cornflower,ヤグルマギク,yagurumagiku
+1464,Plants,crocus,クロッカス,kurokkasu
+1465,Plants,daffodil,水仙,suisen
+1466,Plants,daisy,デイジー,deijī
+1467,Plants,dandelion,タンポポ,tanpopo
+1468,Plants,flower,花,hana
+1469,Plants,foliage,葉,ha
+1470,Plants,grain,穀物,kokumotsu
+1471,Plants,grass,草,kusa
+1472,Plants,growth,栽培,saibai
+1473,Plants,hyacinth,ヒヤシンス,hiyashinsu
+1474,Plants,lawn,芝生,shibafu
+1475,Plants,lily,ユリ,yuri
+1476,Plants,linseed,亜麻仁,amani
+1477,Plants,mushroom,キノコ,kinoko
+1478,Plants,olive tree,オリーブの木,orību no ki
+1479,Plants,palm tree,シュロの木,shuro no ki
+1480,Plants,pansy,パンジー,panjī
+1481,Plants,peach tree,桃の木,momo no ki
+1482,Plants,plant,植物,shokubutsu
+1483,Plants,poppy,ポピー,popī
+1484,Plants,root,根,ne
+1485,Plants,rose,バラ,bara
+1486,Plants,seed,種,tane
+1487,Plants,snowdrop,スノードロップ,sunōdoroppu
+1488,Plants,sunflower,ヒマワリ,himawari
+1489,Plants,thorn,とげ,toge
+1490,Plants,trunk,幹,kan
+1491,Plants,tulip,チューリップ,chūrippu
+1492,Plants,water lily,スイレン,suiren
+1493,Plants,wheat,小麦,komugi
+1494,Abstract terms,administration,管理,kanri
+1495,Abstract terms,advertising,広告,kōkoku
+1496,Abstract terms,arrow,矢印,yajirushi
+1497,Abstract terms,ban,禁止,kinshi
+1498,Abstract terms,career,経歴,keireki
+1499,Abstract terms,center,中心,chūshin
+1500,Abstract terms,choice,選択,sentaku
+1501,Abstract terms,collaboration,コラボレーション,koraborēshon
+1502,Abstract terms,color,色,iro
+1503,Abstract terms,contact,接触,sesshoku
+1504,Abstract terms,danger,危険,kiken
+1505,Abstract terms,declaration of love,愛の宣言,ai no sengen
+1506,Abstract terms,decline,減少,genshō
+1507,Abstract terms,definition,定義,teigi
+1508,Abstract terms,difference,違い,chigai
+1509,Abstract terms,difficulty,困難,kon'nan
+1510,Abstract terms,direction,方向,hōkō
+1511,Abstract terms,discovery,発見,hakken
+1512,Abstract terms,disorder,障害,shōgai
+1513,Abstract terms,distance,遠方,enpō
+1514,Abstract terms,distance1,遠方,enpō
+1515,Abstract terms,diversity,多様性,tayō-sei
+1516,Abstract terms,effort,努力,doryoku
+1517,Abstract terms,exploration,探査,tansa
+1518,Abstract terms,fall,転倒,tentō
+1519,Abstract terms,force,力,chikara
+1520,Abstract terms,fragrance,香り,kaori
+1521,Abstract terms,freedom,自由,jiyū
+1522,Abstract terms,ghost,幽霊,yūrei
+1523,Abstract terms,half,半分,hanbun
+1524,Abstract terms,height,高さ,taka-sa
+1525,Abstract terms,help,援助,enjo
+1526,Abstract terms,hiding place,隠れ家,kakurega
+1527,Abstract terms,homeland,祖国,sokoku
+1528,Abstract terms,hygiene,衛生,eisei
+1529,Abstract terms,idea,アイデア,aidea
+1530,Abstract terms,illusion,錯覚,sakkaku
+1531,Abstract terms,imagination,想像力,sōzō-ryoku
+1532,Abstract terms,intelligence,知性,chisei
+1533,Abstract terms,invitation,招待,shōtai
+1534,Abstract terms,justice,正義,masayoshi
+1535,Abstract terms,light,光,hikari
+1536,Abstract terms,look,外観,gaikan
+1537,Abstract terms,loss,損失,sonshitsu
+1538,Abstract terms,magnification,倍率,bairitsu
+1539,Abstract terms,mistake,ミス,misu
+1540,Abstract terms,murder,殺人,satsujin
+1541,Abstract terms,nation,国,kuni
+1542,Abstract terms,novelty,目新しさ,meatarashi-sa
+1543,Abstract terms,option,オプション,opushon
+1544,Abstract terms,patience,忍耐,nintai
+1545,Abstract terms,planning,計画,keikaku
+1546,Abstract terms,problem,問題,mondai
+1547,Abstract terms,protection,保護,hogo
+1548,Abstract terms,reflection,反射,hansha
+1549,Abstract terms,republic,共和国,kyōwakoku
+1550,Abstract terms,risk,リスク,risuku
+1551,Abstract terms,safety,安全性,anzen-sei
+1552,Abstract terms,secret,秘密,himitsu
+1553,Abstract terms,sex,セックス,sekkusu
+1554,Abstract terms,shadow,影,kage
+1555,Abstract terms,size,サイズ,saizu
+1556,Abstract terms,solidarity,連帯,rentai
+1557,Abstract terms,success,成功,seikō
+1558,Abstract terms,support,サポート,sapōto
+1559,Abstract terms,tradition,伝統,dentō
+1560,Abstract terms,weight,重さ,omo-sa
+1561,Kitchen appliances,bowl,ボウル,bōru
+1562,Kitchen appliances,coffee machine,コー​​ヒーメーカー,kō hīmēkā
+1563,Kitchen appliances,cooking pot,鍋,nabe
+1564,Kitchen appliances,cutlery,食卓用ナイフ、スプーン、フォーク,shokutaku-yō naifu\
+1565,Kitchen appliances,cutting board,まな板,manaita
+1566,Kitchen appliances,dishes,食器,shokki
+1567,Kitchen appliances,dishwasher,食器洗い機,shokkiarai-ki
+1568,Kitchen appliances,dust bin,ごみ箱,gomibako
+1569,Kitchen appliances,electric stove,電気レンジ,denki renji
+1570,Kitchen appliances,faucet,蛇口,jaguchi
+1571,Kitchen appliances,fondue,フォンデュ,fonde~yu
+1572,Kitchen appliances,fork,フォーク,fōku
+1573,Kitchen appliances,frying pan,フライパン,furaipan
+1574,Kitchen appliances,garlic press,ガーリックプレス,gārikkupuresu
+1575,Kitchen appliances,gas stove,ガスストーブ,gasusutōbu
+1576,Kitchen appliances,grill,グリル,guriru
+1577,Kitchen appliances,knife,ナイフ,naifu
+1578,Kitchen appliances,ladle,ひしゃく,hishaku
+1579,Kitchen appliances,microwave,電子レンジ,denjirenji
+1580,Kitchen appliances,napkin,ナプキン,napukin
+1581,Kitchen appliances,nutcracker,くるみ割り,kurumi-wari
+1582,Kitchen appliances,pan,平鍋,hiranabe
+1583,Kitchen appliances,plate,取り皿,tori sara
+1584,Kitchen appliances,refrigerator,冷蔵庫,reizōko
+1585,Kitchen appliances,spoon,スプーン,supūn
+1586,Kitchen appliances,tablecloth,テーブルクロス,tēburukurosu
+1587,Kitchen appliances,toaster,トースター,tōsutā
+1588,Kitchen appliances,tray,盆,bon
+1589,Kitchen appliances,washing machine,洗濯機,sentakuki
+1590,Kitchen appliances,whisk,泡立て器,awatateki
+1591,Materials,brass,真鍮,shinchū
+1592,Materials,cement,セメント,semento
+1593,Materials,ceramic,瀬戸物,setomono
+1594,Materials,cloth,ナプキン,napukin
+1595,Materials,cloth1,ナプキン,napukin
+1596,Materials,cotton,綿,wata
+1597,Materials,crystal,水晶,suishō
+1598,Materials,dirt,土,tsuchi
+1599,Materials,glue,接着剤,setchaku-zai
+1600,Materials,leather,革,kawa
+1601,Materials,metal,金属,kinzoku
+1602,Materials,oil,油,abura
+1603,Materials,powder,粉,kona
+1604,Materials,salt,塩,shio
+1605,Materials,sand,砂,suna
+1606,Materials,scrap,スクラップ,sukurappu
+1607,Materials,silver,銀,gin
+1608,Materials,stone,石,ishi
+1609,Materials,straw,わら,wara
+1610,Materials,wood,木材,mokuzai
+1611,Materials,wool,ウール,ūru
+1612,Health,ambulance,救急車,kyūkyūsha
+1613,Health,bandage,包帯,hōtai
+1614,Health,birth,出産,shussan
+1615,Health,blood pressure,血圧,ketsuatsu
+1616,Health,body care,ボディケア,bodi kea
+1617,Health,cold,冷たさ,tsumeta-sa
+1618,Health,cream,クリーム,kurīmu
+1619,Health,crutch,松葉杖,matsubadzue
+1620,Health,examination,検査,kensa
+1621,Health,exhaustion,疲労,hirō
+1622,Health,face mask,フェイスマスク,feisumasuku
+1623,Health,first-aid box,救急箱,kyūkyū-bako
+1624,Health,healing,癒し,iyashi
+1625,Health,health,健康,kenkō
+1626,Health,hearing aid,補聴器,hochōki
+1627,Health,hospital,病院,byōin
+1628,Health,injection,注射,chūsha
+1629,Health,injury,けが,kega
+1630,Health,makeup,メイクアップ,meikuappu
+1631,Health,massage,マッサージ,massāji
+1632,Health,medicine,乳鉢,nyūbachi
+1633,Health,medicine1,乳鉢,nyūbachi
+1634,Health,mortar,モルタル,morutaru
+1635,Health,mouth guard,マウスガード,mausugādo
+1636,Health,nail clipper,爪切り,tsume-kiri
+1637,Health,obesity,肥満,himan
+1638,Health,operation,手術,shujutsu
+1639,Health,pain,痛み,itami
+1640,Health,perfume,香水,kōsui
+1641,Health,pill,錠剤,jōzai
+1642,Health,pregnancy,妊娠,ninshin
+1643,Health,razor,かみそり,kami sori
+1644,Health,shave,ひげをそり,hi-ge o sori
+1645,Health,shaving brush,シェービングブラシ,shēbinguburashi
+1646,Health,sleep,睡眠,suimin
+1647,Health,smoker,喫煙者,kitsuen-sha
+1648,Health,smoking ban,禁煙,kin'en
+1649,Health,sunscreen,日焼け止め,hiyakedome
+1650,Health,swab,綿棒,menbō
+1651,Health,toothbrush,歯ブラシ,haburashi
+1652,Health,toothpaste,歯磨き粉,hamigakiko
+1653,Health,toothpick,つまようじ,tsuma yōji
+1654,Health,victim,被害者,higaisha
+1655,Health,weighing scale,体重計,taijū-kei
+1656,Health,wheelchair,車椅子,kurumaisu
+1657,Car,air filter,エアフィルター,eafirutā
+1658,Car,breakdown,故障,koshō
+1659,Car,camper,キャンピングカー,kyanpingukā
+1660,Car,car battery,車のバッテリー,kuruma no batterī
+1661,Car,child seat,チャイルドシート,chairudoshīto
+1662,Car,damage,損傷,sonshō
+1663,Car,diesel,ディーゼル,dīzeru
+1664,Car,exhaust pipe,排気管,haiki-kan
+1665,Car,flat tire,パンク,panku
+1666,Car,gas station,ガソリンスタンド,gasorinsutando
+1667,Car,headlight,ヘッドライト,heddoraito
+1668,Car,hood,ボンネット,bon'netto
+1669,Car,jack,ジャック,jakku
+1670,Car,jerry can,ジェリー缶,jerī kan
+1671,Car,junkyard,廃品置き場,haihin okiba
+1672,Car,rear,後部,kōbu
+1673,Car,rear light,尾灯,bitō
+1674,Car,rear view mirror,バックミラー,bakkumirā
+1675,Car,ride,乗車,jōsha
+1676,Car,rim,リム,rimu
+1677,Car,spark plug,スパークプラグ,supākupuragu
+1678,Car,tachometer,タコメーター,takomētā
+1679,Car,ticket,チケット,chiketto
+1680,Car,tire,タイヤ,taiya
+1681,Car,towing service,けん引サービス,ken'in sābisu
+1682,Car,vintage car,クラシックカー,kurashikkukā
+1683,Car,wheel,ホイール,hoīru
+1684,Arts,applause,拍手,hakushu
+1685,Arts,art,芸術,geijutsu
+1686,Arts,bow,お辞儀,ojigi
+1687,Arts,brush,ブラシ,burashi
+1688,Arts,coloring book,塗り絵の本,nurie no hon
+1689,Arts,dancer,ダンサー,dansā
+1690,Arts,drawing,描画,byōga
+1691,Arts,gallery,ギャラリー,gyararī
+1692,Arts,glass window,ガラス窓,garasu mado
+1693,Arts,graffiti,落書き,rakugaki
+1694,Arts,handicraft,手工芸品,te kōgei-hin
+1695,Arts,mosaic,モザイク,mozaiku
+1696,Arts,mural,壁画,hekiga
+1697,Arts,museum,博物館,hakubutsukan
+1698,Arts,performance,パフォーマンス,pafōmansu
+1699,Arts,picture,絵,e
+1700,Arts,poem,詩,uta
+1701,Arts,sculpture,彫刻,chōkoku
+1702,Arts,song,歌,uta
+1703,Arts,statue,像,zō
+1704,Arts,water color,絵の具,enogu
+1705,City,airport,空港,kūkō
+1706,City,apartment building,アパート,apāto
+1707,City,bench,銀行,ginkō
+1708,City,big city,大都会,dai tokai
+1709,City,bike path,自転車道,jitensha michi
+1710,City,boat harbor,ボートの港,bōto no minato
+1711,City,capital,首都,shuto
+1712,City,carillon,カリヨン,kariyon
+1713,City,cemetery,墓地,bochi
+1714,City,cinema,映画館,eigakan
+1715,City,city,市,ichi
+1716,City,city map,市内マップ,shinai mappu
+1717,City,crime,犯罪,hanzai
+1718,City,demonstration,デモ,demo
+1719,City,fair,フェア,fea
+1720,City,fire brigade,消防隊,shōbō-tai
+1721,City,fountain,噴水,funsui
+1722,City,garbage,ごみ,gomi
+1723,City,harbor / harbour,港,Minato
+1724,City,hotel,ホテル,hoteru
+1725,City,hydrant,消火栓,shōkasen
+1726,City,landmark,ランドマーク,randomāku
+1727,City,mailbox,ポスト,posuto
+1728,City,neighborhood,近所,kinjo
+1729,City,neon light,ネオンライト,neonraito
+1730,City,nightclub,ナイトクラブ,naitokurabu
+1731,City,old town,旧市街,kyū shigai
+1732,City,opera,オペラ,opera
+1733,City,park,公園,kōen
+1734,City,park bench,公園のベンチ,kōen no benchi
+1735,City,parking lot,駐車場,chūshajō
+1736,City,phone booth,公衆電話ボックス,kōshūdenwa bokkusu
+1737,City,postal code (ZIP),郵便番号（ZIP）,yūbenbangō (ZIP)
+1738,City,prison,刑務所,keimusho
+1739,City,pub,パブ,pabu
+1740,City,sights,観光スポット,kankō supotto
+1741,City,skyline,スカイライン,sukairain
+1742,City,street light,街路灯,gairo-tō
+1743,City,tourist office,観光案内所,kankōan'naijo
+1744,City,tower,塔,tō
+1745,City,tunnel,トンネル,ton'neru
+1746,City,vehicle,車両,sharyō
+1747,City,village,村,mura
+1748,City,water tower,給水塔,kyūsui-tō
+1749,Weather,barometer,気圧計,kiatsu-kei
+1750,Weather,cloud,雲,kumo
+1751,Weather,cold,寒気,samuke
+1752,Weather,crescent,三日月形,mikadzukikei
+1753,Weather,darkness,闇,yami
+1754,Weather,drought,干ばつ,kanbatsu
+1755,Weather,earth,地球,chikyū
+1756,Weather,fog,霧,kiri
+1757,Weather,frost,霜,shimo
+1758,Weather,glaze,凍結,tōketsu
+1759,Weather,heat,熱,netsu
+1760,Weather,hurricane,ハリケーン,harikēn
+1761,Weather,icicle,つらら,tsurara
+1762,Weather,lightning,稲妻,inazuma
+1763,Weather,meteor,流星,ryūsei
+1764,Weather,moon,月,tsuki
+1765,Weather,rainbow,虹,niji
+1766,Weather,raindrop,雨滴,uteki
+1767,Weather,snow,雪,yuki
+1768,Weather,snowflake,スノーフレーク,sunōfurēku
+1769,Weather,snowman,雪だるま,yukidaruma
+1770,Weather,star,星,hoshi
+1771,Weather,storm,嵐,arashi
+1772,Weather,storm surge,高潮,takashio
+1773,Weather,sun,太陽,taiyō
+1774,Weather,sunbeam,太陽光線,taiyōkō-sen
+1775,Weather,sunset,夕焼け,yūyake
+1776,Weather,thermometer,温度計,ondokei
+1777,Weather,thunderstorm,雷雨,raiu
+1778,Weather,twilight,夕暮れ,yūgure
+1779,Weather,weather,天気,tenki
+1780,Weather,wet conditions,ウェットコンディション,u~ettokondishon
+1781,Weather,wind,風,kaze
+1782,Shopping,bakery,バン屋,ban-ya
+1783,Shopping,bar code,バーコード,bākōdo
+1784,Shopping,bookshop,本屋,hon'ya
+1785,Shopping,café,コーヒーショップ,kōhīshoppu
+1786,Shopping,drugstore,薬屋,Kusuriya
+1787,Shopping,dry cleaner,ドライクリーニング店,doraikurīningu-ten
+1788,Shopping,flower shop,花屋,hanaya
+1789,Shopping,gift,プレゼント,purezento
+1790,Shopping,market,市場,ichiba
+1791,Shopping,market hall,市場ホール,ichiba hōru
+1792,Shopping,newspaper stand,新聞売り場,shinbun uriba
+1793,Shopping,pharmacy,薬局,yakkyoku
+1794,Shopping,post office,郵便局,yūbinkyoku
+1795,Shopping,pottery,陶器,tōki
+1796,Shopping,sale,安売り,yasuuri
+1797,Shopping,shop,店,mise
+1798,Shopping,shopping,ショッピング,shoppingu
+1799,Shopping,shopping bag,ショッピングバッグ,shoppingu baggu
+1800,Shopping,shopping basket,買い物かご,kaimono kago
+1801,Shopping,shopping cart,ショッピングカート,shoppingukāto
+1802,Shopping,shopping tour,ショッピングツアー,shoppingutsuā
+1803,Architecture,architecture,建築物,kenchiku-mono
+1804,Architecture,arena,アリーナ,arīna
+1805,Architecture,barn,納屋,naya
+1806,Architecture,baroque,バロック様式,barokku yōshiki
+1807,Architecture,block,ブロック,burokku
+1808,Architecture,brick house,れんが造りの家,renga-dzukuri no ie
+1809,Architecture,bridge,橋,hashi
+1810,Architecture,building,建物,tatemono
+1811,Architecture,castle,城,shiro
+1812,Architecture,cathedral,大聖堂,taiseidō
+1813,Architecture,column,欄,ran
+1814,Architecture,construction site,建設現場,kensetsu genba
+1815,Architecture,dome,ドーム,dōmu
+1816,Architecture,facade,ファサード,fasādo
+1817,Architecture,football stadium,サッカー競技場,sakkā kyōgi-ba
+1818,Architecture,fort,砦,toride
+1819,Architecture,gable,切妻形のひさし,kiridzuma katachi no hisashi
+1820,Architecture,gate,門,mon
+1821,Architecture,half-timbered house,木骨造りの家,mokkotsu-dzukuri no ie
+1822,Architecture,lighthouse,灯台,tōdai
+1823,Architecture,monument,記念碑,kinenhi
+1824,Architecture,mosque,モスク,mosuku
+1825,Architecture,obelisk,オベリスク,oberisuku
+1826,Architecture,office building,オフィスビル,ofisu biru
+1827,Architecture,roof,屋根,yane
+1828,Architecture,ruin,遺跡,iseki
+1829,Architecture,scaffold,足場,ashiba
+1830,Architecture,skyscraper,超高層ビル,chōkōsōbiru
+1831,Architecture,suspension bridge,吊り橋,tsuribashi
+1832,Architecture,tile,タイル,tairu
+1833,Big animals,alligator,ワニ,wani
+1834,Big animals,antlers,角,tsuno
+1835,Big animals,baboon,マントヒヒ,mantohihi
+1836,Big animals,bear,クマ,kuma
+1837,Big animals,buffalo,水牛,suigyū
+1838,Big animals,camel,ラクダ,rakuda
+1839,Big animals,cheetah,チーター,chītā
+1840,Big animals,cow,牛,ushi
+1841,Big animals,crocodile,ワニ,wani
+1842,Big animals,dinosaur,恐竜,kyōryū
+1843,Big animals,donkey,ロバ,roba
+1844,Big animals,dragon,ドラゴン,doragon
+1845,Big animals,elephant,象,zō
+1846,Big animals,giraffe,キリン,Kirin
+1847,Big animals,gorilla,ゴリラ,gorira
+1848,Big animals,hippo,カバ,kaba
+1849,Big animals,horse,馬,uma
+1850,Big animals,kangaroo,カンガルー,kangarū
+1851,Big animals,leopard,ヒョウ,hyō
+1852,Big animals,lion,ライオン,raion
+1853,Big animals,llama,ラマ,Rama
+1854,Big animals,lynx,オオヤマネコ,ōyamaneko
+1855,Big animals,monster,モンスター,monsutā
+1856,Big animals,moose,ムース,mūsu
+1857,Big animals,ostrich,ダチョウ,dachō
+1858,Big animals,panda,パンダ,panda
+1859,Big animals,pig,豚,buta
+1860,Big animals,polar bear,シロクマ,shirokuma
+1861,Big animals,puma,ピューマ,pyūma
+1862,Big animals,rhino,サイ,sai
+1863,Big animals,stag,雄鹿,oshika
+1864,Big animals,tiger,虎,tora
+1865,Big animals,walrus,セイウチ,seiuchi
+1866,Big animals,wild horse,野生の馬,yasei no uma
+1867,Big animals,zebra,シマウマ,shimauma
+1868,Small animals,ant,アリ,Ari
+1869,Small animals,beetle,甲虫,kabutomushi
+1870,Small animals,bird,鳥,tori
+1871,Small animals,birdcage,鳥籠,torikago
+1872,Small animals,birdhouse,巣箱,subako
+1873,Small animals,bumblebee,マルハナバチ,maruhanabachi
+1874,Small animals,butterfly,蝶,chō
+1875,Small animals,caterpillar,毛虫,kemushi
+1876,Small animals,centipede,ムカデ,mukade
+1877,Small animals,crab,カニ,kani
+1878,Small animals,fly,蠅,hae
+1879,Small animals,frog,カエル,kaeru
+1880,Small animals,goldfish,金魚,kingyo
+1881,Small animals,grasshopper,バッタ,batta
+1882,Small animals,guinea pig,モルモット,morumotto
+1883,Small animals,hamster,ハムスター,hamusutā
+1884,Small animals,hedgehog,ハリネズミ,harinezumi
+1885,Small animals,hummingbird,ハチドリ,hachidori
+1886,Small animals,iguana,イグアナ,iguana
+1887,Small animals,insect,昆虫,konchū
+1888,Small animals,jellyfish,クラゲ,kurage
+1889,Small animals,kitten,子猫,koneko
+1890,Small animals,ladybug,てんとう虫,tentōchū
+1891,Small animals,lizard,トカゲ,tokage
+1892,Small animals,louse,シラミ,shirami
+1893,Small animals,marmot,マーモット,māmotto
+1894,Small animals,mosquito,蚊,ka
+1895,Small animals,mouse,ネズミ,nezumi
+1896,Small animals,oyster,牡蠣,kaki
+1897,Small animals,scorpion,サソリ,sasori
+1898,Small animals,seahorse,たつのおとしご,tatsunōtoshigo
+1899,Small animals,shell,貝,kai
+1900,Small animals,shrimp,エビ,ebi
+1901,Small animals,spider,クモ,kumo
+1902,Small animals,spider web,クモの巣,kumonosu
+1903,Small animals,starfish,ヒトデ,hitode
+1904,Small animals,wasp,スズメバチ,suzumebachi
+1966,Colors,black,黒,kuro
+1974,Colors,blue,青,ao
+1982,Colors,brown,褐色,kasshoku
+1990,Colors,gray,グレー,gurē
+1998,Colors,green,緑,midori
+2006,Colors,net,ネット,netto
+2014,Colors,network,ネットワーク,nettowāku
+2022,Colors,orange,オレンジ,orenji
+2030,Colors,pink,ピンク,pinku
+2038,Colors,purple,紫の,murasakino
+2046,Colors,red,赤,aka
+2054,Colors,white,白,shiro
+2062,Colors,yellow,黄,ki
+2598,WHQuestions,how,どうやって,dō yatte
+2606,WHQuestions,what,何,nani
+2614,WHQuestions,when,いつ,itsu
+2622,WHQuestions,where,どこで,dokode
+2630,WHQuestions,which,どの,dono
+2638,WHQuestions,who,誰,dare
+2646,WHQuestions,whose,その,sono
+2663,Numbers,one,1,1
+2671,Numbers,two,二,ni
+2679,Numbers,three,三,san
+2687,Numbers,four,4つの,4tsu no
+2695,Numbers,five,五,go
+2703,Numbers,six,6人,6-ri
+2711,Numbers,seven,セブン,Sebun
+2719,Numbers,eight,8,8
+2727,Numbers,nine,9人,9-ri
+2735,Numbers,ten,十,jū
+2743,Numbers,twenty,20,20
+2751,Numbers,thirty,30,30
+2759,Numbers,forty,40,40
+2767,Numbers,fifty,50,50
+2775,Numbers,sixty,60歳,60-sai
+2783,Numbers,seventy,70,70
+2791,Numbers,eighty,80人,80-ri
+2799,Numbers,ninety,90,90
+2807,Numbers,hundred,百,hyaku
+2815,Numbers,thousand,千,sen
+2823,Numbers,ten thousand,万,man
+2831,Numbers,million,百万,Hyakuman
+2839,Numbers,billion,億,oku
+2847,Numbers,trillion,1兆,1 chō
+2856,Pronouns,i,私,watashi
+2862,Pronouns,you,君は,kimi wa
+2868,Pronouns,he,彼,kare
+2874,Pronouns,she,彼女,kanojo
+2880,Pronouns,it,それ,sore
+2886,Pronouns,we,我々,wareware
+2892,Pronouns,they,彼ら,karera
+2898,Pronouns,us,私たち,watashitachi
+2904,Pronouns,our,我々の,wareware no
+2910,Pronouns,my,じぶんの,ji bun no
+2916,Pronouns,me,私,watashi
+2922,Pronouns,his,彼,kare
+2928,Pronouns,her,彼女,kanojo
+2934,Pronouns,everyone,みんな,min'na
+2968,Months,January,1月,1 gatsu
+2976,Months,February,2月,2 gatsu
+2984,Months,march,3月,3 gatsu
+2992,Months,April,4月,4 gatsu
+3000,Months,may,5月,5 gatsu
+3008,Months,June,六月,6 gatsu
+3016,Months,July,7月,7 gatsu
+3024,Months,August,8月,8 gatsu
+3032,Months,September,9月,9 gatsu
+3040,Months,October,10月,10 gatsu
+3048,Months,November,11月,11 gatsu
+3056,Months,December,12月,12 gatsu
+3064,DaysOfWeek,Monday,月曜,getsuyō
+3072,DaysOfWeek,Tuesday,火曜日,kayōbi
+3080,DaysOfWeek,Wednesday,水曜日,suiyōbi
+3088,DaysOfWeek,Thursday,木曜日,mokuyōbi
+3096,DaysOfWeek,Friday,金曜日,kin'yōbi
+3104,DaysOfWeek,Saturday,土曜日,doyōbi
+3112,DaysOfWeek,Sunday,日曜日,nichiyōbi
+3122,TimeClock,minute,分,bun
+3130,TimeClock,second,二番,Niban
+3138,TimeClock,millisecond,ミリ秒,miri byō
+3146,TimeClock,half-hour,半時間,half-hour
+3154,TimeClock,one o''clock,1時に,1-ji ni
+3162,TimeClock,two o''clock,二時,ni-ji
+3170,TimeClock,three o''clock,三時,san-ji
+3178,TimeClock,four o''clock,四時,shi-ji
+3186,TimeClock,five o''clock,五時,goji
+3194,TimeClock,six o''clock,6時,6-ji
+3202,TimeClock,seven o''clock,七時,shichiji
+3210,TimeClock,eight o''clock,8時,8-ji
+3218,TimeClock,nine o''clock,九時,kuji
+3226,TimeClock,ten o''clock,10時,10-ji
+3234,TimeClock,eleven o''clock,十一時,jū ichi-ji
+3240,TimeClock,twelve o''clock,十二時,jūnitoki
+3279,BasicVerbs,be,〜する,〜 suru
+3287,BasicVerbs,have,持ってる,motteru
+3295,BasicVerbs,do,行う,okonau
+3303,BasicVerbs,say,いう,iu
+3311,BasicVerbs,go,行く,iku
+3319,BasicVerbs,can,できる,dekiru
+3327,BasicVerbs,get,取得する,shutoku suru
+3335,BasicVerbs,make,作る,tsukuru
+3343,BasicVerbs,know,知っている,shitte iru
+3351,BasicVerbs,will,意志,ishi
+3359,BasicVerbs,think,思う,omou
+3367,BasicVerbs,take,取る,toru
+3375,BasicVerbs,see,見る,miru
+3383,BasicVerbs,come,来る,kuru
+3391,BasicVerbs,want,欲しいです,hoshīdesu
+3399,BasicVerbs,look,見て,mite
+3407,BasicVerbs,use,つかいます,tsukaimasu
+3415,BasicVerbs,find,見つける,mitsukeru
+3423,BasicVerbs,give,与える,ataeru
+3431,BasicVerbs,tell,話す,hanasu
+3439,BasicVerbs,work,作業,sagyō
+3447,BasicVerbs,may,かもしれない,kamo shirenai
+3455,BasicVerbs,should,するべき,surubeki
+3463,BasicVerbs,call,コール,kōru
+3471,BasicVerbs,try,試してみる,tameshite miru
+3479,BasicVerbs,ask,尋ねる,tazuneru
+3487,BasicVerbs,need,必要,hitsuyō
+3495,BasicVerbs,feel,感じる,kanjiru
+3503,BasicVerbs,become,〜になる,〜 ni naru
+3511,BasicVerbs,leave,離れる,hanareru
+3519,BasicVerbs,put,置く,oku
+3527,BasicVerbs,mean,平均,heikin
+3535,BasicVerbs,keep,キープ,kīpu
+3543,BasicVerbs,let,〜する,〜 suru
+3551,BasicVerbs,begin,ベギン,begin
+3559,BasicVerbs,seem,思われる,omowareru
+3567,BasicVerbs,help,助けて,tasukete
+3575,BasicVerbs,talk,トーク,tōku
+3583,BasicVerbs,turn,順番,Junban
+3591,BasicVerbs,start,開始,kaishi
+3599,BasicVerbs,show,ショー,shō
+3607,BasicVerbs,hear,聞く,kiku
+3615,BasicVerbs,play,遊びます,asobimasu
+3623,BasicVerbs,run,走る,hashiru
+3631,BasicVerbs,move,動く,ugoku
+3639,BasicVerbs,like,好きな,sukina
+3647,BasicVerbs,live,ライブ,raibu
+3655,BasicVerbs,believe,信じる,shinjiru
+3663,BasicVerbs,hold,ホールド,hōrudo
+3671,BasicVerbs,bring,持ち込む,mochikomu
+3679,BasicVerbs,happen,起こる,okoru
+3687,BasicVerbs,must,〜しなければならない,〜 shinakereba naranai
+3695,BasicVerbs,write,書きます,kakimasu
+3703,BasicVerbs,provide,提供する,teikyō suru
+3711,BasicVerbs,sit,座る,suwaru
+3719,BasicVerbs,stand,スタンド,sutando
+3727,BasicVerbs,lose,失う,ushinau
+3735,BasicVerbs,pay,支払う,shiharau
+3743,BasicVerbs,meet,会う,au
+3751,BasicVerbs,include,含める,fukumeru
+3759,BasicVerbs,continue,持続する,jizoku suru
+3767,BasicVerbs,set,セット,setto
+3775,BasicVerbs,learn,学ぶ,manabu
+3783,BasicVerbs,change,変化する,henka suru
+3791,BasicVerbs,lead,鉛,Namari
+3799,BasicVerbs,understand,わかる,wakaru
+3807,BasicVerbs,watch,時計,tokei
+3815,BasicVerbs,follow,フォローする,forō suru
+3823,BasicVerbs,stop,やめる,yameru
+3831,BasicVerbs,create,作ります,tsukurimasu
+3839,BasicVerbs,speak,話す,hanasu
+3847,BasicVerbs,read,読む,yomu
+3855,BasicVerbs,allow,許す,yurusu
+3863,BasicVerbs,add,追加する,tsuika suru
+3871,BasicVerbs,spend,費やす,tsuiyasu
+3879,BasicVerbs,grow,成長する,seichō suru
+3887,BasicVerbs,open,開いた,aita
+3895,BasicVerbs,walk,歩く,aruku
+3903,BasicVerbs,win,勝つ,katsu
+3911,BasicVerbs,offer,提供,teikyō
+3919,BasicVerbs,remember,覚えている,oboete iru
+3927,BasicVerbs,love,愛,ai
+3935,BasicVerbs,consider,検討する,kentō suru
+3943,BasicVerbs,appear,現れる,arawareru
+3951,BasicVerbs,buy,購入,kōnyū
+3959,BasicVerbs,wait,待つ,matsu
+3967,BasicVerbs,serve,サーブ,sābu
+3975,BasicVerbs,die,死ぬ,shinu
+3983,BasicVerbs,send,送信する,sōshin suru
+3991,BasicVerbs,expect,期待する,kitai suru
+3999,BasicVerbs,build,ビルドする,birudo suru
+4007,BasicVerbs,stay,滞在,taizai
+4015,BasicVerbs,fall,秋,aki
+4023,BasicVerbs,cut,カット,katto
+4031,BasicVerbs,reach,リーチ,rīchi
+4039,BasicVerbs,kill,殺します,koroshimasu
+4047,BasicVerbs,remain,残る,nokoru
+4048,People,Father,お父さん,otōsan
+4049,5. Useful Words and General Vocabulary,delay,NULL,NULL
+4050,5. Useful Words and General Vocabulary,except,NULL,NULL
+4051,5. Useful Words and General Vocabulary,quite a few,NULL,NULL
+4052,5. Useful Words and General Vocabulary,dog,NULL,NULL
+4053,5. Useful Words and General Vocabulary,often,NULL,NULL
+4054,5. Useful Words and General Vocabulary,and,NULL,NULL
+4055,5. Useful Words and General Vocabulary,that is,NULL,NULL
+4056,5. Useful Words and General Vocabulary,not bad,NULL,NULL
+4057,5. Useful Words and General Vocabulary,yet,NULL,NULL
+4058,5. Useful Words and General Vocabulary,paper,NULL,NULL
+4059,5. Useful Words and General Vocabulary,daughter,NULL,NULL
+4060,5. Useful Words and General Vocabulary,woman,NULL,NULL
+4061,5. Useful Words and General Vocabulary,still,NULL,NULL
+4062,5. Useful Words and General Vocabulary,there are,NULL,NULL
+4063,5. Useful Words and General Vocabulary,now,NULL,NULL
+4064,5. Useful Words and General Vocabulary,there is,NULL,NULL
+4065,5. Useful Words and General Vocabulary,most of all,NULL,NULL
+4066,5. Useful Words and General Vocabulary,pen,NULL,NULL
+4067,5. Useful Words and General Vocabulary,almost,NULL,NULL
+4068,5. Useful Words and General Vocabulary,pencil,NULL,NULL
+4069,5. Useful Words and General Vocabulary,pound,NULL,NULL
+4070,5. Useful Words and General Vocabulary,hound,NULL,NULL
+4071,5. Useful Words and General Vocabulary,also,NULL,NULL
+4072,5. Useful Words and General Vocabulary,but,NULL,NULL
+4073,5. Useful Words and General Vocabulary,right now,NULL,NULL
+4074,5. Useful Words and General Vocabulary,again,NULL,NULL
+4075,5. Useful Words and General Vocabulary,always,NULL,NULL
+4076,5. Useful Words and General Vocabulary,too,NULL,NULL
+4077,5. Useful Words and General Vocabulary,book,NULL,NULL
+4078,5. Useful Words and General Vocabulary,man,NULL,NULL
+4079,5. Useful Words and General Vocabulary,nearly,NULL,NULL
+4080,5. Useful Words and General Vocabulary,usually,NULL,NULL
+4081,5. Useful Words and General Vocabulary,friend,NULL,NULL
+4082,5. Useful Words and General Vocabulary,wife,NULL,NULL
+4083,5. Useful Words and General Vocabulary,crayon,NULL,NULL
+4084,DaysOfWeek,day,日,Ni~Tsu
+4093,DaysOfWeek,week,週間,shūkan
+4102,DaysOfWeek,today,今日,kyō
+4111,DaysOfWeek,yesterday,昨日,kinō
+4120,DaysOfWeek,tomorrow,明日,ashita
+4121,Months,month,月,gatsu
+4122,TimeClock,PM,午後,gogo
+4129,TimeClock,afternoon,午後,gogo
+4152,TimeClock,AM,午前,gozen
+4161,Prepositions,more,もっと,motto
+4170,Prepositions,about to,約,yaku
+4179,Prepositions,ace,エース,ēsu
+4188,Prepositions,about,約,yaku
+4197,Prepositions,above,上の,Ueno
+4206,Prepositions,across,横切って,yokogitte
+4215,Prepositions,after,後,ato
+4224,Prepositions,against,に対して,ni taishite
+4233,Prepositions,among,中,naka
+4242,Prepositions,around,周り,mawari
+4251,Prepositions,as,として,to shite
+4260,Prepositions,at,で,de
+4269,Prepositions,before,前,zen
+4278,Prepositions,behind,後ろに,ushironi
+4287,Prepositions,below,以下,ika
+4296,Prepositions,beside,横,yoko
+4305,Prepositions,between,の間に,no ma ni
+4314,Prepositions,but,だけど,dakedo
+4323,Prepositions,by,〜によって,〜 ni yotte
+4332,Prepositions,despite,にもかかわらず,nimokakawarazu
+4341,Prepositions,down,ダウン,daun
+4350,Prepositions,during,中,naka
+4359,Prepositions,except,を除いて,o nozoite
+4368,Prepositions,for,ために,tame ni
+4377,Prepositions,from,から,kara
+4386,Prepositions,in,に,ni
+4395,Prepositions,inside,内部,naibu
+4404,Prepositions,near,近く,chikaku
+4413,Prepositions,next,次,ji
+4422,Prepositions,of,の,no
+4431,Prepositions,on,に,ni
+4440,Prepositions,opposite,反対の,hantai no
+4449,Prepositions,out,でる,deru
+4458,Prepositions,outside,外側,sotogawa
+4467,Prepositions,over,以上,ijō
+4476,Prepositions,per,あたり,atari
+4485,Prepositions,plus,プラス,purasu
+4494,Prepositions,round,円形,enkei
+4503,Prepositions,since,以来,irai
+4512,Prepositions,than,より,yori
+4521,Prepositions,through,を通して,o tōshite
+4530,Prepositions,till,まで,made
+4539,Prepositions,to,に,ni
+4548,Prepositions,toward,〜に向かって,〜 ni mukatte
+4557,Prepositions,under,下,shita
+4566,Prepositions,until,〜まで,〜 made
+4575,Prepositions,up,アップ,appu
+4584,Prepositions,via,経由,keiyu
+4593,Prepositions,with,と,to
+4602,Prepositions,within,以内,inai
+4611,Prepositions,without,〜のない,〜 no nai
+4620,Prepositions,according to,による,ni yoru
+4629,Prepositions,because of,のため,no tame
+4638,Prepositions,due to,のため,no tame
+4647,Prepositions,next to,の隣に,no tonari ni
+4656,Prepositions,as well as,と同様,to dōyō
+4665,Prepositions,in front of,の前に,no mae ni
+4674,Prepositions,in spite of,にもかかわらず、,nimokakawarazu\
+4683,Prepositions,on behalf of,代表して,daihyō shite
+4692,Demonstrative Pronoun,this,NULL,NULL
+4693,Demonstrative Pronoun,that,NULL,NULL
+4694,Demonstrative Pronoun,these,NULL,NULL
+4695,13. Directions,east,東,azuma
+4704,13. Directions,west,西,nishi
+4713,13. Directions,north,北,kita
+4722,13. Directions,south,南,minami
+4731,13. Directions,right,右,migi
+4740,13. Directions,left,左,hidari
+4749,13. Directions,front,フロント,furonto
+4758,13. Directions,back,バック,bakku
+4767,13. Directions,side,側,soba
+4776,13. Directions,up,アップ,appu
+4785,13. Directions,down,ダウン,daun
+4794,13. Directions,below,以下,ika
+4803,12. Seasons,summer,夏,natsu
+4811,12. Seasons,fall,秋,aki
+4819,12. Seasons,winter,冬,fuyu
+4827,12. Seasons,autumn,秋,aki
+4835,12. Seasons,spring,春,haru
+4843,14. Colors and Shapes,red,赤,aka
+4845,14. Colors and Shapes,orange,オレンジ,orenji
+4851,14. Colors and Shapes,yellow,黄,ki
+4857,14. Colors and Shapes,green,緑,midori
+4863,14. Colors and Shapes,blue,青,ao
+4869,14. Colors and Shapes,purple,紫の,murasakino
+4875,14. Colors and Shapes,white,白,shiro
+4881,14. Colors and Shapes,pink,ピンク,pinku
+4887,14. Colors and Shapes,gold,ゴールド,gōrudo
+4893,14. Colors and Shapes,silver,銀,gin
+4899,14. Colors and Shapes,square,平方,heihō
+4905,14. Colors and Shapes,circle,サークル,sākuru
+4911,14. Colors and Shapes,triangle,三角形,sankakkei
+4917,14. Colors and Shapes,rectangle,長方形,chōhōkei
+4923,14. Colors and Shapes,cube,立方体,rippōtai
+4929,14. Colors and Shapes,sphere,球,kyū
+4935,14. Colors and Shapes,cone,円錐,ensui
+4941,14. Colors and Shapes,box,ボックス,bokkusu
+4947,14. Colors and Shapes,color,色,iro
+4962,Numbers,fifteen,NULL,NULL
+4986,Study Subjects,algebra,代数,daisū
+4994,Study Subjects,calculus,微積分,bisekibun
+5002,Study Subjects,geometry,ジオメトリ,jiometori
+5010,Study Subjects,economics,経済,keizai
+5018,Study Subjects,linguistics,言語学,gengo-gaku
+5026,Study Subjects,literature,文献,bunken
+5034,Study Subjects,philosophy,哲学,tetsugaku
+5042,Study Subjects,psychology,心理学,shinri-gaku
+5050,Study Subjects,political science,政治学,seiji-gaku
+5058,Study Subjects,history,歴史,rekishi
+5066,Study Subjects,geography,地理,chiri
+5074,Study Subjects,physics,物理,butsuri
+5082,Study Subjects,biology,生物学,ikimonogaku
+5090,Study Subjects,chemistry,化学,kagaku
+5098,Study Subjects,zoology,動物学,dōbutsu-gaku
+5106,Study Subjects,botany,植物学,shokubutsu-gaku
+5114,Study Subjects,art,アート,āto
+5122,Study Subjects,music,音楽,ongaku
+5130,Study Subjects,dance,ダンス,dansu
+5138,Study Subjects,drawing,お絵かき,o ekaki
+5146,Study Subjects,painting,ペインティング,peintingu
+5154,Study Subjects,technology,技術,gijutsu
+5162,Study Subjects,physical education,体育,taiiku

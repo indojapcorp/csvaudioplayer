@@ -1,0 +1,2262 @@
+id,categoryname,en,de,fr
+1,Feelings,affection,die Zuneigung,l'affection
+2,Feelings,anger,der Ärger,la colère
+3,Feelings,boredom,die Langeweile,l'ennui
+4,Feelings,confidence,das Vertrauen,la confiance
+5,Feelings,creativity,die Kreativität,la créativité
+6,Feelings,crisis,die Krise,la crise
+7,Feelings,curiosity,die Neugier,la curiosité
+8,Feelings,defeat,die Niederlage,la défaite
+9,Feelings,depression,die Depression,la dépression
+10,Feelings,despair,die Verzweiflung,le désespoir
+11,Feelings,disappointment,die Enttäuschung,la déception
+12,Feelings,distrust,das Misstrauen,la méfiance
+13,Feelings,doubt,der Zweifel,le doute
+14,Feelings,dream,der Traum,le rêve
+15,Feelings,fatigue,die Müdigkeit,la fatigue
+16,Feelings,fear,die Angst,la peur
+17,Feelings,fight,der Streit,la lutte
+18,Feelings,friendship,die Freundschaft,l'amitié
+19,Feelings,fun,der Spaß,le plaisir
+20,Feelings,grief,die Trauer,la douleur
+21,Feelings,grimace,die Grimasse,la grimace
+22,Feelings,happiness,das Glück,le bonheur
+23,Feelings,hope,die Hoffnung,l'espoir
+24,Feelings,hunger,der Hunger,la faim
+25,Feelings,interest,das Interesse,l'intérêt
+26,Feelings,joy,die Freude,la joie
+27,Feelings,kiss,der Kuss,le baiser
+28,Feelings,loneliness,die Einsamkeit,la solitude
+29,Feelings,love,die Liebe,l'amour
+30,Feelings,melancholy,die Melancholie,la mélancolie
+31,Feelings,mood,die Stimmung,l'humeur
+32,Feelings,optimism,der Optimismus,l'optimisme
+33,Feelings,panic,die Panik,la panique
+34,Feelings,perplexity,die Ratlosigkeit,la perplexité
+35,Feelings,rage,die Wut,la rage
+36,Feelings,rejection,die Ablehnung,le refus
+37,Feelings,relationship,die Beziehung,la relation
+38,Feelings,request,die Aufforderung,la demande
+39,Feelings,scream,der Schrei,le cri
+40,Feelings,security,die Geborgenheit,la sécurité
+41,Feelings,shock,der Schreck,le choc
+42,Feelings,smile,das Lächeln,le sourire
+43,Feelings,tenderness,die Zärtlichkeit,la tendresse
+44,Feelings,thought,der Gedanke,la pensée
+45,Feelings,thoughtfulness,die Nachdenklichkeit,la réflexion
+46,Animals,German shepherd,der Schäferhund,le berger allemand
+47,Animals,animal,das Tier,l'animal
+48,Animals,beak,der Schnabel,le bec
+49,Animals,beaver,der Biber,le castor
+50,Animals,bite,der Biss,la morsure
+51,Animals,boar,das Wildschwein,le sanglier
+52,Animals,cage,der Käfig,la cage
+53,Animals,calf,das Kalb,le veau
+54,Animals,cat,die Katze,le chat
+55,Animals,chick,das Küken,le poussin
+56,Animals,chicken,das Huhn,le poulet
+57,Animals,deer,das Reh,le cerf
+58,Animals,dog,der Hund,le chien
+59,Animals,dolphin,der Delfin,le dauphin
+60,Animals,duck,die Ente,le canard
+61,Animals,eagle,der Adler,l'aigle
+62,Animals,feather,die Feder,la plume
+63,Animals,flamingo,der Flamingo,le flamant rose
+64,Animals,foal,das Fohlen,le poulain
+65,Animals,food,das Futter,l'aliment
+66,Animals,fox,der Fuchs,le renard
+67,Animals,goat,die Ziege,la chèvre
+68,Animals,goose,die Gans,l'oie
+69,Animals,hare,der Hase,le lièvre
+70,Animals,hen,die Henne,la poule
+71,Animals,heron,der Reiher,le héron
+72,Animals,horn,das Horn,la corne
+73,Animals,horseshoe,das Hufeisen,le fer à cheval
+74,Animals,lamb,das Lamm,l'agneau
+75,Animals,leash,die Hundeleine,la laisse
+76,Animals,lobster,der Hummer,le homard
+77,Animals,love of animals,die Tierliebe,l'amour des animaux
+78,Animals,monkey,der Affe,le singe
+79,Animals,muzzle,der Maulkorb,le museau
+80,Animals,nest,das Nest,le nid
+81,Animals,owl,die Eule,le hibou
+82,Animals,parrot,der Papagei,le perroquet
+83,Animals,peacock,der Pfau,le paon
+84,Animals,pelican,der Pelikan,le pélican
+85,Animals,penguin,der Pinguin,le pingouin
+86,Animals,pet,das Haustier,l'animal de compagnie
+87,Animals,pigeon,die Taube,le pigeon
+88,Animals,rabbit,das Kaninchen,le lapin
+89,Animals,rooster,der Hahn,le coq
+90,Animals,sea lion,der Seelöwe,le lion de mer
+91,Animals,seagull,die Möwe,la mouette
+92,Animals,seal,der Seehund,le phoque
+93,Animals,sheep,das Schaf,le mouton
+94,Animals,snake,die Schlange,le serpent
+95,Animals,stork,der Storch,la cigogne
+96,Animals,swan,der Schwan,le cygne
+97,Animals,trout,die Forelle,la truite
+98,Animals,turkey,der Truthahn,la dinde
+99,Animals,turtle,die Schildkröte,la tortue
+100,Animals,vulture,der Geier,le vautour
+101,Animals,wolf,der Wolf,le loup
+102,Sports,acrobatics,die Akrobatik,les acrobaties
+103,Sports,aerobics,das Aerobic,l'aérobic
+104,Sports,athletics,die Leichtathletik,l'athlétisme
+105,Sports,badminton,das Badminton,le badminton
+106,Sports,balance,die Balance,l'équilibre
+107,Sports,ball,der Ball,la balle
+108,Sports,baseball,das Baseballspiel,le base-ball
+109,Sports,basketball,der Basketball,le basket-ball
+110,Sports,billiard ball,die Billardkugel,la boule de billard
+111,Sports,billiards,das Billiard,le billard
+112,Sports,boxing,der Boxsport,la boxe
+113,Sports,boxing glove,der Boxhandschuh,le gant de boxe
+114,Sports,callisthenics,die Gymnastik,la gymnastique
+115,Sports,canoe,das Kanu,le canoë
+116,Sports,car race,das Autorennen,la course automobile
+117,Sports,catamaran,der Katamaran,le catamaran
+118,Sports,climbing,das Klettern,l'escalade
+119,Sports,cricket,das Kricket,le cricket
+120,Sports,cross-country skiing,der Skilanglauf,le ski de fond
+121,Sports,cup,der Pokal,la coupe
+122,Sports,defense,die Abwehr,la défense
+123,Sports,dumbbell,die Hantel,l'haltère
+124,Sports,equestrian,der Reitsport,l'équitation
+125,Sports,exercise,die Übung,l'exercice
+126,Sports,exercise ball,der Gymnastikball,le ballon e gymnastique
+127,Sports,exercise machine,das Trainingsgerät,l'appareil d'exercice
+128,Sports,fencing,der Fechtsport,l'escrime
+129,Sports,fin,die Flosse,la palme
+130,Sports,fishing,der Angelsport,la pêche à la ligne
+131,Sports,fitness,die Fitness,la remise en forme
+132,Sports,football club,der Fußballclub,le club de football
+133,Sports,frisbee,der Frisbee,le frisbee
+134,Sports,glider,das Segelflugzeug,le planeur
+135,Sports,goal,das Tor,le but
+136,Sports,goalkeeper,der Torwart,le gardien de but
+137,Sports,golf club,der Golfschläger,le club de golf
+138,Sports,gymnastics,das Turnen,la gymnastique
+139,Sports,handstand,der Handstand,l'équilibre sur les mains
+140,Sports,hang-glider,der Drachenflieger,le deltaplane
+141,Sports,high jump,der Hochsprung,le saut en hauteur
+142,Sports,horse race,das Pferderennen,la course de chevaux
+143,Sports,hot air balloon,der Heißluftballon,la montgolfière
+144,Sports,hunt,die Jagd,la chasse
+145,Sports,ice hockey,das Eishockey,le hockey sur glace
+146,Sports,ice skate,der Schlittschuh,le patin à glace
+147,Sports,javelin throw,der Speerwurf,le lancer du javelot
+148,Sports,jogging,das Jogging,le jogging
+149,Sports,jump,der Sprung,le saut
+150,Sports,kayak,der Kajak,le kayak
+151,Sports,kick,der Tritt,le coup de pied
+152,Sports,life jacket,die Schwimmweste,le gilet de sauvetage
+153,Sports,marathon,der Marathonlauf,le marathon
+154,Sports,martial arts,der Kampfsport,les arts martiaux
+155,Sports,mini golf,das Minigolf,le mini-golf
+156,Sports,momentum,der Schwung,l'élan
+157,Sports,parachute,der Fallschirm,le parachute
+158,Sports,paragliding,das Paragleiten,le parapente
+159,Sports,runner,die Läuferin,la coureuse
+160,Sports,sail,das Segel,la voile
+161,Sports,sailboat,das Segelboot,le voilier
+162,Sports,sailing ship,das Segelschiff,le voilier
+163,Sports,shape,die Kondition,la forme physique
+164,Sports,ski course,der Skikurs,le cours de ski
+165,Sports,skipping rope,das Springseil,la corde à sauter
+166,Sports,snowboard,das Snowboard,le snowboard
+167,Sports,snowboarder,der Snowboardfahrer,le snowboarder
+168,Sports,sports,der Sport,le sport
+169,Sports,squash player,der Squashspieler,le joueur de squash
+170,Sports,strength training,das Krafttraining,la musculation
+171,Sports,stretching,das Stretching,le stretching
+172,Sports,surfboard,das Surfbrett,la planche de surf
+173,Sports,surfer,der Surfer,le surfer
+174,Sports,surfing,das Surfing,le surf
+175,Sports,table tennis,das Tischtennis,le tennis de table
+176,Sports,table tennis ball,der Tischtennisball,la balle de tennis de table
+177,Sports,target,die Zielscheibe,la cible
+178,Sports,team,die Mannschaft,l'équipe
+179,Sports,tennis,das Tennis,le tennis
+180,Sports,tennis ball,der Tennisball,la balle de tennis
+181,Sports,tennis player,der Tennisspieler,le joueur de tennis
+182,Sports,tennis racket,der Tennisschläger,la raquette de tennis
+183,Sports,treadmill,das Laufband,le tapis roulant
+184,Sports,volleyball player,der Volleyballspieler,le joueur de volley-ball
+185,Sports,water ski,der Wasserski,le ski nautique
+186,Sports,whistle,die Trillerpfeife,le coup de sifflet
+187,Sports,wind surfer,der Windsurfer,le véliplanchiste
+188,Sports,wrestling,der Ringkampf,la lutte
+189,Sports,yoga,das Yoga,le yoga
+190,Music,accordion,das Akkordeon,l'accordéon
+191,Music,balalaika,die Balalaika,la balalaïka
+192,Music,band,die Band,le groupe
+193,Music,banjo,das Banjo,le banjo
+194,Music,clarinet,die Klarinette,la clarinette
+195,Music,concert,das Konzert,le concert
+196,Music,drum,die Trommel,le tambour
+197,Music,drums,das Schlagzeug,la batterie
+198,Music,flute,die Flöte,la flûte
+199,Music,grand piano,der Flügel,le piano à queue
+200,Music,guitar,die Gitarre,la guitare
+201,Music,hall,der Saal,la salle
+202,Music,keyboard,das Keyboard,le synthétiseur
+203,Music,mouth organ,die Mundharmonika,l'harmonica
+204,Music,music,die Musik,la musique
+205,Music,music stand,der Notenständer,le pupitre
+206,Music,note,die Note,la note
+207,Music,organ,die Orgel,l'orgue
+208,Music,piano,das Klavier,le piano
+209,Music,saxophone,das Saxofon,le saxophone
+210,Music,singer,der Sänger,le chanteur
+211,Music,string,die Saite,la corde
+212,Music,trumpet,die Trompete,la trompette
+213,Music,trumpeter,der Trompeter,le trompettiste
+214,Music,violin,die Geige,le violon
+215,Music,violin case,der Geigenkasten,l'étui à violon
+216,Music,xylophone,das Xylofon,le xylophone
+217,Office,ball pen,der Kugelschreiber,le stylo à bille
+218,Office,break,die Pause,la pause
+219,Office,briefcase,die Aktentasche,le porte-document
+220,Office,coloring pencil,der Buntstift,le crayon de couleur
+221,Office,conference,die Konferenz,la conférence
+222,Office,conference room,der Konferenzraum,la salle de conférence
+223,Office,copy,die Kopie,la copie
+224,Office,directory,das Adressenverzeichnis,le répertoire
+225,Office,file,der Aktenordner,le classeur
+226,Office,filing cabinet,der Aktenschrank,l'armoire de classement
+227,Office,fountain pen,der Füller,le stylo à plume
+228,Office,letter tray,der Briefkorb,la corbeille à courrier
+229,Office,marker,der Marker,le marqueur
+230,Office,notebook,das Heft,le cahier
+231,Office,notepad,der Notizzettel,le bloc-notes
+232,Office,office,das Büro,le bureau
+233,Office,office chair,der Bürostuhl,la chaise de bureau
+234,Office,overtime,die Überstunden,les heures supplémentaires
+235,Office,paper clip,die Büroklammer,le trombone
+236,Office,pencil,der Bleistift,le crayon à papier
+237,Office,punch,der Locher,la perforeuse
+238,Office,safe,der Tresor,le coffre
+239,Office,sharpener,der Anspitzer,le taille-crayon
+240,Office,shredded paper,die Papierschnipsel,le papier déchiqueté
+241,Office,shredder,der Reißwolf,le destructeur de documents
+242,Office,spiral binding,die Spiralbindung,la reliure à spirale
+243,Office,staple,die Heftklammer,l'agrafe
+244,Office,stapler,der Hefter,l'agrafeuse
+245,Office,typewriter,die Schreibmaschine,la machine à écrire
+246,Office,workstation,der Arbeitsplatz,le poste de travail
+247,Beverages,alcohol,der Alkohol,l'alcool
+248,Beverages,beer,das Bier,la bière
+249,Beverages,beer bottle,die Bierflasche,la bouteille de bière
+250,Beverages,cap,der Kronkorken,la capsule
+251,Beverages,cappuccino,der Cappuccino,le cappuccino
+252,Beverages,champagne,der Champagner,le champagne
+253,Beverages,champagne glass,das Sektglas,la coupe de champagne
+254,Beverages,cocktail,der Cocktail,le cocktail
+255,Beverages,coffee,der Kaffee,le café
+256,Beverages,cork,der Korken,le bouchon
+257,Beverages,corkscrew,der Korkenzieher,le tire-bouchon
+258,Beverages,fruit juice,der Fruchtsaft,le jus de fruits
+259,Beverages,funnel,der Trichter,l'entonnoir
+260,Beverages,ice cube,der Eiswürfel,le glaçon
+261,Beverages,jug,das Kännchen,la cruche
+262,Beverages,kettle,der Wasserkessel,la bouilloire
+263,Beverages,liquor,der Likör,la liqueur
+264,Beverages,milk,die Milch,le lait
+265,Beverages,mug,der Becher,la tasse
+266,Beverages,orange juice,der Orangensaft,le jus d'orange
+267,Beverages,pitcher,der Krug,la chope
+268,Beverages,plastic cup,der Plastikbecher,le gobelet en plastique
+269,Beverages,red wine,der Rotwein,le vin rouge
+270,Beverages,straw,der Strohhalm,la paille
+271,Beverages,tea,der Tee,le thé
+272,Beverages,teapot,die Teekanne,la théière
+273,Beverages,thermos flask,die Thermoskanne,la bouteille thermos
+274,Beverages,thirst,der Durst,la soif
+275,Beverages,water,das Wasser,l'eau
+276,Beverages,whiskey,der Whisky,le whisky
+277,Beverages,white wine,der Weißwein,le vin blanc
+278,Beverages,wine,der Wein,le vin
+279,People,age,das Alter,l'âge
+280,People,aunt,die Tante,la tante
+281,People,baby,das Baby,le bébé
+282,People,babysitter,der Babysitter,la baby-sitter
+283,People,boy,der Junge,le garçon
+284,People,brother,der Bruder,le frère
+285,People,child,das Kind,l'enfant
+286,People,couple,das Ehepaar,le couple marié
+287,People,daughter,die Tochter,la fille
+288,People,divorce,die Scheidung,le divorce
+289,People,embryo,der Embryo,l'embryon
+290,People,engagement,die Verlobung,les fiançailles
+291,People,extended family,die Großfamilie,la famille élargie
+292,People,family,die Familie,la famille
+293,People,flirt,der Flirt,le flirt
+294,People,gentleman,der Herr,le monsieur
+295,People,girl,das Mädchen,la jeune fille
+296,People,girlfriend,die Freundin,la petite amie
+297,People,granddaughter,die Enkeltochter,la petite-fille
+298,People,grandfather,der Großvater,le grand-père
+299,People,grandma,die Oma,la mamie
+300,People,grandmother,die Großmutter,la grand-mère
+301,People,grandparents,die Großeltern,les grands-parents
+302,People,grandson,der Enkelsohn,le petit-fils
+303,People,groom,der Bräutigam,le marié
+304,People,group,die Gruppe,le groupe
+305,People,helper,der Helfer,l'aide
+306,People,infant,das Kleinkind,le petit enfant
+307,People,lady,die Dame,dama\
+308,People,marriage proposal,der Heiratsantrag,la demande en mariage
+309,People,matrimony,die Ehe,le mariage
+310,People,mother,die Mutter,la mère
+311,People,nap,das Nickerchen,la sieste
+312,People,neighbor,der Nachbar,le voisin
+313,People,newlyweds,das Hochzeitspaar,les nouveaux mariés
+314,People,couple1,das Ehepaar,le couple marié
+315,People,parents,die Eltern,les parents
+316,People,partner,der Partner,le partenaire
+317,People,party,die Party,la fête
+318,People,people,die Leute,les gens
+319,People,bride,die Braut,la mariée
+320,People,queue,die Reihe,la file d'attente
+321,People,reception,der Empfang,la réception
+322,People,rendezvous,das Rendezvous,le rendez-vous
+323,People,siblings,die Geschwister,les frères et sœurs
+324,People,sister,die Schwester,la sœur
+325,People,son,der Sohn,le fils
+326,People,twin,der Zwilling,le jumeau
+327,People,uncle,der Onkel,l'oncle
+328,People,wedding,die Trauung,le mariage
+329,People,youth,die Jugend,la jeunesse
+330,Time,alarm clock,der Wecker,le réveil
+331,Time,ancient history,das Altertum,l'Antiquité
+332,Time,antique,die Antiquität,l'antiquité
+333,Time,appointment book,der Terminkalender,l'agenda
+334,Time,autumn / fall,der Herbst,l'automne
+335,Time,break,die Rast,la pause
+336,Time,calendar,der Kalender,le calendrier
+337,Time,century,das Jahrhundert,le siècle
+338,Time,clock,die Uhr,la montre
+339,Time,coffee break,die Kaffeepause,la pause-café
+340,Time,date,das Datum,la date
+341,Time,digital clock,die Digitaluhr,la montre digitale
+342,Time,eclipse,die Sonnenfinsternis,l'éclipse
+343,Time,end,das Ende,la fin
+344,Time,future,die Zukunft,l'avenir
+345,Time,history,die Geschichte,l'histoire
+346,Time,hourglass,die Sanduhr,le sablier
+347,Time,middle ages,das Mittelalter,Moyen-Age
+348,Time,month,dal\,месяц
+349,Time,morning,der Morgen,le matin
+350,Time,past,die Vergangenheit,le passé
+351,Time,pocket watch,die Taschenuhr,la montre de poche
+352,Time,punctuality,die Pünktlichkeit,la ponctualité
+353,Time,rush,die Eile,la hâte
+354,Time,seasons,die Jahreszeiten,les saisons
+355,Time,spring,der Frühling,le printemps
+356,Time,sundial,die Sonnenuhr,le cadran solaire
+357,Time,sunrise,der Sonnenaufgang,le lever du soleil
+358,Time,sunset,der Sonnenuntergang,le coucher du soleil
+359,Time,time,die Zeit,le temps
+360,Time,time1,die Zeit,le temps
+361,Time,waiting time,die Wartezeit,le temps d'attente
+362,Time,weekend,das Wochenende,le week-end
+363,Time,year,hae\,год
+364,Environment,agriculture,die Landwirtschaft,l'agriculture
+365,Environment,air pollution,die Luftverschmutzung,la pollution de l'air
+366,Environment,anthill,der Ameisenhaufen,la fourmilière
+367,Environment,canal,der Kanal,le canal
+368,Environment,coast,die Küste,la côte
+369,Environment,continent,der Kontinent,le continent
+370,Environment,creek,der Bach,le ruisseau
+371,Environment,dam,der Staudamm,le barrage
+372,Environment,desert,die Wüste,le désert
+373,Environment,dune,die Düne,la dune
+374,Environment,field,das Feld,le champ
+375,Environment,forest,der Wald,la forêt
+376,Environment,glacier,der Gletscher,le glacier
+377,Environment,heath,die Heide,la lande
+378,Environment,island,die Insel,l'île
+379,Environment,jungle,der Dschungel,la jungle
+380,Environment,landscape,die Landschaft,le paysage
+381,Environment,mountains,das Gebirge,les montagnes
+382,Environment,nature park,der Naturpark,le parc naturel
+383,Environment,peak,der Gipfel,le sommet
+384,Environment,pile,der Haufen,le tas
+385,Environment,protest march,der Protestmarsch,la marche de protestation
+386,Environment,recycling,das Recycling,le recyclage
+387,Environment,sea,das Meer,la mer
+388,Environment,smoke,der Rauch,la fumée
+389,Environment,vineyard,der Weinberg,le vignoble
+390,Environment,volcano,der Vulkan,le volcan
+391,Environment,waste,der Müll,les déchets
+392,Environment,water level,der Wasserpegel,le niveau d'eau
+393,Packaging,aluminum foil,die Aluminiumfolie,le papier d'aluminium
+394,Packaging,barrel,das Fass,le tonneau
+395,Packaging,basket,der Korb,le panier
+396,Packaging,bottle,die Flasche,la bouteille
+397,Packaging,box,die Schachtel,la boîte
+398,Packaging,box of chocolates,die Pralinenschachtel,la boîte de chocolats
+399,Packaging,cardboard,die Pappe,le carton
+400,Packaging,content,der Inhalt,le contenu
+401,Packaging,crate,die Kiste,la caisse
+402,Packaging,envelope,der Briefumschlag,l'enveloppe
+403,Packaging,knot,der Knoten,le nœud
+404,Packaging,metal box,die Metallkiste,la boîte en métal
+405,Packaging,oil drum,das Ölfass,le baril de pétrole
+406,Packaging,packaging,die Verpackung,l'emballage
+407,Packaging,paper,das Papier,le papier
+408,Packaging,paper bag,die Papiertüte,le sac en papier
+409,Packaging,plastic,das Plastik,le plastique
+410,Packaging,tin / can,die Konservendose,la boîte de conserve
+411,Packaging,tote bag,die Tragetasche,le sac fourre-tout
+412,Packaging,wine barrel,das Weinfass,le tonneau de vin
+413,Packaging,wine bottle,die Weinflasche,la bouteille de vin
+414,Packaging,wooden box,die Holzkiste,la boîte en bois
+415,Tools,anchor,der Anker,l'ancre
+416,Tools,anvil,der Amboss,l'enclume
+417,Tools,blade,die Klinge,la lame
+418,Tools,board,das Brett,la planche
+419,Tools,bolt,der Bolzen,le boulon
+420,Tools,bottle opener,der Flaschenöffner,l'ouvre-bouteille
+421,Tools,broom,der Besen,le balai
+422,Tools,brush,die Bürste,la brosse
+423,Tools,bucket,der Eimer,le seau
+424,Tools,buzz saw,die Kreissäge,la scie circulaire
+425,Tools,can opener,der Dosenöffner,l'ouvre-boîte
+426,Tools,chain,die Kette,la chaîne
+427,Tools,chainsaw,die Kettensäge,la tronçonneuse
+428,Tools,chisel,der Meißel,le burin
+429,Tools,circular saw blade,das Kreissägeblatt,la lame de scie circulaire
+430,Tools,drill machine,die Bohrmaschine,la perceuse
+431,Tools,dustpan,die Kehrschaufel,la pelle à poussière
+432,Tools,garden hose,der Gartenschlauch,le tuyau d'arrosage
+433,Tools,grater,die Raspel,la râpe
+434,Tools,hammer,der Hammer,le marteau
+435,Tools,hinge,das Scharnier,la charnière
+436,Tools,hook,der Haken,le crochet
+437,Tools,ladder,die Leiter,l'échelle
+438,Tools,letter scale,die Briefwaage,le pèse-lettre
+439,Tools,magnet,der Magnet,l'aimant
+440,Tools,mortar,die Kelle,la truelle
+441,Tools,nail,der Nagel,le clou
+442,Tools,needle,die Nadel,l'aiguille
+443,Tools,network,das Netz,le réseau
+444,Tools,nut,die Mutter,l'écrou
+445,Tools,palette-knife,der Spachtel,la spatule
+446,Tools,pallet,die Palette,la palette
+447,Tools,pitchfork,die Heugabel,la fourche
+448,Tools,planer,der Hobel,le rabot
+449,Tools,pliers,die Zange,la pince
+450,Tools,pushcart,die Sackkarre,le diable
+451,Tools,rake,der Rechen,le râteau
+452,Tools,repair,die Reparatur,la réparation
+453,Tools,rope,das Seil,la corde
+454,Tools,ruler,das Lineal,la règle
+455,Tools,saw,die Säge,la scie
+456,Tools,scissors,die Schere,les ciseaux
+457,Tools,screw,die Schraube,la vis
+458,Tools,screwdriver,der Schraubenzieher,le tournevis
+459,Tools,sewing thread,das Nähgarn,le fil à coudre
+460,Tools,shovel,die Schaufel,la pelle
+461,Tools,spinning wheel,das Spinnrad,le rouet
+462,Tools,spiral spring,die Spiralfeder,le ressort spiral
+463,Tools,spool,die Spule,la bobine
+464,Tools,steel cable,das Stahlseil,le câble en acier
+465,Tools,tape,das Klebeband,le ruban adhésif
+466,Tools,thread,das Gewinde,le culot
+467,Tools,tool,das Werkzeug,l'outil
+468,Tools,toolbox,der Werkzeugkasten,la boîte à outils
+469,Tools,trowel,die Blumenkelle,le transplantoir
+470,Tools,tweezers,die Pinzette,la pince à épiler
+471,Tools,vise,der Schraubstock,l'étau
+472,Tools,welding equipment,das Schweißgerät,le fer à souder
+473,Tools,wheelbarrow,die Schubkarre,la brouette
+474,Tools,wire,der Draht,le fil
+475,Tools,wood chip,der Holzspan,les copeaux de bois
+476,Tools,wrench,der Schraubenschlüssel,la clé (à molette)
+477,Traffic,accident,der Unfall,l'accident
+478,Traffic,barrier,die Schranke,la barrière
+479,Traffic,bicycle,das Fahrrad,la bicyclette
+480,Traffic,boat,das Boot,le bateau
+481,Traffic,bus,der Bus,le bus
+482,Traffic,cable car,die Bergbahn,le téléphérique
+483,Traffic,car,das Auto,la voiture
+484,Traffic,caravan,der Campingwagen,la caravane
+485,Traffic,coach,die Kutsche,le carrosse
+486,Traffic,congestion,die Überfüllung,l'encombrement
+487,Traffic,country road,die Landstraße,la route de campagne
+488,Traffic,cruise ship,das Kreuzfahrtschiff,le navire de croisière
+489,Traffic,curve,die Kurve,le virage
+490,Traffic,dead end,die Sackgasse,le cul-de-sac
+491,Traffic,departure,der Abflug,le départ
+492,Traffic,emergency brake,die Notbremse,le signal d'urgence
+493,Traffic,entrance,die Einfahrt,la voie d'accès
+494,Traffic,escalator,die Rolltreppe,l'escalator
+495,Traffic,excess baggage,das Übergepäck,l'excédent de bagages
+496,Traffic,exit,die Ausfahrt,la sortie
+497,Traffic,ferry,die Fähre,le ferry
+498,Traffic,fire truck,das Feuerwehrauto,le camion de pompiers
+499,Traffic,flight,der Flug,polet\
+500,Traffic,freight car,der Waggon,le wagon
+501,Traffic,gas / petrol,das Benzin,l'essence
+502,Traffic,handbrake,die Handbremse,le frein à main
+503,Traffic,helicopter,der Hubschrauber,l'hélicoptère
+504,Traffic,highway,die Autobahn,l'autoroute
+505,Traffic,houseboat,das Hausboot,la péniche
+506,Traffic,ladies' bicycle,das Damenrad,le vélo de femme
+507,Traffic,left turn,die Linkskurve,le virage à gauche
+508,Traffic,level crossing,der Bahnübergang,le passage à niveau
+509,Traffic,locomotive,die Lokomotive,la locomotive
+510,Traffic,map,die Landkarte,la carte
+511,Traffic,metro,die U-Bahn,le métro
+512,Traffic,moped,das Moped,le cyclomoteur
+513,Traffic,motorboat,das Motorboot,le bateau à moteur
+514,Traffic,motorcycle,das Motorrad,la motocyclette
+515,Traffic,motorcycle helmet,der Motorradhelm,le casque de moto
+516,Traffic,motorcyclist,die Motorradfahrerin,la motarde
+517,Traffic,mountain bike,das Mountainbike,le V.T.T (vélo tout-terrain)
+518,Traffic,mountain pass,die Passstraße,le col de montagne
+519,Traffic,no-passing zone,das Überholverbot,l'interdiction de dépasser
+520,Traffic,non-smoking,der Nichtraucher,le non-fumeur
+521,Traffic,one-way street,die Einbahnstraße,la rue à sens unique
+522,Traffic,parking meter,die Parkuhr,le parcmètre
+523,Traffic,passenger,der Fahrgast,le passager
+524,Traffic,passenger jet,der Passagierjet,l'avion de ligne
+525,Traffic,pedestrian,der Fußgänger,le piéton
+526,Traffic,plane,das Flugzeug,l'avion
+527,Traffic,pothole,das Schlagloch,le nid-de-poule
+528,Traffic,propeller aircraft,das Propellerflugzeug,l'avion à hélice
+529,Traffic,rail,die Schiene,rel's\
+530,Traffic,railway bridge,die Eisenbahnbrücke,le pont de chemin de fer
+531,Traffic,ramp,die Auffahrt,la rampe
+532,Traffic,right of way,die Vorfahrt,la priorité
+533,Traffic,road,die Straße,la route
+534,Traffic,roundabout,der Kreisverkehr,le rond-point
+535,Traffic,row of seats,die Sitzreihe,la rangée de sièges
+536,Traffic,scooter,der Roller,la trotinette
+537,Traffic,scooter1,der Roller,la trotinette
+538,Traffic,signpost,der Wegweiser,le panneau
+539,Traffic,sled,der Schlitten,le traîneau
+540,Traffic,snowmobile,der Motorschlitten,la motoneige
+541,Traffic,speed,die Geschwindigkeit,la vitesse
+542,Traffic,speed limit,die Geschwindigkeitsbegrenzung,la limitation de vitesse
+543,Traffic,station,der Bahnhof,la gare
+544,Traffic,steamer,der Dampfer,le bateau à vapeur
+545,Traffic,stop,die Haltestelle,l'arrêt
+546,Traffic,street sign,das Straßenschild,la plaque de rue
+547,Traffic,stroller,der Kinderwagen,la poussette
+548,Traffic,subway station,die U-Bahnstation,la station de métro
+549,Traffic,taxi,das Taxi,le taxi
+550,Traffic,ticket,der Fahrschein,le ticket
+551,Traffic,timetable,der Fahrplan,le tableau des départs
+552,Traffic,track,das Gleis,la voie
+553,Traffic,track switch,die Weiche,l'aiguillage
+554,Traffic,tractor,der Traktor,le tracteur
+555,Traffic,traffic,der Verkehr,le trafic
+556,Traffic,traffic jam,der Stau,l'embouteillage
+557,Traffic,traffic light,die Ampel,le feu de circulation
+558,Traffic,traffic sign,das Verkehrsschild,le panneau de signalisation
+559,Traffic,train,der Zug,le train
+560,Traffic,train ride,die Zugfahrt,le trajet en train
+561,Traffic,tram,die Straßenbahn,le tramway
+562,Traffic,transport,der Transport,le transport
+563,Traffic,tricycle,das Dreirad,le tricycle
+564,Traffic,truck,der Lastwagen,le camion
+565,Traffic,two-way traffic,der Gegenverkehr,la circulation en sens inverse
+566,Traffic,underpass,die Unterführung,le passage souterrain
+567,Traffic,wheel,bakwi\,штурвал
+568,Traffic,zeppelin,der Zeppelin,le dirigeable
+569,Fruits,almond,die Mandel,l'amande
+570,Fruits,apple,der Apfel,la pomme
+571,Fruits,apricot,die Aprikose,l'abricot
+572,Fruits,banana,die Banane,la banane
+573,Fruits,banana peel,die Bananenschale,la peau de banane
+574,Fruits,berry,die Beere,la baie
+575,Fruits,blackberry,die Brombeere,la mûre
+576,Fruits,blood orange,die Blutorange,l'orange sanguine
+577,Fruits,blueberry,die Blaubeere,la myrtille
+578,Fruits,cherry,die Kirsche,la cerise
+579,Fruits,fig,die Feige,la figue
+580,Fruits,fruit,die Frucht,le fruit
+581,Fruits,fruit salad,der Obstsalat,la salade de fruits
+582,Fruits,fruits,das Obst,Fruits -
+583,Fruits,gooseberry,die Stachelbeere,la groseille à maquereau
+584,Fruits,grape,die Weintraube,le raisin
+585,Fruits,grapefruit,die Grapefruit,le pamplemousse
+586,Fruits,kiwi,die Kiwi,le kiwi
+587,Fruits,lemon,die Zitrone,le citron
+588,Fruits,lime,die Limone,le citron vert
+589,Fruits,lychee,die Litschi,le litchi
+590,Fruits,mandarin,die Mandarine,la mandarine
+591,Fruits,mango,die Mango,la mangue
+592,Fruits,melon,die Melone,le melon
+593,Fruits,nectarine,die Nektarine,la nectarine
+594,Fruits,orange,die Orange,l'orange
+595,Fruits,papaya,die Papaya,la papaye
+596,Fruits,peach,der Pfirsich,la pêche
+597,Fruits,pear,die Birne,la poire
+598,Fruits,pineapple,die Ananas,l'ananas
+599,Fruits,plum,die Zwetschge,la quetsche
+600,Fruits,plum1,die Zwetschge,la quetsche
+601,Fruits,pomegranate,der Granatapfel,la grenade
+602,Fruits,prickly pear,die Kaktusfeige,la figue de Barbarie
+603,Fruits,quince,die Quitte,le coing
+604,Fruits,raspberry,die Himbeere,la framboise
+605,Fruits,redcurrant,die Johannisbeere,la groseille
+606,Fruits,star fruit,die Sternfrucht,le carambole
+607,Fruits,strawberry,die Erdbeere,la fraise
+608,Fruits,watermelon,die Wassermelone,la pastèque
+609,Leisure,angler,der Angler,le pêcheur
+610,Leisure,aquarium,das Aquarium,l'aquarium
+611,Leisure,bath towel,das Badetuch,la serviette de bain
+612,Leisure,beach ball,der Wasserball,le water-polo
+613,Leisure,belly dance,der Bauchtanz,la danse du ventre
+614,Leisure,bingo,das Bingo,le bingo
+615,Leisure,board,das Spielbrett,le plateau de jeu
+616,Leisure,bowling,das Bowling,le bowling
+617,Leisure,cable car,die Seilbahn,le téléphérique
+618,Leisure,camping,das Camping,le camping
+619,Leisure,camping stove,der Gaskocher,le réchaud de camping
+620,Leisure,canoe trip,die Kanutour,la balade en canoë
+621,Leisure,card game,das Kartenspiel,le jeu de cartes
+622,Leisure,carnival,der Karneval,le carnaval
+623,Leisure,carousel,das Karussell,le manège
+624,Leisure,carving,die Schnitzerei,la sculpture
+625,Leisure,chess game,das Schachspiel,le jeu d'échecs
+626,Leisure,chess piece,die Schachfigur,la pièce d'échecs
+627,Leisure,crime novel,der Kriminalroman,le roman policier
+628,Leisure,crossword puzzle,das Kreuzworträtsel,les mots croisés
+629,Leisure,dice,der Würfel,le cube
+630,Leisure,dance,der Tanz,la danse
+631,Leisure,darts,das Dartspiel,les fléchettes
+632,Leisure,deckchair,der Liegestuhl,le transat
+633,Leisure,dinghy,das Schlauchboot,le bateau gonflable
+634,Leisure,discotheque,die Diskothek,la discothèque
+635,Leisure,dominoes,das Dominospiel,les dominos
+636,Leisure,embroidery,die Stickerei,la broderie
+637,Leisure,fair,das Volksfest,la fête foraine
+638,Leisure,ferris wheel,das Riesenrad,la grande roue
+639,Leisure,festival,das Fest,la fête
+640,Leisure,fireworks,das Feuerwerk,le feu d'artifice
+641,Leisure,game,das Spiel,le jeu
+642,Leisure,golf,das Golfspiel,le golf
+643,Leisure,halma,das Halma,le Halma
+644,Leisure,hike,die Wanderung,la randonnée
+645,Leisure,hobby,das Hobby,les loisirs
+646,Leisure,holidays,die Ferien,les vacances
+647,Leisure,journey,die Reise,le voyage
+648,Leisure,king,der König,le roi
+649,Leisure,leisure time,die Freizeit,le temps libre
+650,Leisure,loom,der Webstuhl,le métier à tisser
+651,Leisure,pedal boat,das Tretboot,le pédalo
+652,Leisure,picture book,das Bilderbuch,le livre d'images
+653,Leisure,playground,der Spielplatz,le terrain de jeux
+654,Leisure,playing card,die Spielkarte,la carte à jouer
+655,Leisure,puzzle,das Puzzle,golovolomka\
+656,Leisure,reading,die Lektüre,la lecture
+657,Leisure,relaxation,die Erholung,le repos
+658,Leisure,restaurant,das Restaurant,le restaurant
+659,Leisure,rocking horse,das Schaukelpferd,le cheval à bascule
+660,Leisure,roulette,das Roulette,la roulette
+661,Leisure,seesaw,die Wippe,la balançoire à bascule
+662,Leisure,show,die Show,le spectacle
+663,Leisure,skateboard,das Skateboard,la planche à roulettes
+664,Leisure,ski lift,der Skilift,la remontée mécanique
+665,Leisure,skittle,der Kegel,la quille
+666,Leisure,sleeping bag,der Schlafsack,le sac de couchage
+667,Leisure,spectator,der Zuschauer,le spectateur
+668,Leisure,story,die Geschichte,l'histoire
+669,Leisure,swimming pool,das Schwimmbad,la piscine
+670,Leisure,swing,die Schaukel,la balançoire
+671,Leisure,table football,der Tischfußball,le baby-foot
+672,Leisure,tent,das Zelt,la tente
+673,Leisure,tourism,der Tourismus,le tourisme
+674,Leisure,tourist,der Tourist,le touriste
+675,Leisure,toy,das Spielzeug,le jouet
+676,Leisure,vacation,der Urlaub,les congés
+677,Leisure,walk,der Spaziergang,la promenade
+678,Leisure,zoo,der Zoo,le zoo
+679,Military,aircraft carrier,der Flugzeugträger,le porte-avions
+680,Military,ammunition,die Munition,la munition
+681,Military,armor,die Rüstung,l'armement
+682,Military,army,die Armee,l'armée
+683,Military,arrest,die Festnahme,l'arrestation
+684,Military,atomic bomb,die Atombombe,la bombe atomique
+685,Military,attack,der Angriff,l'attaque
+686,Military,barbed wire,der Stacheldraht,les barbelés
+687,Military,blast,die Sprengung,l'explosion
+688,Military,bomb,die Bombe,la bombe
+689,Military,cannon,die Kanone,le canon
+690,Military,cartridge,die Patrone,la cartouche
+691,Military,coat of arms,das Wappen,le blason
+692,Military,defense,die Verteidigung,la défense
+693,Military,destruction,die Zerstörung,la destruction
+694,Military,fight,der Kampf,la lutte
+695,Military,fighter-bomber,der Jagdbomber,le chasseur-bombardier
+696,Military,gas mask,die Gasmaske,le masque à gaz
+697,Military,guard,die Wache,la garde
+698,Military,hand grenade,die Handgranate,la grenade à main
+699,Military,handcuffs,die Handschellen,les menottes
+700,Military,helmet,der Helm,le casque
+701,Military,march,der Marsch,la marche
+702,Military,medal,der Orden,la médaille
+703,Military,military,das Militär,l'armée
+704,Military,navy,die Marine,la marine
+705,Military,peace,der Frieden,la paix
+706,Military,pilot,der Pilot,le pilote
+707,Military,pistol,die Pistole,le pistolet
+708,Military,revolver,der Revolver,le revolver
+709,Military,rifle,das Gewehr,le fusil
+710,Military,rocket,die Rakete,la fusée
+711,Military,shooter,der Schütze,le tireur
+712,Military,shot,der Schuss,le tir
+713,Military,soldier,der Soldat,le soldat
+714,Military,submarine,das U-Boot,le sous-marin
+715,Military,surveillance,die Überwachung,la surveillance
+716,Military,sword,das Schwert,l'épée
+717,Military,tank,der Panzer,le char (d'assaut)
+718,Military,uniform,die Uniform,l'uniforme
+719,Military,victory,der Sieg,la victoire
+720,Military,winner,der Sieger,le vainqueur
+721,Clothing,anorak,der Anorak,l'anorak
+722,Clothing,backpack,der Rucksack,le sac à dos
+723,Clothing,bathrobe,der Bademantel,le peignoir
+724,Clothing,belt,der Gürtel,la ceinture
+725,Clothing,bib,das Lätzchen,le bavoir
+726,Clothing,bikini,der Bikini,le bikini
+727,Clothing,blazer,das Sakko,le blazer
+728,Clothing,blouse,die Bluse,le chemisier
+729,Clothing,boots,der Stiefel,la botte
+730,Clothing,bow,die Schleife,le nœud
+731,Clothing,bracelet,das Armband,le bracelet
+732,Clothing,brooch,die Brosche,la broche
+733,Clothing,button,der Knopf,le bouton
+734,Clothing,cap,die Mütze,le capuchon
+735,Clothing,cap1,die Mütze,le capuchon
+736,Clothing,cloakroom,die Garderobe,le vestiaire
+737,Clothing,clothes,die Kleidung,les vêtements
+738,Clothing,clothes peg,die Wäscheklammer,la pince à linge
+739,Clothing,collar,der Kragen,le col
+740,Clothing,crown,die Krone,la couronne
+741,Clothing,cufflink,der Manschettenknopf,le bouton de manchette
+742,Clothing,diaper,die Windel,la couche
+743,Clothing,dress,das Kleid,la robe
+744,Clothing,earring,der Ohrring,la boucle d'oreille
+745,Clothing,fashion,die Mode,la mode
+746,Clothing,flip-flops,die Badelatschen,les tongs
+747,Clothing,fur,das Fell,la fourrure
+748,Clothing,glove,der Handschuh,le gant
+749,Clothing,gumboots,die Gummistiefel,les bottes en caoutchouc
+750,Clothing,hair slide,die Haarspange,la barrette
+751,Clothing,handbag,die Handtasche,le sac à main
+752,Clothing,hanger,der Kleiderbügel,le cintre
+753,Clothing,hat,der Hut,le chapeau
+754,Clothing,headscarf,das Kopftuch,le foulard
+755,Clothing,hiking boot,der Wanderschuh,la chaussure de randonnée
+756,Clothing,hood,die Kapuze,la capuche
+757,Clothing,jacket,die Jacke,la veste
+758,Clothing,jeans,die Jeans,les jeans
+759,Clothing,jewelry,der Schmuck,les bijoux
+760,Clothing,laundry,die Wäsche,le linge
+761,Clothing,laundry basket,der Wäschekorb,le panier à linge
+762,Clothing,leather boots,der Lederstiefel,la botte de cuir
+763,Clothing,mask,die Maske,le masque
+764,Clothing,mitten,der Fausthandschuh,la mitaine
+765,Clothing,muffler,der Schal,l'écharpe
+766,Clothing,pants,die Hose,le pantalon
+767,Clothing,pearl,die Perle,la perle
+768,Clothing,poncho,der Poncho,le poncho
+769,Clothing,press button,der Druckknopf,le bouton-pression
+770,Clothing,pyjamas,der Schlafanzug,le pyjama
+771,Clothing,ring,der Ring,la bague
+772,Clothing,sandal,die Sandale,la sandale
+773,Clothing,scarf,das Halstuch,le foulard
+774,Clothing,shirt,das Hemd,la chemise
+775,Clothing,shoe,der Schuh,la chaussure
+776,Clothing,shoe sole,die Schuhsohle,la semelle de chaussure
+777,Clothing,silk,die Seide,la soie
+778,Clothing,ski boots,der Skistiefel,la chaussure de ski
+779,Clothing,skirt,der Rock,la jupe
+780,Clothing,slipper,der Pantoffel,la pantoufle
+781,Clothing,sneaker,der Turnschuh,la chaussure de sport
+782,Clothing,snow boot,der Schneestiefel,l'après-ski
+783,Clothing,sock,die Socke,la chaussette
+784,Clothing,special offer,teuggapum\,специальное предложение
+785,Clothing,stain,der Fleck,la tache
+786,Clothing,stockings,die Strümpfe,les bas
+787,Clothing,straw hat,der Strohhut,le chapeau de paille
+788,Clothing,stripes,die Streifen,les rayures
+789,Clothing,suit,der Anzug,le costume
+790,Clothing,sunglasses,die Sonnenbrille,les lunettes de soleil
+791,Clothing,sweater,der Pullover,le pullover
+792,Clothing,swimsuit,der Badeanzug,le maillot de bain
+793,Clothing,tie,die Krawatte,la cravate
+794,Clothing,top,das Oberteil,verkh\
+795,Clothing,trunks,die Badehose,le slip de bain
+796,Clothing,underwear,die Unterwäsche,les sous-vêtements
+797,Clothing,vest,das Unterhemd,le maillot de corps
+798,Clothing,waistcoat,die Weste,le gilet
+799,Clothing,watch,die Armbanduhr,la montre
+800,Clothing,wedding dress,das Brautkleid,la robe de mariée
+801,Clothing,winter clothes,die Winterkleidung,les vêtements d'hiver
+802,Clothing,zip,der Reißverschluss,la fermeture à glissière
+803,Communication,address,die Adresse,l'adresse
+804,Communication,alphabet,das Alphabet,l'alphabet
+805,Communication,answering machine,der Anrufbeantworter,le répondeur
+806,Communication,antenna,die Antenne,l'antenne
+807,Communication,call,der Anruf,l'appel
+808,Communication,CD,die CD,le cd
+809,Communication,communication,die Kommunikation,Communication -
+810,Communication,confidentiality,die Vertraulichkeit,la confidentialité
+811,Communication,connection,der Anschluss,la connexion
+812,Communication,discussion,die Diskussion,la discussion
+813,Communication,email,die E-Mail,l'e-mail
+814,Communication,entertainment,die Unterhaltung,le divertissement
+815,Communication,express item,die Eilsendung,l'envoi exprès
+816,Communication,fax machine,das Fax,la télécopie
+817,Communication,film industry,die Filmindustrie,l'industrie du film
+818,Communication,font,die Schrift,la police de caractères
+819,Communication,greeting,die Begrüßung,l'accueil
+820,Communication,greeting1,die Begrüßung,l'accueil
+821,Communication,greeting card,die Glückwunschkarte,la carte de vœux
+822,Communication,headphones,der Kopfhörer,le casque
+823,Communication,icon,das Icon,l'icône
+824,Communication,information,die Information,l'information
+825,Communication,internet,das Internet,Internet
+826,Communication,interview,das Interview,l'interview
+827,Communication,keyboard,die Tastatur,le clavier
+828,Communication,letter,der Buchstabe,la lettre
+829,Communication,letter1,der Buchstabe,la lettre
+830,Communication,magazine,die Illustrierte,le magasine
+831,Communication,medium,das Medium,le média
+832,Communication,microphone,das Mikrofon,le microphone
+833,Communication,mobile phone,das Handy,le téléphone mobile
+834,Communication,modem,das Modem,le modem
+835,Communication,monitor,der Monitor,le moniteur
+836,Communication,mouse pad,das Mauspad,le tapis de souris
+837,Communication,news,die Nachricht,les nouvelles
+838,Communication,newspaper,die Zeitung,le journal
+839,Communication,noise,der Lärm,le bruit
+840,Communication,note,die Notiz,la note
+841,Communication,note1,die Notiz,la note
+842,Communication,payphone,der Münzfernsprecher,la cabine téléphonique
+843,Communication,photo,das Foto,la photo
+844,Communication,photo album,das Fotoalbum,l'album photo
+845,Communication,picture postcard,die Ansichtskarte,la carte postale
+846,Communication,post office box,das Postfach,la boîte postale
+847,Communication,radio,das Radio,la radio
+848,Communication,receiver,der Hörer,l'auditeur
+849,Communication,remote control,die Fernbedienung,la télécommande
+850,Communication,satellite,der Satellit,le satellite
+851,Communication,screen,der Bildschirm,l'écran
+852,Communication,sign,das Schild,le panneau
+853,Communication,signature,die Unterschrift,la signature
+854,Communication,smartphone,das Smartphone,le smartphone
+855,Communication,speaker,der Lautsprecher,le haut-parleur
+856,Communication,stamp,die Briefmarke,le timbre
+857,Communication,stationary,das Briefpapier,le papier à lettres
+858,Communication,telephone call,das Telefonat,l'appel téléphonique
+859,Communication,telephone conversation,das Telefongespräch,la conversation téléphonique
+860,Communication,television camera,die Fernsehkamera,la caméra de télévision
+861,Communication,text,der Text,le texte
+862,Communication,tv,der Fernseher,la télévision
+863,Communication,video cassette,die Videocassette,la cassette vidéo
+864,Communication,walkie talkie,das Funkgerät,le talkie-walkie
+865,Communication,web page,die Webseite,la page Web
+866,Communication,word,das Wort,le mot
+867,Technology,air pump,die Luftpumpe,la pompe à air
+868,Technology,aerial photo,die Luftaufnahme,la photo aérienne
+869,Technology,ball bearing,das Kugellager,le roulement à billes
+870,Technology,battery,die Batterie,la batterie
+871,Technology,bicycle chain,die Fahrradkette,la chaîne de bicyclette
+872,Technology,cable,das Kabel,le câble
+873,Technology,cable reel,die Kabelrolle,l'enrouleur de câble
+874,Technology,camera,der Fotoapparat,l'appareil photo
+875,Technology,cassette,die Kassette,la cassette
+876,Technology,charger,das Ladegerät,le chargeur
+877,Technology,cockpit,das Cockpit,le cockpit
+878,Technology,cogwheel,das Zahnrad,la roue dentée
+879,Technology,combination lock,das Kombinationsschloss,le cadenas à combinaison
+880,Technology,computer,der Computer,l'ordinateur
+881,Technology,crane,der Kran,la grue
+882,Technology,desktop,der Desktop,le bureau
+883,Technology,drilling rig,die Bohrinsel,la plate-forme de forage
+884,Technology,drive,das Laufwerk,le lecteur
+885,Technology,DVD,die DVD,le dvd
+886,Technology,electric motor,der Elektromotor,le moteur électrique
+887,Technology,energy,die Energie,l'énergie
+888,Technology,excavator,der Bagger,l'excavatrice
+889,Technology,fax machine,das Faxgerät,le télécopieur
+890,Technology,film camera,die Filmkamera,la caméra
+891,Technology,floppy disk,die Diskette,la disquette
+892,Technology,goggles,die Schutzbrille,les lunettes de protection
+893,Technology,hard disk,die Festplatte,le disque dur
+894,Technology,joystick,der Joystick,la manette
+895,Technology,key,die Taste,la touche
+896,Technology,landing,die Landung,l'atterrissage
+897,Technology,laptop,der Laptop,l'ordinateur portable
+898,Technology,lawnmower,der Rasenmäher,la tondeuse à gazon
+899,Technology,lens,das Objektiv,l'objectif
+900,Technology,machine,die Maschine,la machine
+901,Technology,marine propeller,die Schiffsschraube,l'hélice marine
+902,Technology,mine,das Bergwerk,la mine
+903,Technology,multiple socket,der Mehrfachstecker,la prise multiple
+904,Technology,printer,der Drucker,l'imprimante
+905,Technology,program,das Programm,le programme
+906,Technology,propeller,der Propeller,l'hélice
+907,Technology,pump,die Pumpe,la pompe
+908,Technology,record player,der Plattenspieler,le tourne-disque
+909,Technology,remote control,die Fernsteuerung,la télécommande
+910,Technology,robot,der Roboter,le robot
+911,Technology,satellite antenna,die Satellitenantenne,l'antenne satellite
+912,Technology,sewing machine,die Nähmaschine,la machine à coudre
+913,Technology,slide film,der Diafilm,la diapositive
+914,Technology,solar technology,die Solartechnik,la technologie solaire
+915,Technology,space shuttle,die Raumfähre,la navette spatiale
+916,Technology,steamroller,die Dampfwalze,le rouleau compresseur
+917,Technology,suspension,die Aufhängung,la suspension
+918,Technology,switch,der Schalter,l'interrupteur
+919,Technology,tape measure,das Maßband,le mètre ruban
+920,Technology,technology,die Technik,la technologie
+921,Technology,telephone,das Telefon,le téléphone
+922,Technology,telephoto lens,das Teleobjektiv,le téléobjectif
+923,Technology,telescope,das Teleskop,le télescope
+924,Technology,usb flash drive,der USB-Stick,la clé USB
+925,Technology,valve,das Ventil,la soupape
+926,Technology,video camera,die Videokamera,la caméra vidéo
+927,Technology,voltage,die Voltzahl,la tension
+928,Technology,water wheel,das Wasserrad,la roue à eau
+929,Technology,wind turbine,die Windkraftanlage,l'éolienne
+930,Technology,windmill,die Windmühle,le moulin à vent
+931,Apartment,air conditioner,die Klimaanlage,le climatiseur
+932,Apartment,apartment,das Apartment,l'appartement
+933,Apartment,balcony,der Balkon,le balcon
+934,Apartment,basement,der Keller,le sous-sol
+935,Apartment,bath tub,die Badewanne,la baignoire
+936,Apartment,bathroom,das Badezimmer,la salle de bain
+937,Apartment,bell,die Klingel,la sonnette
+938,Apartment,blind,die Jalousie,le store vénitien
+939,Apartment,chimney,der Schornstein,le conduit de cheminée
+940,Apartment,cleaning agent,das Putzmittel,le produit d'entretien
+941,Apartment,cooler,das Kühlgerät,l'appareil de refroidissement
+942,Apartment,counter,die Theke,le comptoir
+943,Apartment,crack,der Riss,la déchirure
+944,Apartment,cushion,das Kissen,le coussin
+945,Apartment,door,die Tür,la porte
+946,Apartment,door knocker,der Türklopfer,le heurtoir
+947,Apartment,dustbin,die Mülltonne,la poubelle
+948,Apartment,elevator,der Aufzug,l'ascenseur
+949,Apartment,entrance,der Eingang,l'entrée
+950,Apartment,fence,der Zaun,la clôture
+951,Apartment,fire alarm,der Feueralarm,l'alarme incendie
+952,Apartment,fireplace,der Kamin,la cheminée
+953,Apartment,flower pot,der Blumentopf,le pot de fleur
+954,Apartment,garage,die Garage,le garage
+955,Apartment,garden,der Garten,le jardin
+956,Apartment,heating,die Heizung,le chauffage
+957,Apartment,house,das Haus,la maison
+958,Apartment,house number,die Hausnummer,le numéro de la maison
+959,Apartment,ironing board,das Bügelbrett,la planche à repasser
+960,Apartment,kitchen,die Küche,la cuisine
+961,Apartment,landlord,der Vermieter,le propriétaire
+962,Apartment,light switch,der Lichtschalter,l'interrupteur
+963,Apartment,living room,das Wohnzimmer,le salon
+964,Apartment,mailbox,der Postkasten,la boîte aux lettres
+965,Apartment,marble,der Marmor,le marbre
+966,Apartment,outlet,die Steckdose,la prise de courant
+967,Apartment,pool,der Pool,la piscine
+968,Apartment,porch,die Veranda,la véranda
+969,Apartment,radiator,der Heizkörper,le radiateur
+970,Apartment,relocation,der Umzug,le déménagement
+971,Apartment,renting,die Vermietung,la location
+972,Apartment,restroom,das WC,les WC
+973,Apartment,roof tiles,der Dachziegel,les tuiles
+974,Apartment,shower,die Dusche,la douche
+975,Apartment,stairs,die Treppe,l'escalier
+976,Apartment,stove,der Ofen,le poêle
+977,Apartment,study,das Arbeitszimmer,le bureau
+978,Apartment,tap,der Wasserhahn,le robinet
+979,Apartment,tile,die Fliese,le carrelage
+980,Apartment,toilet,die Toilette,les toilettes
+981,Apartment,vacuum cleaner,der Staubsauger,l'aspirateur
+982,Apartment,wall,die Wand,le mur
+983,Apartment,wallpaper,die Tapete,le papier peint
+984,Apartment,window,das Fenster,la fenêtre
+985,Food,appetite,der Appetit,l'appétit
+986,Food,appetizer,die Vorspeise,l'entrée
+987,Food,bacon,der Schinken,le jambon
+988,Food,birthday cake,die Geburtstagstorte,le gâteau d'anniversaire
+989,Food,biscuit,der Keks,le biscuit
+990,Food,bratwurst,die Bratwurst,la saucisse grillée
+991,Food,bread,das Brot,le pain
+992,Food,breakfast,das Frühstück,le petit déjeuner
+993,Food,bun,das Brötchen,le petit pain
+994,Food,butter,die Butter,le beurre
+995,Food,cafeteria,die Kantine,la cantine
+996,Food,cake,der Kuchen,le gâteau
+997,Food,candy,das Bonbon,le bonbon
+998,Food,cashew nut,die Cashewnuss,la noix de cajou
+999,Food,cheese,der Käse,le fromage
+1000,Food,chewing gum,der Kaugummi,le chewing-gum
+1001,Food,chicken,das Hähnchen,le poulet
+1002,Food,chocolate,die Schokolade,le chocolat
+1003,Food,coconut,die Kokosnuss,la noix de coco
+1004,Food,coffee beans,die Kaffeebohnen,les grains de café
+1005,Food,cream,die Sahne,la crème fraîche
+1006,Food,cumin,der Kümmel,le cumin
+1007,Food,dessert,der Nachtisch,le dessert
+1008,Food,dessert1,der Nachtisch,le dessert
+1009,Food,dinner,das Abendessen,le dîner
+1010,Food,dish,das Gericht,le plat
+1011,Food,dough,der Teig,la pâte
+1012,Food,egg,das Ei,l'œuf
+1013,Food,flour,das Mehl,la farine
+1014,Food,French fries,die Pommes frites,les frites
+1015,Food,fried egg,das Spiegelei,l'œuf sur le plat
+1016,Food,hazelnut,die Haselnuss,la noisette
+1017,Food,ice cream,die Eiscreme,la crème glacée
+1018,Food,ketchup,das Ketchup,le ketchup
+1019,Food,lasagna,die Lasagne,la lasagne
+1020,Food,licorice,die Lakritze,le réglisse
+1021,Food,lunch,das Mittagessen,le déjeuner
+1022,Food,macaroni,die Makkaroni,les macaronis
+1023,Food,mashed potatoes,der Kartoffelbrei,la purée de pommes de terre
+1024,Food,meat,das Fleisch,la viande
+1025,Food,mushroom,der Champignon,le champignon
+1026,Food,noodle,die Nudel,la nouille
+1027,Food,oatmeal,die Haferflocken,les flocons d'avoine
+1028,Food,paella,die Paella,la paella
+1029,Food,pancake,der Pfannkuchen,la crêpe
+1030,Food,peanut,die Erdnuss,l'arachide
+1031,Food,pepper,der Pfeffer,le poivre
+1032,Food,pepper shaker,der Pfefferstreuer,la poivrière
+1033,Food,peppermill,die Pfeffermühle,le moulin à poivre
+1034,Food,gherkin,die Essiggurke,le cornichon
+1035,Food,pie,die Pastete,la quiche
+1036,Food,pizza,die Pizza,la pizza
+1037,Food,popcorn,das Popcorn,le pop-corn
+1038,Food,potato,die Kartoffel,la pomme de terre
+1039,Food,potato chips,die Kartoffelchips,les chips
+1040,Food,praline,die Praline,la praline
+1041,Food,pretzel sticks,die Salzstangen,les bâtonnets de bretzel
+1042,Food,raisin,die Rosine,le raisin sec
+1043,Food,rice,der Reis,le riz
+1044,Food,roast pork,der Schweinebraten,le rôti de porc
+1045,Food,salad,der Salat,la salade
+1046,Food,salami,die Salami,le salami
+1047,Food,salmon,der Lachs,le saumon
+1048,Food,salt shaker,der Salzstreuer,la salière
+1049,Food,sandwich,das Sandwich,le sandwich
+1050,Food,sauce,die Soße,la sauce
+1051,Food,sausage,die Wurst,la saucisse
+1052,Food,sesame,der Sesam,le sésame
+1053,Food,soup,die Suppe,la soupe
+1054,Food,spaghetti,die Spaghetti,les spaghettis
+1055,Food,spice,das Gewürz,l'épice
+1056,Food,steak,das Steak,le steak
+1057,Food,strawberry tart,die Erdbeertorte,la tarte aux fraises
+1058,Food,sugar,der Zucker,le sucre
+1059,Food,sundae,der Eisbecher,le petit pot de glace
+1060,Food,sunflower seeds,die Sonnenblumenkerne,les graines de tournesol
+1061,Food,sushi,das Sushi,le sushi
+1062,Food,tart,die Torte,la tarte
+1063,Food,toast,der Toast,le toast
+1064,Food,waffle,die Waffel,la gaufre
+1065,Food,waiter,die Bedienung,le serveur
+1066,Food,walnut,die Walnuss,la noix
+1067,Occupations,architect,der Architekt,l'architecte
+1068,Occupations,astronaut,der Astronaut,l'astronaute
+1069,Occupations,barber,der Friseur,le coiffeur
+1070,Occupations,blacksmith,der Schmied,le forgeron
+1071,Occupations,boxer,der Boxer,le boxeur
+1072,Occupations,bullfighter,der Stierkämpfer,le torero
+1073,Occupations,bureaucrat,der Bürokrat,le bureaucrate
+1074,Occupations,business trip,die Dienstreise,le voyage d'affaires
+1075,Occupations,businessman,der Geschäftsmann,l'homme d'affaires
+1076,Occupations,butcher,der Metzger,le boucher
+1077,Occupations,car mechanic,der Automechaniker,le mécanicien auto
+1078,Occupations,caretaker,der Hausmeister,le gardien
+1079,Occupations,cleaning lady,die Putzfrau,la femme de ménage
+1080,Occupations,clown,der Clown,le clown
+1081,Occupations,colleague,der Kollege,le collègue
+1082,Occupations,conductor,der Dirigent,le chef d'orchestre
+1083,Occupations,cook,der Koch,le cuisinier
+1084,Occupations,cowboy,der Cowboy,le cow-boy
+1085,Occupations,dentist,der Zahnarzt,le dentiste
+1086,Occupations,detective,der Detektiv,le détective
+1087,Occupations,diver,der Taucher,le plongeur
+1088,Occupations,doctor,der Arzt,le médecin
+1089,Occupations,doctor1,der Arzt,le médecin
+1090,Occupations,electrician,der Elektriker,l'électricien
+1091,Occupations,female student,die Schülerin,l'écolière
+1092,Occupations,fireman,der Feuerwehrmann,le pompier
+1093,Occupations,fisherman,der Fischer,le pêcheur
+1094,Occupations,football player,der Fußballspieler,le joueur de football
+1095,Occupations,gangster,der Gangster,le gangster
+1096,Occupations,gardener,der Gärtner,le jardinier
+1097,Occupations,golfer,der Golfspieler,le golfeur
+1098,Occupations,guitarist,der Gitarrist,le guitariste
+1099,Occupations,hunter,der Jäger,le chasseur
+1100,Occupations,interior designer,der Dekorateur,l'architecte d'intérieur
+1101,Occupations,judge,der Richter,le juge
+1102,Occupations,kayaker,der Kajakfahrer,le kayakiste
+1103,Occupations,magician,der Zauberer,le magicien
+1104,Occupations,male student,der Schüler,l'écolier
+1105,Occupations,marathon runner,der Marathonläufer,le marathonien
+1106,Occupations,musician,der Musiker,le musicien
+1107,Occupations,nun,die Nonne,la religieuse
+1108,Occupations,occupation,der Beruf,le métier
+1109,Occupations,ophthalmologist,der Augenarzt,l'ophtalmologiste
+1110,Occupations,optician,der Optiker,l'opticien
+1111,Occupations,painter,der Maler,le peintre
+1112,Occupations,paper boy,der Zeitungsbote,le livreur de journaux
+1113,Occupations,photographer,der Fotograf,le photographe
+1114,Occupations,pirate,der Pirat,le pirate
+1115,Occupations,plumber,der Klempner,le plombier
+1116,Occupations,policeman,der Polizist,le policier
+1117,Occupations,porter,der Gepäckträger,le porteur
+1118,Occupations,prisoner,der Gefangene,le prisonnier
+1119,Occupations,secretary,die Sekretärin,le secrétaire
+1120,Occupations,spy,der Spion,l'espion
+1121,Occupations,surgeon,der Chirurg,le chirurgien
+1122,Occupations,teacher,die Lehrerin,l'enseignante
+1123,Occupations,thief,der Dieb,le voleur
+1124,Occupations,truck driver,der Lkw-Fahrer,le chauffeur de poids lourds
+1125,Occupations,unemployment,die Arbeitslosigkeit,le chômage
+1126,Occupations,waitress,die Kellnerin,la serveuse
+1127,Occupations,window cleaner,der Fensterputzer,le laveur de vitres
+1128,Occupations,work,die Arbeit,le travail
+1129,Occupations,worker,der Arbeiter,le travailleur
+1130,Vegetables,Brussels sprout,der Rosenkohl,le chou de Bruxelles
+1131,Vegetables,artichoke,die Artischocke,l'artichaut
+1132,Vegetables,asparagus,der Spargel,l'asperge
+1133,Vegetables,avocado,die Avocado,l'avocat
+1134,Vegetables,beans,die Bohnen,les haricots
+1135,Vegetables,bell pepper,die Paprika,le poivron
+1136,Vegetables,broccoli,der Brokkoli,le brocoli
+1137,Vegetables,cabbage,der Kohl,le chou
+1138,Vegetables,cabbage turnip,der Kohlrabi,le chou-rave
+1139,Vegetables,carrot,die Karotte,la carotte
+1140,Vegetables,cauliflower,der Blumenkohl,le chou-fleur
+1141,Vegetables,celery,der Sellerie,le céleri
+1142,Vegetables,chicory,der Chicorée,la chicorée
+1143,Vegetables,chili,der Chili,le piment fort
+1144,Vegetables,corn,der Mais,le maïs
+1145,Vegetables,cucumber,die Gurke,le concombre
+1146,Vegetables,eggplant,die Aubergine,l'aubergine
+1147,Vegetables,fennel,der Fenchel,le fenouil
+1148,Vegetables,garlic,der Knoblauch,l'ail
+1149,Vegetables,green cabbage,der Grünkohl,le chou vert
+1150,Vegetables,kale,der Mangold,la bette
+1151,Vegetables,leek,der Lauch,le poireau
+1152,Vegetables,lettuce,der Kopfsalat,la laitue
+1153,Vegetables,okra,die Okra,le gombo
+1154,Vegetables,olive,die Olive,l'olive
+1155,Vegetables,onion,die Zwiebel,l'oignon
+1156,Vegetables,parsley,die Petersilie,le persil
+1157,Vegetables,pea,die Erbse,le petit pois
+1158,Vegetables,pumpkin,der Kürbis,la citrouille
+1159,Vegetables,pumpkin seeds,die Kürbiskerne,les graines de citrouille
+1160,Vegetables,radish,das Radieschen,le radis
+1161,Vegetables,red cabbage,der Rotkohl,le chou rouge
+1162,Vegetables,red pepper,die Peperoni,le piment
+1163,Vegetables,spinach,der Spinat,les épinards
+1164,Vegetables,sweet potato,die Süßkartoffel,la patate douce
+1165,Vegetables,tomato,die Tomate,la tomate
+1166,Vegetables,vegetables,das Gemüse,les légumes
+1167,Vegetables,zucchini,die Zucchini,la courgette
+1168,Objects,aerosol can,die Spraydose,l'aérosol
+1169,Objects,ashtray,der Aschenbecher,le cendrier
+1170,Objects,baby scale,die Babywaage,le pèse-bébé
+1171,Objects,ball,die Kugel,la boule
+1172,Objects,balloon,der Luftballon,le ballon de baudruche
+1173,Objects,bangle,der Armreif,le bracelet
+1174,Objects,binocular,das Fernglas,les jumelles
+1175,Objects,blanket,die Decke,la couverture
+1176,Objects,blender,der Mixer,le mixer
+1177,Objects,book,das Buch,le livre
+1178,Objects,bulb,die Glühbirne,l'ampoule
+1179,Objects,can,die Dose,la boîte
+1180,Objects,candle,die Kerze,la bougie
+1181,Objects,candleholder,der Kerzenhalter,le chandelier
+1182,Objects,case,das Etui,l'étui
+1183,Objects,catapult,die Schleuder,le lance-pierres
+1184,Objects,cigar,die Zigarre,le cigare
+1185,Objects,cigarette,die Zigarette,la cigarette
+1186,Objects,coffee mill,die Kaffeemühle,le moulin à café
+1187,Objects,comb,der Kamm,le peigne
+1188,Objects,cup,die Tasse,la tasse
+1189,Objects,dish towel,das Geschirrtuch,le torchon
+1190,Objects,doll,die Puppe,la poupée
+1191,Objects,dwarf,der Zwerg,le nain
+1192,Objects,egg cup,der Eierbecher,le coquetier
+1193,Objects,electric shaver,der Elektrorasierer,le rasoir électrique
+1194,Objects,fan,der Fächer,l'éventail
+1195,Objects,film,der Film,la pellicule
+1196,Objects,fire extinguisher,der Feuerlöscher,l'extincteur
+1197,Objects,flag,die Flagge,le drapeau
+1198,Objects,garbage bag,der Müllsack,le sac poubelle
+1199,Objects,glass shard,die Glasscherbe,le tesson de verre
+1200,Objects,glasses,die Brille,les lunettes
+1201,Objects,hair dryer,der Fön,le sèche-cheveux
+1202,Objects,hole,das Loch,le trou
+1203,Objects,hose,der Schlauch,le tuyau
+1204,Objects,iron,das Bügeleisen,le fer à repasser
+1205,Objects,juice squeezer,die Saftpresse,le presse-fruits
+1206,Objects,key,der Schlüssel,la clé
+1207,Objects,key chain,der Schlüsselbund,le porte-clés
+1208,Objects,knife,das Taschenmesser,le canif
+1209,Objects,lantern,die Laterne,la lanterne
+1210,Objects,lexicon,das Lexikon,le dictionnaire
+1211,Objects,lid,der Deckel,le couvercle
+1212,Objects,lifebuoy,der Rettungsring,la bouée de sauvetage
+1213,Objects,lighter,das Feuerzeug,le briquet
+1214,Objects,lipstick,der Lippenstift,le rouge à lèvres
+1215,Objects,luggage,das Gepäck,les bagages
+1216,Objects,magnifying glass,die Lupe,la loupe
+1217,Objects,match,das Streichholz,l'allumette
+1218,Objects,milk bottle,die Milchflasche,le bibieron de lait
+1219,Objects,milk jug,die Milchkanne,le pot à lait
+1220,Objects,miniature,die Miniatur,la miniature
+1221,Objects,mirror,der Spiegel,le miroir
+1222,Objects,mixer,das Rührgerät,le batteur électrique
+1223,Objects,mouse trap,die Mausefalle,le piège à souris
+1224,Objects,necklace,die Halskette,le collier
+1225,Objects,newspaper stand,der Zeitungsständer,le kiosque à journaux
+1226,Objects,pacifier,der Scher,la sucette
+1227,Objects,padlock,das Vorhängeschloss,le cadenas
+1228,Objects,parasol,der Sonnenschirm,le parasol
+1229,Objects,passport,der Reisepass,le passeport
+1230,Objects,pennant,der Wimpel,le fanion
+1231,Objects,picture frame,der Bilderrahmen,le cadre
+1232,Objects,pipe,die Pfeife,la pipe
+1233,Objects,pot,der Topf,le pot
+1234,Objects,rubber band,das Gummiband,l'élastique
+1235,Objects,rubber duck,die Gummiente,le canard en caoutchouc
+1236,Objects,saddle,der Fahrradsattel,la selle
+1237,Objects,safety pin,die Sicherheitsnadel,l'épingle de sûreté
+1238,Objects,saucer,die Untertasse,la soucoupe
+1239,Objects,shoe brush,die Schuhbürste,la brosse à chaussure
+1240,Objects,sieve,das Sieb,le tamis
+1241,Objects,soap,die Seife,le savon
+1242,Objects,soap bubble,die Seifenblase,la bulle de savon
+1243,Objects,soap dish,die Seifenschale,le porte-savon
+1244,Objects,sponge,der Schwamm,l'éponge
+1245,Objects,sugar bowl,die Zuckerdose,le sucrier
+1246,Objects,suitcase,der Koffer,la valise
+1247,Objects,tape measure,das Bandmaß,le mètre ruban
+1248,Objects,teddy bear,der Teddybär,l'ours en peluche
+1249,Objects,thimble,der Fingerhut,le dé à coudre
+1250,Objects,tobacco,der Tabak,le tabac
+1251,Objects,toilet paper,das Toilettenpapier,le papier toilette
+1252,Objects,torch,die Taschenlampe,la lampe de poche
+1253,Objects,towel,das Handtuch,la serviette
+1254,Objects,tripod,das Stativ,le trépied
+1255,Objects,umbrella,der Regenschirm,le parapluie
+1256,Objects,vase,die Vase,le vase
+1257,Objects,walking stick,der Spazierstock,la canne
+1258,Objects,water pipe,die Wasserpfeife,le narguilé
+1259,Objects,watering can,die Gießkanne,l'arrosoir
+1260,Objects,wreath,der Kranz,la couronne
+1261,Education,archeology,die Archäologie,l'archéologie
+1262,Education,atom,das Atom,l'atome
+1263,Education,board,die Tafel,le tableau
+1264,Education,calculation,die Berechnung,le calcul
+1265,Education,calculator,der Taschenrechner,la calculatrice
+1266,Education,certificate,die Urkunde,le document officiel
+1267,Education,chalk,die Kreide,la craie
+1268,Education,class,die Klasse,la classe
+1269,Education,compass,der Zirkel,le compas
+1270,Education,compass1,der Zirkel,le compas
+1271,Education,country,das Land,le pays
+1272,Education,course,der Kurs,cours
+1273,Education,diploma,das Diplom,le diplôme
+1274,Education,direction,die Himmelsrichtung,le point cardinal
+1275,Education,education,die Bildung,l'enseignement
+1276,Education,filter,der Filter,le filtre
+1277,Education,formula,die Formel,la formule
+1278,Education,geography,die Geographie,la géographie
+1279,Education,grammar,die Grammatik,la grammaire
+1280,Education,knowledge,das Wissen,le savoir
+1281,Education,language,die Sprache,la langue
+1282,Education,lesson,der Unterricht,la leçon
+1283,Education,library,die Bibliothek,la bibliothèque
+1284,Education,literature,die Literatur,la littérature
+1285,Education,mathematics,die Mathematik,les mathématiques
+1286,Education,microscope,das Mikroskop,le microscope
+1287,Education,number,die Zahl,le nombre
+1288,Education,number1,die Zahl,le nombre
+1289,Education,pressure,der Druck,la pression
+1290,Education,prism,das Prisma,le prisme
+1291,Education,professor,der Professor,le professeur
+1292,Education,pyramid,die Pyramide,la pyramide
+1293,Education,radioactivity,die Radioaktivität,la radioactivité
+1294,Education,scales,die Waage,la balance
+1295,Education,space,der Weltraum,l'espace
+1296,Education,statistics,die Statistik,la statistique
+1297,Education,studies,das Studium,les études
+1298,Education,syllable,die Silbe,la syllabe
+1299,Education,table,die Tabelle,le tableau
+1300,Education,translation,die Übersetzung,la traduction
+1301,Education,triangle,das Dreieck,le triangle
+1302,Education,umlaut,der Umlaut,le tréma
+1303,Education,university,die Universität,l'université
+1304,Education,world map,die Weltkarte,le planisphère
+1305,Body,arm,der Arm,le bras
+1306,Body,back,der Rücken,le dos
+1307,Body,bald head,die Glatze,la tête chauve
+1308,Body,beard,der Bart,la barbe
+1309,Body,blood,das Blut,le sang
+1310,Body,bone,der Knochen,l'os
+1311,Body,bottom,der Popo,les fesses
+1312,Body,braid,der Zopf,la tresse
+1313,Body,brain,das Gehirn,le cerveau
+1314,Body,breast,die Brust,le sein
+1315,Body,ear,das Ohr,l'oreille
+1316,Body,eye,das Auge,l'œil
+1317,Body,face,das Gesicht,le visage
+1318,Body,finger,der Finger,le doigt
+1319,Body,fingerprint,der Fingerabdruck,l'empreinte digitale
+1320,Body,fist,die Faust,le poing
+1321,Body,foot,der Fuß,le pied
+1322,Body,hair,das Haar,les cheveux
+1323,Body,haircut,die Frisur,la coiffure
+1324,Body,hand,die Hand,la main
+1325,Body,head,der Kopf,la tête
+1326,Body,heart,das Herz,le cœur
+1327,Body,index finger,der Zeigefinger,l'index
+1328,Body,kidney,die Niere,le rein
+1329,Body,knee,das Knie,le genou
+1330,Body,leg,das Bein,la jambe
+1331,Body,lip,die Lippe,la lèvre
+1332,Body,mouth,der Mund,la bouche
+1333,Body,ringlet,die Haarlocke,la mèche de cheveux
+1334,Body,skeleton,das Skelett,le squelette
+1335,Body,skin,die Haut,la peau
+1336,Body,skull,der Schädel,le crâne
+1337,Body,tattoo,die Tätowierung,le tatouage
+1338,Body,throat,der Hals,la gorge
+1339,Body,thumb,der Daumen,le pouce
+1340,Body,toe,der Zeh,l'orteil
+1341,Body,tongue,die Zunge,la langue
+1342,Body,tooth,der Zahn,la dent
+1343,Body,wig,die Perücke,la perruque
+1344,Nature,arc,der Bogen,l'arc
+1345,Nature,barn,der Stall,l'étable
+1346,Nature,bay,die Bucht,la baie
+1347,Nature,beach,der Strand,la plage
+1348,Nature,bubble,die Blase,la bulle
+1349,Nature,cave,die Höhle,la grotte
+1350,Nature,farm,der Bauernhof,la ferme
+1351,Nature,fire,das Feuer,le feu
+1352,Nature,footprint,die Spur,la trace
+1353,Nature,globe,der Globus,le globe
+1354,Nature,harvest,die Ernte,la récolte
+1355,Nature,hay bales,der Heuballen,la balle de foin
+1356,Nature,lake,der See,le lac
+1357,Nature,leaf,das Blatt,la feuille
+1358,Nature,mountain,der Berg,la montagne
+1359,Nature,ocean,der Ozean,l'océan
+1360,Nature,panorama,das Panorama,le panorama
+1361,Nature,rock,der Felsen,le rocher
+1362,Nature,spring,die Quelle,la source
+1363,Nature,swamp,der Sumpf,le marais
+1364,Nature,tree,der Baum,l'arbre
+1365,Nature,tree trunk,der Baumstamm,le tronc d'arbre
+1366,Nature,valley,das Tal,la vallée
+1367,Nature,view,die Aussicht,le point de vue
+1368,Nature,water jet,der Wasserstrahl,le jet d'eau
+1369,Nature,waterfall,der Wasserfall,la chute d'eau
+1370,Nature,wave,die Welle,la vague
+1371,Finances,ATM,der Geldautomat,le distributeur de billets
+1372,Finances,account,das Konto,le compte en banque
+1373,Finances,bank,die Bank,la banque
+1374,Finances,bill,der Geldschein,le billet de banque
+1375,Finances,check,der Scheck,le chèque
+1376,Finances,checkout,die Kasse,la caisse
+1377,Finances,coin,die Münze,la pièce de monnaie
+1378,Finances,currency,die Währung,la monnaie
+1379,Finances,diamond,der Diamant,le diamant
+1380,Finances,dollar,der Dollar,le dollar
+1381,Finances,donation,die Spende,le don
+1382,Finances,euro,der Euro,l'euro
+1383,Finances,exchange rate,der Wechselkurs,le taux de change
+1384,Finances,gold,das Gold,l'or
+1385,Finances,luxury,der Luxus,le luxe
+1386,Finances,market price,der Börsenkurs,le cours de la bourse
+1387,Finances,membership,die Mitgliedschaft,l'adhésion
+1388,Finances,money,das Geld,l'argent
+1389,Finances,percentage,das Prozent,le pourcentage
+1390,Finances,piggy bank,das Sparschwein,la tirelire
+1391,Finances,price tag,das Preisschild,l'étiquette de prix
+1392,Finances,purse,der Geldbeutel,le porte-monnaie
+1393,Finances,receipt,die Quittung,la facture
+1394,Finances,stock exchange,die Börse,la bourse
+1395,Finances,trade,der Handel,le commerce
+1396,Finances,treasure,der Schatz,le trésor
+1397,Finances,wallet,das Portemonnaie,le porte-monnaie
+1398,Finances,wealth,der Reichtum,la richesse
+1399,Furniture,armchair,der Sessel,le fauteuil
+1400,Furniture,bed,das Bett,le lit
+1401,Furniture,bedding,das Bettzeug,la literie
+1402,Furniture,bookshelf,das Bücherregal,la bibliothèque
+1403,Furniture,carpet,der Teppich,le tapis
+1404,Furniture,chair,der Stuhl,la chaise
+1405,Furniture,chest of drawers,die Kommode,la commode
+1406,Furniture,cradle,die Wiege,le berceau
+1407,Furniture,cupboard,der Schrank,l'armoire
+1408,Furniture,curtain,der Vorhang,le rideau
+1409,Furniture,curtain1,der Vorhang,le rideau
+1410,Furniture,desk,der Schreibtisch,le bureau
+1411,Furniture,fan,der Ventilator,le ventilateur
+1412,Furniture,mat,die Matte,la natte
+1413,Furniture,playpen,der Laufstall,le parc pour bébé
+1414,Furniture,rocking chair,der Schaukelstuhl,le fauteuil à bascule
+1415,Furniture,safe,der Safe,le coffre-fort
+1416,Furniture,seat,der Sitz,le siège
+1417,Furniture,shelf,das Regal,l'étagère
+1418,Furniture,side table,der Beistelltisch,la table de chevet
+1419,Furniture,sofa,das Sofa,le canapé
+1420,Furniture,stool,der Hocker,le tabouret
+1421,Furniture,table,der Tisch,la table
+1422,Furniture,table lamp,die Tischlampe,la lampe de table
+1423,Furniture,wastepaper basket,der Mülleimer,la poubelle
+1424,Religion,Easter,das Osterfest,la fête de Pâques
+1425,Religion,Easter egg,das Osterei,l'œuf de Pâques
+1426,Religion,angel,der Engel,l'ange
+1427,Religion,bell,die Glocke,la cloche
+1428,Religion,bible,die Bibel,la bible
+1429,Religion,bishop,der Bischof,l'évêque
+1430,Religion,blessing,der Segen,la bénédiction
+1431,Religion,Buddhism,der Buddhismus,le bouddhisme
+1432,Religion,Christianity,das Christentum,le christianisme
+1433,Religion,Christmas gift,das Weihnachtsgeschenk,le cadeau de Noël
+1434,Religion,Christmas tree,der Weihnachtsbaum,l'arbre de Noël
+1435,Religion,church,die Kirche,l'église
+1436,Religion,coffin,der Sarg,le cercueil
+1437,Religion,creation,die Schöpfung,la création
+1438,Religion,crucifix,das Kruzifix,le crucifix
+1439,Religion,devil,der Teufel,le diable
+1440,Religion,god,der Gott,le dieu
+1441,Religion,Hinduism,der Hinduismus,l'hindouisme
+1442,Religion,Islam,der Islam,l'islam
+1443,Religion,Judaism,das Judentum,le judaïsme
+1444,Religion,meditation,die Meditation,la méditation
+1445,Religion,mummy,die Mumie,la momie
+1446,Religion,Muslim,der Moslem,le musulman
+1447,Religion,pope,der Papst,le pape
+1448,Religion,prayer,das Gebet,la prière
+1449,Religion,priest,der Priester,le prêtre
+1450,Religion,religion,Religion -,Religion -
+1451,Religion,service,der Gottesdienst,l'office religieux / la messe
+1452,Religion,synagogue,die Synagoge,la synagogue
+1453,Religion,temple,der Tempel,le temple
+1454,Religion,tomb,die Grabstätte,le tombeau
+1455,Plants,bamboo,der Bambus,le bambou
+1456,Plants,blossom,die Blüte,la fleur
+1457,Plants,bouquet of flowers,der Blumenstrauß,le bouquet de fleurs
+1458,Plants,branch,der Zweig,la branche
+1459,Plants,bud,die Knospe,le bourgeon
+1460,Plants,cactus,der Kaktus,le cactus
+1461,Plants,clover,der Klee,le trèfle
+1462,Plants,cone,der Zapfen,la pomme de pin
+1463,Plants,cornflower,die Kornblume,le bleuet
+1464,Plants,crocus,der Krokus,le crocus
+1465,Plants,daffodil,die Osterglocke,la jonquille
+1466,Plants,daisy,die Margerite,la marguerite
+1467,Plants,dandelion,der Löwenzahn,le pissenlit
+1468,Plants,flower,die Blume,la fleur
+1469,Plants,foliage,das Laub,le feuillage
+1470,Plants,grain,das Getreide,les céréales
+1471,Plants,grass,das Gras,l'herbe
+1472,Plants,growth,das Wachstum,la croissance
+1473,Plants,hyacinth,die Hyazinthe,la jacinthe
+1474,Plants,lawn,der Rasen,le gazon
+1475,Plants,lily,die Lilie,le lys
+1476,Plants,linseed,der Leinsamen,la graine de lin
+1477,Plants,mushroom,der Pilz,le champignon
+1478,Plants,olive tree,der Olivenbaum,l'olivier
+1479,Plants,palm tree,die Palme,le palmier
+1480,Plants,pansy,das Stiefmütterchen,la pensée
+1481,Plants,peach tree,der Pfirsichbaum,le pêcher
+1482,Plants,plant,die Pflanze,la plante
+1483,Plants,poppy,der Mohn,le coquelicot
+1484,Plants,root,die Wurzel,la racine
+1485,Plants,rose,die Rose,la rose
+1486,Plants,seed,der Samen,la graine
+1487,Plants,snowdrop,das Schneeglöckchen,le perce-neige
+1488,Plants,sunflower,die Sonnenblume,le tournesol
+1489,Plants,thorn,der Dorn,l'épine
+1490,Plants,trunk,der Stamm,le tronc
+1491,Plants,tulip,die Tulpe,la tulipe
+1492,Plants,water lily,die Seerose,le nénuphar
+1493,Plants,wheat,der Weizen,le blé
+1494,Abstract terms,administration,die Verwaltung,l'administration
+1495,Abstract terms,advertising,die Reklame,la publicité
+1496,Abstract terms,arrow,der Pfeil,la flèche
+1497,Abstract terms,ban,das Verbot,l'interdiction
+1498,Abstract terms,career,die Karriere,la carrière
+1499,Abstract terms,center,die Mitte,le milieu
+1500,Abstract terms,choice,die Wahl,le choix
+1501,Abstract terms,collaboration,die Zusammenarbeit,la collaboration
+1502,Abstract terms,color,die Farbe,la couleur
+1503,Abstract terms,contact,der Kontakt,le contact
+1504,Abstract terms,danger,die Gefahr,le danger
+1505,Abstract terms,declaration of love,die Liebeserklärung,la déclaration d'amour
+1506,Abstract terms,decline,der Verfall,le déclin
+1507,Abstract terms,definition,die Definition,la définition
+1508,Abstract terms,difference,der Unterschied,la différence
+1509,Abstract terms,difficulty,die Schwierigkeit,la difficulté
+1510,Abstract terms,direction,die Richtung,la direction
+1511,Abstract terms,discovery,die Entdeckung,la découverte
+1512,Abstract terms,disorder,die Unordnung,le désordre
+1513,Abstract terms,distance,die Ferne,le lointain
+1514,Abstract terms,distance1,die Ferne,le lointain
+1515,Abstract terms,diversity,die Vielfalt,la diversité
+1516,Abstract terms,effort,die Mühe,l'effort
+1517,Abstract terms,exploration,die Erforschung,l'exploration
+1518,Abstract terms,fall,der Sturz,la chute
+1519,Abstract terms,force,die Kraft,la force
+1520,Abstract terms,fragrance,der Duft,le parfum
+1521,Abstract terms,freedom,die Freiheit,la liberté
+1522,Abstract terms,ghost,das Gespenst,le fantôme
+1523,Abstract terms,half,die Hälfte,la moitié
+1524,Abstract terms,height,die Höhe,la hauteur
+1525,Abstract terms,help,die Hilfe,l'aide
+1526,Abstract terms,hiding place,das Versteck,la cachette
+1527,Abstract terms,homeland,die Heimat,la patrie
+1528,Abstract terms,hygiene,die Sauberkeit,l'hygiène
+1529,Abstract terms,idea,die Idee,l'idée
+1530,Abstract terms,illusion,die Illusion,l'illusion
+1531,Abstract terms,imagination,die Fantasie,l'imagination
+1532,Abstract terms,intelligence,die Intelligenz,l'intelligence
+1533,Abstract terms,invitation,die Einladung,l'invitation
+1534,Abstract terms,justice,die Gerechtigkeit,la justice
+1535,Abstract terms,light,das Licht,la lumière
+1536,Abstract terms,look,der Blick,le regard
+1537,Abstract terms,loss,der Verlust,la perte
+1538,Abstract terms,magnification,die Vergrößerung,l'agrandissement
+1539,Abstract terms,mistake,der Fehler,l'erreur
+1540,Abstract terms,murder,der Mord,l'assassinat
+1541,Abstract terms,nation,die Nation,la nation
+1542,Abstract terms,novelty,die Neuheit,la nouveauté
+1543,Abstract terms,option,die Möglichkeit,la possibilité
+1544,Abstract terms,patience,die Geduld,la patience
+1545,Abstract terms,planning,die Planung,la planification
+1546,Abstract terms,problem,das Problem,le problème
+1547,Abstract terms,protection,der Schutz,la protection
+1548,Abstract terms,reflection,die Spiegelung,le reflet
+1549,Abstract terms,republic,die Republik,la république
+1550,Abstract terms,risk,das Risiko,le risque
+1551,Abstract terms,safety,die Sicherheit,la sécurité
+1552,Abstract terms,secret,das Geheimnis,le secret
+1553,Abstract terms,sex,das Geschlecht,le sexe
+1554,Abstract terms,shadow,der Schatten,l'ombre
+1555,Abstract terms,size,die Größe,la taille
+1556,Abstract terms,solidarity,die Solidarität,la solidarité
+1557,Abstract terms,success,der Erfolg,le succès
+1558,Abstract terms,support,die Unterstützung,le support
+1559,Abstract terms,tradition,die Tradition,la tradition
+1560,Abstract terms,weight,das Gewicht,le poids
+1561,Kitchen appliances,bowl,die Schüssel,le bol
+1562,Kitchen appliances,coffee machine,die Kaffeemaschine,la machine à café
+1563,Kitchen appliances,cooking pot,der Kochtopf,la casserole
+1564,Kitchen appliances,cutlery,날붙이류,столовый прибор
+1565,Kitchen appliances,cutting board,das Schneidebrett,la planche à découper
+1566,Kitchen appliances,dishes,das Geschirr,la vaisselle
+1567,Kitchen appliances,dishwasher,die Geschirrspülmaschine,le lave-vaisselle
+1568,Kitchen appliances,dust bin,der Abfalleimer,la poubelle
+1569,Kitchen appliances,electric stove,der Elektroherd,la cuisinière électrique
+1570,Kitchen appliances,faucet,die Armatur,la robinetterie
+1571,Kitchen appliances,fondue,das Fondue,la fondue
+1572,Kitchen appliances,fork,die Gabel,la fourchette
+1573,Kitchen appliances,frying pan,die Bratpfanne,la poêle
+1574,Kitchen appliances,garlic press,die Knoblauchpresse,le presse-ail
+1575,Kitchen appliances,gas stove,der Gasherd,la gazinière
+1576,Kitchen appliances,grill,der Grill,le barbecue
+1577,Kitchen appliances,knife,das Messer,le couteau
+1578,Kitchen appliances,ladle,der Schöpflöffel,la louche
+1579,Kitchen appliances,microwave,die Mikrowelle,le four micro-ondes
+1580,Kitchen appliances,napkin,die Serviette,la serviette
+1581,Kitchen appliances,nutcracker,der Nussknacker,le casse-noix
+1582,Kitchen appliances,pan,die Pfanne,la poêle
+1583,Kitchen appliances,plate,der Teller,l'assiette
+1584,Kitchen appliances,refrigerator,der Kühlschrank,le réfrigérateur
+1585,Kitchen appliances,spoon,der Löffel,la cuillère
+1586,Kitchen appliances,tablecloth,die Tischdecke,la nappe
+1587,Kitchen appliances,toaster,der Toaster,le grille-pain
+1588,Kitchen appliances,tray,das Tablett,le plateau
+1589,Kitchen appliances,washing machine,die Waschmaschine,la machine à laver
+1590,Kitchen appliances,whisk,der Schneebesen,le fouet
+1591,Materials,brass,das Messing,le cuivre
+1592,Materials,cement,der Zement,le ciment
+1593,Materials,ceramic,die Keramik,la céramique
+1594,Materials,cloth,das Tuch,le tissu
+1595,Materials,cloth1,das Tuch,le tissu
+1596,Materials,cotton,die Baumwolle,le coton
+1597,Materials,crystal,das Kristall,le cristal
+1598,Materials,dirt,der Schmutz,la saleté
+1599,Materials,glue,der Leim,la colle
+1600,Materials,leather,das Leder,le cuir
+1601,Materials,metal,das Metall,le métal
+1602,Materials,oil,das Öl,maslo\
+1603,Materials,powder,das Pulver,la poudre
+1604,Materials,salt,das Salz,le sel
+1605,Materials,sand,der Sand,le sable
+1606,Materials,scrap,der Schrott,la ferraille
+1607,Materials,silver,das Silber,l'argent
+1608,Materials,stone,der Stein,la pierre
+1609,Materials,straw,das Stroh,la paille
+1610,Materials,wood,das Holz,le bois
+1611,Materials,wool,die Wolle,la laine
+1612,Health,ambulance,der Krankenwagen,l'ambulance
+1613,Health,bandage,der Verband,le bandage
+1614,Health,birth,die Geburt,la naissance
+1615,Health,blood pressure,der Blutdruck,la pression sanguine
+1616,Health,body care,die Körperpflege,les soins du corps
+1617,Health,cold,der Schnupfen,le rhume
+1618,Health,cream,die Creme,la crème
+1619,Health,crutch,die Krücke,la béquille
+1620,Health,examination,die Untersuchung,l'examen
+1621,Health,exhaustion,die Erschöpfung,l'épuisement
+1622,Health,face mask,die Gesichtsmaske,le masque de beauté
+1623,Health,first-aid box,der Verbandskasten,la trousse de secours
+1624,Health,healing,die Heilung,la guérison
+1625,Health,health,die Gesundheit,la santé
+1626,Health,hearing aid,das Hörgerät,la prothèse auditive
+1627,Health,hospital,das Krankenhaus,l'hôpital
+1628,Health,injection,die Spritze,l'injection
+1629,Health,injury,die Verletzung,la blessure
+1630,Health,makeup,das Makeup,le maquillage
+1631,Health,massage,die Massage,le massage
+1632,Health,medicine,die Medizin,la médecine
+1633,Health,medicine1,die Medizin,la médecine
+1634,Health,mortar,der Mörser,le mortier
+1635,Health,mouth guard,der Mundschutz,le protège-dents
+1636,Health,nail clipper,der Nagelknipser,le coupe-ongles
+1637,Health,obesity,das Übergewicht,l'obésité
+1638,Health,operation,die Operation,l'opération
+1639,Health,pain,der Schmerz,la douleur
+1640,Health,perfume,das Parfüm,le parfum
+1641,Health,pill,die Pille,la pilule
+1642,Health,pregnancy,die Schwangerschaft,la grossesse
+1643,Health,razor,der Rasierer,le rasoir
+1644,Health,shave,die Rasur,le rasage
+1645,Health,shaving brush,der Rasierpinsel,le blaireau
+1646,Health,sleep,der Schlaf,le sommeil
+1647,Health,smoker,der Raucher,le fumeur
+1648,Health,smoking ban,das Rauchverbot,l'interdiction de fumer
+1649,Health,sunscreen,die Sonnencreme,la crème solaire
+1650,Health,swab,das Wattestäbchen,le coton-tige
+1651,Health,toothbrush,die Zahnbürste,la brosse à dents
+1652,Health,toothpaste,die Zahnpasta,le dentifrice
+1653,Health,toothpick,der Zahnstocher,le cure-dent
+1654,Health,victim,das Opfer,la victime
+1655,Health,weighing scale,die Personenwaage,le pèse-personne
+1656,Health,wheelchair,der Rollstuhl,le fauteuil roulant
+1657,Car,air filter,der Luftfilter,le filtre à air
+1658,Car,breakdown,die Panne,la panne
+1659,Car,camper,das Wohnmobil,avtomobil'\
+1660,Car,car battery,die Autobatterie,la batterie de voiture
+1661,Car,child seat,der Kindersitz,le siège-enfant
+1662,Car,damage,der Schaden,les dégâts
+1663,Car,diesel,der Diesel,le diesel
+1664,Car,exhaust pipe,der Auspuff,le pot d'échappement
+1665,Car,flat tire,der Platten,la crevaison
+1666,Car,gas station,die Tankstelle,la station service
+1667,Car,headlight,der Scheinwerfer,le phare
+1668,Car,hood,die Motorhaube,le capot
+1669,Car,jack,der Wagenheber,le cric
+1670,Car,jerry can,der Reservekanister,le jerricane
+1671,Car,junkyard,der Schrottplatz,la casse
+1672,Car,rear,das Heck,l'arrière
+1673,Car,rear light,das Rücklicht,le feu arrière
+1674,Car,rear view mirror,der Rückspiegel,le rétroviseur
+1675,Car,ride,die Fahrt,le trajet
+1676,Car,rim,die Felge,la jante
+1677,Car,spark plug,die Zündkerze,la bougie d'allumage
+1678,Car,tachometer,der Tacho,le compte-tours
+1679,Car,ticket,der Strafzettel,la contravention
+1680,Car,tire,der Reifen,le pneu
+1681,Car,towing service,der Abschleppdienst,la fourrière
+1682,Car,vintage car,der Oldtimer,la voiture de collection
+1683,Car,wheel,das Rad,la roue
+1684,Arts,applause,der Beifall,les applaudissements
+1685,Arts,art,die Kunst,l'art
+1686,Arts,bow,die Verbeugung,le salut
+1687,Arts,brush,der Pinsel,le pinceau
+1688,Arts,coloring book,das Malbuch,le livre de coloriage
+1689,Arts,dancer,die Tänzerin,la danseuse
+1690,Arts,drawing,die Zeichnung,le dessin
+1691,Arts,gallery,die Galerie,la galerie
+1692,Arts,glass window,das Glasfenster,la fenêtre
+1693,Arts,graffiti,das Graffiti,le graffiti
+1694,Arts,handicraft,das Kunsthandwerk,l'artisanat
+1695,Arts,mosaic,das Mosaik,la mosaïque
+1696,Arts,mural,die Wandmalerei,la fresque
+1697,Arts,museum,das Museum,le musée
+1698,Arts,performance,die Aufführung,la représentation
+1699,Arts,picture,das Bild,l'image
+1700,Arts,poem,das Gedicht,le poème
+1701,Arts,sculpture,die Skulptur,la sculpture
+1702,Arts,song,das Lied,la chanson
+1703,Arts,statue,die Statue,la statue
+1704,Arts,water color,die Wasserfarbe,la peinture à l'eau
+1705,City,airport,der Flughafen,l'aéroport
+1706,City,apartment building,das Wohnhaus,l'immeuble
+1707,City,bench,die Bank,la banque
+1708,City,big city,die Großstadt,la grande ville
+1709,City,bike path,der Radweg,la piste cyclable
+1710,City,boat harbor,der Bootshafen,le port de plaisance
+1711,City,capital,die Hauptstadt,la capitale
+1712,City,carillon,das Glockenspiel,le carillon
+1713,City,cemetery,der Friedhof,le cimetière
+1714,City,cinema,das Kino,le cinéma
+1715,City,city,die Stadt,la ville
+1716,City,city map,der Stadtplan,le plan de ville
+1717,City,crime,die Kriminalität,le criminalité
+1718,City,demonstration,die Demonstration,la manifestation
+1719,City,fair,die Messe,la foire
+1720,City,fire brigade,die Feuerwehr,les sapeurs-pompiers
+1721,City,fountain,der Springbrunnen,la fontaine
+1722,City,garbage,der Abfall,le déchet
+1723,City,harbor / harbour,der Hafen,le port
+1724,City,hotel,das Hotel,l'hôtel
+1725,City,hydrant,der Hydrant,la bouche d'incendie
+1726,City,landmark,das Wahrzeichen,le symbole
+1727,City,mailbox,der Briefkasten,la boîte aux lettres
+1728,City,neighborhood,die Nachbarschaft,le voisinage
+1729,City,neon light,das Neonlicht,le néon
+1730,City,nightclub,der Nachtclub,la boîte de nuit
+1731,City,old town,die Altstadt,la vieille ville
+1732,City,opera,die Oper,l'opéra
+1733,City,park,der Park,le parc
+1734,City,park bench,die Parkbank,le banc de parc
+1735,City,parking lot,der Parkplatz,le parking
+1736,City,phone booth,die Telefonzelle,la cabine téléphonique
+1737,City,postal code (ZIP),die Postleitzahl (PLZ),le code postal (C.P.)
+1738,City,prison,das Gefängnis,la prison
+1739,City,pub,die Kneipe,le pub
+1740,City,sights,die Sehenswürdigkeiten,les sites touristiques
+1741,City,skyline,die Skyline,les contours de la ville
+1742,City,street light,die Straßenlaterne,le réverbère
+1743,City,tourist office,das Touristenbüro,l'office de tourisme
+1744,City,tower,der Turm,la tour
+1745,City,tunnel,der Tunnel,le tunnel
+1746,City,vehicle,das Fahrzeug,le véhicule
+1747,City,village,das Dorf,le village
+1748,City,water tower,der Wasserturm,le château d'eau
+1749,Weather,barometer,das Barometer,le baromètre
+1750,Weather,cloud,die Wolke,le nuage
+1751,Weather,cold,die Kälte,le froid
+1752,Weather,crescent,der Halbmond,le croissant de lune
+1753,Weather,darkness,die Dunkelheit,l'obscurité
+1754,Weather,drought,die Dürre,la sécheresse
+1755,Weather,earth,die Erde,la terre
+1756,Weather,fog,der Nebel,le brouillard
+1757,Weather,frost,der Frost,le gel
+1758,Weather,glaze,das Glatteis,le verglas
+1759,Weather,heat,die Hitze,la chaleur
+1760,Weather,hurricane,der Hurrikan,l'ouragan
+1761,Weather,icicle,der Eiszapfen,la stalactite
+1762,Weather,lightning,der Blitz,la foudre
+1763,Weather,meteor,der Meteor,le/la météorite
+1764,Weather,moon,der Mond,la lune
+1765,Weather,rainbow,der Regenbogen,l'arc-en-ciel
+1766,Weather,raindrop,der Regentropfen,la goutte d'eau
+1767,Weather,snow,der Schnee,la neige
+1768,Weather,snowflake,die Schneeflocke,le flocon de neige
+1769,Weather,snowman,der Schneemann,le bonhomme de neige
+1770,Weather,star,der Stern,l'étoile
+1771,Weather,storm,das Gewitter,l'orage
+1772,Weather,storm surge,die Sturmflut,l'onde de tempête
+1773,Weather,sun,die Sonne,le soleil
+1774,Weather,sunbeam,der Sonnenstrahl,le rayon de soleil
+1775,Weather,sunset,das Abendrot,le crépuscule
+1776,Weather,thermometer,das Thermometer,le thermomètre
+1777,Weather,thunderstorm,das Unwetter,l'orage
+1778,Weather,twilight,die Dämmerung,la tombée de la nuit
+1779,Weather,weather,das Wetter,le temps
+1780,Weather,wet conditions,die Nässe,l'humidité
+1781,Weather,wind,der Wind,le vent
+1782,Shopping,bakery,die Bäckerei,la boulangerie
+1783,Shopping,bar code,der Strichcode,le code-barres
+1784,Shopping,bookshop,die Buchhandlung,la librairie
+1785,Shopping,café,das Café,le café
+1786,Shopping,drugstore,die Drogerie,la droguerie
+1787,Shopping,dry cleaner,die Reinigung,le nettoyage à sec
+1788,Shopping,flower shop,der Blumenladen,le fleuriste
+1789,Shopping,gift,das Geschenk,le cadeau
+1790,Shopping,market,der Markt,le marché
+1791,Shopping,market hall,die Markthalle,la halle
+1792,Shopping,newspaper stand,der Zeitungskiosk,le kiosque à journaux
+1793,Shopping,pharmacy,die Apotheke,la pharmacie
+1794,Shopping,post office,das Postamt,le bureau de poste
+1795,Shopping,pottery,die Töpferei,la poterie
+1796,Shopping,sale,der Verkauf,la vente
+1797,Shopping,shop,der Laden,la boutique
+1798,Shopping,shopping,der Einkauf,Shopping -
+1799,Shopping,shopping bag,die Einkaufstasche,le sac
+1800,Shopping,shopping basket,der Einkaufskorb,le panier
+1801,Shopping,shopping cart,der Einkaufswagen,le caddie
+1802,Shopping,shopping tour,der Einkaufsbummel,le shopping
+1803,Architecture,architecture,die Architektur,Architecture -
+1804,Architecture,arena,die Arena,l'arène
+1805,Architecture,barn,die Scheune,la grange
+1806,Architecture,baroque,der Barock,le baroque
+1807,Architecture,block,der Baustein,la pierre de construction
+1808,Architecture,brick house,das Backsteinhaus,la maison de briques
+1809,Architecture,bridge,die Brücke,le pont
+1810,Architecture,building,das Gebäude,le bâtiment
+1811,Architecture,castle,das Schloss,le château
+1812,Architecture,cathedral,die Kathedrale,la cathédrale
+1813,Architecture,column,die Säule,la colonne
+1814,Architecture,construction site,die Baustelle,le chantier
+1815,Architecture,dome,die Kuppel,la coupole
+1816,Architecture,facade,die Fassade,la façade
+1817,Architecture,football stadium,das Fußballstadion,le stade de football
+1818,Architecture,fort,die Burg,le fort
+1819,Architecture,gable,der Giebel,le pignon
+1820,Architecture,gate,das Tor,la porte de la ville
+1821,Architecture,half-timbered house,das Fachwerkhaus,la maison à colombages
+1822,Architecture,lighthouse,der Leuchtturm,le phare
+1823,Architecture,monument,das Bauwerk,le monument
+1824,Architecture,mosque,die Moschee,la mosquée
+1825,Architecture,obelisk,der Obelisk,l'obélisque
+1826,Architecture,office building,das Bürogebäude,l'immeuble de bureaux
+1827,Architecture,roof,das Dach,le toit
+1828,Architecture,ruin,die Ruine,la ruine
+1829,Architecture,scaffold,das Gerüst,l'échafaudage
+1830,Architecture,skyscraper,der Wolkenkratzer,le gratte-ciel
+1831,Architecture,suspension bridge,die Hängebrücke,le pont suspendu
+1832,Architecture,tile,die Kachel,la céramique
+1833,Big animals,alligator,der Alligator,l'alligator
+1834,Big animals,antlers,das Geweih,les bois
+1835,Big animals,baboon,der Pavian,le babouin
+1836,Big animals,bear,der Bär,l'ours
+1837,Big animals,buffalo,der Büffel,le buffle
+1838,Big animals,camel,das Kamel,le chameau
+1839,Big animals,cheetah,der Gepard,le guépard
+1840,Big animals,cow,die Kuh,la vache
+1841,Big animals,crocodile,das Krokodil,le crocodile
+1842,Big animals,dinosaur,der Dinosaurier,le dinosaure
+1843,Big animals,donkey,der Esel,l'âne
+1844,Big animals,dragon,der Drachen,le dragon
+1845,Big animals,elephant,der Elefant,l'éléphant
+1846,Big animals,giraffe,die Giraffe,la girafe
+1847,Big animals,gorilla,der Gorilla,le gorille
+1848,Big animals,hippo,das Nilpferd,l'hippopotame
+1849,Big animals,horse,das Pferd,le cheval
+1850,Big animals,kangaroo,das Känguru,le kangourou
+1851,Big animals,leopard,der Leopard,le léopard
+1852,Big animals,lion,der Löwe,le lion
+1853,Big animals,llama,das Lama,le lama
+1854,Big animals,lynx,der Luchs,le lynx
+1855,Big animals,monster,das Monster,le monstre
+1856,Big animals,moose,der Elch,l'orignal
+1857,Big animals,ostrich,der Strauß,l'autruche
+1858,Big animals,panda,der Pandabär,le panda
+1859,Big animals,pig,das Schwein,le cochon
+1860,Big animals,polar bear,der Eisbär,l'ours polaire
+1861,Big animals,puma,der Puma,le puma
+1862,Big animals,rhino,das Nashorn,le rhinocéros
+1863,Big animals,stag,der Hirsch,le cerf
+1864,Big animals,tiger,der Tiger,le tigre
+1865,Big animals,walrus,das Walross,le morse
+1866,Big animals,wild horse,das Wildpferd,le cheval sauvage
+1867,Big animals,zebra,das Zebra,le zèbre
+1868,Small animals,ant,die Ameise,la fourmi
+1869,Small animals,beetle,der Käfer,le scarabée
+1870,Small animals,bird,der Vogel,l'oiseau
+1871,Small animals,birdcage,der Vogelkäfig,la cage à oiseaux
+1872,Small animals,birdhouse,das Vogelhaus,le nichoir
+1873,Small animals,bumblebee,die Hummel,le bourdon
+1874,Small animals,butterfly,der Schmetterling,le papillon
+1875,Small animals,caterpillar,die Raupe,la chenille
+1876,Small animals,centipede,der Tausendfüßler,le mille-pattes
+1877,Small animals,crab,die Krabbe,le crabe
+1878,Small animals,fly,die Fliege,la mouche
+1879,Small animals,frog,der Frosch,la grenouille
+1880,Small animals,goldfish,der Goldfisch,le poisson rouge
+1881,Small animals,grasshopper,die Heuschrecke,la sauterelle
+1882,Small animals,guinea pig,das Meerschweinchen,le cochon d'Inde
+1883,Small animals,hamster,der Hamster,le hamster
+1884,Small animals,hedgehog,der Igel,le hérisson
+1885,Small animals,hummingbird,der Kolibri,le colibri
+1886,Small animals,iguana,der Leguan,l'iguane
+1887,Small animals,insect,das Insekt,l'insecte
+1888,Small animals,jellyfish,die Qualle,la méduse
+1889,Small animals,kitten,das Kätzchen,le chaton
+1890,Small animals,ladybug,der Marienkäfer,la coccinelle
+1891,Small animals,lizard,die Eidechse,le lézard
+1892,Small animals,louse,die Laus,le puceron
+1893,Small animals,marmot,das Murmeltier,la marmotte
+1894,Small animals,mosquito,die Mücke,le moustique
+1895,Small animals,mouse,die Maus,la souris
+1896,Small animals,oyster,die Auster,l'huître
+1897,Small animals,scorpion,der Skorpion,le scorpion
+1898,Small animals,seahorse,das Seepferdchen,l'hippocampe
+1899,Small animals,shell,die Muschel,la coquille
+1900,Small animals,shrimp,die Garnele,la crevette
+1901,Small animals,spider,die Spinne,l'araignée
+1902,Small animals,spider web,das Spinnennetz,la toile d'araignée
+1903,Small animals,starfish,der Seestern,l'étoile de mer
+1904,Small animals,wasp,die Wespe,la guêpe
+1966,Colors,black,schwarz,noir
+1974,Colors,blue,blau,bleu
+1982,Colors,brown,braun,marron
+1990,Colors,gray,grau,gris
+1998,Colors,green,Grün,vert
+2006,Colors,net,Netz,net
+2014,Colors,network,Netzwerk,réseau
+2022,Colors,orange,Orange,Orange
+2030,Colors,pink,Rosa,rose
+2038,Colors,purple,lila,violet
+2046,Colors,red,rot,rouge
+2054,Colors,white,Weiß,blanc
+2062,Colors,yellow,Gelb,jaune
+2598,WHQuestions,how,Wie,Comment
+2606,WHQuestions,what,Was,quelle
+2614,WHQuestions,when,wann,quand
+2622,WHQuestions,where,woher,où
+2630,WHQuestions,which,welche,lequel
+2638,WHQuestions,who,Wer,qui
+2646,WHQuestions,whose,deren,dont
+2663,Numbers,one,eins,un
+2671,Numbers,two,zwei,deux
+2679,Numbers,three,drei,Trois
+2687,Numbers,four,vier,quatre
+2695,Numbers,five,fünf,cinq
+2703,Numbers,six,sechs,six
+2711,Numbers,seven,Sieben,Sept
+2719,Numbers,eight,acht,huit
+2727,Numbers,nine,neun,neuf
+2735,Numbers,ten,zehn,Dix
+2743,Numbers,twenty,zwanzig,vingt
+2751,Numbers,thirty,dreißig,30
+2759,Numbers,forty,vierzig,quarante
+2767,Numbers,fifty,fünfzig,cinquante
+2775,Numbers,sixty,sechzig,soixante
+2783,Numbers,seventy,siebzig,Soixante-dix
+2791,Numbers,eighty,achtzig,quatre-vingts
+2799,Numbers,ninety,neunzig,quatre vingt dix
+2807,Numbers,hundred,hundert,cent
+2815,Numbers,thousand,tausend,mille
+2823,Numbers,ten thousand,zehntausend,dix mille
+2831,Numbers,million,Million,million
+2839,Numbers,billion,Milliarde,milliard
+2847,Numbers,trillion,Billion,billion
+2856,Pronouns,i,ich,je
+2862,Pronouns,you,Sie,toi/vous
+2868,Pronouns,he,er,il
+2874,Pronouns,she,sie,elle
+2880,Pronouns,it,es,il
+2886,Pronouns,we,,nous
+2892,Pronouns,they,sie,ils/elles
+2898,Pronouns,us,uns,nous
+2904,Pronouns,our,unser,notre
+2910,Pronouns,my,meine,mon
+2916,Pronouns,me,mich,moi
+2922,Pronouns,his,seine,son
+2928,Pronouns,her,ihr,sa
+2934,Pronouns,everyone,jeder,tout le monde
+2968,Months,January,Januar,janvier
+2976,Months,February,Februar,février
+2984,Months,march,März,Mars
+2992,Months,April,April,avril
+3000,Months,may,kann,mai
+3008,Months,June,Juni,juin
+3016,Months,July,Juli,juillet
+3024,Months,August,August,août
+3032,Months,September,September,septembre
+3040,Months,October,Oktober,octobre
+3048,Months,November,November,novembre
+3056,Months,December,Dezember,décembre
+3064,DaysOfWeek,Monday,Montag,Lundi
+3072,DaysOfWeek,Tuesday,Dienstag,Mardi
+3080,DaysOfWeek,Wednesday,Mittwoch,Mercredi
+3088,DaysOfWeek,Thursday,Donnerstag,Jeudi
+3096,DaysOfWeek,Friday,Freitag,Vendredi
+3104,DaysOfWeek,Saturday,Samstag,samedi
+3112,DaysOfWeek,Sunday,Sonntag,dimanche
+3122,TimeClock,minute,Minute,minute
+3130,TimeClock,second,zweite,seconde
+3138,TimeClock,millisecond,Millisekunde,Milliseconde
+3146,TimeClock,half-hour,halbe Stunde,demi-heure
+3154,TimeClock,one o''clock,Ein Uhr,une heure
+3162,TimeClock,two o''clock,zwei Uhr,deux heures
+3170,TimeClock,three o''clock,drei Uhr,trois heures
+3178,TimeClock,four o''clock,vier Uhr,Quatre heures
+3186,TimeClock,five o''clock,Fünf Uhr,Cinq heures
+3194,TimeClock,six o''clock,sechs Uhr,six heures
+3202,TimeClock,seven o''clock,sieben Uhr,Sept heures
+3210,TimeClock,eight o''clock,acht Uhr,huit heures
+3218,TimeClock,nine o''clock,neun Uhr,neuf heures
+3226,TimeClock,ten o''clock,zehn Uhr,dix heures
+3234,TimeClock,eleven o''clock,elf Uhr,onze heures
+3240,TimeClock,twelve o''clock,Zwölf uhr,douze heures
+3279,BasicVerbs,be,Sein,être
+3287,BasicVerbs,have,haben,avoir
+3295,BasicVerbs,do,machen,faire
+3303,BasicVerbs,say,sagen,dire
+3311,BasicVerbs,go,gehen,aller
+3319,BasicVerbs,can,kann,pouvez
+3327,BasicVerbs,get,bekommen,Obtenez
+3335,BasicVerbs,make,machen,faire
+3343,BasicVerbs,know,kennt,connaître
+3351,BasicVerbs,will,werden,volonté
+3359,BasicVerbs,think,denken,penser
+3367,BasicVerbs,take,nehmen,prendre
+3375,BasicVerbs,see,sehen,voir
+3383,BasicVerbs,come,kommen,viens
+3391,BasicVerbs,want,wollen,vouloir
+3399,BasicVerbs,look,Schau,Regarde
+3407,BasicVerbs,use,benutzen,utilisation
+3415,BasicVerbs,find,finden,trouver
+3423,BasicVerbs,give,geben,donner
+3431,BasicVerbs,tell,sagen,dire
+3439,BasicVerbs,work,Arbeit,travail
+3447,BasicVerbs,may,kann,mai
+3455,BasicVerbs,should,sollte,devrait
+3463,BasicVerbs,call,Anruf,appel
+3471,BasicVerbs,try,Versuchen,Essai
+3479,BasicVerbs,ask,Fragen,demander
+3487,BasicVerbs,need,brauchen,avoir besoin
+3495,BasicVerbs,feel,fühlen,ressentir
+3503,BasicVerbs,become,werden,devenir
+3511,BasicVerbs,leave,verlassen,laisser
+3519,BasicVerbs,put,stellen,mettre
+3527,BasicVerbs,mean,bedeuten,signifier
+3535,BasicVerbs,keep,behalten,garder
+3543,BasicVerbs,let,Lassen,laisser
+3551,BasicVerbs,begin,Start,commencer
+3559,BasicVerbs,seem,scheinen,sembler
+3567,BasicVerbs,help,Hilfe,Aidez-moi
+3575,BasicVerbs,talk,sich unterhalten,parler
+3583,BasicVerbs,turn,Wende,tour
+3591,BasicVerbs,start,Anfang,Démarrer
+3599,BasicVerbs,show,Show,montrer
+3607,BasicVerbs,hear,hören,entendre
+3615,BasicVerbs,play,spielen,jouer
+3623,BasicVerbs,run,Lauf,courir
+3631,BasicVerbs,move,Bewegung,Déplacer
+3639,BasicVerbs,like,mögen,comme
+3647,BasicVerbs,live,Leben,vivre
+3655,BasicVerbs,believe,glauben,croyez
+3663,BasicVerbs,hold,halten,tenir
+3671,BasicVerbs,bring,bringen,apporter
+3679,BasicVerbs,happen,geschehen,se produire
+3687,BasicVerbs,must,sollen,doit
+3695,BasicVerbs,write,schreiben,écrire
+3703,BasicVerbs,provide,zu Verfügung stellen,fournir
+3711,BasicVerbs,sit,sitzen,siéger
+3719,BasicVerbs,stand,Stand,supporter
+3727,BasicVerbs,lose,verlieren,perdre
+3735,BasicVerbs,pay,bezahlen,Payer
+3743,BasicVerbs,meet,treffen,rencontrer
+3751,BasicVerbs,include,einschließen,comprendre
+3759,BasicVerbs,continue,fortsetzen,continuer
+3767,BasicVerbs,set,Set,ensemble
+3775,BasicVerbs,learn,lernen,apprendre
+3783,BasicVerbs,change,Veränderung,changement
+3791,BasicVerbs,lead,führen,conduire
+3799,BasicVerbs,understand,verstehen,comprendre
+3807,BasicVerbs,watch,Uhr,regarder
+3815,BasicVerbs,follow,Folgen,suivre
+3823,BasicVerbs,stop,halt,Arrêtez
+3831,BasicVerbs,create,erstellen,Créer
+3839,BasicVerbs,speak,sprechen,parler
+3847,BasicVerbs,read,lesen,lire
+3855,BasicVerbs,allow,zulassen,permettre
+3863,BasicVerbs,add,hinzufügen,ajouter
+3871,BasicVerbs,spend,verbringen,dépenser
+3879,BasicVerbs,grow,größer werden,croître
+3887,BasicVerbs,open,öffnen,Ouvert
+3895,BasicVerbs,walk,gehen,marche
+3903,BasicVerbs,win,gewinnen,gagner
+3911,BasicVerbs,offer,Angebot,offre
+3919,BasicVerbs,remember,merken,rappelles toi
+3927,BasicVerbs,love,Liebe,amour
+3935,BasicVerbs,consider,Erwägen,considérer
+3943,BasicVerbs,appear,erscheinen,apparaître
+3951,BasicVerbs,buy,kaufen,Acheter
+3959,BasicVerbs,wait,warte ab,attendez
+3967,BasicVerbs,serve,dienen,servir
+3975,BasicVerbs,die,sterben,mourir
+3983,BasicVerbs,send,senden,envoyer
+3991,BasicVerbs,expect,erwarten von,attendre
+3999,BasicVerbs,build,bauen,construire
+4007,BasicVerbs,stay,bleibe,rester
+4015,BasicVerbs,fall,Fall,tomber
+4023,BasicVerbs,cut,schneiden,Coupe
+4031,BasicVerbs,reach,erreichen,atteindre
+4039,BasicVerbs,kill,töten,tuer
+4047,BasicVerbs,remain,bleiben übrig,rester
+4048,People,Father,Vater,Père
+4049,5. Useful Words and General Vocabulary,delay,--,retard
+4050,5. Useful Words and General Vocabulary,except,--,sauf
+4051,5. Useful Words and General Vocabulary,quite a few,--,pas mal
+4052,5. Useful Words and General Vocabulary,dog,--,chien
+4053,5. Useful Words and General Vocabulary,often,--,souvent
+4054,5. Useful Words and General Vocabulary,and,--,et
+4055,5. Useful Words and General Vocabulary,that is,--,c'est
+4056,5. Useful Words and General Vocabulary,not bad,--,pas mal
+4057,5. Useful Words and General Vocabulary,yet,--,encore
+4058,5. Useful Words and General Vocabulary,paper,--,papier
+4059,5. Useful Words and General Vocabulary,daughter,--,fille
+4060,5. Useful Words and General Vocabulary,woman,--,femme
+4061,5. Useful Words and General Vocabulary,still,--,encore
+4062,5. Useful Words and General Vocabulary,there are,--,il y a
+4063,5. Useful Words and General Vocabulary,now,--,maintenant
+4064,5. Useful Words and General Vocabulary,there is,--,il y a
+4065,5. Useful Words and General Vocabulary,most of all,--,surtout
+4066,5. Useful Words and General Vocabulary,pen,--,stylo
+4067,5. Useful Words and General Vocabulary,almost,--,presque
+4068,5. Useful Words and General Vocabulary,pencil,--,crayon
+4069,5. Useful Words and General Vocabulary,pound,--,livre
+4070,5. Useful Words and General Vocabulary,hound,--,chien
+4071,5. Useful Words and General Vocabulary,also,--,aussi
+4072,5. Useful Words and General Vocabulary,but,--,mais
+4073,5. Useful Words and General Vocabulary,right now,--,maintenant
+4074,5. Useful Words and General Vocabulary,again,--,encore
+4075,5. Useful Words and General Vocabulary,always,--,toujours
+4076,5. Useful Words and General Vocabulary,too,--,aussi
+4077,5. Useful Words and General Vocabulary,book,--,livre
+4078,5. Useful Words and General Vocabulary,man,--,homme
+4079,5. Useful Words and General Vocabulary,nearly,--,presque
+4080,5. Useful Words and General Vocabulary,usually,--,d'habitude
+4081,5. Useful Words and General Vocabulary,friend,--,ami
+4082,5. Useful Words and General Vocabulary,wife,--,femme
+4083,5. Useful Words and General Vocabulary,crayon,--,crayon
+4084,DaysOfWeek,day,Tag,journée
+4093,DaysOfWeek,week,Woche,semaine
+4102,DaysOfWeek,today,heute,aujourd'hui
+4111,DaysOfWeek,yesterday,gestern,hier
+4120,DaysOfWeek,tomorrow,Morgen,demain
+4121,Months,month,Monat,mois
+4122,TimeClock,PM,PM,PM
+4129,TimeClock,afternoon,Nachmittag,après midi
+4152,TimeClock,AM,A.m.,un m.
+4161,Prepositions,more,Mehr,plus
+4170,Prepositions,about to,dabei,sur le point d
+4179,Prepositions,ace,As,as
+4188,Prepositions,about,etwa,sur
+4197,Prepositions,above,über,au dessus de
+4206,Prepositions,across,über,à travers
+4215,Prepositions,after,nach,après
+4224,Prepositions,against,gegen,contre
+4233,Prepositions,among,unter,parmi
+4242,Prepositions,around,um,autour
+4251,Prepositions,as,wie,comme
+4260,Prepositions,at,beim,à
+4269,Prepositions,before,Vor,avant
+4278,Prepositions,behind,hinter,derrière
+4287,Prepositions,below,unten,au dessous de
+4296,Prepositions,beside,neben,à côté de
+4305,Prepositions,between,zwischen,entre
+4314,Prepositions,but,aber,mais
+4323,Prepositions,by,durch,par
+4332,Prepositions,despite,Trotz,malgré
+4341,Prepositions,down,Unten,vers le bas
+4350,Prepositions,during,während,pendant
+4359,Prepositions,except,außer,sauf
+4368,Prepositions,for,für,pour
+4377,Prepositions,from,von,de
+4386,Prepositions,in,im,dans
+4395,Prepositions,inside,innen,à l'intérieur
+4404,Prepositions,near,in der Nähe von,près
+4413,Prepositions,next,Nächster,prochain
+4422,Prepositions,of,von,de
+4431,Prepositions,on,auf,sur
+4440,Prepositions,opposite,Gegenteil,contraire
+4449,Prepositions,out,aus,en dehors
+4458,Prepositions,outside,draußen,à l'extérieur
+4467,Prepositions,over,zu Ende,plus de
+4476,Prepositions,per,pro,par
+4485,Prepositions,plus,Plus,plus
+4494,Prepositions,round,runden,rond
+4503,Prepositions,since,schon seit,depuis
+4512,Prepositions,than,als,que
+4521,Prepositions,through,durch,par
+4530,Prepositions,till,bis,Jusqu'à
+4539,Prepositions,to,nach,à
+4548,Prepositions,toward,zu,vers
+4557,Prepositions,under,unter,en dessous de
+4566,Prepositions,until,bis,jusqu'à
+4575,Prepositions,up,oben,Up
+4584,Prepositions,via,über,via
+4593,Prepositions,with,mit,avec
+4602,Prepositions,within,innerhalb,dans
+4611,Prepositions,without,ohne,sans pour autant
+4620,Prepositions,according to,gemäß,selon
+4629,Prepositions,because of,durch,en raison de
+4638,Prepositions,due to,wegen,à cause de
+4647,Prepositions,next to,neben an,à côté de
+4656,Prepositions,as well as,ebenso gut wie,aussi bien que
+4665,Prepositions,in front of,vor,en face de
+4674,Prepositions,in spite of,edo bulguhago,nesmotrya na
+4683,Prepositions,on behalf of,im Auftrag von,de la part de
+4692,Demonstrative Pronoun,this,--,NULL
+4693,Demonstrative Pronoun,that,--,NULL
+4694,Demonstrative Pronoun,these,--,NULL
+4695,13. Directions,east,Osten,est
+4704,13. Directions,west,West-,Ouest
+4713,13. Directions,north,Norden,Nord
+4722,13. Directions,south,Süd,Sud
+4731,13. Directions,right,Recht,droite
+4740,13. Directions,left,links,à gauche
+4749,13. Directions,front,Vorderseite,avant
+4758,13. Directions,back,Zurück,arrière
+4767,13. Directions,side,Seite,côté
+4776,13. Directions,up,oben,Up
+4785,13. Directions,down,Unten,vers le bas
+4794,13. Directions,below,unten,au dessous de
+4803,12. Seasons,summer,--,été
+4811,12. Seasons,fall,--,tomber
+4819,12. Seasons,winter,--,hiver
+4827,12. Seasons,autumn,--,l'automne
+4835,12. Seasons,spring,--,printemps
+4843,14. Colors and Shapes,red,rot,rouge
+4845,14. Colors and Shapes,orange,Orange,NULL
+4851,14. Colors and Shapes,yellow,Gelb,NULL
+4857,14. Colors and Shapes,green,Grün,NULL
+4863,14. Colors and Shapes,blue,blau,NULL
+4869,14. Colors and Shapes,purple,lila,NULL
+4875,14. Colors and Shapes,white,Weiß,NULL
+4881,14. Colors and Shapes,pink,Rosa,NULL
+4887,14. Colors and Shapes,gold,Gold,NULL
+4893,14. Colors and Shapes,silver,Silber-,NULL
+4899,14. Colors and Shapes,square,Platz,NULL
+4905,14. Colors and Shapes,circle,Kreis,NULL
+4911,14. Colors and Shapes,triangle,Dreieck,NULL
+4917,14. Colors and Shapes,rectangle,Rechteck,NULL
+4923,14. Colors and Shapes,cube,Würfel,NULL
+4929,14. Colors and Shapes,sphere,Kugel,NULL
+4935,14. Colors and Shapes,cone,Kegel,NULL
+4941,14. Colors and Shapes,box,Box,NULL
+4947,14. Colors and Shapes,color,Farbe,Couleur
+4962,Numbers,fifteen,fünfzehn,quinze
+4986,Study Subjects,algebra,--,algèbre
+4994,Study Subjects,calculus,--,calcul
+5002,Study Subjects,geometry,--,géométrie
+5010,Study Subjects,economics,--,économie
+5018,Study Subjects,linguistics,--,linguistique
+5026,Study Subjects,literature,--,Littérature
+5034,Study Subjects,philosophy,--,philosophie
+5042,Study Subjects,psychology,--,psychologie
+5050,Study Subjects,political science,--,science politique
+5058,Study Subjects,history,--,histoire
+5066,Study Subjects,geography,--,géographie
+5074,Study Subjects,physics,--,la physique
+5082,Study Subjects,biology,--,NULL
+5090,Study Subjects,chemistry,--,chimie
+5098,Study Subjects,zoology,--,zoologie
+5106,Study Subjects,botany,--,botanique
+5114,Study Subjects,art,--,art
+5122,Study Subjects,music,--,la musique
+5130,Study Subjects,dance,--,danse
+5138,Study Subjects,drawing,--,dessin
+5146,Study Subjects,painting,--,peinture
+5154,Study Subjects,technology,--,la technologie
+5162,Study Subjects,physical education,--,éducation physique
