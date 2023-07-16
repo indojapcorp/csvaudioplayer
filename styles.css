@@ -29,16 +29,19 @@ table {
   }
   
   th:first-child, td:first-child {
-    width: 5%;
+    /*width: 5%;*/
+    width: 10px;
   }
   
   
   th:last-child, td:last-child {
-    width: 5%;
+    /*width: 5%;*/
+    width: 50px;
   }
 
   th:nth-last-child(2) , td:nth-last-child(2) {
-    width: 5%;
+    /*width: 5%;*/
+    width: 50px;
   }
   
   th.resize {
@@ -76,7 +79,7 @@ table {
       border: 1px solid black;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
       z-index: 9999;
-      max-width: 400px;
+      max-width: 800px;
       max-height: 400px;
       overflow-y: scroll;      
   }
@@ -153,6 +156,10 @@ table {
   width: 200px;
 }
 
+.search-input-small {
+  width: 20px;
+}
+
 .hint-popup {
   display: none;
   position: absolute;
@@ -164,6 +171,10 @@ table {
 }
 
 .search-input:hover + .hint-popup {
+  display: block;
+}
+
+.search-input-small:hover + .hint-popup {
   display: block;
 }
 
@@ -184,4 +195,14 @@ table {
 .spoken-text {
   margin-top: 5px;
   font-size: 14px;
+}
+
+.numeric-column {
+  width: 30px;
+}
+
+.speaker-icon::before {
+  content: "\1F508"; /* Unicode code point for the speaker icon */
+  font-size: 20px;
+  margin-right: 5px;
 }

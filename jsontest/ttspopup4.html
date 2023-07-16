@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chrome TTS Voices</title>
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid #ccc;
+            /* Add border to the table */
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+
+        /* Align select elements to the left and set a fixed width */
+        select {
+            width: 200px;
+            text-align: left;
+        }
+
+        /* Style the select containers */
+        .select-container {
+            width: 200px;
+            /* Set a fixed width */
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style the select element within the container */
+        .select-container select {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+    /* Style the popup */
+    .popup {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border: 1px solid black;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      max-width: 800px;
+      max-height: 400px;
+      overflow-y: scroll;      
+  }
+
+    </style>
+    <script>
+
+
+    </script>
+        <script src="jsonscript.js"></script>
+
+</head>
+
+<body>
+    <button onclick="addRow('ID',1)">Get Voices</button>
+    <button onclick="showColumnPopup()">Select Columns</button>
+    <div id="columnPopup" class="popup">
+        <h3>Select Columns to Display</h3>
+        <table id="columnCheckboxes"></table>
+    </div>
+
+    <table id="voice-table">
+        <!--
+        <tr class="voice-row">
+            <td><label for="languageCode">Language Code:</label></td>
+            <td>
+                <select id="languageCode1" class="languageCode" onchange="populateVoiceGroups(event)"></select>
+            </td>
+            <td><label for="voiceGroup">Voice Group:</label></td>
+            <td>
+                <select id="voiceGroup1" class="voiceGroup" onchange="populateVoices(event)"></select>
+            </td>
+            <td><label for="voices">Voices:</label></td>
+            <td>
+                <select id="voices1" class="voices"></select>
+            </td>
+        </tr>
+        <tr class="voice-row">
+            <td><label for="languageCode">Language Code:</label></td>
+            <td>
+                <select id="languageCode2" class="languageCode" onchange="populateVoiceGroups(event)"></select>
+            </td>
+            <td><label for="voiceGroup">Voice Group:</label></td>
+            <td>
+                <select id="voiceGroup2" class="voiceGroup" onchange="populateVoices(event)"></select>
+            </td>
+            <td><label for="voices">Voices:</label></td>
+            <td>
+                <select id="voices2" class="voices"></select>
+            </td>
+        </tr>
+        <tr class="voice-row">
+            <td><label for="languageCode">Language Code:</label></td>
+            <td>
+                <select id="languageCode3" class="languageCode" onchange="populateVoiceGroups(event)"></select>
+            </td>
+            <td><label for="voiceGroup">Voice Group:</label></td>
+            <td>
+                <select id="voiceGroup3" class="voiceGroup" onchange="populateVoices(event)"></select>
+            </td>
+            <td><label for="voices">Voices:</label></td>
+            <td>
+                <select id="voices2" class="voices"></select>
+            </td>
+        </tr>
+        -->
+    </table>
+
+    <div>
+        <label for="rateSlider">Speech Rate:</label>
+        <input type="range" id="rateSlider" min="0.1" max="2" step="0.1" value="1">
+    </div>
+
+    <div>
+        <label for="pitchSlider">Speech Pitch:</label>
+        <input type="range" id="pitchSlider" min="0" max="2" step="0.1" value="1">
+    </div>
+
+    <div>
+        <label for="volumeSlider">Speech Volume:</label>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+    </div>
+
+
+
+</body>
+
+</html>

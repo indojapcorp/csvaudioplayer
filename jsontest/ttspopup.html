@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chrome TTS Voices</title>
+  <script>
+    function getVoices() {
+      if ('speechSynthesis' in window) {
+        // Wait for the voices to be loaded
+        window.speechSynthesis.onvoiceschanged = function() {
+          var voices = window.speechSynthesis.getVoices();
+          
+          // Group voices by language
+          var voiceGroups = {};
+          for (var i = 0; i < voices.length; i++) {
+            var voice = voices[i];
+            var lang = voice.lang;
+            
+            if (!(lang in voiceGroups)) {
+              voiceGroups[lang] = [];
+            }
+            
+            voiceGroups[lang].push(voice);
+          }
+          
+          // Get sorted languages
+          var sortedLanguages = Object.keys(voiceGroups).sort();
+          
+          // Build the table
+          var table = document.getElementById('voicesTable');
+          
+          for (var i = 0; i < sortedLanguages.length; i++) {
+            var lang = sortedLanguages[i];
+            var voicesByLang = voiceGroups[lang];
+            
+            // Create a new row
+            var row = table.insertRow();
+            
+            // Language cell
+            var langCell = row.insertCell();
+            langCell.textContent = lang;
+            
+            // Voices cell
+            var voicesCell = row.insertCell();
+            
+            // Create the select element
+            var select = document.createElement('select');
+            
+            // Add options for each voice
+            for (var j = 0; j < voicesByLang.length; j++) {
+              var voiceOption = document.createElement('option');
+              voiceOption.textContent = voicesByLang[j].name;
+              voiceOption.value = voicesByLang[j].name;
+              select.appendChild(voiceOption);
+            }
+            
+            // Add the select element to the voices cell
+            voicesCell.appendChild(select);
+            
+            // Speak button cell
+            var speakCell = row.insertCell();
+            
+            // Create the Speak button
+            var speakButton = document.createElement('button');
+            speakButton.textContent = 'Speak';
+            speakButton.addEventListener('click', function() {
+              var selectedVoice = this.parentNode.previousSibling.querySelector('select').value;
+              var textToSpeak = 'Hello, this is a sample text.';
+              var rate = document.getElementById('rateSlider').value;
+              var pitch = document.getElementById('pitchSlider').value;
+              var volume = document.getElementById('volumeSlider').value;
+              
+              speakText(textToSpeak, selectedVoice, rate, pitch, volume);
+            });
+            
+            // Add the Speak button to the speak cell
+            speakCell.appendChild(speakButton);
+          }
+        };
+        
+        // Trigger voice loading by retrieving the voices
+        window.speechSynthesis.getVoices();
+      } else {
+        console.log('Text-to-Speech not supported in this browser.');
+      }
+    }
+    
+    function speakText(text, voice, rate, pitch, volume) {
+      var utterance = new SpeechSynthesisUtterance(text);
+      var voices = window.speechSynthesis.getVoices();
+      
+      for (var i = 0; i < voices.length; i++) {
+        if (voices[i].name === voice) {
+          utterance.voice = voices[i];
+          break;
+        }
+      }
+      
+      utterance.rate = rate;
+      utterance.pitch = pitch;
+      utterance.volume = volume;
+      
+      window.speechSynthesis.speak(utterance);
+    }
+  </script>
+</head>
+<body>
+  <button onclick="getVoices()">Get Voices</button>
+  
+  <table id="voicesTable">
+    <tr>
+      <th>Language</th>
+      <th>Voice</th>
+      <th></th>
+    </tr>
+  </table>
+  
+  <div>
+    <label for="rateSlider">Speech Rate:</label>
+    <input type="range" id="rateSlider" min="0.1" max="2" step="0.1" value="1">
+  </div>
+  
+  <div>
+    <label for="pitchSlider">Speech Pitch:</label>
+    <input type="range" id="pitchSlider" min="0" max="2" step="0.1" value="1">
+  </div>
+  
+  <div>
+    <label for="volumeSlider">Speech Volume:</label>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1">
+  </div>
+</body>
+</html>

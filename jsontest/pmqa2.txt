@@ -1,0 +1,72 @@
+1. Which project management method do you prefer?
+The interviewer asks this question to check your technical expertise as well as your ability to adapt. Explain the methods you have used.
+Example: "I have primarily used Agile for my previous projects. Agile helps me create shorter delivery cycles and makes it easy for the client to check at each stage of development, offering constructive feedback. I have also studied the Lean method of project management in my free time and tried to include some of it into my project management style."
+
+2. Which project management tools have you used?
+Provide a list of the project management tools you are familiar with and explain more about the benefits of each.
+Example: "I have used several project management tools like the Gantt chart, PERT chart, and logic network. I have also learned about the work and product breakdown structure during my free time, as I see these tools adding value to my future projects."
+
+3. How will you handle scope creep?
+An essential task of the project manager is to ensure that the project stays within the proposed budget and deadline. Scope creep refers to changes that cause the team to miss the initial targets. Your answer can help the interviewer know how skilled you are in managing resources.
+Example: “I once worked on a large project where the goals changed constantly based on client feedback. I relied on strict time management and clear communication with the client and management to deliver the project on time and within budget.”
+
+4. Explain a project's lifecycle
+An interviewer may ask this question to check if you still know the basics of project management.
+Example: “A project has five phases in its lifecycle starting from initiation, planning, execution, monitoring and control and finally, the closing."
+
+5. What is RAID?
+Frame your answer explaining the basic definition of the methodology and elaborate on how you use it in your projects.
+Example: “RAID is the acronym for Risk, Assumptions, Issues and Dependencies. I use a RAID log for all my projects to track factors that can impact a project.”
+
+6. What do you know about the triple constraint triangle of project management?
+This is another technical question where the interviewer tests your technical skills and how you apply this knowledge in your daily work. Explain the definition followed by how you apply it.
+Example: “The triple constraint is a constraint model with schedule, scope and cost as the sides of the constraint triangle and quality as the central theme. For every project I handle, I use a triple constraint diagram to ensure that the project stays on track and budget.”
+
+7. How will you avoid gold plating?
+Gold plating in project management terminology is when a team member or manager adds extra functionality not defined in the project scope to showcase their skills. The interviewer asks this question to check how you handle team members who do not follow instructions.
+Example: "I am always on the lookout for signs of gold plating. If I encounter any extra functionality, I will speak directly with the concerned team member. I will instruct them not to add extra functions without getting approval from the client first."
+
+8. What performance reports do you use?
+As a project manager, it is your responsibility to keep the client and management updated with the status and progress of the project. The interviewer wants to check if you provide regular reports to clients and your superiors.
+Example: "I use three different performance reports: progress report, status report and forecast report. The progress report highlights the completed tasks, while the status report focuses on the discrepancies so far."
+
+9. Do you prefer the fast-tracking or crashing technique?
+Both fast-tracking and crashing are techniques that project managers use to shorten the project duration without compromising the quality and scope.
+Example: "It depends on the available resources. If the client is willing to bear extra cost, I will choose the crashing methodology by adding resources to the project. If multiple tasks can be performed in parallel, then I prefer fast-tracking."
+
+10. Describe the steps of a project from initiation to completion.
+The best way to answer this question is by describing a hypothetical project and explaining the various phases. The interviewer wants to know how you will handle each step.
+Example: "The various stages of a project are initiation, planning, execution, monitoring & control and closing. As a project manager, it is my responsibility to see that my team handles each of these stages efficiently while staying within budget and completing it on time."
+
+11. Do you prefer working on a single project or multiple projects at the same time?
+Be open and let the interviewer know whether you prefer working on a single project or multiple projects simultaneously. Remember, there is no right or wrong answer, and it all depends on your preference and managerial style.
+Example: “I believe I can be more efficient if I work on a single project. But if required, I am willing to take up multiple projects occasionally."
+
+12. Have you ever worked on a project that did not meet the deadline?
+Missing the deadline or overshooting the budget are two common issues that project managers may encounter. The interviewer wants to know how you handle these complications. Use the STAR method to frame the answer for this question:
+Example: "I was working on a project where a client wanted to add an extra feature. If we worked on this feature, then we would have to miss the initial deadline. After discussing with my team members, I provided the client with options. They could miss the initial deadline and delay the project's launch with the added feature, or launch it as per plan and add the extra feature later.
+The client agreed to stick to the original deadline and was happy that we walked them through the options instead of just delaying the project."
+
+13. How will you handle the failure of a project?
+The interviewer asks this question to check if you can handle the failure of a project professionally. Frame your answer on the learning you get from a failed project and how you will use it to prevent future failures.
+Sample answer: “As a project manager, I have built the capacity to handle both successes and failures rationally. I will work with the team to dissect the cause of the failure and use it as a learning moment. I will also ensure that the failure does not impact the morale of the team and the workplace.”
+
+14. Can you explain how you will manage projects remotely while working from home?
+The interviewer wants to know your style of management, especially when you are working remotely. So, list out the strategies you have to ensure that all tasks are completed on time when the team is working remotely.
+Sample answer: "I focus on timely communications with all team members. I set remote working guidelines and weekly goals so that my team members know what is expected and continue to work productively, even when they are not physically present in the office. I will conduct weekly meetings to discuss the week's goals, updates and problems."
+
+15. When would you escalate an issue?
+Your answer should demonstrate to the interviewer that you have the right problem-solving skills and the expertise to handle issues without escalating them every single time.
+Sample answer: “If I have the resources, then my first course of action is to solve it with my immediate team. If the issue at hand is sensitive and requires high-level approval, then I bring it to the notice of the management and then the client. Ultimately, I believe that my team and I should use every resource available to solve the issue before escalating it.”
+
+Here are some other questions you may receive during a project manager interview:
+
+How do you handle conflict on your team?
+
+What will you do if a team member is underperforming?
+
+What are the three critical skills that a project manager needs to succeed?
+
+What will you do if a project is off schedule?
+
+Which steps will you take if you find that one of the project tasks requires more time than you anticipated?

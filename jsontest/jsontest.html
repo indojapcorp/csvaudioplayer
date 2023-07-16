@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON to HTML Table</title>
+</head>
+<body>
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Text</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    // Sample JSON data
+    var jsonData = {
+      "data": [
+        {
+          "id": 1,
+          "text": "Lorem ipsum dolor sit amet."
+        },
+        {
+          "id": 2,
+          "text": "Consectetur \"adipiscing\" elit."
+        },
+        {
+          "id": 3,
+          "text": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "id": 4,
+          "text": "Ut enim ad \"minim\" veniam."
+        },
+        {
+          "id": 5,
+          "text": "Quis nostrud exercitation \"ullamco laboris\" nisi ut aliquip ex ea commodo consequat."
+        }
+      ]
+    };
+
+    // Get the table body element
+    var tableBody = document.querySelector('#data-table tbody');
+
+    // Iterate over the data and create table rows
+    jsonData.data.forEach(function(item) {
+      var row = document.createElement('tr');
+      var idCell = document.createElement('td');
+      idCell.textContent = item.id;
+      var textCell = document.createElement('td');
+      textCell.textContent = item.text.replace(/"/g, '"'); // Escape double quotation marks
+      row.appendChild(idCell);
+      row.appendChild(textCell);
+      tableBody.appendChild(row);
+    });
+  </script>
+</body>
+</html>

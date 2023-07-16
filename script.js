@@ -63,7 +63,15 @@ const fileInput = document.getElementById("csvFileInput");
 fileInput.addEventListener("change", function (event) {
   showcolPopup();
   const file = fileInput.files[0];
-  readCSV(file);
+
+  if(file.name.endsWith("json")){
+    readJSON(file);
+  }else{
+    readCSV(file);
+  }
+
+
+
   //readCSV(event);
   //loadTable(event);
 });
@@ -361,7 +369,9 @@ function speakRowData(row) {
 
   var table = document.getElementById("myTable");
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
-  const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
+  var columnLanguages = document.getElementById("columnCheckboxes").querySelectorAll('select[id^="voices3"]');
+
+  console.log("columnLanguages="+columnLanguages.length);
   var firstcheckboxrow = table.rows[1];
   var speakcellsIndex = 0;
   for (var j = 0; j < columnCheckboxes.length; j++) {
@@ -424,7 +434,9 @@ let isTtsEnabled = false;
 let ttsUtterance = null;
 let ttsPaused = false;
 let deflang = 'en';
-const synth = window.speechSynthesis;
+//const synth = window.speechSynthesis;
+//var synth = window.speechSynthesis;
+
 //const utterance = new SpeechSynthesisUtterance();
 
 // const playBtn = document.getElementById('playBtn');
@@ -548,7 +560,9 @@ function speakThis() {
   originalFontSize = table.style.fontSize; // Store the original font size    
   var rowCount = table.rows.length;
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
-  const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
+  //const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
+  const columnLanguages = document.getElementById("columnCheckboxes").querySelectorAll('select[id^="voices3"]');
+
   var firstcheckboxrow = table.rows[1];
   var speakcellsIndex = 0;
   for (var i = 3; i < rowCount; i++) {
@@ -596,9 +610,19 @@ function speakAndHighlight() {
   playingCellSpan.textContent = "   Playing " + (currentCellIndex + 1) + " / " + speakcells.length + "       " + formatTime(currentCellSpeakTime) + " / " + formatTime(cellsTotalSpeakTime);
 
 
-  utterance.text = currentCell.innerText;
-  utterance.lang = speakcellslang[currentCellIndex];
-  synth.speak(utterance);
+  utterance.text = currentCell.innerText.replace(/[.,:?]/g, '!!!!!!');
+  //utterance.lang = speakcellslang[currentCellIndex];
+
+
+  for (var i = 0; i < uttvoices.length; i++) {
+      if (uttvoices[i].name === speakcellslang[currentCellIndex]) {
+          utterance.voice = uttvoices[i];
+          break;
+      }
+  }
+
+
+  window.speechSynthesis.speak(utterance);
 
   // Highlight the text in the current cell
   currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
@@ -655,7 +679,7 @@ function pause() {
   resumeBtn.disabled = false;
   stopBtn.disabled = false;
 
-  synth.pause();
+  window.speechSynthesis.pause();
 }
 
 function resume() {
@@ -664,7 +688,7 @@ function resume() {
   resumeBtn.disabled = true;
   stopBtn.disabled = false;
 
-  synth.resume();
+  window.speechSynthesis.resume();
 }
 
 function stop() {
@@ -674,7 +698,7 @@ function stop() {
   resumeBtn.disabled = true;
   stopBtn.disabled = true;
 
-  synth.cancel();
+  window.speechSynthesis.cancel();
   currentCellIndex = 0;
   // Reset cell highlighting
   for (var i = 0; i < speakcells.length; i++) {
@@ -874,51 +898,19 @@ var columnHeaderLngDict = {}
 
 // Function to create checkboxes for column selection
 function createColumnCheckboxes() {
-  const columnCheckboxes = document.getElementById("columnCheckboxes");
-  columnCheckboxes.innerHTML = "";
+  const columnCheckboxesTable = document.getElementById("columnCheckboxes");
+  columnCheckboxesTable.innerHTML = "";
+  console.log("createColumnCheckboxes columnCheckboxesTable cleared tableHeaders len="+tableHeaders.length);
   //for (let header of tableHeaders) {
-  tableHeaders.forEach(function (header, i) {
+    
+  tableHeaders.forEach(function (header, rownum) {
 
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.value = header;
-    checkbox.checked = true;
-    checkbox.onchange = function () {
-      //toggleColumn(header, checkbox.checked);
-    };
-
-    const label = document.createElement("label");
-    label.textContent = header;
-
-    const checkboxContainer = document.createElement("div");
-    checkboxContainer.appendChild(checkbox);
-    checkboxContainer.appendChild(label);
-
-    columnHeaderLngDict[header] = 'en';
-
-    const langlabel = document.createElement("label");
-    langlabel.textContent = "Languge";
-    checkboxContainer.appendChild(langlabel);
-    const combobox = document.createElement('select');
-    combobox.name = 'popupCombobox';
-    var selectElement = document.getElementById("srclang");
-
-    var options = selectElement.options;
-    Array.from(options).forEach(function (option) {
-      var traoption = document.createElement("option");
-      traoption.value = option.value;
-      traoption.text = option.text;
-      combobox.add(traoption);
-    });
-
-    combobox.value = headersLanguage[i];
-
-    checkboxContainer.appendChild(combobox);
+    addRowWin(header,rownum);
 
 
-    columnCheckboxes.appendChild(checkboxContainer);
   });
 }
+
 
 // Function to toggle the display of table columns
 function toggleColumnApply() {
@@ -1113,6 +1105,82 @@ function readCSV(file) {
     var filecolpopup = document.getElementById("colpopup");
     filecolpopup.style.display = "block";
 
+    csvData = [];
+
+    for (var i = 1; i < lines.length; i++) {
+      if (lines[i].length == 0)
+        continue;
+  
+      var row = lines[i].split(",");
+      csvData.push(row);
+    }
+  
+
+
+    showFileColPopup(headers);
+  };
+
+  reader.readAsText(file);
+}
+
+function readJSON(file) {
+  if (!file)
+    return;
+
+    lines = [];
+    headersLanguage = [];
+    headers = [];
+
+  csvfilename = file.name;
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    const jsonData = JSON.parse(event.target.result);
+    console.log("jsonData=" + jsonData);
+
+    csvData = [];
+
+    const attributes = Object.keys(jsonData.data[0]);
+    attributes.forEach(function(item) {
+      headers.push(item);
+      // lines.push(item.id);
+      // lines.push(item.text);
+    });
+
+    //headers = ["ID","TEXT"];
+    headers.forEach(function () {
+      headersLanguage.push('en');
+    });
+
+    for (var i = 0; i < jsonData.data.length; i++) {
+
+      var rowdata="";
+      for (var key in jsonData.data[i]) {
+        rowdata += jsonData.data[i][key]+"#####";
+      }
+      lines.push(rowdata);
+
+    } 
+    // jsonData.data.forEach(function(item) {
+    //   lines.push(item.id+"#####"+item.text);
+    //   // lines.push(item.id);
+    //   // lines.push(item.text);
+    // });
+
+    var filecolpopup = document.getElementById("colpopup");
+    filecolpopup.style.display = "block";
+
+
+    for (var i = 0; i < lines.length; i++) {
+      if (lines[i].length == 0)
+        continue;
+  
+        var row = lines[i].split("#####");
+        csvData.push(row);
+  
+    }
+
+
     showFileColPopup(headers);
   };
 
@@ -1142,20 +1210,16 @@ function populateTableNew() {
   var categorycolumncheckboxes = document.getElementsByName("categorycolumn");
   var selectedColumns = [];
   var isCategorySelectedForColumns = [];
+  tableHeaders = [];
+  // csvData = [];
 
-  csvData = [];
+  // for (var i = 1; i < lines.length; i++) {
+  //   if (lines[i].length == 0)
+  //     continue;
 
-  for (var i = 1; i < lines.length; i++) {
-    if (lines[i].length == 0)
-      continue;
-
-    var row = lines[i].split(",");
-
-    // if (row.length == 1)
-    //   console.log("blank row===" + row);
-
-    csvData.push(row);
-  }
+  //   var row = lines[i].split(",");
+  //   csvData.push(row);
+  // }
 
 
   // Get the selected checkboxes
@@ -1231,7 +1295,12 @@ function populateTableNew() {
     input.value = (i + 1);
     input.onchange = () => createFavorites();
     //input.placeholder="Filter Column "+i;
+
+    var checkboxLabel = document.createElement('label');
+    checkboxLabel.className = 'speaker-icon'; // Add the CSS class for the speaker icon
     td.appendChild(input);
+    td.appendChild(checkboxLabel);
+
     trcolcheck.appendChild(td);
   });
   trcolcheck.appendChild(document.createElement("th"));
@@ -1328,6 +1397,7 @@ function populateTableNew() {
 
   //var uniqueCategories = [...new Set()];
 
+
   csvData.forEach(function (row, rowno) {
     //var tr = table.insertRow();
     var tr = document.createElement("tr");
@@ -1343,7 +1413,14 @@ function populateTableNew() {
 
     selectedColumns.forEach(function (column, i) {
       var cell = document.createElement("td");
-      cell.textContent = row[headers.indexOf(column)];
+      var rowcoldata=row[headers.indexOf(column)];
+
+      cell.textContent = rowcoldata;
+      if (isNumeric(rowcoldata)) {
+        var filterInput = document.getElementById("input_" + i);
+        filterInput.setAttribute('class', 'search-input-small');
+        cell.classList.add('numeric-column');
+      }
 
       //cell.innerHTML = row[headers.indexOf(column)];
       tr.appendChild(cell);
@@ -1378,7 +1455,13 @@ function populateTableNew() {
 
   downloadCsvBtn.disabled = false;
   hideFileColPopup();
+  //getVoices();
   createColumnCheckboxes();
+
+}
+
+function isNumeric(value) {
+  return !isNaN(parseFloat(value)) && isFinite(value);
 }
 
 function showDropdown(inputField, column) {
@@ -1921,3 +2004,5 @@ async function convertToHiragana(sentence) {
   });
 }
 //recording test end
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON to HTML Table</title>
+
+</head>
+<body>
+  <input type="file" id="file-input">
+
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Text</th>
+      </tr>
+    </thead>
+    <tbody id="data-table-body">
+    </tbody>
+  </table>
+
+  <script>
+    const fileInput = document.getElementById("file-input");
+    fileInput.addEventListener("change", function (event) {
+      handleFileSelect(event);
+});
+  function handleFileSelect(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+      const jsonData = JSON.parse(event.target.result);
+      console.log("" + jsonData);
+      populateTable(jsonData.data);
+    };
+
+    reader.readAsText(file);
+  }
+
+  function populateTable(data) {
+    const tableBody = document.getElementById('data-table-body');
+    tableBody.innerHTML = '';
+
+    data.forEach(function(item) {
+      const row = document.createElement('tr');
+      const idCell = document.createElement('td');
+      idCell.textContent = item.id;
+      const textCell = document.createElement('td');
+      textCell.textContent = item.text;
+      row.appendChild(idCell);
+      row.appendChild(textCell);
+      tableBody.appendChild(row);
+    });
+  }
+</script>
+</body>
+</html>

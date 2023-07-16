@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Table with JSON Data</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+    
+    .numeric-column {
+      width: 30px;
+    }
+  </style>
+</head>
+<body>
+  <input type="file" id="jsonFileInput">
+  <table id="dataTable"></table>
+
+  <script>
+    document.getElementById('jsonFileInput').addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      var reader = new FileReader();
+      
+      reader.onload = function(e) {
+        var jsonData = JSON.parse(e.target.result);
+        populateTable(jsonData.data);
+      }
+      
+      reader.readAsText(file);
+    });
+
+    function populateTable(jsonData) {
+      var table = document.getElementById('dataTable');
+      
+      // Clear existing table data
+      while (table.firstChild) {
+        table.removeChild(table.firstChild);
+      }
+      
+      // Create table header
+      var headerRow = document.createElement('tr');
+      for (var key in jsonData[0]) {
+        var th = document.createElement('th');
+        th.textContent = key;
+        headerRow.appendChild(th);
+      }
+      table.appendChild(headerRow);
+      
+      // Create table rows
+      for (var i = 0; i < jsonData.length; i++) {
+        var dataRow = document.createElement('tr');
+        
+        for (var key in jsonData[i]) {
+          var td = document.createElement('td');
+          td.textContent = jsonData[i][key];
+          
+          if (isNumeric(jsonData[i][key])) {
+            td.classList.add('numeric-column');
+          }
+          
+          dataRow.appendChild(td);
+        }
+        
+        table.appendChild(dataRow);
+      }
+    }
+
+    function isNumeric(value) {
+      return !isNaN(parseFloat(value)) && isFinite(value);
+    }
+  </script>
+</body>
+</html>
