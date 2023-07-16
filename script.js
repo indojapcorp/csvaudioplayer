@@ -1924,7 +1924,8 @@ function getRowCellData(row) {
 
   var table = document.getElementById("myTable");
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
-  const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
+  //const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
+  const columnLanguages = document.getElementById("columnCheckboxes").querySelectorAll('select[id^="languageCode3"]');
   var firstcheckboxrow = table.rows[1];
   var speakcellsIndex = 0;
   for (var j = 0; j < columnCheckboxes.length; j++) {
@@ -2004,5 +2005,3 @@ async function convertToHiragana(sentence) {
   });
 }
 //recording test end
-
-
