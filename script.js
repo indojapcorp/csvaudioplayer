@@ -1194,14 +1194,14 @@ function showHintPopup(colnum) {
 function hideHintPopup(colnum) {
   document.getElementById("hintPopup_" + colnum).style.display = "none";
 }
-var searchHint = `Search Hint:<br>
-^ starts-with<br>
-$ ends-with<br>
-> length-greater<br>
-< length-smaller<br>
-= length-equals<br>
-% numeric<br>
-! hiragana<br>
+var searchHint = `Search Hint:
+^ starts-with
+$ ends-with
+> length-greater
+< length-smaller
+= length-equals
+% numeric
+! hiragana
 # katakana`;
 
 // Function to populate the table with selected columns
