@@ -78,6 +78,45 @@ fileInput.addEventListener("change", function (event) {
 fileInput.addEventListener("click", function (event) {
   showcolPopup();
 });
+
+const csvURLInputBtn = document.getElementById("csvURLInputBtn");
+csvURLInputBtn.addEventListener("click", function (event) {
+  showcolPopup();
+    var url = document.getElementById("urlInput").value;
+    fetch(url, {
+      headers: {
+                      "Accept": "text/plain"
+                  },
+      responseType: "text"
+    })
+      .then(response => response.text())
+      .then(data => {
+        console.log("data=="+data);
+        readJSONFromURL(url,data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+});
+
+
+function fetchText() {
+  var url = document.getElementById("urlInput").value;
+  fetch(url, {
+    headers: {
+                    "Accept": "text/plain"
+                },
+    responseType: "text"
+  })
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("textInput").value = data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
 // create HTML table with two columns english and japanese.
 // first column has english text , second column has Japanese text.
 // render the table with few sample rows.
@@ -903,8 +942,6 @@ var columnHeaderLngDict = {}
 function createColumnCheckboxes() {
   const columnCheckboxesTable = document.getElementById("columnCheckboxes");
   columnCheckboxesTable.innerHTML = "";
-  console.log("createColumnCheckboxes columnCheckboxesTable cleared tableHeaders len="+tableHeaders.length);
-  //for (let header of tableHeaders) {
     
   tableHeaders.forEach(function (header, rownum) {
 
@@ -1126,6 +1163,62 @@ function readCSV(file) {
   reader.readAsText(file);
 }
 
+function readJSONFromURL(url,data) {
+  lines = [];
+  headersLanguage = [];
+  headers = [];
+
+  csvfilename = "online";
+
+  const jsonData = JSON.parse(data);
+
+  csvData = [];
+
+  const attributes = Object.keys(jsonData.data[0]);
+  attributes.forEach(function(item) {
+    headers.push(item);
+    // lines.push(item.id);
+    // lines.push(item.text);
+  });
+
+  //headers = ["ID","TEXT"];
+  headers.forEach(function () {
+    headersLanguage.push('en');
+  });
+
+  for (var i = 0; i < jsonData.data.length; i++) {
+
+    var rowdata="";
+    for (var key in jsonData.data[i]) {
+      rowdata += jsonData.data[i][key]+"#####";
+    }
+    lines.push(rowdata);
+
+  } 
+  // jsonData.data.forEach(function(item) {
+  //   lines.push(item.id+"#####"+item.text);
+  //   // lines.push(item.id);
+  //   // lines.push(item.text);
+  // });
+
+  var filecolpopup = document.getElementById("colpopup");
+  filecolpopup.style.display = "block";
+
+
+  for (var i = 0; i < lines.length; i++) {
+    if (lines[i].length == 0)
+      continue;
+
+      var row = lines[i].split("#####");
+      csvData.push(row);
+
+  }
+
+
+  showFileColPopup(headers);
+
+}
+
 function readJSON(file) {
   if (!file)
     return;
@@ -1138,19 +1231,19 @@ function readJSON(file) {
   var reader = new FileReader();
 
   reader.onload = function (e) {
+
+    readJSONFromURL(csvfilename,event.target.result);
+
+    /*
     const jsonData = JSON.parse(event.target.result);
-    console.log("jsonData=" + jsonData);
 
     csvData = [];
 
     const attributes = Object.keys(jsonData.data[0]);
     attributes.forEach(function(item) {
       headers.push(item);
-      // lines.push(item.id);
-      // lines.push(item.text);
     });
 
-    //headers = ["ID","TEXT"];
     headers.forEach(function () {
       headersLanguage.push('en');
     });
@@ -1164,11 +1257,6 @@ function readJSON(file) {
       lines.push(rowdata);
 
     } 
-    // jsonData.data.forEach(function(item) {
-    //   lines.push(item.id+"#####"+item.text);
-    //   // lines.push(item.id);
-    //   // lines.push(item.text);
-    // });
 
     var filecolpopup = document.getElementById("colpopup");
     filecolpopup.style.display = "block";
@@ -1185,6 +1273,8 @@ function readJSON(file) {
 
 
     showFileColPopup(headers);
+
+    */
   };
 
   reader.readAsText(file);
