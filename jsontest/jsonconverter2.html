@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Text to JSON Converter</title>
+</head>
+
+<body>
+    <h1>Text to JSON Converter</h1>
+
+    <form id="converterForm">
+        <div>
+            <label for="delimiterInput">Delimiter:</label>
+            <input type="text" id="delimiterInput" placeholder="Enter delimiter" /><br><br>
+            <button type="button" onclick="convertToJSON()">Convert to JSON</button>
+            <button type="button" onclick="downloadJSON()">Download JSON</button>
+        </div>
+        <label for="textInput">Enter Text:</label><br>
+        <textarea id="textInput" rows="50" cols="150"></textarea><br><br>
+
+
+
+        <br><br>
+
+        <label for="jsonOutput">JSON Output:</label><br>
+        <textarea id="jsonOutput" rows="5" cols="150" readonly></textarea><br><br>
+        const text = document.body.textContent.trim();
+        const regions = text.split(/\n(?=\d+\.)/g);
+        console.log(regions);
+
+    </form>
+
+    <script>
+
+        // const text = document.body.textContent.trim();
+        // const regions = text.split(/\n(?=\d+\.)/g);
+        // console.log(regions);
+
+        function convertToJSON() {
+            var textInput = document.getElementById("textInput").value;
+            var delimiter = document.getElementById("delimiterInput").value;
+            //var textArray = textInput.split(delimiter.trim());
+            var textArray;
+
+            try {
+                var regex = new RegExp(delimiter);
+                textArray = textInput.split(regex);
+            } catch (error) {
+                // Treat delimiter as a string if it's not a valid regex
+                textArray = textInput.split(delimiter.trim());
+            }
+
+
+            var jsonArray = textArray.map(function (text, index) {
+                return { "id": index + 1, "text": text.trim() };
+            });
+
+            var jsonData = { "data": jsonArray };
+            var jsonString = JSON.stringify(jsonData);
+            document.getElementById("jsonOutput").value = jsonString;
+        }
+
+        function downloadJSON() {
+            var jsonOutput = document.getElementById("jsonOutput").value;
+            var fileName = "output.json";
+            var blob = new Blob([jsonOutput], { type: "application/json" });
+
+            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveOrOpenBlob(blob, fileName);
+            } else {
+                var link = document.createElement("a");
+                link.href = window.URL.createObjectURL(blob);
+                link.download = fileName;
+                link.click();
+            }
+        }
+    </script>
+</body>
+
+</html>

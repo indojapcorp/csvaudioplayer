@@ -610,7 +610,10 @@ function speakAndHighlight() {
   playingCellSpan.textContent = "   Playing " + (currentCellIndex + 1) + " / " + speakcells.length + "       " + formatTime(currentCellSpeakTime) + " / " + formatTime(cellsTotalSpeakTime);
 
 
-  utterance.text = currentCell.innerText.replace(/[.,:?]/g, '!!!!!!');
+  //utterance.text = currentCell.innerText.replace(/[.,:?]/g, '!!!!!!');
+    // Replace number and dot at the beginning with a blank
+  // Replace occurrences of "Question:", "Answer:", and "Ans:" with a blank
+  utterance.text = currentCell.innerText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/[.:?]/g, '!');
   //utterance.lang = speakcellslang[currentCellIndex];
 
 

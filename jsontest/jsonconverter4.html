@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Text to JSON Converter</title>
+</head>
+
+<body>
+    <h1>Text to JSON Converter</h1>
+
+    <form id="converterForm">
+        <label for="urlInput">URL:</label>
+        <input type="text" id="urlInput" placeholder="Enter URL" /><br><br>
+
+        <button type="button" onclick="fetchText()">Fetch Text</button>
+
+        <br><br>
+
+        <label for="textInput">Enter Text:</label><br>
+        <textarea id="textInput" rows="50" cols="150"></textarea><br><br>
+
+        <label for="delimiterInput">Delimiter:</label>
+        <input type="text" id="delimiterInput" placeholder="Enter delimiter" /><br><br>
+
+        <button type="button" onclick="convertToJSON()">Convert to JSON</button>
+
+        <br><br>
+
+        <label for="jsonOutput">JSON Output:</label><br>
+        <textarea id="jsonOutput" rows="5" cols="50" readonly></textarea><br><br>
+
+        <button type="button" onclick="downloadJSON()">Download JSON</button>
+    </form>
+
+    <script>
+        function fetchText() {
+  var url = document.getElementById("urlInput").value;
+  fetch(url, {
+    headers: {
+                    "Accept": "text/plain"
+                },
+    responseType: "text"
+  })
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("textInput").value = data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+        function fetchTextold() {
+            var url = document.getElementById("urlInput").value;
+            fetch(url, {
+                headers: {
+                    "Accept": "text/plain"
+                }
+            })
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("textInput").value = data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+
+        function convertToJSON() {
+            var textInput = document.getElementById("textInput").value;
+            var delimiter = document.getElementById("delimiterInput").value;
+            var textArray;
+
+            try {
+                var regex = new RegExp(delimiter);
+                textArray = textInput.split(/\n(?=\d+\.)/g);
+            } catch (error) {
+                // Treat delimiter as a string if it's not a valid regex
+                textArray = textInput.split(delimiter.trim());
+            }
+
+            var jsonArray = textArray.map(function (text, index) {
+                return { "id": index + 1, "text": text.trim() };
+            });
+
+            var jsonData = { "data": jsonArray };
+            var jsonString = JSON.stringify(jsonData);
+            document.getElementById("jsonOutput").value = jsonString;
+        }
+
+        function downloadJSON() {
+            var jsonOutput = document.getElementById("jsonOutput").value;
+            var fileName = "output.json";
+            var blob = new Blob([jsonOutput], { type: "application/json" });
+
+            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveOrOpenBlob(blob, fileName);
+            } else {
+                var link = document.createElement("a");
+                link.href = window.URL.createObjectURL(blob);
+                link.download = fileName;
+                link.click();
+            }
+        }
+    </script>
+</body>
+
+</html>

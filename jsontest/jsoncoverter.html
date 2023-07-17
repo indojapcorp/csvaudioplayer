@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text to JSON Converter</title>
+</head>
+<body>
+  <h1>Text to JSON Converter</h1>
+  
+  <form id="converterForm">
+    <label for="textInput">Enter Text:</label><br>
+    <textarea id="textInput" rows="5" cols="50"></textarea><br><br>
+    
+    <button type="button" onclick="convertToJSON()">Convert to JSON</button>
+    
+    <br><br>
+    
+    <label for="jsonOutput">JSON Output:</label><br>
+    <textarea id="jsonOutput" rows="5" cols="50" readonly></textarea><br><br>
+    
+    <button type="button" onclick="downloadJSON()">Download JSON</button>
+  </form>
+
+  <script>
+    function convertToJSON1() {
+      var textInput = document.getElementById("textInput").value;
+      var jsonObject = { "text": textInput };
+      var jsonString = JSON.stringify(jsonObject);
+      document.getElementById("jsonOutput").value = jsonString;
+    }
+    function convertToJSON1() {
+  var textInput = document.getElementById("textInput").value;
+  var textArray = textInput.split(/\n\s*\n/); // Split on blank lines
+
+  var jsonArray = textArray.map(function (text, index) {
+    return { "id": index + 1, "text": text.trim() };
+  });
+
+  var jsonString = JSON.stringify(jsonArray);
+  document.getElementById("jsonOutput").value = jsonString;
+}
+function convertToJSON() {
+  var textInput = document.getElementById("textInput").value;
+  var textArray = textInput.split(/\n\s*\n/); // Split on blank lines
+
+  var jsonArray = textArray.map(function (text, index) {
+    return { "id": index + 1, "text": text.trim() };
+  });
+
+  var jsonData = { "data": jsonArray };
+  var jsonString = JSON.stringify(jsonData);
+  document.getElementById("jsonOutput").value = jsonString;
+}
+
+    function downloadJSON() {
+      var jsonOutput = document.getElementById("jsonOutput").value;
+      var fileName = "output.json";
+      var blob = new Blob([jsonOutput], { type: "application/json" });
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(blob, fileName);
+      } else {
+        var link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+      }
+    }
+  </script>
+</body>
+</html>
