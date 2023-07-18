@@ -648,13 +648,14 @@ function speakAndHighlight() {
 
   playingCellSpan.textContent = "   Playing " + (currentCellIndex + 1) + " / " + speakcells.length + "       " + formatTime(currentCellSpeakTime) + " / " + formatTime(cellsTotalSpeakTime);
 
+  var cellTextValue = currentCell.innerText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/[.:?]/g, '!');
+
+  if (isMacOS) {
 
   //utterance.text = currentCell.innerText.replace(/[.,:?]/g, '!!!!!!');
     // Replace number and dot at the beginning with a blank
   // Replace occurrences of "Question:", "Answer:", and "Ans:" with a blank
-  utterance.text = currentCell.innerText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/[.:?]/g, '!');
-  //utterance.lang = speakcellslang[currentCellIndex];
-
+  utterance.text = cellTextValue
 
   for (var i = 0; i < uttvoices.length; i++) {
       if (uttvoices[i].name === speakcellslang[currentCellIndex]) {
@@ -662,9 +663,52 @@ function speakAndHighlight() {
           break;
       }
   }
-
-
+  
   window.speechSynthesis.speak(utterance);
+  // When the speech ends, move to the next cell
+  utterance.onend = function () {
+    if (counter < maxCellSpeakCounter.value) {
+      counter++;
+    } else {
+      counter = 1; // Reset the counter for the next cell
+    }
+
+    setTimeout(function () {
+      currentCell.style.fontSize = originalFontSize; // Reset font size
+      currentCell.style.backgroundColor = ''; // Reset highlighting
+      currentCellIndex++;
+      playingCellSpan.textContent = "";
+      speakAndHighlight(); // Speak the next cell
+    }, speakSilenceTime.value);
+
+  };
+  }else{
+    
+    console.log("speakcellslang[currentCellIndex]="+speakcellslang[currentCellIndex]);
+    responsiveVoice.speak(cellTextValue, ""+speakcellslang[currentCellIndex], {
+      onstart: function() {
+        console.log("Speech started");
+      },
+      onend: function() {
+        console.log("Speech ended");
+        if (counter < maxCellSpeakCounter.value) {
+          counter++;
+        } else {
+          counter = 1; // Reset the counter for the next cell
+        }
+    
+        setTimeout(function () {
+          currentCell.style.fontSize = originalFontSize; // Reset font size
+          currentCell.style.backgroundColor = ''; // Reset highlighting
+          currentCellIndex++;
+          playingCellSpan.textContent = "";
+          speakAndHighlight(); // Speak the next cell
+        }, speakSilenceTime.value);    
+        // Perform additional actions or trigger other events
+      }
+    });
+    
+  }
 
   // Highlight the text in the current cell
   currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
@@ -687,32 +731,23 @@ function speakAndHighlight() {
     behavior: 'smooth'
   });
 
-  // When the speech ends, move to the next cell
-  utterance.onend = function () {
+  // // When the speech ends, move to the next cell
+  // utterance.onend = function () {
+  //   if (counter < maxCellSpeakCounter.value) {
+  //     counter++;
+  //   } else {
+  //     counter = 1; // Reset the counter for the next cell
+  //   }
 
+  //   setTimeout(function () {
+  //     currentCell.style.fontSize = originalFontSize; // Reset font size
+  //     currentCell.style.backgroundColor = ''; // Reset highlighting
+  //     currentCellIndex++;
+  //     playingCellSpan.textContent = "";
+  //     speakAndHighlight(); // Speak the next cell
+  //   }, speakSilenceTime.value);
 
-    if (counter < maxCellSpeakCounter.value) {
-      counter++;
-    } else {
-      // currentCell.style.fontSize = originalFontSize; // Reset font size
-      // currentCell.style.backgroundColor = ''; // Reset highlighting
-      // currentCellIndex++;
-      counter = 1; // Reset the counter for the next cell
-      //playingCellSpan.textContent = "";
-    }
-
-    setTimeout(function () {
-      currentCell.style.fontSize = originalFontSize; // Reset font size
-      currentCell.style.backgroundColor = ''; // Reset highlighting
-      currentCellIndex++;
-      playingCellSpan.textContent = "";
-      speakAndHighlight(); // Speak the next cell
-    }, speakSilenceTime.value);
-
-
-    //setTimeout(speakAndHighlight, speakSilenceTime.value);
-
-  };
+  // };
 }
 
 function pause() {

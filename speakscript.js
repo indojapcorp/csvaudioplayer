@@ -4,19 +4,95 @@ var selectedVoiceGroup = {}; // Track the selected voice group for each row
 var voiceGroups = {};
 var uttvoices;
 
+// Check if the page is loaded from a mobile device
+var isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+
+// Check if the page is loaded from Windows
+var isWindows = /Windows/i.test(navigator.userAgent);
+
+// Check if the page is loaded from macOS
+var isMacOS = /Macintosh|Mac OS X/i.test(navigator.userAgent);
+//isMacOS = false;
 //var synth = window.speechSynthesis;
 
 function getLanguageDisplayName(langcode) {
+    if(isMacOS){
     const languageName = new Intl.DisplayNames(['en'], { type: 'language' }).of(langcode);
     return languageName;
+    }else{
+        return langcode;
+    }
+}
+
+function getResponsiveVoices() {
+
+    if ('speechSynthesis' in window) {
+        // Wait for the voices to be loaded
+        //var voices = window.speechSynthesis.getVoices();
+        uttvoices = responsiveVoice.getVoices();
+
+        console.log("uttvoices.length="+uttvoices.length);
+        //voices = window.speechSynthesis.getVoices();
+        // Group voices by language
+        voiceGroups = {};
+        for (var i = 0; i < uttvoices.length; i++) {
+            var voice = uttvoices[i];
+            console.log("voice="+voice);
+            console.log("voice.lang="+voice.name);
+
+            var lang = voice.name;
+
+
+            if (!(lang in voiceGroups)) {
+                voiceGroups[lang] = [];
+            }
+
+            voiceGroups[lang].push(voice);
+        }
+        console.log("voiceGroups="+voiceGroups.length);
+
+        // Fill the langCodeVoicesDict dictionary
+        for (var lang in voiceGroups) {
+            var langCode = lang.split('-')[0]; // Get the language code
+
+            if (!(langCode in langCodeVoicesDict)) {
+                langCodeVoicesDict[langCode] = [];
+            }
+
+            langCodeVoicesDict[langCode].push(voiceGroups[lang]);
+        }
+
+        // Populate the languageCode select for each row
+        var rows = document.querySelectorAll('.voice-row');
+
+        rows.forEach(function (row) {
+            var languageCodeSelect = row.querySelector('.languageCode');
+            languageCodeSelect.innerHTML = ''; // Clear existing options
+            var seloption = document.createElement('option');
+            languageCodeSelect.appendChild(seloption);
+
+            Object.keys(langCodeVoicesDict).forEach(function (langCode) {
+                var option = document.createElement('option');
+                option.value = langCode;
+                option.textContent = langCode;
+                languageCodeSelect.appendChild(option);
+            });
+        });
+
+        // Get sorted languages
+        var sortedLanguages = Object.keys(voiceGroups).sort();
+    } else {
+        console.log('Text-to-Speech not supported in this browser.');
+    }
 }
 
 function getVoices() {
+
     if ('speechSynthesis' in window) {
         // Wait for the voices to be loaded
         window.speechSynthesis.onvoiceschanged = function () {
             //var voices = window.speechSynthesis.getVoices();
-            uttvoices = window.speechSynthesis.getVoices(); 
+            uttvoices = window.speechSynthesis.getVoices();
             //voices = window.speechSynthesis.getVoices();
             // Group voices by language
             voiceGroups = {};
@@ -131,14 +207,27 @@ function speakText(text, voice, rate, pitch, volume) {
 }
 
 window.addEventListener('load', function () {
-    getVoices();
+
+
+    console.log('Is Mobile:', isMobile);
+    console.log('Is Windows:', isWindows);
+    console.log('Is macOS:', isMacOS);
+
+    if(isMacOS){
+        getVoices();
+    }else{
+        getResponsiveVoices();
+    }
+
+    
+    //getVoices();
     //addRow("ID",4);
     // addRow("ID",5);
 
 });
 
-function addRow(header,rownum) {
-    addRowWin(header,rownum);
+function addRow(header, rownum) {
+    addRowWin(header, rownum);
 }
 
 function addRowWin(header, rownum) {
@@ -220,6 +309,7 @@ function addRowWin(header, rownum) {
     seloption.textContent = getLanguageDisplayName('en');
     languageCodeSelect.appendChild(seloption);
 
+    console.log("langCodeVoicesDict="+langCodeVoicesDict);
     Object.keys(langCodeVoicesDict).forEach(function (langCode) {
         if (langCode !== 'en') {
             var option = document.createElement('option');

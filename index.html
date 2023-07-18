@@ -5,6 +5,29 @@
     <title>Spreadsheet Audio Player</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=jebKs0z3"></script>
+    -->
+    <script>
+    // Check if the page is loaded from macOS
+    var isMacOS = /Macintosh|Mac OS X/i.test(navigator.userAgent);
+
+    // Function to load the script from a specific URL
+    function loadScript(url) {
+      var script = document.createElement('script');
+      script.src = url;
+      script.onload = function() {
+        console.log('Script loaded');
+        // Perform additional actions after the script is loaded
+      };
+      document.head.appendChild(script);
+    }
+    //isMacOS = false;
+    // Conditionally load the script if isMacOS is true
+    if (!isMacOS) {
+      loadScript('https://code.responsivevoice.org/responsivevoice.js?key=jebKs0z3');
+    }
+    </script>
 </head>
 
 <body>
