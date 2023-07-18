@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text-to-Speech Demo</title>
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=jebKs0z3"></script>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Text</th>
+        <th>Voice</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Dynamically add rows for each voice -->
+      <script>
+        var voices = responsiveVoice.getVoices();
+        voices.forEach(function(voice) {
+          var row = document.createElement('tr');
+
+          // Create the first column with sample text
+          var textColumn = document.createElement('td');
+          textColumn.textContent = 'Sample Text';
+          row.appendChild(textColumn);
+
+          // Create the second column with voice selection
+          var voiceColumn = document.createElement('td');
+          var voiceSelect = document.createElement('select');
+          voiceSelect.className = 'voice-select';
+          voiceSelect.id = 'voiceSelect-' + voice.name;
+
+          // Create options for each voice
+          var option = document.createElement('option');
+          option.value = voice.name;
+          option.textContent = voice.name;
+          voiceSelect.appendChild(option);
+          voiceColumn.appendChild(voiceSelect);
+          row.appendChild(voiceColumn);
+
+          // Create the third column with Speak button
+          var speakColumn = document.createElement('td');
+          var speakButton = document.createElement('button');
+          speakButton.textContent = 'Speak';
+          speakButton.onclick = function() {
+            var selectedVoice = voiceSelect.value;
+            responsiveVoice.speak('Sample text', selectedVoice);
+          };
+          speakColumn.appendChild(speakButton);
+          row.appendChild(speakColumn);
+
+          // Add the row to the table body
+          document.querySelector('tbody').appendChild(row);
+        });
+      </script>
+    </tbody>
+  </table>
+</body>
+</html>

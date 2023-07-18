@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text-to-Speech Demo</title>
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=jebKs0z3"></script>
+  <script>
+      var voicelist = responsiveVoice.getVoices();
+
+  </script>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Text</th>
+        <th>Voice</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>This is the first text.</td>
+        <td>
+          <select id="voiceSelect">
+            <!-- The options will be dynamically filled in JavaScript -->
+          </select>
+        </td>
+        <td>
+          <button onclick="speakText(this)">Speak</button>
+        </td>
+      </tr>
+      <!-- Add more rows for additional texts -->
+    </tbody>
+  </table>
+
+  <script>
+    // Retrieve the available voices and populate the select element
+    var voices = responsiveVoice.getVoices();
+    var voiceSelect = document.getElementById('voiceSelect');
+    voices.forEach(function(voice) {
+      var option = document.createElement('option');
+      option.value = voice.name;
+      option.textContent = voice.name;
+      voiceSelect.appendChild(option);
+    });
+
+    function speakText(button) {
+      var row = button.parentNode.parentNode;
+      var text = row.cells[0].innerText;
+      var selectedVoice = voiceSelect.value;
+
+      // Speak the text using the selected voice
+      responsiveVoice.speak(text, selectedVoice);
+    }
+  </script>
+</body>
+</html>
