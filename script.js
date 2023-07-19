@@ -703,7 +703,7 @@ function speakAndHighlight() {
           currentCellIndex++;
           playingCellSpan.textContent = "";
           speakAndHighlight(); // Speak the next cell
-        }, speakSilenceTime.value);    
+        }, 10);    
         // Perform additional actions or trigger other events
       }
     });
