@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spreadsheet-like Web Page</title>
+  <!-- Include Handsontable CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" />
+</head>
+<body>
+  <div id="spreadsheet-container"></div>
+
+  <!-- Include Handsontable and your custom JavaScript -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Function to generate a new column header
+      function generateColumnHeader(index) {
+        return 'Column ' + (index + 1);
+      }
+
+      // Function to generate a new row header
+      function generateRowHeader(index) {
+        return 'Row ' + (index + 1);
+      }
+
+      // Initialize Handsontable
+      const container = document.getElementById('spreadsheet-container');
+      const hot = new Handsontable(container, {
+        data: [[]], // Initial empty data
+        minSpareCols: 1, // Minimum number of spare columns
+        minSpareRows: 1, // Minimum number of spare rows
+        rowHeaders: true,
+        colHeaders: true,
+        manualColumnResize: true, // Allow manual resizing of columns
+        wordWrap: false, // Disable word wrapping
+        autoRowSize: true, // Automatically increase row height to fit content
+        columns: [ // Define options for each column
+          {
+            // Define column width
+            width: 100,
+          },
+        ],
+        afterInit: function () {
+          // Generate headers for empty rows/columns
+          for (let i = 0; i < this.getSettings().minSpareRows; i++) {
+            this.setRowHeader(i, generateRowHeader(i));
+          }
+
+          for (let i = 0; i < this.getSettings().minSpareCols; i++) {
+            this.setColHeader(i, generateColumnHeader(i));
+          }
+        },
+      });
+
+      // Function to add a new row
+      function addRow() {
+        hot.alter('insert_row');
+      }
+
+      // Function to add a new column
+      function addColumn() {
+        hot.alter('insert_col');
+      }
+
+      // Function to delete the selected row
+      function deleteRow() {
+        const selectedRow = hot.getSelected()[0];
+        if (selectedRow !== void 0) {
+          hot.alter('remove_row', selectedRow);
+        }
+      }
+
+      // Function to delete the selected column
+      function deleteColumn() {
+        const selectedCol = hot.getSelected()[1];
+        if (selectedCol !== void 0) {
+          hot.alter('remove_col', selectedCol);
+        }
+      }
+
+      // Attach event listeners to buttons for adding and deleting rows/columns
+      document.getElementById('add-row').addEventListener('click', addRow);
+      document.getElementById('add-column').addEventListener('click', addColumn);
+      document.getElementById('delete-row').addEventListener('click', deleteRow);
+      document.getElementById('delete-column').addEventListener('click', deleteColumn);
+    });
+  </script>
+</body>
+</html>

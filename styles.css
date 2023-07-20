@@ -49,6 +49,16 @@ table {
     overflow: auto;
   }
 
+  td div {
+    width: 100%;
+    min-height: 1em; /* Ensures the cell has a minimum height */
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+}
+
   .totalitemslabel {
     width: 40%;
   }

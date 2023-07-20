@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editable Table Cell with Auto-Adjustable Height and CSV Download</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+            word-wrap: break-word;
+            vertical-align: top;
+        }
+
+        td {
+            cursor: pointer;
+            position: relative;
+        }
+
+        td div {
+            width: 100%;
+            min-height: 1em; /* Ensures the cell has a minimum height */
+            overflow: hidden;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: inherit;
+            padding: 0;
+        }
+
+        #downloadButton {
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <table id="sstable">
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><div contenteditable="true">Sample Text for Cell 1</div></td>
+                <td><div contenteditable="true">Longer Sample Text for Cell 2</div></td>
+                <td><div contenteditable="true">Even Longer Sample Text for Cell 3. This text will automatically wrap to fit the cell width and increase the cell height if needed.</div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="downloadButton" onclick="downloadCSV()">Download CSV</button>
+    <button id="downloadButton1" onclick="downloadTableAsCSV()">Download Table As CSV</button>
+
+    <script>
+        function downloadCSV() {
+            const rows = Array.from(document.querySelectorAll('tbody tr'));
+            const data = rows.map(row => {
+                return Array.from(row.querySelectorAll('div')).map(cell => cell.innerText);
+            });
+
+            console.log("data="+data);
+            
+            const csvContent = data.map(row => row.join(',')).join('\n');
+
+            console.log("csvContent="+csvContent);
+
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.setAttribute('href', URL.createObjectURL(blob));
+            link.setAttribute('download', 'table_data.csv');
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function downloadTableAsCSV() {
+  const table = document.getElementById("sstable");
+  const rows = Array.from(table.querySelectorAll('tr'));
+  
+  // Helper function to escape quotes within the cell content
+  const escapeQuotes = (value) => {
+    return value.replace(/"/g, '""');
+  };
+
+  // Helper function to preserve new lines in cell content
+  const preserveNewlines = (value) => {
+    return `"${value.replace(/\n/g, '\\n')}"`;
+  };
+
+  // Extract the table data and format as CSV content
+  const csvContent = rows.map((row) => {
+    const cells = Array.from(row.querySelectorAll('th,td'));
+    return cells
+      .map((cell) => {
+        const cellValue = cell.innerText;
+        const escapedValue = escapeQuotes(cellValue);
+        return preserveNewlines(escapedValue);
+      })
+      .join(',');
+  }).join('\n');
+
+  // Create a Blob object with the CSV content
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+
+  // Trigger the file download
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.setAttribute('download', "dwd.csv");
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+    </script>
+</body>
+</html>

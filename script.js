@@ -4,17 +4,17 @@ let recognition;
 let tableHeaders = [];
 //event listener for studyList selection start
 const fetchURL = window.location.origin.includes('localhost')
-    ? '/data/'
-    : '/csvaudioplayer/data/';
+  ? '/data/'
+  : '/csvaudioplayer/data/';
 
 const studyListsElement = document.getElementById("studyLists");
 studyListsElement.setAttribute('onchange', 'studyListsChanged()');
 // Create a map of filepath and displayvalue
 const fileMap = new Map();
-fileMap.set(fetchURL+'50langvocab_all.csv', '50langvocab_all');
-fileMap.set(fetchURL+'50langvocab_german_french.csv', '50langvocab_german_french');
-fileMap.set(fetchURL+'50langvocab_japanese.csv', '50langvocab_japanese');
-fileMap.set(fetchURL+'GRE_1300.csv', 'GRE_1300');
+fileMap.set(fetchURL + '50langvocab_all.csv', '50langvocab_all');
+fileMap.set(fetchURL + '50langvocab_german_french.csv', '50langvocab_german_french');
+fileMap.set(fetchURL + '50langvocab_japanese.csv', '50langvocab_japanese');
+fileMap.set(fetchURL + 'GRE_1300.csv', 'GRE_1300');
 
 // Fill the options of selectElement using forEach
 fileMap.forEach((displayValue, filePath) => {
@@ -45,7 +45,7 @@ function studyListsChanged() {
       // Create a File object from the Blob
       const file = new File([blob], fileName);
       showcolPopup();
-      console.log("file="+file);
+      console.log("file=" + file);
       readCSV(file);
 
       // Perform further operations with the file content
@@ -64,9 +64,9 @@ fileInput.addEventListener("change", function (event) {
   showcolPopup();
   const file = fileInput.files[0];
 
-  if(file.name.endsWith("json")){
+  if (file.name.endsWith("json")) {
     readJSON(file);
-  }else{
+  } else {
     readCSV(file);
   }
 
@@ -82,21 +82,21 @@ fileInput.addEventListener("click", function (event) {
 const csvURLInputBtn = document.getElementById("csvURLInputBtn");
 csvURLInputBtn.addEventListener("click", function (event) {
   showcolPopup();
-    var url = document.getElementById("urlInput").value;
-    fetch(url, {
-      headers: {
-                      "Accept": "text/plain"
-                  },
-      responseType: "text"
+  var url = document.getElementById("urlInput").value;
+  fetch(url, {
+    headers: {
+      "Accept": "text/plain"
+    },
+    responseType: "text"
+  })
+    .then(response => response.text())
+    .then(data => {
+      console.log("data==" + data);
+      readJSONFromURL(url, data);
     })
-      .then(response => response.text())
-      .then(data => {
-        console.log("data=="+data);
-        readJSONFromURL(url,data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    .catch(error => {
+      console.log(error);
+    });
 });
 
 
@@ -104,8 +104,8 @@ function fetchText() {
   var url = document.getElementById("urlInput").value;
   fetch(url, {
     headers: {
-                    "Accept": "text/plain"
-                },
+      "Accept": "text/plain"
+    },
     responseType: "text"
   })
     .then(response => response.text())
@@ -137,10 +137,15 @@ function updateCounter() {
 }
 
 function downloadAsCSV(text) {
+  console.log("downloadAsCSV=" + text);
   const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(text.replaceAll(" .! ", ""));
+  //  const blob = new Blob([text], { type: 'text/csv;charset=utf-8;' });
+
   const link = document.createElement('a');
   var dwdfilename = csvfilename.replace(".csv", "_dwd.csv")
   link.setAttribute('href', csvContent);
+  //  link.setAttribute('href', URL.createObjectURL(blob));
+
   link.setAttribute('download', dwdfilename);
   link.style.display = 'none';
   document.body.appendChild(link);
@@ -410,7 +415,7 @@ function speakRowData(row) {
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
   var columnLanguages = document.getElementById("columnCheckboxes").querySelectorAll('select[id^="voices3"]');
 
-  console.log("columnLanguages="+columnLanguages.length);
+  console.log("columnLanguages=" + columnLanguages.length);
   var firstcheckboxrow = table.rows[1];
   var speakcellsIndex = 0;
   for (var j = 0; j < columnCheckboxes.length; j++) {
@@ -528,6 +533,71 @@ function getSelectedData() {
 }
 
 function getSelectedDataForDownload() {
+
+  // Helper function to escape quotes within the cell content
+  const escapeQuotes = (value) => {
+    return value.replace(/"/g, '""');
+  };
+
+  // Helper function to preserve new lines in cell content
+  const preserveNewlines = (value) => {
+    return `"${value.replace(/\n/g, '\\n')}"`;
+  };
+
+  var table = document.getElementById("myTable");
+  var rowCount = table.rows.length;
+  const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+
+  var firstcheckboxrow = table.rows[1];
+  selectedDwdData = "";
+
+  const headerRow = [];
+
+  for (let i = 0; i < tableHeaders.length; i++) {
+    var headercheckBox = firstcheckboxrow.cells[i + 1].getElementsByTagName("input")[0];
+    if (columnCheckboxes[i].checked && headercheckBox.checked) {
+      headerRow.push(encodeURIComponent(tableHeaders[i]));
+    }
+  }
+  selectedDwdData += headerRow.join(",") + "\r\n";
+
+  for (var i = 3; i < rowCount; i++) {
+    var row = table.rows[i];
+
+    var checkBox = row.cells[0].getElementsByTagName("input")[0];
+    const rowData = [];
+    if (checkBox != undefined && checkBox.checked) {
+      for (var j = 0; j < columnCheckboxes.length; j++) {
+        var checkBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
+        if (columnCheckboxes[j].checked && checkBox.checked) {
+          //var cellDivText=row.cells[j + 1].querySelectorAll('div')[0].textContent;
+          // const divs = Array.from(row.cells[j + 1].querySelectorAll('div'));
+          // console.log("divs="+divs.length);
+          // const data = divs.map(div => {
+          //   return Array.from(div.querySelectorAll('div')).map(cell => cell.innerText);
+          // });
+          // const cellDivText = data.map(div => div.join(',')).join('\n');
+
+          //var cellDivText =row.cells[j + 1].innerText;
+
+          const escapedValue = escapeQuotes(row.cells[j + 1].innerText);
+
+          var cellDivText = preserveNewlines(escapedValue);
+          console.log("cellDivText=" + cellDivText);
+
+          //rowData.push(row.cells[j + 1].innerHTML);
+          rowData.push(cellDivText);
+        }
+      }
+      selectedDwdData += rowData.join(",") + "\r\n";
+    }
+  }
+
+  console.log("selectedDwdData=" + selectedDwdData);
+
+}
+
+function getSelectedDataForDownloadWithoutTdDiv() {
   var table = document.getElementById("myTable");
   var rowCount = table.rows.length;
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
@@ -542,7 +612,7 @@ function getSelectedDataForDownload() {
 
   for (let i = 0; i < tableHeaders.length; i++) {
     var headercheckBox = firstcheckboxrow.cells[i + 1].getElementsByTagName("input")[0];
-    console.log("headercheckBox i"+i);
+    console.log("headercheckBox i" + i);
     if (columnCheckboxes[i].checked && headercheckBox.checked) {
       headerRow.push(encodeURIComponent(tableHeaders[i]));
     }
@@ -652,62 +722,62 @@ function speakAndHighlight() {
 
   if (isMacOS) {
 
-  //utterance.text = currentCell.innerText.replace(/[.,:?]/g, '!!!!!!');
+    //utterance.text = currentCell.innerText.replace(/[.,:?]/g, '!!!!!!');
     // Replace number and dot at the beginning with a blank
-  // Replace occurrences of "Question:", "Answer:", and "Ans:" with a blank
-  utterance.text = cellTextValue
+    // Replace occurrences of "Question:", "Answer:", and "Ans:" with a blank
+    utterance.text = cellTextValue
 
-  for (var i = 0; i < uttvoices.length; i++) {
+    for (var i = 0; i < uttvoices.length; i++) {
       if (uttvoices[i].name === speakcellslang[currentCellIndex]) {
-          utterance.voice = uttvoices[i];
-          break;
+        utterance.voice = uttvoices[i];
+        break;
       }
-  }
-  
-  window.speechSynthesis.speak(utterance);
-  // When the speech ends, move to the next cell
-  utterance.onend = function () {
-    if (counter < maxCellSpeakCounter.value) {
-      counter++;
-    } else {
-      counter = 1; // Reset the counter for the next cell
     }
 
-    setTimeout(function () {
-      currentCell.style.fontSize = originalFontSize; // Reset font size
-      currentCell.style.backgroundColor = ''; // Reset highlighting
-      currentCellIndex++;
-      playingCellSpan.textContent = "";
-      speakAndHighlight(); // Speak the next cell
-    }, speakSilenceTime.value);
+    window.speechSynthesis.speak(utterance);
+    // When the speech ends, move to the next cell
+    utterance.onend = function () {
+      if (counter < maxCellSpeakCounter.value) {
+        counter++;
+      } else {
+        counter = 1; // Reset the counter for the next cell
+      }
 
-  };
-  }else{
-    
-    console.log("speakcellslang[currentCellIndex]="+speakcellslang[currentCellIndex]);
-    responsiveVoice.speak(cellTextValue, ""+speakcellslang[currentCellIndex], {
-      onstart: function() {
+      setTimeout(function () {
+        currentCell.style.fontSize = originalFontSize; // Reset font size
+        currentCell.style.backgroundColor = ''; // Reset highlighting
+        currentCellIndex++;
+        playingCellSpan.textContent = "";
+        speakAndHighlight(); // Speak the next cell
+      }, speakSilenceTime.value);
+
+    };
+  } else {
+
+    console.log("speakcellslang[currentCellIndex]=" + speakcellslang[currentCellIndex]);
+    responsiveVoice.speak(cellTextValue, "" + speakcellslang[currentCellIndex], {
+      onstart: function () {
         console.log("Speech started");
       },
-      onend: function() {
+      onend: function () {
         console.log("Speech ended");
         if (counter < maxCellSpeakCounter.value) {
           counter++;
         } else {
           counter = 1; // Reset the counter for the next cell
         }
-    
+
         setTimeout(function () {
           currentCell.style.fontSize = originalFontSize; // Reset font size
           currentCell.style.backgroundColor = ''; // Reset highlighting
           currentCellIndex++;
           playingCellSpan.textContent = "";
           speakAndHighlight(); // Speak the next cell
-        }, 10);    
+        }, 10);
         // Perform additional actions or trigger other events
       }
     });
-    
+
   }
 
   // Highlight the text in the current cell
@@ -853,14 +923,14 @@ downloadCsvBtn.addEventListener('click', () => {
   downloadAsCSV(selectedDwdData);
 });
 
-if(searchSpeechSearch){
-searchSpeechSearch.addEventListener('click', () => {
-  startRecognition()
-});
+if (searchSpeechSearch) {
+  searchSpeechSearch.addEventListener('click', () => {
+    startRecognition()
+  });
 
-searchSpeechSearchStop.addEventListener('click', () => {
-  stopRecognition()
-});
+  searchSpeechSearchStop.addEventListener('click', () => {
+    stopRecognition()
+  });
 }
 
 function requestMicrophonePermission() {
@@ -977,10 +1047,10 @@ var columnHeaderLngDict = {}
 function createColumnCheckboxes() {
   const columnCheckboxesTable = document.getElementById("columnCheckboxes");
   columnCheckboxesTable.innerHTML = "";
-    
+
   tableHeaders.forEach(function (header, rownum) {
 
-    addRowWin(header,rownum);
+    addRowWin(header, rownum);
 
 
   });
@@ -1185,11 +1255,11 @@ function readCSV(file) {
     for (var i = 1; i < lines.length; i++) {
       if (lines[i].length == 0)
         continue;
-  
+
       var row = lines[i].split(",");
       csvData.push(row);
     }
-  
+
 
 
     showFileColPopup(headers);
@@ -1198,7 +1268,7 @@ function readCSV(file) {
   reader.readAsText(file);
 }
 
-function readJSONFromURL(url,data) {
+function readJSONFromURL(url, data) {
   lines = [];
   headersLanguage = [];
   headers = [];
@@ -1210,7 +1280,7 @@ function readJSONFromURL(url,data) {
   csvData = [];
 
   const attributes = Object.keys(jsonData.data[0]);
-  attributes.forEach(function(item) {
+  attributes.forEach(function (item) {
     headers.push(item);
     // lines.push(item.id);
     // lines.push(item.text);
@@ -1223,13 +1293,13 @@ function readJSONFromURL(url,data) {
 
   for (var i = 0; i < jsonData.data.length; i++) {
 
-    var rowdata="";
+    var rowdata = "";
     for (var key in jsonData.data[i]) {
-      rowdata += jsonData.data[i][key]+"#####";
+      rowdata += jsonData.data[i][key] + "#####";
     }
     lines.push(rowdata);
 
-  } 
+  }
   // jsonData.data.forEach(function(item) {
   //   lines.push(item.id+"#####"+item.text);
   //   // lines.push(item.id);
@@ -1244,8 +1314,8 @@ function readJSONFromURL(url,data) {
     if (lines[i].length == 0)
       continue;
 
-      var row = lines[i].split("#####");
-      csvData.push(row);
+    var row = lines[i].split("#####");
+    csvData.push(row);
 
   }
 
@@ -1258,16 +1328,16 @@ function readJSON(file) {
   if (!file)
     return;
 
-    lines = [];
-    headersLanguage = [];
-    headers = [];
+  lines = [];
+  headersLanguage = [];
+  headers = [];
 
   csvfilename = file.name;
   var reader = new FileReader();
 
   reader.onload = function (e) {
 
-    readJSONFromURL(csvfilename,event.target.result);
+    readJSONFromURL(csvfilename, event.target.result);
 
     /*
     const jsonData = JSON.parse(event.target.result);
@@ -1538,25 +1608,52 @@ function populateTableNew() {
     td.appendChild(input);
     tr.appendChild(td);
 
+    /*
+        selectedColumns.forEach(function (column, i) {
+          var cell = document.createElement("td");
+          var rowcoldata=row[headers.indexOf(column)];
+    
+          cell.textContent = rowcoldata;
+          if (isNumeric(rowcoldata)) {
+            var filterInput = document.getElementById("input_" + i);
+            filterInput.setAttribute('class', 'search-input-small');
+            cell.classList.add('numeric-column');
+          }
+          tr.appendChild(cell);
+        });
+    */
 
     selectedColumns.forEach(function (column, i) {
       var cell = document.createElement("td");
-      var rowcoldata=row[headers.indexOf(column)];
+      var cellDiv = document.createElement("div");
+      cellDiv.setAttribute('contenteditable', 'true');
 
-      cell.textContent = rowcoldata;
-      if (isNumeric(rowcoldata)) {
-        var filterInput = document.getElementById("input_" + i);
-        filterInput.setAttribute('class', 'search-input-small');
-        cell.classList.add('numeric-column');
+
+      // Remove enclosing double quotes if present
+      let cellText = row[headers.indexOf(column)].trim();
+      if (cellText.startsWith('"') && cellText.endsWith('"')) {
+        cellText = cellText.slice(1, -1);
       }
 
-      //cell.innerHTML = row[headers.indexOf(column)];
+      // Preserve new lines in the cell content
+      const lines = cellText.split('\\n');
+      cellDiv.innerHTML = lines.join('<br>');
+
+
+      // var rowcoldata=row[headers.indexOf(column)];
+
+      // cellDiv.textContent = rowcoldata;
+
+      // if (isNumeric(rowcoldata)) {
+      //   var filterInput = document.getElementById("input_" + i);
+      //   filterInput.setAttribute('class', 'search-input-small');
+      //   cell.classList.add('numeric-column');
+      // }
+      cell.appendChild(cellDiv);
       tr.appendChild(cell);
     });
 
-    // const tdplaycnt = document.createElement("td");
-    // tdplaycnt.textContent = '0';
-    // tr.appendChild(tdplaycnt);
+
 
     const tdplay = document.createElement("td");
     var input = document.createElement('button');

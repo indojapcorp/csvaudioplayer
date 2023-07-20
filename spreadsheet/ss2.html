@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Spreadsheet-like Web Page</title>
+  <!-- Include Material Design CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <a class="waves-effect waves-light btn" onclick="addColumn()">Add Column</a>
+      <a class="waves-effect waves-light btn" onclick="addRow()">Add Row</a>
+    </div>
+    <div class="row">
+      <table id="spreadsheet" class="highlight responsive-table">
+        <thead>
+          <tr>
+            <th></th> <!-- Empty top-left cell -->
+            <th contenteditable="true">Column 1</th>
+            <th contenteditable="true">Column 2</th>
+            <!-- Add more columns here as needed -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td contenteditable="true">Row 1</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <!-- Add more rows here as needed -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Include Material Design JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script>
+    // Function to add a new column to the table
+    function addColumn() {
+      const table = document.getElementById("spreadsheet");
+      const headerRow = table.getElementsByTagName("tr")[0];
+      const columnCount = headerRow.getElementsByTagName("th").length;
+      const newColumn = document.createElement("th");
+      newColumn.setAttribute("contenteditable", "true");
+      newColumn.textContent = "Column " + (columnCount - 1);
+      headerRow.appendChild(newColumn);
+
+      // Adjust the height of cells in the first row to fit the content
+      const rows = table.getElementsByTagName("tr");
+      for (let i = 1; i < rows.length; i++) {
+        const cell = rows[i].insertCell(-1);
+        cell.setAttribute("contenteditable", "true");
+      }
+    }
+
+    // Function to add a new row to the table
+    function addRow() {
+      const table = document.getElementById("spreadsheet");
+      const rowCount = table.getElementsByTagName("tr").length;
+      const newRow = table.insertRow(-1);
+
+      // Create the leftmost cell containing the row number
+      const rowNumberCell = newRow.insertCell(0);
+      rowNumberCell.textContent = "Row " + rowCount;
+
+      // Create empty cells in the new row for each column
+      const columnCount = table.getElementsByTagName("th").length;
+      for (let i = 1; i < columnCount; i++) {
+        const cell = newRow.insertCell(-1);
+        cell.setAttribute("contenteditable", "true");
+      }
+    }
+  </script>
+</body>
+</html>

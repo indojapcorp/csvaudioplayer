@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Spreadsheet-like Web Page</title>
+  <!-- Include Material Design CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+          <a class="waves-effect waves-light btn" onclick="addColumn()">Add Column</a>
+          <a class="waves-effect waves-light btn" onclick="addRow()">Add Row</a>
+          <!-- File input button -->
+          <label class="waves-effect waves-light btn">
+            <input type="file" style="display: none;" onchange="handleFileSelect(event)">
+            Upload CSV
+          </label>
+      <!-- Button to download table data as JSON -->
+      <a class="waves-effect waves-light btn" onclick="downloadAsJSON()">Download JSON</a>
+
+            <!-- Button to upload JSON and populate the table -->
+            <label class="waves-effect waves-light btn">
+                <input type="file" style="display: none;" onchange="handleJSONFile(event)">
+                Upload JSON
+              </label>
+        
+        </div>
+        <div class="row">
+          <table id="spreadsheet" class="highlight responsive-table">
+            <!-- Table content will be populated dynamically -->
+          </table>
+        </div>
+      </div>
+    
+
+  <!-- Include Material Design JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script>
+    // Function to add a new column to the table
+    function addColumn() {
+      const table = document.getElementById("spreadsheet");
+      const headerRow = table.getElementsByTagName("tr")[0];
+      const columnCount = headerRow.getElementsByTagName("th").length;
+      const newColumn = document.createElement("th");
+      newColumn.setAttribute("contenteditable", "true");
+      newColumn.textContent = "Column " + (columnCount - 1);
+      headerRow.appendChild(newColumn);
+
+      // Adjust the height of cells in the first row to fit the content
+      const rows = table.getElementsByTagName("tr");
+      for (let i = 1; i < rows.length; i++) {
+        const cell = rows[i].insertCell(-1);
+        cell.setAttribute("contenteditable", "true");
+      }
+    }
+
+    // Function to add a new row to the table
+    function addRow() {
+      const table = document.getElementById("spreadsheet");
+      const rowCount = table.getElementsByTagName("tr").length;
+      const newRow = table.insertRow(-1);
+
+      // Create the leftmost cell containing the row number
+      const rowNumberCell = newRow.insertCell(0);
+      rowNumberCell.textContent = "Row " + rowCount;
+
+      // Create empty cells in the new row for each column
+      const columnCount = table.getElementsByTagName("th").length;
+      for (let i = 1; i < columnCount; i++) {
+        const cell = newRow.insertCell(-1);
+        cell.setAttribute("contenteditable", "true");
+      }
+    }
+
+        // Function to handle file input and populate the table with CSV data
+        function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const contents = e.target.result;
+          const rows = contents.split("\n");
+
+          // Clear the existing table data
+          const table = document.getElementById("spreadsheet");
+          table.innerHTML = "";
+
+          // Populate the table with CSV data
+          rows.forEach((row, rowIndex) => {
+            const columns = row.split(",");
+            const newRow = table.insertRow(rowIndex);
+            columns.forEach((cellContent, columnIndex) => {
+              const newCell = newRow.insertCell(columnIndex);
+              newCell.setAttribute("contenteditable", "true");
+              newCell.textContent = cellContent;
+            });
+          });
+        };
+
+        reader.readAsText(file);
+      }
+    }
+  // Function to convert table data to JSON and download it as a file
+  function downloadAsJSON() {
+    const table = document.getElementById("spreadsheet");
+    const rows = table.getElementsByTagName("tr");
+
+    const data = [];
+    for (let i = 1; i < rows.length; i++) {
+      const cells = rows[i].getElementsByTagName("td");
+      const rowData = [];
+      for (let j = 1; j < cells.length; j++) {
+        const cellContent = cells[j].textContent;
+        // Replace newline characters with a custom string before storing in JSON
+        //const escapedCellContent = cellContent.replace(/\n/g, "__newline__");
+        const escapedCellContent = cellContent;
+        rowData.push(escapedCellContent);
+      }
+      data.push(rowData);
+    }
+
+    const jsonData = JSON.stringify(data, null, 2); // Pretty-print with 2 spaces
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    // Create a temporary anchor element to trigger the download
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "spreadsheet_data.json";
+    document.body.appendChild(a);
+    a.click();
+
+    // Clean up the temporary anchor element
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // Function to handle file input and populate the table with JSON data
+  function handleJSONFile(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const contents = e.target.result;
+        const jsonData = JSON.parse(contents, (key, value) => {
+          // Restore the newline characters from the custom string
+          if (typeof value === "string") {
+            return value.replace(/__newline__/g, "\n");
+          }
+          return value;
+        });
+
+        // Clear the existing table data
+        const table = document.getElementById("spreadsheet");
+        table.innerHTML = "";
+
+        // Populate the table with JSON data
+        jsonData.forEach((rowData, rowIndex) => {
+          const newRow = table.insertRow(rowIndex);
+          rowData.forEach((cellContent, columnIndex) => {
+            const newCell = newRow.insertCell(columnIndex);
+            newCell.setAttribute("contenteditable", "true");
+            newCell.textContent = cellContent;
+          });
+        });
+      };
+
+      reader.readAsText(file);
+    }
+  }
+
+  </script>
+</body>
+</html>
