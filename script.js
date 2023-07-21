@@ -15,6 +15,7 @@ fileMap.set(fetchURL + '50langvocab_all.csv', '50langvocab_all');
 fileMap.set(fetchURL + '50langvocab_german_french.csv', '50langvocab_german_french');
 fileMap.set(fetchURL + '50langvocab_japanese.csv', '50langvocab_japanese');
 fileMap.set(fetchURL + 'GRE_1300.csv', 'GRE_1300');
+fileMap.set(fetchURL + 'blank.csv', 'Blank Template');
 
 // Fill the options of selectElement using forEach
 fileMap.forEach((displayValue, filePath) => {
@@ -366,30 +367,35 @@ function sortTableNormal(columnIndex) {
 }
 
 function selectAll(source) {
-  //var checkboxes = document.getElementById("myTable").getElementsByTagName("input");
-  // var checkboxes = document.getElementById("myTable").querySelectorAll('tr:not([style*="display: none;"])').querySelectorAll('input[type="checkbox"][name^="row"]')
-  //var tr = document.getElementById("myTable").getElementsByTagName("tr");
   var tr = document.getElementById("myTable").querySelectorAll('tr:not([style*="display: none;"])');
+  //const selectedRows = document.getElementById("myTable").querySelectorAll('tr:not([style*="display: none;"]):not(:has(input[type="checkbox"][id="allspeakcol"]))');
 
-  tr.forEach(function (row) {
-    //const tdElements = row.querySelectorAll('td');
+  for(let i=3;i<tr.length;i++){
+    var row = tr[i];
     if (row.cells[0]) {
       var checkbox = row.cells[0].querySelector('input[type="checkbox"]');
       if (checkbox)
         checkbox.checked = source.checked;
     }
-  });
-  updateCounter();
-  // console.log("checkboxes len="+checkboxes.length);
-  // console.log("tr len="+tr.length);
-  // for (var i = 0; i < checkboxes.length; i++) {
-  //   //if (tr[i].style.display != "none" && checkboxes[i].type == "checkbox" && checkboxes[i].name.includes("row")) {
-  //     if (checkboxes[i].type == "checkbox" && checkboxes[i].name.includes("row")) {
-  //     checkboxes[i].checked = source.checked;
+  }
+  // tr.forEach(function (row) {
+  //   //const tdElements = row.querySelectorAll('td');
+  //   if (row.cells[0]) {
+  //     var checkbox = row.cells[0].querySelector('input[type="checkbox"]');
+  //     if (checkbox)
+  //       checkbox.checked = source.checked;
   //   }
-  // }
+  // });
+  updateCounter();
 }
 
+function selectSpeakAll(source) {
+  var chkspeakcols = document.getElementById("myTable").querySelectorAll('input[type="checkbox"][id^="col"]');
+
+  chkspeakcols.forEach(function (chkspeakcol) {
+    chkspeakcol.checked = source.checked;
+  });
+}
 
 //let stories = document.querySelectorAll('*[id^="col"]');
 let stories = [];
@@ -415,19 +421,19 @@ function speakRowData(row) {
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
   var columnLanguages = document.getElementById("columnCheckboxes").querySelectorAll('select[id^="voices3"]');
 
-  console.log("columnLanguages=" + columnLanguages.length);
   var firstcheckboxrow = table.rows[1];
   var speakcellsIndex = 0;
   for (var j = 0; j < columnCheckboxes.length; j++) {
     var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
     var collang = columnLanguages[j].value;
-    if (columnCheckboxes[j].checked && colspkcheckBox.checked) {
+    if (columnCheckboxes[j].checked && colspkcheckBox.checked && row.cells[j + 1].innerText.trim() != "") {
       speakcells[speakcellsIndex] = row.cells[j + 1];
       speakcellslang[speakcellsIndex] = collang;
       speakcellsIndex++;
     }
   }
-  speakAndHighlight();
+  if(speakcells.length>0)
+    speakAndHighlight();
 }
 
 function deleteSelectedRows() {
@@ -593,6 +599,7 @@ function getSelectedDataForDownload() {
     }
   }
 
+  return selectedDwdData;
   console.log("selectedDwdData=" + selectedDwdData);
 
 }
@@ -674,7 +681,7 @@ function speakThis() {
 
   var firstcheckboxrow = table.rows[1];
   var speakcellsIndex = 0;
-  for (var i = 3; i < rowCount; i++) {
+  for (var i = 4; i < rowCount; i++) {
     var row = table.rows[i];
 
     var checkBox = row.cells[0].getElementsByTagName("input")[0];
@@ -683,7 +690,7 @@ function speakThis() {
       for (var j = 0; j < columnCheckboxes.length; j++) {
         var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
         var collang = columnLanguages[j].value;
-        if (columnCheckboxes[j].checked && colspkcheckBox.checked) {
+        if (columnCheckboxes[j].checked && colspkcheckBox.checked && row.cells[j + 1].innerText.trim() != "") {
           speakcells[speakcellsIndex] = row.cells[j + 1];
           speakcellslang[speakcellsIndex] = collang;
           speakcellsIndex++;
@@ -692,7 +699,8 @@ function speakThis() {
     }
   }
   cellsTotalSpeakTime = getTotalSpeakTime();
-  speakAndHighlight();
+  if(speakcells.length>0)
+    speakAndHighlight();
 }
 function speakAndHighlight() {
 
@@ -719,6 +727,12 @@ function speakAndHighlight() {
   playingCellSpan.textContent = "   Playing " + (currentCellIndex + 1) + " / " + speakcells.length + "       " + formatTime(currentCellSpeakTime) + " / " + formatTime(cellsTotalSpeakTime);
 
   var cellTextValue = currentCell.innerText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/[.:?]/g, '!');
+
+  const selectedText = window.getSelection().toString().trim();
+  if (selectedText) {
+    cellTextValue = selectedText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/[.:?]/g, '!');
+      console.log(selectedText);
+  }
 
   if (isMacOS) {
 
@@ -854,6 +868,121 @@ function stop() {
   speakcells = [];
   speakcellslang = [];
 }
+
+function addNewRow() {
+  const table = document.getElementById('myTable');
+  const rows = table.querySelectorAll('tr');
+
+  // Clone the last row to get the attributes and content
+  const newRow = rows[rows.length - 1].cloneNode(true);
+
+  // Clear the content of the cloned cells (optional)
+  const cells = newRow.querySelectorAll('td');
+  cells.forEach(cell => {
+      const div = cell.querySelector('div');
+      if(div){
+        div.textContent = '';
+      }
+  });
+
+  table.appendChild(newRow);
+}
+
+function addNewColumn() {
+  const table = document.getElementById('myTable');
+  const secondColumnHeaders = table.querySelectorAll('thead tr th:nth-child(2)');
+  const columnCount = secondColumnHeaders.length;
+
+  const allColumnHeaders = table.querySelectorAll('thead tr')[1].querySelectorAll('th');
+
+  const allcolumnCount = allColumnHeaders.length-2;
+  console.log("allcolumnCount="+allcolumnCount);
+
+  // Ask for the name of the new column header
+  const newColumnName = prompt('Enter the name of the new column header:');
+
+  if (!newColumnName || newColumnName.trim() === '') {
+      // If the user cancels or provides an empty name, do nothing
+      return;
+  }
+
+  // Clone all the th elements of the second column
+  const clonedHeaders = Array.from(secondColumnHeaders).map(th => th.cloneNode(true));
+
+  // Set the newColumnName at the last cloned header
+  //clonedHeaders[columnCount - 1].innerText = newColumnName;
+  clonedHeaders[columnCount - 1].setAttribute('class', 'sortable');
+  clonedHeaders[columnCount - 1].innerHTML = newColumnName + "&#9650;&#9660;";
+  clonedHeaders[columnCount - 1].setAttribute('onclick', 'sortTable(' + allcolumnCount + ')');
+  tableHeaders.push(newColumnName);
+  headers.push(newColumnName);
+
+  createColumnCheckboxes();
+  // Append the cloned header to the thead element
+  const thead = table.querySelector('thead');
+  const newRow = document.createElement('th');
+  clonedHeaders.forEach(header => newRow.appendChild(header));
+  
+
+
+  const tableHeaderRows = table.querySelectorAll('thead tr');
+
+  const audioPlayerButtonsRowHeader = tableHeaderRows[0].querySelector('th');
+  audioPlayerButtonsRowHeader.setAttribute("colspan",""+allcolumnCount+2);
+  // const totalColumnHeaders = tableHeaderRows[1].querySelectorAll('th');
+  // const columnCount2 = totalColumnHeaders.length-2;
+
+  //tableHeaderRows[0].appendChild(document.createElement('th'));
+  for (let i = 1; i < tableHeaderRows.length; i++) {
+
+    const input = clonedHeaders[i-1].querySelector('input[type="text"]');
+    if(input){
+    input.setAttribute("id","input_"+(allcolumnCount));
+    input.setAttribute("placeholder","Filter Column "+(allcolumnCount));
+    input.setAttribute("onkeyup","filterTable("+(allcolumnCount)+")");
+    input.setAttribute("onmouseover","showHintPopup("+(allcolumnCount)+")");
+    input.setAttribute("onmouseout","hideHintPopup("+(allcolumnCount)+")");
+    input.setAttribute("onclick","hideHintPopup("+(allcolumnCount)+")");
+    console.log("id set11");
+    }
+    const hintDiv = clonedHeaders[i-1].querySelector('div[id^="hintPopup_"]');
+    if(input){
+    hintDiv.setAttribute("id","hintPopup_"+(allcolumnCount));
+    }
+    //tableHeaderRows[i].appendChild(clonedHeaders[i-1]);
+    tableHeaderRows[i].insertBefore(clonedHeaders[i-1],tableHeaderRows[i].querySelector('th:nth-last-child(2)').nextSibling);
+  }
+
+
+//  thead.appendChild(newRow);
+
+  // Add each cloned cell to the corresponding row as a new cell in the new column
+  const rows = table.querySelectorAll('table tr');
+  for (let i = 4; i < rows.length; i++) {
+      const row = rows[i];
+      //const newCell = clonedHeaders[i].cloneNode(true);
+      const newCell = document.createElement('td');
+      // Set attributes of the new cell based on the cloned cell
+      const clonedCell = row.querySelector('td:nth-last-child(2)');
+      const clonedCellDeep = row.querySelector('td:nth-last-child(2)').cloneNode(true);
+      if(clonedCell){
+        //const div = document.createElement('div');
+        const div = clonedCellDeep.querySelector('div').cloneNode(true);
+        div.textContent = '';
+        newCell.appendChild(div);
+      for (const attr of clonedCell.attributes) {
+          newCell.setAttribute(attr.name, attr.value);
+      }
+      row.insertBefore(newCell, clonedCell.nextSibling); // Insert after the 2nd cell
+
+    }
+    //  row.appendChild(newCell);
+  }
+  
+}
+
+
+
 
 function getApproximateSpeakTime(text) {
   // Adjust this value according to the average speech rate (in seconds per word)
@@ -1424,10 +1553,13 @@ function populateTableNew() {
   checkboxes.forEach(function (checkbox, i) {
     if (checkbox.checked) {
       selectedColumns.push(checkbox.value);
+      console.log("checkbox.value="+checkbox.value);
+
       tableHeaders.push(checkbox.value);
       isCategorySelectedForColumns.push(categorycolumncheckboxes[i].checked);
     }
   });
+  console.log("tableHeaders="+tableHeaders);
   // Populate the table
   var table = document.getElementById("myTable");
   table.innerHTML = "";
@@ -1480,8 +1612,8 @@ function populateTableNew() {
   const td = document.createElement("th");
   var input = document.createElement('input');
   input.type = "checkbox";
-  input.id = "allcol";
-  input.setAttribute('onclick', 'selectAll(this)');
+  input.id = "allspeakcol";
+  input.setAttribute('onclick', 'selectSpeakAll(this)');
   td.appendChild(input);
   trcolcheck.appendChild(td);
 
@@ -1553,9 +1685,23 @@ function populateTableNew() {
   //end
   //var headerRow = table.insertRow();
   var headerRow = document.createElement("tr");
+
+
+
+
+
   const tdheaderblank = document.createElement("th");
   var blankheaderinput = document.createTextNode("");
-  tdheaderblank.appendChild(blankheaderinput);
+
+  var input = document.createElement('input');
+  input.type = "checkbox";
+  input.id = "allcol";
+  input.setAttribute('onclick', 'selectAll(this)');
+  tdheaderblank.appendChild(input);
+
+
+
+  //tdheaderblank.appendChild(blankheaderinput);
   headerRow.appendChild(tdheaderblank);
 
   selectedColumns.forEach(function (column, i) {
@@ -1798,6 +1944,7 @@ transapplyButton.addEventListener('click', function () {
 
   var srcText = $("#srctext-popup").val();
 
+
   var table = document.getElementById("transpopup-table");
   var rows = table.getElementsByTagName("tr");
   var totalcols = rows[0].getElementsByTagName("td").length;
@@ -1806,37 +1953,51 @@ transapplyButton.addEventListener('click', function () {
 
   var srcLang = document.getElementById("srclang").value;
 
+  var onlyNumericText = false;
+  if(containsOnlyNumericValues(srcText)){
+    onlyNumericText = true;
+  }
+
 
   //lines[0] = ['word'];
   headers = ['word'];
   headersLanguage = [srcLang];
   totaldata = "word,";
-  // for(i=0;i<totalcols;i++){
-  //   lines[0].push('trans-'+i);
-  //   headers.push('trans-'+i);
-  // }
-
-  // for (var j = 0; j < srcLines.length; j++) {
-  //   lines[j+1]=[];
-  //   lines[j+1].push(srcLines[j]);
-
-  // for(i=0;i<totalcols;i++){
-  //     var tgtText = $("#tratext-popup-"+(i+1)).val();
-  //     var tgtLines = tgtText.split("\n");
-  //     lines[j+1].push(tgtLines[j]);
-  //   }
-  // }
 
   for (i = 0; i < totalcols; i++) {
+    if(onlyNumericText){
+      totaldata = totaldata + "trans-" + i + ",";
+      headers.push('trans-' + i);
+      headers.push('trans-word-' + i);
+      var tgtlangselectElement = document.getElementById("tgtlang-" + (i + 1));
+      var targetLang = tgtlangselectElement.value;
+      headersLanguage.push(targetLang);  
+      headersLanguage.push(targetLang);  
+    }else{
     totaldata = totaldata + "trans-" + i + ",";
     headers.push('trans-' + i);
     var tgtlangselectElement = document.getElementById("tgtlang-" + (i + 1));
     var targetLang = tgtlangselectElement.value;
     headersLanguage.push(targetLang);
+    }
   }
   totaldata = totaldata + "\n";
 
   for (var j = 0; j < srcLines.length; j++) {
+    if(onlyNumericText){
+      totaldata = totaldata + srcLines[j] + ",";
+      for (i = 0; i < totalcols; i++) {
+
+        var tgtlangselectElement = document.getElementById("tgtlang-" + (i + 1));
+        var targetLang = tgtlangselectElement.value;
+  
+        var tgtText = $("#tratext-popup-" + (i + 1)).val();
+        var tgtLines = tgtText.split("\n");
+       // console.log("tgtLines[j]="+tgtLines[j] + ","+ tgtLines[j] + ","+ numberToTextFromLang(targetLang,tgtLines[j]) + ",");
+        totaldata = totaldata + tgtLines[j] + ","+ numberToTextFromLang(targetLang,tgtLines[j]) + ",";
+      }
+      totaldata = totaldata + "\n";  
+    }else{
     totaldata = totaldata + srcLines[j] + ",";
     for (i = 0; i < totalcols; i++) {
       var tgtText = $("#tratext-popup-" + (i + 1)).val();
@@ -1845,11 +2006,23 @@ transapplyButton.addEventListener('click', function () {
     }
     totaldata = totaldata + "\n";
   }
+  }
 
   lines = totaldata.split("\n");
 
   var filecolpopup = document.getElementById("colpopup");
   filecolpopup.style.display = "block";
+
+  csvData = [];
+
+  for (var i = 1; i < lines.length; i++) {
+    if (lines[i].length == 0)
+      continue;
+
+      console.log("lines[i]=="+lines[i]);
+    var row = lines[i].split(",");
+    csvData.push(row);
+  }
 
   showFileColPopup(headers);
 
@@ -1860,6 +2033,14 @@ transapplyButton.addEventListener('click', function () {
   // }
   transpopup.classList.remove('active'); // Close the transpopup
 });
+
+function containsOnlyNumericValues(text) {
+  // Regular expression to check if the text contains only numeric values and new lines
+  const regex = /^[0-9\n]*$/;
+
+  return regex.test(text);
+}
+
 
 async function translate(sourceLang, totalcols) {
 

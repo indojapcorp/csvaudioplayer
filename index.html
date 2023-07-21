@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <title>Spreadsheet Audio Player</title>
     <link rel="stylesheet" href="styles.css">
     <!--
@@ -149,6 +150,10 @@
     <input type="text" id="maxCellSpeakCounter" placeholder="Enter cell speak times" size="4" maxlength="2">
     <input type="text" id="speakSilenceTime" placeholder="Silence Time 500ms" size="6" maxlength="6">
     <button id="clearResult" onclick="clearResults()">Clear Results</button>
+    <!-- Add the button to add a new row -->
+    <button onclick="addNewRow()">Add New Row</button>
+    <!-- Add the button to add a new column -->
+    <button onclick="addNewColumn()">Add New Column</button>
 
 
     <br><br>
@@ -474,8 +479,8 @@
             <button id="addColumnButton" onclick="addTransColumn()">Add Col</button>
         </div>
     </div>
+    <script src="numtotext.js"></script>
     <script src="speakscript.js"></script>
-
     <script src="script.js"></script>
 </body>
 

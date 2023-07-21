@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Number to Japanese Text Converter</title>
+</head>
+<body>
+  <h1>Number to Japanese Text Converter</h1>
+  <label for="numberInput">Enter a number:</label>
+  <input type="number" id="numberInput">
+  <button onclick="convertNumberToJapaneseText()">Convert</button>
+  <p id="result"></p>
+
+  <script>
+
+function numberToJapaneseText(number) {
+  const ones = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+  const placeValues = ['', '万', '億', '兆', '京', '垓', '𥝱', '穣', '溝', '澗', '正', '載', '極', '恒河沙', '阿僧祇', '那由他', '不可思議', '無量大数'];
+
+  if (number === 0) {
+    return '零';
+  }
+
+  function toJapaneseTextBelow10000(num) {
+    if (num < 10) {
+      return ones[num];
+    } else if (num < 100) {
+      return (num === 10 ? '十' : ones[Math.floor(num / 10)] + '十') + (num % 10 !== 0 ? ones[num % 10] : '');
+    } else if (num < 1000) {
+      return ones[Math.floor(num / 100)] + '百' + toJapaneseTextBelow10000(num % 100);
+    } else {
+      return ones[Math.floor(num / 1000)] + '千' + toJapaneseTextBelow10000(num % 1000);
+    }
+  }
+
+  let text = '';
+  let placeIndex = 0;
+
+  while (number > 0) {
+    const segment = number % 10000;
+    if (segment !== 0) {
+      const segmentText = toJapaneseTextBelow10000(segment);
+      text = segmentText + placeValues[placeIndex] + text;
+    }
+    placeIndex++;
+    number = Math.floor(number / 10000);
+  }
+
+  return text;
+}
+
+function numberToJapaneseTextold(number) {
+  const ones = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+  const tens = ['', '', '二十', '三十', '四十', '五十', '六十', '七十', '八十', '九十'];
+  const units = ['', '百','千', '万', '億', '兆', '京']; // Extend this array for larger numbers if needed
+
+  if (number === 0) {
+    return ones[0];
+  }
+
+  function toJapaneseTextBelow10000(num) {
+    if (num < 10) {
+        console.log("here");
+      return ones[num];
+    } else if (num < 20) {
+        console.log("here1");
+      return '十' + ones[num % 10];
+    } else {
+
+        console.log("here2 num="+num);
+
+        const unitSenDigit = Math.floor(num / 1000) % 1000;  
+        console.log("here2 unitSenDigit="+unitSenDigit);
+
+
+        const unitDigit = Math.floor(num / 100) % 100;  
+        console.log("here2 unitDigit="+unitDigit);
+
+      const tenDigit = Math.floor(num / 10) % 10;  
+      console.log("here2 tenDigit="+tenDigit);
+
+      const oneDigit = num % 10;
+      console.log("here3 oneDigit="+oneDigit);
+      return tens[tenDigit] + ones[oneDigit];
+    }
+  }
+
+  let text = '';
+  let unitIndex = 0;
+
+  while (number > 0) {
+    const segment = number % 10000;
+    console.log(" segment="+segment);
+
+    if (segment !== 0) {
+      const segmentText = toJapaneseTextBelow10000(segment);
+      text = segmentText + units[unitIndex] + text;
+    }
+    unitIndex++;
+    number = Math.floor(number / 10000);
+  }
+
+  return text;
+}
+
+    function convertNumberToJapaneseText() {
+      const numberInput = document.getElementById('numberInput');
+      const number = parseInt(numberInput.value, 10);
+
+      if (!isNaN(number)) {
+        const resultText = numberToJapaneseText(number);
+        const resultElement = document.getElementById('result');
+        resultElement.textContent = resultText;
+      } else {
+        alert('Please enter a valid number.');
+      }
+    }
+  </script>
+</body>
+</html>
