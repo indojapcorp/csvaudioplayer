@@ -1,0 +1,40 @@
+{"data":[{"ipq":"What's up?\nWhat's new?\nWhat have you been up to lately?\nHow's it going?\nHow are things?\nHow's life?","category":"phrase","meaning":"-","usagesituation":"-","example":"-"},
+    {"ipq":"I'm fine, thanks. How about you?\nPretty good.\nSame as always\nNot so great.\nCould be better\ncant complain","category":"phrase","meaning":"-","usagesituation":"Common phrases to say how you are:","example":"-"}
+]}
+
+UPDATE idioms_phrases_quotes_eng_export
+SET Example='-'
+WHERE Example IS NULL;
+
+UPDATE idioms_phrases_quotes_eng_export
+SET usagesituation='-'
+WHERE length(usagesituation)=0;
+
+UPDATE idioms_phrases_quotes_eng_export
+SET meaning='-'
+WHERE length(meaning)=0;
+
+
+select length(usagesituation) from  idioms_phrases_quotes_eng_export
+
+SELECT JSON_ARRAYAGG(
+           JSON_OBJECT(
+               'usagesituation', usagesituation
+           )
+       )
+FROM idioms_phrases_quotes_eng_export;
+
+SELECT VERSION();
+
+SET SESSION group_concat_max_len = 99999999999;
+
+SELECT CONCAT('[', GROUP_CONCAT(
+    CONCAT('{',
+           '"ipq":"', REPLACE(REPLACE(ipq, '"', '\\"'),'\n','###'), '",',
+           '"category":"', REPLACE(REPLACE(category, '"', '\\"'),'\n','###'), '",',
+           '"meaning":"', REPLACE(REPLACE(meaning, '"', '\\"'),'\n','###'), '",',
+           '"usagesituation":"', REPLACE(REPLACE(usagesituation, '"', '\\"'),'\n','###'), '",',
+           '"example":"', REPLACE(REPLACE(example, '"', '\\"'),'\n','###'), '"'
+          ,'}')
+    ), ']') AS json_data
+FROM idioms_phrases_quotes_eng_export;

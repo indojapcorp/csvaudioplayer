@@ -1429,11 +1429,6 @@ function readJSONFromURL(url, data) {
     lines.push(rowdata);
 
   }
-  // jsonData.data.forEach(function(item) {
-  //   lines.push(item.id+"#####"+item.text);
-  //   // lines.push(item.id);
-  //   // lines.push(item.text);
-  // });
 
   var filecolpopup = document.getElementById("colpopup");
   filecolpopup.style.display = "block";
@@ -1450,6 +1445,67 @@ function readJSONFromURL(url, data) {
 
 
   showFileColPopup(headers);
+
+}
+
+function readJSONFromSQLite(data,currentPage) {
+  console.log("readJSONFromSQLite="+currentPage);
+  console.log("readJSONFromSQLite data="+data);
+  lines = [];
+  headersLanguage = [];
+  headers = [];
+
+  csvfilename = "online";
+
+  const jsonData = JSON.parse(data);
+
+  csvData = [];
+
+  const attributes = Object.keys(jsonData.data[0]);
+  attributes.forEach(function (item) {
+    headers.push(item);
+    // lines.push(item.id);
+    // lines.push(item.text);
+  });
+
+  //headers = ["ID","TEXT"];
+  headers.forEach(function () {
+    headersLanguage.push('en');
+  });
+
+  for (var i = 0; i < jsonData.data.length; i++) {
+
+    var rowdata = "";
+    for (var key in jsonData.data[i]) {
+      rowdata += jsonData.data[i][key] + "#####";
+    }
+    lines.push(rowdata);
+
+  }
+
+  if(currentPage==1){
+    var filecolpopup = document.getElementById("colpopup");
+    filecolpopup.style.display = "block";
+  }else{
+    var filecolpopup = document.getElementById("colpopup");
+    filecolpopup.style.display = "none";
+  }
+
+
+  for (var i = 0; i < lines.length; i++) {
+    if (lines[i].length == 0)
+      continue;
+
+    var row = lines[i].split("#####");
+    csvData.push(row);
+
+  }
+
+  if(currentPage==1){
+    showFileColPopup(headers);
+  }else{
+    populateTableNew();
+  }
 
 }
 
