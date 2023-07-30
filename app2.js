@@ -12,11 +12,8 @@ let db;
       searchButton.addEventListener('click', () => {
 
         const columnNameSelect = document.getElementById('columnNameSelect');
-        console.log("tableNameSelect.selectedIndex="+columnNameSelect.selectedIndex);
         const searchInput = document.getElementById('searchWord').value.trim();
         if(columnNameSelect.value != "" && searchInput != ""){
-            console.log(" where " + columnNameSelect.value.trim() + " LIKE " + searchInput);
-
             searchDictionary(tableNameSelect.value,selectedColumnNames);
         }
     });
@@ -61,12 +58,14 @@ async function loadDatabase() {
 
 function getWhereClause(){
     const columnNameSelect = document.getElementById('columnNameSelect');
-    console.log("tableNameSelect.selectedIndex="+columnNameSelect.selectedIndex);
+    var paginationContainer = document.getElementById("paginationContainer");
+    paginationContainer.innerHTML = "";
+
     const searchInput = document.getElementById('searchWord').value.trim();
     if(columnNameSelect.value != "" && searchInput != ""){
         console.log(" where " + columnNameSelect.value.trim() + " LIKE " + searchInput);
         return " WHERE " + columnNameSelect.value.trim() + " LIKE " + searchInput +" ";
-        searchDictionary(tableNameSelect.value,selectedColumnNames);
+        //searchDictionary(tableNameSelect.value,selectedColumnNames);
     }else{
         return "";
     }
@@ -184,8 +183,13 @@ sqlQuery += fromLimitClause;
 }
 
 
-function countRecords(tableName) {
-    const sqlQuery = 'SELECT COUNT(*) AS count FROM '+tableName;
+function countRecords(tableName,) {
+
+    var whereClause = getWhereClause();
+
+    const sqlQuery = 'SELECT COUNT(*) AS count FROM '+tableName + " "+whereClause;
+
+
     const results = db.exec(sqlQuery);
 
     if (results && results.length > 0) {
@@ -196,6 +200,17 @@ function countRecords(tableName) {
 }
 
 function searchDictionary(tableName,colnameheaders) {
+    var paginationContainer = document.getElementById("paginationContainer");
+    paginationContainer.innerHTML = "";
+
+    var table = document.getElementById("myTable");
+    var rowCount = table.rows.length;
+  
+    for (var i = 4; i < rowCount; i++) {
+        table.deleteRow(i);
+      }
+
+    
     //const searchInput = document.getElementById('searchWord').value.trim();
     const totalRecords = countRecords(tableName);
     recordsPerPage = parseInt(document.getElementById('recordsPerPageInput').value, 10);
@@ -207,7 +222,7 @@ function searchDictionary(tableName,colnameheaders) {
     console.log("totalPages="+totalPages);
 
     if (totalPages === 0) {
-        clearTable();
+        //clearTable();
         return;
     }
 
@@ -246,9 +261,11 @@ function searchDictionary(tableName,colnameheaders) {
 
     if (results && results.length > 0) {
         const data = results[0].values;
+        if(data){
         addPaginationButtons(tableName,totalPages,colnameheaders);
         //populateSQLLiteData(data[0][0]);
-        readJSONFromSQLite(data[0][0],currentPage);
+        readJSONFromSQLite(data[0][0],currentPage,totalRecords);
+        }
     }
 }
 

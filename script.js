@@ -1577,7 +1577,7 @@ function readJSONFromURL(url, data) {
 
 }
 
-function readJSONFromSQLite(data, currentPage) {
+function readJSONFromSQLite(data, currentPage , totalRecords) {
   lines = [];
   headersLanguage = [];
   headers = [];
