@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Spreadsheet Audio Player</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.wasm" type="application/wasm"></script>
 
@@ -119,20 +121,69 @@
          });
     </script>
 
+<h2>Select a data source:</h2>
+<select id="selectDataSource" onchange="showDiv()">
+    <option value="0">Select an option</option>
+    <option value="1">Study Lists</option>
+    <option value="2">Local CSV/JSON File</option>
+    <option value="3">CSV/JSON File URL</option>
+    <option value="4">Database Tables</option>
+</select>
+
+
+<div id="div1" style="display: none;">
+    <h3>Select Study List</h3>
+    <select id="studyLists">
+        <option value="">Select File</option>
+    </select>
+</div>
+<div id="div2" style="display: none;">
+    <h3>Select Local CSV/JSON File</h3>
+    <input type="file" id="csvFileInput" accept=".csv,.json">
+</div>
+<div id="div3" style="display: none;">
+    <h3>CSV/JSON File URL</h3>
+    <label for="urlInput">URL:</label>
+    <input type="text" id="urlInput" placeholder="Enter URL" />
+
+    <button type="button" id="csvURLInputBtn">Fetch Data</button>
+</div>
+<div id="div4" style="display: none;">
+    <h3>Database Tables</h3>
     <div>
+        <select id="selectSQLiteDb" onchange="loadDatabase()">
+            <option value="0">Select DB</option>
+            <option value="data/sqlite/dictionary_ja.db">Japanese</option>
+            <option value="data/sqlite/dictionary_en.db">English</option>
+            <option value="data/sqlite/dictionary_tech.db">Tech</option>
+            <option value="data/sqlite/dictionary_sent_lang.db">Sentences</option>
+            <option value="data/sqlite/dictionary_other.db">Other</option>
+        </select>
+
+        <button id="loadTablesButton" onclick="loadTableNames()">SQLite Tables</button>     
+        <input type="number" id="recordsPerPageInput" placeholder="Records Per Page" value="10">
+        Tables<select id="tableNameSelect"></select>
+        Columns<select id="columnNameSelect"></select>
+        <input type="text" id="searchWord" placeholder="Enter word">
+        <button id="searchButton">Search</button>     
+    </div>
+</div>
+
+<div id="divOps" style="display: none;">
+
+    <div>
+        <!--
         <select id="studyLists">
             <option value="">Select File</option>
         </select>
-        <!--
-        <select id="studyLists"></select>
-        -->
         <input type="file" id="csvFileInput" accept=".csv,.json">
 
         <label for="urlInput">URL:</label>
         <input type="text" id="urlInput" placeholder="Enter URL" />
 
         <button type="button" id="csvURLInputBtn">Fetch Data</button>
-        
+                -->
+
         <div class="table">
             <div class="column">Total Items:<span id="recordCount">0</span></div>
             <div class="column">Selected Items:<span id="counterId">0</span></div>
@@ -141,25 +192,25 @@
     </div>
     <br>
 
-    <button onclick="deleteSelectedRows()">Delete Selected</button>
-    <button onclick="deleteNonselectedRows()">Delete Unelected</button>
-    <button id="downloadCsvBtn" disabled>Download CSV</button>
+    <button onclick="deleteSelectedRows()">&#x1F5D1; Selected</button>
+    <button onclick="deleteNonselectedRows()">&#x1F5D1; Unelected</button>
+    <button id="downloadCsvBtn" disabled>&#x1F4E5; CSV</button>
     <!--
     <button id="searchSpeechSearch">Speech Search</button>
     <button id="searchSpeechSearchStop" disabled>Stop Speech Search</button>
     -->
-    <button onclick="showColumnPopup()">Select Columns</button>
-    <button id="popupButton">Tranlation Popup</button>
-    <input type="text" id="maxCellSpeakCounter" placeholder="Enter cell speak times" size="4" maxlength="2">
-    <input type="text" id="speakSilenceTime" placeholder="Silence Time 500ms" size="6" maxlength="6">
-    <button id="clearResult" onclick="clearResults()">Clear Results</button>
+    <button onclick="showColumnPopup()">Columns &#x2699;</button>
+    <button id="popupButton">&#127760; Tranlation</button>
+    <button id="clearResult" onclick="clearResults()">&#x1F58C;Clear Results</button>
     <!-- Add the button to add a new row -->
-    <button onclick="addNewRow()">Add New Row</button>
+    <button onclick="addNewRow()">&#10133;Row</button>
     <!-- Add the button to add a new column -->
-    <button onclick="addNewColumn()">Add New Column</button>
+    <button onclick="addNewColumn()">&#10133;Column</button>
+    <button onclick="openCSVJSONConversionWindow()">&#128195;CSV/JSON Util</button>
 
 
     <br><br>
+</div>
 
     <div id="colpopup" class="filecolpopup">
         <h3>Select File Columns to Display</h3>
@@ -167,27 +218,51 @@
         <button onclick="uncheckAllFileCols()">Uncheck All</button>
         <div id="checkboxes"></div>
         <button onclick="hideFileColPopup()">Cancel</button>
-        <button onclick="populateTableNew()">Populate Table</button>
+        <!--
+            <button id="filePopulateTableBtn" onclick="populateTableNew()">Populate Table</button>    
+        -->
+        <button id="filePopulateTableBtn">Populate Table</button>
     </div>
     <div id="columnPopup" class="popup">
         <h3>Select Columns to Display</h3>
-        <button onclick="checkAll()">Check All</button>
-        <button onclick="uncheckAll()">Uncheck All</button>
-        <!--
-        <div id="columnCheckboxes"></div>
-        -->
-        <table id="columnCheckboxes"></table>
-        <button onclick="hideColumnPopup()">Cancel</button>
-        <button onclick="hideAndApplyColumnPopup()">Apply</button>
-    </div>
+        <div>
+            Select Speak Options:
+    
+            <select id="cellHighlightSelect">
+                <option value="highlightandenlarge">Highlight And Enlarge</option>
+                <option value="highlight">Highlight</option>
+                <option value="normal">Normal</option>
+            </select>
+        
+            <input type="text" id="maxCellSpeakCounter" placeholder="Enter cell speak times" size="6" maxlength="6" value="1">
+            <input type="text" id="speakSilenceTime" placeholder="Silence Time 500ms" size="6" maxlength="6">    
+        </div>
+        <div>
+            <h3></h3>
+        </div>
+        <div>
+            <button onclick="checkAll()">Check All</button>
+            <button onclick="uncheckAll()">Uncheck All</button>
+            <!--
+            <div id="columnCheckboxes"></div>
+            -->
 
+
+            <table id="columnCheckboxes"></table>
+            <button onclick="hideColumnPopup()">Cancel</button>
+            <button onclick="hideAndApplyColumnPopup()">Apply</button>
+        </div>
+    </div>
+<!--
     <div>
-        <input type="text" id="searchWord" placeholder="Enter word">
-        <button id="searchButton">Search</button>     
         <button id="loadTablesButton" onclick="loadTableNames()">SQLite Tables</button>     
         <input type="number" id="recordsPerPageInput" placeholder="Records Per Page" value="10">
-        <select id="tableNameSelect"></select>
+        Tables<select id="tableNameSelect"></select>
+        Columns<select id="columnNameSelect"></select>
+        <input type="text" id="searchWord" placeholder="Enter word">
+        <button id="searchButton">Search</button>     
     </div>
+-->    
     <table id="myTable">
     </table>
 

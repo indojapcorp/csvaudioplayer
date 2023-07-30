@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSV File Reader</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h2>CSV File Reader</h2>
+  <input type="file" id="csvFileInput" accept=".csv">
+
+  <button onclick="openChildWindow()">Open Child Window</button>
+
+  <hr>
+  <table id="csvTable">
+    <!-- Table will be populated here -->
+  </table>
+
+  <!-- Include the PapaParse library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+  <script>
+          let headers = [];
+          let csvData = [];
+
+              // Function to set the value of sampledata and display an alert
+    function populateData(text) {
+      sampledata = text; // Set the value of sampledata
+      alert('Value in parent: ' + sampledata);
+    }
+
+    // Function to populate the HTML table with parsed CSV data
+    function populateTable(parsedData) {
+      
+      alert('parsedData in parent: ' + parsedData);
+
+      const table = document.getElementById('csvTable');
+      table.innerHTML = '';
+
+      const data = parsedData.data;
+      if (data.length === 0) return;
+
+      // Extract headers from the first row
+      headers = data[0];
+
+      for (const row of parsedData.data) {
+        const newRow = document.createElement('tr');
+        for (const cell of row) {
+          const newCell = document.createElement('td');
+          newCell.textContent = cell;
+          csvData.push(cell);
+          newCell.innerHTML = newCell.innerHTML.replace(/\\n/g, '<br>'); // Preserve new lines in the cell
+          newRow.appendChild(newCell);
+        }
+        table.appendChild(newRow);
+      }
+      csvData.forEach(function (cell) {
+            console.log("csvData cell="+cell);
+        });
+      
+
+    }
+
+    // Function to handle the selected CSV file
+    function handleFileInput(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      Papa.parse(file, {
+        complete: function(results) {
+          populateTable(results);
+        },
+        header: false,
+        newline: true, // Preserve new lines while parsing
+      });
+    }
+
+    // Attach an event listener to the input file button
+    const fileInput = document.getElementById('csvFileInput');
+    fileInput.addEventListener('change', handleFileInput);
+
+
+    let sampledata = ""; // Define the variable in the parent HTML
+
+// Function to open the child window
+function openChildWindowOld() {
+  window.open('jsonconverter2.html', '_blank', 'width=400,height=300');
+}
+
+    // Function to open the child window
+    function openChildWindow() {
+      const childWindow = window.open('jsonconverter2.html', '_blank', 'width=300,height=200');
+
+      // Listen for the message from the child window
+      window.addEventListener('message', function(event) {
+        if (event.origin === window.location.origin) {
+          // Update sampledata with the received message from the child window
+          sampledata = event.data;
+          populateTable(sampledata);
+          alert('Value in parent: ' + sampledata);
+        }
+      });
+    }
+
+
+  </script>
+</body>
+</html>

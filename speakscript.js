@@ -309,7 +309,6 @@ function addRowWin(header, rownum) {
     seloption.textContent = getLanguageDisplayName('en');
     languageCodeSelect.appendChild(seloption);
 
-    console.log("langCodeVoicesDict="+langCodeVoicesDict);
     Object.keys(langCodeVoicesDict).forEach(function (langCode) {
         if (langCode !== 'en') {
             var option = document.createElement('option');

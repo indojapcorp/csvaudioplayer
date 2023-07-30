@@ -68,7 +68,8 @@ fileInput.addEventListener("change", function (event) {
   if (file.name.endsWith("json")) {
     readJSON(file);
   } else {
-    readCSV(file);
+    //readCSV(file);
+    readCSVUsingPapa(file);
   }
 
 
@@ -84,20 +85,60 @@ const csvURLInputBtn = document.getElementById("csvURLInputBtn");
 csvURLInputBtn.addEventListener("click", function (event) {
   showcolPopup();
   var url = document.getElementById("urlInput").value;
-  fetch(url, {
-    headers: {
-      "Accept": "text/plain"
-    },
-    responseType: "text"
-  })
-    .then(response => response.text())
-    .then(data => {
-      console.log("data==" + data);
-      readJSONFromURL(url, data);
+
+  console.log("url==" + url);
+
+  if (url.endsWith(".json")) {
+    fetch(url, {
+      headers: {
+        "Accept": "text/plain"
+      },
+      responseType: "text"
     })
-    .catch(error => {
-      console.log(error);
-    });
+      .then(response => response.text())
+      .then(data => {
+        console.log("data==" + data);
+        readJSONFromURL(url, data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  } else if (url.endsWith(".csv")) {
+    fetch(url, {
+      headers: {
+        "Accept": "text/csv"
+      }
+    })
+      .then(response => response.blob())
+      .then(file => {
+        readCSVUsingPapa(file);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  } else {
+    console.log("Invalid URL format. Only .json and .csv URLs are supported.");
+  }
+
+
+
+  // fetch(url, {
+  //   headers: {
+  //     "Accept": "text/plain"
+  //   },
+  //   responseType: "text"
+  // })
+  //   .then(response => response.text())
+  //   .then(data => {
+  //     console.log("data==" + data);
+  //     readJSONFromURL(url, data);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+
+
+
 });
 
 
@@ -370,7 +411,7 @@ function selectAll(source) {
   var tr = document.getElementById("myTable").querySelectorAll('tr:not([style*="display: none;"])');
   //const selectedRows = document.getElementById("myTable").querySelectorAll('tr:not([style*="display: none;"]):not(:has(input[type="checkbox"][id="allspeakcol"]))');
 
-  for(let i=3;i<tr.length;i++){
+  for (let i = 3; i < tr.length; i++) {
     var row = tr[i];
     if (row.cells[0]) {
       var checkbox = row.cells[0].querySelector('input[type="checkbox"]');
@@ -432,7 +473,7 @@ function speakRowData(row) {
       speakcellsIndex++;
     }
   }
-  if(speakcells.length>0)
+  if (speakcells.length > 0)
     speakAndHighlight();
 }
 
@@ -440,7 +481,7 @@ function deleteSelectedRows() {
   var table = document.getElementById("myTable");
   var rowCount = table.rows.length;
 
-  for (var i = 3; i < rowCount; i++) {
+  for (var i = 4; i < rowCount; i++) {
     var row = table.rows[i];
     var checkBox = row.cells[0].getElementsByTagName("input")[0];
 
@@ -457,7 +498,7 @@ function deleteNonselectedRows() {
   var table = document.getElementById("myTable");
   var rowCount = table.rows.length;
 
-  for (var i = 3; i < rowCount; i++) {
+  for (var i = 4; i < rowCount; i++) {
     var row = table.rows[i];
     var checkBox = row.cells[0].getElementsByTagName("input")[0];
 
@@ -509,6 +550,7 @@ function initButton() {
   stopBtn = document.getElementById('stopBtn');
   playingCellSpan = document.getElementById("playingCellSpan");
   speakSilenceTime.value = 500;
+  //maxCellSpeakCounter.value = document.getElementById('maxCellSpeakCounter');
 }
 
 let selectedData = "";
@@ -567,7 +609,7 @@ function getSelectedDataForDownload() {
   }
   selectedDwdData += headerRow.join(",") + "\r\n";
 
-  for (var i = 3; i < rowCount; i++) {
+  for (var i = 4; i < rowCount; i++) {
     var row = table.rows[i];
 
     var checkBox = row.cells[0].getElementsByTagName("input")[0];
@@ -678,6 +720,10 @@ function speakThis() {
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
   //const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
   const columnLanguages = document.getElementById("columnCheckboxes").querySelectorAll('select[id^="voices3"]');
+  //AIzaSyCiQ55kJrly39NU-65mIWTmemuVOiDsymE
+  speakcells = [];
+  speakcellslang = [];
+  currentCellIndex = 0;
 
   var firstcheckboxrow = table.rows[1];
   var speakcellsIndex = 0;
@@ -691,15 +737,19 @@ function speakThis() {
         var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
         var collang = columnLanguages[j].value;
         if (columnCheckboxes[j].checked && colspkcheckBox.checked && row.cells[j + 1].innerText.trim() != "") {
-          speakcells[speakcellsIndex] = row.cells[j + 1];
-          speakcellslang[speakcellsIndex] = collang;
-          speakcellsIndex++;
+
+          for (var k = 0; k < maxCellSpeakCounter.value; k++) {
+            speakcells[speakcellsIndex] = row.cells[j + 1];
+            speakcellslang[speakcellsIndex] = collang;
+            speakcellsIndex++;
+          }
+
         }
       }
     }
   }
   cellsTotalSpeakTime = getTotalSpeakTime();
-  if(speakcells.length>0)
+  if (speakcells.length > 0)
     speakAndHighlight();
 }
 function speakAndHighlight() {
@@ -731,7 +781,7 @@ function speakAndHighlight() {
   const selectedText = window.getSelection().toString().trim();
   if (selectedText) {
     cellTextValue = selectedText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/[.:?]/g, '!');
-      console.log(selectedText);
+    console.log(selectedText);
   }
 
   if (isMacOS) {
@@ -794,9 +844,17 @@ function speakAndHighlight() {
 
   }
 
+  var cellHighlightSelectValue = cellHighlightSelect.value;
+  if (cellHighlightSelectValue == 'highlightandenlarge') {
+    currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
+    currentCell.style.backgroundColor = 'yellow';
+  } else if (cellHighlightSelectValue == 'highlight') {
+    currentCell.style.backgroundColor = 'yellow';
+  }
+
   // Highlight the text in the current cell
-  currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
-  currentCell.style.backgroundColor = 'yellow';
+  // currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
+  // currentCell.style.backgroundColor = 'yellow';
   var table = document.getElementById("myTable");
 
   // Scroll to the cell being spoken
@@ -879,10 +937,10 @@ function addNewRow() {
   // Clear the content of the cloned cells (optional)
   const cells = newRow.querySelectorAll('td');
   cells.forEach(cell => {
-      const div = cell.querySelector('div');
-      if(div){
-        div.textContent = '';
-      }
+    const div = cell.querySelector('div');
+    if (div) {
+      div.textContent = '';
+    }
   });
 
   table.appendChild(newRow);
@@ -895,15 +953,15 @@ function addNewColumn() {
 
   const allColumnHeaders = table.querySelectorAll('thead tr')[1].querySelectorAll('th');
 
-  const allcolumnCount = allColumnHeaders.length-2;
-  console.log("allcolumnCount="+allcolumnCount);
+  const allcolumnCount = allColumnHeaders.length - 2;
+  console.log("allcolumnCount=" + allcolumnCount);
 
   // Ask for the name of the new column header
   const newColumnName = prompt('Enter the name of the new column header:');
 
   if (!newColumnName || newColumnName.trim() === '') {
-      // If the user cancels or provides an empty name, do nothing
-      return;
+    // If the user cancels or provides an empty name, do nothing
+    return;
   }
 
   // Clone all the th elements of the second column
@@ -922,63 +980,63 @@ function addNewColumn() {
   const thead = table.querySelector('thead');
   const newRow = document.createElement('th');
   clonedHeaders.forEach(header => newRow.appendChild(header));
-  
+
 
 
   const tableHeaderRows = table.querySelectorAll('thead tr');
 
   const audioPlayerButtonsRowHeader = tableHeaderRows[0].querySelector('th');
-  audioPlayerButtonsRowHeader.setAttribute("colspan",""+allcolumnCount+2);
+  audioPlayerButtonsRowHeader.setAttribute("colspan", "" + allcolumnCount + 2);
   // const totalColumnHeaders = tableHeaderRows[1].querySelectorAll('th');
   // const columnCount2 = totalColumnHeaders.length-2;
 
   //tableHeaderRows[0].appendChild(document.createElement('th'));
   for (let i = 1; i < tableHeaderRows.length; i++) {
 
-    const input = clonedHeaders[i-1].querySelector('input[type="text"]');
-    if(input){
-    input.setAttribute("id","input_"+(allcolumnCount));
-    input.setAttribute("placeholder","Filter Column "+(allcolumnCount));
-    input.setAttribute("onkeyup","filterTable("+(allcolumnCount)+")");
-    input.setAttribute("onmouseover","showHintPopup("+(allcolumnCount)+")");
-    input.setAttribute("onmouseout","hideHintPopup("+(allcolumnCount)+")");
-    input.setAttribute("onclick","hideHintPopup("+(allcolumnCount)+")");
-    console.log("id set11");
+    const input = clonedHeaders[i - 1].querySelector('input[type="text"]');
+    if (input) {
+      input.setAttribute("id", "input_" + (allcolumnCount));
+      input.setAttribute("placeholder", "Filter Column " + (allcolumnCount));
+      input.setAttribute("onkeyup", "filterTable(" + (allcolumnCount) + ")");
+      input.setAttribute("onmouseover", "showHintPopup(" + (allcolumnCount) + ")");
+      input.setAttribute("onmouseout", "hideHintPopup(" + (allcolumnCount) + ")");
+      input.setAttribute("onclick", "hideHintPopup(" + (allcolumnCount) + ")");
+      console.log("id set11");
     }
-    const hintDiv = clonedHeaders[i-1].querySelector('div[id^="hintPopup_"]');
-    if(input){
-    hintDiv.setAttribute("id","hintPopup_"+(allcolumnCount));
+    const hintDiv = clonedHeaders[i - 1].querySelector('div[id^="hintPopup_"]');
+    if (input) {
+      hintDiv.setAttribute("id", "hintPopup_" + (allcolumnCount));
     }
     //tableHeaderRows[i].appendChild(clonedHeaders[i-1]);
-    tableHeaderRows[i].insertBefore(clonedHeaders[i-1],tableHeaderRows[i].querySelector('th:nth-last-child(2)').nextSibling);
+    tableHeaderRows[i].insertBefore(clonedHeaders[i - 1], tableHeaderRows[i].querySelector('th:nth-last-child(2)').nextSibling);
   }
 
 
-//  thead.appendChild(newRow);
+  //  thead.appendChild(newRow);
 
   // Add each cloned cell to the corresponding row as a new cell in the new column
   const rows = table.querySelectorAll('table tr');
   for (let i = 4; i < rows.length; i++) {
-      const row = rows[i];
-      //const newCell = clonedHeaders[i].cloneNode(true);
-      const newCell = document.createElement('td');
-      // Set attributes of the new cell based on the cloned cell
-      const clonedCell = row.querySelector('td:nth-last-child(2)');
-      const clonedCellDeep = row.querySelector('td:nth-last-child(2)').cloneNode(true);
-      if(clonedCell){
-        //const div = document.createElement('div');
-        const div = clonedCellDeep.querySelector('div').cloneNode(true);
-        div.textContent = '';
-        newCell.appendChild(div);
+    const row = rows[i];
+    //const newCell = clonedHeaders[i].cloneNode(true);
+    const newCell = document.createElement('td');
+    // Set attributes of the new cell based on the cloned cell
+    const clonedCell = row.querySelector('td:nth-last-child(2)');
+    const clonedCellDeep = row.querySelector('td:nth-last-child(2)').cloneNode(true);
+    if (clonedCell) {
+      //const div = document.createElement('div');
+      const div = clonedCellDeep.querySelector('div').cloneNode(true);
+      div.textContent = '';
+      newCell.appendChild(div);
       for (const attr of clonedCell.attributes) {
-          newCell.setAttribute(attr.name, attr.value);
+        newCell.setAttribute(attr.name, attr.value);
       }
       row.insertBefore(newCell, clonedCell.nextSibling); // Insert after the 2nd cell
 
     }
     //  row.appendChild(newCell);
   }
-  
+
 }
 
 
@@ -1050,6 +1108,37 @@ downloadCsvBtn.addEventListener('click', () => {
   //utterance.text = transcriptTextarea.value.substring(transcriptTextarea.selectionStart, transcriptTextarea.selectionEnd);
   getSelectedDataForDownload();
   downloadAsCSV(selectedDwdData);
+});
+
+const cellHighlightSelect = document.getElementById('cellHighlightSelect');
+
+
+const tableNameSelect = document.getElementById('tableNameSelect');
+var selectedColumnNames = [];
+
+const filePopulateTableBtn = document.getElementById('filePopulateTableBtn');
+
+filePopulateTableBtn.addEventListener('click', () => {
+
+  if (tableNameSelect.selectedIndex > 0) {
+
+    var checkboxes = document.getElementsByName("column");
+    //var selectedColumnNames = [];
+    selectedColumnNames = [];
+
+
+    checkboxes.forEach(function (checkbox, i) {
+      if (checkbox.checked) {
+        selectedColumnNames.push(checkbox.value);
+      }
+    });
+
+    //populateTableNew(true);
+    searchDictionary(tableNameSelect.value, selectedColumnNames);
+  } else {
+    populateTableNew(false);
+  }
+
 });
 
 if (searchSpeechSearch) {
@@ -1304,6 +1393,7 @@ var headersLanguage; // Declare headers as a global variable
 // Function to display the popup with header checkboxes
 function showFileColPopup(headers) {
 
+
   var filecolpopup = document.getElementById("colpopup");
   var checkboxes = document.getElementById("checkboxes");
   checkboxes.innerHTML = "";
@@ -1335,8 +1425,6 @@ function showFileColPopup(headers) {
     checkboxes.appendChild(isCategorylabel);
     // is category end
 
-
-
     checkboxes.appendChild(document.createElement("br"));
   });
 
@@ -1354,6 +1442,47 @@ function showcolPopup() {
 function hideFileColPopup() {
   var filecolpopup = document.getElementById("colpopup");
   filecolpopup.style.display = "none";
+}
+
+function readCSVUsingPapa(file) {
+  if (!file)
+    return;
+
+  csvData = [];
+  headers = [];
+  headersLanguage = [];
+  csvfilename = file.name;
+
+  Papa.parse(file, {
+    complete: function (parsedData) {
+      const data = parsedData.data;
+      if (data.length === 0) return;
+
+      // Extract headers from the first row
+      headers = data[0];
+
+      for (const row of parsedData.data) {
+        csvData.push(row);
+        for (const cell of row) {
+          //csvData.push(cell.replace(/\\n/g, '<br>'));
+          //newCell.innerHTML = newCell.innerHTML.replace(/\\n/g, '<br>'); // Preserve new lines in the cell
+        }
+      }
+      // csvData.forEach(function (cell) {
+      //       console.log("csvData cell="+cell);
+      //   });
+      headers.forEach(function () {
+        headersLanguage.push('en');
+      });
+      var filecolpopup = document.getElementById("colpopup");
+      filecolpopup.style.display = "block";
+      showFileColPopup(headers);
+
+    },
+    header: false,
+    newline: true, // Preserve new lines while parsing
+    skipEmptyLines: true,
+  });
 }
 
 // Function to read the selected CSV file
@@ -1448,9 +1577,7 @@ function readJSONFromURL(url, data) {
 
 }
 
-function readJSONFromSQLite(data,currentPage) {
-  console.log("readJSONFromSQLite="+currentPage);
-  console.log("readJSONFromSQLite data="+data);
+function readJSONFromSQLite(data, currentPage) {
   lines = [];
   headersLanguage = [];
   headers = [];
@@ -1483,10 +1610,10 @@ function readJSONFromSQLite(data,currentPage) {
 
   }
 
-  if(currentPage==1){
+  if (currentPage == 1) {
     var filecolpopup = document.getElementById("colpopup");
     filecolpopup.style.display = "block";
-  }else{
+  } else {
     var filecolpopup = document.getElementById("colpopup");
     filecolpopup.style.display = "none";
   }
@@ -1501,10 +1628,12 @@ function readJSONFromSQLite(data,currentPage) {
 
   }
 
-  if(currentPage==1){
-    showFileColPopup(headers);
-  }else{
-    populateTableNew();
+  if (currentPage == 1) {
+    //showFileColPopup(headers);
+    populateTableNew(true);
+  } else {
+    //populateTableNew(true);
+    populateSQLLiteData();
   }
 
 }
@@ -1587,11 +1716,95 @@ $ ends-with
 ! hiragana
 # katakana`;
 
+function populateSQLLiteData() {
+  //var table = document.getElementById("myTable");
+
+  // Get the table element by its ID
+  const table = document.getElementById('myTable');
+
+  // Get the <thead> element
+  const thead = table.querySelector('thead');
+
+  // Get all <tr> elements in the table
+  const allRows = table.querySelectorAll('tr');
+
+  // Loop through all <tr> elements and remove those outside <thead>
+  allRows.forEach((row) => {
+    // Check if the parent of the <tr> element is not <thead>
+    if (row.parentElement !== thead) {
+      row.remove();
+    }
+  });
+
+  csvData.forEach(function (row, rowno) {
+    //var tr = table.insertRow();
+    var tr = document.createElement("tr");
+    const td = document.createElement("td");
+    var input = document.createElement('input');
+    input.type = "checkbox";
+    input.name = "row" + rowno;
+    input.value = rowno;
+    input.setAttribute('onchange', 'updateCounter()');
+    td.appendChild(input);
+    tr.appendChild(td);
+
+    selectedColumns.forEach(function (column, i) {
+      var cell = document.createElement("td");
+      var cellDiv = document.createElement("div");
+      cellDiv.setAttribute('contenteditable', 'true');
+
+
+      // Remove enclosing double quotes if present
+      let cellText = row[headers.indexOf(column)].trim().replaceAll('==TABS==', '\t').replaceAll('==NEW-LINE==', '\n');
+      if (cellText.startsWith('"') && cellText.endsWith('"')) {
+        cellText = cellText.slice(1, -1);
+      }
+
+      // Preserve new lines in the cell content
+      const lines = cellText.split('\\n');
+      cellDiv.innerHTML = lines.join('<br>');
+
+      cell.appendChild(cellDiv);
+      tr.appendChild(cell);
+    });
+
+
+
+    const tdplay = document.createElement("td");
+    var input = document.createElement('button');
+    input.innerText = "Play";
+    input.id = "button" + rowno;
+    input.setAttribute('onclick', 'speakRowData(this.parentNode.parentNode)');
+    tdplay.appendChild(input);
+
+    var recinput = document.createElement('button');
+    recinput.textContent = "\u25C9";
+    recinput.id = "recbutton" + rowno;
+    recinput.setAttribute('onclick', 'startStopRecording(this,this.parentNode.parentNode)');
+    tdplay.appendChild(recinput);
+
+    var resultspan = document.createElement('label');
+    resultspan.innerHTML = "";
+    resultspan.id = "resultrecbutton" + rowno;
+    tdplay.appendChild(resultspan);
+
+
+    tr.appendChild(tdplay);
+    table.appendChild(tr);
+  });
+}
+var selectedColumns = [];
 // Function to populate the table with selected columns
-function populateTableNew() {
+function populateTableNew(isSQLite) {
+
+  console.log("populatetable");
+  var divOps = document.getElementById("divOps");
+  divOps.style.display = "block";
+
   var checkboxes = document.getElementsByName("column");
   var categorycolumncheckboxes = document.getElementsByName("categorycolumn");
-  var selectedColumns = [];
+  //var selectedColumns = [];
+  selectedColumns = [];
   var isCategorySelectedForColumns = [];
   tableHeaders = [];
   // csvData = [];
@@ -1609,13 +1822,11 @@ function populateTableNew() {
   checkboxes.forEach(function (checkbox, i) {
     if (checkbox.checked) {
       selectedColumns.push(checkbox.value);
-      console.log("checkbox.value="+checkbox.value);
 
       tableHeaders.push(checkbox.value);
       isCategorySelectedForColumns.push(categorycolumncheckboxes[i].checked);
     }
   });
-  console.log("tableHeaders="+tableHeaders);
   // Populate the table
   var table = document.getElementById("myTable");
   table.innerHTML = "";
@@ -1791,6 +2002,12 @@ function populateTableNew() {
   //     csvData.push(row);  
   // }
 
+  if (isSQLite) {
+    console.log("Call sqlite with selected cols" + tableHeaders);
+    //searchDictionary(tableNameSelect.value);
+    //return;
+  }
+
 
   recordCount = csvData.length;
   document.getElementById("recordCount").textContent = recordCount;
@@ -1830,9 +2047,12 @@ function populateTableNew() {
       var cellDiv = document.createElement("div");
       cellDiv.setAttribute('contenteditable', 'true');
 
+      // console.log("row="+row);
+      // console.log("headers.indexOf(column)="+headers.indexOf(column));
+
 
       // Remove enclosing double quotes if present
-      let cellText = row[headers.indexOf(column)].trim();
+      let cellText = row[headers.indexOf(column)].trim().replaceAll('==TABS==', '\t').replaceAll('==NEW-LINE==', '\n');
       if (cellText.startsWith('"') && cellText.endsWith('"')) {
         cellText = cellText.slice(1, -1);
       }
@@ -2010,7 +2230,7 @@ transapplyButton.addEventListener('click', function () {
   var srcLang = document.getElementById("srclang").value;
 
   var onlyNumericText = false;
-  if(containsOnlyNumericValues(srcText)){
+  if (containsOnlyNumericValues(srcText)) {
     onlyNumericText = true;
   }
 
@@ -2021,47 +2241,47 @@ transapplyButton.addEventListener('click', function () {
   totaldata = "word,";
 
   for (i = 0; i < totalcols; i++) {
-    if(onlyNumericText){
+    if (onlyNumericText) {
       totaldata = totaldata + "trans-" + i + ",";
       headers.push('trans-' + i);
       headers.push('trans-word-' + i);
       var tgtlangselectElement = document.getElementById("tgtlang-" + (i + 1));
       var targetLang = tgtlangselectElement.value;
-      headersLanguage.push(targetLang);  
-      headersLanguage.push(targetLang);  
-    }else{
-    totaldata = totaldata + "trans-" + i + ",";
-    headers.push('trans-' + i);
-    var tgtlangselectElement = document.getElementById("tgtlang-" + (i + 1));
-    var targetLang = tgtlangselectElement.value;
-    headersLanguage.push(targetLang);
+      headersLanguage.push(targetLang);
+      headersLanguage.push(targetLang);
+    } else {
+      totaldata = totaldata + "trans-" + i + ",";
+      headers.push('trans-' + i);
+      var tgtlangselectElement = document.getElementById("tgtlang-" + (i + 1));
+      var targetLang = tgtlangselectElement.value;
+      headersLanguage.push(targetLang);
     }
   }
   totaldata = totaldata + "\n";
 
   for (var j = 0; j < srcLines.length; j++) {
-    if(onlyNumericText){
+    if (onlyNumericText) {
       totaldata = totaldata + srcLines[j] + ",";
       for (i = 0; i < totalcols; i++) {
 
         var tgtlangselectElement = document.getElementById("tgtlang-" + (i + 1));
         var targetLang = tgtlangselectElement.value;
-  
+
         var tgtText = $("#tratext-popup-" + (i + 1)).val();
         var tgtLines = tgtText.split("\n");
-       // console.log("tgtLines[j]="+tgtLines[j] + ","+ tgtLines[j] + ","+ numberToTextFromLang(targetLang,tgtLines[j]) + ",");
-        totaldata = totaldata + tgtLines[j] + ","+ numberToTextFromLang(targetLang,tgtLines[j]) + ",";
+        // console.log("tgtLines[j]="+tgtLines[j] + ","+ tgtLines[j] + ","+ numberToTextFromLang(targetLang,tgtLines[j]) + ",");
+        totaldata = totaldata + tgtLines[j] + "," + numberToTextFromLang(targetLang, tgtLines[j]) + ",";
       }
-      totaldata = totaldata + "\n";  
-    }else{
-    totaldata = totaldata + srcLines[j] + ",";
-    for (i = 0; i < totalcols; i++) {
-      var tgtText = $("#tratext-popup-" + (i + 1)).val();
-      var tgtLines = tgtText.split("\n");
-      totaldata = totaldata + tgtLines[j] + ",";
+      totaldata = totaldata + "\n";
+    } else {
+      totaldata = totaldata + srcLines[j] + ",";
+      for (i = 0; i < totalcols; i++) {
+        var tgtText = $("#tratext-popup-" + (i + 1)).val();
+        var tgtLines = tgtText.split("\n");
+        totaldata = totaldata + tgtLines[j] + ",";
+      }
+      totaldata = totaldata + "\n";
     }
-    totaldata = totaldata + "\n";
-  }
   }
 
   lines = totaldata.split("\n");
@@ -2075,7 +2295,7 @@ transapplyButton.addEventListener('click', function () {
     if (lines[i].length == 0)
       continue;
 
-      console.log("lines[i]=="+lines[i]);
+    console.log("lines[i]==" + lines[i]);
     var row = lines[i].split(",");
     csvData.push(row);
   }
@@ -2467,3 +2687,49 @@ async function convertToHiragana(sentence) {
   });
 }
 //recording test end
+
+// Function to open the child window
+function openCSVJSONConversionWindow() {
+  const childWindow = window.open('csvjsonconverter.html', '_blank', 'width=600,height=400');
+
+  // Listen for the message from the child window
+  window.addEventListener('message', function (event) {
+    if (event.origin === window.location.origin) {
+      // Update sampledata with the received message from the child window
+      sampledata = event.data;
+      //populateTable(sampledata);
+      readCSVUsingPapa(sampledata);
+      //alert('Value in parent: ' + sampledata);
+    }
+  });
+}
+
+function showDiv() {
+  var selectedValue = document.getElementById("selectDataSource").value;
+  var div1 = document.getElementById("div1");
+  var div2 = document.getElementById("div2");
+  var div3 = document.getElementById("div3");
+  var div4 = document.getElementById("div4");
+  var divOps = document.getElementById("divOps");
+
+  div1.style.display = "none";
+  div2.style.display = "none";
+  div3.style.display = "none";
+  div4.style.display = "none";
+
+  if (selectedValue === "1") {
+    div1.style.display = "block";
+  } else if (selectedValue === "2") {
+    div2.style.display = "block";
+  } else if (selectedValue === "3") {
+    div3.style.display = "block";
+  } else if (selectedValue === "4") {
+    div4.style.display = "block";
+  }
+
+  divOps.style.display = "none";
+  var table = document.getElementById("myTable");
+  table.innerHTML = "";
+  var paginationContainer = document.getElementById("paginationContainer");
+  paginationContainer.innerHTML = "";
+}

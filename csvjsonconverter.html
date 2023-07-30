@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Text to JSON Converter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+
+<body>
+    <h1>Text to CSV/JSON Converter</h1>
+
+    <form id="converterForm">
+        <div>
+            <label for="delimiterInput">Delimiter:</label>
+            <input type="text" id="delimiterInput" placeholder="Enter delimiter" /><br><br>
+            <button type="button" onclick="convertToJSON()">Convert to JSON</button>
+            <button id="downloadJSONBtn" type="button" onclick="downloadJSON()" disabled>Download JSON</button>
+
+            <button type="button" onclick="convertToCSV()">Convert to CSV</button>
+            <button id="downloadCSVBtn" type="button" onclick="downloadCSV()" disabled>Download CSV</button>
+            <button id="setSampleDataAndCloseBtn" onclick="setSampleDataAndClose()" disabled>Set Value in Parent and Close</button>
+
+        </div>
+        <label for="textInput">Enter Text:</label><br>
+        <textarea id="textInput" rows="30" cols="100"></textarea><br><br>
+
+
+
+        <br><br>
+
+        <label for="jsonOutput">JSON Output:</label><br>
+        <textarea id="jsonOutput" rows="5" cols="100" readonly></textarea><br><br>
+
+    </form>
+
+    <script>
+        var csvData;
+        var setSampleDataAndCloseBtn = document.getElementById("setSampleDataAndCloseBtn");
+        var downloadCSVBtn = document.getElementById("downloadCSVBtn");
+        var downloadJSONBtn = document.getElementById("downloadJSONBtn");
+        // const text = document.body.textContent.trim();
+        // const regions = text.split(/\n(?=\d+\.)/g);
+        // console.log(regions);
+
+        function setSampleDataAndClose() {
+            console.log("calling populateTable with csvData"+csvData);
+      // Access the parent window using window.opener and set the value of sampledata
+      //window.opener.populateData(csvData);
+    //   const parsedCsvData = Papa.parse(csvData, {
+    //     header: false, // Treat the first row as headers
+    //     newline: '\r\n', // Preserve new lines while parsing
+    //   });
+
+    if(csvData){
+        // Create a Blob containing the CSV data
+        const blob = new Blob([csvData], { type: 'text/csv' });
+
+        // Create a File object from the Blob
+        const csvFile = new File([blob], 'parsed_data.csv', { type: 'text/csv' });
+
+
+
+      //window.opener.postMessage(parsedCsvData, window.location.origin);
+      window.opener.postMessage(csvFile, window.location.origin);
+    }
+      // Close the child window
+      window.close();
+
+    }
+
+        function convertToJSON() {
+
+
+            var textInput = document.getElementById("textInput").value;
+            var delimiter = document.getElementById("delimiterInput").value;
+            //var textArray = textInput.split(delimiter.trim());
+            var textArray;
+
+            if (textInput.trim() === "" || delimiter.trim() === "") {
+                alert("Both Text Input and Delimiter must not be blank or empty.");
+            }
+
+            try {
+                var regex = new RegExp(delimiter);
+                textArray = textInput.split(regex);
+            } catch (error) {
+                // Treat delimiter as a string if it's not a valid regex
+                textArray = textInput.split(delimiter.trim());
+            }
+
+
+            var jsonArray = textArray.map(function (text, index) {
+                return { "id": index + 1, "text": text.trim() };
+            });
+
+            downloadJSONBtn.disabled = false;
+
+            var jsonData = { "data": jsonArray };
+            var jsonString = JSON.stringify(jsonData);
+            document.getElementById("jsonOutput").value = jsonString;
+        }
+
+        function preprocessData(data) {
+            return data.replace(/\n/g, '\\n');
+        }
+
+        function convertToCSV() {
+
+            csvData = null;
+            var textInput = document.getElementById("textInput").value;
+            var delimiter = document.getElementById("delimiterInput").value;
+            //var textArray = textInput.split(delimiter.trim());
+            var textArray;
+
+            if (textInput.trim() === "" || delimiter.trim() === "") {
+                alert("Both Text Input and Delimiter must not be blank or empty.");
+                return;
+            } 
+
+            try {
+                var regex = new RegExp(delimiter);
+                textArray = textInput.split(regex);
+            } catch (error) {
+                // Treat delimiter as a string if it's not a valid regex
+                textArray = textInput.split(delimiter.trim());
+            }
+
+            const dataRows = textArray.map((item, index) => [index + 1, preprocessData(item)]); // Add the "Id" column
+
+            // Convert the data to CSV format using PapaParse
+            csvData = Papa.unparse({
+            fields: ['Id','Text'],
+            data: dataRows,
+            newline: "\r\n", // Preserve new lines in the text
+            });
+
+            if(csvData){
+                setSampleDataAndCloseBtn.disabled = false;
+                downloadCSVBtn.disabled = false;
+            }
+
+                //setSampleDataAndCloseBtn.setAttri
+        }
+
+        function downloadJSON() {
+            var jsonOutput = document.getElementById("jsonOutput").value;
+            var fileName = "output.json";
+            var blob = new Blob([jsonOutput], { type: "application/json" });
+
+            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveOrOpenBlob(blob, fileName);
+            } else {
+                var link = document.createElement("a");
+                link.href = window.URL.createObjectURL(blob);
+                link.download = fileName;
+                link.click();
+            }
+        }
+
+        function downloadCSV() {
+
+            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveOrOpenBlob(blob, fileName);
+            } else {
+                // Create a Blob containing the CSV data
+                const blob = new Blob([csvData], { type: 'text/csv' });
+
+                // Create a link element and set its attributes for downloading
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'data.csv';
+
+                // Append the link to the DOM and click it programmatically to trigger the download
+                document.body.appendChild(link);
+                link.click();
+
+                // Clean up by removing the link after the download
+                document.body.removeChild(link);
+            }
+        }
+
+        
+    </script>
+</body>
+
+</html>

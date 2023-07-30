@@ -2,12 +2,2283 @@
     "data": [
         {
             "id": "1",
-            "word": "hello",
-            "definition": "greeting word"
-        },{
+            "ipq": "What's up?==NEW-LINE==What's new?==NEW-LINE==What have you been up to lately?==NEW-LINE==How's it going?==NEW-LINE==How are things?==NEW-LINE==How's life?",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
             "id": "2",
-            "word": "konnichiwa",
-            "definition": "jap greeting word"
+            "ipq": "I'm fine, thanks. How about you?==NEW-LINE==Pretty good.==NEW-LINE==Same as always==NEW-LINE==Not so great.==NEW-LINE==Could be better==NEW-LINE==cant complain==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "3",
+            "ipq": "I really appreciate it.==NEW-LINE==I'm really grateful==NEW-LINE==That's so kind of you.==NEW-LINE==I owe you one. (this means you want/need to do a favor for the other person in the future)==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "4",
+            "ipq": "No problem.==NEW-LINE==No worries==NEW-LINE==Don't mention it.==NEW-LINE==My pleasure.==NEW-LINE==Anytime.==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "5",
+            "ipq": "It was nice chatting with you.==NEW-LINE==Anyway, I should get going.==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "6",
+            "ipq": "Do you have any idea…?==NEW-LINE==Would you happen to know…? (when you're not sure if the other person has the information.)==NEW-LINE==I don't suppose you (would) know…? (when you're not sure if the other person has the information.)==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "7",
+            "ipq": "I have no idea/clue.==NEW-LINE==I can't help you there.==NEW-LINE==(informal) Beats me.==NEW-LINE==I'm not really sure.==NEW-LINE==I've been wondering that, too.==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "8",
+            "ipq": "I've never given it much thought.==NEW-LINE==I don't have strong feelings either way.==NEW-LINE==It doesn't make any difference to me.==NEW-LINE==I have no opinion on the matter.==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "9",
+            "ipq": "Exactly.==NEW-LINE==Absolutely.==NEW-LINE==That's so true.==NEW-LINE==That's for sure.==NEW-LINE==I agree 100%==NEW-LINE==I couldn't agree with you more.==NEW-LINE==(informal) Tell me about it! / You're telling me!==NEW-LINE==(informal) I'll say!==NEW-LINE==I suppose so. (use this phrase for weak agreement – you agree, but reluctantly)==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "10",
+            "ipq": "I'm not so sure about that.==NEW-LINE==That's not how I see it.==NEW-LINE==Not necessarily==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "11",
+            "ipq": "That's great!==NEW-LINE==How wonderful!==NEW-LINE==Awesome!==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "12",
+            "ipq": "Oh no…==NEW-LINE==That's terrible.==NEW-LINE==Poor you. (Use this to respond to bad situations that are not too serious)==NEW-LINE==I'm so sorry to hear that.==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "13",
+            "ipq": "Are you free… [Saturday night?]==NEW-LINE==Are you doing anything… [Saturday night?]==NEW-LINE==. (informal) Do you wanna… [see a movie?]==NEW-LINE==(formal)Would you like to… [join me for dinner?]==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "14",
+            "ipq": "I'm starving! (= I'm very hungry)==NEW-LINE==Let's grab a bite to eat.==NEW-LINE==How about eating out tonight? (eat out = eat at a restaurant)==NEW-LINE==I'll have… (use this phrase for ordering in a restaurant)==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "15",
+            "ipq": "It cost a fortune.==NEW-LINE==It cost an arm and a leg.==NEW-LINE==That's a rip-off. (= overpriced; far more expensive than it should be)==NEW-LINE==That's a bit pricey.==NEW-LINE==That's quite reasonable. (= it's a good price)==NEW-LINE==That's a good deal. (= a good value for the amount of money)==NEW-LINE==It was a real bargain.==NEW-LINE==It was dirt cheap. (= extremely inexpensive)==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "16",
+            "ipq": "It's a little chilly.==NEW-LINE==It's freezing. (= extremely cold)==NEW-LINE==Make sure to bundle up. (bundle up = put on warm clothes for protection against the cold)==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "17",
+            "ipq": "It's absolutely boiling! (boiling = extremely hot)==NEW-LINE==it scorching hot outside==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "18",
+            "ipq": "I'm exhausted.==NEW-LINE==I'm dead tired.==NEW-LINE==I'm beat==NEW-LINE==I can hardly keep my eyes open==NEW-LINE==I'm gonna hit the sack. (hit the sack = go to bed)==NEW-LINE==",
+            "category": "phrase",
+            "meaning": ""
+        },
+        {
+            "id": "19",
+            "ipq": "A blessing in disguise",
+            "category": "idiom",
+            "meaning": "a good thing that seemed bad at first"
+        },
+        {
+            "id": "20",
+            "ipq": "A dime a dozen",
+            "category": "idiom",
+            "meaning": "Something common"
+        },
+        {
+            "id": "21",
+            "ipq": "Beat around the bush",
+            "category": "idiom",
+            "meaning": "Avoid saying what you mean, usually because it is uncomfortable"
+        },
+        {
+            "id": "22",
+            "ipq": "Better late than never",
+            "category": "idiom",
+            "meaning": "Better to arrive late than not to come at all"
+        },
+        {
+            "id": "23",
+            "ipq": "Bite the bullet",
+            "category": "idiom",
+            "meaning": "To get something over with because it is inevitable"
+        },
+        {
+            "id": "24",
+            "ipq": "Break a leg",
+            "category": "idiom",
+            "meaning": "Good luck"
+        },
+        {
+            "id": "25",
+            "ipq": "Call it a day",
+            "category": "idiom",
+            "meaning": "Stop working on something"
+        },
+        {
+            "id": "26",
+            "ipq": "Cut somebody some slack",
+            "category": "idiom",
+            "meaning": "Don't be so critical"
+        },
+        {
+            "id": "27",
+            "ipq": "Cutting corners",
+            "category": "idiom",
+            "meaning": "Doing something poorly in order to save time or money"
+        },
+        {
+            "id": "28",
+            "ipq": "Easy does it",
+            "category": "idiom",
+            "meaning": "Slow down"
+        },
+        {
+            "id": "29",
+            "ipq": "Get out of hand",
+            "category": "idiom",
+            "meaning": "Get out of control"
+        },
+        {
+            "id": "30",
+            "ipq": "Get something out of your system",
+            "category": "idiom",
+            "meaning": "Do the thing you've been wanting to do so you can move on"
+        },
+        {
+            "id": "31",
+            "ipq": "Get your act together",
+            "category": "idiom",
+            "meaning": "Work better or leave"
+        },
+        {
+            "id": "32",
+            "ipq": "Give someone the benefit of the doubt",
+            "category": "idiom",
+            "meaning": "Trust what someone says"
+        },
+        {
+            "id": "33",
+            "ipq": "Go back to the drawing board",
+            "category": "idiom",
+            "meaning": "Start over"
+        },
+        {
+            "id": "34",
+            "ipq": "Hang in there",
+            "category": "idiom",
+            "meaning": "Don't give up"
+        },
+        {
+            "id": "35",
+            "ipq": "Hit the sack",
+            "category": "idiom",
+            "meaning": "Go to sleep"
+        },
+        {
+            "id": "36",
+            "ipq": "It's not rocket science",
+            "category": "idiom",
+            "meaning": "It's not complicated"
+        },
+        {
+            "id": "37",
+            "ipq": "Let someone off the hook",
+            "category": "idiom",
+            "meaning": "To not hold someone responsible for something"
+        },
+        {
+            "id": "38",
+            "ipq": "Make a long story short",
+            "category": "idiom",
+            "meaning": "Tell something briefly"
+        },
+        {
+            "id": "39",
+            "ipq": "Miss the boat",
+            "category": "idiom",
+            "meaning": "It's too late"
+        },
+        {
+            "id": "40",
+            "ipq": "No pain, no gain",
+            "category": "idiom",
+            "meaning": "You have to work for what you want"
+        },
+        {
+            "id": "41",
+            "ipq": "On the ball",
+            "category": "idiom",
+            "meaning": "Doing a good job"
+        },
+        {
+            "id": "42",
+            "ipq": "Pull someone's leg",
+            "category": "idiom",
+            "meaning": "To joke with someone"
+        },
+        {
+            "id": "43",
+            "ipq": "Pull yourself together",
+            "category": "idiom",
+            "meaning": "Calm down"
+        },
+        {
+            "id": "44",
+            "ipq": "So far so good",
+            "category": "idiom",
+            "meaning": "Things are going well so far"
+        },
+        {
+            "id": "45",
+            "ipq": "Speak of the devil",
+            "category": "idiom",
+            "meaning": "The person we were just talking about showed up!"
+        },
+        {
+            "id": "46",
+            "ipq": "That's the last straw",
+            "category": "idiom",
+            "meaning": "My patience has run out"
+        },
+        {
+            "id": "47",
+            "ipq": "The best of both worlds",
+            "category": "idiom",
+            "meaning": "An ideal situation"
+        },
+        {
+            "id": "48",
+            "ipq": "Time flies when you're having fun",
+            "category": "idiom",
+            "meaning": "You don't notice how long something lasts when it's fun"
+        },
+        {
+            "id": "49",
+            "ipq": "To get bent out of shape",
+            "category": "idiom",
+            "meaning": "To get upset"
+        },
+        {
+            "id": "50",
+            "ipq": "To make matters worse",
+            "category": "idiom",
+            "meaning": "Make a problem worse"
+        },
+        {
+            "id": "51",
+            "ipq": "Under the weather",
+            "category": "idiom",
+            "meaning": "Sick"
+        },
+        {
+            "id": "52",
+            "ipq": "We'll cross that bridge when we come to it",
+            "category": "idiom",
+            "meaning": "Let's not talk about that problem right now"
+        },
+        {
+            "id": "53",
+            "ipq": "Wrap your head around something",
+            "category": "idiom",
+            "meaning": "Understand something complicated"
+        },
+        {
+            "id": "54",
+            "ipq": "You can say that again",
+            "category": "idiom",
+            "meaning": "That's true, I agree"
+        },
+        {
+            "id": "55",
+            "ipq": "Your guess is as good as mine",
+            "category": "idiom",
+            "meaning": "I have no idea"
+        },
+        {
+            "id": "56",
+            "ipq": "A bird in the hand is worth two in the bush",
+            "category": "idiom",
+            "meaning": "What you have is worth more than what you might have later"
+        },
+        {
+            "id": "57",
+            "ipq": "A penny for your thoughts",
+            "category": "idiom",
+            "meaning": "Tell me what you're thinking"
+        },
+        {
+            "id": "58",
+            "ipq": "A penny saved is a penny earned",
+            "category": "idiom",
+            "meaning": "Money you save today you can spend later"
+        },
+        {
+            "id": "59",
+            "ipq": "A perfect storm",
+            "category": "idiom",
+            "meaning": "the worst possible situation"
+        },
+        {
+            "id": "60",
+            "ipq": "A picture is worth 1000 words",
+            "category": "idiom",
+            "meaning": "Better to show than tell"
+        },
+        {
+            "id": "61",
+            "ipq": "Actions speak louder than words",
+            "category": "idiom",
+            "meaning": "Believe what people do and not what they say"
+        },
+        {
+            "id": "62",
+            "ipq": "Add insult to injury",
+            "category": "idiom",
+            "meaning": "To make a bad situation worse"
+        },
+        {
+            "id": "63",
+            "ipq": "Barking up the wrong tree",
+            "category": "idiom",
+            "meaning": "To be mistaken, to be looking for solutions in the wrong place"
+        },
+        {
+            "id": "64",
+            "ipq": "Birds of a feather flock together",
+            "category": "idiom",
+            "meaning": "People who are alike are often friends (usually used negatively)"
+        },
+        {
+            "id": "65",
+            "ipq": "Bite off more than you can chew",
+            "category": "idiom",
+            "meaning": "Take on a project that you cannot finish"
+        },
+        {
+            "id": "66",
+            "ipq": "Break the ice",
+            "category": "idiom",
+            "meaning": "Make people feel more comfortable"
+        },
+        {
+            "id": "67",
+            "ipq": "By the skin of your teeth",
+            "category": "idiom",
+            "meaning": "Just barely"
+        },
+        {
+            "id": "68",
+            "ipq": "Comparing apples to oranges",
+            "category": "idiom",
+            "meaning": "Comparing two things that cannot be compared"
+        },
+        {
+            "id": "69",
+            "ipq": "Costs an arm and a leg",
+            "category": "idiom",
+            "meaning": "Very expensive"
+        },
+        {
+            "id": "70",
+            "ipq": "Do something at the drop of a hat",
+            "category": "idiom",
+            "meaning": "Do something without having planned beforehand"
+        },
+        {
+            "id": "71",
+            "ipq": "Do unto others as you would have them do unto you",
+            "category": "idiom",
+            "meaning": "Treat people fairly. Also known as \\"The Golden Rule\\""
+        },
+        {
+            "id": "72",
+            "ipq": "Don't count your chickens before they hatch",
+            "category": "idiom",
+            "meaning": "Don't count on something good happening until it's happened."
+        },
+        {
+            "id": "73",
+            "ipq": "Don't cry over spilt milk",
+            "category": "idiom",
+            "meaning": "There's no reason to complain about something that can't be fixed"
+        },
+        {
+            "id": "74",
+            "ipq": "Don't give up your day job",
+            "category": "idiom",
+            "meaning": "You're not very good at this"
+        },
+        {
+            "id": "75",
+            "ipq": "Don't put all your eggs in one basket",
+            "category": "idiom",
+            "meaning": "What you're doing is too risky"
+        },
+        {
+            "id": "76",
+            "ipq": "Every cloud has a silver lining",
+            "category": "idiom",
+            "meaning": "Good things come after bad things"
+        },
+        {
+            "id": "77",
+            "ipq": "Get a taste of your own medicine",
+            "category": "idiom",
+            "meaning": "Get treated the way you've been treating others (negative)"
+        },
+        {
+            "id": "78",
+            "ipq": "Give someone the cold shoulder",
+            "category": "idiom",
+            "meaning": "Ignore someone"
+        },
+        {
+            "id": "79",
+            "ipq": "Go on a wild goose chase",
+            "category": "idiom",
+            "meaning": "To do something pointless"
+        },
+        {
+            "id": "80",
+            "ipq": "Good things come to those who wait",
+            "category": "idiom",
+            "meaning": "Be patient"
+        },
+        {
+            "id": "81",
+            "ipq": "He has bigger fish to fry",
+            "category": "idiom",
+            "meaning": "He has bigger things to take care of than what we are talking about now"
+        },
+        {
+            "id": "82",
+            "ipq": "He's a chip off the old block",
+            "category": "idiom",
+            "meaning": "The son is like the father"
+        },
+        {
+            "id": "83",
+            "ipq": "Hit the nail on the head",
+            "category": "idiom",
+            "meaning": "Get something exactly right"
+        },
+        {
+            "id": "84",
+            "ipq": "Ignorance is bliss",
+            "category": "idiom",
+            "meaning": "You're better off not knowing"
+        },
+        {
+            "id": "85",
+            "ipq": "It ain't over till the fat lady sings",
+            "category": "idiom",
+            "meaning": "This isn't over yet"
+        },
+        {
+            "id": "86",
+            "ipq": "It takes one to know one",
+            "category": "idiom",
+            "meaning": "You're just as bad as I am"
+        },
+        {
+            "id": "87",
+            "ipq": "It's a piece of cake",
+            "category": "idiom",
+            "meaning": "It's easy"
+        },
+        {
+            "id": "88",
+            "ipq": "It's raining cats and dogs",
+            "category": "idiom",
+            "meaning": "It's raining hard"
+        },
+        {
+            "id": "89",
+            "ipq": "Kill two birds with one stone",
+            "category": "idiom",
+            "meaning": "Get two things done with a single action"
+        },
+        {
+            "id": "90",
+            "ipq": "Let the cat out of the bag",
+            "category": "idiom",
+            "meaning": "Give away a secret"
+        },
+        {
+            "id": "91",
+            "ipq": "Live and learn",
+            "category": "idiom",
+            "meaning": "I made a mistake"
+        },
+        {
+            "id": "92",
+            "ipq": "Look before you leap",
+            "category": "idiom",
+            "meaning": "Take only calculated risks"
+        },
+        {
+            "id": "93",
+            "ipq": "On thin ice",
+            "category": "idiom",
+            "meaning": "On probation. If you make another mistake, there will be trouble."
+        },
+        {
+            "id": "94",
+            "ipq": "Once in a blue moon",
+            "category": "idiom",
+            "meaning": "Rarely"
+        },
+        {
+            "id": "95",
+            "ipq": "Play devil's advocate",
+            "category": "idiom",
+            "meaning": "To argue the opposite, just for the sake of argument"
+        },
+        {
+            "id": "96",
+            "ipq": "Put something on ice",
+            "category": "idiom",
+            "meaning": "Put a projet on hold"
+        },
+        {
+            "id": "97",
+            "ipq": "Rain on someone's parade",
+            "category": "idiom",
+            "meaning": "To spoil something"
+        },
+        {
+            "id": "98",
+            "ipq": "Saving for a rainy day",
+            "category": "idiom",
+            "meaning": "Saving money for later"
+        },
+        {
+            "id": "99",
+            "ipq": "Slow and steady wins the race",
+            "category": "idiom",
+            "meaning": "Reliability is more important than speed"
+        },
+        {
+            "id": "100",
+            "ipq": "Spill the beans",
+            "category": "idiom",
+            "meaning": "Give away a secret"
+        },
+        {
+            "id": "101",
+            "ipq": "Take a rain check",
+            "category": "idiom",
+            "meaning": "Postpone a plan"
+        },
+        {
+            "id": "102",
+            "ipq": "Take it with a grain of salt",
+            "category": "idiom",
+            "meaning": "Don’t take it too seriously"
+        },
+        {
+            "id": "103",
+            "ipq": "The ball is in your court",
+            "category": "idiom",
+            "meaning": "It's your decision"
+        },
+        {
+            "id": "104",
+            "ipq": "The best thing since sliced bread",
+            "category": "idiom",
+            "meaning": "A really good invention"
+        },
+        {
+            "id": "105",
+            "ipq": "The devil is in the details",
+            "category": "idiom",
+            "meaning": "It looks good from a distance, but when you look closer, there are problems"
+        },
+        {
+            "id": "106",
+            "ipq": "The early bird gets the worm",
+            "category": "idiom",
+            "meaning": "The first people who arrive will get the best stuff"
+        },
+        {
+            "id": "107",
+            "ipq": "The elephant in the room",
+            "category": "idiom",
+            "meaning": "The big issue, the problem people are avoiding"
+        },
+        {
+            "id": "108",
+            "ipq": "The whole nine yards",
+            "category": "idiom",
+            "meaning": "Everything, all the way."
+        },
+        {
+            "id": "109",
+            "ipq": "There are other fish in the sea",
+            "category": "idiom",
+            "meaning": "It's ok to miss this opportunity. Others will arise."
+        },
+        {
+            "id": "110",
+            "ipq": "There's a method to his madness",
+            "category": "idiom",
+            "meaning": "He seems crazy but actually he's clever"
+        },
+        {
+            "id": "111",
+            "ipq": "There's no such thing as a free lunch",
+            "category": "idiom",
+            "meaning": "Nothing is entirely free"
+        },
+        {
+            "id": "112",
+            "ipq": "Throw caution to the wind",
+            "category": "idiom",
+            "meaning": "Take a risk"
+        },
+        {
+            "id": "113",
+            "ipq": "You can't have your cake and eat it too",
+            "category": "idiom",
+            "meaning": "You can't have everything"
+        },
+        {
+            "id": "114",
+            "ipq": "You can't judge a book by its cover",
+            "category": "idiom",
+            "meaning": "This person or thing may look bad, but it's good inside"
+        },
+        {
+            "id": "115",
+            "ipq": "A little learning is a dangerous thing",
+            "category": "idiom",
+            "meaning": "People who don't understand something fully are dangerous"
+        },
+        {
+            "id": "116",
+            "ipq": "A snowball effect",
+            "category": "idiom",
+            "meaning": "Events have momentum and build upon each other"
+        },
+        {
+            "id": "117",
+            "ipq": "A snowball's chance in hell",
+            "category": "idiom",
+            "meaning": "No chance at all"
+        },
+        {
+            "id": "118",
+            "ipq": "A stitch in time saves nine",
+            "category": "idiom",
+            "meaning": "Fix the problem now because it will get worse later"
+        },
+        {
+            "id": "119",
+            "ipq": "A storm in a teacup",
+            "category": "idiom",
+            "meaning": "A big fuss about a small problem"
+        },
+        {
+            "id": "120",
+            "ipq": "An apple a day keeps the doctor away",
+            "category": "idiom",
+            "meaning": "Apples are good for you"
+        },
+        {
+            "id": "121",
+            "ipq": "An ounce of prevention is worth a pound of cure",
+            "category": "idiom",
+            "meaning": "You can prevent a problem with little effort. Fixing it later is harder."
+        },
+        {
+            "id": "122",
+            "ipq": "As right as rain",
+            "category": "idiom",
+            "meaning": "Perfect"
+        },
+        {
+            "id": "123",
+            "ipq": "Bolt from the blue",
+            "category": "idiom",
+            "meaning": "Something that happened without warning"
+        },
+        {
+            "id": "124",
+            "ipq": "Burn bridges",
+            "category": "idiom",
+            "meaning": "Destroy relationships"
+        },
+        {
+            "id": "125",
+            "ipq": "Calm before the storm",
+            "category": "idiom",
+            "meaning": "Something bad is coming, but right now it's calm"
+        },
+        {
+            "id": "126",
+            "ipq": "Come rain or shine",
+            "category": "idiom",
+            "meaning": "No matter what"
+        },
+        {
+            "id": "127",
+            "ipq": "Curiosity killed the cat",
+            "category": "idiom",
+            "meaning": "Stop asking questions"
+        },
+        {
+            "id": "128",
+            "ipq": "Cut the mustard",
+            "category": "idiom",
+            "meaning": "Do a good job"
+        },
+        {
+            "id": "129",
+            "ipq": "Don't beat a dead horse",
+            "category": "idiom",
+            "meaning": "Move on, this subject is over"
+        },
+        {
+            "id": "130",
+            "ipq": "Every dog has his day",
+            "category": "idiom",
+            "meaning": "Everyone gets a chance at least once"
+        },
+        {
+            "id": "131",
+            "ipq": "Familiarity breeds contempt",
+            "category": "idiom",
+            "meaning": "The better you know someone the less you like him"
+        },
+        {
+            "id": "132",
+            "ipq": "Fit as a fiddle",
+            "category": "idiom",
+            "meaning": "In good health"
+        },
+        {
+            "id": "133",
+            "ipq": "Fortune favours the bold",
+            "category": "idiom",
+            "meaning": "Take risks"
+        },
+        {
+            "id": "134",
+            "ipq": "Get a second wind",
+            "category": "idiom",
+            "meaning": "Have more energy after having been tired"
+        },
+        {
+            "id": "135",
+            "ipq": "Get wind of something",
+            "category": "idiom",
+            "meaning": "Hear news of something secret"
+        },
+        {
+            "id": "136",
+            "ipq": "Go down in flames",
+            "category": "idiom",
+            "meaning": "Fail spectacularly"
+        },
+        {
+            "id": "137",
+            "ipq": "Haste makes waste",
+            "category": "idiom",
+            "meaning": "You'll make mistakes if you rush through something"
+        },
+        {
+            "id": "138",
+            "ipq": "Have your head in the clouds",
+            "category": "idiom",
+            "meaning": "Not be concentrating"
+        },
+        {
+            "id": "139",
+            "ipq": "He who laughs last laughs loudest",
+            "category": "idiom",
+            "meaning": "I'll get you back for what you did"
+        },
+        {
+            "id": "140",
+            "ipq": "Hear something straight from the horse's mouth",
+            "category": "idiom",
+            "meaning": "Hear something from the person involved"
+        },
+        {
+            "id": "141",
+            "ipq": "He's not playing with a full deck",
+            "category": "idiom",
+            "meaning": "He's dumb"
+        },
+        {
+            "id": "142",
+            "ipq": "He's off his rocker",
+            "category": "idiom",
+            "meaning": "He's crazy"
+        },
+        {
+            "id": "143",
+            "ipq": "He's sitting on the fence",
+            "category": "idiom",
+            "meaning": "He can't make up his mind"
+        },
+        {
+            "id": "144",
+            "ipq": "It is a poor workman who blames his tools",
+            "category": "idiom",
+            "meaning": "If you can't do the job, don't blame it on others"
+        },
+        {
+            "id": "145",
+            "ipq": "It is always darkest before the dawn",
+            "category": "idiom",
+            "meaning": "Things are going to get better"
+        },
+        {
+            "id": "146",
+            "ipq": "It takes two to tango",
+            "category": "idiom",
+            "meaning": "One person alone isn't responsible. Both people are involved."
+        },
+        {
+            "id": "147",
+            "ipq": "Jump on the bandwagon",
+            "category": "idiom",
+            "meaning": "Follow a trend, do what everyone else is doing"
+        },
+        {
+            "id": "148",
+            "ipq": "Know which way the wind is blowing",
+            "category": "idiom",
+            "meaning": "Understand the situation (usually negative)"
+        },
+        {
+            "id": "149",
+            "ipq": "Leave no stone unturned",
+            "category": "idiom",
+            "meaning": "Look everywhere"
+        },
+        {
+            "id": "150",
+            "ipq": "Let sleeping dogs lie",
+            "category": "idiom",
+            "meaning": "Stop discussing an issue"
+        },
+        {
+            "id": "151",
+            "ipq": "Like riding a bicycle",
+            "category": "idiom",
+            "meaning": "Something you never forget how to do"
+        },
+        {
+            "id": "152",
+            "ipq": "Like two peas in a pod",
+            "category": "idiom",
+            "meaning": "They're always together"
+        },
+        {
+            "id": "153",
+            "ipq": "Make hay while the sun shines",
+            "category": "idiom",
+            "meaning": "Take advantage of a good situation"
+        },
+        {
+            "id": "154",
+            "ipq": "On cloud nine",
+            "category": "idiom",
+            "meaning": "Very happy"
+        },
+        {
+            "id": "155",
+            "ipq": "Once bitten, twice shy",
+            "category": "idiom",
+            "meaning": "You're more cautious when you've been hurt before"
+        },
+        {
+            "id": "156",
+            "ipq": "Out of the frying pan and into the fire",
+            "category": "idiom",
+            "meaning": "Things are going from bad to worse"
+        },
+        {
+            "id": "157",
+            "ipq": "Run like the wind",
+            "category": "idiom",
+            "meaning": "Run fast"
+        },
+        {
+            "id": "158",
+            "ipq": "Shape up or ship out",
+            "category": "idiom",
+            "meaning": "Work better or leave"
+        },
+        {
+            "id": "159",
+            "ipq": "Snowed under",
+            "category": "idiom",
+            "meaning": "Busy"
+        },
+        {
+            "id": "160",
+            "ipq": "That ship has sailed",
+            "category": "idiom",
+            "meaning": "It's too late"
+        },
+        {
+            "id": "161",
+            "ipq": "The pot calling the kettle black",
+            "category": "idiom",
+            "meaning": "Someone criticizing someone else he is just as bad"
+        },
+        {
+            "id": "162",
+            "ipq": "There are clouds on the horizon",
+            "category": "idiom",
+            "meaning": "Trouble is coming"
+        },
+        {
+            "id": "163",
+            "ipq": "Those who live in glass houses shouldn't throw stones",
+            "category": "idiom",
+            "meaning": "People who are morally questionable shouldn't criticize others"
+        },
+        {
+            "id": "164",
+            "ipq": "Through thick and thin",
+            "category": "idiom",
+            "meaning": "In good times and in bad times"
+        },
+        {
+            "id": "165",
+            "ipq": "Time is money",
+            "category": "idiom",
+            "meaning": "Work quickly"
+        },
+        {
+            "id": "166",
+            "ipq": "Waste not, want not",
+            "category": "idiom",
+            "meaning": "Don't waste things and you'll always have enough"
+        },
+        {
+            "id": "167",
+            "ipq": "We see eye to eye",
+            "category": "idiom",
+            "meaning": "We agree"
+        },
+        {
+            "id": "168",
+            "ipq": "Weather the storm",
+            "category": "idiom",
+            "meaning": "Go through something difficult"
+        },
+        {
+            "id": "169",
+            "ipq": "Well begun is half done",
+            "category": "idiom",
+            "meaning": "Getting a good start is important"
+        },
+        {
+            "id": "170",
+            "ipq": "When it rains it pours",
+            "category": "idiom",
+            "meaning": "Everything is going wrong at once"
+        },
+        {
+            "id": "171",
+            "ipq": "You can catch more flies with honey than you can with vinegar",
+            "category": "idiom",
+            "meaning": "You'll get what you want by being nice"
+        },
+        {
+            "id": "172",
+            "ipq": "You can lead a horse to water, but you can't make him drink",
+            "category": "idiom",
+            "meaning": "You can't force someone to make the right decision"
+        },
+        {
+            "id": "173",
+            "ipq": "You can't make an omelet without breaking some eggs",
+            "category": "idiom",
+            "meaning": "There's always a cost to doing something"
+        },
+        {
+            "id": "174",
+            "ipq": "A rose by any other name would smell as sweet.",
+            "category": "quote",
+            "meaning": "William Shakespeare"
+        },
+        {
+            "id": "175",
+            "ipq": "All that glitters is not gold.",
+            "category": "quote",
+            "meaning": "William Shakespeare"
+        },
+        {
+            "id": "176",
+            "ipq": "All the world's a stage, and all the men and women merely players.",
+            "category": "quote",
+            "meaning": "William Shakespeare"
+        },
+        {
+            "id": "177",
+            "ipq": "Ask not what your country can do for you; ask what you can do for your country.",
+            "category": "quote",
+            "meaning": "John Kennedy"
+        },
+        {
+            "id": "178",
+            "ipq": "Ask, and it shall be given you; seek, and you shall find.",
+            "category": "quote",
+            "meaning": "the Bible"
+        },
+        {
+            "id": "179",
+            "ipq": "Eighty percent of success is showing up.",
+            "category": "quote",
+            "meaning": "Woody Allen"
+        },
+        {
+            "id": "180",
+            "ipq": "Elementary, my dear Watson.",
+            "category": "quote",
+            "meaning": "Sherlock Holmes (character)"
+        },
+        {
+            "id": "181",
+            "ipq": "For those to whom much is given, much is required.",
+            "category": "quote",
+            "meaning": "the Bible"
+        },
+        {
+            "id": "182",
+            "ipq": "Frankly, my dear, I don't give a damn.",
+            "category": "quote",
+            "meaning": "Rhett Butler (character)"
+        },
+        {
+            "id": "183",
+            "ipq": "Genius is one percent inspiration and ninety-nine percent perspiration.",
+            "category": "quote",
+            "meaning": "Thomas Edison"
+        },
+        {
+            "id": "184",
+            "ipq": "Go ahead, make my day.",
+            "category": "quote",
+            "meaning": "Harry Callahan (character)"
+        },
+        {
+            "id": "185",
+            "ipq": "He travels the fastest who travels alone.",
+            "category": "quote",
+            "meaning": "Rudyard Kipling"
+        },
+        {
+            "id": "186",
+            "ipq": "Hell has no fury like a woman scorned.",
+            "category": "quote",
+            "meaning": "William Congreve"
+        },
+        {
+            "id": "187",
+            "ipq": "Hell is other people.",
+            "category": "quote",
+            "meaning": "Jean-Paul Sartre"
+        },
+        {
+            "id": "188",
+            "ipq": "Here's looking at you, kid.",
+            "category": "quote",
+            "meaning": "Rick Blaine (character)"
+        },
+        {
+            "id": "189",
+            "ipq": "Houston, we have a problem.",
+            "category": "quote",
+            "meaning": "Jim Lovell (character)"
+        },
+        {
+            "id": "190",
+            "ipq": "I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.",
+            "category": "quote",
+            "meaning": "Martin Luther King"
+        },
+        {
+            "id": "191",
+            "ipq": "I have always depended on the kindness of strangers.",
+            "category": "quote",
+            "meaning": "Blanche Dubois (character)"
+        },
+        {
+            "id": "192",
+            "ipq": "I love the smell of napalm in the morning.",
+            "category": "quote",
+            "meaning": "Lt. Kilgore (character)"
+        },
+        {
+            "id": "193",
+            "ipq": "I think therefore I am.",
+            "category": "quote",
+            "meaning": "Rene Descartes"
+        },
+        {
+            "id": "194",
+            "ipq": "If at first you don't succeed, try, try again.",
+            "category": "quote",
+            "meaning": "W. E. Hickson"
+        },
+        {
+            "id": "195",
+            "ipq": "If you are going through hell, keep going.",
+            "category": "quote",
+            "meaning": "Winston Churchill"
+        },
+        {
+            "id": "196",
+            "ipq": "If you build it, they will come.",
+            "category": "quote",
+            "meaning": "Joe Jackson (character)"
+        },
+        {
+            "id": "197",
+            "ipq": "If you want something done right, do it yourself.",
+            "category": "quote",
+            "meaning": "Charles-Guillaume Étienne"
+        },
+        {
+            "id": "198",
+            "ipq": "If you want something said, ask a man; if you want something done, ask a woman.",
+            "category": "quote",
+            "meaning": "Margaret Thatcher"
+        },
+        {
+            "id": "199",
+            "ipq": "I'll be back.",
+            "category": "quote",
+            "meaning": "Terminator (character)"
+        },
+        {
+            "id": "200",
+            "ipq": "I'm gonna make him an offer he can't refuse.",
+            "category": "quote",
+            "meaning": "Vito Corleone (character)"
+        },
+        {
+            "id": "201",
+            "ipq": "I've got a feeling we're not in Kansas anymore.",
+            "category": "quote",
+            "meaning": "Dorothy (character)"
+        },
+        {
+            "id": "202",
+            "ipq": "Keep your friends close, but your enemies closer.",
+            "category": "quote",
+            "meaning": "Michael Corleone (character)"
+        },
+        {
+            "id": "203",
+            "ipq": "Knowledge is power.",
+            "category": "quote",
+            "meaning": "Sir Francis Bacon"
+        },
+        {
+            "id": "204",
+            "ipq": "Life is like a box of chocolates. You never know what you're gonna get.",
+            "category": "quote",
+            "meaning": "Forrest Gump (character)"
+        },
+        {
+            "id": "205",
+            "ipq": "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+            "category": "quote",
+            "meaning": "Albert Einstein"
+        },
+        {
+            "id": "206",
+            "ipq": "May the Force be with you.",
+            "category": "quote",
+            "meaning": "Star Wars (many characters)"
+        },
+        {
+            "id": "207",
+            "ipq": "No one can make you feel inferior without your consent.",
+            "category": "quote",
+            "meaning": "Eleanor Roosevelt"
+        },
+        {
+            "id": "208",
+            "ipq": "Not all those who wander are lost.",
+            "category": "quote",
+            "meaning": "J. R. R. Tolkein"
+        },
+        {
+            "id": "209",
+            "ipq": "Nothing is certain except for death and taxes.",
+            "category": "quote",
+            "meaning": "Benjamin Franklin"
+        },
+        {
+            "id": "210",
+            "ipq": "Parting is such sweet sorrow",
+            "category": "quote",
+            "meaning": "William Shakespeare"
+        },
+        {
+            "id": "211",
+            "ipq": "Power corrupts; absolute power corrupts absolutely.",
+            "category": "quote",
+            "meaning": "John Dalberg-Acton"
+        },
+        {
+            "id": "212",
+            "ipq": "Speak softly and carry a big stick",
+            "category": "quote",
+            "meaning": "Theodore Roosevelt"
+        },
+        {
+            "id": "213",
+            "ipq": "That's one small step for a man, a giant leap for mankind.",
+            "category": "quote",
+            "meaning": "Neil Armstrong"
+        },
+        {
+            "id": "214",
+            "ipq": "The love of money is the root of all evil.",
+            "category": "quote",
+            "meaning": "the Bible"
+        },
+        {
+            "id": "215",
+            "ipq": "The only thing we have to fear is fear itself.",
+            "category": "quote",
+            "meaning": "Franklin D. Roosevelt"
+        },
+        {
+            "id": "216",
+            "ipq": "The truth will set you free.",
+            "category": "quote",
+            "meaning": "the Bible"
+        },
+        {
+            "id": "217",
+            "ipq": "There's no place like home.",
+            "category": "quote",
+            "meaning": "Dorothy (character)"
+        },
+        {
+            "id": "218",
+            "ipq": "Three can keep a secret, if two of them are dead.",
+            "category": "quote",
+            "meaning": "Benjamin Franklin"
+        },
+        {
+            "id": "219",
+            "ipq": "Tis better to have loved and lost than never to have loved at all.",
+            "category": "quote",
+            "meaning": "Alfred Lord Tennyson"
+        },
+        {
+            "id": "220",
+            "ipq": "To be or not to be, that is the question.",
+            "category": "quote",
+            "meaning": "William Shakespeare"
+        },
+        {
+            "id": "221",
+            "ipq": "To err is human; to forgive, divine.",
+            "category": "quote",
+            "meaning": "Alexander Pope"
+        },
+        {
+            "id": "222",
+            "ipq": "To thine own self, be true.",
+            "category": "quote",
+            "meaning": "William Shakespeare"
+        },
+        {
+            "id": "223",
+            "ipq": "Two roads diverged in a wood, and I, I took the one less travelled by, and that has made all the difference.",
+            "category": "quote",
+            "meaning": "Robert Frost"
+        },
+        {
+            "id": "224",
+            "ipq": "United we stand, divided we fall.",
+            "category": "quote",
+            "meaning": "Aesop"
+        },
+        {
+            "id": "225",
+            "ipq": "What doesn't kill us makes us stronger.",
+            "category": "quote",
+            "meaning": "Friedrich Nietzsche"
+        },
+        {
+            "id": "226",
+            "ipq": "What we've got here is failure to communicate. Some men you just can't reach.",
+            "category": "quote",
+            "meaning": "Captain (character)"
+        },
+        {
+            "id": "227",
+            "ipq": "Whatever you are, be a good one.",
+            "category": "quote",
+            "meaning": "Abraham Lincoln"
+        },
+        {
+            "id": "228",
+            "ipq": "You can fool all of the people some of the time, and some of the people all of the time, but you can't fool all of the people all of the time.",
+            "category": "quote",
+            "meaning": "Abraham Lincoln"
+        },
+        {
+            "id": "229",
+            "ipq": "You must be the change you wish to see in the world.",
+            "category": "quote",
+            "meaning": "Mahatma Ghandi"
+        },
+        {
+            "id": "230",
+            "ipq": "You talkin' to me?",
+            "category": "quote",
+            "meaning": "Bickle (character)"
+        },
+        {
+            "id": "231",
+            "ipq": "Bored to death",
+            "category": "phrase",
+            "meaning": " Very bored "
+        },
+        {
+            "id": "232",
+            "ipq": "You've got to be kidding",
+            "category": "phrase",
+            "meaning": " This is used when a true statement is ridiculous. "
+        },
+        {
+            "id": "233",
+            "ipq": "Sick and Tired",
+            "category": "phrase",
+            "meaning": " Used when you no longer enjoy something because you have done it too many times. "
+        },
+        {
+            "id": "234",
+            "ipq": "Call it a day",
+            "category": "phrase",
+            "meaning": " Used to express that the work day is over. "
+        },
+        {
+            "id": "235",
+            "ipq": "Get on one's nerves",
+            "category": "phrase",
+            "meaning": " Used when someone or something is bothering you. "
+        },
+        {
+            "id": "236",
+            "ipq": "Couch potato",
+            "category": "phrase",
+            "meaning": " Used when someone watches too much television. "
+        },
+        {
+            "id": "237",
+            "ipq": "Read one's mind",
+            "category": "phrase",
+            "meaning": " When someone says something that you were also thinking about. "
+        },
+        {
+            "id": "238",
+            "ipq": "Feel blue",
+            "category": "phrase",
+            "meaning": " Feel sad "
+        },
+        {
+            "id": "239",
+            "ipq": "Fender bender",
+            "category": "phrase",
+            "meaning": " A small car accident "
+        },
+        {
+            "id": "240",
+            "ipq": "Get foot in the door",
+            "category": "phrase",
+            "meaning": " Taking or passing the first step of a longer process; Generally used when referring to an entry level position that will eventually lead to better opportunities. "
+        },
+        {
+            "id": "241",
+            "ipq": "Chicken",
+            "category": "phrase",
+            "meaning": " Being afraid or scared "
+        },
+        {
+            "id": "242",
+            "ipq": "Give somebody a hard time",
+            "category": "phrase",
+            "meaning": " Make someone feel bad for making a mistake. "
+        },
+        {
+            "id": "243",
+            "ipq": "Make up one's mind",
+            "category": "phrase",
+            "meaning": " Make a decision "
+        },
+        {
+            "id": "244",
+            "ipq": "Go Dutch",
+            "category": "phrase",
+            "meaning": " Each person paying for themselves. For example, going Dutch on a date is indicating both guy and girl will pay for themselves instead of one buying for the other. "
+        },
+        {
+            "id": "245",
+            "ipq": "Throw in the towel",
+            "category": "phrase",
+            "meaning": " Give up; quit; surrender "
+        },
+        {
+            "id": "246",
+            "ipq": "Goose bumps",
+            "category": "phrase",
+            "meaning": " The literal tiny bumps you get all over your body when you are experiencing intense emotions. "
+        },
+        {
+            "id": "247",
+            "ipq": "Stay in touch",
+            "category": "phrase",
+            "meaning": " To stay connected "
+        },
+        {
+            "id": "248",
+            "ipq": "Have the guts",
+            "category": "phrase",
+            "meaning": " Brave; courage "
+        },
+        {
+            "id": "249",
+            "ipq": "Rain or Shine",
+            "category": "phrase",
+            "meaning": " Not allowing the weather to prevent you from doing something. "
+        },
+        {
+            "id": "250",
+            "ipq": "I'm beat",
+            "category": "phrase",
+            "meaning": " Very tired "
+        },
+        {
+            "id": "251",
+            "ipq": "Easier said than done",
+            "category": "phrase",
+            "meaning": " This is used when something is easy to say but very hard to do. "
+        },
+        {
+            "id": "252",
+            "ipq": "It's about time",
+            "category": "phrase",
+            "meaning": " When you want to express that you waited a long time. A synonym of this would be, \\"finally.\\" "
+        },
+        {
+            "id": "253",
+            "ipq": "Jump to conclusions",
+            "category": "phrase",
+            "meaning": " Making a conclusion without having all the details "
+        },
+        {
+            "id": "254",
+            "ipq": "Keep an eye on",
+            "category": "phrase",
+            "meaning": " To watch after; to supervise; to take care of "
+        },
+        {
+            "id": "255",
+            "ipq": "Out of the blue",
+            "category": "phrase",
+            "meaning": " Out of nowhere; spontaneously "
+        },
+        {
+            "id": "256",
+            "ipq": "Know something inside out",
+            "category": "phrase",
+            "meaning": " Have knowledge of every detail of something. "
+        },
+        {
+            "id": "257",
+            "ipq": "Give someone a hand",
+            "category": "phrase",
+            "meaning": " To help someone "
+        },
+        {
+            "id": "258",
+            "ipq": "Now and then",
+            "category": "phrase",
+            "meaning": " Once in a while "
+        },
+        {
+            "id": "259",
+            "ipq": "Nuke - Microwave",
+            "category": "phrase",
+            "meaning": " To cook something in the microwave oven. "
+        },
+        {
+            "id": "260",
+            "ipq": "On the dot",
+            "category": "phrase",
+            "meaning": " The exact time "
+        },
+        {
+            "id": "261",
+            "ipq": "Keeping my fingers crossed",
+            "category": "phrase",
+            "meaning": " Hoping for good luck "
+        },
+        {
+            "id": "262",
+            "ipq": "Out of this world",
+            "category": "phrase",
+            "meaning": " Amazing "
+        },
+        {
+            "id": "263",
+            "ipq": "Over one's head",
+            "category": "phrase",
+            "meaning": " When something is mentally too difficult to understand. "
+        },
+        {
+            "id": "264",
+            "ipq": "Pain in the ass",
+            "category": "phrase",
+            "meaning": " A source of trouble or annoyance; used to indicate that something bothers you very much. \\"Ass\\" can be seen as profanity, so another way of saying this would be \\"Pain in the butt\\" or \\"Pain in the neck.\\" "
+        },
+        {
+            "id": "265",
+            "ipq": "Piece of cake",
+            "category": "phrase",
+            "meaning": " Describes something that is easy to do. "
+        },
+        {
+            "id": "266",
+            "ipq": "Sooner or later",
+            "category": "phrase",
+            "meaning": " Eventually "
+        },
+        {
+            "id": "267",
+            "ipq": "Pull someone's leg",
+            "category": "phrase",
+            "meaning": " Making someone believe something that is not true. "
+        },
+        {
+            "id": "268",
+            "ipq": "Put oneself in one's place",
+            "category": "phrase",
+            "meaning": " To think from another point of view. "
+        },
+        {
+            "id": "269",
+            "ipq": "I can eat a horse",
+            "category": "phrase",
+            "meaning": " To express the desire to eat a lot of food. "
+        },
+        {
+            "id": "270",
+            "ipq": "Read between the lines",
+            "category": "phrase",
+            "meaning": " To understand the underlying meaning of something that is not completely clear. "
+        },
+        {
+            "id": "271",
+            "ipq": "Rings a bell",
+            "category": "phrase",
+            "meaning": " To remember something "
+        },
+        {
+            "id": "272",
+            "ipq": "Bug",
+            "category": "phrase",
+            "meaning": " To annoy "
+        },
+        {
+            "id": "273",
+            "ipq": "Sleep on it",
+            "category": "phrase",
+            "meaning": " To take time to think about something. "
+        },
+        {
+            "id": "274",
+            "ipq": "Play it by ear",
+            "category": "phrase",
+            "meaning": " To decide to do something as the situation develops; choosing to deal with a situation as more events unfold. "
+        },
+        {
+            "id": "275",
+            "ipq": "Speak of the devil",
+            "category": "phrase",
+            "meaning": " When someone appears just as you are talking about that person. "
+        },
+        {
+            "id": "276",
+            "ipq": "Grab a bite",
+            "category": "phrase",
+            "meaning": " To get something to eat "
+        },
+        {
+            "id": "277",
+            "ipq": "Take it easy",
+            "category": "phrase",
+            "meaning": " To relax; to stop working so hard; to calm down "
+        },
+        {
+            "id": "278",
+            "ipq": "Go with the flow",
+            "category": "phrase",
+            "meaning": " To do things as other people are doing it because it is easier to do; to not go against the common way of doing things "
+        },
+        {
+            "id": "279",
+            "ipq": "Twenty-four seven",
+            "category": "phrase",
+            "meaning": " Constantly; always available; every minute of the day and night "
+        },
+        {
+            "id": "280",
+            "ipq": "Under the weather",
+            "category": "phrase",
+            "meaning": " Feeling sick; not well "
+        },
+        {
+            "id": "281",
+            "ipq": "Don't sweat it",
+            "category": "phrase",
+            "meaning": " To tell someone not to worry "
+        },
+        {
+            "id": "282",
+            "ipq": "You can say that again",
+            "category": "phrase",
+            "meaning": " Completely agreeing with a statement "
+        },
+        {
+            "id": "283",
+            "ipq": "Broke",
+            "category": "phrase",
+            "meaning": " To have no money "
+        },
+        {
+            "id": "284",
+            "ipq": "Beats Me",
+            "category": "phrase",
+            "meaning": " To not know; to not understand "
+        },
+        {
+            "id": "285",
+            "ipq": "I Don't Buy it",
+            "category": "phrase",
+            "meaning": " Disagree; to not be convinced "
+        },
+        {
+            "id": "286",
+            "ipq": "Keep Your Cool",
+            "category": "phrase",
+            "meaning": " To act normal "
+        },
+        {
+            "id": "287",
+            "ipq": "Sort Of",
+            "category": "phrase",
+            "meaning": " A little; kind of "
+        },
+        {
+            "id": "288",
+            "ipq": "Good For You",
+            "category": "phrase",
+            "meaning": " Expressing that you are happy for a person "
+        },
+        {
+            "id": "289",
+            "ipq": "Good Luck",
+            "category": "phrase",
+            "meaning": " Wishing someone well. Also can mean that it is not possible. "
+        },
+        {
+            "id": "290",
+            "ipq": "Shotgun",
+            "category": "phrase",
+            "meaning": " To claim the front seat in a car. "
+        },
+        {
+            "id": "291",
+            "ipq": "Who Cares",
+            "category": "phrase",
+            "meaning": " To express something is not important to you. "
+        },
+        {
+            "id": "292",
+            "ipq": "Big Deal",
+            "category": "phrase",
+            "meaning": " Something really important. Often times used with \\"no\\" to express that the event is not as important as they think. "
+        },
+        {
+            "id": "293",
+            "ipq": "What a Small World",
+            "category": "phrase",
+            "meaning": " Used when a person knows someone you know by chance "
+        },
+        {
+            "id": "294",
+            "ipq": "What's going on?",
+            "category": "phrase",
+            "meaning": " To ask what is happening "
+        },
+        {
+            "id": "295",
+            "ipq": "Now You're Talking",
+            "category": "phrase",
+            "meaning": " Used to agree with someone "
+        },
+        {
+            "id": "296",
+            "ipq": "Over My Dead Body",
+            "category": "phrase",
+            "meaning": " Disallow absolutely "
+        },
+        {
+            "id": "297",
+            "ipq": "Coming Right Up",
+            "category": "phrase",
+            "meaning": " Used frequently by restaurant servers to tell customers the food is almost ready "
+        },
+        {
+            "id": "298",
+            "ipq": "Good Thinking",
+            "category": "phrase",
+            "meaning": " To tell someone they did a good job to avoid a problem "
+        },
+        {
+            "id": "299",
+            "ipq": "Shoot",
+            "category": "phrase",
+            "meaning": " A type of exclamation "
+        },
+        {
+            "id": "300",
+            "ipq": "Nothing Matters",
+            "category": "phrase",
+            "meaning": " To express nothing else is important "
+        },
+        {
+            "id": "301",
+            "ipq": "Come On",
+            "category": "phrase",
+            "meaning": " Urging someone; also used to try and speed things up "
+        },
+        {
+            "id": "302",
+            "ipq": "Never mind",
+            "category": "phrase",
+            "meaning": " To forget about it; to express you don't need an answer any longer "
+        },
+        {
+            "id": "303",
+            "ipq": "If You Insist",
+            "category": "phrase",
+            "meaning": " To agree after the other person demands it "
+        },
+        {
+            "id": "304",
+            "ipq": "Stop It!",
+            "category": "phrase",
+            "meaning": " To ask someone to stop what they are doing. "
+        },
+        {
+            "id": "305",
+            "ipq": "It's Nothing",
+            "category": "phrase",
+            "meaning": " To tell someone that the task you did was not a big deal. "
+        },
+        {
+            "id": "306",
+            "ipq": "What gives?",
+            "category": "phrase",
+            "meaning": " Used to ask what is the matter or what went wrong "
+        },
+        {
+            "id": "307",
+            "ipq": "Fair Enough",
+            "category": "phrase",
+            "meaning": " Used after two people agree on something "
+        },
+        {
+            "id": "308",
+            "ipq": "Cat Got Your Tongue",
+            "category": "phrase",
+            "meaning": " Used when someone has nothing to say "
+        },
+        {
+            "id": "309",
+            "ipq": "My Pleasure",
+            "category": "phrase",
+            "meaning": " Happy to do something for someone "
+        },
+        {
+            "id": "310",
+            "ipq": "It Totally Slipped My Mind",
+            "category": "phrase",
+            "meaning": " To forget something that you had to do "
+        },
+        {
+            "id": "311",
+            "ipq": "Give It to Me Straight",
+            "category": "phrase",
+            "meaning": " Used when you want to hear the truth "
+        },
+        {
+            "id": "312",
+            "ipq": "It's written all over your face",
+            "category": "phrase",
+            "meaning": " Used to tell someone that their face expression is giving a message "
+        },
+        {
+            "id": "313",
+            "ipq": "Go For It",
+            "category": "phrase",
+            "meaning": " To encourage someone to do something that they have planned "
+        },
+        {
+            "id": "314",
+            "ipq": "It's a Deal",
+            "category": "phrase",
+            "meaning": " Agreeing on a proposal "
+        },
+        {
+            "id": "315",
+            "ipq": "Don't Be a Stranger",
+            "category": "phrase",
+            "meaning": " Commonly used to tell someone to stay in touch "
+        },
+        {
+            "id": "316",
+            "ipq": "Let's Go Fifty- Fifty",
+            "category": "phrase",
+            "meaning": " Used when you are planning to pay half of something. "
+        },
+        {
+            "id": "317",
+            "ipq": "Good for Nothing",
+            "category": "phrase",
+            "meaning": " Negative statement to indicate someone has no value; useless "
+        },
+        {
+            "id": "318",
+            "ipq": "You're Telling Me",
+            "category": "phrase",
+            "meaning": " Agreeing with someone "
+        },
+        {
+            "id": "319",
+            "ipq": "Get a Life",
+            "category": "phrase",
+            "meaning": " A negative way of telling someone to stop bothering you; to tell someone to stop being a loser "
+        },
+        {
+            "id": "320",
+            "ipq": "Don't Joke With Me",
+            "category": "phrase",
+            "meaning": " Used when asking someone to be serious "
+        },
+        {
+            "id": "321",
+            "ipq": "I Can't Thank You Enough",
+            "category": "phrase",
+            "meaning": " To be very thankful "
+        },
+        {
+            "id": "322",
+            "ipq": "My Two Cents",
+            "category": "phrase",
+            "meaning": " To give or share your opinion "
+        },
+        {
+            "id": "323",
+            "ipq": "Just Name It",
+            "category": "phrase",
+            "meaning": " Used to express that you are offering to do or give anything the other person asks "
+        },
+        {
+            "id": "324",
+            "ipq": "No Worries",
+            "category": "phrase",
+            "meaning": " Used to tell the person not to worry about it; also used to say you're welcome "
+        },
+        {
+            "id": "325",
+            "ipq": "Why so Blue?",
+            "category": "phrase",
+            "meaning": " Asking someone why they are so sad. "
+        },
+        {
+            "id": "326",
+            "ipq": "Nature Calls",
+            "category": "phrase",
+            "meaning": " This is used when you have to go to the bathroom. Usually referred to pee (#1) and not poop (#2). "
+        },
+        {
+            "id": "327",
+            "ipq": "What's Eating You?",
+            "category": "phrase",
+            "meaning": " Used to ask someone what's bothering them "
+        },
+        {
+            "id": "328",
+            "ipq": "Shame on You",
+            "category": "phrase",
+            "meaning": " Used to tell someone that they did something wrong "
+        },
+        {
+            "id": "329",
+            "ipq": "Hang In There",
+            "category": "phrase",
+            "meaning": " Used to tell someone to not give up; to be persistent; to not lose hope "
+        },
+        {
+            "id": "330",
+            "ipq": "I Owe You",
+            "category": "phrase",
+            "meaning": " Similar to giving someone a debt coupon "
+        },
+        {
+            "id": "331",
+            "ipq": "Take a Hike",
+            "category": "phrase",
+            "meaning": " To tell someone to go away in a negative way "
+        },
+        {
+            "id": "332",
+            "ipq": "It's a Piece of Cake",
+            "category": "phrase",
+            "meaning": " Describes something that is easy to do. "
+        },
+        {
+            "id": "333",
+            "ipq": "I'm On My Way",
+            "category": "phrase",
+            "meaning": " Common way of telling someone that you are going to the person. "
+        },
+        {
+            "id": "334",
+            "ipq": "I'm Hosed",
+            "category": "phrase",
+            "meaning": " To be screwed; to be out of luck "
+        },
+        {
+            "id": "335",
+            "ipq": "It's a Long Story",
+            "category": "phrase",
+            "meaning": " Used when you don't want to talk about something, if it is difficult to talk about; or if it is hard to explain "
+        },
+        {
+            "id": "336",
+            "ipq": "Since When",
+            "category": "phrase",
+            "meaning": " Asking from when "
+        },
+        {
+            "id": "337",
+            "ipq": "Got It",
+            "category": "phrase",
+            "meaning": " Asking someone if they understand; telling someone you understand "
+        },
+        {
+            "id": "338",
+            "ipq": "You Wish",
+            "category": "phrase",
+            "meaning": " Used to tell someone that they will not get what they want. "
+        },
+        {
+            "id": "339",
+            "ipq": "You're Dressed to Kill",
+            "category": "phrase",
+            "meaning": " Being dressed in a way to make people notice you; dressed very nicely; dressed to attract sexual attention "
+        },
+        {
+            "id": "340",
+            "ipq": "Behave Yourself",
+            "category": "phrase",
+            "meaning": " To tell someone to stay out of trouble "
+        },
+        {
+            "id": "341",
+            "ipq": "That Figures",
+            "category": "phrase",
+            "meaning": " Another way of say, \\"that makes sense\\" or \\"I'm not surprised to hear that.\\" "
+        },
+        {
+            "id": "342",
+            "ipq": "Do Tell",
+            "category": "phrase",
+            "meaning": " A slang way of telling someone to tell you what they know. "
+        },
+        {
+            "id": "343",
+            "ipq": "No Sweat",
+            "category": "phrase",
+            "meaning": " Telling someone it is \\"no problem\\" "
+        },
+        {
+            "id": "344",
+            "ipq": "I Blew It",
+            "category": "phrase",
+            "meaning": " Used to tell someone that you made a big mistake "
+        },
+        {
+            "id": "345",
+            "ipq": "Maddening",
+            "category": "phrase",
+            "meaning": " Extremely annoying; to make you very mad "
+        },
+        {
+            "id": "346",
+            "ipq": "I Messed Up",
+            "category": "phrase",
+            "meaning": " Used to tell someone that you made a mistake "
+        },
+        {
+            "id": "347",
+            "ipq": "I Beg to Differ",
+            "category": "phrase",
+            "meaning": " A polite way of disagreeing "
+        },
+        {
+            "id": "348",
+            "ipq": "Rise and Shine",
+            "category": "phrase",
+            "meaning": " Phrase used to wake someone up nicely "
+        },
+        {
+            "id": "349",
+            "ipq": "You Bet",
+            "category": "phrase",
+            "meaning": " Telling someone yes in a definite way "
+        },
+        {
+            "id": "350",
+            "ipq": "Pie in the Sky",
+            "category": "phrase",
+            "meaning": " Pleasant to imagine but impossible to attain "
+        },
+        {
+            "id": "351",
+            "ipq": "No Strings Attached",
+            "category": "phrase",
+            "meaning": " Without any conditions "
+        },
+        {
+            "id": "352",
+            "ipq": "Sleep Tight",
+            "category": "phrase",
+            "meaning": " Get a good nights sleep "
+        },
+        {
+            "id": "353",
+            "ipq": "It Can't Hurt",
+            "category": "phrase",
+            "meaning": " Hoping nothing will go wrong to try or do something "
+        },
+        {
+            "id": "354",
+            "ipq": "I Couldn't Agree With You More",
+            "category": "phrase",
+            "meaning": " To completely agree with someone "
+        },
+        {
+            "id": "355",
+            "ipq": "Thank Goodness",
+            "category": "phrase",
+            "meaning": " Expression to indicate relief "
+        },
+        {
+            "id": "356",
+            "ipq": "You Made It",
+            "category": "phrase",
+            "meaning": " To succeed at something; to arrive "
+        },
+        {
+            "id": "357",
+            "ipq": "Whatever",
+            "category": "phrase",
+            "meaning": " An expression used to indicate you don't believe the other person "
+        },
+        {
+            "id": "358",
+            "ipq": "I'm Sick of It",
+            "category": "phrase",
+            "meaning": " To express that you are tired of something; to express you don't like something anymore "
+        },
+        {
+            "id": "359",
+            "ipq": "Get Out of Here",
+            "category": "phrase",
+            "meaning": " Common way to express disbelief "
+        },
+        {
+            "id": "360",
+            "ipq": "You Made It Big",
+            "category": "phrase",
+            "meaning": " Used when someone succeeded financially "
+        },
+        {
+            "id": "361",
+            "ipq": "In Your Dreams",
+            "category": "phrase",
+            "meaning": " Used to tell someone that they will not get what they want. "
+        },
+        {
+            "id": "362",
+            "ipq": "Hold On a Sec",
+            "category": "phrase",
+            "meaning": " To tell someone to wait; to slow down; an expression used before providing a different point of view or opinion "
+        },
+        {
+            "id": "363",
+            "ipq": "That's easier said than done",
+            "category": "phrase",
+            "meaning": " This is used when something is easy to say but very hard to do. "
+        },
+        {
+            "id": "364",
+            "ipq": "You Never Know",
+            "category": "phrase",
+            "meaning": " Expressing that the unlikely could happen "
+        },
+        {
+            "id": "365",
+            "ipq": "Back to the grind",
+            "category": "phrase",
+            "meaning": " Going back to work after a break "
+        },
+        {
+            "id": "366",
+            "ipq": "It Serves You Right",
+            "category": "phrase",
+            "meaning": " Expressing that justice happened because the person got what they deserved "
+        },
+        {
+            "id": "367",
+            "ipq": "I Can't Wait",
+            "category": "phrase",
+            "meaning": " Being excited about something "
+        },
+        {
+            "id": "368",
+            "ipq": "Lighten Up",
+            "category": "phrase",
+            "meaning": " Telling someone to not be depressed "
+        },
+        {
+            "id": "369",
+            "ipq": "Good Point",
+            "category": "phrase",
+            "meaning": " Used to tell someone that they had a good comment, thought, or suggestion "
+        },
+        {
+            "id": "370",
+            "ipq": "Just My Luck",
+            "category": "phrase",
+            "meaning": " Expression used when something bad happens to you "
+        },
+        {
+            "id": "371",
+            "ipq": "It's Up To You",
+            "category": "phrase",
+            "meaning": " Used to tell a person that they are the one to make a decision "
+        },
+        {
+            "id": "372",
+            "ipq": "Hop In",
+            "category": "phrase",
+            "meaning": " Used to tell someone to get in the car "
+        },
+        {
+            "id": "373",
+            "ipq": "I Told You So",
+            "category": "phrase",
+            "meaning": " This is used when you already told someone something and it came true "
+        },
+        {
+            "id": "374",
+            "ipq": "You Know Better Than That",
+            "category": "phrase",
+            "meaning": " Used when someone makes a mistake that they shouldn't have made "
+        },
+        {
+            "id": "375",
+            "ipq": "Has Been Burned",
+            "category": "phrase",
+            "meaning": " To get screwed; to get a bad deal; to be tricked "
+        },
+        {
+            "id": "376",
+            "ipq": "Keep Me in the Loop",
+            "category": "phrase",
+            "meaning": " To be informed about everything regarding that subject "
+        },
+        {
+            "id": "377",
+            "ipq": "I'll Be Down",
+            "category": "phrase",
+            "meaning": " To agree to participate in the plan "
+        },
+        {
+            "id": "378",
+            "ipq": "Get to the Point",
+            "category": "phrase",
+            "meaning": " Used when someone is not providing the piece of information that is the most important. "
+        },
+        {
+            "id": "379",
+            "ipq": "Down to Earth",
+            "category": "phrase",
+            "meaning": " Realistic; reasonable; sensible "
+        },
+        {
+            "id": "380",
+            "ipq": "Sure Thing",
+            "category": "phrase",
+            "meaning": " To express that you will do something "
         }
-        ]
-    }
+    ]
+}

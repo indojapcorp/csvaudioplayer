@@ -1,39 +1,78 @@
 let currentPage = 1;
 let recordsPerPage = 10;
-
+let columnNames = [] ;
 let db;
-config = {
-    locateFile: (filename, prefix) => {
-      console.log(`prefix is : ${prefix}`);
-      //return `../dist/${filename}`;
-      return "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.wasm";
-    }
-  }
-  // The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.
-  // We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.
-  initSqlJs(config).then(function (SQL) {
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'data/dictionary.db', true);
-    xhr.responseType = 'arraybuffer';
-    
-    xhr.onload = e => {
-      const uInt8Array = new Uint8Array(xhr.response);
-      db = new SQL.Database(uInt8Array);
-    };
-    xhr.send();
-
-  });
 
   document.addEventListener('DOMContentLoaded', function () {
 
-        const searchButton = document.getElementById('searchButton');
-        searchButton.addEventListener('click', searchDictionary);
+        //const searchButton = document.getElementById('searchButton');
+      //  searchButton.addEventListener('click', searchDictionary);
+
+      searchButton.addEventListener('click', () => {
+
+        const columnNameSelect = document.getElementById('columnNameSelect');
+        console.log("tableNameSelect.selectedIndex="+columnNameSelect.selectedIndex);
+        const searchInput = document.getElementById('searchWord').value.trim();
+        if(columnNameSelect.value != "" && searchInput != ""){
+            console.log(" where " + columnNameSelect.value.trim() + " LIKE " + searchInput);
+
+            searchDictionary(tableNameSelect.value,selectedColumnNames);
+        }
+    });
 
 });
 
 
-function addPaginationButtons(tableName,totalPages) {
+async function loadDatabase() {
+    config = {
+        locateFile: (filename, prefix) => {
+          console.log(`prefix is : ${prefix}`);
+          //return `../dist/${filename}`;
+          return "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.wasm";
+        }
+      }
+      // The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.
+      // We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.
+      initSqlJs(config).then(function (SQL) {
+    
+        var selectSQLiteDb = document.getElementById("selectSQLiteDb").value;
+      
+        const xhr = new XMLHttpRequest();
+        //xhr.open('GET', 'data/localonly/dictionary.db', true);
+        xhr.open('GET', selectSQLiteDb, true);
+        xhr.responseType = 'arraybuffer';
+        
+        xhr.onload = e => {
+          const uInt8Array = new Uint8Array(xhr.response);
+          db = new SQL.Database(uInt8Array);
+        };
+        xhr.send();
+    
+      });
+    
+      var table = document.getElementById("myTable");
+      table.innerHTML = "";
+      var paginationContainer = document.getElementById("paginationContainer");
+      paginationContainer.innerHTML = "";
+      loadTableNames();
+  }
+
+
+function getWhereClause(){
+    const columnNameSelect = document.getElementById('columnNameSelect');
+    console.log("tableNameSelect.selectedIndex="+columnNameSelect.selectedIndex);
+    const searchInput = document.getElementById('searchWord').value.trim();
+    if(columnNameSelect.value != "" && searchInput != ""){
+        console.log(" where " + columnNameSelect.value.trim() + " LIKE " + searchInput);
+        return " WHERE " + columnNameSelect.value.trim() + " LIKE " + searchInput +" ";
+        searchDictionary(tableNameSelect.value,selectedColumnNames);
+    }else{
+        return "";
+    }
+}
+
+function addPaginationButtons(tableName,totalPages,columnNames) {
     //const totalPages = Math.ceil(totalRecords / recordsPerPage);
     const paginationContainer = document.getElementById('paginationContainer');
     paginationContainer.innerHTML = '';
@@ -43,7 +82,7 @@ function addPaginationButtons(tableName,totalPages) {
     prevButton.addEventListener('click', () => {
         if (currentPage > 1) {
             currentPage--;
-            searchDictionary();
+            searchDictionary(tableName,columnNames);
         }
     });
     paginationContainer.appendChild(prevButton);
@@ -54,7 +93,7 @@ function addPaginationButtons(tableName,totalPages) {
         pageButton.textContent = i;
         pageButton.addEventListener('click', () => {
             currentPage = i;
-            searchDictionary(tableName);
+            searchDictionary(tableName,columnNames);
         });
         paginationContainer.appendChild(pageButton);
     }
@@ -64,7 +103,7 @@ function addPaginationButtons(tableName,totalPages) {
     nextButton.addEventListener('click', () => {
         if (currentPage < totalPages) {
             currentPage++;
-            searchDictionary(tableName);
+            searchDictionary(tableName,columnNames);
         }
     });
     paginationContainer.appendChild(nextButton);
@@ -76,14 +115,29 @@ function getColumnNames(tableName) {
 
     if (results && results.length > 0) {
         const columnNames = results[0].values.map(row => row[1]);
+
+        const columnNameSelect = document.getElementById('columnNameSelect');
+        columnNameSelect.innerHTML = '';
+        const option = document.createElement('option');
+        option.textContent = "select";
+    
+        for (let i = 0; i < columnNames.length; i++) {
+            const columnName = columnNames[i];
+            const option = document.createElement('option');
+            option.textContent = columnName;
+            columnNameSelect.appendChild(option);
+        }
+
+
         return columnNames;
     }
+
 
     return [];
 }
 
-function getSQLStringNew(tableName){
-    const columnNames = getColumnNames(tableName);
+function getSQLStringNew(tableName,columnNames){
+    //const columnNames = getColumnNames(tableName);
 
     let fromLimitClause = ' FROM (select ';
     // Generate the SQL query string
@@ -97,15 +151,20 @@ function getSQLStringNew(tableName){
     for (let i = 0; i < columnNames.length; i++) {
         const columnName = columnNames[i];
         const formattedfromLimitClause = columnName + ",";
+        // const formattedColumnName = `
+        //                   '"${columnName}":"'|| REPLACE(REPLACE(REPLACE(IFNULL(${columnName}, '-'), '"', '\\\\"'),CHAR(10),'==NEW-LINE=='),CHAR(9),'==TABS==')|| '",'||`;
         const formattedColumnName = `
-                          '"${columnName}":"'|| REPLACE(REPLACE(IFNULL(${columnName}, '-'), '"', '\\\\"'),'\\n','###')|| '",'||`;
+                          '"${columnName}":"'|| REPLACE(REPLACE(REPLACE(IFNULL(${columnName}, '-'), '"', ''),CHAR(10),'==NEW-LINE=='),CHAR(9),'==TABS==')|| '",'||`;
         sqlQuery += formattedColumnName;
         fromLimitClause += formattedfromLimitClause;
     }
     fromLimitClause = fromLimitClause.slice(0, -1);
 
+    var whereClause = getWhereClause();
+
     //fromLimitClause += ` from ${tableName} WHERE word LIKE ? ORDER BY id LIMIT ?, ?) as subquery`;
-    fromLimitClause += ` from ${tableName} ORDER BY id LIMIT ?, ?) as subquery`;
+    //fromLimitClause += ` from ${tableName} ORDER BY id LIMIT ?, ?) as subquery`;
+    fromLimitClause += ` from ${tableName} ${whereClause} ORDER BY id LIMIT ?, ?) as subquery`;
     // Remove the trailing comma from the last column name
     sqlQuery = sqlQuery.slice(0, -6);
 
@@ -136,12 +195,13 @@ function countRecords(tableName) {
     return 0;
 }
 
-function searchDictionary(tableName) {
-    const searchInput = document.getElementById('searchWord').value.trim();
+function searchDictionary(tableName,colnameheaders) {
+    //const searchInput = document.getElementById('searchWord').value.trim();
     const totalRecords = countRecords(tableName);
     recordsPerPage = parseInt(document.getElementById('recordsPerPageInput').value, 10);
 
     console.log("totalRecords="+totalRecords);
+    console.log("colnameheaders="+colnameheaders);
     const totalPages = Math.ceil(totalRecords / recordsPerPage);
 
     console.log("totalPages="+totalPages);
@@ -156,8 +216,11 @@ function searchDictionary(tableName) {
     }
 
     //var newSQL=getSQLStringNew("DictTable");
-    var newSQL=getSQLStringNew(tableName);
-    console.log(newSQL);
+    //var newSQL=getSQLStringNew(tableName);
+
+    
+    var newSQL=getSQLStringNew(tableName,colnameheaders);
+    //console.log(newSQL);
 
     const startIndex = (currentPage - 1) * recordsPerPage;
     var sqlQuery = 'SELECT * FROM DictTable WHERE word LIKE ? ORDER BY id LIMIT ?, ?';
@@ -176,19 +239,21 @@ function searchDictionary(tableName) {
         FROM DictTable ORDER BY id LIMIT ?, ?
             `;
     
-            console.log("searchInput="+searchInput);
+            //console.log("searchInput="+searchInput);
             console.log("startIndex="+startIndex);
             console.log("recordsPerPage="+recordsPerPage);
             const results = db.exec(newSQL, [ startIndex, recordsPerPage]);
 
     if (results && results.length > 0) {
         const data = results[0].values;
-        addPaginationButtons(tableName,totalPages);
+        addPaginationButtons(tableName,totalPages,colnameheaders);
+        //populateSQLLiteData(data[0][0]);
         readJSONFromSQLite(data[0][0],currentPage);
     }
 }
 
 function loadTableNames() {
+    
     console.log("loadTableNames");
     const tableNames = db.exec("SELECT name FROM sqlite_master WHERE type='table'");
     const tableNameSelect = document.getElementById('tableNameSelect');
@@ -209,7 +274,8 @@ function loadTableNames() {
         // Add event listener to call searchDictionary when an option is selected
         tableNameSelect.addEventListener('change', () => {
             const selectedOption = tableNameSelect.value;
-            searchDictionary(selectedOption);
+            showFileColPopup(getColumnNames(selectedOption));
+            //searchDictionary(selectedOption);
         });
     }
 }
