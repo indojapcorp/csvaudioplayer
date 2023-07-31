@@ -215,11 +215,7 @@ function searchDictionary(tableName,colnameheaders) {
     const totalRecords = countRecords(tableName);
     recordsPerPage = parseInt(document.getElementById('recordsPerPageInput').value, 10);
 
-    console.log("totalRecords="+totalRecords);
-    console.log("colnameheaders="+colnameheaders);
     const totalPages = Math.ceil(totalRecords / recordsPerPage);
-
-    console.log("totalPages="+totalPages);
 
     if (totalPages === 0) {
         //clearTable();
@@ -255,8 +251,6 @@ function searchDictionary(tableName,colnameheaders) {
             `;
     
             //console.log("searchInput="+searchInput);
-            console.log("startIndex="+startIndex);
-            console.log("recordsPerPage="+recordsPerPage);
             const results = db.exec(newSQL, [ startIndex, recordsPerPage]);
 
     if (results && results.length > 0) {
@@ -271,7 +265,7 @@ function searchDictionary(tableName,colnameheaders) {
 
 function loadTableNames() {
     
-    console.log("loadTableNames");
+    //console.log("loadTableNames");
     const tableNames = db.exec("SELECT name FROM sqlite_master WHERE type='table'");
     const tableNameSelect = document.getElementById('tableNameSelect');
     tableNameSelect.innerHTML = '';
