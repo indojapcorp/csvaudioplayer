@@ -175,6 +175,7 @@ function updateCounter() {
     }
   });
   console.log(counter);
+  document.getElementById('recordCount').textContent = checkboxes.length;
   document.getElementById('counterId').textContent = counter;
 }
 
@@ -749,9 +750,15 @@ function speakThis() {
     }
   }
   cellsTotalSpeakTime = getTotalSpeakTime();
+  prevRowNumber = -1;
+
   if (speakcells.length > 0)
     speakAndHighlight();
 }
+
+let prevRowNumber = -1;
+let prevRow;
+
 function speakAndHighlight() {
 
   if (currentCellIndex >= speakcells.length || stopped) {
@@ -771,6 +778,29 @@ function speakAndHighlight() {
   stopBtn.disabled = false;
 
   var currentCell = speakcells[currentCellIndex];
+
+  var uncheckrowonplayinput = document.getElementById('uncheckrowonplayinput');
+
+  if(uncheckrowonplayinput.checked){
+  var rowNumber = currentCell.parentNode.rowIndex;
+  console.log(" row:", rowNumber);
+
+  // Check if the current row number is different from the previous row number
+  if (rowNumber !== prevRowNumber && rowNumber !==4) {
+    
+    //var checkBox = currentCell.parentNode.cells[0].getElementsByTagName("input")[0];
+    var checkBox = prevRow.cells[0].getElementsByTagName("input")[0];
+    if (checkBox != undefined && checkBox.checked) {
+      checkBox.checked = false;
+    }
+    console.log("New row:", rowNumber);
+    prevRowNumber = rowNumber;
+    prevRow = currentCell.parentNode;
+  }else{
+    prevRowNumber = rowNumber;
+    prevRow = currentCell.parentNode;
+  }
+  }
 
   currentCellSpeakTime = currentCellSpeakTime + getApproximateSpeakTime(currentCell.innerText);
 
@@ -867,8 +897,24 @@ function speakAndHighlight() {
   var scrollX = cellCenterX - window.innerWidth / 2;
   var scrollY = cellCenterY - window.innerHeight / 2;
 
+  const centerX = window.innerWidth / 2;
+const centerY = window.innerHeight / 2;
+
+// window.scrollTo({
+//   top: centerY,
+//   left: centerX,
+//   behavior: 'smooth' // Add 'smooth' for smooth scrolling; omit for instant scrolling
+// });
+
+
+//   window.scrollTo({
+//     top: scrollY,
+//     left: scrollX,
+//     behavior: 'smooth'
+//   });
+
   window.scrollTo({
-    top: scrollY,
+    top: scrollY+240,
     left: scrollX,
     behavior: 'smooth'
   });
@@ -1803,20 +1849,9 @@ function populateTableNew(isSQLite) {
 
   var checkboxes = document.getElementsByName("column");
   var categorycolumncheckboxes = document.getElementsByName("categorycolumn");
-  //var selectedColumns = [];
   selectedColumns = [];
   var isCategorySelectedForColumns = [];
   tableHeaders = [];
-  // csvData = [];
-
-  // for (var i = 1; i < lines.length; i++) {
-  //   if (lines[i].length == 0)
-  //     continue;
-
-  //   var row = lines[i].split(",");
-  //   csvData.push(row);
-  // }
-
 
   // Get the selected checkboxes
   checkboxes.forEach(function (checkbox, i) {
@@ -1832,10 +1867,6 @@ function populateTableNew(isSQLite) {
   table.innerHTML = "";
 
   var thead = document.createElement("thead");
-  //var thead = document.getElementsByTagName("thead")[0];
-  //start
-  //var trcolcheck = table.insertRow();
-
 
   //Buttons row start
   var trcolbuttons = document.createElement("tr");
@@ -1866,6 +1897,32 @@ function populateTableNew(isSQLite) {
   stopBtn.id = "stopBtn";
   stopBtn.setAttribute('onclick', 'stop()');
   thcolbuttons.appendChild(stopBtn);
+
+  var addRowBtn = document.createElement('button');
+  addRowBtn.innerHTML = "&#10133;Row";
+  addRowBtn.setAttribute('onclick', 'addNewRow()');
+  thcolbuttons.appendChild(addRowBtn);
+
+  var addColumnBtn = document.createElement('button');
+  addColumnBtn.innerHTML = "&#10133;Column";
+  addColumnBtn.setAttribute('onclick', 'addNewColumn()');
+  thcolbuttons.appendChild(addColumnBtn);
+
+  var uncheckrowonplayinput = document.createElement('input');
+  uncheckrowonplayinput.type = "checkbox";
+  uncheckrowonplayinput.id = "uncheckrowonplayinput";
+  uncheckrowonplayinput.checked = false;
+  uncheckrowonplayinput.title = "Uncheck Row on play";
+
+  var uncheckrowonplayinputlabel = document.createElement('label');
+
+// Append the checkbox and label to the label element
+uncheckrowonplayinputlabel.appendChild(uncheckrowonplayinput);
+uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on play"));
+
+
+  thcolbuttons.appendChild(uncheckrowonplayinputlabel);
+
 
   var playingCellSpan = document.createElement('span');
   playingCellSpan.innerText = "";
@@ -1980,32 +2037,15 @@ function populateTableNew(isSQLite) {
     headerRow.appendChild(headerCell);
   });
 
-  // const tdheaderplaycnt = document.createElement("th");
-  // tdheaderplaycnt.textContent = 'PlayCnt'
-  // headerRow.appendChild(tdheaderplaycnt);
   headerRow.appendChild(document.createElement("th"));
 
   thead.appendChild(headerRow);
   table.appendChild(thead);
   initButton();
 
-  // csvData = [];
-
-  // for (var i = 1; i < lines.length; i++) {
-  //   if(lines[i].length==0)
-  //     continue;
-
-  //   var row = lines[i].split(",");
-
-  //   if(row.length==1)
-  //     console.log("blank row==="+row);
-  //     csvData.push(row);  
-  // }
 
   if (isSQLite) {
     console.log("Call sqlite with selected cols" + tableHeaders);
-    //searchDictionary(tableNameSelect.value);
-    //return;
   }
 
 
@@ -2027,29 +2067,11 @@ function populateTableNew(isSQLite) {
     td.appendChild(input);
     tr.appendChild(td);
 
-    /*
-        selectedColumns.forEach(function (column, i) {
-          var cell = document.createElement("td");
-          var rowcoldata=row[headers.indexOf(column)];
-    
-          cell.textContent = rowcoldata;
-          if (isNumeric(rowcoldata)) {
-            var filterInput = document.getElementById("input_" + i);
-            filterInput.setAttribute('class', 'search-input-small');
-            cell.classList.add('numeric-column');
-          }
-          tr.appendChild(cell);
-        });
-    */
 
     selectedColumns.forEach(function (column, i) {
       var cell = document.createElement("td");
       var cellDiv = document.createElement("div");
       cellDiv.setAttribute('contenteditable', 'true');
-
-      // console.log("row="+row);
-      // console.log("headers.indexOf(column)="+headers.indexOf(column));
-
 
       // Remove enclosing double quotes if present
       let cellText = row[headers.indexOf(column)].trim().replaceAll('==TABS==', '\t').replaceAll('==NEW-LINE==', '\n');
@@ -2061,16 +2083,6 @@ function populateTableNew(isSQLite) {
       const lines = cellText.split('\\n');
       cellDiv.innerHTML = lines.join('<br>');
 
-
-      // var rowcoldata=row[headers.indexOf(column)];
-
-      // cellDiv.textContent = rowcoldata;
-
-      // if (isNumeric(rowcoldata)) {
-      //   var filterInput = document.getElementById("input_" + i);
-      //   filterInput.setAttribute('class', 'search-input-small');
-      //   cell.classList.add('numeric-column');
-      // }
       cell.appendChild(cellDiv);
       tr.appendChild(cell);
     });
@@ -2102,7 +2114,6 @@ function populateTableNew(isSQLite) {
 
   downloadCsvBtn.disabled = false;
   hideFileColPopup();
-  //getVoices();
   createColumnCheckboxes();
 
 }
@@ -2117,9 +2128,6 @@ function showDropdown(inputField, column) {
   csvData.forEach(function (row) {
     uniqueCategories.add(row[headers.indexOf(column)]);
   });
-  // uniqueCategories.forEach(function(category) {
-  //   console.log("category===="+category);
-  // });
 
   const dropdown = inputField.parentElement.querySelector('.category-dropdown');
   dropdown.innerHTML = '';
