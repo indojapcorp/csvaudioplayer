@@ -19,24 +19,24 @@
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=jebKs0z3"></script>
     -->
     <script>
-    // Check if the page is loaded from macOS
-    var isMacOS = /Macintosh|Mac OS X/i.test(navigator.userAgent);
+        // Check if the page is loaded from macOS
+        var isMacOS = /Macintosh|Mac OS X/i.test(navigator.userAgent);
 
-    // Function to load the script from a specific URL
-    function loadScript(url) {
-      var script = document.createElement('script');
-      script.src = url;
-      script.onload = function() {
-        console.log('Script loaded');
-        // Perform additional actions after the script is loaded
-      };
-      document.head.appendChild(script);
-    }
-    //isMacOS = false;
-    // Conditionally load the script if isMacOS is true
-    if (!isMacOS) {
-      loadScript('https://code.responsivevoice.org/responsivevoice.js?key=jebKs0z3');
-    }
+        // Function to load the script from a specific URL
+        function loadScript(url) {
+            var script = document.createElement('script');
+            script.src = url;
+            script.onload = function () {
+                console.log('Script loaded');
+                // Perform additional actions after the script is loaded
+            };
+            document.head.appendChild(script);
+        }
+        //isMacOS = false;
+        // Conditionally load the script if isMacOS is true
+        if (!isMacOS) {
+            loadScript('https://code.responsivevoice.org/responsivevoice.js?key=jebKs0z3');
+        }
     </script>
 </head>
 
@@ -65,118 +65,123 @@
                 document.removeEventListener('mouseup', stopResize);
             }
 
-            
-
-             const selectElement = document.getElementById('studyLists');
-
-        //     // Fetch the file names from the "/data/" folder
-        //     fetch('/csvaudioplayer/data/')
-        //         .then(response => response.text())
-        //         .then(data => {
-        //             // Create a new DOMParser
-        //             const parser = new DOMParser();
-
-        //             // Parse the HTML response
-        //             const doc = parser.parseFromString(data, 'text/html');
-
-        //             // Get the anchor elements representing the file names
-        //             //const anchorElements = doc.querySelectorAll('a');
-        //             const anchorElements = doc.querySelectorAll('a[href$=".csv"]');
-
-        //             // Extract the file names from the anchor elements
-        //             // const fileNames = Array.from(anchorElements).map(anchor => anchor.textContent);
-        //             // const filePaths = Array.from(anchorElements).map(anchor => anchor.href);
-
-        //             const optionSel = document.createElement('option');
-        //             optionSel.text = "Select File";
-
-        //             // Set the option value as the relative path of the file
-        //             optionSel.value = '';
-
-        //             selectElement.appendChild(optionSel);
 
 
-        //             anchorElements.forEach(anchor => {
+            const selectElement = document.getElementById('studyLists');
 
-        //                 const fileName = anchor.getAttribute('href');
+            //     // Fetch the file names from the "/data/" folder
+            //     fetch('/csvaudioplayer/data/')
+            //         .then(response => response.text())
+            //         .then(data => {
+            //             // Create a new DOMParser
+            //             const parser = new DOMParser();
 
-        //                 if (fileName.endsWith('.csv')) {
+            //             // Parse the HTML response
+            //             const doc = parser.parseFromString(data, 'text/html');
 
-        //                     const option = document.createElement('option');
-        //                     option.text = anchor.textContent;
+            //             // Get the anchor elements representing the file names
+            //             //const anchorElements = doc.querySelectorAll('a');
+            //             const anchorElements = doc.querySelectorAll('a[href$=".csv"]');
 
-        //                     // Set the option value as the relative path of the file
-        //                     option.value = '/data/' + fileName;
+            //             // Extract the file names from the anchor elements
+            //             // const fileNames = Array.from(anchorElements).map(anchor => anchor.textContent);
+            //             // const filePaths = Array.from(anchorElements).map(anchor => anchor.href);
 
-        //                     selectElement.appendChild(option);
-        //                 }
-        //             });
+            //             const optionSel = document.createElement('option');
+            //             optionSel.text = "Select File";
+
+            //             // Set the option value as the relative path of the file
+            //             optionSel.value = '';
+
+            //             selectElement.appendChild(optionSel);
 
 
-        //         })
-        //         .catch(error => {
-        //             console.error('Error fetching file names:', error);
-        //         });
+            //             anchorElements.forEach(anchor => {
 
-         });
+            //                 const fileName = anchor.getAttribute('href');
+
+            //                 if (fileName.endsWith('.csv')) {
+
+            //                     const option = document.createElement('option');
+            //                     option.text = anchor.textContent;
+
+            //                     // Set the option value as the relative path of the file
+            //                     option.value = '/data/' + fileName;
+
+            //                     selectElement.appendChild(option);
+            //                 }
+            //             });
+
+
+            //         })
+            //         .catch(error => {
+            //             console.error('Error fetching file names:', error);
+            //         });
+
+        });
     </script>
 
-<h2>Select a data source:</h2>
-<select id="selectDataSource" onchange="showDiv()">
-    <option value="0">Select an option</option>
-    <option value="1">Study Lists</option>
-    <option value="2">Local CSV/JSON File</option>
-    <option value="3">CSV/JSON File URL</option>
-    <option value="4">Database Tables</option>
-</select>
-
-
-<div id="div1" style="display: none;">
-    <h3>Select Study List</h3>
-    <select id="studyLists">
-        <option value="">Select File</option>
+    <h2>Select a data source:</h2>
+    <select id="selectDataSource" onchange="showDiv()">
+        <option value="0">Select an option</option>
+        <option value="1">Study Lists</option>
+        <option value="2">Local CSV/JSON File</option>
+        <option value="3">CSV/JSON File URL</option>
+        <option value="4">Database Tables</option>
     </select>
-</div>
-<div id="div2" style="display: none;">
-    <h3>Select Local CSV/JSON File</h3>
-    <input type="file" id="csvFileInput" accept=".csv,.json">
-</div>
-<div id="div3" style="display: none;">
-    <h3>CSV/JSON File URL</h3>
-    <label for="urlInput">URL:</label>
-    <input type="text" id="urlInput" placeholder="Enter URL" />
 
-    <button type="button" id="csvURLInputBtn">Fetch Data</button>
-</div>
-<div id="div4" style="display: none;">
-    <h3>Database Tables</h3>
-    <div>
-        <select id="selectSQLiteDb" onchange="loadDatabase()">
-            <option value="0">Select DB</option>
-            <option value="data/sqlite/dictionary_ja.db">Japanese</option>
-            <option value="data/sqlite/dictionary_sakura_ex.db">Japanese Sakura Ex</option>
-            <option value="data/sqlite/dictionary_en.db">English</option>
-            <option value="data/sqlite/dictionary_sent_han.db">Jap Chi Sent</option>            
-            <option value="data/sqlite/dictionary_sent_fr.db">French Sent</option>
-            <option value="data/sqlite/dictionary_sent_de.db">German Sent</option>
-            <option value="data/sqlite/dictionary_tech.db">Tech</option>
-            <option value="data/sqlite/dictionary_other.db">Other</option>
+
+    <div id="div1" style="display: none;">
+        <h3>Select Study List</h3>
+        <select id="studyLists">
+            <option value="">Select File</option>
         </select>
-
-        <button id="loadTablesButton" onclick="loadTableNames()">SQLite Tables</button>     
-        Records Per Page
-        <input type="text" id="recordsPerPageInput" placeholder="Records Per Page" size="6" maxlength="6" value="100">
-        Tables<select id="tableNameSelect"></select>
-        Columns<select id="columnNameSelect"></select>
-        <input type="text" id="searchWord" placeholder="Enter word">
-        <button id="searchButton">Search</button>     
     </div>
-</div>
+    <div id="div2" style="display: none;">
+        <h3>Select Local CSV/JSON File</h3>
+        <input type="file" id="csvFileInput" accept=".csv,.json">
+    </div>
+    <div id="div3" style="display: none;">
+        <h3>CSV/JSON File URL</h3>
+        <label for="urlInput">URL:</label>
+        <input type="text" id="urlInput" placeholder="Enter URL" />
 
-<div id="divOps" style="display: none;">
+        <button type="button" id="csvURLInputBtn">Fetch Data</button>
+    </div>
+    <div id="div4" style="display: none;">
+        <h3>Database Tables</h3>
+        <div>
+            <select id="selectSQLiteDb" onchange="loadDatabase()">
+                <option value="0">Select DB</option>
+                <option value="data/sqlite/dictionary_ja.db">Japanese</option>
+                <option value="data/sqlite/dictionary_sakura_ex.db">Japanese Sakura Ex</option>
+                <option value="data/sqlite/dictionary_en.db">English</option>
+                <option value="data/sqlite/dictionary_sent_han.db">Jap Chi Sent</option>
+                <option value="data/sqlite/dictionary_sent_fr.db">French Sent</option>
+                <option value="data/sqlite/dictionary_sent_de.db">German Sent</option>
+                <option value="data/sqlite/dictionary_tech.db">Tech</option>
+                <option value="data/sqlite/dictionary_other.db">Other</option>
+            </select>
 
-    <div>
-        <!--
+            <button id="loadTablesButton" onclick="loadTableNames()">SQLite Tables</button>
+            Records Per Page
+            <input type="text" id="recordsPerPageInput" placeholder="Records Per Page" size="6" maxlength="6"
+                value="100">
+            Tables<select id="tableNameSelect"></select>
+            Columns<select id="columnNameSelect"></select>
+            <div class="dbcat-container">
+                <input type="text" id="searchWord" placeholder="Enter word">
+                <div class="dbcat-dropdown-content" id="dropdownContent">
+                </div>
+            </div>
+            <button id="searchButton">Search</button>
+        </div>
+    </div>
+
+    <div id="divOps" style="display: none;">
+
+        <div>
+            <!--
         <select id="studyLists">
             <option value="">Select File</option>
         </select>
@@ -188,34 +193,34 @@
         <button type="button" id="csvURLInputBtn">Fetch Data</button>
                 -->
 
-        <div class="table">
-            <div class="column">Total Items:<span id="recordCount">0</span></div>
-            <div class="column">Selected Items:<span id="counterId">0</span></div>
+            <div class="table">
+                <div class="column">Total Items:<span id="recordCount">0</span></div>
+                <div class="column">Selected Items:<span id="counterId">0</span></div>
+            </div>
+
         </div>
+        <br>
 
-    </div>
-    <br>
-
-    <button onclick="deleteSelectedRows()">&#x1F5D1; Selected</button>
-    <button onclick="deleteNonselectedRows()">&#x1F5D1; Unelected</button>
-    <button id="downloadCsvBtn" disabled>&#x1F4E5; CSV</button>
-    <!--
+        <button onclick="deleteSelectedRows()">&#x1F5D1; Selected</button>
+        <button onclick="deleteNonselectedRows()">&#x1F5D1; Unelected</button>
+        <button id="downloadCsvBtn" disabled>&#x1F4E5; CSV</button>
+        <!--
     <button id="searchSpeechSearch">Speech Search</button>
     <button id="searchSpeechSearchStop" disabled>Stop Speech Search</button>
     -->
-    <button onclick="showColumnPopup()">Columns &#x2699;</button>
-    <button id="popupButton">&#127760; Tranlation</button>
-    <button id="clearResult" onclick="clearResults()">&#x1F58C;Clear Results</button>
+        <button onclick="showColumnPopup()">Columns &#x2699;</button>
+        <button id="popupButton">&#127760; Tranlation</button>
+        <button id="clearResult" onclick="clearResults()">&#x1F58C;Clear Results</button>
 
-    <!-- 
+        <!-- 
     <button onclick="addNewRow()">&#10133;Row</button>
     <button onclick="addNewColumn()">&#10133;Column</button>
     -->
-    <button onclick="openCSVJSONConversionWindow()">&#128195;CSV/JSON Util</button>
+        <button onclick="openCSVJSONConversionWindow()">&#128195;CSV/JSON Util</button>
 
 
-    <br><br>
-</div>
+        <br><br>
+    </div>
 
     <div id="colpopup" class="filecolpopup">
         <h3>Select File Columns to Display</h3>
@@ -232,15 +237,16 @@
         <h3>Select Columns to Display</h3>
         <div>
             Select Speak Options:
-    
+
             <select id="cellHighlightSelect">
                 <option value="highlightandenlarge">Highlight And Enlarge</option>
                 <option value="highlight">Highlight</option>
                 <option value="normal">Normal</option>
             </select>
-        
-            <input type="text" id="maxCellSpeakCounter" placeholder="Enter cell speak times" size="6" maxlength="6" value="1">
-            <input type="text" id="speakSilenceTime" placeholder="Silence Time 500ms" size="6" maxlength="6">    
+
+            <input type="text" id="maxCellSpeakCounter" placeholder="Enter cell speak times" size="6" maxlength="6"
+                value="1">
+            <input type="text" id="speakSilenceTime" placeholder="Silence Time 500ms" size="6" maxlength="6">
         </div>
         <div>
             <h3></h3>
@@ -258,7 +264,7 @@
             <button onclick="hideAndApplyColumnPopup()">Apply</button>
         </div>
     </div>
-<!--
+    <!--
     <div>
         <button id="loadTablesButton" onclick="loadTableNames()">SQLite Tables</button>     
         <input type="number" id="recordsPerPageInput" placeholder="Records Per Page" value="10">
@@ -267,7 +273,7 @@
         <input type="text" id="searchWord" placeholder="Enter word">
         <button id="searchButton">Search</button>     
     </div>
--->    
+-->
     <table id="myTable">
     </table>
 

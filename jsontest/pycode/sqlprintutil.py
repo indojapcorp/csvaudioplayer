@@ -80,3 +80,26 @@ if __name__ == "__main__":
 
     # Call the function with the provided or default table name
     get_column_names(table_name_arg)
+
+
+
+'''
+SELECT
+  english , category,
+  MAX(CASE WHEN lang = 'FR' THEN langreading END) AS FR ,
+  MAX(CASE WHEN lang = 'DE' THEN langreading END) AS DE,
+  MAX(CASE WHEN lang = 'IT' THEN langreading END) AS IT,
+  MAX(CASE WHEN lang = 'ES' THEN langreading END) AS ES, 
+  MAX(CASE WHEN lang = 'JA' THEN langreading END) AS JA,
+  MAX(CASE WHEN lang = 'JA' THEN roman END) AS JA_langreading,  
+  MAX(CASE WHEN lang = 'ZH' THEN langreading END) AS ZH,
+  MAX(CASE WHEN lang = 'ZH' THEN roman END) AS ZH_langreading,  
+  MAX(CASE WHEN lang = 'KO' THEN langreading END) AS KO,  
+  MAX(CASE WHEN lang = 'KO' THEN roman END) AS KO_langreading,
+   MAX(CASE WHEN lang = 'RU' THEN langreading END) AS RU,  
+  MAX(CASE WHEN lang = 'RU' THEN roman END) AS RU_langreading 
+  FROM Phrases
+where lang <> 'EN'
+GROUP BY english, category 
+order by id,category
+'''

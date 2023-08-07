@@ -39,10 +39,11 @@ table {
     width: 50px;
   }
 
+  /*
   th:nth-last-child(2) , td:nth-last-child(2) {
-    /*width: 5%;*/
     width: 50px;
   }
+  */
   
   th.resize {
     resize: horizontal;
@@ -229,4 +230,20 @@ button, select, input {
 
 .custom-input {
     width: 100px;
+}
+
+.dbcat-container {
+  display: inline-block;
+}
+
+.dbcat-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dbcat-dropdown-content input {
+  margin: 5px;
 }

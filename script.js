@@ -459,6 +459,8 @@ function speakRowData(row) {
   speakcellslang = [];
   currentCellIndex = 0;
 
+
+
   var table = document.getElementById("myTable");
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
   var columnLanguages = document.getElementById("columnCheckboxes").querySelectorAll('select[id^="voices3"]');
@@ -474,6 +476,10 @@ function speakRowData(row) {
       speakcellsIndex++;
     }
   }
+
+  currentCellSpeakTime = 0;
+  cellsTotalSpeakTime = getTotalSpeakTime();
+
   if (speakcells.length > 0)
     speakAndHighlight();
 }
@@ -715,6 +721,10 @@ var originalFontSize = '';//table.style.fontSize; // Store the original font siz
 var cellsTotalSpeakTime = 0;
 var currentCellSpeakTime = 0;
 function speakThis() {
+
+  cellsTotalSpeakTime = 0;
+  currentCellSpeakTime = 0;
+
   var table = document.getElementById("myTable");
   originalFontSize = table.style.fontSize; // Store the original font size    
   var rowCount = table.rows.length;
@@ -1843,7 +1853,6 @@ var selectedColumns = [];
 // Function to populate the table with selected columns
 function populateTableNew(isSQLite) {
 
-  console.log("populatetable");
   var divOps = document.getElementById("divOps");
   divOps.style.display = "block";
 

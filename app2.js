@@ -2,25 +2,51 @@ let currentPage = 1;
 let recordsPerPage = 10;
 let columnNames = [] ;
 let db;
-
+var multiSelectInput;
+var dropdownContent;
 
   document.addEventListener('DOMContentLoaded', function () {
 
         //const searchButton = document.getElementById('searchButton');
       //  searchButton.addEventListener('click', searchDictionary);
-
+       multiSelectInput = document.getElementById('searchWord');
+       dropdownContent = document.getElementById('dropdownContent');
+      
       searchButton.addEventListener('click', () => {
 
         const columnNameSelect = document.getElementById('columnNameSelect');
         const searchInput = document.getElementById('searchWord').value.trim();
-        if(columnNameSelect.value != "" && searchInput != ""){
+        const checkboxes = dropdownContent.getElementsByTagName('input');
+
+        if(columnNameSelect.value != "" && (searchInput !== '' || checkboxes.length != 0)){
             searchDictionary(tableNameSelect.value,selectedColumnNames);
         }
     });
 
+
+// multiSelectInput.addEventListener('focus', function () {
+//   dropdownContent.style.display = 'block';
+// });
+
+// multiSelectInput.addEventListener('blur', function () {
+//   dropdownContent.style.display = 'none';
+// });
+
+document.addEventListener('click', function (event) {
+    if (!multiSelectInput.contains(event.target) && !dropdownContent.contains(event.target)) {
+      dropdownContent.style.display = 'none';
+    }else{
+        dropdownContent.style.display = 'block';
+    }
+  });
+  
+
 });
 
-
+function toggleDropdown() {
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+  }
+  
 async function loadDatabase() {
     config = {
         locateFile: (filename, prefix) => {
@@ -61,10 +87,26 @@ function getWhereClause(){
     var paginationContainer = document.getElementById("paginationContainer");
     paginationContainer.innerHTML = "";
 
-    const searchInput = document.getElementById('searchWord').value.trim();
-    if(columnNameSelect.value != "" && searchInput != ""){
+    var searchInput = document.getElementById('searchWord').value.trim();
+
+    const checkboxes = dropdownContent.getElementsByTagName('input');
+
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        searchInput+="'"+checkboxes[i].value+"' ,";
+        //selectedOptions.push(checkboxes[i].value);
+      }
+    }
+    searchInput = searchInput.slice(0, -1);
+    console.log("searchInput="+searchInput);
+
+    if(columnNameSelect.value != "" && searchInput != "" && checkboxes.length == 0){
         console.log(" where " + columnNameSelect.value.trim() + " LIKE " + searchInput);
         return " WHERE " + columnNameSelect.value.trim() + " LIKE " + searchInput +" ";
+        //searchDictionary(tableNameSelect.value,selectedColumnNames);
+    }else if(columnNameSelect.value != "" && checkboxes.length > 0){
+        console.log(" where " + columnNameSelect.value.trim() + " IN ( " + searchInput + " ) ");
+        return " WHERE " + columnNameSelect.value.trim() + " IN ( " + searchInput + " ) ";
         //searchDictionary(tableNameSelect.value,selectedColumnNames);
     }else{
         return "";
@@ -132,6 +174,44 @@ function getColumnNames(tableName) {
     }
 
 
+    return [];
+}
+
+function getColumnUniqueData(tableName,columnName) {
+
+    const sqlUniqueCountQuery = `select COUNT(DISTINCT(${columnName})) as count from ${tableName}`;
+    const uniqueCountResults = db.exec(sqlUniqueCountQuery);
+
+    if (uniqueCountResults && uniqueCountResults.length > 0) {
+        if(uniqueCountResults[0].values[0][0]>500)
+            return;
+    }
+
+    const sqlQuery = `select DISTINCT(${columnName}) from ${tableName}`;
+
+    const results = db.exec(sqlQuery);
+
+    if (results && results.length > 0) {
+        const columnNames = results[0].values;
+
+        const dropdownContent = document.getElementById('dropdownContent');
+        dropdownContent.innerHTML = '';
+
+        const option = document.createElement('option');
+        option.textContent = "select";
+    
+        for (let i = 0; i < columnNames.length; i++) {
+            const columnName = columnNames[i];
+            const catchkbox = document.createElement('input');
+            catchkbox.type = 'checkbox';
+            catchkbox.value = columnName;
+            var catchkboxlabel = document.createElement('label');
+            catchkboxlabel.appendChild(catchkbox);
+            catchkboxlabel.appendChild(document.createTextNode(columnName));
+            dropdownContent.appendChild(catchkboxlabel);
+        }
+        return columnNames;
+    }
     return [];
 }
 
@@ -206,9 +286,18 @@ function searchDictionary(tableName,colnameheaders) {
     var table = document.getElementById("myTable");
     var rowCount = table.rows.length;
   
-    for (var i = 4; i < rowCount; i++) {
-        table.deleteRow(i);
-      }
+    // for (var i = 4; i < rowCount-4; i++) {
+    //     table.deleteRow(i);
+    //   }
+
+      // Get all rows in the table
+var rows = table.getElementsByTagName("tr");
+
+// Loop through the rows in reverse order (to avoid skipping elements when deleting)
+for (var i = rows.length - 1; i >= 4; i--) {
+  var row = rows[i];
+  row.parentNode.removeChild(row);
+}
 
     
     //const searchInput = document.getElementById('searchWord').value.trim();
@@ -284,9 +373,19 @@ function loadTableNames() {
 
         // Add event listener to call searchDictionary when an option is selected
         tableNameSelect.addEventListener('change', () => {
+            dropdownContent.innerHTML = '';
             const selectedOption = tableNameSelect.value;
             showFileColPopup(getColumnNames(selectedOption));
             //searchDictionary(selectedOption);
         });
+
+        // Add event listener to call searchDictionary when an option is selected
+        columnNameSelect.addEventListener('change', () => {
+            dropdownContent.innerHTML = '';
+            const selectedOption = columnNameSelect.value;
+            getColumnUniqueData(tableNameSelect.value,selectedOption);
+            //searchDictionary(selectedOption);
+        });
+
     }
 }
