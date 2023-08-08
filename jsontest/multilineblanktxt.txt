@@ -1,18 +1,54 @@
-1. How do you define an ideal project? 
-
-
-2. Work from home has become the new normal in the post-COVID-19-world. How well are you prepared to manage a remote team?  
-
-3. What is your strategy for prioritizing the tasks?
-
-
-
-
-4. What is the most desired skill that is required to become a successful project manager, according to your experience?
-
-5. Tell us about the most challenging projects you have managed so far? What were the steps you have taken to tackle the challenges?
-
-
-
-
-6. Suppose the project has gone off the rails. What steps would you take to get it back on track?
+zero
+one	            
+two	             
+three	         
+four	         
+five	         
+six	             
+seven	         
+eight	         
+nine	         
+ten	 	 
+eleven	 	 
+twelve
+thirteen
+fourteen	               
+fifteen	                   
+sixteen	                   
+seventeen	               
+eighteen	               
+nineteen	               
+twenty
+thirty
+forty
+fifty
+sixty
+seventy
+eighty
+ninety
+twenty-one
+twenty-five
+thirty-two
+fifty-eight
+sixty-four
+seventy-nine
+eighty-three
+ninety-nine
+one hundred
+two hundred
+nine hundred
+one thousand
+two thousand
+ten thousand
+eleven thousand
+twenty thousand
+twenty-one thousand
+thirty thousand
+eighty-five thousand
+one hundred thousand
+nine hundred and ninety-nine thousand
+nine hundred ninety-nine thousand
+one million
+ten million
+one billion
+one trillion

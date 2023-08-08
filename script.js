@@ -2167,6 +2167,7 @@ var transpopupButton = document.getElementById('popupButton');
 var translateButton = document.getElementById('translateButton');
 var transapplyButton = document.getElementById('applyButton');
 var transcancelButton = document.getElementById('canceltransButton');
+var downloadTranslatedCsvButton = document.getElementById('downloadTranslatedCsvButton');
 var srctxtPopup = document.getElementById('srctext-popup');
 var tratextPopup = document.getElementById('tratext-popup');
 var srclangSelect = document.getElementById('srclang');
@@ -2207,7 +2208,7 @@ translateButton.addEventListener('click', function () {
     translate(srclangval, totalcols);
 });
 
-transapplyButton.addEventListener('click', function () {
+function transPrepareApplyDwdData(){
 
   var totaldata = "";
   lines = [];
@@ -2221,11 +2222,13 @@ transapplyButton.addEventListener('click', function () {
   var totalcols = rows[0].getElementsByTagName("td").length;
   var srcLines = srcText.split("\n");
 
+  console.log("srcLines length="+srcLines.length);
 
   var srcLang = document.getElementById("srclang").value;
 
   var onlyNumericText = false;
   if (containsOnlyNumericValues(srcText)) {
+    console.log("onlyNumericText== true")
     onlyNumericText = true;
   }
 
@@ -2279,35 +2282,91 @@ transapplyButton.addEventListener('click', function () {
     }
   }
 
+  totaldata= totaldata.slice(0, -1);
+
   lines = totaldata.split("\n");
 
   var filecolpopup = document.getElementById("colpopup");
   filecolpopup.style.display = "block";
 
+  //csv = Papa.unparse(lines);
+  console.log("here lines"+lines);
+  console.log("here lines"+lines.length);
+
+          // Convert lines into a structured format (array of arrays)
+          const data = lines.map(line => {
+            //const parsedLine = Papa.parse(line, { delimiter: ',', quoteChar: '"' });
+            const parsedLine = Papa.parse(line);
+            return parsedLine.data[0];
+        });
+
+        // Generate CSV using Papa.unparse
+         csv = Papa.unparse(data);
+         console.log("here csv"+csv);
+         
   csvData = [];
 
-  for (var i = 1; i < lines.length; i++) {
-    if (lines[i].length == 0)
-      continue;
+  // for (var i = 1; i < lines.length; i++) {
+  //   if (lines[i].length == 0)
+  //     continue;
 
-    console.log("lines[i]==" + lines[i]);
-    var row = lines[i].split(",");
-    csvData.push(row);
-  }
+  //   console.log("lines[i]==" + lines[i]);
+  //   var row = lines[i].split(",");
+  //   console.log("row[i]==" + row);
 
-  showFileColPopup(headers);
-
-  // $("#myTable").empty();
-  // for (var i = 0; i < srcLines.length; i++) {
-  //     var srcRow = "<tr><td>" + srcLines[i] + "</td><td>" + tgtLines[i] + "</td></tr>";
-  //     $("#myTable").append(srcRow);
+  //   csvData.push(row);
   // }
+
+  // showFileColPopup(headers);
+
+}
+
+transapplyButton.addEventListener('click', function () {
+
+
+
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const file = new File([blob], 'data.csv', { type: 'text/csv' });
+  readCSVUsingPapa(file);
+
   transpopup.classList.remove('active'); // Close the transpopup
 });
 
+var csv;
+
+downloadTranslatedCsvButton.addEventListener('click', () => {
+  downloadTranslatedCsv();
+});
+
+function downloadTranslatedCsv(){
+  console.log("here"+lines);
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+
+  // const file = new File([blob], 'data.csv', { type: 'text/csv' });
+
+
+  // readCSVUsingPapa(file);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'data.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  // Clean up the URL.createObjectURL reference
+  URL.revokeObjectURL(url);
+
+
+}
+
 function containsOnlyNumericValues(text) {
   // Regular expression to check if the text contains only numeric values and new lines
-  const regex = /^[0-9\n]*$/;
+  //const regex = /^[0-9\n]*$/;
+  //const regex = /^(("[0-9]+"|\d+)\n)*("[0-9]+"|\d+)$/;
+  const regex = /^("[0-9]+"|\d+|\n)*$/;
 
   return regex.test(text);
 }
@@ -2316,7 +2375,20 @@ function containsOnlyNumericValues(text) {
 async function translate(sourceLang, totalcols) {
 
   //document.getElementById('translateButton').disabled = true;
-  var sourceText = $('textarea#srctext-popup').val();
+  //var sourceText = $('textarea#srctext-popup').val();
+  // Split text on new lines and process each line
+const lines = $('textarea#srctext-popup').val().split('\n').map(line => {
+  if (!line.startsWith('"') || !line.endsWith('"')) {
+      return `"${line}"`;
+  }
+  return line;
+});
+
+// Concatenate the lines with newline separators
+const sourceText = lines.join('\n');
+console.log(sourceText);
+
+
 
   for (i = 0; i < totalcols; i++) {
     var tgtlangselectElement = document.getElementById("tgtlang-" + (i + 1));
@@ -2365,6 +2437,7 @@ async function translate(sourceLang, totalcols) {
     // });
   }
 
+  transPrepareApplyDwdData();
 }
 
 function addTransColumn() {

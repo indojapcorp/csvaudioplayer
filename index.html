@@ -171,6 +171,7 @@
             Tables<select id="tableNameSelect"></select>
             Columns<select id="columnNameSelect"></select>
             <div class="dbcat-container">
+                Unique<input type="checkbox" id="colHasCatChkbox">
                 <input type="text" id="searchWord" placeholder="Enter word">
                 <div class="dbcat-dropdown-content" id="dropdownContent">
                 </div>
@@ -576,6 +577,7 @@
             <button id="applyButton">Apply</button>
             <button id="canceltransButton">Cancel</button>
             <button id="addColumnButton" onclick="addTransColumn()">Add Col</button>
+            <button id="downloadTranslatedCsvButton">Download CSV</button>
         </div>
     </div>
     <script src="numtotext.js"></script>

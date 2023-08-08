@@ -359,6 +359,7 @@ function loadTableNames() {
     //console.log("loadTableNames");
     const tableNames = db.exec("SELECT name FROM sqlite_master WHERE type='table'");
     const tableNameSelect = document.getElementById('tableNameSelect');
+    const colHasCatChkbox = document.getElementById('colHasCatChkbox');
     tableNameSelect.innerHTML = '';
     const option = document.createElement('option');
     option.textContent = "select";
@@ -385,7 +386,10 @@ function loadTableNames() {
         columnNameSelect.addEventListener('change', () => {
             dropdownContent.innerHTML = '';
             const selectedOption = columnNameSelect.value;
-            getColumnUniqueData(tableNameSelect.value, selectedOption);
+
+            if(colHasCatChkbox.checked){
+                getColumnUniqueData(tableNameSelect.value, selectedOption);
+            }
             //searchDictionary(selectedOption);
         });
 
