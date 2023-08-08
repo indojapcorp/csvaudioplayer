@@ -1,88 +1,88 @@
 let currentPage = 1;
 let recordsPerPage = 10;
-let columnNames = [] ;
+let columnNames = [];
 let db;
 var multiSelectInput;
 var dropdownContent;
 
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
 
-        //const searchButton = document.getElementById('searchButton');
-      //  searchButton.addEventListener('click', searchDictionary);
-       multiSelectInput = document.getElementById('searchWord');
-       dropdownContent = document.getElementById('dropdownContent');
-      
-      searchButton.addEventListener('click', () => {
+    //const searchButton = document.getElementById('searchButton');
+    //  searchButton.addEventListener('click', searchDictionary);
+    multiSelectInput = document.getElementById('searchWord');
+    dropdownContent = document.getElementById('dropdownContent');
+
+    searchButton.addEventListener('click', () => {
 
         const columnNameSelect = document.getElementById('columnNameSelect');
         const searchInput = document.getElementById('searchWord').value.trim();
         const checkboxes = dropdownContent.getElementsByTagName('input');
 
-        if(columnNameSelect.value != "" && (searchInput !== '' || checkboxes.length != 0)){
-            searchDictionary(tableNameSelect.value,selectedColumnNames);
+        if (columnNameSelect.value != "" && (searchInput !== '' || checkboxes.length != 0)) {
+            searchDictionary(tableNameSelect.value, selectedColumnNames);
         }
     });
 
 
-// multiSelectInput.addEventListener('focus', function () {
-//   dropdownContent.style.display = 'block';
-// });
+    // multiSelectInput.addEventListener('focus', function () {
+    //   dropdownContent.style.display = 'block';
+    // });
 
-// multiSelectInput.addEventListener('blur', function () {
-//   dropdownContent.style.display = 'none';
-// });
+    // multiSelectInput.addEventListener('blur', function () {
+    //   dropdownContent.style.display = 'none';
+    // });
 
-document.addEventListener('click', function (event) {
-    if (!multiSelectInput.contains(event.target) && !dropdownContent.contains(event.target)) {
-      dropdownContent.style.display = 'none';
-    }else{
-        dropdownContent.style.display = 'block';
-    }
-  });
-  
+    document.addEventListener('click', function (event) {
+        if (!multiSelectInput.contains(event.target) && !dropdownContent.contains(event.target)) {
+            dropdownContent.style.display = 'none';
+        } else {
+            dropdownContent.style.display = 'block';
+        }
+    });
+
 
 });
 
 function toggleDropdown() {
     dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-  }
-  
+}
+
 async function loadDatabase() {
     config = {
         locateFile: (filename, prefix) => {
-          console.log(`prefix is : ${prefix}`);
-          //return `../dist/${filename}`;
-          return "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.wasm";
+            console.log(`prefix is : ${prefix}`);
+            //return `../dist/${filename}`;
+            return "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.wasm";
         }
-      }
-      // The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.
-      // We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.
-      initSqlJs(config).then(function (SQL) {
-    
+    }
+    // The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.
+    // We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.
+    initSqlJs(config).then(function (SQL) {
+
         var selectSQLiteDb = document.getElementById("selectSQLiteDb").value;
-      
+
         const xhr = new XMLHttpRequest();
         //xhr.open('GET', 'data/localonly/dictionary.db', true);
         xhr.open('GET', selectSQLiteDb, true);
         xhr.responseType = 'arraybuffer';
-        
+
         xhr.onload = e => {
-          const uInt8Array = new Uint8Array(xhr.response);
-          db = new SQL.Database(uInt8Array);
+            const uInt8Array = new Uint8Array(xhr.response);
+            db = new SQL.Database(uInt8Array);
         };
         xhr.send();
-    
-      });
-    
-      var table = document.getElementById("myTable");
-      table.innerHTML = "";
-      var paginationContainer = document.getElementById("paginationContainer");
-      paginationContainer.innerHTML = "";
-      loadTableNames();
-  }
+
+    });
+
+    var table = document.getElementById("myTable");
+    table.innerHTML = "";
+    var paginationContainer = document.getElementById("paginationContainer");
+    paginationContainer.innerHTML = "";
+    loadTableNames();
+}
 
 
-function getWhereClause(){
+function getWhereClause() {
     const columnNameSelect = document.getElementById('columnNameSelect');
     var paginationContainer = document.getElementById("paginationContainer");
     paginationContainer.innerHTML = "";
@@ -92,28 +92,30 @@ function getWhereClause(){
     const checkboxes = dropdownContent.getElementsByTagName('input');
 
     for (let i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].checked) {
-        searchInput+="'"+checkboxes[i].value+"' ,";
-        //selectedOptions.push(checkboxes[i].value);
-      }
+        if (checkboxes[i].checked) {
+            searchInput += "'" + checkboxes[i].value + "' ,";
+            //selectedOptions.push(checkboxes[i].value);
+        }
     }
-    searchInput = searchInput.slice(0, -1);
-    console.log("searchInput="+searchInput);
 
-    if(columnNameSelect.value != "" && searchInput != "" && checkboxes.length == 0){
+    if (columnNameSelect.value != "" && searchInput != "" && checkboxes.length == 0) {
+        console.log("searchInput=" + searchInput);    
         console.log(" where " + columnNameSelect.value.trim() + " LIKE " + searchInput);
-        return " WHERE " + columnNameSelect.value.trim() + " LIKE " + searchInput +" ";
+        return " WHERE " + columnNameSelect.value.trim() + " LIKE '" + searchInput + "' ";
         //searchDictionary(tableNameSelect.value,selectedColumnNames);
-    }else if(columnNameSelect.value != "" && checkboxes.length > 0){
+    } else if (columnNameSelect.value != "" && checkboxes.length > 0) {
+        searchInput = searchInput.slice(0, -1);
+        console.log("searchInput=" + searchInput);
+    
         console.log(" where " + columnNameSelect.value.trim() + " IN ( " + searchInput + " ) ");
         return " WHERE " + columnNameSelect.value.trim() + " IN ( " + searchInput + " ) ";
         //searchDictionary(tableNameSelect.value,selectedColumnNames);
-    }else{
+    } else {
         return "";
     }
 }
 
-function addPaginationButtons(tableName,totalPages,columnNames) {
+function addPaginationButtons(tableName, totalPages, columnNames) {
     //const totalPages = Math.ceil(totalRecords / recordsPerPage);
     const paginationContainer = document.getElementById('paginationContainer');
     paginationContainer.innerHTML = '';
@@ -123,18 +125,18 @@ function addPaginationButtons(tableName,totalPages,columnNames) {
     prevButton.addEventListener('click', () => {
         if (currentPage > 1) {
             currentPage--;
-            searchDictionary(tableName,columnNames);
+            searchDictionary(tableName, columnNames);
         }
     });
     paginationContainer.appendChild(prevButton);
-    console.log("totalPages.length="+totalPages);
+    console.log("totalPages.length=" + totalPages);
 
     for (let i = 1; i <= totalPages; i++) {
         const pageButton = document.createElement('button');
         pageButton.textContent = i;
         pageButton.addEventListener('click', () => {
             currentPage = i;
-            searchDictionary(tableName,columnNames);
+            searchDictionary(tableName, columnNames);
         });
         paginationContainer.appendChild(pageButton);
     }
@@ -144,7 +146,7 @@ function addPaginationButtons(tableName,totalPages,columnNames) {
     nextButton.addEventListener('click', () => {
         if (currentPage < totalPages) {
             currentPage++;
-            searchDictionary(tableName,columnNames);
+            searchDictionary(tableName, columnNames);
         }
     });
     paginationContainer.appendChild(nextButton);
@@ -161,7 +163,7 @@ function getColumnNames(tableName) {
         columnNameSelect.innerHTML = '';
         const option = document.createElement('option');
         option.textContent = "select";
-    
+
         for (let i = 0; i < columnNames.length; i++) {
             const columnName = columnNames[i];
             const option = document.createElement('option');
@@ -177,13 +179,13 @@ function getColumnNames(tableName) {
     return [];
 }
 
-function getColumnUniqueData(tableName,columnName) {
+function getColumnUniqueData(tableName, columnName) {
 
     const sqlUniqueCountQuery = `select COUNT(DISTINCT(${columnName})) as count from ${tableName}`;
     const uniqueCountResults = db.exec(sqlUniqueCountQuery);
 
     if (uniqueCountResults && uniqueCountResults.length > 0) {
-        if(uniqueCountResults[0].values[0][0]>500)
+        if (uniqueCountResults[0].values[0][0] > 500)
             return;
     }
 
@@ -199,7 +201,7 @@ function getColumnUniqueData(tableName,columnName) {
 
         const option = document.createElement('option');
         option.textContent = "select";
-    
+
         for (let i = 0; i < columnNames.length; i++) {
             const columnName = columnNames[i];
             const catchkbox = document.createElement('input');
@@ -215,7 +217,7 @@ function getColumnUniqueData(tableName,columnName) {
     return [];
 }
 
-function getSQLStringNew(tableName,columnNames){
+function getSQLStringNew(tableName, columnNames) {
     //const columnNames = getColumnNames(tableName);
 
     let fromLimitClause = ' FROM (select ';
@@ -248,7 +250,7 @@ function getSQLStringNew(tableName,columnNames){
     sqlQuery = sqlQuery.slice(0, -6);
 
 
-sqlQuery += `
+    sqlQuery += `
 '"'
 ,'},'
 ) 
@@ -256,7 +258,7 @@ sqlQuery += `
 ']}' AS json_data 
 `;
 
-sqlQuery += fromLimitClause;
+    sqlQuery += fromLimitClause;
 
     return sqlQuery;
 
@@ -267,7 +269,7 @@ function countRecords(tableName,) {
 
     var whereClause = getWhereClause();
 
-    const sqlQuery = 'SELECT COUNT(*) AS count FROM '+tableName + " "+whereClause;
+    const sqlQuery = 'SELECT COUNT(*) AS count FROM ' + tableName + " " + whereClause;
 
 
     const results = db.exec(sqlQuery);
@@ -279,27 +281,27 @@ function countRecords(tableName,) {
     return 0;
 }
 
-function searchDictionary(tableName,colnameheaders) {
+function searchDictionary(tableName, colnameheaders) {
     var paginationContainer = document.getElementById("paginationContainer");
     paginationContainer.innerHTML = "";
 
     var table = document.getElementById("myTable");
     var rowCount = table.rows.length;
-  
+
     // for (var i = 4; i < rowCount-4; i++) {
     //     table.deleteRow(i);
     //   }
 
-      // Get all rows in the table
-var rows = table.getElementsByTagName("tr");
+    // Get all rows in the table
+    var rows = table.getElementsByTagName("tr");
 
-// Loop through the rows in reverse order (to avoid skipping elements when deleting)
-for (var i = rows.length - 1; i >= 4; i--) {
-  var row = rows[i];
-  row.parentNode.removeChild(row);
-}
+    // Loop through the rows in reverse order (to avoid skipping elements when deleting)
+    for (var i = rows.length - 1; i >= 4; i--) {
+        var row = rows[i];
+        row.parentNode.removeChild(row);
+    }
 
-    
+
     //const searchInput = document.getElementById('searchWord').value.trim();
     const totalRecords = countRecords(tableName);
     recordsPerPage = parseInt(document.getElementById('recordsPerPageInput').value, 10);
@@ -318,13 +320,13 @@ for (var i = rows.length - 1; i >= 4; i--) {
     //var newSQL=getSQLStringNew("DictTable");
     //var newSQL=getSQLStringNew(tableName);
 
-    
-    var newSQL=getSQLStringNew(tableName,colnameheaders);
+
+    var newSQL = getSQLStringNew(tableName, colnameheaders);
     //console.log(newSQL);
 
     const startIndex = (currentPage - 1) * recordsPerPage;
     var sqlQuery = 'SELECT * FROM DictTable WHERE word LIKE ? ORDER BY id LIMIT ?, ?';
-    sqlQuery =  `
+    sqlQuery = `
         SELECT '{"data":['|| 
                     GROUP_CONCAT(
                    '{'||
@@ -338,22 +340,22 @@ for (var i = rows.length - 1; i >= 4; i--) {
                 ']}' AS json_data
         FROM DictTable ORDER BY id LIMIT ?, ?
             `;
-    
-            //console.log("searchInput="+searchInput);
-            const results = db.exec(newSQL, [ startIndex, recordsPerPage]);
+
+    //console.log("searchInput="+searchInput);
+    const results = db.exec(newSQL, [startIndex, recordsPerPage]);
 
     if (results && results.length > 0) {
         const data = results[0].values;
-        if(data){
-        addPaginationButtons(tableName,totalPages,colnameheaders);
-        //populateSQLLiteData(data[0][0]);
-        readJSONFromSQLite(data[0][0],currentPage,totalRecords);
+        if (data) {
+            addPaginationButtons(tableName, totalPages, colnameheaders);
+            //populateSQLLiteData(data[0][0]);
+            readJSONFromSQLite(data[0][0], currentPage, totalRecords);
         }
     }
 }
 
 function loadTableNames() {
-    
+
     //console.log("loadTableNames");
     const tableNames = db.exec("SELECT name FROM sqlite_master WHERE type='table'");
     const tableNameSelect = document.getElementById('tableNameSelect');
@@ -383,7 +385,7 @@ function loadTableNames() {
         columnNameSelect.addEventListener('change', () => {
             dropdownContent.innerHTML = '';
             const selectedOption = columnNameSelect.value;
-            getColumnUniqueData(tableNameSelect.value,selectedOption);
+            getColumnUniqueData(tableNameSelect.value, selectedOption);
             //searchDictionary(selectedOption);
         });
 
