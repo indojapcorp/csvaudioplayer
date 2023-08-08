@@ -296,8 +296,10 @@ window.addEventListener('load', function () {
     console.log('Is macOS:', isMacOS);
 
     if(isMacOS){
+        alert("IS Mac");
         getVoices();
     }else{
+        alert("IS Mobile");
         getMobileVoices();
         //getResponsiveVoices();
     }
