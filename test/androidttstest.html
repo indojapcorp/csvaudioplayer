@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech Voices</title>
+</head>
+<body>
+    <h1>Available Voices:</h1>
+    <ul id="voice-list"></ul>
+
+    <script>
+        // Check for browser support
+        if ('speechSynthesis' in window) {
+            // Fetch available voices
+            const voices = speechSynthesis.getVoices();
+
+            // Callback function to populate the voice list
+            function populateVoiceList() {
+                const voiceList = document.getElementById('voice-list');
+
+                voices.forEach(voice => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${voice.name} (${voice.lang})`;
+                    voiceList.appendChild(listItem);
+                });
+            }
+
+            // Chrome requires voices to be loaded asynchronously
+            if (voices.length === 0) {
+                speechSynthesis.addEventListener('voiceschanged', populateVoiceList);
+            } else {
+                populateVoiceList();
+            }
+        } else {
+            console.log('Web Speech API is not supported.');
+        }
+    </script>
+</body>
+</html>
