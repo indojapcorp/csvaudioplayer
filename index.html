@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Spreadsheet Audio Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/sql-wasm.js"></script>
@@ -19,24 +20,24 @@
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=jebKs0z3"></script>
     -->
     <script>
-        // Check if the page is loaded from macOS
-        var isMacOS = /Macintosh|Mac OS X/i.test(navigator.userAgent);
+        // // Check if the page is loaded from macOS
+        // var isMacOS = /Macintosh|Mac OS X/i.test(navigator.userAgent);
 
-        // Function to load the script from a specific URL
-        function loadScript(url) {
-            var script = document.createElement('script');
-            script.src = url;
-            script.onload = function () {
-                console.log('Script loaded');
-                // Perform additional actions after the script is loaded
-            };
-            document.head.appendChild(script);
-        }
-        //isMacOS = false;
-        // Conditionally load the script if isMacOS is true
-        if (!isMacOS) {
-            loadScript('https://code.responsivevoice.org/responsivevoice.js?key=jebKs0z3');
-        }
+        // // Function to load the script from a specific URL
+        // function loadScript(url) {
+        //     var script = document.createElement('script');
+        //     script.src = url;
+        //     script.onload = function () {
+        //         console.log('Script loaded');
+        //         // Perform additional actions after the script is loaded
+        //     };
+        //     document.head.appendChild(script);
+        // }
+        // //isMacOS = false;
+        // // Conditionally load the script if isMacOS is true
+        // if (!isMacOS) {
+        //    // loadScript('https://code.responsivevoice.org/responsivevoice.js?key=jebKs0z3');
+        // }
     </script>
 </head>
 

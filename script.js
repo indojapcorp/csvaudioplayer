@@ -731,7 +731,7 @@ function speakThis() {
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
   //const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
   const columnLanguages = document.getElementById("columnCheckboxes").querySelectorAll('select[id^="voices3"]');
-  //AIzaSyCiQ55kJrly39NU-65mIWTmemuVOiDsymE
+
   speakcells = [];
   speakcellslang = [];
   currentCellIndex = 0;
@@ -832,9 +832,15 @@ function speakAndHighlight() {
     // Replace occurrences of "Question:", "Answer:", and "Ans:" with a blank
     utterance.text = cellTextValue
 
+    // let desiredVoice = uttvoices.find(voice =>
+    //   voice.name === speakcellslang[currentCellIndex] && voice.name === 'Google US English'
+    // );
+
+
     for (var i = 0; i < uttvoices.length; i++) {
       if (uttvoices[i].name === speakcellslang[currentCellIndex]) {
         utterance.voice = uttvoices[i];
+        utterance.lang=uttvoices[i].lang;
         break;
       }
     }
@@ -857,32 +863,6 @@ function speakAndHighlight() {
       }, speakSilenceTime.value);
 
     };
-  } else {
-
-    console.log("speakcellslang[currentCellIndex]=" + speakcellslang[currentCellIndex]);
-    responsiveVoice.speak(cellTextValue, "" + speakcellslang[currentCellIndex], {
-      onstart: function () {
-        console.log("Speech started");
-      },
-      onend: function () {
-        console.log("Speech ended");
-        if (counter < maxCellSpeakCounter.value) {
-          counter++;
-        } else {
-          counter = 1; // Reset the counter for the next cell
-        }
-
-        setTimeout(function () {
-          currentCell.style.fontSize = originalFontSize; // Reset font size
-          currentCell.style.backgroundColor = ''; // Reset highlighting
-          currentCellIndex++;
-          playingCellSpan.textContent = "";
-          speakAndHighlight(); // Speak the next cell
-        }, 10);
-        // Perform additional actions or trigger other events
-      }
-    });
-
   }
 
   var cellHighlightSelectValue = cellHighlightSelect.value;
@@ -1324,10 +1304,7 @@ function createColumnCheckboxes() {
   columnCheckboxesTable.innerHTML = "";
 
   tableHeaders.forEach(function (header, rownum) {
-
     addRowWin(header, rownum);
-
-
   });
 }
 
@@ -2626,6 +2603,8 @@ function getRowCellData(row) {
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
   //const columnLanguages = document.getElementById("columnCheckboxes").getElementsByTagName("select");
   const columnLanguages = document.getElementById("columnCheckboxes").querySelectorAll('select[id^="languageCode3"]');
+
+
   var firstcheckboxrow = table.rows[1];
   var speakcellsIndex = 0;
   for (var j = 0; j < columnCheckboxes.length; j++) {

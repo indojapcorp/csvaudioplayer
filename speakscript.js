@@ -16,6 +16,7 @@ var isMacOS = /Macintosh|Mac OS X/i.test(navigator.userAgent);
 //var synth = window.speechSynthesis;
 
 function getLanguageDisplayName(langcode) {
+
     const languageName = new Intl.DisplayNames(['en'], { type: 'language' }).of(langcode);
     return languageName;
 
@@ -34,7 +35,6 @@ function getMobileVoices(){
 
         function populateVoiceList() {
 
-            alert("getMobileVoices uttvoices.length="+uttvoices.length);
             //voices = window.speechSynthesis.getVoices();
             // Group voices by language
             voiceGroups = {};
@@ -55,7 +55,7 @@ function getMobileVoices(){
     
             // Fill the langCodeVoicesDict dictionary
             for (var lang in voiceGroups) {
-                var langCode = lang.split('-')[0]; // Get the language code
+                var langCode = lang.split('_')[0]; // Get the language code
     
                 if (!(langCode in langCodeVoicesDict)) {
                     langCodeVoicesDict[langCode] = [];
@@ -90,7 +90,6 @@ function getMobileVoices(){
 
         function loadVoices() {
             uttvoices = speechSynthesis.getVoices();
-            alert(" loadVoices uttvoices "+uttvoices.length);
             if (uttvoices.length === 0) {
                 setTimeout(loadVoices, 100);
             } else {
@@ -105,7 +104,6 @@ function getMobileVoices(){
     // Trigger voiceschanged manually, as it might not be fired initially on some devices
     if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
         speechSynthesis.onvoiceschanged();
-        alert("calling onvoiceschanged");
         //loadVoices();
     }
 
@@ -327,6 +325,11 @@ function populateVoiceGroups(event) {
             option.value = langCode;
             option.textContent = langCode;
             voiceGroupSelect.appendChild(option);
+        }else if (langCode.split('_')[0] === selectedLanguageCode[event.target.id]) {
+            var option = document.createElement('option');
+            option.value = langCode;
+            option.textContent = langCode;
+            voiceGroupSelect.appendChild(option);
         }
     });
 
@@ -382,10 +385,10 @@ window.addEventListener('load', function () {
     console.log('Is macOS:', isMacOS);
 
     if(isMacOS){
-        alert("IS Mac");
+        console.log("IS Mac");
         getVoices();
     }else{
-        alert("IS Mobile");
+        console.log("IS Mobile");
         getMobileVoices();
         //getResponsiveVoices();
     }
