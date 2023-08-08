@@ -16,7 +16,6 @@ var isMacOS = /Macintosh|Mac OS X/i.test(navigator.userAgent);
 //var synth = window.speechSynthesis;
 
 function getLanguageDisplayName(langcode) {
-
     const languageName = new Intl.DisplayNames(['en'], { type: 'language' }).of(langcode);
     return languageName;
 
@@ -35,7 +34,7 @@ function getMobileVoices(){
 
         function populateVoiceList() {
 
-            console.log("getMobileVoices uttvoices.length="+uttvoices.length);
+            alert("getMobileVoices uttvoices.length="+uttvoices.length);
             //voices = window.speechSynthesis.getVoices();
             // Group voices by language
             voiceGroups = {};
@@ -43,7 +42,7 @@ function getMobileVoices(){
                 var voice = uttvoices[i];
                 console.log("voice name="+voice.name);
                 console.log("voice.lang="+voice.lang);
-    
+
                 var lang = voice.lang;
     
     
