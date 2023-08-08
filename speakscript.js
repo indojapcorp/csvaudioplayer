@@ -27,8 +27,95 @@ function getLanguageDisplayName(langcode) {
     //     return langcode;
     // }
 }
-
 function getMobileVoices(){
+    if ('speechSynthesis' in window) {
+
+
+        let voices = [];
+
+        function populateVoiceList() {
+
+            console.log("getMobileVoices uttvoices.length="+uttvoices.length);
+            //voices = window.speechSynthesis.getVoices();
+            // Group voices by language
+            voiceGroups = {};
+            for (var i = 0; i < uttvoices.length; i++) {
+                var voice = uttvoices[i];
+                console.log("voice name="+voice.name);
+                console.log("voice.lang="+voice.lang);
+    
+                var lang = voice.lang;
+    
+    
+                if (!(lang in voiceGroups)) {
+                    voiceGroups[lang] = [];
+                }
+    
+                voiceGroups[lang].push(voice);
+            }
+    
+            // Fill the langCodeVoicesDict dictionary
+            for (var lang in voiceGroups) {
+                var langCode = lang.split('-')[0]; // Get the language code
+    
+                if (!(langCode in langCodeVoicesDict)) {
+                    langCodeVoicesDict[langCode] = [];
+                }
+    
+                langCodeVoicesDict[langCode].push(voiceGroups[lang]);
+            }
+    
+            // Populate the languageCode select for each row
+            var rows = document.querySelectorAll('.voice-row');
+    
+            rows.forEach(function (row) {
+                var languageCodeSelect = row.querySelector('.languageCode');
+                languageCodeSelect.innerHTML = ''; // Clear existing options
+                var seloption = document.createElement('option');
+                languageCodeSelect.appendChild(seloption);
+    
+                Object.keys(langCodeVoicesDict).forEach(function (langCode) {
+                    var option = document.createElement('option');
+                    option.value = langCode;
+                    //option.textContent = langCode;
+                    option.textContent = getLanguageDisplayName(langCode);
+
+                    languageCodeSelect.appendChild(option);
+                });
+            });
+    
+            // Get sorted languages
+            var sortedLanguages = Object.keys(voiceGroups).sort();
+
+        }
+
+        function loadVoices() {
+            uttvoices = speechSynthesis.getVoices();
+            alert(" loadVoices uttvoices "+uttvoices.length);
+            if (uttvoices.length === 0) {
+                setTimeout(loadVoices, 100);
+            } else {
+                populateVoiceList();
+            }
+        }
+
+    // Chrome requires voices to be loaded asynchronously
+    speechSynthesis.onvoiceschanged = loadVoices;
+
+    //loadVoices();
+    // Trigger voiceschanged manually, as it might not be fired initially on some devices
+    if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged();
+        alert("calling onvoiceschanged");
+        //loadVoices();
+    }
+
+    } else {
+        console.log('Text-to-Speech not supported in this browser.');
+    }
+}
+
+function getMobileVoicesOld(){
     if ('speechSynthesis' in window) {
 
 
