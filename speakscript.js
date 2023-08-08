@@ -36,7 +36,7 @@ function getMobileVoices(){
 
         function populateVoiceList() {
 
-            console.log("uttvoices.length="+uttvoices.length);
+            console.log("getMobileVoices uttvoices.length="+uttvoices.length);
             //voices = window.speechSynthesis.getVoices();
             // Group voices by language
             voiceGroups = {};

@@ -824,7 +824,8 @@ function speakAndHighlight() {
     console.log(selectedText);
   }
 
-  if (isMacOS) {
+  //if (isMacOS) {
+  if (true) {    
 
     //utterance.text = currentCell.innerText.replace(/[.,:?]/g, '!!!!!!');
     // Replace number and dot at the beginning with a blank
