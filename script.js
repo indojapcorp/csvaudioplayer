@@ -473,20 +473,20 @@ function speakRowData(row) {
   var selectedText = window.getSelection().toString().trim();
   var speakcellsIndex = 0;
 
+  console.log("selectedText="+selectedText);
+
   if (selectedText) {
+
+    var selectionRange = window.getSelection().getRangeAt(0);
+    // Get the common ancestor container of the selection
+    var parentElement = selectionRange.commonAncestorContainer.parentElement;
       // Iterate through the cells in the row
       for (var cellNumber = 0; cellNumber < row.cells.length; cellNumber++) {
           var cellContent = row.cells[cellNumber].textContent.trim();
-          console.log("cellContent", cellContent);
-          if (cellContent === selectedText) {
-            console.log("cell row.cells.length:", row.cells.length);
-            console.log("cell number:", cellNumber);
-            console.log("columnLanguages:", columnLanguages);
+          if (cellContent === parentElement.textContent.trim()) {
             var collang = columnLanguages[cellNumber-1].value;
             speakcells[speakcellsIndex] = row.cells[cellNumber];
             speakcellslang[speakcellsIndex] = collang;
-              console.log("Selected text is in cell number:", cellNumber + 1);
-              console.log("Selected text is in cell collang:", collang);
               break;
           }
       }
@@ -2898,14 +2898,14 @@ var myTablevar= document.getElementById("myTable");
               const x = rect2.left + window.pageXOffset;
               const y = rect2.top + window.pageYOffset;
       
-              console.log('X coordinate:', x);
-              console.log('Y coordinate:', y);
+              // console.log('X coordinate:', x);
+              // console.log('Y coordinate:', y);
       
-              console.log("scrollX, scrollY "+scrollX +", "+ scrollY);
-              console.log("rect.left, rect.bottom "+rect.left +", "+ rect.bottom);
+              // console.log("scrollX, scrollY "+scrollX +", "+ scrollY);
+              // console.log("rect.left, rect.bottom "+rect.left +", "+ rect.bottom);
               //showDivPlayPopup(rect.left, rect.bottom);
               //showDivPlayPopup(scrollX, scrollY);
-              showDivPlayPopup(x, y-30);
+              showDivPlayPopup(x, y+25);
           } else {
               hideDivPlayPopup();
           }
@@ -2932,14 +2932,17 @@ var myTablevar= document.getElementById("myTable");
 
               // Get the common ancestor container of the selection
               var parentElement = selectionRange.commonAncestorContainer.parentElement;
+              //console.log(parentElement);
               const parentTR = parentElement.closest('tr');
-              const button = parentTR.querySelector('button');
-              console.log(parentTR);
+              const button = parentTR.querySelector('button[id^=button]');
+              // console.log(parentTR);
+              // console.log("parentTR="+parentTR);
+              // console.log(button);
               if (button) {
                   button.click();
               }
 
-              console.log("Parent element of selected text:", parentElement.parentElement);
+              //console.log("Parent element of selected text:", parentElement.parentElement);
           }
 
       }
