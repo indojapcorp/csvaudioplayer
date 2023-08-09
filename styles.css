@@ -247,3 +247,13 @@ button, select, input {
 .dbcat-dropdown-content input {
   margin: 5px;
 }
+
+.playpopupdivclass {
+  display: none;
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 0px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+  z-index: 9999;
+}

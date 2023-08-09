@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Popup Example</title>
+    <style>
+        /* Style for the popup */
+        .popup2 {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 0px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <div id="content" contenteditable="true">
+                    This is an example text. Select any word to see the popup.
+                </div>
+            </td>
+            <td>
+                <button id="popupMainButton1">Play Me</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>This is the second editable div.</div>
+            </td>
+            <td>
+                <button id="popupMainButton2">Play Me</button>
+
+            </td>
+
+        </tr>
+        <div class="popup2" id="popupdiv">
+            <button id="popupButton">Play</button>
+        </div>
+
+
+
+    </table>
+    <script>
+        const content = document.getElementById('content');
+        const divElements = document.querySelectorAll('div');
+        //const divElements = document.querySelectorAll('div[contenteditable="true"]');
+
+        const popup = document.getElementById('popupdiv');
+        const popupButton = document.getElementById('popupButton');
+        popupButton.addEventListener('click', () => triggerPlayButtonClick());
+        const popupMainButton1 = document.getElementById('popupMainButton1');
+        popupMainButton1.addEventListener('click', () => speakText());
+
+        const popupMainButton2 = document.getElementById('popupMainButton2');
+        popupMainButton2.addEventListener('click', () => speakText());
+
+        // Function to speak the text
+        function speakText() {
+            var selectedText = window.getSelection().toString().trim();
+            const utterance = new SpeechSynthesisUtterance(selectedText);
+            speechSynthesis.speak(utterance);
+        }
+
+        // Function to show the popup with selected text as button title
+        function showPopup(x, y) {
+            popup.style.left = x + 'px';
+            popup.style.top = y + 'px';
+            popup.style.display = 'block';
+        }
+
+        // Function to hide the popup
+        function hidePopup() {
+            popup.style.display = 'none';
+        }
+
+        // Event listener for text selection
+        window.addEventListener('mouseup', (event) => {
+            var selectedText = window.getSelection().toString().trim();
+            if (selectedText) {
+                const selection = window.getSelection();
+                const range = selection.getRangeAt(0);
+                const rect = range.getBoundingClientRect();
+                const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
+                showPopup(rect.left, rect.bottom);
+            } else {
+                hidePopup();
+            }
+        });
+
+        // Hide popup when clicking outside of it
+        window.addEventListener('click', (event) => {
+            //if (!popup.contains(event.target) && !content.contains(event.target)) {
+            //if (!popup.contains(event.target) && !content.contains(event.target) && !isInDivElement(event.target)) {
+                if (!popup.contains(event.target) && !isInDivElement(event.target)) {    
+                hidePopup();
+            }
+        });
+
+        // Check if the clicked element is within a div with contenteditable="true"
+        function isInDivElement(element) {
+            // for (const divElement of divElements) {
+            //     if (divElement.contains(element)) {
+            //         return true;
+            //     }
+            // }
+            // return false;
+            return element.tagName === 'DIV' && element.getAttribute('contenteditable') === 'true';
+
+        }
+        function triggerPlayButtonClick() {
+            var selectedText = window.getSelection().toString().trim();
+
+            if (selectedText) {
+                // Get the selection range
+                var selectionRange = window.getSelection().getRangeAt(0);
+
+                // Get the common ancestor container of the selection
+                var parentElement = selectionRange.commonAncestorContainer.parentElement;
+                const parentTR = parentElement.closest('tr');
+                const button = parentTR.querySelector('button');
+                console.log(parentTR);
+                if (button) {
+                    button.click();
+                }
+
+                console.log("Parent element of selected text:", parentElement.parentElement);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

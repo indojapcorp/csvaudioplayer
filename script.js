@@ -461,12 +461,38 @@ function speakRowData(row) {
 
 
 
+
+
   var table = document.getElementById("myTable");
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
   var columnLanguages = document.getElementById("columnCheckboxes").querySelectorAll('select[id^="voices3"]');
 
   var firstcheckboxrow = table.rows[1];
+
+
+  var selectedText = window.getSelection().toString().trim();
   var speakcellsIndex = 0;
+
+  if (selectedText) {
+      // Iterate through the cells in the row
+      for (var cellNumber = 0; cellNumber < row.cells.length; cellNumber++) {
+          var cellContent = row.cells[cellNumber].textContent.trim();
+          console.log("cellContent", cellContent);
+          if (cellContent === selectedText) {
+            console.log("cell row.cells.length:", row.cells.length);
+            console.log("cell number:", cellNumber);
+            console.log("columnLanguages:", columnLanguages);
+            var collang = columnLanguages[cellNumber-1].value;
+            speakcells[speakcellsIndex] = row.cells[cellNumber];
+            speakcellslang[speakcellsIndex] = collang;
+              console.log("Selected text is in cell number:", cellNumber + 1);
+              console.log("Selected text is in cell collang:", collang);
+              break;
+          }
+      }
+  }else{
+
+
   for (var j = 0; j < columnCheckboxes.length; j++) {
     var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
     var collang = columnLanguages[j].value;
@@ -477,6 +503,7 @@ function speakRowData(row) {
     }
   }
 
+  }
   currentCellSpeakTime = 0;
   cellsTotalSpeakTime = getTotalSpeakTime();
 
@@ -816,12 +843,12 @@ function speakAndHighlight() {
 
   playingCellSpan.textContent = "   Playing " + (currentCellIndex + 1) + " / " + speakcells.length + "       " + formatTime(currentCellSpeakTime) + " / " + formatTime(cellsTotalSpeakTime);
 
-  var cellTextValue = currentCell.innerText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/[.:?]/g, '!');
+  var cellTextValue = currentCell.innerText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/\n+/g, '. ').replace(/[.:?]/g, '!');
 
   const selectedText = window.getSelection().toString().trim();
   if (selectedText) {
-    cellTextValue = selectedText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/[.:?]/g, '!');
-    console.log(selectedText);
+    cellTextValue = selectedText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/\n+/g, '. ').replace(/[.:?]/g, '!');
+    console.log(cellTextValue);
   }
 
   //if (isMacOS) {
@@ -2058,6 +2085,22 @@ uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on p
     selectedColumns.forEach(function (column, i) {
       var cell = document.createElement("td");
       var cellDiv = document.createElement("div");
+    //   cellDiv.addEventListener('mouseup', (event) => {
+    //     var selectedText = window.getSelection().toString().trim();
+    //     if (selectedText) {
+    //         const selection = window.getSelection();
+    //         const range = selection.getRangeAt(0);
+    //         const rect = range.getBoundingClientRect();
+    //         const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
+    //         popupPlayButton.addEventListener('click', popupPlayButtonClickHandler("button"+rowno));
+    //         showDivPlayPopup("button"+rowno,rect.left, rect.bottom);
+    //     } else {
+    //       popupPlayButton.removeEventListener('click',popupPlayButtonClickHandler("button"+rowno));
+    //         hideDivPlayPopup("button"+rowno);
+    //     }
+    // });
+
+
       cellDiv.setAttribute('contenteditable', 'true');
 
       // Remove enclosing double quotes if present
@@ -2803,3 +2846,100 @@ function showDiv() {
   var paginationContainer = document.getElementById("paginationContainer");
   paginationContainer.innerHTML = "";
 }
+
+const divPlayPopup = document.getElementById('playpopupdiv');
+
+const popupPlayButton = document.getElementById('popupPlayButton');
+popupPlayButton.addEventListener('click', () => triggerPlayButtonClick());
+
+function popupPlayButtonClickHandler(rowPlayButtonId) {
+  console.log('Button clicked');
+  setTimeout(hideDivPlayPopup(rowPlayButtonId), 200); // Delay before hiding the popup
+
+  const rowPlayButton = document.getElementById(rowPlayButtonId);
+  console.log(rowPlayButton);
+  rowPlayButton.click();
+}
+
+function showDivPlayPopup(x, y) {
+  divPlayPopup.style.left = x + 'px';
+  divPlayPopup.style.top = y + 'px';
+  divPlayPopup.style.display = 'block';
+}
+
+// Function to hide the popup
+function hideDivPlayPopup() {
+  //popupPlayButton.removeEventListener('click',popupPlayButtonClickHandler(rowPlayButtonId));
+  divPlayPopup.style.display = 'none';
+}
+
+var myTablevar= document.getElementById("myTable");
+        // Event listener for text selection
+        window.addEventListener('mouseup', (event) => {
+          var selectedText = window.getSelection().toString().trim();
+          if (selectedText) {
+              const selection = window.getSelection();
+              const range = selection.getRangeAt(0);
+              const rect = range.getBoundingClientRect();
+              //const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
+              const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
+
+              var cellRect = selection.getRangeAt(0).getBoundingClientRect();
+              var tableRect = myTablevar.getBoundingClientRect();
+              var cellTop = cellRect.top - tableRect.top;
+              var cellLeft = cellRect.left - tableRect.left;
+              var cellCenterX = cellLeft + cellRect.width / 2;
+              var cellCenterY = cellTop + cellRect.height / 2;
+              var scrollX = cellCenterX - window.innerWidth / 2;
+              var scrollY = cellCenterY - window.innerHeight / 2;              
+
+              const range2 = window.getSelection().getRangeAt(0);
+              const rect2 = range2.getBoundingClientRect();
+              const x = rect2.left + window.pageXOffset;
+              const y = rect2.top + window.pageYOffset;
+      
+              console.log('X coordinate:', x);
+              console.log('Y coordinate:', y);
+      
+              console.log("scrollX, scrollY "+scrollX +", "+ scrollY);
+              console.log("rect.left, rect.bottom "+rect.left +", "+ rect.bottom);
+              //showDivPlayPopup(rect.left, rect.bottom);
+              //showDivPlayPopup(scrollX, scrollY);
+              showDivPlayPopup(x, y-30);
+          } else {
+              hideDivPlayPopup();
+          }
+      });
+
+      // Hide popup when clicking outside of it
+      window.addEventListener('click', (event) => {
+              if (!divPlayPopup.contains(event.target) && !isInDivElement(event.target)) {    
+                hideDivPlayPopup();
+          }
+      });
+
+      // Check if the clicked element is within a div with contenteditable="true"
+      function isInDivElement(element) {
+          return element.tagName === 'DIV' && element.getAttribute('contenteditable') === 'true';
+      }
+
+      function triggerPlayButtonClick() {
+          var selectedText = window.getSelection().toString().trim();
+
+          if (selectedText) {
+              // Get the selection range
+              var selectionRange = window.getSelection().getRangeAt(0);
+
+              // Get the common ancestor container of the selection
+              var parentElement = selectionRange.commonAncestorContainer.parentElement;
+              const parentTR = parentElement.closest('tr');
+              const button = parentTR.querySelector('button');
+              console.log(parentTR);
+              if (button) {
+                  button.click();
+              }
+
+              console.log("Parent element of selected text:", parentElement.parentElement);
+          }
+
+      }
