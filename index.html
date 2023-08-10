@@ -133,6 +133,7 @@
         <option value="2">Local CSV/JSON File</option>
         <option value="3">CSV/JSON File URL</option>
         <option value="4">Database Tables</option>
+        <option value="5">Translation</option>
     </select>
 
 
@@ -169,6 +170,9 @@
             </select>
 
             <button id="loadTablesButton" onclick="loadTableNames()">SQLite Tables</button>
+           <!--
+            <input type="file" id="importTableButton" accept=".csv">
+            -->
             Records Per Page
             <input type="text" id="recordsPerPageInput" placeholder="Records Per Page" size="6" maxlength="6"
                 value="100">

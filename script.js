@@ -2842,6 +2842,7 @@ function showDiv() {
   div2.style.display = "none";
   div3.style.display = "none";
   div4.style.display = "none";
+  divOps.style.display = "none";
 
   if (selectedValue === "1") {
     div1.style.display = "block";
@@ -2851,9 +2852,10 @@ function showDiv() {
     div3.style.display = "block";
   } else if (selectedValue === "4") {
     div4.style.display = "block";
+  } else if (selectedValue === "5") {
+    divOps.style.display = "block";
   }
 
-  divOps.style.display = "none";
   var table = document.getElementById("myTable");
   table.innerHTML = "";
   var paginationContainer = document.getElementById("paginationContainer");

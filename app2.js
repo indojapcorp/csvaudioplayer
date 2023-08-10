@@ -395,3 +395,72 @@ function loadTableNames() {
 
     }
 }
+
+
+
+
+/*
+const importTableButton = document.getElementById('importTableButton');
+
+importTableButton.addEventListener('change', () => {
+  const file = importTableButton.files[0];
+  if (file) {
+    readFileAndImport(file);
+  } else {
+    console.error('Please select a CSV file.');
+  }
+});
+*/
+async function readFileAndImport(file) {
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      const csvData = event.target.result;
+      await importCsvToSQLite(file.name, csvData);
+    };
+    reader.readAsText(file);
+  }
+
+  async function importCsvToSQLite(fileName, csvData) {
+   // const db = new SQL.Database(); // Create an SQLite database in memory
+
+    const lines = csvData.trim().split('\n');
+    const headers = lines.shift().split(','); // Get the header names
+
+    const tableName = fileName.replace(".csv", ''); // Extract table name from file name
+
+    // Generate CREATE TABLE query dynamically
+    const createTableQuery = `
+      CREATE TABLE ${tableName} (
+        ${headers.map(header => `${header} TEXT`).join(',\n')}
+      );
+    `;
+
+    try{
+    db.exec(createTableQuery);
+
+    const insertDataQuery = `
+      INSERT INTO ${tableName} (${headers.join(', ')})
+      VALUES (${headers.map(() => '?').join(', ')});
+    `;
+
+    const stmt = db.prepare(insertDataQuery);
+
+    console.log("createTableQuery="+createTableQuery);
+
+    for (const line of lines) {
+      const values = line.split(',');
+      console.log("line="+line);
+
+      stmt.bind(values);
+      stmt.step();
+      stmt.reset();
+    }
+    stmt.free();
+    //db.close();
+
+    console.log(`CSV data imported to SQLite. Table name: ${tableName}`);
+} catch (error) {
+    console.error('An error occurred:', error);
+  }
+  
+  }
