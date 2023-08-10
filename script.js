@@ -1522,7 +1522,7 @@ function readCSVUsingPapa(file) {
       // Extract headers from the first row
       headers = data[0];
 
-      for (const row of parsedData.data) {
+      for (const row of data.slice(1)) {
         csvData.push(row);
         for (const cell of row) {
           //csvData.push(cell.replace(/\\n/g, '<br>'));
@@ -2222,7 +2222,7 @@ transpopupButton.addEventListener('click', function () {
 
   selectedDwdData = "";
   getSelectedDataForDownload();
-  srctxtPopup.value = selectedDwdData;
+  srctxtPopup.value = selectedDwdData.trim();
 
   transpopup.classList.add('active');
   resetPopup();
@@ -2277,9 +2277,9 @@ function transPrepareApplyDwdData(){
 
 
   //lines[0] = ['word'];
-  headers = ['word'];
+  headers = ['word','category'];
   headersLanguage = [srcLang];
-  totaldata = "word,";
+  totaldata = "word,category,";
 
   for (i = 0; i < totalcols; i++) {
     if (onlyNumericText) {
@@ -2298,11 +2298,11 @@ function transPrepareApplyDwdData(){
       headersLanguage.push(targetLang);
     }
   }
-  totaldata = totaldata + "\n";
+  totaldata = totaldata.slice(0,-1) + "\n";
 
   for (var j = 0; j < srcLines.length; j++) {
     if (onlyNumericText) {
-      totaldata = totaldata + srcLines[j] + ",";
+      totaldata = totaldata + srcLines[j] + "," + document.getElementById("transCategory").value + ",";
       for (i = 0; i < totalcols; i++) {
 
         var tgtlangselectElement = document.getElementById("tgtlang-" + (i + 1));
@@ -2313,15 +2313,15 @@ function transPrepareApplyDwdData(){
         // console.log("tgtLines[j]="+tgtLines[j] + ","+ tgtLines[j] + ","+ numberToTextFromLang(targetLang,tgtLines[j]) + ",");
         totaldata = totaldata + tgtLines[j] + "," + numberToTextFromLang(targetLang, tgtLines[j]) + ",";
       }
-      totaldata = totaldata + "\n";
+      totaldata = totaldata.slice(0,-1) + "\n";
     } else {
-      totaldata = totaldata + srcLines[j] + ",";
+      totaldata = totaldata + srcLines[j] + "," + document.getElementById("transCategory").value + ",";
       for (i = 0; i < totalcols; i++) {
         var tgtText = $("#tratext-popup-" + (i + 1)).val();
         var tgtLines = tgtText.split("\n");
         totaldata = totaldata + tgtLines[j] + ",";
       }
-      totaldata = totaldata + "\n";
+      totaldata = totaldata.slice(0,-1) + "\n";
     }
   }
 
@@ -2587,7 +2587,7 @@ function transCheck() {
     }
   }
 
-  if (!allSelected || document.getElementById("srclang").selectedIndex === 0 || sourceText == "") {
+  if (!allSelected || document.getElementById("srclang").selectedIndex === 0 || sourceText == "" || document.getElementById("transCategory").value.trim() == "") {
     alert("All select elements must have a value selected and the text area should not be empty.");
     return false;
   }

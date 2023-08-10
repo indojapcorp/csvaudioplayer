@@ -122,7 +122,7 @@ table {
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    max-height: 400px;
+   /* max-height: 400px;*/
     visibility: hidden;
     overflow: auto;
 }
