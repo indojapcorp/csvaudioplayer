@@ -1509,7 +1509,10 @@ function readCSVUsingPapa(file) {
   if (!file)
     return;
 
-  csvData = [];
+  if(!transAppendToTableCheckbox.checked){
+    csvData = [];
+  }
+  
   headers = [];
   headersLanguage = [];
   csvfilename = file.name;
@@ -2210,6 +2213,7 @@ var transpopupButton = document.getElementById('popupButton');
 var translateButton = document.getElementById('translateButton');
 var transapplyButton = document.getElementById('applyButton');
 var transcancelButton = document.getElementById('canceltransButton');
+var transAppendToTableCheckbox = document.getElementById('transAppendToTableCheckbox');
 var downloadTranslatedCsvButton = document.getElementById('downloadTranslatedCsvButton');
 var srctxtPopup = document.getElementById('srctext-popup');
 var tratextPopup = document.getElementById('tratext-popup');
@@ -2220,6 +2224,7 @@ var tgtlangval = 'en';
 
 transpopupButton.addEventListener('click', function () {
 
+  csv = undefined;
   selectedDwdData = "";
   getSelectedDataForDownload();
   srctxtPopup.value = selectedDwdData.trim();
@@ -2347,7 +2352,7 @@ function transPrepareApplyDwdData(){
          csv = Papa.unparse(data);
          console.log("here csv"+csv);
          
-  csvData = [];
+//  csvData = [];
 
   // for (var i = 1; i < lines.length; i++) {
   //   if (lines[i].length == 0)
@@ -2366,7 +2371,10 @@ function transPrepareApplyDwdData(){
 
 transapplyButton.addEventListener('click', function () {
 
-
+  if (!csv) {
+    alert("First translate and then apply");
+    return false;
+  }
 
   const blob = new Blob([csv], { type: 'text/csv' });
   const url = URL.createObjectURL(blob);
@@ -2384,6 +2392,11 @@ downloadTranslatedCsvButton.addEventListener('click', () => {
 
 function downloadTranslatedCsv(){
   console.log("here"+lines);
+  if (!csv) {
+    alert("First translate and then download");
+    return false;
+  }
+
   const blob = new Blob([csv], { type: 'text/csv' });
   const url = URL.createObjectURL(blob);
 
