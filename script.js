@@ -2,6 +2,8 @@ let csvfilename = '';
 let recognition;
 //let csvData = null;
 let tableHeaders = [];
+let dynamicCategoryInputs = [];
+
 //event listener for studyList selection start
 const fetchURL = window.location.origin.includes('localhost')
   ? '/data/'
@@ -1628,8 +1630,6 @@ function readJSONFromURL(url, data) {
   const attributes = Object.keys(jsonData.data[0]);
   attributes.forEach(function (item) {
     headers.push(item);
-    // lines.push(item.id);
-    // lines.push(item.text);
   });
 
   //headers = ["ID","TEXT"];
@@ -1679,8 +1679,6 @@ function readJSONFromSQLite(data, currentPage , totalRecords) {
   const attributes = Object.keys(jsonData.data[0]);
   attributes.forEach(function (item) {
     headers.push(item);
-    // lines.push(item.id);
-    // lines.push(item.text);
   });
 
   //headers = ["ID","TEXT"];
@@ -1890,6 +1888,7 @@ function populateTableNew(isSQLite) {
 
   var checkboxes = document.getElementsByName("column");
   var categorycolumncheckboxes = document.getElementsByName("categorycolumn");
+  
   selectedColumns = [];
   var isCategorySelectedForColumns = [];
   tableHeaders = [];
@@ -1903,6 +1902,8 @@ function populateTableNew(isSQLite) {
       isCategorySelectedForColumns.push(categorycolumncheckboxes[i].checked);
     }
   });
+
+
   // Populate the table
   var table = document.getElementById("myTable");
   table.innerHTML = "";
@@ -2025,7 +2026,7 @@ uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on p
     if (isCategorySelectedForColumns[i] == true) {
       input.setAttribute('onclick', 'showDropdown(this,"' + column + '")');
       input.setAttribute('onkeydown', 'hideDropdown(this)');
-      dynamicInputs.push(input);
+      dynamicCategoryInputs.push(input);
 
       td.appendChild(input);
       var catdiv = document.createElement('div');
@@ -2086,12 +2087,6 @@ uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on p
   table.appendChild(thead);
   initButton();
 
-
-  if (isSQLite) {
-    console.log("Call sqlite with selected cols" + tableHeaders);
-  }
-
-
   recordCount = csvData.length;
   document.getElementById("recordCount").textContent = recordCount;
 
@@ -2114,21 +2109,6 @@ uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on p
     selectedColumns.forEach(function (column, i) {
       var cell = document.createElement("td");
       var cellDiv = document.createElement("div");
-    //   cellDiv.addEventListener('mouseup', (event) => {
-    //     var selectedText = window.getSelection().toString().trim();
-    //     if (selectedText) {
-    //         const selection = window.getSelection();
-    //         const range = selection.getRangeAt(0);
-    //         const rect = range.getBoundingClientRect();
-    //         const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
-    //         popupPlayButton.addEventListener('click', popupPlayButtonClickHandler("button"+rowno));
-    //         showDivPlayPopup("button"+rowno,rect.left, rect.bottom);
-    //     } else {
-    //       popupPlayButton.removeEventListener('click',popupPlayButtonClickHandler("button"+rowno));
-    //         hideDivPlayPopup("button"+rowno);
-    //     }
-    // });
-
 
       cellDiv.setAttribute('contenteditable', 'true');
 
@@ -2180,7 +2160,6 @@ uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on p
 function isNumeric(value) {
   return !isNaN(parseFloat(value)) && isFinite(value);
 }
-var dynamicInputs = [];
 
 function showDropdown(inputField, column) {
   var uniqueCategories = new Set();
@@ -2404,10 +2383,7 @@ function transPrepareApplyDwdData(){
   var filecolpopup = document.getElementById("colpopup");
   filecolpopup.style.display = "block";
 
-  //csv = Papa.unparse(lines);
-  console.log("here lines"+lines);
-  console.log("here lines"+lines.length);
-
+  
           // Convert lines into a structured format (array of arrays)
           const data = lines.map(line => {
             //const parsedLine = Papa.parse(line, { delimiter: ',', quoteChar: '"' });
@@ -2417,7 +2393,6 @@ function transPrepareApplyDwdData(){
 
         // Generate CSV using Papa.unparse
          csv = Papa.unparse(data);
-         console.log("here csv"+csv);
          
 //  csvData = [];
 

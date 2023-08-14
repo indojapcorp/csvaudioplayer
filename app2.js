@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.getElementById('searchWord').value.trim();
         const checkboxes = dropdownContent.getElementsByTagName('input');
 
-        if (columnNameSelect.value != "" && (searchInput !== '' || checkboxes.length != 0)) {
+        //if (columnNameSelect.value != "" && (searchInput !== '' || checkboxes.length != 0)) {
+        if (columnNameSelect.value != "") {            
             searchDictionary(tableNameSelect.value, selectedColumnNames);
         }
     });
@@ -108,7 +109,8 @@ function getWhereClause() {
 
     var searchInput = document.getElementById('searchWord').value.trim();
 
-    const checkboxes = dropdownContent.getElementsByTagName('input');
+    //const checkboxes = dropdownContent.getElementsByTagName('input');
+    const checkboxes = dropdownContent.querySelectorAll('input[type="checkbox"]:checked');
 
     for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
@@ -118,17 +120,12 @@ function getWhereClause() {
     }
 
     if (columnNameSelect.value != "" && searchInput != "" && checkboxes.length == 0) {
-        console.log("searchInput=" + searchInput);    
-        console.log(" where " + columnNameSelect.value.trim() + " LIKE " + searchInput);
+        //console.log(" where " + columnNameSelect.value.trim() + " LIKE " + searchInput);
         return " WHERE " + columnNameSelect.value.trim() + " LIKE '" + searchInput + "' ";
-        //searchDictionary(tableNameSelect.value,selectedColumnNames);
     } else if (columnNameSelect.value != "" && checkboxes.length > 0) {
         searchInput = searchInput.slice(0, -1);
-        console.log("searchInput=" + searchInput);
-    
-        console.log(" where " + columnNameSelect.value.trim() + " IN ( " + searchInput + " ) ");
+        //console.log(" where " + columnNameSelect.value.trim() + " IN ( " + searchInput + " ) ");
         return " WHERE " + columnNameSelect.value.trim() + " IN ( " + searchInput + " ) ";
-        //searchDictionary(tableNameSelect.value,selectedColumnNames);
     } else {
         return "";
     }
@@ -278,6 +275,8 @@ function getSQLStringNew(tableName, columnNames) {
 `;
 
     sqlQuery += fromLimitClause;
+
+    //console.log("sqlQuery="+sqlQuery);
 
     return sqlQuery;
 
