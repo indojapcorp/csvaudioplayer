@@ -2909,15 +2909,6 @@ const divPlayPopup = document.getElementById('playpopupdiv');
 const popupPlayButton = document.getElementById('popupPlayButton');
 popupPlayButton.addEventListener('click', () => triggerPlayButtonClick());
 
-function popupPlayButtonClickHandler(rowPlayButtonId) {
-  console.log('Button clicked');
-  setTimeout(hideDivPlayPopup(rowPlayButtonId), 200); // Delay before hiding the popup
-
-  const rowPlayButton = document.getElementById(rowPlayButtonId);
-  console.log(rowPlayButton);
-  rowPlayButton.click();
-}
-
 function showDivPlayPopup(x, y) {
   divPlayPopup.style.left = x + 'px';
   divPlayPopup.style.top = y + 'px';
@@ -2926,7 +2917,6 @@ function showDivPlayPopup(x, y) {
 
 // Function to hide the popup
 function hideDivPlayPopup() {
-  //popupPlayButton.removeEventListener('click',popupPlayButtonClickHandler(rowPlayButtonId));
   divPlayPopup.style.display = 'none';
 }
 
@@ -3003,3 +2993,98 @@ var myTablevar= document.getElementById("myTable");
           }
 
       }
+
+
+//context menu code add start
+let selectedCell;
+// Create and append the context menu element
+const contextMenu = document.createElement("div");
+contextMenu.className = "context-menu";
+contextMenu.innerHTML = `
+<ul>
+<li id="populateSentences">Populate Sentences</li>
+</ul>
+`;
+document.body.appendChild(contextMenu);
+
+// Hide context menu
+function hideContextMenu() {
+    contextMenu.style.display = "none";
+}
+
+// Show context menu at the mouse click position
+function showContextMenu(event) {
+  console.log("myTablevar.showContextMenu");
+    event.preventDefault();
+
+
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+    //const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
+    const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
+
+    var cellRect = selection.getRangeAt(0).getBoundingClientRect();
+    var tableRect = myTablevar.getBoundingClientRect();
+    var cellTop = cellRect.top - tableRect.top;
+    var cellLeft = cellRect.left - tableRect.left;
+    var cellCenterX = cellLeft + cellRect.width / 2;
+    var cellCenterY = cellTop + cellRect.height / 2;
+    var scrollX = cellCenterX - window.innerWidth / 2;
+    var scrollY = cellCenterY - window.innerHeight / 2;              
+
+    const range2 = window.getSelection().getRangeAt(0);
+    const rect2 = range2.getBoundingClientRect();
+    const x = rect2.left + window.pageXOffset;
+    const y = rect2.top + window.pageYOffset;
+
+    //showDivPlayPopup(x, y+25);
+
+
+    // contextMenu.style.left = `${event.clientX}px`;
+    // contextMenu.style.top = `${event.clientY}px`;
+    contextMenu.style.left = `${x}px`;
+    contextMenu.style.top = `${y+50}px`;
+
+    contextMenu.style.display = "block";
+}
+
+// Attach context menu event to the table
+myTablevar.addEventListener("contextmenu", function (event) {
+  console.log("myTablevar.addEventListener");
+    selectedCell = event.target.closest("td");
+    console.log("myTablevar.addEventListener selectedCell="+selectedCell);
+
+    if (!selectedCell) {
+        hideContextMenu();
+        return;
+    }
+    showContextMenu(event);
+});
+
+// Attach click event to context menu items
+contextMenu.addEventListener("click", function (event) {
+    const selectedText = window.getSelection().toString().trim();
+    //const selectedCell = event.target.closest("td");
+    if (!selectedCell) {
+        hideContextMenu();
+        return;
+    }
+
+    // Find the row for the selected cell
+    const selectedRow = selectedCell.parentElement;
+
+    const sentenceColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith("Sentences"));
+    console.log("Index of 'Sentences' column:", sentenceColumnIndex);
+
+    // Find the cell in the "Vocab" column of the same row
+    const sentenceCell = selectedRow.querySelector("td:nth-child(" + (sentenceColumnIndex + 1) + ")");
+
+    if (event.target.id === "populateSentences") {
+        if (sentenceCell) {
+            sentenceCell.textContent = "OK";
+        }
+    }
+    hideContextMenu();
+});
+//context menu code end
