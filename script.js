@@ -210,7 +210,8 @@ function filterTable(columnIndex) {
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[columnIndex + 1];
     if (td) {
-      var cellText = td.innerHTML.toUpperCase();
+      //var cellText = td.innerHTML.toUpperCase();
+      var cellText = td.textContent.toUpperCase();
       var shouldDisplay = applyFilter(cellText, filter, filterType);
       if (shouldDisplay) {
         tr[i].style.display = "";
@@ -251,6 +252,9 @@ function determineFilterType(filter) {
 }
 
 function applyFilter(cellText, filter, filterType) {
+  var filterValues = filter.split(",");
+
+  console.log("cellText="+cellText);
   switch (filterType) {
     case "starts-with":
       var startingText = filter.substring(1);
@@ -281,8 +285,28 @@ function applyFilter(cellText, filter, filterType) {
     // }
     // return false;
     default:
-      filter = filter.replace(/^[\^|\$|>]/, ""); // Remove the filter type character
-      return cellText.indexOf(filter) > -1;
+      // filter = filter.replace(/^[\^|\$|>]/, ""); // Remove the filter type character
+      // return cellText.indexOf(filter) > -1;
+      filter = filter.replace(/^[\^|\$|>]/, "");
+      var containsText = false;
+      console.log("filterValues.length=="+filterValues.length);
+      console.log("filterValues=="+filterValues);
+
+      if(filterValues.length==1){
+        return cellText.indexOf(filter) > -1;
+      }
+        //return true;
+
+      for(let i=0;i<filterValues.length;i++){
+        var filval=filterValues[i].replace(",","");
+        if(cellText.includes(filval) && filval.length > 0){
+          console.log("cellText.includes(filval)"+ cellText.includes(filval) +" cellText IN ="+cellText + " filterValues[i]="+filterValues[i]);
+          containsText = true;
+          break;
+        }
+      }
+      return containsText;
+      //return filterValues.includes(cellText);
   }
 }
 
@@ -1339,8 +1363,8 @@ function createColumnCheckboxes() {
 // Function to toggle the display of table columns
 function toggleColumnApply() {
   const table = document.getElementById("myTable");
-  const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
-
+  //const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+  const columnCheckboxes = document.getElementById("columnCheckboxes").querySelectorAll('input[type="checkbox"][id^=showColcheckbox]');
 
   tableHeaders.forEach(function (header, i) {
     const columnIndex = tableHeaders.indexOf(header) + 1;
@@ -2001,6 +2025,8 @@ uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on p
     if (isCategorySelectedForColumns[i] == true) {
       input.setAttribute('onclick', 'showDropdown(this,"' + column + '")');
       input.setAttribute('onkeydown', 'hideDropdown(this)');
+      dynamicInputs.push(input);
+
       td.appendChild(input);
       var catdiv = document.createElement('div');
       catdiv.setAttribute('class', 'category-dropdown');
@@ -2154,34 +2180,75 @@ uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on p
 function isNumeric(value) {
   return !isNaN(parseFloat(value)) && isFinite(value);
 }
+var dynamicInputs = [];
 
 function showDropdown(inputField, column) {
-  console.log("showDropdown column=" + column);
   var uniqueCategories = new Set();
   csvData.forEach(function (row) {
     uniqueCategories.add(row[headers.indexOf(column)]);
   });
 
   const dropdown = inputField.parentElement.querySelector('.category-dropdown');
-  dropdown.innerHTML = '';
-  console.log("uniqueCategories.length =" + uniqueCategories.length);
+  //dropdown.innerHTML = '';
+  if (uniqueCategories.size > 0 && dropdown.innerHTML === '') {
 
-  if (uniqueCategories.size > 0) {
     for (const category of uniqueCategories) {
-      const button = document.createElement('button');
-      button.textContent = category;
-      dropdown.appendChild(button);
+      // const button = document.createElement('button');
+      // button.textContent = category;
+      // dropdown.appendChild(button);
+
+
+      const catchkbox = document.createElement('input');
+      catchkbox.type = 'checkbox';
+      catchkbox.value = category;
+      var catchkboxlabel = document.createElement('label');
+      catchkboxlabel.appendChild(catchkbox);
+      catchkboxlabel.appendChild(document.createTextNode(category));
+      dropdown.appendChild(catchkboxlabel);
+
+
+
     }
-    dropdown.style.display = 'block';
+
+    // document.addEventListener('click', function (event) {
+    // if (!inputField.contains(event.target) && !dropdown.contains(event.target)) {
+    //   dropdown.style.display = 'none';
+    // } else {
+    //   dropdown.style.display = 'block';
+    // }
+    // });
+
+
+
+    //dropdown.style.display = 'block';
     dropdown.addEventListener('click', (event) => {
       const target = event.target;
-      if (target.nodeName === 'BUTTON') {
-        inputField.value = target.textContent;
+
+      if (target.nodeName === 'INPUT') {
+
+        var searchInput2 = "";
+
+        const checkboxes = dropdown.getElementsByTagName('input');
+    
+        for (let i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                searchInput2 += "" + checkboxes[i].value + ",";
+                //selectedOptions.push(checkboxes[i].value);
+            }
+        }
+    
+        console.log("searchInput2="+searchInput2);
+
+        //inputField.value = target.textContent;
+        inputField.value = searchInput2;
+
         filterTable(headers.indexOf(column));
         hideDropdown(inputField);
         console.log("hideDropdown");
       }
     });
+  }else{
+    dropdown.style.display = 'block';
   }
 }
 

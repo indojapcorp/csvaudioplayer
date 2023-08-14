@@ -33,11 +33,30 @@ document.addEventListener('DOMContentLoaded', function () {
     // });
 
     document.addEventListener('click', function (event) {
+
         if (!multiSelectInput.contains(event.target) && !dropdownContent.contains(event.target)) {
             dropdownContent.style.display = 'none';
-        } else {
+        }else {
             dropdownContent.style.display = 'block';
         }
+        
+        if (dynamicCategoryInputs.some(input => {
+            var dropdown = input.parentElement.querySelector('.category-dropdown');
+            if (!input.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }else {
+                dropdown.style.display = 'block';
+            }
+            
+            // dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            // if (dropdown.contains(event.target)) {
+            //     dropdown.style.display = 'block';
+            // }else {
+            //     dropdown.style.display = 'none';
+            // }
+            
+        })) {
+        }        
     });
 
 
@@ -181,7 +200,7 @@ function getColumnNames(tableName) {
 
 function getColumnUniqueData(tableName, columnName) {
 
-    const sqlUniqueCountQuery = `select COUNT(DISTINCT(${columnName})) as count from ${tableName}`;
+    const sqlUniqueCountQuery = `select COUNT(DISTINCT(${columnName})) as count from ${tableName} `;
     const uniqueCountResults = db.exec(sqlUniqueCountQuery);
 
     if (uniqueCountResults && uniqueCountResults.length > 0) {
@@ -189,7 +208,7 @@ function getColumnUniqueData(tableName, columnName) {
             return;
     }
 
-    const sqlQuery = `select DISTINCT(${columnName}) from ${tableName}`;
+    const sqlQuery = `select DISTINCT(${columnName}) from ${tableName} order by ${columnName} `;
 
     const results = db.exec(sqlQuery);
 

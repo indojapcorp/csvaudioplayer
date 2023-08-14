@@ -411,6 +411,7 @@ function addRowWin(header, rownum) {
 
     var chkCell = document.createElement('td');
     const checkbox = document.createElement("input");
+    checkbox.id = "showColcheckbox"+rownum;
     checkbox.type = "checkbox";
     checkbox.value = header;
     checkbox.checked = true;
@@ -423,6 +424,22 @@ function addRowWin(header, rownum) {
     colCodeLabel.textContent = header;
     colCodeCell.appendChild(colCodeLabel);
     row.appendChild(colCodeCell);
+
+    
+    // // is category start
+    // var colIsCategoryCell = document.createElement('td');
+    // var isCategorycheckbox = document.createElement("input");
+    // isCategorycheckbox.type = "checkbox";
+    // isCategorycheckbox.id = "iscolcategory"+rownum;
+    // isCategorycheckbox.checked = false;
+    // colIsCategoryCell.appendChild(isCategorycheckbox);
+
+    // var isCategorylabel = document.createElement("label");
+    // isCategorylabel.appendChild(document.createTextNode("Is Category Col?"));
+    // colIsCategoryCell.appendChild(isCategorylabel);
+    // row.appendChild(colIsCategoryCell);
+    // // is category end    
+
 
     // Language Code column
     var langCodeCell = document.createElement('td');
