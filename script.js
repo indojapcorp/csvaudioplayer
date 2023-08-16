@@ -1432,6 +1432,26 @@ function hideAndApplyColumnPopup() {
   toggleColumnApply();
 }
 
+// Function to show the column selection popup
+function showDynamicColumnPopup() {
+  const popup = document.getElementById("dynamiccolumnpopupdiv");
+  popup.style.display = "block";
+}
+
+// Function to hide the column selection popup
+function hideDynamicColumnPopup() {
+  const popup = document.getElementById("dynamiccolumnpopupdiv");
+  popup.style.display = "none";
+}
+
+// Function to hide the column selection popup
+function hideAndApplyDynamicColumnPopup() {
+  const popup = document.getElementById("dynamiccolumnpopupdiv");
+  popup.style.display = "none";
+  //toggleColumnApply();
+}
+
+
 // Function to hide the column selection popup
 function checkAll() {
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
@@ -3064,13 +3084,30 @@ myTablevar.addEventListener("contextmenu", function (event) {
 
 // Attach click event to context menu items
 contextMenu.addEventListener("click", function (event) {
-    const selectedText = window.getSelection().toString().trim();
+    var selectedText = window.getSelection().toString().trim();
     //const selectedCell = event.target.closest("td");
     if (!selectedCell) {
         hideContextMenu();
         return;
     }
+    selectedText = selectedCell.textContent;
+    var getTextAreaData = document.getElementById("dynamiccolumnqueryta");
+    const dynamiccolumndelimiter = document.getElementById("dynamiccolumndelimiter").value;
+    var vocabData = [];
+    //const vocabData = getTextAreaData.value.split(/\s+/);
+    
+    // if(dynamiccolumndelimiter === "\n"){
+    //   vocabData = getTextAreaData.value.split(/\s+/);
+    //   console.log("dynamiccolumndelimiter new line");
+    // }else{
+    //   console.log("dynamiccolumndelimiter not new line="+dynamiccolumndelimiter);
+    //   vocabData = getTextAreaData.value.split(dynamiccolumndelimiter);
+    // }
 
+    vocabData = getQueryResultArray(formatQueryString(getTextAreaData.value , selectedText));
+
+    console.log("vocabData="+vocabData);
+    //const vocabData = getTextAreaData.value.split(dynamiccolumndelimiter);
     // Find the row for the selected cell
     const selectedRow = selectedCell.parentElement;
 
@@ -3079,12 +3116,51 @@ contextMenu.addEventListener("click", function (event) {
 
     // Find the cell in the "Vocab" column of the same row
     const sentenceCell = selectedRow.querySelector("td:nth-child(" + (sentenceColumnIndex + 1) + ")");
+/*
+    select word from sentences_ja where word like '%%'
+SELECT
+    ( word  || CHAR(10)  || reading || CHAR(10) || english) AS result
+FROM
+    sentences_ja 
+where word like '%%'
 
+|| CHAR(10) || "--------------"
+*/
     if (event.target.id === "populateSentences") {
-        if (sentenceCell) {
-            sentenceCell.textContent = "OK";
-        }
+      //const matchedVocabs = vocabData.filter(item => item.includes(selectedText));
+      //console.log(getTextAreaData.value.split(/\n/).length);
+      var sentenceText= "";
+      console.log(vocabData.length);
+      for(let i=0;i<vocabData.length;i++){
+        sentenceText+=vocabData[i]+'\n';
+      }
+      //const matchedVocabs = getTextAreaData.value.split("\n").filter(item => item.includes(selectedText));
+      
+      //console.log("matchedVocabs length="+matchedVocabs.length);
+      //const vocabItem = getTextAreaData.value.split("\n").find(item => item.includes(selectedText));
+      if (sentenceCell) {
+        //console.log("matchedVocabs="+matchedVocabs);
+        sentenceCell.textContent = vocabData.join("\n ");
+      }
+
+        // if (sentenceCell) {
+        //     sentenceCell.textContent = "OK";
+        // }
     }
     hideContextMenu();
 });
+
+function formatQueryString(str, replaceWith) {
+  // Replace content in single quotes with replaceWith value
+//  return str.replace(/'[^']*'/g, "'" + replaceWith + "'");
+  return str.replace(/'[^']*'/g, "'%" + replaceWith + "%'");
+
+}
+
+// Custom comparison function for non-ASCII characters
+function customIncludes(str, searchText) {
+  console.log("str="+str+"  searchText="+searchText +" test="+str.normalize("NFD").includes(searchText.normalize("NFD")));
+  return str.normalize("NFD").includes(searchText.normalize("NFD"));
+}
+
 //context menu code end

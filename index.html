@@ -185,6 +185,10 @@
                 </div>
             </div>
             <button id="searchButton">Search</button>
+
+            <!--
+            Search Table<select id="searchTableNameSelect"></select>
+            -->
         </div>
     </div>
 
@@ -222,12 +226,12 @@
         <button id="popupButton">&#127760; Tranlation</button>
         <button id="clearResult" onclick="clearResults()">&#x1F58C;Clear Results</button>
 
-        <!-- 
+    <!-- 
     <button onclick="addNewRow()">&#10133;Row</button>
     <button onclick="addNewColumn()">&#10133;Column</button>
     -->
         <button onclick="openCSVJSONConversionWindow()">&#128195;CSV/JSON Util</button>
-
+        <button onclick="showDynamicColumnPopup()">Dynamic Table &#x2699;</button>
 
         <br><br>
     </div>
@@ -274,6 +278,17 @@
             <button onclick="hideAndApplyColumnPopup()">Apply</button>
         </div>
     </div>
+
+    <div id="dynamiccolumnpopupdiv" class="filecolpopup">
+        <span>Delimiter</span>
+        <input type="text" id="dynamiccolumndelimiter" placeholder="Enter Delimiter" size="15" maxlength="15" value="\n"><br>
+        Tables<select id="dynamiccolumntableNameSelect"></select><br>
+        Columns<select id="dynamiccolumncolumnNameSelect"></select><br>
+        <h3>Enter Query</h3>
+        <textarea id="dynamiccolumnqueryta" rows="4" cols="30"></textarea><br>
+        <button id="dynamiccolpopulateBtn" onclick="hideAndApplyDynamicColumnPopup()">Load Dyamic Data</button>
+    </div>
+
     <!--
     <div>
         <button id="loadTablesButton" onclick="loadTableNames()">SQLite Tables</button>     

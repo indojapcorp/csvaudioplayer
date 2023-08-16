@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const checkboxes = dropdownContent.getElementsByTagName('input');
 
         //if (columnNameSelect.value != "" && (searchInput !== '' || checkboxes.length != 0)) {
-        if (columnNameSelect.value != "") {            
+        if (columnNameSelect.value != "") {
             searchDictionary(tableNameSelect.value, selectedColumnNames);
         }
     });
@@ -37,27 +37,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!multiSelectInput.contains(event.target) && !dropdownContent.contains(event.target)) {
             dropdownContent.style.display = 'none';
-        }else {
+        } else {
             dropdownContent.style.display = 'block';
         }
-        
+
         if (dynamicCategoryInputs.some(input => {
             var dropdown = input.parentElement.querySelector('.category-dropdown');
             if (!input.contains(event.target) && !dropdown.contains(event.target)) {
                 dropdown.style.display = 'none';
-            }else {
+            } else {
                 dropdown.style.display = 'block';
             }
-            
+
             // dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
             // if (dropdown.contains(event.target)) {
             //     dropdown.style.display = 'block';
             // }else {
             //     dropdown.style.display = 'none';
             // }
-            
+
         })) {
-        }        
+        }
     });
 
 
@@ -186,13 +186,34 @@ function getColumnNames(tableName) {
             option.textContent = columnName;
             columnNameSelect.appendChild(option);
         }
-
-
         return columnNames;
     }
 
 
     return [];
+}
+
+
+function getDynamicColumnNames(tableName) {
+
+    const sqlQuery = `PRAGMA table_info(${tableName})`;
+    const results = db.exec(sqlQuery);
+
+    if (results && results.length > 0) {
+        const columnNames = results[0].values.map(row => row[1]);
+
+        const dynamiccolumncolumnNameSelect = document.getElementById('dynamiccolumncolumnNameSelect');
+        dynamiccolumncolumnNameSelect.innerHTML = '';
+        const option = document.createElement('option');
+        option.textContent = "select";
+
+        for (let i = 0; i < columnNames.length; i++) {
+            const columnName = columnNames[i];
+            const option = document.createElement('option');
+            option.textContent = columnName;
+            dynamiccolumncolumnNameSelect.appendChild(option);
+        }
+    }
 }
 
 function getColumnUniqueData(tableName, columnName) {
@@ -231,6 +252,19 @@ function getColumnUniqueData(tableName, columnName) {
         return columnNames;
     }
     return [];
+}
+
+
+function getQueryResultArray(query){
+    console.log("query="+query);
+
+        const results = db.exec(query);
+    
+        if (results && results.length > 0) {
+            return results[0].values;
+        }
+        return [];
+    
 }
 
 function getSQLStringNew(tableName, columnNames) {
@@ -379,6 +413,10 @@ function loadTableNames() {
     const tableNameSelect = document.getElementById('tableNameSelect');
     const colHasCatChkbox = document.getElementById('colHasCatChkbox');
     tableNameSelect.innerHTML = '';
+
+    const dynamiccolumntableNameSelect = document.getElementById('dynamiccolumntableNameSelect');
+    dynamiccolumntableNameSelect.innerHTML = '';
+
     const option = document.createElement('option');
     option.textContent = "select";
     tableNameSelect.appendChild(option);
@@ -391,6 +429,15 @@ function loadTableNames() {
             option.textContent = tableName;
             tableNameSelect.appendChild(option);
         }
+
+        var options = tableNameSelect.options;
+        Array.from(options).forEach(function (option) {
+            var traoption = document.createElement("option");
+            traoption.value = option.value;
+            traoption.text = option.text;
+            dynamiccolumntableNameSelect.add(traoption);
+        });
+    
 
         // Add event listener to call searchDictionary when an option is selected
         tableNameSelect.addEventListener('change', () => {
@@ -405,13 +452,19 @@ function loadTableNames() {
             dropdownContent.innerHTML = '';
             const selectedOption = columnNameSelect.value;
 
-            if(colHasCatChkbox.checked){
+            if (colHasCatChkbox.checked) {
                 getColumnUniqueData(tableNameSelect.value, selectedOption);
             }
-            //searchDictionary(selectedOption);
         });
 
     }
+
+    // Add event listener to call searchDictionary when an option is selected
+    dynamiccolumntableNameSelect.addEventListener('change', () => {
+        const selectedOption = dynamiccolumntableNameSelect.value;
+        getDynamicColumnNames(selectedOption);
+    });
+
 }
 
 
@@ -432,14 +485,14 @@ importTableButton.addEventListener('change', () => {
 async function readFileAndImport(file) {
     const reader = new FileReader();
     reader.onload = async (event) => {
-      const csvData = event.target.result;
-      await importCsvToSQLite(file.name, csvData);
+        const csvData = event.target.result;
+        await importCsvToSQLite(file.name, csvData);
     };
     reader.readAsText(file);
-  }
+}
 
-  async function importCsvToSQLite(fileName, csvData) {
-   // const db = new SQL.Database(); // Create an SQLite database in memory
+async function importCsvToSQLite(fileName, csvData) {
+    // const db = new SQL.Database(); // Create an SQLite database in memory
 
     const lines = csvData.trim().split('\n');
     const headers = lines.shift().split(','); // Get the header names
@@ -453,32 +506,32 @@ async function readFileAndImport(file) {
       );
     `;
 
-    try{
-    db.exec(createTableQuery);
+    try {
+        db.exec(createTableQuery);
 
-    const insertDataQuery = `
+        const insertDataQuery = `
       INSERT INTO ${tableName} (${headers.join(', ')})
       VALUES (${headers.map(() => '?').join(', ')});
     `;
 
-    const stmt = db.prepare(insertDataQuery);
+        const stmt = db.prepare(insertDataQuery);
 
-    console.log("createTableQuery="+createTableQuery);
+        console.log("createTableQuery=" + createTableQuery);
 
-    for (const line of lines) {
-      const values = line.split(',');
-      console.log("line="+line);
+        for (const line of lines) {
+            const values = line.split(',');
+            console.log("line=" + line);
 
-      stmt.bind(values);
-      stmt.step();
-      stmt.reset();
+            stmt.bind(values);
+            stmt.step();
+            stmt.reset();
+        }
+        stmt.free();
+        //db.close();
+
+        console.log(`CSV data imported to SQLite. Table name: ${tableName}`);
+    } catch (error) {
+        console.error('An error occurred:', error);
     }
-    stmt.free();
-    //db.close();
 
-    console.log(`CSV data imported to SQLite. Table name: ${tableName}`);
-} catch (error) {
-    console.error('An error occurred:', error);
-  }
-  
-  }
+}
