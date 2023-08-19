@@ -170,6 +170,8 @@
             </select>
 
             <button id="loadTablesButton" onclick="loadTableNames()">SQLite Tables</button>
+            <button onclick="showDynamicColumnPopup()">Dynamic Table &#x2699;</button>
+            <button id="loadmyTableQueryButton" onclick="loadmyTableQuery()">Load Query</button>
            <!--
             <input type="file" id="importTableButton" accept=".csv">
             -->
@@ -231,8 +233,9 @@
     <button onclick="addNewColumn()">&#10133;Column</button>
     -->
         <button onclick="openCSVJSONConversionWindow()">&#128195;CSV/JSON Util</button>
+        <!--
         <button onclick="showDynamicColumnPopup()">Dynamic Table &#x2699;</button>
-
+        -->
         <br><br>
     </div>
 
@@ -284,8 +287,12 @@
         <input type="text" id="dynamiccolumndelimiter" placeholder="Enter Delimiter" size="15" maxlength="15" value="\n"><br>
         Tables<select id="dynamiccolumntableNameSelect"></select><br>
         Columns<select id="dynamiccolumncolumnNameSelect"></select><br>
-        <h3>Enter Query</h3>
-        <textarea id="dynamiccolumnqueryta" rows="4" cols="30"></textarea><br>
+        <h3>Enter myTable Query</h3>
+        <textarea id="dynamiccolumnmytablequeryta" rows="4" cols="30"></textarea><br>
+        <h3>Enter Vocabs Query</h3>
+        <textarea id="dynamiccolumnvocabqueryta" rows="4" cols="30"></textarea><br>
+        <h3>Enter Sentences Query</h3>
+        <textarea id="dynamiccolumnsentencesqueryta" rows="4" cols="30"></textarea><br>
         <button id="dynamiccolpopulateBtn" onclick="hideAndApplyDynamicColumnPopup()">Load Dyamic Data</button>
     </div>
 

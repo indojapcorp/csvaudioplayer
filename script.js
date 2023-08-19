@@ -256,7 +256,6 @@ function determineFilterType(filter) {
 function applyFilter(cellText, filter, filterType) {
   var filterValues = filter.split(",");
 
-  console.log("cellText="+cellText);
   switch (filterType) {
     case "starts-with":
       var startingText = filter.substring(1);
@@ -291,8 +290,6 @@ function applyFilter(cellText, filter, filterType) {
       // return cellText.indexOf(filter) > -1;
       filter = filter.replace(/^[\^|\$|>]/, "");
       var containsText = false;
-      console.log("filterValues.length=="+filterValues.length);
-      console.log("filterValues=="+filterValues);
 
       if(filterValues.length==1){
         return cellText.indexOf(filter) > -1;
@@ -302,7 +299,6 @@ function applyFilter(cellText, filter, filterType) {
       for(let i=0;i<filterValues.length;i++){
         var filval=filterValues[i].replace(",","");
         if(cellText.includes(filval) && filval.length > 0){
-          console.log("cellText.includes(filval)"+ cellText.includes(filval) +" cellText IN ="+cellText + " filterValues[i]="+filterValues[i]);
           containsText = true;
           break;
         }
@@ -484,10 +480,6 @@ function speakRowData(row) {
   speakcells = [];
   speakcellslang = [];
   currentCellIndex = 0;
-
-
-
-
 
   var table = document.getElementById("myTable");
   const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
@@ -918,6 +910,8 @@ function speakAndHighlight() {
     };
   }
 
+  if (!selectedText) {
+
   var cellHighlightSelectValue = cellHighlightSelect.value;
   if (cellHighlightSelectValue == 'highlightandenlarge') {
     currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
@@ -944,42 +938,14 @@ function speakAndHighlight() {
   const centerX = window.innerWidth / 2;
 const centerY = window.innerHeight / 2;
 
-// window.scrollTo({
-//   top: centerY,
-//   left: centerX,
-//   behavior: 'smooth' // Add 'smooth' for smooth scrolling; omit for instant scrolling
-// });
-
-
-//   window.scrollTo({
-//     top: scrollY,
-//     left: scrollX,
-//     behavior: 'smooth'
-//   });
-
   window.scrollTo({
     top: scrollY+240,
     left: scrollX,
     behavior: 'smooth'
   });
 
-  // // When the speech ends, move to the next cell
-  // utterance.onend = function () {
-  //   if (counter < maxCellSpeakCounter.value) {
-  //     counter++;
-  //   } else {
-  //     counter = 1; // Reset the counter for the next cell
-  //   }
+}
 
-  //   setTimeout(function () {
-  //     currentCell.style.fontSize = originalFontSize; // Reset font size
-  //     currentCell.style.backgroundColor = ''; // Reset highlighting
-  //     currentCellIndex++;
-  //     playingCellSpan.textContent = "";
-  //     speakAndHighlight(); // Speak the next cell
-  //   }, speakSilenceTime.value);
-
-  // };
 }
 
 function pause() {
@@ -1036,7 +1002,19 @@ function addNewRow() {
   table.appendChild(newRow);
 }
 
-function addNewColumn() {
+function addNewColumn(){
+    // Ask for the name of the new column header
+    const newColumnName = prompt('Enter the name of the new column header:');
+
+    if (!newColumnName || newColumnName.trim() === '') {
+      // If the user cancels or provides an empty name, do nothing
+      return;
+    }
+  
+    addNewColumnWithHeader(newColumnName);
+}
+
+function addNewColumnOldWorking() {
   const table = document.getElementById('myTable');
   const secondColumnHeaders = table.querySelectorAll('thead tr th:nth-child(2)');
   const columnCount = secondColumnHeaders.length;
@@ -1130,6 +1108,104 @@ function addNewColumn() {
 }
 
 
+function addNewColumnWithHeader(newColumnName) {
+  const table = document.getElementById('myTable');
+  const secondColumnHeaders = table.querySelectorAll('thead tr th:nth-child(2)');
+  const columnCount = secondColumnHeaders.length;
+
+  const allColumnHeaders = table.querySelectorAll('thead tr')[1].querySelectorAll('th');
+
+  const allcolumnCount = allColumnHeaders.length - 2;
+  console.log("allcolumnCount=" + allcolumnCount);
+
+  // // Ask for the name of the new column header
+  // const newColumnName = prompt('Enter the name of the new column header:');
+
+  // if (!newColumnName || newColumnName.trim() === '') {
+  //   // If the user cancels or provides an empty name, do nothing
+  //   return;
+  // }
+
+  // Clone all the th elements of the second column
+  const clonedHeaders = Array.from(secondColumnHeaders).map(th => th.cloneNode(true));
+
+  // Set the newColumnName at the last cloned header
+  //clonedHeaders[columnCount - 1].innerText = newColumnName;
+  clonedHeaders[columnCount - 1].setAttribute('class', 'sortable');
+  clonedHeaders[columnCount - 1].innerHTML = newColumnName + "&#9650;&#9660;";
+  clonedHeaders[columnCount - 1].setAttribute('onclick', 'sortTable(' + allcolumnCount + ')');
+  tableHeaders.push(newColumnName);
+  headers.push(newColumnName);
+
+  createColumnCheckboxes();
+  // Append the cloned header to the thead element
+  const thead = table.querySelector('thead');
+  const newRow = document.createElement('th');
+  clonedHeaders.forEach(header => newRow.appendChild(header));
+
+
+
+  const tableHeaderRows = table.querySelectorAll('thead tr');
+
+  const audioPlayerButtonsRowHeader = tableHeaderRows[0].querySelector('th');
+  audioPlayerButtonsRowHeader.setAttribute("colspan", "" + allcolumnCount + 2);
+  // const totalColumnHeaders = tableHeaderRows[1].querySelectorAll('th');
+  // const columnCount2 = totalColumnHeaders.length-2;
+
+  const colinputchekbox = clonedHeaders[0].querySelector('input[type="checkbox"]');
+  colinputchekbox.checked = false;
+  console.log("colinputchekbox="+colinputchekbox);
+  
+    //clonedHeaders.forEach(header => console.log(header.innerHTML));
+
+  //tableHeaderRows[0].appendChild(document.createElement('th'));
+  for (let i = 1; i < tableHeaderRows.length; i++) {
+
+    const input = clonedHeaders[i - 1].querySelector('input[type="text"]');
+    if (input) {
+      input.setAttribute("id", "input_" + (allcolumnCount));
+      input.setAttribute("placeholder", "Filter Column " + (allcolumnCount));
+      input.setAttribute("onkeyup", "filterTable(" + (allcolumnCount) + ")");
+      input.setAttribute("onmouseover", "showHintPopup(" + (allcolumnCount) + ")");
+      input.setAttribute("onmouseout", "hideHintPopup(" + (allcolumnCount) + ")");
+      input.setAttribute("onclick", "hideHintPopup(" + (allcolumnCount) + ")");
+      console.log("id set11");
+    }
+    const hintDiv = clonedHeaders[i - 1].querySelector('div[id^="hintPopup_"]');
+    if (input) {
+      hintDiv.setAttribute("id", "hintPopup_" + (allcolumnCount));
+    }
+    //tableHeaderRows[i].appendChild(clonedHeaders[i-1]);
+    tableHeaderRows[i].insertBefore(clonedHeaders[i - 1], tableHeaderRows[i].querySelector('th:nth-last-child(2)').nextSibling);
+  }
+
+
+  //  thead.appendChild(newRow);
+
+  // Add each cloned cell to the corresponding row as a new cell in the new column
+  const rows = table.querySelectorAll('table tr');
+  for (let i = 4; i < rows.length; i++) {
+    const row = rows[i];
+    //const newCell = clonedHeaders[i].cloneNode(true);
+    const newCell = document.createElement('td');
+    // Set attributes of the new cell based on the cloned cell
+    const clonedCell = row.querySelector('td:nth-last-child(2)');
+    const clonedCellDeep = row.querySelector('td:nth-last-child(2)').cloneNode(true);
+    if (clonedCell) {
+      //const div = document.createElement('div');
+      const div = clonedCellDeep.querySelector('div').cloneNode(true);
+      div.textContent = '';
+      newCell.appendChild(div);
+      for (const attr of clonedCell.attributes) {
+        newCell.setAttribute(attr.name, attr.value);
+      }
+      row.insertBefore(newCell, clonedCell.nextSibling); // Insert after the 2nd cell
+
+    }
+    //  row.appendChild(newCell);
+  }
+
+}
 
 
 function getApproximateSpeakTime(text) {
@@ -1210,7 +1286,7 @@ const filePopulateTableBtn = document.getElementById('filePopulateTableBtn');
 
 filePopulateTableBtn.addEventListener('click', () => {
 
-  if (tableNameSelect.selectedIndex > 0) {
+  if (tableNameSelect.selectedIndex > 0 || document.getElementById("dynamiccolumnmytablequeryta").value.trim() !== "") {
 
     var checkboxes = document.getElementsByName("column");
     //var selectedColumnNames = [];
@@ -1984,6 +2060,19 @@ uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on p
 
 
   thcolbuttons.appendChild(uncheckrowonplayinputlabel);
+
+
+  var fillVocabsBtn = document.createElement('button');
+  fillVocabsBtn.innerText = "Vocabs";
+  fillVocabsBtn.id = "fillVocabsBtn";
+  fillVocabsBtn.setAttribute("onclick", "fillVocabsOrSentence('Vocabs')");
+  thcolbuttons.appendChild(fillVocabsBtn);
+
+  var fillSentencesBtn = document.createElement('button');
+  fillSentencesBtn.innerText = "Sentences";
+  fillSentencesBtn.id = "fillSentencesBtn";
+  fillSentencesBtn.setAttribute("onclick", "fillVocabsOrSentence('Sentences')");
+  thcolbuttons.appendChild(fillSentencesBtn);
 
 
   var playingCellSpan = document.createElement('span');
@@ -2939,7 +3028,6 @@ function showDivPlayPopup(x, y) {
 function hideDivPlayPopup() {
   divPlayPopup.style.display = 'none';
 }
-
 var myTablevar= document.getElementById("myTable");
         // Event listener for text selection
         window.addEventListener('mouseup', (event) => {
@@ -3022,6 +3110,7 @@ const contextMenu = document.createElement("div");
 contextMenu.className = "context-menu";
 contextMenu.innerHTML = `
 <ul>
+<li id="populateVocabs">Populate Vocabs</li>
 <li id="populateSentences">Populate Sentences</li>
 </ul>
 `;
@@ -3069,16 +3158,20 @@ function showContextMenu(event) {
     contextMenu.style.display = "block";
 }
 
+var selectedTextMouseUp="";
+
 // Attach context menu event to the table
 myTablevar.addEventListener("contextmenu", function (event) {
-  console.log("myTablevar.addEventListener");
     selectedCell = event.target.closest("td");
     console.log("myTablevar.addEventListener selectedCell="+selectedCell);
+    console.log("myTablevar.addEventListener window="+window.getSelection().toString().trim());
 
     if (!selectedCell) {
+      //selectedTextMouseUp="";
         hideContextMenu();
         return;
     }
+    selectedTextMouseUp = window.getSelection().toString().trim();
     showContextMenu(event);
 });
 
@@ -3090,9 +3183,19 @@ contextMenu.addEventListener("click", function (event) {
         hideContextMenu();
         return;
     }
-    selectedText = selectedCell.textContent;
-    var getTextAreaData = document.getElementById("dynamiccolumnqueryta");
-    const dynamiccolumndelimiter = document.getElementById("dynamiccolumndelimiter").value;
+
+    // console.log("selectedCell="+selectedCell.innerHTML);
+
+    // var editableDiv = selectedCell.querySelector("div");
+    // console.log("editableDiv="+editableDiv.innerHTML);
+    // var selectedText = getSelectedText(selectedCell);
+
+    selectedText = selectedTextMouseUp;
+    //selectedText = selectedCell.textContent;
+   
+   
+    //var getTextAreaData = document.getElementById("dynamiccolumnqueryta");
+    //const dynamiccolumndelimiter = document.getElementById("dynamiccolumndelimiter").value;
     var vocabData = [];
     //const vocabData = getTextAreaData.value.split(/\s+/);
     
@@ -3104,18 +3207,18 @@ contextMenu.addEventListener("click", function (event) {
     //   vocabData = getTextAreaData.value.split(dynamiccolumndelimiter);
     // }
 
-    vocabData = getQueryResultArray(formatQueryString(getTextAreaData.value , selectedText));
+    //vocabData = getQueryResultArray(formatQueryString(getTextAreaData.value , selectedText));
 
-    console.log("vocabData="+vocabData);
+    console.log("selectedText="+selectedText);
+
+    if(selectedText === "")
+      return;
     //const vocabData = getTextAreaData.value.split(dynamiccolumndelimiter);
     // Find the row for the selected cell
     const selectedRow = selectedCell.parentElement;
 
-    const sentenceColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith("Sentences"));
-    console.log("Index of 'Sentences' column:", sentenceColumnIndex);
 
-    // Find the cell in the "Vocab" column of the same row
-    const sentenceCell = selectedRow.querySelector("td:nth-child(" + (sentenceColumnIndex + 1) + ")");
+
 /*
     select word from sentences_ja where word like '%%'
 SELECT
@@ -3124,9 +3227,20 @@ FROM
     sentences_ja 
 where word like '%%'
 
-|| CHAR(10) || "--------------"
+|| CHAR(10) || "--------------" || CHAR(10) 
 */
     if (event.target.id === "populateSentences") {
+
+      vocabData = getQueryResultArray(formatQueryString(document.getElementById("dynamiccolumnsentencesqueryta").value , selectedText));
+
+      const sentenceColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith("Sentences"));
+      console.log("Index of 'Sentences' column:", sentenceColumnIndex);
+  
+      // Find the cell in the "Vocab" column of the same row
+      const sentenceCell = selectedRow.querySelector("td:nth-child(" + (sentenceColumnIndex + 1) + ")");
+      const sentenceCellDiv = sentenceCell.querySelector("div");
+  
+      console.log("sentenceCellDiv:", sentenceCellDiv);      
       //const matchedVocabs = vocabData.filter(item => item.includes(selectedText));
       //console.log(getTextAreaData.value.split(/\n/).length);
       var sentenceText= "";
@@ -3138,9 +3252,40 @@ where word like '%%'
       
       //console.log("matchedVocabs length="+matchedVocabs.length);
       //const vocabItem = getTextAreaData.value.split("\n").find(item => item.includes(selectedText));
-      if (sentenceCell) {
+      if (sentenceCellDiv) {
         //console.log("matchedVocabs="+matchedVocabs);
-        sentenceCell.textContent = vocabData.join("\n ");
+        sentenceCellDiv.textContent = vocabData.join("\n ");
+      }
+
+        // if (sentenceCell) {
+        //     sentenceCell.textContent = "OK";
+        // }
+    }else if (event.target.id === "populateVocabs") {
+
+      vocabData = getQueryResultArray(formatQueryString(document.getElementById("dynamiccolumnvocabqueryta").value , selectedText));
+
+      const vocabsColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith("Vocabs"));
+      console.log("Index of 'Vocabs' column:", vocabsColumnIndex);
+  
+      // Find the cell in the "Vocab" column of the same row
+      const sentenceCell = selectedRow.querySelector("td:nth-child(" + (vocabsColumnIndex + 1) + ")");
+      const sentenceCellDiv = sentenceCell.querySelector("div");
+  
+      console.log("sentenceCellDiv:", sentenceCellDiv);      
+      //const matchedVocabs = vocabData.filter(item => item.includes(selectedText));
+      //console.log(getTextAreaData.value.split(/\n/).length);
+      var sentenceText= "";
+      console.log(vocabData.length);
+      for(let i=0;i<vocabData.length;i++){
+        sentenceText+=vocabData[i]+'\n';
+      }
+      //const matchedVocabs = getTextAreaData.value.split("\n").filter(item => item.includes(selectedText));
+      
+      //console.log("matchedVocabs length="+matchedVocabs.length);
+      //const vocabItem = getTextAreaData.value.split("\n").find(item => item.includes(selectedText));
+      if (sentenceCellDiv) {
+        //console.log("matchedVocabs="+matchedVocabs);
+        sentenceCellDiv.textContent = vocabData.join("\n ");
       }
 
         // if (sentenceCell) {
@@ -3163,4 +3308,118 @@ function customIncludes(str, searchText) {
   return str.normalize("NFD").includes(searchText.normalize("NFD"));
 }
 
+function getSelectedText(container) {
+  var selectedText = "";
+  if (window.getSelection) {
+      var selection = window.getSelection();
+      console.log("selection="+selection);
+      if (selection.rangeCount > 0) {
+          var range = selection.getRangeAt(0);
+          if (range.commonAncestorContainer === container) {
+              selectedText = range.toString();
+          }
+      }
+  }
+  return selectedText;
+}
+
+function loadmyTableQuery(){
+  var query = document.getElementById("dynamiccolumnmytablequeryta").value;
+  showFileColPopup(getQueryColumnNames(query));
+}
+
+function fillVocabsOrSentence(vocabOrSentence){
+
+  const vocabsColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith(vocabOrSentence));
+  console.log("Index of 'Vocabs' column:", vocabsColumnIndex);
+
+  if(vocabsColumnIndex == -1){
+    addNewColumnWithHeader(vocabOrSentence);
+  }
+
+  var table = document.getElementById("myTable");
+  originalFontSize = table.style.fontSize; // Store the original font size    
+  var rowCount = table.rows.length;
+  const columnCheckboxes = document.getElementById("columnCheckboxes").getElementsByTagName("input");
+
+  speakcells = [];
+
+  var firstcheckboxrow = table.rows[1];
+  const firstRowCheckboxes = firstcheckboxrow.querySelectorAll('input[type="checkbox"]:checked');
+  console.log("firstRowCheckboxes"+firstRowCheckboxes.length)
+  if(firstRowCheckboxes.length>1){
+    alert("Select only one column to fill vocabs");
+  }
+
+  var queryString = "";
+  if(vocabOrSentence === 'Vocabs'){
+    if(document.getElementById("dynamiccolumnvocabqueryta").value === ''){
+      alert("Vocab Query cant be empty");
+      return;
+    }
+    queryString = document.getElementById("dynamiccolumnvocabqueryta").value;
+  }else if(vocabOrSentence === 'Sentences'){
+    if(document.getElementById("dynamiccolumnsentencesqueryta").value === ''){
+      alert("Sentences Query cant be empty");
+      return;
+    }
+    queryString = document.getElementById("dynamiccolumnsentencesqueryta").value
+  }
+
+  for (var i = 4; i < rowCount; i++) {
+    var row = table.rows[i];
+    var checkBox = row.cells[0].getElementsByTagName("input")[0];
+    if (checkBox != undefined && checkBox.checked) {
+      for (var j = 0; j < columnCheckboxes.length; j++) {
+        var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
+        if (columnCheckboxes[j].checked && colspkcheckBox.checked && row.cells[j + 1].innerText.trim() != "") {
+
+          for (var k = 0; k < maxCellSpeakCounter.value; k++) {
+
+            if(vocabsColumnIndex != -1 && row.cells[vocabsColumnIndex].innerText.trim() !== ''){
+              console.log("val=="+row.cells[vocabsColumnIndex].innerText.trim());
+              continue;
+            }
+
+            fillCellVocabsOrSentence(row.cells[j + 1],row.cells[j + 1].innerText,vocabOrSentence , queryString);
+          }
+
+        }
+      }
+    }
+  }
+}
+
+function fillCellVocabsOrSentence(selectedCell,selectedText , vocabOrSentence , queryString){
+
+//  const selectedRow = selectedCell.parentElement;
+
+  var vocabData = getQueryResultArray(formatQueryString(queryString , selectedText));
+
+  const vocabsColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith(vocabOrSentence));
+  console.log("Index of 'Vocabs' column:", vocabsColumnIndex);
+
+  // if(vocabsColumnIndex == -1){
+  //   addNewColumnWithHeader(vocabOrSentence);
+  // }
+
+  const selectedRow = selectedCell.parentElement;
+
+  // Find the cell in the "Vocab" column of the same row
+  const sentenceCell = selectedRow.querySelector("td:nth-child(" + (vocabsColumnIndex + 1) + ")");
+  const sentenceCellDiv = sentenceCell.querySelector("div");
+
+  console.log("sentenceCellDiv:", sentenceCellDiv);      
+
+  var sentenceText= "";
+  console.log(vocabData.length);
+  for(let i=0;i<vocabData.length;i++){
+    sentenceText+=vocabData[i]+'\n';
+  }
+
+  if (sentenceCellDiv) {
+    sentenceCellDiv.textContent = vocabData.join("\n ");
+  }
+
+}
 //context menu code end

@@ -316,8 +316,44 @@ function getSQLStringNew(tableName, columnNames) {
 
 }
 
+function getSQLStringLoadFromQuery(query, columnNames) {
 
-function countRecords(tableName,) {
+    let fromLimitClause = ' FROM ( ';
+    // Generate the SQL query string
+    let sqlQuery = '';
+    sqlQuery = `
+    SELECT '{"data":['|| 
+    GROUP_CONCAT(
+   '{'||
+    `;
+    // Loop over the column names and append them to the SQL query string
+    for (let i = 0; i < columnNames.length; i++) {
+        const columnName = columnNames[i];
+        const formattedfromLimitClause = columnName + ",";
+        const formattedColumnName = `
+                          '"${columnName}":"'|| REPLACE(REPLACE(REPLACE(IFNULL(${columnName}, '-'), '"', ''),CHAR(10),'==NEW-LINE=='),CHAR(9),'==TABS==')|| '",'||`;
+        sqlQuery += formattedColumnName;
+    }
+    fromLimitClause += query + ` LIMIT ?, ? ) as subquery`;
+    // Remove the trailing comma from the last column name
+    sqlQuery = sqlQuery.slice(0, -6);
+    sqlQuery += `
+'"'
+,'},'
+) 
+|| '}' || 
+']}' AS json_data 
+`;
+
+    sqlQuery += fromLimitClause;
+
+    console.log(" get sqlQuery="+sqlQuery);
+
+    return sqlQuery;
+
+}
+
+function countRecords(tableName) {
 
     var whereClause = getWhereClause();
 
@@ -333,7 +369,92 @@ function countRecords(tableName,) {
     return 0;
 }
 
+function countRecordsFromQuery(fromQuery) {
+
+    const sqlQuery = 'SELECT COUNT(*) AS count ' + fromQuery;
+
+    const results = db.exec(sqlQuery);
+
+    if (results && results.length > 0) {
+        return results[0].values[0][0];
+    }
+
+    return 0;
+}
+
 function searchDictionary(tableName, colnameheaders) {
+    var paginationContainer = document.getElementById("paginationContainer");
+    paginationContainer.innerHTML = "";
+
+    var table = document.getElementById("myTable");
+
+    // Get all rows in the table
+    var rows = table.getElementsByTagName("tr");
+
+    // Loop through the rows in reverse order (to avoid skipping elements when deleting)
+    for (var i = rows.length - 1; i >= 4; i--) {
+        var row = rows[i];
+        row.parentNode.removeChild(row);
+    }
+
+    var totalRecords = 0;
+    recordsPerPage = parseInt(document.getElementById('recordsPerPageInput').value, 10);
+
+
+
+    var newSQL ="";
+    if(document.getElementById("dynamiccolumnmytablequeryta").value === ""){
+        newSQL = getSQLStringNew(tableName, colnameheaders);
+        totalRecords = countRecords(tableName);
+    }else{
+        newSQL = document.getElementById("dynamiccolumnmytablequeryta").value ;
+        var fromQuery="";
+        const fromIndex = newSQL.toLowerCase().indexOf("from");
+        if (fromIndex !== -1) {
+            fromQuery = newSQL.slice(fromIndex);
+        }
+        newSQL = getSQLStringLoadFromQuery(document.getElementById("dynamiccolumnmytablequeryta").value, colnameheaders);
+//        newSQL = document.getElementById("dynamiccolumnmytablequeryta").value +" ORDER BY id LIMIT ?, ? ";
+        totalRecords = countRecordsFromQuery(fromQuery);
+
+    }
+
+    
+    //var newSQL = getSQLStringNew(tableName, colnameheaders);
+    console.log(newSQL);
+
+    console.log("recordsPerPage="+recordsPerPage);
+    console.log("totalRecords="+totalRecords);
+
+    const totalPages = Math.ceil(totalRecords / recordsPerPage);
+
+    console.log("totalPages="+totalPages);
+    if (totalPages === 0) {
+        //clearTable();
+        return;
+    }
+
+    if (currentPage > totalPages) {
+        currentPage = totalPages;
+    }
+
+    const startIndex = (currentPage - 1) * recordsPerPage;
+    console.log("startIndex="+startIndex);
+
+
+    const results = db.exec(newSQL, [startIndex, recordsPerPage]);
+
+    if (results && results.length > 0) {
+        const data = results[0].values;
+        if (data) {
+            addPaginationButtons(tableName, totalPages, colnameheaders);
+            //populateSQLLiteData(data[0][0]);
+            readJSONFromSQLite(data[0][0], currentPage, totalRecords);
+        }
+    }
+}
+
+function searchDictionaryOldWorking(tableName, colnameheaders) {
     var paginationContainer = document.getElementById("paginationContainer");
     paginationContainer.innerHTML = "";
 
@@ -369,12 +490,16 @@ function searchDictionary(tableName, colnameheaders) {
         currentPage = totalPages;
     }
 
-    //var newSQL=getSQLStringNew("DictTable");
-    //var newSQL=getSQLStringNew(tableName);
+    var newSQL ="";
+    if(document.getElementById("dynamiccolumnmytablequeryta").value === ""){
+        newSQL = getSQLStringNew(tableName, colnameheaders);
+    }else{
+        newSQL = document.getElementById("dynamiccolumnmytablequeryta").value;
+    }
 
 
-    var newSQL = getSQLStringNew(tableName, colnameheaders);
-    //console.log(newSQL);
+    //var newSQL = getSQLStringNew(tableName, colnameheaders);
+    console.log(newSQL);
 
     const startIndex = (currentPage - 1) * recordsPerPage;
     var sqlQuery = 'SELECT * FROM DictTable WHERE word LIKE ? ORDER BY id LIMIT ?, ?';
@@ -534,4 +659,106 @@ async function importCsvToSQLite(fileName, csvData) {
         console.error('An error occurred:', error);
     }
 
+}
+
+function searchDictionaryQuery(query) {
+
+    showFileColPopup(getColumnNames(selectedOption));
+    var paginationContainer = document.getElementById("paginationContainer");
+    paginationContainer.innerHTML = "";
+
+    var table = document.getElementById("myTable");
+    var rowCount = table.rows.length;
+
+    // Get all rows in the table
+    var rows = table.getElementsByTagName("tr");
+
+    // Loop through the rows in reverse order (to avoid skipping elements when deleting)
+    for (var i = rows.length - 1; i >= 4; i--) {
+        var row = rows[i];
+        row.parentNode.removeChild(row);
+    }
+
+    var fromQuery="";
+    const fromIndex = query.toLowerCase().indexOf("from");
+    if (fromIndex !== -1) {
+        fromQuery = query.slice(fromIndex);
+    }
+  
+
+    //const searchInput = document.getElementById('searchWord').value.trim();
+    const totalRecords = countRecordsFromQuery(fromQuery);
+    recordsPerPage = parseInt(document.getElementById('recordsPerPageInput').value, 10);
+
+    const totalPages = Math.ceil(totalRecords / recordsPerPage);
+
+    if (totalPages === 0) {
+        //clearTable();
+        return;
+    }
+
+    if (currentPage > totalPages) {
+        currentPage = totalPages;
+    }
+
+    //var newSQL=getSQLStringNew("DictTable");
+    //var newSQL=getSQLStringNew(tableName);
+
+
+    var newSQL = getSQLStringNew(tableName, colnameheaders);
+    //console.log(newSQL);
+
+    const startIndex = (currentPage - 1) * recordsPerPage;
+    var sqlQuery = 'SELECT * FROM DictTable WHERE word LIKE ? ORDER BY id LIMIT ?, ?';
+    sqlQuery = `
+        SELECT '{"data":['|| 
+                    GROUP_CONCAT(
+                   '{'||
+                          '"id":"'|| REPLACE(REPLACE(IFNULL(id, '-'), '"', '\\"'),'\n','###')|| '",'||
+                          '"word":"'|| REPLACE(REPLACE(IFNULL(word, '-'), '"', '\\"'),'\n','###')|| '",'||
+                          '"definition":"'|| REPLACE(REPLACE(IFNULL(definition, '-'), '"', '\\"'),'\n','###')|| 
+                          '"'
+                    ,'},'
+                   ) 
+                   || '}' || 
+                ']}' AS json_data
+        FROM DictTable ORDER BY id LIMIT ?, ?
+            `;
+
+    //console.log("searchInput="+searchInput);
+    const results = db.exec(newSQL, [startIndex, recordsPerPage]);
+
+    if (results && results.length > 0) {
+        const data = results[0].values;
+        if (data) {
+            addPaginationButtons(tableName, totalPages, colnameheaders);
+            //populateSQLLiteData(data[0][0]);
+            readJSONFromSQLite(data[0][0], currentPage, totalRecords);
+        }
+    }
+}
+
+function getQueryColumnNames(sqlQuery) {
+
+    var stmt = db.prepare(
+        sqlQuery
+    );
+    stmt.step(); // Execute the statement
+
+    const columnNames = stmt.getColumnNames();
+    console.log("stmt.getColumnNames()="+stmt.getColumnNames());
+
+    // var data=db.exec(sqlQuery);
+    // console.log(data.description)
+
+    console.log(columnNames); // Array of column names
+  
+    // const results = db.exec(sqlQuery +" LIMIT 0 ");
+
+    // if (results && results.length > 0) {
+    //     const columnNames = results[0].values;
+    //     console.log("sqlQuery="+columnNames);
+    //     return columnNames;
+    // }
+    return columnNames;
 }

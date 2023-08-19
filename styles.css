@@ -12,6 +12,7 @@ table {
     padding: 8px;
     text-align: left;
     white-space: pre-wrap;
+    vertical-align: text-top;
     /* word-break: break-all;  Added property */
   }
 
