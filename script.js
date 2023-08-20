@@ -861,11 +861,11 @@ function speakAndHighlight() {
 
   playingCellSpan.textContent = "   Playing " + (currentCellIndex + 1) + " / " + speakcells.length + "       " + formatTime(currentCellSpeakTime) + " / " + formatTime(cellsTotalSpeakTime);
 
-  var cellTextValue = currentCell.innerText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/\n+/g, '. ').replace(/[.:?]/g, '!');
+  var cellTextValue = currentCell.innerText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Interviewer:|Interviewee:|Answer:|Ans:/gi, "").replace(/\n+/g, '. ').replace(/[.:?]/g, '!');
 
   const selectedText = window.getSelection().toString().trim();
   if (selectedText) {
-    cellTextValue = selectedText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Answer:|Ans:/gi, "").replace(/\n+/g, '. ').replace(/[.:?]/g, '!');
+    cellTextValue = selectedText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Interviewer:|Interviewee:|Answer:|Ans:/gi, "").replace(/\n+/g, '. ').replace(/[.:?]/g, '!');
     console.log(cellTextValue);
   }
 
@@ -3377,7 +3377,6 @@ function fillVocabsOrSentence(vocabOrSentence){
           for (var k = 0; k < maxCellSpeakCounter.value; k++) {
 
             if(vocabsColumnIndex != -1 && row.cells[vocabsColumnIndex].innerText.trim() !== ''){
-              console.log("val=="+row.cells[vocabsColumnIndex].innerText.trim());
               continue;
             }
 

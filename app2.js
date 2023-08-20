@@ -169,7 +169,7 @@ function addPaginationButtons(tableName, totalPages, columnNames) {
 }
 
 function getColumnNames(tableName) {
-    const sqlQuery = `PRAGMA table_info(${tableName})`;
+    const sqlQuery = `PRAGMA table_info("${tableName}")`;
     const results = db.exec(sqlQuery);
 
     if (results && results.length > 0) {
@@ -196,7 +196,7 @@ function getColumnNames(tableName) {
 
 function getDynamicColumnNames(tableName) {
 
-    const sqlQuery = `PRAGMA table_info(${tableName})`;
+    const sqlQuery = `PRAGMA table_info("${tableName}")`;
     const results = db.exec(sqlQuery);
 
     if (results && results.length > 0) {
@@ -357,7 +357,7 @@ function countRecords(tableName) {
 
     var whereClause = getWhereClause();
 
-    const sqlQuery = 'SELECT COUNT(*) AS count FROM ' + tableName + " " + whereClause;
+    const sqlQuery = "SELECT COUNT(*) AS count FROM \"" + tableName + "\" " + whereClause;
 
 
     const results = db.exec(sqlQuery);
@@ -371,7 +371,7 @@ function countRecords(tableName) {
 
 function countRecordsFromQuery(fromQuery) {
 
-    const sqlQuery = 'SELECT COUNT(*) AS count ' + fromQuery;
+    const sqlQuery = "SELECT COUNT(*) AS count " + fromQuery;
 
     const results = db.exec(sqlQuery);
 
@@ -406,7 +406,7 @@ function searchDictionary(tableName, colnameheaders) {
     if(document.getElementById("dynamiccolumnmytablequeryta").value === ""){
         newSQL = getSQLStringNew(tableName, colnameheaders);
         totalRecords = countRecords(tableName);
-    }else{
+    }else {
         newSQL = document.getElementById("dynamiccolumnmytablequeryta").value ;
         var fromQuery="";
         const fromIndex = newSQL.toLowerCase().indexOf("from");
