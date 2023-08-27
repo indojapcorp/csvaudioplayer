@@ -842,6 +842,8 @@ function speakAndHighlight() {
 
   // Check if the current row number is different from the previous row number
   if (rowNumber !== prevRowNumber && rowNumber !==4) {
+    prevRowNumber = rowNumber;
+    prevRow = currentCell.parentNode;
     
     //var checkBox = currentCell.parentNode.cells[0].getElementsByTagName("input")[0];
     var checkBox = prevRow.cells[0].getElementsByTagName("input")[0];
@@ -849,11 +851,18 @@ function speakAndHighlight() {
       checkBox.checked = false;
     }
     console.log("New row:", rowNumber);
-    prevRowNumber = rowNumber;
-    prevRow = currentCell.parentNode;
+    // prevRowNumber = rowNumber;
+    // prevRow = currentCell.parentNode;
   }else{
+
     prevRowNumber = rowNumber;
     prevRow = currentCell.parentNode;
+
+    var checkBox = prevRow.cells[0].getElementsByTagName("input")[0];
+    if (checkBox != undefined && checkBox.checked) {
+      checkBox.checked = false;
+    }
+
   }
   }
 

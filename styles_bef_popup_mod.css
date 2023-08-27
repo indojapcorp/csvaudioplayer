@@ -91,25 +91,10 @@ table {
       border: 1px solid black;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
       z-index: 9999;
-
-      overflow: auto;
-      width: auto; /* Remove fixed width */
-      height: auto; /* Remove fixed height */
-      max-width: 100%; /* Set a maximum width */
-      max-height: 100%; /* Set a maximum height */
-/*  
       max-width: 800px;
       max-height: 400px;
-*/      
       overflow-y: scroll;      
   }
-
-  .popup-content {
-    max-width: 100%;
-    width: auto;
-    padding: 20px; /* Adjust as needed */
-    box-sizing: border-box;
-}
 
   .filecolpopup {
     display: none;

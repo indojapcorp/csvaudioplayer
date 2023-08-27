@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatoeba Example Sentences</title>
+    <style>
+        #results {
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        #results th,
+        #results td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #results th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+    <script>
+
+const languages = [
+                { name: "English", code: "eng" },
+                { name: "Japanese", code: "jpn" },
+                { name: "Chinese", code: "cmn" },
+                { name: "French", code: "fra" },
+                { name: "German", code: "deu" },
+                { name: "Italian", code: "ita" },
+                { name: "Russian", code: "rus" },
+                { name: "Korean", code: "kor" },
+                { name: "Spanish", code: "spa" },
+                // Add more languages here
+            ];
+
+            // Dictionary mapping language codes to speech synthesis voices
+            const languageCodeToVoice = {
+                "eng": "en-US",
+                "jpn": "ja-JP",
+                "cmn": "zh-CN",
+                "fra": "fr-FR",
+                "deu": "de-DE",
+                "ita": "it-IT",
+                "rus": "ru-RU",
+                "kor": "ko-KR",
+                "spa": "es-ES",
+                // Add more language mappings here
+            };
+        // Define an array of languages with their codes
+        function createLanguageList() {
+
+
+            const languageList = document.getElementById("languageList");
+            const fromLanguageSelect = document.getElementById("fromLanguageSelect");
+
+            languageList.innerHTML = "";
+            fromLanguageSelect.innerHTML = "";
+
+            languages.forEach(language => {
+                // Create options for select element
+                const option = document.createElement("option");
+                option.value = language.code;
+                option.textContent = language.name;
+                fromLanguageSelect.appendChild(option);
+
+                // Create checkboxes for language list
+                const listItem = document.createElement("li");
+                const label = document.createElement("label");
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.value = language.code;
+                label.textContent = language.name;
+                label.prepend(checkbox);
+                listItem.appendChild(label);
+                languageList.appendChild(listItem);
+            });
+
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            createLanguageList();
+        });
+
+        var voices;
+
+
+        function loadVoices() {
+            voices = speechSynthesis.getVoices();
+            if (voices.length === 0) {
+                setTimeout(loadVoices, 100);
+            } else {
+                //populateVoiceList();
+            }
+            console.log("voices length ffffff=" + voices.length);
+        }
+
+        // Chrome requires voices to be loaded asynchronously
+        speechSynthesis.onvoiceschanged = loadVoices;
+
+        async function fetchExamples(page = 1) {
+            const query = document.getElementById("query").value;
+            const from = document.getElementById("fromLanguageSelect").value;
+            const exactWordMatchCheckbox = document.getElementById("exactWordMatch");
+            const exactWordMatch = exactWordMatchCheckbox.checked;
+            const perc3D =  exactWordMatch?"%3D":"";
+
+            const proxyUrl = "http://localhost:3000/proxy?url=";
+            //const tatoebaApiUrl = `https://tatoeba.org/eng/api_v0/search?query=${encodeURIComponent(query)}&format=json&page=2`;
+            const tatoebaApiUrl = `https://tatoeba.org/eng/api_v0/search?query=${perc3D}${encodeURIComponent(query)}&format=json&from=${from}&page=${page}`;
+            //const tatoebaApiUrl = `https://tatoeba.org/api/v1/sentences/search?query=${encodeURIComponent(query)}&format=json`;
+            const url = proxyUrl + encodeURIComponent(tatoebaApiUrl);
+
+            // Get selected languages
+            const selectedLanguages = Array.from(document.querySelectorAll("#languageList input:checked")).map(checkbox => checkbox.value);
+
+
+            //   const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/";
+            //   const tatoebaApiUrl = `https://tatoeba.org/api/v1/sentences/search?query=${encodeURIComponent(query)}&format=json`;
+            //   const url = corsAnywhereUrl + tatoebaApiUrl;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log(data);
+
+                const table = document.getElementById("results");
+                table.innerHTML = "";
+
+                const headerRow = table.insertRow();
+                const textCell = document.createElement("th");
+                textCell.textContent = "Eng";
+                headerRow.appendChild(textCell);
+                var hcolno = 1;
+                selectedLanguages.forEach(lang => {
+
+                    const headerCell = document.createElement("th");
+                    headerCell.textContent = lang;
+                    headerRow.appendChild(headerCell);
+
+                    // const jpnCell = headerrow.insertCell(hcolno);
+                    // jpnCell.textContent = lang;
+                    hcolno = hcolno + 1;
+                });
+
+                // Get available voices
+
+                data.results.forEach(sentence => {
+                    const row = table.insertRow();
+                    const textCell = row.insertCell(0);
+
+                    var colno = 1;
+                    //idCell.textContent = sentence.id;
+                    textCell.textContent = sentence.text;
+
+                    selectedLanguages.forEach(lang => {
+                        const jpnCell = row.insertCell(colno);
+                        colno = colno + 1;
+                        //console.log(lang);
+
+
+                        var jpnExampleTable = document.createElement("table");
+
+                        var ttext = "";
+                        sentence.translations.forEach(translation => {
+
+                            translation.forEach(translationin => {
+                                if (translationin.lang === lang) {
+                                    const exampleRow = jpnExampleTable.insertRow();
+                                    if (lang === 'jpn') {
+                                        translationin.transcriptions.forEach(transcription => {
+                                            //const jpnExampleTranscriptionTablerow = jpnExampleTable.insertRow();
+                                            //jpnExampleTranscriptionTablerow.textContent = transcription.text;
+                                            exampleRow.innerHTML = transcription.html;
+
+                                        });
+                                    }else if (lang === 'cmn') {
+                                        translationin.transcriptions.forEach(transcription => {
+                                            exampleRow.innerHTML = transcription.html;
+                                            const jpnExampleTranscriptionTablerow = jpnExampleTable.insertRow();
+                                            jpnExampleTranscriptionTablerow.textContent = transcription.text;
+                                            
+                                        });
+                                    } else {
+                                        //const jpnExampleTablerow = jpnExampleTable.insertRow();
+                                        exampleRow.textContent = translationin.text;
+                                    }
+
+                                    // Create a play button
+                                    const playButton = document.createElement("button");
+                                    playButton.textContent = "P";
+                                    exampleRow.appendChild(playButton);
+
+                                    // Add event listener to play button
+                                    playButton.addEventListener("click", () => {
+                                        var selectedLanguage = languageCodeToVoice[lang];//"ja-JP";
+
+                                        // if (lang === 'cmn') {
+                                        //     selectedLanguage = "zh-CN";
+                                        // }
+                                        // console.log("voices length=" + voices.length);
+                                        // voices.forEach(voice => {
+                                        //     console.log(voice.lang);
+                                        // });
+                                        //const utterance = new SpeechSynthesisUtterance(transcription.text);
+                                        const selectedVoice = voices.find(voice => voice.lang === selectedLanguage);
+
+                                        if (selectedVoice) {
+                                            const utterance = new SpeechSynthesisUtterance(translationin.text);
+                                            utterance.voice = selectedVoice;
+                                            utterance.lang = lang;
+                                            window.speechSynthesis.speak(utterance);
+                                        } else {
+                                            console.error("Voice not found for the selected language.");
+                                        }
+
+
+
+                                    });
+                                    //console.log(translationin);
+                                    ttext += translationin.text + "\n";
+
+                                }
+                            });
+
+
+                        });
+                        console.log(ttext);
+                        jpnCell.appendChild(jpnExampleTable);
+                        //jpnCell.textContent = ttext;
+
+                    });
+
+                });
+
+
+                // Create pagination buttons
+                const paginationContainer = document.getElementById("pagination");
+                paginationContainer.innerHTML = "";
+                for (let i = 1; i <= data.paging.Sentences.pageCount; i++) {
+                    const button = document.createElement("button");
+                    button.textContent = i;
+                    button.addEventListener("click", () => fetchExamples(i));
+                    paginationContainer.appendChild(button);
+                }
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Tatoeba Example Sentences</h1>
+    <label for="query">Enter a query:</label>
+    <input type="text" id="query">
+    <select id="fromLanguageSelect"></select>
+    <ul id="languageList"></ul>
+    <input type="checkbox" id="exactWordMatch"> Exact Word Match
+    <button onclick="fetchExamples()">Search</button>
+
+    <table id="results">
+    </table>
+
+    <div id="pagination"></div>
+
+</body>
+
+</html>

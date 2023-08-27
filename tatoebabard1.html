@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tatoeba Example Sentences</title>
+</head>
+<body>
+<input type="text" id="query" placeholder="Enter a query">
+<button onclick="getSentences()">Search</button>
+<table id="results"></table>
+<script>
+function getSentences() {
+var query = document.getElementById("query").value;
+var xhr = new XMLHttpRequest();
+const proxyUrl = "http://localhost:3000/proxy?url=";
+            const tatoebaApiUrl = `https://tatoeba.org/eng/api_v0/search?query=${encodeURIComponent(query)}`;
+            //const tatoebaApiUrl = `https://tatoeba.org/api/v1/sentences/search?query=${encodeURIComponent(query)}&format=json`;
+            const url = proxyUrl + encodeURIComponent(tatoebaApiUrl);
+
+//xhr.open("GET", "https://tatoeba.org/eng/api_v0/search?query=" + query);
+xhr.open("GET", url);
+xhr.onload = function() {
+var results = JSON.parse(xhr.responseText);
+console.log(results);
+
+var table = document.getElementById("results");
+table.innerHTML = "";
+for (var i = 0; i < results.length; i++) {
+var row = document.createElement("tr");
+var cell1 = document.createElement("td");
+cell1.innerHTML = results[i].sentence;
+row.appendChild(cell1);
+var cell2 = document.createElement("td");
+cell2.innerHTML = results[i].translations[0].text;
+row.appendChild(cell2);
+table.appendChild(row);
+}
+};
+xhr.send();
+}
+</script>
+</body>
+</html>
