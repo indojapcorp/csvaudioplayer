@@ -5,6 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tatoeba Example Sentences</title>
+
+	<script type="text/javascript" src="js/aromanize.js"></script>
+	<script type="text/javascript">
+		function transcribe(input) {
+			var rule = "rr-translit";
+			//var input = "안녕하세요";
+			console.log(input.romanize(rule));
+		}
+	</script>
+
     <style>
         #results {
             border-collapse: collapse;
@@ -22,45 +32,79 @@
         #results th {
             background-color: #f2f2f2;
         }
+
+        .speaker-icon::before {
+            content: "\1F508";
+            /* Unicode code point for the speaker icon */
+        }
     </style>
 
     <script>
 
-const languages = [
-                { name: "English", code: "eng" },
-                { name: "Japanese", code: "jpn" },
-                { name: "Chinese", code: "cmn" },
-                { name: "French", code: "fra" },
-                { name: "German", code: "deu" },
-                { name: "Italian", code: "ita" },
-                { name: "Russian", code: "rus" },
-                { name: "Korean", code: "kor" },
-                { name: "Spanish", code: "spa" },
-                // Add more languages here
-            ];
+        const languages = [
+            { name: "English", code: "eng" },
+            { name: "Japanese", code: "jpn" },
+            { name: "Chinese", code: "cmn" },
+            { name: "French", code: "fra" },
+            { name: "German", code: "deu" },
+            { name: "Italian", code: "ita" },
+            { name: "Russian", code: "rus" },
+            { name: "Korean", code: "kor" },
+            { name: "Spanish", code: "spa" },
+            // Add more languages here
+        ];
 
-            // Dictionary mapping language codes to speech synthesis voices
-            const languageCodeToVoice = {
-                "eng": "en-US",
-                "jpn": "ja-JP",
-                "cmn": "zh-CN",
-                "fra": "fr-FR",
-                "deu": "de-DE",
-                "ita": "it-IT",
-                "rus": "ru-RU",
-                "kor": "ko-KR",
-                "spa": "es-ES",
-                // Add more language mappings here
-            };
+        // Dictionary mapping language codes to speech synthesis voices
+        const languageCodeToVoice = {
+            "eng": "en-US",
+            "jpn": "ja-JP",
+            "cmn": "zh-CN",
+            "fra": "fr-FR",
+            "deu": "de-DE",
+            "ita": "it-IT",
+            "rus": "ru-RU",
+            "kor": "ko-KR",
+            "spa": "es-ES",
+            // Add more language mappings here
+        };
+
+        function hangulToRomanized(hangulText) {
+            console.log("hangulText="+hangulText);
+  const hangulToRomanMap = {
+    "ㄱ": "g", "ㄲ": "kk", "ㄴ": "n", "ㄷ": "d", "ㄸ": "tt",
+    "ㄹ": "r", "ㅁ": "m", "ㅂ": "b", "ㅃ": "pp", "ㅅ": "s",
+    "ㅆ": "ss", "ㅇ": "", "ㅈ": "j", "ㅉ": "jj", "ㅊ": "ch",
+    "ㅋ": "k", "ㅌ": "t", "ㅍ": "p", "ㅎ": "h",
+    "ㅏ": "a", "ㅑ": "ya", "ㅓ": "eo", "ㅕ": "yeo",
+    "ㅗ": "o", "ㅛ": "yo", "ㅜ": "u", "ㅠ": "yu",
+    "ㅡ": "eu", "ㅣ": "i",
+    "ㅐ": "ae", "ㅒ": "yae", "ㅔ": "e", "ㅖ": "ye",
+    "ㅘ": "wa", "ㅙ": "wae", "ㅚ": "oe", "ㅝ": "wo",
+    "ㅞ": "we", "ㅟ": "wi", "ㅢ": "ui"
+  };
+
+  let romanizedText = "";
+  for (let i = 0; i < hangulText.length; i++) {
+    const character = hangulText[i];
+    const romanEquivalent = hangulToRomanMap[character] || character;
+    romanizedText += romanEquivalent;
+  }
+  console.log("romanizedText="+romanizedText);
+
+  return romanizedText;
+}
+
         // Define an array of languages with their codes
         function createLanguageList() {
 
 
             const languageList = document.getElementById("languageList");
             const fromLanguageSelect = document.getElementById("fromLanguageSelect");
+            const toLanguageSelect = document.getElementById("toLanguageSelect");
 
             languageList.innerHTML = "";
             fromLanguageSelect.innerHTML = "";
+            toLanguageSelect.innerHTML = "";
 
             languages.forEach(language => {
                 // Create options for select element
@@ -68,6 +112,7 @@ const languages = [
                 option.value = language.code;
                 option.textContent = language.name;
                 fromLanguageSelect.appendChild(option);
+                //toLanguageSelect.appendChild(option);
 
                 // Create checkboxes for language list
                 const listItem = document.createElement("li");
@@ -80,6 +125,19 @@ const languages = [
                 listItem.appendChild(label);
                 languageList.appendChild(listItem);
             });
+
+            var options = fromLanguageSelect.options;
+            var defaultoption = document.createElement("option");
+            defaultoption.value = "";
+            defaultoption.text = ""
+            toLanguageSelect.add(defaultoption);
+            Array.from(options).forEach(function (option) {
+                var traoption = document.createElement("option");
+                traoption.value = option.value;
+                traoption.text = option.text;
+                toLanguageSelect.add(traoption);
+            });
+
 
         }
 
@@ -100,22 +158,37 @@ const languages = [
             console.log("voices length ffffff=" + voices.length);
         }
 
+        function checkLanguages() {
+            const fromLang = document.getElementById("fromLanguageSelect").value;
+            const toLang = document.getElementById("toLanguageSelect").value;
+
+            if (fromLang !== toLang) {
+                //console.log("Languages are different.");
+            } else {
+                alert("From and To Languages are the same.");
+            }
+        }
+
         // Chrome requires voices to be loaded asynchronously
         speechSynthesis.onvoiceschanged = loadVoices;
 
         async function fetchExamples(page = 1) {
             const query = document.getElementById("query").value;
-            const from = document.getElementById("fromLanguageSelect").value;
+            const fromLang = document.getElementById("fromLanguageSelect").value;
+            const toLang = document.getElementById("toLanguageSelect").value;
+            const sort = document.getElementById("sort").value;
             const exactWordMatchCheckbox = document.getElementById("exactWordMatch");
             const exactWordMatch = exactWordMatchCheckbox.checked;
-            const perc3D =  exactWordMatch?"%3D":"";
+            const perc3D = exactWordMatch ? "%3D" : "";
+            const toParam = (fromLang === toLang || toLang === "") ? "" : "&to=" + toLang;
 
             const proxyUrl = "http://localhost:3000/proxy?url=";
             //const tatoebaApiUrl = `https://tatoeba.org/eng/api_v0/search?query=${encodeURIComponent(query)}&format=json&page=2`;
-            const tatoebaApiUrl = `https://tatoeba.org/eng/api_v0/search?query=${perc3D}${encodeURIComponent(query)}&format=json&from=${from}&page=${page}`;
+            const tatoebaApiUrl = `https://tatoeba.org/eng/api_v0/search?query=${perc3D}${encodeURIComponent(query)}&format=json&from=${fromLang}&page=${page}&sort=${sort}${toParam}`;
             //const tatoebaApiUrl = `https://tatoeba.org/api/v1/sentences/search?query=${encodeURIComponent(query)}&format=json`;
             const url = proxyUrl + encodeURIComponent(tatoebaApiUrl);
 
+            console.log(tatoebaApiUrl);
             // Get selected languages
             const selectedLanguages = Array.from(document.querySelectorAll("#languageList input:checked")).map(checkbox => checkbox.value);
 
@@ -134,7 +207,7 @@ const languages = [
 
                 const headerRow = table.insertRow();
                 const textCell = document.createElement("th");
-                textCell.textContent = "Eng";
+                textCell.textContent = fromLang;
                 headerRow.appendChild(textCell);
                 var hcolno = 1;
                 selectedLanguages.forEach(lang => {
@@ -179,13 +252,19 @@ const languages = [
                                             exampleRow.innerHTML = transcription.html;
 
                                         });
-                                    }else if (lang === 'cmn') {
+                                    } else if (lang === 'cmn') {
                                         translationin.transcriptions.forEach(transcription => {
                                             exampleRow.innerHTML = transcription.html;
                                             const jpnExampleTranscriptionTablerow = jpnExampleTable.insertRow();
                                             jpnExampleTranscriptionTablerow.textContent = transcription.text;
-                                            
+
                                         });
+                                    }else if (lang === 'kor') {
+                                            exampleRow.textContent = translationin.text ;
+                                            const korExampleTranscriptionTablerow = jpnExampleTable.insertRow();
+                                            korExampleTranscriptionTablerow.textContent = Aromanize.romanize(translationin.text);
+
+                                            transcribe(translationin.text);
                                     } else {
                                         //const jpnExampleTablerow = jpnExampleTable.insertRow();
                                         exampleRow.textContent = translationin.text;
@@ -193,7 +272,8 @@ const languages = [
 
                                     // Create a play button
                                     const playButton = document.createElement("button");
-                                    playButton.textContent = "P";
+                                    //playButton.textContent = "P";
+                                    playButton.className = 'speaker-icon';
                                     exampleRow.appendChild(playButton);
 
                                     // Add event listener to play button
@@ -261,9 +341,18 @@ const languages = [
     <h1>Tatoeba Example Sentences</h1>
     <label for="query">Enter a query:</label>
     <input type="text" id="query">
-    <select id="fromLanguageSelect"></select>
+    From:<select id="fromLanguageSelect"></select>
+    To:<select id="toLanguageSelect"></select>
     <ul id="languageList"></ul>
     <input type="checkbox" id="exactWordMatch"> Exact Word Match
+
+    <select name="sort" id="sort">
+        <option value="relevance" selected="selected">Relevance</option>
+        <option value="words">Fewest words first</option>
+        <option value="created">Last created first</option>
+        <option value="modified">Last modified first</option>
+        <option value="random">Random</option>
+    </select>
     <button onclick="fetchExamples()">Search</button>
 
     <table id="results">
