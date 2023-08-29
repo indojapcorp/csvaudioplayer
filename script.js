@@ -893,8 +893,17 @@ function speakAndHighlight() {
 
     for (var i = 0; i < uttvoices.length; i++) {
       if (uttvoices[i].name === speakcellslang[currentCellIndex]) {
+        var voiceLang=uttvoices[i].lang;
         utterance.voice = uttvoices[i];
         utterance.lang=uttvoices[i].lang;
+
+        if(voiceLang === 'ja-JP' || voiceLang === 'ko-KR' || voiceLang === 'zh-CN'){
+          utterance.text = cellTextValue.replace(/\s*\([^)]*\)/g, '').replace(/[a-zA-Z0-9]/g, '');
+          console.log("lang=="+cellTextValue.replace(/\s*\([^)]*\)/g, '').replace(/[a-zA-Z0-9]/g, ''));
+        }
+        
+
+        
         break;
       }
     }
@@ -2230,6 +2239,8 @@ uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on p
 
       cellDiv.setAttribute('contenteditable', 'true');
 
+      console.log("header="+headers.indexOf(column));
+      console.log("row="+row);
       // Remove enclosing double quotes if present
       let cellText = row[headers.indexOf(column)].trim().replaceAll('==TABS==', '\t').replaceAll('==NEW-LINE==', '\n');
       if (cellText.startsWith('"') && cellText.endsWith('"')) {

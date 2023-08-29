@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tatoeba Example Sentences</title>
 
-	<script type="text/javascript" src="js/aromanize.js"></script>
-	<script type="text/javascript">
-		function transcribe(input) {
-			var rule = "rr-translit";
-			//var input = "안녕하세요";
-			console.log(input.romanize(rule));
-		}
-	</script>
+    <script type="text/javascript" src="js/aromanize.js"></script>
+    <script type="text/javascript">
+        function transcribe(input) {
+            var rule = "rr-translit";
+            //var input = "안녕하세요";
+            console.log(input.romanize(rule));
+        }
+    </script>
 
     <style>
         #results {
@@ -69,30 +69,30 @@
         };
 
         function hangulToRomanized(hangulText) {
-            console.log("hangulText="+hangulText);
-  const hangulToRomanMap = {
-    "ㄱ": "g", "ㄲ": "kk", "ㄴ": "n", "ㄷ": "d", "ㄸ": "tt",
-    "ㄹ": "r", "ㅁ": "m", "ㅂ": "b", "ㅃ": "pp", "ㅅ": "s",
-    "ㅆ": "ss", "ㅇ": "", "ㅈ": "j", "ㅉ": "jj", "ㅊ": "ch",
-    "ㅋ": "k", "ㅌ": "t", "ㅍ": "p", "ㅎ": "h",
-    "ㅏ": "a", "ㅑ": "ya", "ㅓ": "eo", "ㅕ": "yeo",
-    "ㅗ": "o", "ㅛ": "yo", "ㅜ": "u", "ㅠ": "yu",
-    "ㅡ": "eu", "ㅣ": "i",
-    "ㅐ": "ae", "ㅒ": "yae", "ㅔ": "e", "ㅖ": "ye",
-    "ㅘ": "wa", "ㅙ": "wae", "ㅚ": "oe", "ㅝ": "wo",
-    "ㅞ": "we", "ㅟ": "wi", "ㅢ": "ui"
-  };
+            console.log("hangulText=" + hangulText);
+            const hangulToRomanMap = {
+                "ㄱ": "g", "ㄲ": "kk", "ㄴ": "n", "ㄷ": "d", "ㄸ": "tt",
+                "ㄹ": "r", "ㅁ": "m", "ㅂ": "b", "ㅃ": "pp", "ㅅ": "s",
+                "ㅆ": "ss", "ㅇ": "", "ㅈ": "j", "ㅉ": "jj", "ㅊ": "ch",
+                "ㅋ": "k", "ㅌ": "t", "ㅍ": "p", "ㅎ": "h",
+                "ㅏ": "a", "ㅑ": "ya", "ㅓ": "eo", "ㅕ": "yeo",
+                "ㅗ": "o", "ㅛ": "yo", "ㅜ": "u", "ㅠ": "yu",
+                "ㅡ": "eu", "ㅣ": "i",
+                "ㅐ": "ae", "ㅒ": "yae", "ㅔ": "e", "ㅖ": "ye",
+                "ㅘ": "wa", "ㅙ": "wae", "ㅚ": "oe", "ㅝ": "wo",
+                "ㅞ": "we", "ㅟ": "wi", "ㅢ": "ui"
+            };
 
-  let romanizedText = "";
-  for (let i = 0; i < hangulText.length; i++) {
-    const character = hangulText[i];
-    const romanEquivalent = hangulToRomanMap[character] || character;
-    romanizedText += romanEquivalent;
-  }
-  console.log("romanizedText="+romanizedText);
+            let romanizedText = "";
+            for (let i = 0; i < hangulText.length; i++) {
+                const character = hangulText[i];
+                const romanEquivalent = hangulToRomanMap[character] || character;
+                romanizedText += romanEquivalent;
+            }
+            console.log("romanizedText=" + romanizedText);
 
-  return romanizedText;
-}
+            return romanizedText;
+        }
 
         // Define an array of languages with their codes
         function createLanguageList() {
@@ -259,12 +259,12 @@
                                             jpnExampleTranscriptionTablerow.textContent = transcription.text;
 
                                         });
-                                    }else if (lang === 'kor') {
-                                            exampleRow.textContent = translationin.text ;
-                                            const korExampleTranscriptionTablerow = jpnExampleTable.insertRow();
-                                            korExampleTranscriptionTablerow.textContent = Aromanize.romanize(translationin.text);
+                                    } else if (lang === 'kor') {
+                                        exampleRow.textContent = translationin.text;
+                                        const korExampleTranscriptionTablerow = jpnExampleTable.insertRow();
+                                        korExampleTranscriptionTablerow.textContent = Aromanize.romanize(translationin.text);
 
-                                            transcribe(translationin.text);
+                                        transcribe(translationin.text);
                                     } else {
                                         //const jpnExampleTablerow = jpnExampleTable.insertRow();
                                         exampleRow.textContent = translationin.text;
@@ -291,7 +291,14 @@
                                         const selectedVoice = voices.find(voice => voice.lang === selectedLanguage);
 
                                         if (selectedVoice) {
-                                            const utterance = new SpeechSynthesisUtterance(translationin.text);
+
+                                            var speakText = translationin.text;
+                                            // if (voiceLang === 'ja-JP' || voiceLang === 'ko-KR' || voiceLang === 'zh-CN') {
+                                            //     speakText = speakText.replace(/\s*\([^)]*\)/g, '').replace(/[a-zA-Z0-9]/g, '');
+                                            //     console.log("lang==" + speakText);
+                                            // }
+
+                                            const utterance = new SpeechSynthesisUtterance(speakText);
                                             utterance.voice = selectedVoice;
                                             utterance.lang = lang;
                                             window.speechSynthesis.speak(utterance);
