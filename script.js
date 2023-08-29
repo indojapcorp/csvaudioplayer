@@ -875,7 +875,6 @@ function speakAndHighlight() {
   const selectedText = window.getSelection().toString().trim();
   if (selectedText) {
     cellTextValue = selectedText.replace(/^\d+\.\s*/, "").replace(/^\d+\)\s*/, "").replace(/Question:|Interviewer:|Interviewee:|Answer:|Ans:/gi, "").replace(/\n+/g, '. ').replace(/[.:?]/g, '!');
-    console.log(cellTextValue);
   }
 
   //if (isMacOS) {
@@ -899,7 +898,6 @@ function speakAndHighlight() {
 
         if(voiceLang === 'ja-JP' || voiceLang === 'ko-KR' || voiceLang === 'zh-CN'){
           utterance.text = cellTextValue.replace(/\s*\([^)]*\)/g, '').replace(/[a-zA-Z0-9]/g, '');
-          console.log("lang=="+cellTextValue.replace(/\s*\([^)]*\)/g, '').replace(/[a-zA-Z0-9]/g, ''));
         }
         
 
@@ -2239,8 +2237,6 @@ uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on p
 
       cellDiv.setAttribute('contenteditable', 'true');
 
-      console.log("header="+headers.indexOf(column));
-      console.log("row="+row);
       // Remove enclosing double quotes if present
       let cellText = row[headers.indexOf(column)].trim().replaceAll('==TABS==', '\t').replaceAll('==NEW-LINE==', '\n');
       if (cellText.startsWith('"') && cellText.endsWith('"')) {
