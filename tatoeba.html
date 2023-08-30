@@ -102,9 +102,12 @@
             const fromLanguageSelect = document.getElementById("fromLanguageSelect");
             const toLanguageSelect = document.getElementById("toLanguageSelect");
 
+            const conjugationLanguageSelect = document.getElementById("conjugationLanguageSelect");
+
             languageList.innerHTML = "";
             fromLanguageSelect.innerHTML = "";
             toLanguageSelect.innerHTML = "";
+            conjugationLanguageSelect.innerHTML = "";
 
             languages.forEach(language => {
                 // Create options for select element
@@ -138,11 +141,154 @@
                 toLanguageSelect.add(traoption);
             });
 
+            Array.from(options).forEach(function (option) {
+                var traoption = document.createElement("option");
+                traoption.value = option.value;
+                traoption.text = option.text;
+                conjugationLanguageSelect.add(traoption);
+            });
+
 
         }
 
         document.addEventListener("DOMContentLoaded", () => {
             createLanguageList();
+
+
+            //verb conjugation start
+            const conjugateButton = document.getElementById("conjugate-button");
+            const conjugationsDiv = document.getElementById("conjugations");
+
+            conjugateButton.addEventListener("click", function () {
+                const verbInput = document.getElementById("verb");
+                const conjugationLanguageSelect = document.getElementById("conjugationLanguageSelect").value;
+
+                const verb = verbInput.value.trim();
+
+                if (verb === "") {
+                    conjugationsDiv.innerHTML = "<p>Please enter a verb.</p>";
+                    return;
+                }
+                var pronouns = [];
+                var conjugations = {};
+                var tableHTML = "<table><tr><th>Form</th><th>Conjugation</th></tr>";
+
+                if (conjugationLanguageSelect === 'eng') {
+                    conjugations = {
+                        BaseForm: verb,
+                        ThirdPersonSingular: verb + "s",
+                        PastSimple: verb + "ed",
+                        PastParticiple: verb + "ed",
+                        PresentParticiple: verb + "ing"
+                    };
+
+                     tableHTML = "<table><tr><th>Form</th><th>Conjugation</th></tr>";
+
+                    for (const form in conjugations) {
+                        tableHTML += `<tr><td>${form}</td><td>${conjugations[form]}</td></tr>`;
+                    }
+
+                }
+                else if (conjugationLanguageSelect === 'fra') {
+                    pronouns = ["Je", "Tu", "Il", "Elle", "Nous", "Vous", "Ils", "Elles"];
+                    conjugations = {
+                        Je: verb + "e",
+                        Tu: verb + "es",
+                        Il: verb + "e",
+                        Elle: verb + "e",
+                        Nous: verb + "ons",
+                        Vous: verb + "ez",
+                        Ils: verb + "ent",
+                        Elles: verb + "ent"
+                    };
+                    for (const pronoun of pronouns) {
+                        tableHTML += `<tr><td>${pronoun}</td><td>${conjugations[pronoun]}</td></tr>`;
+                    }
+
+                } else if (conjugationLanguageSelect === 'deu') {
+
+                    pronouns = ["Ich", "Du", "Er", "Sie", "Es", "Wir", "Ihr", "Sie"];
+                    conjugations = {
+                        Ich: verb + "e",
+                        Du: verb + "st",
+                        Er: verb + "t",
+                        Sie: verb + "t",
+                        Es: verb + "t",
+                        Wir: verb + "en",
+                        Ihr: verb + "t",
+                        Sie: verb + "en"
+                    };
+                    for (const pronoun of pronouns) {
+                        tableHTML += `<tr><td>${pronoun}</td><td>${conjugations[pronoun]}</td></tr>`;
+                    }
+
+                } else if (conjugationLanguageSelect === 'jpn') {
+                    conjugations = {
+                        PresentPlain: verb,
+                        PresentPolite: verb + "ます",
+                        PastPlain: verb + "た",
+                        PastPolite: verb + "ました",
+                        TeForm: verb + "て",
+                        Potential: verb + "られる",
+                        Conditional: verb + "れば"
+                        // Add more conjugations as needed
+                    };
+
+
+                    for (const form in conjugations) {
+                        tableHTML += `<tr><td>${form}</td><td>${conjugations[form]}</td></tr>`;
+                    }
+
+                } else if (conjugationLanguageSelect === 'cmn') {
+
+                    console.log("cmn -- " + verb);
+                    // Define some example sentence patterns with the verb
+                    const sentencePatterns = [
+                        `我${verb}`,
+                        `你${verb}`,
+                        `他${verb}`,
+                        `她${verb}`,
+                        `我们${verb}`,
+                        `你们${verb}`,
+                        `他们${verb}`
+                    ];
+
+                    tableHTML = "<table><tr><th>Subject</th><th>Sentence</th></tr>";
+
+                    for (const pattern of sentencePatterns) {
+                        tableHTML += `<tr><td>${pattern.split(verb).join("___")}</td><td>${pattern}</td></tr>`;
+                    }
+
+
+                } else if (conjugationLanguageSelect === 'kor') {
+                    // Define some example honorific forms
+                    const honorificForms = [
+                        `나 ${verb}어요`,
+                        `너 ${verb}어요`,
+                        `그 ${verb}어요`,
+                        `그녀 ${verb}어요`,
+                        `우리 ${verb}어요`,
+                        `너희 ${verb}어요`,
+                        `그들 ${verb}어요`
+                    ];
+
+                    tableHTML = "<table><tr><th>Subject</th><th>Sentence</th></tr>";
+
+                    for (const form of honorificForms) {
+                        tableHTML += `<tr><td>${form.split(verb).join("___")}</td><td>${form}</td></tr>`;
+                    }
+
+                }
+
+
+
+
+                tableHTML += "</table>";
+                conjugationsDiv.innerHTML = tableHTML;
+            });
+
+            //verb conjugation end
+
         });
 
         var voices;
@@ -345,6 +491,15 @@
 </head>
 
 <body>
+    <h1>Verb Conjugator</h1>
+
+    <label for="verb">Enter a verb in infinitive form:</label>
+    <input type="text" id="verb" name="verb" required>
+    <select id="conjugationLanguageSelect"></select>
+    <button type="button" id="conjugate-button">Conjugate</button>
+    <div id="conjugations"></div>
+
+    <br>
     <h1>Tatoeba Example Sentences</h1>
     <label for="query">Enter a query:</label>
     <input type="text" id="query">
