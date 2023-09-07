@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV Export Example</title>
+    <!-- Include Papa.js from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Additional Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Additional Textarea 1 Data</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Select 1</th>
+                <th>Select 2</th>
+                <th>Select 3</th>
+                <th>Select 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                    </select>
+                </td>
+                <td>
+                    <select>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                    </select>
+                </td>
+                <td>
+                    <select>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                    </select>
+                </td>
+                <td>
+                    <select>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><textarea rows="10">Textarea 1 Data</textarea></td>
+                <td><textarea rows="10">Textarea 2 Data</textarea></td>
+                <td><textarea rows="10">Textarea 3 Data</textarea></td>
+                <td><textarea rows="10">Textarea 4 Data</textarea></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <button id="exportButton">Export CSV</button>
+
+    <script>
+        document.getElementById('exportButton').addEventListener('click', function () {
+            // Initialize an empty CSV array
+            const csvData = [];
+
+            // Get select values and textarea lines from the first table
+            const selectValues = Array.from(document.querySelectorAll('table:nth-child(1) select')).map(select => select.value);
+            const textareaData = Array.from(document.querySelectorAll('table:nth-child(1) textarea')).map(textarea => textarea.value.split('\n'));
+
+            // Get textarea lines from the second table
+            const additionalTextareaData = Array.from(document.querySelectorAll('table:nth-child(2) textarea')).map(textarea => textarea.value.split('\n'));
+
+            // Create CSV header
+            csvData.push([selectValues[0], selectValues[1], selectValues[2], selectValues[3]]);
+
+            // Add rows to CSV from the first table
+            for (let i = 0; i < textareaData[0].length; i++) {
+                csvData.push([textareaData[0][i], textareaData[1][i], textareaData[2][i], textareaData[3][i]]);
+            }
+
+            // Add rows to CSV from the second table
+            for (let i = 0; i < additionalTextareaData[0].length; i++) {
+                csvData.push([additionalTextareaData[0][i]]);
+            }
+
+            // Convert to CSV format using Papa.js
+            const csv = Papa.unparse(csvData);
+
+            // Create a Blob containing the CSV data
+            const blob = new Blob([csv], { type: 'text/csv' });
+
+            // Create a download link and trigger the download
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'exported_data.csv';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    </script>
+</body>
+</html>

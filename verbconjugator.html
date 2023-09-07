@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatoeba Example Sentences</title>
+
+    <script type="text/javascript" src="js/aromanize.js"></script>
+    <script type="text/javascript">
+        function transcribe(input) {
+            var rule = "rr-translit";
+            //var input = "안녕하세요";
+            console.log(input.romanize(rule));
+        }
+    </script>
+
+    <style>
+        #results {
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        #results th,
+        #results td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #results th {
+            background-color: #f2f2f2;
+        }
+
+        .speaker-icon::before {
+            content: "\1F508";
+            /* Unicode code point for the speaker icon */
+        }
+    </style>
+
+    <script>
+
+        const languages = [
+            { name: "English", code: "eng" },
+            { name: "Japanese", code: "jpn" },
+            { name: "Chinese", code: "cmn" },
+            { name: "French", code: "fra" },
+            { name: "German", code: "deu" },
+            { name: "Italian", code: "ita" },
+            { name: "Russian", code: "rus" },
+            { name: "Korean", code: "kor" },
+            { name: "Spanish", code: "spa" },
+            // Add more languages here
+        ];
+
+        // Dictionary mapping language codes to speech synthesis voices
+        const languageCodeToVoice = {
+            "eng": "en-US",
+            "jpn": "ja-JP",
+            "cmn": "zh-CN",
+            "fra": "fr-FR",
+            "deu": "de-DE",
+            "ita": "it-IT",
+            "rus": "ru-RU",
+            "kor": "ko-KR",
+            "spa": "es-ES",
+            // Add more language mappings here
+        };
+
+        function hangulToRomanized(hangulText) {
+            console.log("hangulText=" + hangulText);
+            const hangulToRomanMap = {
+                "ㄱ": "g", "ㄲ": "kk", "ㄴ": "n", "ㄷ": "d", "ㄸ": "tt",
+                "ㄹ": "r", "ㅁ": "m", "ㅂ": "b", "ㅃ": "pp", "ㅅ": "s",
+                "ㅆ": "ss", "ㅇ": "", "ㅈ": "j", "ㅉ": "jj", "ㅊ": "ch",
+                "ㅋ": "k", "ㅌ": "t", "ㅍ": "p", "ㅎ": "h",
+                "ㅏ": "a", "ㅑ": "ya", "ㅓ": "eo", "ㅕ": "yeo",
+                "ㅗ": "o", "ㅛ": "yo", "ㅜ": "u", "ㅠ": "yu",
+                "ㅡ": "eu", "ㅣ": "i",
+                "ㅐ": "ae", "ㅒ": "yae", "ㅔ": "e", "ㅖ": "ye",
+                "ㅘ": "wa", "ㅙ": "wae", "ㅚ": "oe", "ㅝ": "wo",
+                "ㅞ": "we", "ㅟ": "wi", "ㅢ": "ui"
+            };
+
+            let romanizedText = "";
+            for (let i = 0; i < hangulText.length; i++) {
+                const character = hangulText[i];
+                const romanEquivalent = hangulToRomanMap[character] || character;
+                romanizedText += romanEquivalent;
+            }
+            console.log("romanizedText=" + romanizedText);
+
+            return romanizedText;
+        }
+
+        // Define an array of languages with their codes
+        function createLanguageList() {
+
+
+            const conjugationLanguageSelect = document.getElementById("conjugationLanguageSelect");
+            conjugationLanguageSelect.innerHTML = "";
+
+            languages.forEach(language => {
+                // Create options for select element
+                const option = document.createElement("option");
+                option.value = language.code;
+                option.textContent = language.name;
+                conjugationLanguageSelect.appendChild(option);
+                //toLanguageSelect.appendChild(option);
+            });
+
+
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            createLanguageList();
+
+
+            //verb conjugation start
+            const conjugateButton = document.getElementById("conjugate-button");
+            const conjugationsDiv = document.getElementById("conjugations");
+
+            conjugateButton.addEventListener("click", function () {
+                const verbInput = document.getElementById("verb");
+                const conjugationLanguageSelect = document.getElementById("conjugationLanguageSelect").value;
+
+                const verb = verbInput.value.trim();
+
+                if (verb === "") {
+                    conjugationsDiv.innerHTML = "<p>Please enter a verb.</p>";
+                    return;
+                }
+                var pronouns = [];
+                var conjugations = {};
+                var tableHTML = "<table><tr><th>Form</th><th>Conjugation</th></tr>";
+
+                if (conjugationLanguageSelect === 'eng') {
+                    const irregularConjugations = {
+                        be: {
+                            BaseForm: "be",
+                            ThirdPersonSingular: "is",
+                            PastSimple: "was",
+                            PastParticiple: "been",
+                            PresentParticiple: "being"
+                        },
+                        have: {
+                            BaseForm: "have",
+                            ThirdPersonSingular: "has",
+                            PastSimple: "had",
+                            PastParticiple: "had",
+                            PresentParticiple: "having"
+                        },
+                        do: {
+                            BaseForm: "do",
+                            ThirdPersonSingular: "does",
+                            PastSimple: "did",
+                            PastParticiple: "done",
+                            PresentParticiple: "doing"
+                        },
+                        say: {
+                            BaseForm: "say",
+                            ThirdPersonSingular: "says",
+                            PastSimple: "said",
+                            PastParticiple: "said",
+                            PresentParticiple: "saying"
+                        },
+                        get: {
+                            BaseForm: "get",
+                            ThirdPersonSingular: "gets",
+                            PastSimple: "got",
+                            PastParticiple: "got",
+                            PresentParticiple: "getting"
+                        },
+                        go: {
+                            BaseForm: "go",
+                            ThirdPersonSingular: "goes",
+                            PastSimple: "went",
+                            PastParticiple: "gone",
+                            PresentParticiple: "going"
+                        },
+                        make: {
+                            BaseForm: "make",
+                            ThirdPersonSingular: "makes",
+                            PastSimple: "made",
+                            PastParticiple: "made",
+                            PresentParticiple: "making"
+                        },
+                        take: {
+                            BaseForm: "take",
+                            ThirdPersonSingular: "takes",
+                            PastSimple: "took",
+                            PastParticiple: "taken",
+                            PresentParticiple: "taking"
+                        },
+                        come: {
+                            BaseForm: "come",
+                            ThirdPersonSingular: "comes",
+                            PastSimple: "came",
+                            PastParticiple: "come",
+                            PresentParticiple: "coming"
+                        },
+                        see: {
+                            BaseForm: "see",
+                            ThirdPersonSingular: "sees",
+                            PastSimple: "saw",
+                            PastParticiple: "seen",
+                            PresentParticiple: "seeing"
+                        },
+                        know: {
+                            BaseForm: "know",
+                            ThirdPersonSingular: "knows",
+                            PastSimple: "knew",
+                            PastParticiple: "known",
+                            PresentParticiple: "knowing"
+                        },
+                        give: {
+                            BaseForm: "give",
+                            ThirdPersonSingular: "gives",
+                            PastSimple: "gave",
+                            PastParticiple: "given",
+                            PresentParticiple: "giving"
+                        },
+                        find: {
+                            BaseForm: "find",
+                            ThirdPersonSingular: "finds",
+                            PastSimple: "found",
+                            PastParticiple: "found",
+                            PresentParticiple: "finding"
+                        },
+                        tell: {
+                            BaseForm: "tell",
+                            ThirdPersonSingular: "tells",
+                            PastSimple: "told",
+                            PastParticiple: "told",
+                            PresentParticiple: "telling"
+                        },
+                        think: {
+                            BaseForm: "think",
+                            ThirdPersonSingular: "thinks",
+                            PastSimple: "thought",
+                            PastParticiple: "thought",
+                            PresentParticiple: "thinking"
+                        },
+                        begin: {
+                            BaseForm: "begin",
+                            ThirdPersonSingular: "begins",
+                            PastSimple: "began",
+                            PastParticiple: "begun",
+                            PresentParticiple: "beginning"
+                        },
+                        understand: {
+                            BaseForm: "understand",
+                            ThirdPersonSingular: "understands",
+                            PastSimple: "understood",
+                            PastParticiple: "understood",
+                            PresentParticiple: "understanding"
+                        },
+                        show: {
+                            BaseForm: "show",
+                            ThirdPersonSingular: "shows",
+                            PastSimple: "showed",
+                            PastParticiple: "shown",
+                            PresentParticiple: "showing"
+                        },
+                        feel: {
+                            BaseForm: "feel",
+                            ThirdPersonSingular: "feels",
+                            PastSimple: "felt",
+                            PastParticiple: "felt",
+                            PresentParticiple: "feeling"
+                        },
+                        leave: {
+                            BaseForm: "leave",
+                            ThirdPersonSingular: "leaves",
+                            PastSimple: "left",
+                            PastParticiple: "left",
+                            PresentParticiple: "leaving"
+                        },
+                        come: {
+                            BaseForm: verb,
+                            ThirdPersonSingular: "comes",
+                            PastSimple: "came",
+                            PastParticiple: "come",
+                            PresentParticiple: "coming"
+                        },
+                        run: {
+                            BaseForm: verb,
+                            ThirdPersonSingular: "runs",
+                            PastSimple: "ran",
+                            PastParticiple: "run",
+                            PresentParticiple: "running"
+                        }
+                        // Add more irregular verbs as needed
+                        ,
+                        abide: {
+                            BaseForm: "abide",
+                            ThirdPersonSingular: "abides",
+                            PastSimple: "abode",
+                            PastParticiple: "abode",
+                            PresentParticiple: "abiding"
+                        },
+                        arise: {
+                            BaseForm: "arise",
+                            ThirdPersonSingular: "arises",
+                            PastSimple: "arose",
+                            PastParticiple: "arisen",
+                            PresentParticiple: "arising"
+                        },
+                        awake: {
+                            BaseForm: "awake",
+                            ThirdPersonSingular: "awakes",
+                            PastSimple: "awoke",
+                            PastParticiple: "awoken",
+                            PresentParticiple: "awaking"
+                        },
+                        bear: {
+                            BaseForm: "bear",
+                            ThirdPersonSingular: "bears",
+                            PastSimple: "bore",
+                            PastParticiple: "borne/born",
+                            PresentParticiple: "bearing"
+                        },
+                        beat: {
+                            BaseForm: "beat",
+                            ThirdPersonSingular: "beats",
+                            PastSimple: "beat",
+                            PastParticiple: "beaten",
+                            PresentParticiple: "beating"
+                        },
+                        become: {
+                            BaseForm: "become",
+                            ThirdPersonSingular: "becomes",
+                            PastSimple: "became",
+                            PastParticiple: "become",
+                            PresentParticiple: "becoming"
+                        },
+                        beget: {
+                            BaseForm: "beget",
+                            ThirdPersonSingular: "begets",
+                            PastSimple: "begot",
+                            PastParticiple: "begotten",
+                            PresentParticiple: "begetting"
+                        },
+                        begin: {
+                            BaseForm: "begin",
+                            ThirdPersonSingular: "begins",
+                            PastSimple: "began",
+                            PastParticiple: "begun",
+                            PresentParticiple: "beginning"
+                        },
+                        bend: {
+                            BaseForm: "bend",
+                            ThirdPersonSingular: "bends",
+                            PastSimple: "bent",
+                            PastParticiple: "bent",
+                            PresentParticiple: "bending"
+                        },
+                        bet: {
+                            BaseForm: "bet",
+                            ThirdPersonSingular: "bets",
+                            PastSimple: "bet",
+                            PastParticiple: "bet",
+                            PresentParticiple: "betting"
+                        },
+                        bid: {
+                            BaseForm: "bid",
+                            ThirdPersonSingular: "bids",
+                            PastSimple: "bid",
+                            PastParticiple: "bid",
+                            PresentParticiple: "bidding"
+                        },
+                        bite: {
+                            BaseForm: "bite",
+                            ThirdPersonSingular: "bites",
+                            PastSimple: "bit",
+                            PastParticiple: "bitten",
+                            PresentParticiple: "biting"
+                        },
+                        bleed: {
+                            BaseForm: "bleed",
+                            ThirdPersonSingular: "bleeds",
+                            PastSimple: "bled",
+                            PastParticiple: "bled",
+                            PresentParticiple: "bleeding"
+                        },
+                        blow: {
+                            BaseForm: "blow",
+                            ThirdPersonSingular: "blows",
+                            PastSimple: "blew",
+                            PastParticiple: "blown",
+                            PresentParticiple: "blowing"
+                        },
+                        break: {
+                            BaseForm: "break",
+                            ThirdPersonSingular: "breaks",
+                            PastSimple: "broke",
+                            PastParticiple: "broken",
+                            PresentParticiple: "breaking"
+                        },
+                        bring: {
+                            BaseForm: "bring",
+                            ThirdPersonSingular: "brings",
+                            PastSimple: "brought",
+                            PastParticiple: "brought",
+                            PresentParticiple: "bringing"
+                        },
+                        broadcast: {
+                            BaseForm: "broadcast",
+                            ThirdPersonSingular: "broadcasts",
+                            PastSimple: "broadcast",
+                            PastParticiple: "broadcast",
+                            PresentParticiple: "broadcasting"
+                        },
+                        build: {
+                            BaseForm: "build",
+                            ThirdPersonSingular: "builds",
+                            PastSimple: "built",
+                            PastParticiple: "built",
+                            PresentParticiple: "building"
+                        },
+                        burn: {
+                            BaseForm: "burn",
+                            ThirdPersonSingular: "burns",
+                            PastSimple: "burned/burnt",
+                            PastParticiple: "burned/burnt",
+                            PresentParticiple: "burning"
+                        },
+                        burst: {
+                            BaseForm: "burst",
+                            ThirdPersonSingular: "bursts",
+                            PastSimple: "burst",
+                            PastParticiple: "burst",
+                            PresentParticiple: "bursting"
+                        },
+                        buy: {
+                            BaseForm: "buy",
+                            ThirdPersonSingular: "buys",
+                            PastSimple: "bought",
+                            PastParticiple: "bought",
+                            PresentParticiple: "buying"
+                        },
+                        can: {
+                            BaseForm: "can",
+                            ThirdPersonSingular: "can",
+                            PastSimple: "could",
+                            PastParticiple: "could",
+                            PresentParticiple: "can"
+                        },
+                        cast: {
+                            BaseForm: "cast",
+                            ThirdPersonSingular: "casts",
+                            PastSimple: "cast",
+                            PastParticiple: "cast",
+                            PresentParticiple: "casting"
+                        },
+                        catch: {
+                            BaseForm: "catch",
+                            ThirdPersonSingular: "catches",
+                            PastSimple: "caught",
+                            PastParticiple: "caught",
+                            PresentParticiple: "catching"
+                        },
+                        chide: {
+                            BaseForm: "chide",
+                            ThirdPersonSingular: "chides",
+                            PastSimple: "chid/chided",
+                            PastParticiple: "chid/chided",
+                            PresentParticiple: "chiding"
+                        },
+                        choose: {
+                            BaseForm: "choose",
+                            ThirdPersonSingular: "chooses",
+                            PastSimple: "chose",
+                            PastParticiple: "chosen",
+                            PresentParticiple: "choosing"
+                        },
+                        cling: {
+                            BaseForm: "cling",
+                            ThirdPersonSingular: "clings",
+                            PastSimple: "clung",
+                            PastParticiple: "clung",
+                            PresentParticiple: "clinging"
+                        },
+                        clothe: {
+                            BaseForm: "clothe",
+                            ThirdPersonSingular: "clothes",
+                            PastSimple: "clothed/clad",
+                            PastParticiple: "clothed/clad",
+                            PresentParticiple: "clothing"
+                        },
+                        come: {
+                            BaseForm: "come",
+                            ThirdPersonSingular: "comes",
+                            PastSimple: "came",
+                            PastParticiple: "come",
+                            PresentParticiple: "coming"
+                        },
+                        cost: {
+                            BaseForm: "cost",
+                            ThirdPersonSingular: "costs",
+                            PastSimple: "cost",
+                            PastParticiple: "cost",
+                            PresentParticiple: "costing"
+                        },
+                        creep: {
+                            BaseForm: "creep",
+                            ThirdPersonSingular: "creeps",
+                            PastSimple: "crept",
+                            PastParticiple: "crept",
+                            PresentParticiple: "creeping"
+                        },
+                        cut: {
+                            BaseForm: "cut",
+                            ThirdPersonSingular: "cuts",
+                            PastSimple: "cut",
+                            PastParticiple: "cut",
+                            PresentParticiple: "cutting"
+                        },
+                        deal: {
+                            BaseForm: "deal",
+                            ThirdPersonSingular: "deals",
+                            PastSimple: "dealt",
+                            PastParticiple: "dealt",
+                            PresentParticiple: "dealing"
+                        },
+                        dig: {
+                            BaseForm: "dig",
+                            ThirdPersonSingular: "digs",
+                            PastSimple: "dug",
+                            PastParticiple: "dug",
+                            PresentParticiple: "digging"
+                        },
+                        dive: {
+                            BaseForm: "dive",
+                            ThirdPersonSingular: "dives",
+                            PastSimple: "dived/dove",
+                            PastParticiple: "dived",
+                            PresentParticiple: "diving"
+                        },
+                        do: {
+                            BaseForm: "do",
+                            ThirdPersonSingular: "does",
+                            PastSimple: "did",
+                            PastParticiple: "done",
+                            PresentParticiple: "doing"
+                        },
+                        draw: {
+                            BaseForm: "draw",
+                            ThirdPersonSingular: "draws",
+                            PastSimple: "drew",
+                            PastParticiple: "drawn",
+                            PresentParticiple: "drawing"
+                        },
+                        dream: {
+                            BaseForm: "dream",
+                            ThirdPersonSingular: "dreams",
+                            PastSimple: "dreamt/dreamed",
+                            PastParticiple: "dreamt/dreamed",
+                            PresentParticiple: "dreaming"
+                        },
+                        drink: {
+                            BaseForm: "drink",
+                            ThirdPersonSingular: "drinks",
+                            PastSimple: "drank",
+                            PastParticiple: "drunk",
+                            PresentParticiple: "drinking"
+                        },
+                        drive: {
+                            BaseForm: "drive",
+                            ThirdPersonSingular: "drives",
+                            PastSimple: "drove",
+                            PastParticiple: "driven",
+                            PresentParticiple: "driving"
+                        },
+                        dwell: {
+                            BaseForm: "dwell",
+                            ThirdPersonSingular: "dwells",
+                            PastSimple: "dwelt/dwelled",
+                            PastParticiple: "dwelt/dwelled",
+                            PresentParticiple: "dwelling"
+                        },
+                        eat: {
+                            BaseForm: "eat",
+                            ThirdPersonSingular: "eats",
+                            PastSimple: "ate",
+                            PastParticiple: "eaten",
+                            PresentParticiple: "eating"
+                        },
+                        fall: {
+                            BaseForm: "fall",
+                            ThirdPersonSingular: "falls",
+                            PastSimple: "fell",
+                            PastParticiple: "fallen",
+                            PresentParticiple: "falling"
+                        },
+                        feed: {
+                            BaseForm: "feed",
+                            ThirdPersonSingular: "feeds",
+                            PastSimple: "fed",
+                            PastParticiple: "fed",
+                            PresentParticiple: "feeding"
+                        },
+                        feel: {
+                            BaseForm: "feel",
+                            ThirdPersonSingular: "feels",
+                            PastSimple: "felt",
+                            PastParticiple: "felt",
+                            PresentParticiple: "feeling"
+                        },
+                        fight: {
+                            BaseForm: "fight",
+                            ThirdPersonSingular: "fights",
+                            PastSimple: "fought",
+                            PastParticiple: "fought",
+                            PresentParticiple: "fighting"
+                        },
+                        find: {
+                            BaseForm: "find",
+                            ThirdPersonSingular: "finds",
+                            PastSimple: "found",
+                            PastParticiple: "found",
+                            PresentParticiple: "finding"
+                        },
+                        flee: {
+                            BaseForm: "flee",
+                            ThirdPersonSingular: "flees",
+                            PastSimple: "fled",
+                            PastParticiple: "fled",
+                            PresentParticiple: "fleeing"
+                        },
+                        fling: {
+                            BaseForm: "fling",
+                            ThirdPersonSingular: "flings",
+                            PastSimple: "flung",
+                            PastParticiple: "flung",
+                            PresentParticiple: "flinging"
+                        },
+                        fly: {
+                            BaseForm: "fly",
+                            ThirdPersonSingular: "flies",
+                            PastSimple: "flew",
+                            PastParticiple: "flown",
+                            PresentParticiple: "flying"
+                        },
+                        forbid: {
+                            BaseForm: "forbid",
+                            ThirdPersonSingular: "forbids",
+                            PastSimple: "forbade/forbad",
+                            PastParticiple: "forbidden",
+                            PresentParticiple: "forbidding"
+                        },
+                        forecast: {
+                            BaseForm: "forecast",
+                            ThirdPersonSingular: "forecasts",
+                            PastSimple: "forecast",
+                            PastParticiple: "forecast",
+                            PresentParticiple: "forecasting"
+                        },
+                        foresee: {
+                            BaseForm: "foresee",
+                            ThirdPersonSingular: "foresees",
+                            PastSimple: "foresaw",
+                            PastParticiple: "foreseen",
+                            PresentParticiple: "foreseeing"
+                        },
+                        forget: {
+                            BaseForm: "forget",
+                            ThirdPersonSingular: "forgets",
+                            PastSimple: "forgot",
+                            PastParticiple: "forgotten",
+                            PresentParticiple: "forgetting"
+                        },
+                        forgive: {
+                            BaseForm: "forgive",
+                            ThirdPersonSingular: "forgives",
+                            PastSimple: "forgave",
+                            PastParticiple: "forgiven",
+                            PresentParticiple: "forgiving"
+                        },
+                        forsake: {
+                            BaseForm: "forsake",
+                            ThirdPersonSingular: "forsakes",
+                            PastSimple: "forsook",
+                            PastParticiple: "forsaken",
+                            PresentParticiple: "forsaking"
+                        },
+                        freeze: {
+                            BaseForm: "freeze",
+                            ThirdPersonSingular: "freezes",
+                            PastSimple: "froze",
+                            PastParticiple: "frozen",
+                            PresentParticiple: "freezing"
+                        },
+                        get: {
+                            BaseForm: "get",
+                            ThirdPersonSingular: "gets",
+                            PastSimple: "got",
+                            PastParticiple: "gotten/got",
+                            PresentParticiple: "getting"
+                        },
+                        give: {
+                            BaseForm: "give",
+                            ThirdPersonSingular: "gives",
+                            PastSimple: "gave",
+                            PastParticiple: "given",
+                            PresentParticiple: "giving"
+                        },
+                        go: {
+                            BaseForm: "go",
+                            ThirdPersonSingular: "goes",
+                            PastSimple: "went",
+                            PastParticiple: "gone",
+                            PresentParticiple: "going"
+                        },
+                        grind: {
+                            BaseForm: "grind",
+                            ThirdPersonSingular: "grinds",
+                            PastSimple: "ground",
+                            PastParticiple: "ground",
+                            PresentParticiple: "grinding"
+                        },
+                        grow: {
+                            BaseForm: "grow",
+                            ThirdPersonSingular: "grows",
+                            PastSimple: "grew",
+                            PastParticiple: "grown",
+                            PresentParticiple: "growing"
+                        },
+                        hang: {
+                            BaseForm: "hang",
+                            ThirdPersonSingular: "hangs",
+                            PastSimple: "hung",
+                            PastParticiple: "hung",
+                            PresentParticiple: "hanging"
+                        },
+                        have: {
+                            BaseForm: "have",
+                            ThirdPersonSingular: "has",
+                            PastSimple: "had",
+                            PastParticiple: "had",
+                            PresentParticiple: "having"
+                        },
+                        hear: {
+                            BaseForm: "hear",
+                            ThirdPersonSingular: "hears",
+                            PastSimple: "heard",
+                            PastParticiple: "heard",
+                            PresentParticiple: "hearing"
+                        },
+                        hide: {
+                            BaseForm: "hide",
+                            ThirdPersonSingular: "hides",
+                            PastSimple: "hid",
+                            PastParticiple: "hidden",
+                            PresentParticiple: "hiding"
+                        },
+                        hit: {
+                            BaseForm: "hit",
+                            ThirdPersonSingular: "hits",
+                            PastSimple: "hit",
+                            PastParticiple: "hit",
+                            PresentParticiple: "hitting"
+                        },
+                        hold: {
+                            BaseForm: "hold",
+                            ThirdPersonSingular: "holds",
+                            PastSimple: "held",
+                            PastParticiple: "held",
+                            PresentParticiple: "holding"
+                        },
+                        hurt: {
+                            BaseForm: "hurt",
+                            ThirdPersonSingular: "hurts",
+                            PastSimple: "hurt",
+                            PastParticiple: "hurt",
+                            PresentParticiple: "hurting"
+                        },
+                        keep: {
+                            BaseForm: "keep",
+                            ThirdPersonSingular: "keeps",
+                            PastSimple: "kept",
+                            PastParticiple: "kept",
+                            PresentParticiple: "keeping"
+                        },
+                        kneel: {
+                            BaseForm: "kneel",
+                            ThirdPersonSingular: "kneels",
+                            PastSimple: "knelt/kneeled",
+                            PastParticiple: "knelt/kneeled",
+                            PresentParticiple: "kneeling"
+                        },
+                        know: {
+                            BaseForm: "know",
+                            ThirdPersonSingular: "knows",
+                            PastSimple: "knew",
+                            PastParticiple: "known",
+                            PresentParticiple: "knowing"
+                        },
+                        lay: {
+                            BaseForm: "lay",
+                            ThirdPersonSingular: "lays",
+                            PastSimple: "laid",
+                            PastParticiple: "laid",
+                            PresentParticiple: "laying"
+                        },
+                        lead: {
+                            BaseForm: "lead",
+                            ThirdPersonSingular: "leads",
+                            PastSimple: "led",
+                            PastParticiple: "led",
+                            PresentParticiple: "leading"
+                        },
+                        lean: {
+                            BaseForm: "lean",
+                            ThirdPersonSingular: "leans",
+                            PastSimple: "leaned/leant",
+                            PastParticiple: "leaned/leant",
+                            PresentParticiple: "leaning"
+                        },
+                        leap: {
+                            BaseForm: "leap",
+                            ThirdPersonSingular: "leaps",
+                            PastSimple: "leaped/leapt",
+                            PastParticiple: "leaped/leapt",
+                            PresentParticiple: "leaping"
+                        },
+                        learn: {
+                            BaseForm: "learn",
+                            ThirdPersonSingular: "learns",
+                            PastSimple: "learned/learnt",
+                            PastParticiple: "learned/learnt",
+                            PresentParticiple: "learning"
+                        },
+                        leave: {
+                            BaseForm: "leave",
+                            ThirdPersonSingular: "leaves",
+                            PastSimple: "left",
+                            PastParticiple: "left",
+                            PresentParticiple: "leaving"
+                        },
+                        lend: {
+                            BaseForm: "lend",
+                            ThirdPersonSingular: "lends",
+                            PastSimple: "lent",
+                            PastParticiple: "lent",
+                            PresentParticiple: "lending"
+                        },
+                        let: {
+                            BaseForm: "let",
+                            ThirdPersonSingular: "lets",
+                            PastSimple: "let",
+                            PastParticiple: "let",
+                            PresentParticiple: "letting"
+                        },
+                        lie: {
+                            BaseForm: "lie",
+                            ThirdPersonSingular: "lies",
+                            PastSimple: "lay",
+                            PastParticiple: "lain",
+                            PresentParticiple: "lying"
+                        },
+                        light: {
+                            BaseForm: "light",
+                            ThirdPersonSingular: "lights",
+                            PastSimple: "lit/lighted",
+                            PastParticiple: "lit/lighted",
+                            PresentParticiple: "lighting"
+                        },
+                        lose: {
+                            BaseForm: "lose",
+                            ThirdPersonSingular: "loses",
+                            PastSimple: "lost",
+                            PastParticiple: "lost",
+                            PresentParticiple: "losing"
+                        },
+                        make: {
+                            BaseForm: "make",
+                            ThirdPersonSingular: "makes",
+                            PastSimple: "made",
+                            PastParticiple: "made",
+                            PresentParticiple: "making"
+                        },
+                        mean: {
+                            BaseForm: "mean",
+                            ThirdPersonSingular: "means",
+                            PastSimple: "meant",
+                            PastParticiple: "meant",
+                            PresentParticiple: "meaning"
+                        },
+                        meet: {
+                            BaseForm: "meet",
+                            ThirdPersonSingular: "meets",
+                            PastSimple: "met",
+                            PastParticiple: "met",
+                            PresentParticiple: "meeting"
+                        },
+                        mow: {
+                            BaseForm: "mow",
+                            ThirdPersonSingular: "mows",
+                            PastSimple: "mowed",
+                            PastParticiple: "mowed/mown",
+                            PresentParticiple: "mowing"
+                        },
+                        offset: {
+                            BaseForm: "offset",
+                            ThirdPersonSingular: "offsets",
+                            PastSimple: "offset",
+                            PastParticiple: "offset",
+                            PresentParticiple: "offsetting"
+                        },
+                        overcome: {
+                            BaseForm: "overcome",
+                            ThirdPersonSingular: "overcomes",
+                            PastSimple: "overcame",
+                            PastParticiple: "overcome",
+                            PresentParticiple: "overcoming"
+                        },
+                        partake: {
+                            BaseForm: "partake",
+                            ThirdPersonSingular: "partakes",
+                            PastSimple: "partook",
+                            PastParticiple: "partaken",
+                            PresentParticiple: "partaking"
+                        },
+                        pay: {
+                            BaseForm: "pay",
+                            ThirdPersonSingular: "pays",
+                            PastSimple: "paid",
+                            PastParticiple: "paid",
+                            PresentParticiple: "paying"
+                        },
+                        plead: {
+                            BaseForm: "plead",
+                            ThirdPersonSingular: "pleads",
+                            PastSimple: "pled/pleaded",
+                            PastParticiple: "pled/pleaded",
+                            PresentParticiple: "pleading"
+                        },
+                        preset: {
+                            BaseForm: "preset",
+                            ThirdPersonSingular: "presets",
+                            PastSimple: "preset",
+                            PastParticiple: "preset",
+                            PresentParticiple: "presetting"
+                        },
+                        prove: {
+                            BaseForm: "prove",
+                            ThirdPersonSingular: "proves",
+                            PastSimple: "proved",
+                            PastParticiple: "proved/proven",
+                            PresentParticiple: "proving"
+                        },
+                        put: {
+                            BaseForm: "put",
+                            ThirdPersonSingular: "puts",
+                            PastSimple: "put",
+                            PastParticiple: "put",
+                            PresentParticiple: "putting"
+                        },
+                        quit: {
+                            BaseForm: "quit",
+                            ThirdPersonSingular: "quits",
+                            PastSimple: "quit",
+                            PastParticiple: "quit",
+                            PresentParticiple: "quitting"
+                        },
+                        read: {
+                            BaseForm: "read",
+                            ThirdPersonSingular: "reads",
+                            PastSimple: "read",
+                            PastParticiple: "read",
+                            PresentParticiple: "reading"
+                        },
+                        relay: {
+                            BaseForm: "relay",
+                            ThirdPersonSingular: "relays",
+                            PastSimple: "relaid/relayed",
+                            PastParticiple: "relaid/relayed",
+                            PresentParticiple: "relaying"
+                        },
+                        rend: {
+                            BaseForm: "rend",
+                            ThirdPersonSingular: "rends",
+                            PastSimple: "rent",
+                            PastParticiple: "rent",
+                            PresentParticiple: "rending"
+                        },
+                        rid: {
+                            BaseForm: "rid",
+                            ThirdPersonSingular: "rids",
+                            PastSimple: "rid",
+                            PastParticiple: "rid",
+                            PresentParticiple: "ridding"
+                        },
+                        ring: {
+                            BaseForm: "ring",
+                            ThirdPersonSingular: "rings",
+                            PastSimple: "rang",
+                            PastParticiple: "rung",
+                            PresentParticiple: "ringing"
+                        },
+                        rise: {
+                            BaseForm: "rise",
+                            ThirdPersonSingular: "rises",
+                            PastSimple: "rose",
+                            PastParticiple: "risen",
+                            PresentParticiple: "rising"
+                        },
+                        run: {
+                            BaseForm: "run",
+                            ThirdPersonSingular: "runs",
+                            PastSimple: "ran",
+                            PastParticiple: "run",
+                            PresentParticiple: "running"
+                        },
+                        saw: {
+                            BaseForm: "saw",
+                            ThirdPersonSingular: "saws",
+                            PastSimple: "sawed",
+                            PastParticiple: "sawed/sawn",
+                            PresentParticiple: "sawing"
+                        },
+                        say: {
+                            BaseForm: "say",
+                            ThirdPersonSingular: "says",
+                            PastSimple: "said",
+                            PastParticiple: "said",
+                            PresentParticiple: "saying"
+                        },
+                        see: {
+                            BaseForm: "see",
+                            ThirdPersonSingular: "sees",
+                            PastSimple: "saw",
+                            PastParticiple: "seen",
+                            PresentParticiple: "seeing"
+                        },
+                        seek: {
+                            BaseForm: "seek",
+                            ThirdPersonSingular: "seeks",
+                            PastSimple: "sought",
+                            PastParticiple: "sought",
+                            PresentParticiple: "seeking"
+                        },
+                        sell: {
+                            BaseForm: "sell",
+                            ThirdPersonSingular: "sells",
+                            PastSimple: "sold",
+                            PastParticiple: "sold",
+                            PresentParticiple: "selling"
+                        },
+                        send: {
+                            BaseForm: "send",
+                            ThirdPersonSingular: "sends",
+                            PastSimple: "sent",
+                            PastParticiple: "sent",
+                            PresentParticiple: "sending"
+                        },
+                        set: {
+                            BaseForm: "set",
+                            ThirdPersonSingular: "sets",
+                            PastSimple: "set",
+                            PastParticiple: "set",
+                            PresentParticiple: "setting"
+                        },
+                        shake: {
+                            BaseForm: "shake",
+                            ThirdPersonSingular: "shakes",
+                            PastSimple: "shook",
+                            PastParticiple: "shaken",
+                            PresentParticiple: "shaking"
+                        },
+                        shed: {
+                            BaseForm: "shed",
+                            ThirdPersonSingular: "sheds",
+                            PastSimple: "shed",
+                            PastParticiple: "shed",
+                            PresentParticiple: "shedding"
+                        },
+                        shine: {
+                            BaseForm: "shine",
+                            ThirdPersonSingular: "shines",
+                            PastSimple: "shone",
+                            PastParticiple: "shone",
+                            PresentParticiple: "shining"
+                        },
+                        shoe: {
+                            BaseForm: "shoe",
+                            ThirdPersonSingular: "shoes",
+                            PastSimple: "shod",
+                            PastParticiple: "shod",
+                            PresentParticiple: "shoeing"
+                        },
+                        shoot: {
+                            BaseForm: "shoot",
+                            ThirdPersonSingular: "shoots",
+                            PastSimple: "shot",
+                            PastParticiple: "shot",
+                            PresentParticiple: "shooting"
+                        },
+                        show: {
+                            BaseForm: "show",
+                            ThirdPersonSingular: "shows",
+                            PastSimple: "showed",
+                            PastParticiple: "shown",
+                            PresentParticiple: "showing"
+                        },
+                        shut: {
+                            BaseForm: "shut",
+                            ThirdPersonSingular: "shuts",
+                            PastSimple: "shut",
+                            PastParticiple: "shut",
+                            PresentParticiple: "shutting"
+                        },
+                        sing: {
+                            BaseForm: "sing",
+                            ThirdPersonSingular: "sings",
+                            PastSimple: "sang",
+                            PastParticiple: "sung",
+                            PresentParticiple: "singing"
+                        },
+                        sink: {
+                            BaseForm: "sink",
+                            ThirdPersonSingular: "sinks",
+                            PastSimple: "sank",
+                            PastParticiple: "sunk/sunken",
+                            PresentParticiple: "sinking"
+                        },
+                        sit: {
+                            BaseForm: "sit",
+                            ThirdPersonSingular: "sits",
+                            PastSimple: "sat",
+                            PastParticiple: "sat",
+                            PresentParticiple: "sitting"
+                        },
+                        slay: {
+                            BaseForm: "slay",
+                            ThirdPersonSingular: "slays",
+                            PastSimple: "slew",
+                            PastParticiple: "slain",
+                            PresentParticiple: "slaying"
+                        },
+                        sleep: {
+                            BaseForm: "sleep",
+                            ThirdPersonSingular: "sleeps",
+                            PastSimple: "slept",
+                            PastParticiple: "slept",
+                            PresentParticiple: "sleeping"
+                        },
+                        slide: {
+                            BaseForm: "slide",
+                            ThirdPersonSingular: "slides",
+                            PastSimple: "slid",
+                            PastParticiple: "slid",
+                            PresentParticiple: "sliding"
+                        },
+                        slit: {
+                            BaseForm: "slit",
+                            ThirdPersonSingular: "slits",
+                            PastSimple: "slit",
+                            PastParticiple: "slit",
+                            PresentParticiple: "slitting"
+                        },
+                        smell: {
+                            BaseForm: "smell",
+                            ThirdPersonSingular: "smells",
+                            PastSimple: "smelled/smelt",
+                            PastParticiple: "smelled/smelt",
+                            PresentParticiple: "smelling"
+                        },
+                        sow: {
+                            BaseForm: "sow",
+                            ThirdPersonSingular: "sows",
+                            PastSimple: "sowed",
+                            PastParticiple: "sown/sowed",
+                            PresentParticiple: "sowing"
+                        },
+                        speak: {
+                            BaseForm: "speak",
+                            ThirdPersonSingular: "speaks",
+                            PastSimple: "spoke",
+                            PastParticiple: "spoken",
+                            PresentParticiple: "speaking"
+                        },
+                        speed: {
+                            BaseForm: "speed",
+                            ThirdPersonSingular: "speeds",
+                            PastSimple: "sped/speeded",
+                            PastParticiple: "sped/speeded",
+                            PresentParticiple: "speeding"
+                        },
+                        spell: {
+                            BaseForm: "spell",
+                            ThirdPersonSingular: "spells",
+                            PastSimple: "spelled/spelt",
+                            PastParticiple: "spelled/spelt",
+                            PresentParticiple: "spelling"
+                        },
+                        spend: {
+                            BaseForm: "spend",
+                            ThirdPersonSingular: "spends",
+                            PastSimple: "spent",
+                            PastParticiple: "spent",
+                            PresentParticiple: "spending"
+                        },
+                        spill: {
+                            BaseForm: "spill",
+                            ThirdPersonSingular: "spills",
+                            PastSimple: "spilled/spilt",
+                            PastParticiple: "spilled/spilt",
+                            PresentParticiple: "spilling"
+                        },
+                        spin: {
+                            BaseForm: "spin",
+                            ThirdPersonSingular: "spins",
+                            PastSimple: "spun",
+                            PastParticiple: "spun",
+                            PresentParticiple: "spinning"
+                        },
+                        spit: {
+                            BaseForm: "spit",
+                            ThirdPersonSingular: "spits",
+                            PastSimple: "spat/spit",
+                            PastParticiple: "spat/spit",
+                            PresentParticiple: "spitting"
+                        },
+                        split: {
+                            BaseForm: "split",
+                            ThirdPersonSingular: "splits",
+                            PastSimple: "split",
+                            PastParticiple: "split",
+                            PresentParticiple: "splitting"
+                        },
+                        spoil: {
+                            BaseForm: "spoil",
+                            ThirdPersonSingular: "spoils",
+                            PastSimple: "spoiled/spoilt",
+                            PastParticiple: "spoiled/spoilt",
+                            PresentParticiple: "spoiling"
+                        },
+                        spread: {
+                            BaseForm: "spread",
+                            ThirdPersonSingular: "spreads",
+                            PastSimple: "spread",
+                            PastParticiple: "spread",
+                            PresentParticiple: "spreading"
+                        },
+                        spring: {
+                            BaseForm: "spring",
+                            ThirdPersonSingular: "springs",
+                            PastSimple: "sprang",
+                            PastParticiple: "sprung",
+                            PresentParticiple: "springing"
+                        },
+                        stand: {
+                            BaseForm: "stand",
+                            ThirdPersonSingular: "stands",
+                            PastSimple: "stood",
+                            PastParticiple: "stood",
+                            PresentParticiple: "standing"
+                        },
+                        steal: {
+                            BaseForm: "steal",
+                            ThirdPersonSingular: "steals",
+                            PastSimple: "stole",
+                            PastParticiple: "stolen",
+                            PresentParticiple: "stealing"
+                        },
+                        stick: {
+                            BaseForm: "stick",
+                            ThirdPersonSingular: "sticks",
+                            PastSimple: "stuck",
+                            PastParticiple: "stuck",
+                            PresentParticiple: "sticking"
+                        },
+                        sting: {
+                            BaseForm: "sting",
+                            ThirdPersonSingular: "stings",
+                            PastSimple: "stung",
+                            PastParticiple: "stung",
+                            PresentParticiple: "stinging"
+                        },
+                        stink: {
+                            BaseForm: "stink",
+                            ThirdPersonSingular: "stinks",
+                            PastSimple: "stank",
+                            PastParticiple: "stunk",
+                            PresentParticiple: "stinking"
+                        },
+                        strew: {
+                            BaseForm: "strew",
+                            ThirdPersonSingular: "strews",
+                            PastSimple: "strewed",
+                            PastParticiple: "strewn/strewed",
+                            PresentParticiple: "strewing"
+                        },
+                        strike: {
+                            BaseForm: "strike",
+                            ThirdPersonSingular: "strikes",
+                            PastSimple: "struck",
+                            PastParticiple: "struck/stricken",
+                            PresentParticiple: "striking"
+                        },
+                        strive: {
+                            BaseForm: "strive",
+                            ThirdPersonSingular: "strives",
+                            PastSimple: "strove",
+                            PastParticiple: "striven",
+                            PresentParticiple: "striving"
+                        },
+                        swear: {
+                            BaseForm: "swear",
+                            ThirdPersonSingular: "swears",
+                            PastSimple: "swore",
+                            PastParticiple: "sworn",
+                            PresentParticiple: "swearing"
+                        },
+                        sweat: {
+                            BaseForm: "sweat",
+                            ThirdPersonSingular: "sweats",
+                            PastSimple: "sweat",
+                            PastParticiple: "sweat",
+                            PresentParticiple: "sweating"
+                        },
+                        sweep: {
+                            BaseForm: "sweep",
+                            ThirdPersonSingular: "sweeps",
+                            PastSimple: "swept",
+                            PastParticiple: "swept",
+                            PresentParticiple: "sweeping"
+                        },
+                        swell: {
+                            BaseForm: "swell",
+                            ThirdPersonSingular: "swells",
+                            PastSimple: "swelled/swollen",
+                            PastParticiple: "swelled/swollen",
+                            PresentParticiple: "swelling"
+                        },
+                        swim: {
+                            BaseForm: "swim",
+                            ThirdPersonSingular: "swims",
+                            PastSimple: "swam",
+                            PastParticiple: "swum",
+                            PresentParticiple: "swimming"
+                        },
+                        swing: {
+                            BaseForm: "swing",
+                            ThirdPersonSingular: "swings",
+                            PastSimple: "swung",
+                            PastParticiple: "swung",
+                            PresentParticiple: "swinging"
+                        },
+                        take: {
+                            BaseForm: "take",
+                            ThirdPersonSingular: "takes",
+                            PastSimple: "took",
+                            PastParticiple: "taken",
+                            PresentParticiple: "taking"
+                        },
+                        teach: {
+                            BaseForm: "teach",
+                            ThirdPersonSingular: "teaches",
+                            PastSimple: "taught",
+                            PastParticiple: "taught",
+                            PresentParticiple: "teaching"
+                        },
+                        tear: {
+                            BaseForm: "tear",
+                            ThirdPersonSingular: "tears",
+                            PastSimple: "tore",
+                            PastParticiple: "torn",
+                            PresentParticiple: "tearing"
+                        },
+                        tell: {
+                            BaseForm: "tell",
+                            ThirdPersonSingular: "tells",
+                            PastSimple: "told",
+                            PastParticiple: "told",
+                            PresentParticiple: "telling"
+                        },
+                        think: {
+                            BaseForm: "think",
+                            ThirdPersonSingular: "thinks",
+                            PastSimple: "thought",
+                            PastParticiple: "thought",
+                            PresentParticiple: "thinking"
+                        },
+                        thrive: {
+                            BaseForm: "thrive",
+                            ThirdPersonSingular: "thrives",
+                            PastSimple: "throve/thrived",
+                            PastParticiple: "thriven/thrived",
+                            PresentParticiple: "thriving"
+                        },
+                        throw: {
+                            BaseForm: "throw",
+                            ThirdPersonSingular: "throws",
+                            PastSimple: "threw",
+                            PastParticiple: "thrown",
+                            PresentParticiple: "throwing"
+                        },
+                        thrust: {
+                            BaseForm: "thrust",
+                            ThirdPersonSingular: "thrusts",
+                            PastSimple: "thrust",
+                            PastParticiple: "thrust",
+                            PresentParticiple: "thrusting"
+                        },
+                        typeset: {
+                            BaseForm: "typeset",
+                            ThirdPersonSingular: "typesets",
+                            PastSimple: "typeset",
+                            PastParticiple: "typeset",
+                            PresentParticiple: "typesetting"
+                        },
+                        undergo: {
+                            BaseForm: "undergo",
+                            ThirdPersonSingular: "undergoes",
+                            PastSimple: "underwent",
+                            PastParticiple: "undergone",
+                            PresentParticiple: "undergoing"
+                        },
+                        understand: {
+                            BaseForm: "understand",
+                            ThirdPersonSingular: "understands",
+                            PastSimple: "understood",
+                            PastParticiple: "understood",
+                            PresentParticiple: "understanding"
+                        },
+                        wake: {
+                            BaseForm: "wake",
+                            ThirdPersonSingular: "wakes",
+                            PastSimple: "woke",
+                            PastParticiple: "woken",
+                            PresentParticiple: "waking"
+                        },
+                        wear: {
+                            BaseForm: "wear",
+                            ThirdPersonSingular: "wears",
+                            PastSimple: "wore",
+                            PastParticiple: "worn",
+                            PresentParticiple: "wearing"
+                        },
+                        weep: {
+                            BaseForm: "weep",
+                            ThirdPersonSingular: "weeps",
+                            PastSimple: "wept",
+                            PastParticiple: "wept",
+                            PresentParticiple: "weeping"
+                        },
+                        wet: {
+                            BaseForm: "wet",
+                            ThirdPersonSingular: "wets",
+                            PastSimple: "wet",
+                            PastParticiple: "wet",
+                            PresentParticiple: "wetting"
+                        },
+                        win: {
+                            BaseForm: "win",
+                            ThirdPersonSingular: "wins",
+                            PastSimple: "won",
+                            PastParticiple: "won",
+                            PresentParticiple: "winning"
+                        },
+                        wind: {
+                            BaseForm: "wind",
+                            ThirdPersonSingular: "winds",
+                            PastSimple: "wound",
+                            PastParticiple: "wound",
+                            PresentParticiple: "winding"
+                        },
+                        withdraw: {
+                            BaseForm: "withdraw",
+                            ThirdPersonSingular: "withdraws",
+                            PastSimple: "withdrew",
+                            PastParticiple: "withdrawn",
+                            PresentParticiple: "withdrawing"
+                        },
+                        wring: {
+                            BaseForm: "wring",
+                            ThirdPersonSingular: "wrings",
+                            PastSimple: "wrung",
+                            PastParticiple: "wrung",
+                            PresentParticiple: "wringing"
+                        },
+                        write: {
+                            BaseForm: "write",
+                            ThirdPersonSingular: "writes",
+                            PastSimple: "wrote",
+                            PastParticiple: "written",
+                            PresentParticiple: "writing"
+                        },
+
+                    };
+
+                    const regularConjugations = {
+                        BaseForm: verb,
+                        ThirdPersonSingular: verb + "s",
+                        PastSimple: verb + "ed",
+                        PastParticiple: verb + "ed",
+                        PresentParticiple: verb + "ing"
+                    };
+
+                    tableHTML = "<table><tr><th>Form</th><th>Conjugation</th></tr>";
+
+                    if (irregularConjugations.hasOwnProperty(verb)) {
+                        const conjugations = irregularConjugations[verb];
+                        for (const form in conjugations) {
+                            tableHTML += `<tr><td>${form}</td><td>${conjugations[form]}</td></tr>`;
+                        }
+                    } else {
+                        for (const form in regularConjugations) {
+                            tableHTML += `<tr><td>${form}</td><td>${regularConjugations[form]}</td></tr>`;
+                        }
+                    }
+
+
+                }
+                else if (conjugationLanguageSelect === 'fra') {
+                    pronouns = ["Je", "Tu", "Il", "Elle", "Nous", "Vous", "Ils", "Elles"];
+                    conjugations = {
+                        Je: verb + "e",
+                        Tu: verb + "es",
+                        Il: verb + "e",
+                        Elle: verb + "e",
+                        Nous: verb + "ons",
+                        Vous: verb + "ez",
+                        Ils: verb + "ent",
+                        Elles: verb + "ent"
+                    };
+                    for (const pronoun of pronouns) {
+                        tableHTML += `<tr><td>${pronoun}</td><td>${conjugations[pronoun]}</td></tr>`;
+                    }
+
+                } else if (conjugationLanguageSelect === 'deu') {
+
+                    pronouns = ["Ich", "Du", "Er", "Sie", "Es", "Wir", "Ihr", "Sie"];
+                    conjugations = {
+                        Ich: verb + "e",
+                        Du: verb + "st",
+                        Er: verb + "t",
+                        Sie: verb + "t",
+                        Es: verb + "t",
+                        Wir: verb + "en",
+                        Ihr: verb + "t",
+                        Sie: verb + "en"
+                    };
+                    for (const pronoun of pronouns) {
+                        tableHTML += `<tr><td>${pronoun}</td><td>${conjugations[pronoun]}</td></tr>`;
+                    }
+
+                } else if (conjugationLanguageSelect === 'jpn') {
+                    conjugations = {
+                        PresentPlain: verb,
+                        PresentPolite: verb + "ます",
+                        PastPlain: verb + "た",
+                        PastPolite: verb + "ました",
+                        TeForm: verb + "て",
+                        Potential: verb + "られる",
+                        Conditional: verb + "れば"
+                        // Add more conjugations as needed
+                    };
+
+
+                    for (const form in conjugations) {
+                        tableHTML += `<tr><td>${form}</td><td>${conjugations[form]}</td></tr>`;
+                    }
+
+                } else if (conjugationLanguageSelect === 'cmn') {
+
+                    console.log("cmn -- " + verb);
+                    // Define some example sentence patterns with the verb
+                    const sentencePatterns = [
+                        `我${verb}`,
+                        `你${verb}`,
+                        `他${verb}`,
+                        `她${verb}`,
+                        `我们${verb}`,
+                        `你们${verb}`,
+                        `他们${verb}`
+                    ];
+
+                    tableHTML = "<table><tr><th>Subject</th><th>Sentence</th></tr>";
+
+                    for (const pattern of sentencePatterns) {
+                        tableHTML += `<tr><td>${pattern.split(verb).join("___")}</td><td>${pattern}</td></tr>`;
+                    }
+
+
+                } else if (conjugationLanguageSelect === 'kor') {
+                    // Define some example honorific forms
+                    const honorificForms = [
+                        `나 ${verb}어요`,
+                        `너 ${verb}어요`,
+                        `그 ${verb}어요`,
+                        `그녀 ${verb}어요`,
+                        `우리 ${verb}어요`,
+                        `너희 ${verb}어요`,
+                        `그들 ${verb}어요`
+                    ];
+
+                    tableHTML = "<table><tr><th>Subject</th><th>Sentence</th></tr>";
+
+                    for (const form of honorificForms) {
+                        tableHTML += `<tr><td>${form.split(verb).join("___")}</td><td>${form}</td></tr>`;
+                    }
+
+                }
+
+
+
+
+                tableHTML += "</table>";
+                conjugationsDiv.innerHTML = tableHTML;
+            });
+
+            //verb conjugation end
+
+        });
+
+        var voices;
+
+
+        function loadVoices() {
+            voices = speechSynthesis.getVoices();
+            if (voices.length === 0) {
+                setTimeout(loadVoices, 100);
+            } else {
+                //populateVoiceList();
+            }
+            console.log("voices length ffffff=" + voices.length);
+        }
+
+        function checkLanguages() {
+            const fromLang = document.getElementById("fromLanguageSelect").value;
+            const toLang = document.getElementById("toLanguageSelect").value;
+
+            if (fromLang !== toLang) {
+                //console.log("Languages are different.");
+            } else {
+                alert("From and To Languages are the same.");
+            }
+        }
+
+        // Chrome requires voices to be loaded asynchronously
+        speechSynthesis.onvoiceschanged = loadVoices;
+
+        async function fetchExamples(page = 1) {
+            const query = document.getElementById("query").value;
+            const fromLang = document.getElementById("fromLanguageSelect").value;
+            const toLang = document.getElementById("toLanguageSelect").value;
+            const sort = document.getElementById("sort").value;
+            const exactWordMatchCheckbox = document.getElementById("exactWordMatch");
+            const exactWordMatch = exactWordMatchCheckbox.checked;
+            const perc3D = exactWordMatch ? "%3D" : "";
+            const toParam = (fromLang === toLang || toLang === "") ? "" : "&to=" + toLang;
+
+            const proxyUrl = "http://localhost:3000/proxy?url=";
+            //const tatoebaApiUrl = `https://tatoeba.org/eng/api_v0/search?query=${encodeURIComponent(query)}&format=json&page=2`;
+            const tatoebaApiUrl = `https://tatoeba.org/eng/api_v0/search?query=${perc3D}${encodeURIComponent(query)}&format=json&from=${fromLang}&page=${page}&sort=${sort}${toParam}`;
+            //const tatoebaApiUrl = `https://tatoeba.org/api/v1/sentences/search?query=${encodeURIComponent(query)}&format=json`;
+            const url = proxyUrl + encodeURIComponent(tatoebaApiUrl);
+
+            console.log(tatoebaApiUrl);
+            // Get selected languages
+            const selectedLanguages = Array.from(document.querySelectorAll("#languageList input:checked")).map(checkbox => checkbox.value);
+
+
+            //   const corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/";
+            //   const tatoebaApiUrl = `https://tatoeba.org/api/v1/sentences/search?query=${encodeURIComponent(query)}&format=json`;
+            //   const url = corsAnywhereUrl + tatoebaApiUrl;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log(data);
+
+                const table = document.getElementById("results");
+                table.innerHTML = "";
+
+                const headerRow = table.insertRow();
+                const textCell = document.createElement("th");
+                textCell.textContent = fromLang;
+                headerRow.appendChild(textCell);
+                var hcolno = 1;
+                selectedLanguages.forEach(lang => {
+
+                    const headerCell = document.createElement("th");
+                    headerCell.textContent = lang;
+                    headerRow.appendChild(headerCell);
+
+                    // const jpnCell = headerrow.insertCell(hcolno);
+                    // jpnCell.textContent = lang;
+                    hcolno = hcolno + 1;
+                });
+
+                // Get available voices
+
+                data.results.forEach(sentence => {
+                    const row = table.insertRow();
+                    const textCell = row.insertCell(0);
+
+                    var colno = 1;
+                    //idCell.textContent = sentence.id;
+                    textCell.textContent = sentence.text;
+
+                    selectedLanguages.forEach(lang => {
+                        const jpnCell = row.insertCell(colno);
+                        colno = colno + 1;
+                        //console.log(lang);
+
+
+                        var jpnExampleTable = document.createElement("table");
+
+                        var ttext = "";
+                        sentence.translations.forEach(translation => {
+
+                            translation.forEach(translationin => {
+                                if (translationin.lang === lang) {
+                                    const exampleRow = jpnExampleTable.insertRow();
+                                    if (lang === 'jpn') {
+                                        translationin.transcriptions.forEach(transcription => {
+                                            //const jpnExampleTranscriptionTablerow = jpnExampleTable.insertRow();
+                                            //jpnExampleTranscriptionTablerow.textContent = transcription.text;
+                                            exampleRow.innerHTML = transcription.html;
+
+                                        });
+                                    } else if (lang === 'cmn') {
+                                        translationin.transcriptions.forEach(transcription => {
+                                            exampleRow.innerHTML = transcription.html;
+                                            const jpnExampleTranscriptionTablerow = jpnExampleTable.insertRow();
+                                            jpnExampleTranscriptionTablerow.textContent = transcription.text;
+
+                                        });
+                                    } else if (lang === 'kor') {
+                                        exampleRow.textContent = translationin.text;
+                                        const korExampleTranscriptionTablerow = jpnExampleTable.insertRow();
+                                        korExampleTranscriptionTablerow.textContent = Aromanize.romanize(translationin.text);
+
+                                        transcribe(translationin.text);
+                                    } else {
+                                        //const jpnExampleTablerow = jpnExampleTable.insertRow();
+                                        exampleRow.textContent = translationin.text;
+                                    }
+
+                                    // Create a play button
+                                    const playButton = document.createElement("button");
+                                    //playButton.textContent = "P";
+                                    playButton.className = 'speaker-icon';
+                                    exampleRow.appendChild(playButton);
+
+                                    // Add event listener to play button
+                                    playButton.addEventListener("click", () => {
+                                        var selectedLanguage = languageCodeToVoice[lang];//"ja-JP";
+
+                                        // if (lang === 'cmn') {
+                                        //     selectedLanguage = "zh-CN";
+                                        // }
+                                        // console.log("voices length=" + voices.length);
+                                        // voices.forEach(voice => {
+                                        //     console.log(voice.lang);
+                                        // });
+                                        //const utterance = new SpeechSynthesisUtterance(transcription.text);
+                                        const selectedVoice = voices.find(voice => voice.lang === selectedLanguage);
+
+                                        if (selectedVoice) {
+
+                                            var speakText = translationin.text;
+                                            // if (voiceLang === 'ja-JP' || voiceLang === 'ko-KR' || voiceLang === 'zh-CN') {
+                                            //     speakText = speakText.replace(/\s*\([^)]*\)/g, '').replace(/[a-zA-Z0-9]/g, '');
+                                            //     console.log("lang==" + speakText);
+                                            // }
+
+                                            const utterance = new SpeechSynthesisUtterance(speakText);
+                                            utterance.voice = selectedVoice;
+                                            utterance.lang = lang;
+                                            window.speechSynthesis.speak(utterance);
+                                        } else {
+                                            console.error("Voice not found for the selected language.");
+                                        }
+
+
+
+                                    });
+                                    //console.log(translationin);
+                                    ttext += translationin.text + "\n";
+
+                                }
+                            });
+
+
+                        });
+                        console.log(ttext);
+                        jpnCell.appendChild(jpnExampleTable);
+                        //jpnCell.textContent = ttext;
+
+                    });
+
+                });
+
+
+                // Create pagination buttons
+                const paginationContainer = document.getElementById("pagination");
+                paginationContainer.innerHTML = "";
+                for (let i = 1; i <= data.paging.Sentences.pageCount; i++) {
+                    const button = document.createElement("button");
+                    button.textContent = i;
+                    button.addEventListener("click", () => fetchExamples(i));
+                    paginationContainer.appendChild(button);
+                }
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Verb Conjugator</h1>
+
+    <label for="verb">Enter a verb in infinitive form:</label>
+    <input type="text" id="verb" name="verb" required>
+    <select id="conjugationLanguageSelect"></select>
+    <button type="button" id="conjugate-button">Conjugate</button>
+    <div id="conjugations"></div>
+
+
+</body>
+
+</html>

@@ -291,20 +291,20 @@ function applyFilter(cellText, filter, filterType) {
       filter = filter.replace(/^[\^|\$|>]/, "");
       var containsText = false;
 
-      if(filterValues.length==1){
+      if (filterValues.length == 1) {
         return cellText.indexOf(filter) > -1;
       }
-        //return true;
+      //return true;
 
-      for(let i=0;i<filterValues.length;i++){
-        var filval=filterValues[i].replace(",","");
-        if(cellText.includes(filval) && filval.length > 0){
+      for (let i = 0; i < filterValues.length; i++) {
+        var filval = filterValues[i].replace(",", "");
+        if (cellText.includes(filval) && filval.length > 0) {
           containsText = true;
           break;
         }
       }
       return containsText;
-      //return filterValues.includes(cellText);
+    //return filterValues.includes(cellText);
   }
 }
 
@@ -491,35 +491,35 @@ function speakRowData(row) {
   var selectedText = window.getSelection().toString().trim();
   var speakcellsIndex = 0;
 
-  console.log("selectedText="+selectedText);
+  console.log("selectedText=" + selectedText);
 
   if (selectedText) {
 
     var selectionRange = window.getSelection().getRangeAt(0);
     // Get the common ancestor container of the selection
     var parentElement = selectionRange.commonAncestorContainer.parentElement;
-      // Iterate through the cells in the row
-      for (var cellNumber = 0; cellNumber < row.cells.length; cellNumber++) {
-          var cellContent = row.cells[cellNumber].textContent.trim();
-          if (cellContent === parentElement.textContent.trim()) {
-            var collang = columnLanguages[cellNumber-1].value;
-            speakcells[speakcellsIndex] = row.cells[cellNumber];
-            speakcellslang[speakcellsIndex] = collang;
-              break;
-          }
+    // Iterate through the cells in the row
+    for (var cellNumber = 0; cellNumber < row.cells.length; cellNumber++) {
+      var cellContent = row.cells[cellNumber].textContent.trim();
+      if (cellContent === parentElement.textContent.trim()) {
+        var collang = columnLanguages[cellNumber - 1].value;
+        speakcells[speakcellsIndex] = row.cells[cellNumber];
+        speakcellslang[speakcellsIndex] = collang;
+        break;
       }
-  }else{
-
-
-  for (var j = 0; j < columnCheckboxes.length; j++) {
-    var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
-    var collang = columnLanguages[j].value;
-    if (columnCheckboxes[j].checked && colspkcheckBox.checked && row.cells[j + 1].innerText.trim() != "") {
-      speakcells[speakcellsIndex] = row.cells[j + 1];
-      speakcellslang[speakcellsIndex] = collang;
-      speakcellsIndex++;
     }
-  }
+  } else {
+
+
+    for (var j = 0; j < columnCheckboxes.length; j++) {
+      var colspkcheckBox = firstcheckboxrow.cells[j + 1].getElementsByTagName("input")[0];
+      var collang = columnLanguages[j].value;
+      if (columnCheckboxes[j].checked && colspkcheckBox.checked && row.cells[j + 1].innerText.trim() != "") {
+        speakcells[speakcellsIndex] = row.cells[j + 1];
+        speakcellslang[speakcellsIndex] = collang;
+        speakcellsIndex++;
+      }
+    }
 
   }
   currentCellSpeakTime = 0;
@@ -836,34 +836,34 @@ function speakAndHighlight() {
 
   var uncheckrowonplayinput = document.getElementById('uncheckrowonplayinput');
 
-  if(uncheckrowonplayinput.checked){
-  var rowNumber = currentCell.parentNode.rowIndex;
-  console.log(" row:", rowNumber);
+  if (uncheckrowonplayinput.checked) {
+    var rowNumber = currentCell.parentNode.rowIndex;
+    console.log(" row:", rowNumber);
 
-  // Check if the current row number is different from the previous row number
-  if (rowNumber !== prevRowNumber && rowNumber !==4) {
-    prevRowNumber = rowNumber;
-    prevRow = currentCell.parentNode;
-    
-    //var checkBox = currentCell.parentNode.cells[0].getElementsByTagName("input")[0];
-    var checkBox = prevRow.cells[0].getElementsByTagName("input")[0];
-    if (checkBox != undefined && checkBox.checked) {
-      checkBox.checked = false;
+    // Check if the current row number is different from the previous row number
+    if (rowNumber !== prevRowNumber && rowNumber !== 4) {
+      prevRowNumber = rowNumber;
+      prevRow = currentCell.parentNode;
+
+      //var checkBox = currentCell.parentNode.cells[0].getElementsByTagName("input")[0];
+      var checkBox = prevRow.cells[0].getElementsByTagName("input")[0];
+      if (checkBox != undefined && checkBox.checked) {
+        checkBox.checked = false;
+      }
+      console.log("New row:", rowNumber);
+      // prevRowNumber = rowNumber;
+      // prevRow = currentCell.parentNode;
+    } else {
+
+      prevRowNumber = rowNumber;
+      prevRow = currentCell.parentNode;
+
+      var checkBox = prevRow.cells[0].getElementsByTagName("input")[0];
+      if (checkBox != undefined && checkBox.checked) {
+        checkBox.checked = false;
+      }
+
     }
-    console.log("New row:", rowNumber);
-    // prevRowNumber = rowNumber;
-    // prevRow = currentCell.parentNode;
-  }else{
-
-    prevRowNumber = rowNumber;
-    prevRow = currentCell.parentNode;
-
-    var checkBox = prevRow.cells[0].getElementsByTagName("input")[0];
-    if (checkBox != undefined && checkBox.checked) {
-      checkBox.checked = false;
-    }
-
-  }
   }
 
   currentCellSpeakTime = currentCellSpeakTime + getApproximateSpeakTime(currentCell.innerText);
@@ -878,7 +878,7 @@ function speakAndHighlight() {
   }
 
   //if (isMacOS) {
-  if (true) {    
+  if (true) {
 
     //utterance.text = currentCell.innerText.replace(/[.,:?]/g, '!!!!!!');
     // Replace number and dot at the beginning with a blank
@@ -892,16 +892,16 @@ function speakAndHighlight() {
 
     for (var i = 0; i < uttvoices.length; i++) {
       if (uttvoices[i].name === speakcellslang[currentCellIndex]) {
-        var voiceLang=uttvoices[i].lang;
+        var voiceLang = uttvoices[i].lang;
         utterance.voice = uttvoices[i];
-        utterance.lang=uttvoices[i].lang;
+        utterance.lang = uttvoices[i].lang;
 
-        if(voiceLang === 'ja-JP' || voiceLang === 'ko-KR' || voiceLang === 'zh-CN'){
+        if (voiceLang === 'ja-JP' || voiceLang === 'ko-KR' || voiceLang === 'zh-CN') {
           utterance.text = cellTextValue.replace(/\s*\([^)]*\)/g, '').replace(/[a-zA-Z0-9]/g, '');
         }
-        
 
-        
+
+
         break;
       }
     }
@@ -928,39 +928,39 @@ function speakAndHighlight() {
 
   if (!selectedText) {
 
-  var cellHighlightSelectValue = cellHighlightSelect.value;
-  if (cellHighlightSelectValue == 'highlightandenlarge') {
-    currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
-    currentCell.style.backgroundColor = 'yellow';
-  } else if (cellHighlightSelectValue == 'highlight') {
-    currentCell.style.backgroundColor = 'yellow';
+    var cellHighlightSelectValue = cellHighlightSelect.value;
+    if (cellHighlightSelectValue == 'highlightandenlarge') {
+      currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
+      currentCell.style.backgroundColor = 'yellow';
+    } else if (cellHighlightSelectValue == 'highlight') {
+      currentCell.style.backgroundColor = 'yellow';
+    }
+
+    // Highlight the text in the current cell
+    // currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
+    // currentCell.style.backgroundColor = 'yellow';
+    var table = document.getElementById("myTable");
+
+    // Scroll to the cell being spoken
+    var cellRect = currentCell.getBoundingClientRect();
+    var tableRect = table.getBoundingClientRect();
+    var cellTop = cellRect.top - tableRect.top;
+    var cellLeft = cellRect.left - tableRect.left;
+    var cellCenterX = cellLeft + cellRect.width / 2;
+    var cellCenterY = cellTop + cellRect.height / 2;
+    var scrollX = cellCenterX - window.innerWidth / 2;
+    var scrollY = cellCenterY - window.innerHeight / 2;
+
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+
+    window.scrollTo({
+      top: scrollY + 240,
+      left: scrollX,
+      behavior: 'smooth'
+    });
+
   }
-
-  // Highlight the text in the current cell
-  // currentCell.style.fontSize = '3em';// 'larger'; // Enlarge the text
-  // currentCell.style.backgroundColor = 'yellow';
-  var table = document.getElementById("myTable");
-
-  // Scroll to the cell being spoken
-  var cellRect = currentCell.getBoundingClientRect();
-  var tableRect = table.getBoundingClientRect();
-  var cellTop = cellRect.top - tableRect.top;
-  var cellLeft = cellRect.left - tableRect.left;
-  var cellCenterX = cellLeft + cellRect.width / 2;
-  var cellCenterY = cellTop + cellRect.height / 2;
-  var scrollX = cellCenterX - window.innerWidth / 2;
-  var scrollY = cellCenterY - window.innerHeight / 2;
-
-  const centerX = window.innerWidth / 2;
-const centerY = window.innerHeight / 2;
-
-  window.scrollTo({
-    top: scrollY+240,
-    left: scrollX,
-    behavior: 'smooth'
-  });
-
-}
 
 }
 
@@ -1018,16 +1018,16 @@ function addNewRow() {
   table.appendChild(newRow);
 }
 
-function addNewColumn(){
-    // Ask for the name of the new column header
-    const newColumnName = prompt('Enter the name of the new column header:');
+function addNewColumn() {
+  // Ask for the name of the new column header
+  const newColumnName = prompt('Enter the name of the new column header:');
 
-    if (!newColumnName || newColumnName.trim() === '') {
-      // If the user cancels or provides an empty name, do nothing
-      return;
-    }
-  
-    addNewColumnWithHeader(newColumnName);
+  if (!newColumnName || newColumnName.trim() === '') {
+    // If the user cancels or provides an empty name, do nothing
+    return;
+  }
+
+  addNewColumnWithHeader(newColumnName);
 }
 
 function addNewColumnOldWorking() {
@@ -1170,9 +1170,9 @@ function addNewColumnWithHeader(newColumnName) {
 
   const colinputchekbox = clonedHeaders[0].querySelector('input[type="checkbox"]');
   colinputchekbox.checked = false;
-  console.log("colinputchekbox="+colinputchekbox);
-  
-    //clonedHeaders.forEach(header => console.log(header.innerHTML));
+  console.log("colinputchekbox=" + colinputchekbox);
+
+  //clonedHeaders.forEach(header => console.log(header.innerHTML));
 
   //tableHeaderRows[0].appendChild(document.createElement('th'));
   for (let i = 1; i < tableHeaderRows.length; i++) {
@@ -1585,8 +1585,8 @@ function uncheckAllFileCols() {
 //filecolpopup related
 
 
-var headers; // Declare headers as a global variable
-var csvData;
+var headers = []; // Declare headers as a global variable
+var csvData = [];
 var lines;
 var headersLanguage; // Declare headers as a global variable
 // Function to display the popup with header checkboxes
@@ -1647,10 +1647,10 @@ function readCSVUsingPapa(file) {
   if (!file)
     return;
 
-  if(!transAppendToTableCheckbox.checked){
+  if (!transAppendToTableCheckbox.checked) {
     csvData = [];
   }
-  
+
   headers = [];
   headersLanguage = [];
   csvfilename = file.name;
@@ -1664,12 +1664,14 @@ function readCSVUsingPapa(file) {
       headers = data[0];
 
       for (const row of data.slice(1)) {
+        console.log("papa row=" + row);
         csvData.push(row);
         for (const cell of row) {
           //csvData.push(cell.replace(/\\n/g, '<br>'));
           //newCell.innerHTML = newCell.innerHTML.replace(/\\n/g, '<br>'); // Preserve new lines in the cell
         }
       }
+      console.log("papa csvData=" + csvData);
       // csvData.forEach(function (cell) {
       //       console.log("csvData cell="+cell);
       //   });
@@ -1777,7 +1779,7 @@ function readJSONFromURL(url, data) {
 
 }
 
-function readJSONFromSQLite(data, currentPage , totalRecords) {
+function readJSONFromSQLite(data, currentPage, totalRecords) {
   lines = [];
   headersLanguage = [];
   headers = [];
@@ -2000,7 +2002,7 @@ function populateTableNew(isSQLite) {
 
   var checkboxes = document.getElementsByName("column");
   var categorycolumncheckboxes = document.getElementsByName("categorycolumn");
-  
+
   selectedColumns = [];
   var isCategorySelectedForColumns = [];
   tableHeaders = [];
@@ -2070,9 +2072,9 @@ function populateTableNew(isSQLite) {
 
   var uncheckrowonplayinputlabel = document.createElement('label');
 
-// Append the checkbox and label to the label element
-uncheckrowonplayinputlabel.appendChild(uncheckrowonplayinput);
-uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on play"));
+  // Append the checkbox and label to the label element
+  uncheckrowonplayinputlabel.appendChild(uncheckrowonplayinput);
+  uncheckrowonplayinputlabel.appendChild(document.createTextNode("Uncheck Row on play"));
 
 
   thcolbuttons.appendChild(uncheckrowonplayinputlabel);
@@ -2333,15 +2335,15 @@ function showDropdown(inputField, column) {
         var searchInput2 = "";
 
         const checkboxes = dropdown.getElementsByTagName('input');
-    
+
         for (let i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].checked) {
-                searchInput2 += "" + checkboxes[i].value + ",";
-                //selectedOptions.push(checkboxes[i].value);
-            }
+          if (checkboxes[i].checked) {
+            searchInput2 += "" + checkboxes[i].value + ",";
+            //selectedOptions.push(checkboxes[i].value);
+          }
         }
-    
-        console.log("searchInput2="+searchInput2);
+
+        console.log("searchInput2=" + searchInput2);
 
         //inputField.value = target.textContent;
         inputField.value = searchInput2;
@@ -2351,7 +2353,7 @@ function showDropdown(inputField, column) {
         console.log("hideDropdown");
       }
     });
-  }else{
+  } else {
     dropdown.style.display = 'block';
   }
 }
@@ -2427,7 +2429,7 @@ translateButton.addEventListener('click', function () {
     translate(srclangval, totalcols);
 });
 
-function transPrepareApplyDwdData(){
+function transPrepareApplyDwdDataOriginal() {
 
   var totaldata = "";
   lines = [];
@@ -2441,7 +2443,7 @@ function transPrepareApplyDwdData(){
   var totalcols = rows[0].getElementsByTagName("td").length;
   var srcLines = srcText.split("\n");
 
-  console.log("srcLines length="+srcLines.length);
+  console.log("srcLines length=" + srcLines.length);
 
   var srcLang = document.getElementById("srclang").value;
 
@@ -2453,7 +2455,7 @@ function transPrepareApplyDwdData(){
 
 
   //lines[0] = ['word'];
-  headers = ['word','category'];
+  headers = ['word', 'category'];
   headersLanguage = [srcLang];
   totaldata = "word,category,";
 
@@ -2474,7 +2476,7 @@ function transPrepareApplyDwdData(){
       headersLanguage.push(targetLang);
     }
   }
-  totaldata = totaldata.slice(0,-1) + "\n";
+  totaldata = totaldata.slice(0, -1) + "\n";
 
   for (var j = 0; j < srcLines.length; j++) {
     if (onlyNumericText) {
@@ -2489,7 +2491,7 @@ function transPrepareApplyDwdData(){
         // console.log("tgtLines[j]="+tgtLines[j] + ","+ tgtLines[j] + ","+ numberToTextFromLang(targetLang,tgtLines[j]) + ",");
         totaldata = totaldata + tgtLines[j] + "," + numberToTextFromLang(targetLang, tgtLines[j]) + ",";
       }
-      totaldata = totaldata.slice(0,-1) + "\n";
+      totaldata = totaldata.slice(0, -1) + "\n";
     } else {
       totaldata = totaldata + srcLines[j] + "," + document.getElementById("transCategory").value + ",";
       for (i = 0; i < totalcols; i++) {
@@ -2497,29 +2499,29 @@ function transPrepareApplyDwdData(){
         var tgtLines = tgtText.split("\n");
         totaldata = totaldata + tgtLines[j] + ",";
       }
-      totaldata = totaldata.slice(0,-1) + "\n";
+      totaldata = totaldata.slice(0, -1) + "\n";
     }
   }
 
-  totaldata= totaldata.slice(0, -1);
+  totaldata = totaldata.slice(0, -1);
 
   lines = totaldata.split("\n");
 
   var filecolpopup = document.getElementById("colpopup");
   filecolpopup.style.display = "block";
 
-  
-          // Convert lines into a structured format (array of arrays)
-          const data = lines.map(line => {
-            //const parsedLine = Papa.parse(line, { delimiter: ',', quoteChar: '"' });
-            const parsedLine = Papa.parse(line);
-            return parsedLine.data[0];
-        });
 
-        // Generate CSV using Papa.unparse
-         csv = Papa.unparse(data);
-         
-//  csvData = [];
+  // Convert lines into a structured format (array of arrays)
+  const data = lines.map(line => {
+    //const parsedLine = Papa.parse(line, { delimiter: ',', quoteChar: '"' });
+    const parsedLine = Papa.parse(line);
+    return parsedLine.data[0];
+  });
+
+  // Generate CSV using Papa.unparse
+  csv = Papa.unparse(data);
+
+  //  csvData = [];
 
   // for (var i = 1; i < lines.length; i++) {
   //   if (lines[i].length == 0)
@@ -2535,6 +2537,123 @@ function transPrepareApplyDwdData(){
   // showFileColPopup(headers);
 
 }
+
+function transPrepareApplyDwdData() {
+
+  const srcCsvData = [];
+
+  const transCsvData = [];
+
+  //headers = [];
+  lines = [];
+  tableHeaders = [];
+
+  const srcselectValues = document.querySelectorAll('select[id="srclang"]');
+  const srctextareaData = Array.from(document.querySelectorAll('textarea[id="srctext-popup"]')).map(textarea => textarea.value.split('\n'));
+
+  const selectValues = document.querySelectorAll('select[id^="tgtlang-"]');
+  const textareaData = Array.from(document.querySelectorAll('textarea[id^="tratext-popup-"]')).map(textarea => textarea.value.split('\n'));
+
+  if (csvData.length == 0) {
+    for (let i = 0; i < srcselectValues.length; i++) {
+      const valueToAdd = srcselectValues[i].value.trim();
+      addToHeaders(valueToAdd);  
+      // var headerval = addToHeaders(srcselectValues[i].value);
+      // console.log("headerval src"+headerval);
+      // headers.push(headerval);
+    }
+  }
+
+  for (let i = 0; i < selectValues.length; i++) {
+
+    const valueToAdd = selectValues[i].value.trim();
+    addToHeaders(valueToAdd);
+
+    // var headerval = addToHeaders(selectValues[i].value);
+    // console.log("headerval"+headerval);
+    // headers.push(headerval);
+  }
+
+
+  for (let i = 0; i < textareaData[0].length; i++) {
+    var rowData = [];
+    for (let j = 0; j < textareaData.length; j++) {
+      rowData.push(textareaData[j][i]);
+    }
+    transCsvData.push(rowData);
+  }
+
+  // Create a merged CSV array by combining HTML table data with CSV data
+  const mergedCsvData = [];
+  mergedCsvData.push(headers);
+
+  if (csvData.length == 0) {
+
+
+    for (let i = 0; i < srctextareaData[0].length; i++) {
+      var rowData = [];
+      for (let j = 0; j < srctextareaData.length; j++) {
+        rowData.push(srctextareaData[j][i]);
+      }
+      srcCsvData.push(rowData);
+      csvData.push(rowData);
+    }
+
+  }
+
+
+  for (let i = 0; i < transCsvData.length; i++) {
+    // if(!csvData[i])
+    //   continue;
+    const csvRow = Object.values(transCsvData[i]);
+    const myTablecsvRow = Object.values(csvData[i]);
+
+    const mergedRow = [...myTablecsvRow, ...csvRow];
+    mergedCsvData.push(mergedRow);
+  }
+
+
+  console.log("mergedCsvData=" + mergedCsvData);
+
+  // Convert the merged CSV data to a CSV string using Papa.js
+  csv = Papa.unparse(mergedCsvData);
+
+  // Add a new line character '\n' after each row
+  lines = csv.split('\n').join('\n');
+
+  console.log("lines=" + lines);
+
+
+  var filecolpopup = document.getElementById("colpopup");
+  filecolpopup.style.display = "block";
+
+}
+
+function addToHeaders(element) {
+  if (headerIncludes(element.trim())) {
+      let count = 1;
+      let newElement = `${element}-${String(count).padStart(2, '0')}`;
+      while (headerIncludes(newElement.trim())) {
+          count++;
+          newElement = `${element}-${String(count).padStart(2, '0')}`;
+      }
+      headers.push(newElement.trim());
+      //return true; // Element was added with numbering
+  } else {
+      headers.push(element.trim());
+      //return false; // Element was added directly
+  }
+}
+
+function headerIncludes(valueToAdd){
+  for(let i=0;i<headers.length;i++){
+    if(headers[i].trim().startsWith(valueToAdd.trim())){
+      return true;
+    }
+  }
+  return false;
+}
+
 
 transapplyButton.addEventListener('click', function () {
 
@@ -2557,8 +2676,8 @@ downloadTranslatedCsvButton.addEventListener('click', () => {
   downloadTranslatedCsv();
 });
 
-function downloadTranslatedCsv(){
-  console.log("here"+lines);
+function downloadTranslatedCsv() {
+  console.log("here" + lines);
   if (!csv) {
     alert("First translate and then download");
     return false;
@@ -2600,16 +2719,16 @@ async function translate(sourceLang, totalcols) {
   //document.getElementById('translateButton').disabled = true;
   //var sourceText = $('textarea#srctext-popup').val();
   // Split text on new lines and process each line
-const lines = $('textarea#srctext-popup').val().split('\n').map(line => {
-  if (!line.startsWith('"') || !line.endsWith('"')) {
+  const lines = $('textarea#srctext-popup').val().split('\n').map(line => {
+    if (!line.startsWith('"') || !line.endsWith('"')) {
       return `"${line}"`;
-  }
-  return line;
-});
+    }
+    return line;
+  });
 
-// Concatenate the lines with newline separators
-const sourceText = lines.join('\n');
-console.log(sourceText);
+  // Concatenate the lines with newline separators
+  const sourceText = lines.join('\n');
+  console.log(sourceText);
 
 
 
@@ -3044,79 +3163,79 @@ function showDivPlayPopup(x, y) {
 function hideDivPlayPopup() {
   divPlayPopup.style.display = 'none';
 }
-var myTablevar= document.getElementById("myTable");
-        // Event listener for text selection
-        window.addEventListener('mouseup', (event) => {
-          var selectedText = window.getSelection().toString().trim();
-          if (selectedText) {
-              const selection = window.getSelection();
-              const range = selection.getRangeAt(0);
-              const rect = range.getBoundingClientRect();
-              //const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
-              const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
+var myTablevar = document.getElementById("myTable");
+// Event listener for text selection
+window.addEventListener('mouseup', (event) => {
+  var selectedText = window.getSelection().toString().trim();
+  if (selectedText) {
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+    //const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
+    const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
 
-              var cellRect = selection.getRangeAt(0).getBoundingClientRect();
-              var tableRect = myTablevar.getBoundingClientRect();
-              var cellTop = cellRect.top - tableRect.top;
-              var cellLeft = cellRect.left - tableRect.left;
-              var cellCenterX = cellLeft + cellRect.width / 2;
-              var cellCenterY = cellTop + cellRect.height / 2;
-              var scrollX = cellCenterX - window.innerWidth / 2;
-              var scrollY = cellCenterY - window.innerHeight / 2;              
+    var cellRect = selection.getRangeAt(0).getBoundingClientRect();
+    var tableRect = myTablevar.getBoundingClientRect();
+    var cellTop = cellRect.top - tableRect.top;
+    var cellLeft = cellRect.left - tableRect.left;
+    var cellCenterX = cellLeft + cellRect.width / 2;
+    var cellCenterY = cellTop + cellRect.height / 2;
+    var scrollX = cellCenterX - window.innerWidth / 2;
+    var scrollY = cellCenterY - window.innerHeight / 2;
 
-              const range2 = window.getSelection().getRangeAt(0);
-              const rect2 = range2.getBoundingClientRect();
-              const x = rect2.left + window.pageXOffset;
-              const y = rect2.top + window.pageYOffset;
-      
-              // console.log('X coordinate:', x);
-              // console.log('Y coordinate:', y);
-      
-              // console.log("scrollX, scrollY "+scrollX +", "+ scrollY);
-              // console.log("rect.left, rect.bottom "+rect.left +", "+ rect.bottom);
-              //showDivPlayPopup(rect.left, rect.bottom);
-              //showDivPlayPopup(scrollX, scrollY);
-              showDivPlayPopup(x, y+25);
-          } else {
-              hideDivPlayPopup();
-          }
-      });
+    const range2 = window.getSelection().getRangeAt(0);
+    const rect2 = range2.getBoundingClientRect();
+    const x = rect2.left + window.pageXOffset;
+    const y = rect2.top + window.pageYOffset;
 
-      // Hide popup when clicking outside of it
-      window.addEventListener('click', (event) => {
-              if (!divPlayPopup.contains(event.target) && !isInDivElement(event.target)) {    
-                hideDivPlayPopup();
-          }
-      });
+    // console.log('X coordinate:', x);
+    // console.log('Y coordinate:', y);
 
-      // Check if the clicked element is within a div with contenteditable="true"
-      function isInDivElement(element) {
-          return element.tagName === 'DIV' && element.getAttribute('contenteditable') === 'true';
-      }
+    // console.log("scrollX, scrollY "+scrollX +", "+ scrollY);
+    // console.log("rect.left, rect.bottom "+rect.left +", "+ rect.bottom);
+    //showDivPlayPopup(rect.left, rect.bottom);
+    //showDivPlayPopup(scrollX, scrollY);
+    showDivPlayPopup(x, y + 25);
+  } else {
+    hideDivPlayPopup();
+  }
+});
 
-      function triggerPlayButtonClick() {
-          var selectedText = window.getSelection().toString().trim();
+// Hide popup when clicking outside of it
+window.addEventListener('click', (event) => {
+  if (!divPlayPopup.contains(event.target) && !isInDivElement(event.target)) {
+    hideDivPlayPopup();
+  }
+});
 
-          if (selectedText) {
-              // Get the selection range
-              var selectionRange = window.getSelection().getRangeAt(0);
+// Check if the clicked element is within a div with contenteditable="true"
+function isInDivElement(element) {
+  return element.tagName === 'DIV' && element.getAttribute('contenteditable') === 'true';
+}
 
-              // Get the common ancestor container of the selection
-              var parentElement = selectionRange.commonAncestorContainer.parentElement;
-              //console.log(parentElement);
-              const parentTR = parentElement.closest('tr');
-              const button = parentTR.querySelector('button[id^=button]');
-              // console.log(parentTR);
-              // console.log("parentTR="+parentTR);
-              // console.log(button);
-              if (button) {
-                  button.click();
-              }
+function triggerPlayButtonClick() {
+  var selectedText = window.getSelection().toString().trim();
 
-              //console.log("Parent element of selected text:", parentElement.parentElement);
-          }
+  if (selectedText) {
+    // Get the selection range
+    var selectionRange = window.getSelection().getRangeAt(0);
 
-      }
+    // Get the common ancestor container of the selection
+    var parentElement = selectionRange.commonAncestorContainer.parentElement;
+    //console.log(parentElement);
+    const parentTR = parentElement.closest('tr');
+    const button = parentTR.querySelector('button[id^=button]');
+    // console.log(parentTR);
+    // console.log("parentTR="+parentTR);
+    // console.log(button);
+    if (button) {
+      button.click();
+    }
+
+    //console.log("Parent element of selected text:", parentElement.parentElement);
+  }
+
+}
 
 
 //context menu code add start
@@ -3134,222 +3253,222 @@ document.body.appendChild(contextMenu);
 
 // Hide context menu
 function hideContextMenu() {
-    contextMenu.style.display = "none";
+  contextMenu.style.display = "none";
 }
 
 // Show context menu at the mouse click position
 function showContextMenu(event) {
   console.log("myTablevar.showContextMenu");
-    event.preventDefault();
+  event.preventDefault();
 
 
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
-    const rect = range.getBoundingClientRect();
-    //const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
-    const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
+  const selection = window.getSelection();
+  const range = selection.getRangeAt(0);
+  const rect = range.getBoundingClientRect();
+  //const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
+  const rangeRect = selection.getRangeAt(0).getBoundingClientRect();
 
-    var cellRect = selection.getRangeAt(0).getBoundingClientRect();
-    var tableRect = myTablevar.getBoundingClientRect();
-    var cellTop = cellRect.top - tableRect.top;
-    var cellLeft = cellRect.left - tableRect.left;
-    var cellCenterX = cellLeft + cellRect.width / 2;
-    var cellCenterY = cellTop + cellRect.height / 2;
-    var scrollX = cellCenterX - window.innerWidth / 2;
-    var scrollY = cellCenterY - window.innerHeight / 2;              
+  var cellRect = selection.getRangeAt(0).getBoundingClientRect();
+  var tableRect = myTablevar.getBoundingClientRect();
+  var cellTop = cellRect.top - tableRect.top;
+  var cellLeft = cellRect.left - tableRect.left;
+  var cellCenterX = cellLeft + cellRect.width / 2;
+  var cellCenterY = cellTop + cellRect.height / 2;
+  var scrollX = cellCenterX - window.innerWidth / 2;
+  var scrollY = cellCenterY - window.innerHeight / 2;
 
-    const range2 = window.getSelection().getRangeAt(0);
-    const rect2 = range2.getBoundingClientRect();
-    const x = rect2.left + window.pageXOffset;
-    const y = rect2.top + window.pageYOffset;
+  const range2 = window.getSelection().getRangeAt(0);
+  const rect2 = range2.getBoundingClientRect();
+  const x = rect2.left + window.pageXOffset;
+  const y = rect2.top + window.pageYOffset;
 
-    //showDivPlayPopup(x, y+25);
+  //showDivPlayPopup(x, y+25);
 
 
-    // contextMenu.style.left = `${event.clientX}px`;
-    // contextMenu.style.top = `${event.clientY}px`;
-    contextMenu.style.left = `${x}px`;
-    contextMenu.style.top = `${y+50}px`;
+  // contextMenu.style.left = `${event.clientX}px`;
+  // contextMenu.style.top = `${event.clientY}px`;
+  contextMenu.style.left = `${x}px`;
+  contextMenu.style.top = `${y + 50}px`;
 
-    contextMenu.style.display = "block";
+  contextMenu.style.display = "block";
 }
 
-var selectedTextMouseUp="";
+var selectedTextMouseUp = "";
 
 // Attach context menu event to the table
 myTablevar.addEventListener("contextmenu", function (event) {
-    selectedCell = event.target.closest("td");
-    console.log("myTablevar.addEventListener selectedCell="+selectedCell);
-    console.log("myTablevar.addEventListener window="+window.getSelection().toString().trim());
+  selectedCell = event.target.closest("td");
+  console.log("myTablevar.addEventListener selectedCell=" + selectedCell);
+  console.log("myTablevar.addEventListener window=" + window.getSelection().toString().trim());
 
-    if (!selectedCell) {
-      //selectedTextMouseUp="";
-        hideContextMenu();
-        return;
-    }
-    selectedTextMouseUp = window.getSelection().toString().trim();
-    showContextMenu(event);
+  if (!selectedCell) {
+    //selectedTextMouseUp="";
+    hideContextMenu();
+    return;
+  }
+  selectedTextMouseUp = window.getSelection().toString().trim();
+  showContextMenu(event);
 });
 
 // Attach click event to context menu items
 contextMenu.addEventListener("click", function (event) {
-    var selectedText = window.getSelection().toString().trim();
-    //const selectedCell = event.target.closest("td");
-    if (!selectedCell) {
-        hideContextMenu();
-        return;
-    }
-
-    // console.log("selectedCell="+selectedCell.innerHTML);
-
-    // var editableDiv = selectedCell.querySelector("div");
-    // console.log("editableDiv="+editableDiv.innerHTML);
-    // var selectedText = getSelectedText(selectedCell);
-
-    selectedText = selectedTextMouseUp;
-    //selectedText = selectedCell.textContent;
-   
-   
-    //var getTextAreaData = document.getElementById("dynamiccolumnqueryta");
-    //const dynamiccolumndelimiter = document.getElementById("dynamiccolumndelimiter").value;
-    var vocabData = [];
-    //const vocabData = getTextAreaData.value.split(/\s+/);
-    
-    // if(dynamiccolumndelimiter === "\n"){
-    //   vocabData = getTextAreaData.value.split(/\s+/);
-    //   console.log("dynamiccolumndelimiter new line");
-    // }else{
-    //   console.log("dynamiccolumndelimiter not new line="+dynamiccolumndelimiter);
-    //   vocabData = getTextAreaData.value.split(dynamiccolumndelimiter);
-    // }
-
-    //vocabData = getQueryResultArray(formatQueryString(getTextAreaData.value , selectedText));
-
-    console.log("selectedText="+selectedText);
-
-    if(selectedText === "")
-      return;
-    //const vocabData = getTextAreaData.value.split(dynamiccolumndelimiter);
-    // Find the row for the selected cell
-    const selectedRow = selectedCell.parentElement;
-
-
-
-/*
-    select word from sentences_ja where word like '%%'
-SELECT
-    ( word  || CHAR(10)  || reading || CHAR(10) || english) AS result
-FROM
-    sentences_ja 
-where word like '%%'
-
-|| CHAR(10) || "--------------" || CHAR(10) 
-*/
-    if (event.target.id === "populateSentences") {
-
-      vocabData = getQueryResultArray(formatQueryString(document.getElementById("dynamiccolumnsentencesqueryta").value , selectedText));
-
-      const sentenceColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith("Sentences"));
-      console.log("Index of 'Sentences' column:", sentenceColumnIndex);
-  
-      // Find the cell in the "Vocab" column of the same row
-      const sentenceCell = selectedRow.querySelector("td:nth-child(" + (sentenceColumnIndex + 1) + ")");
-      const sentenceCellDiv = sentenceCell.querySelector("div");
-  
-      console.log("sentenceCellDiv:", sentenceCellDiv);      
-      //const matchedVocabs = vocabData.filter(item => item.includes(selectedText));
-      //console.log(getTextAreaData.value.split(/\n/).length);
-      var sentenceText= "";
-      console.log(vocabData.length);
-      for(let i=0;i<vocabData.length;i++){
-        sentenceText+=vocabData[i]+'\n';
-      }
-      //const matchedVocabs = getTextAreaData.value.split("\n").filter(item => item.includes(selectedText));
-      
-      //console.log("matchedVocabs length="+matchedVocabs.length);
-      //const vocabItem = getTextAreaData.value.split("\n").find(item => item.includes(selectedText));
-      if (sentenceCellDiv) {
-        //console.log("matchedVocabs="+matchedVocabs);
-        sentenceCellDiv.textContent = vocabData.join("\n ");
-      }
-
-        // if (sentenceCell) {
-        //     sentenceCell.textContent = "OK";
-        // }
-    }else if (event.target.id === "populateVocabs") {
-
-      vocabData = getQueryResultArray(formatQueryString(document.getElementById("dynamiccolumnvocabqueryta").value , selectedText));
-
-      const vocabsColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith("Vocabs"));
-      console.log("Index of 'Vocabs' column:", vocabsColumnIndex);
-  
-      // Find the cell in the "Vocab" column of the same row
-      const sentenceCell = selectedRow.querySelector("td:nth-child(" + (vocabsColumnIndex + 1) + ")");
-      const sentenceCellDiv = sentenceCell.querySelector("div");
-  
-      console.log("sentenceCellDiv:", sentenceCellDiv);      
-      //const matchedVocabs = vocabData.filter(item => item.includes(selectedText));
-      //console.log(getTextAreaData.value.split(/\n/).length);
-      var sentenceText= "";
-      console.log(vocabData.length);
-      for(let i=0;i<vocabData.length;i++){
-        sentenceText+=vocabData[i]+'\n';
-      }
-      //const matchedVocabs = getTextAreaData.value.split("\n").filter(item => item.includes(selectedText));
-      
-      //console.log("matchedVocabs length="+matchedVocabs.length);
-      //const vocabItem = getTextAreaData.value.split("\n").find(item => item.includes(selectedText));
-      if (sentenceCellDiv) {
-        //console.log("matchedVocabs="+matchedVocabs);
-        sentenceCellDiv.textContent = vocabData.join("\n ");
-      }
-
-        // if (sentenceCell) {
-        //     sentenceCell.textContent = "OK";
-        // }
-    }
+  var selectedText = window.getSelection().toString().trim();
+  //const selectedCell = event.target.closest("td");
+  if (!selectedCell) {
     hideContextMenu();
+    return;
+  }
+
+  // console.log("selectedCell="+selectedCell.innerHTML);
+
+  // var editableDiv = selectedCell.querySelector("div");
+  // console.log("editableDiv="+editableDiv.innerHTML);
+  // var selectedText = getSelectedText(selectedCell);
+
+  selectedText = selectedTextMouseUp;
+  //selectedText = selectedCell.textContent;
+
+
+  //var getTextAreaData = document.getElementById("dynamiccolumnqueryta");
+  //const dynamiccolumndelimiter = document.getElementById("dynamiccolumndelimiter").value;
+  var vocabData = [];
+  //const vocabData = getTextAreaData.value.split(/\s+/);
+
+  // if(dynamiccolumndelimiter === "\n"){
+  //   vocabData = getTextAreaData.value.split(/\s+/);
+  //   console.log("dynamiccolumndelimiter new line");
+  // }else{
+  //   console.log("dynamiccolumndelimiter not new line="+dynamiccolumndelimiter);
+  //   vocabData = getTextAreaData.value.split(dynamiccolumndelimiter);
+  // }
+
+  //vocabData = getQueryResultArray(formatQueryString(getTextAreaData.value , selectedText));
+
+  console.log("selectedText=" + selectedText);
+
+  if (selectedText === "")
+    return;
+  //const vocabData = getTextAreaData.value.split(dynamiccolumndelimiter);
+  // Find the row for the selected cell
+  const selectedRow = selectedCell.parentElement;
+
+
+
+  /*
+      select word from sentences_ja where word like '%%'
+  SELECT
+      ( word  || CHAR(10)  || reading || CHAR(10) || english) AS result
+  FROM
+      sentences_ja 
+  where word like '%%'
+  
+  || CHAR(10) || "--------------" || CHAR(10) 
+  */
+  if (event.target.id === "populateSentences") {
+
+    vocabData = getQueryResultArray(formatQueryString(document.getElementById("dynamiccolumnsentencesqueryta").value, selectedText));
+
+    const sentenceColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith("Sentences"));
+    console.log("Index of 'Sentences' column:", sentenceColumnIndex);
+
+    // Find the cell in the "Vocab" column of the same row
+    const sentenceCell = selectedRow.querySelector("td:nth-child(" + (sentenceColumnIndex + 1) + ")");
+    const sentenceCellDiv = sentenceCell.querySelector("div");
+
+    console.log("sentenceCellDiv:", sentenceCellDiv);
+    //const matchedVocabs = vocabData.filter(item => item.includes(selectedText));
+    //console.log(getTextAreaData.value.split(/\n/).length);
+    var sentenceText = "";
+    console.log(vocabData.length);
+    for (let i = 0; i < vocabData.length; i++) {
+      sentenceText += vocabData[i] + '\n';
+    }
+    //const matchedVocabs = getTextAreaData.value.split("\n").filter(item => item.includes(selectedText));
+
+    //console.log("matchedVocabs length="+matchedVocabs.length);
+    //const vocabItem = getTextAreaData.value.split("\n").find(item => item.includes(selectedText));
+    if (sentenceCellDiv) {
+      //console.log("matchedVocabs="+matchedVocabs);
+      sentenceCellDiv.textContent = vocabData.join("\n ");
+    }
+
+    // if (sentenceCell) {
+    //     sentenceCell.textContent = "OK";
+    // }
+  } else if (event.target.id === "populateVocabs") {
+
+    vocabData = getQueryResultArray(formatQueryString(document.getElementById("dynamiccolumnvocabqueryta").value, selectedText));
+
+    const vocabsColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith("Vocabs"));
+    console.log("Index of 'Vocabs' column:", vocabsColumnIndex);
+
+    // Find the cell in the "Vocab" column of the same row
+    const sentenceCell = selectedRow.querySelector("td:nth-child(" + (vocabsColumnIndex + 1) + ")");
+    const sentenceCellDiv = sentenceCell.querySelector("div");
+
+    console.log("sentenceCellDiv:", sentenceCellDiv);
+    //const matchedVocabs = vocabData.filter(item => item.includes(selectedText));
+    //console.log(getTextAreaData.value.split(/\n/).length);
+    var sentenceText = "";
+    console.log(vocabData.length);
+    for (let i = 0; i < vocabData.length; i++) {
+      sentenceText += vocabData[i] + '\n';
+    }
+    //const matchedVocabs = getTextAreaData.value.split("\n").filter(item => item.includes(selectedText));
+
+    //console.log("matchedVocabs length="+matchedVocabs.length);
+    //const vocabItem = getTextAreaData.value.split("\n").find(item => item.includes(selectedText));
+    if (sentenceCellDiv) {
+      //console.log("matchedVocabs="+matchedVocabs);
+      sentenceCellDiv.textContent = vocabData.join("\n ");
+    }
+
+    // if (sentenceCell) {
+    //     sentenceCell.textContent = "OK";
+    // }
+  }
+  hideContextMenu();
 });
 
 function formatQueryString(str, replaceWith) {
   // Replace content in single quotes with replaceWith value
-//  return str.replace(/'[^']*'/g, "'" + replaceWith + "'");
+  //  return str.replace(/'[^']*'/g, "'" + replaceWith + "'");
   return str.replace(/'[^']*'/g, "'%" + replaceWith + "%'");
 
 }
 
 // Custom comparison function for non-ASCII characters
 function customIncludes(str, searchText) {
-  console.log("str="+str+"  searchText="+searchText +" test="+str.normalize("NFD").includes(searchText.normalize("NFD")));
+  console.log("str=" + str + "  searchText=" + searchText + " test=" + str.normalize("NFD").includes(searchText.normalize("NFD")));
   return str.normalize("NFD").includes(searchText.normalize("NFD"));
 }
 
 function getSelectedText(container) {
   var selectedText = "";
   if (window.getSelection) {
-      var selection = window.getSelection();
-      console.log("selection="+selection);
-      if (selection.rangeCount > 0) {
-          var range = selection.getRangeAt(0);
-          if (range.commonAncestorContainer === container) {
-              selectedText = range.toString();
-          }
+    var selection = window.getSelection();
+    console.log("selection=" + selection);
+    if (selection.rangeCount > 0) {
+      var range = selection.getRangeAt(0);
+      if (range.commonAncestorContainer === container) {
+        selectedText = range.toString();
       }
+    }
   }
   return selectedText;
 }
 
-function loadmyTableQuery(){
+function loadmyTableQuery() {
   var query = document.getElementById("dynamiccolumnmytablequeryta").value;
   showFileColPopup(getQueryColumnNames(query));
 }
 
-function fillVocabsOrSentence(vocabOrSentence){
+function fillVocabsOrSentence(vocabOrSentence) {
 
   const vocabsColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith(vocabOrSentence));
   console.log("Index of 'Vocabs' column:", vocabsColumnIndex);
 
-  if(vocabsColumnIndex == -1){
+  if (vocabsColumnIndex == -1) {
     addNewColumnWithHeader(vocabOrSentence);
   }
 
@@ -3362,20 +3481,20 @@ function fillVocabsOrSentence(vocabOrSentence){
 
   var firstcheckboxrow = table.rows[1];
   const firstRowCheckboxes = firstcheckboxrow.querySelectorAll('input[type="checkbox"]:checked');
-  console.log("firstRowCheckboxes"+firstRowCheckboxes.length)
-  if(firstRowCheckboxes.length>1){
+  console.log("firstRowCheckboxes" + firstRowCheckboxes.length)
+  if (firstRowCheckboxes.length > 1) {
     alert("Select only one column to fill vocabs");
   }
 
   var queryString = "";
-  if(vocabOrSentence === 'Vocabs'){
-    if(document.getElementById("dynamiccolumnvocabqueryta").value === ''){
+  if (vocabOrSentence === 'Vocabs') {
+    if (document.getElementById("dynamiccolumnvocabqueryta").value === '') {
       alert("Vocab Query cant be empty");
       return;
     }
     queryString = document.getElementById("dynamiccolumnvocabqueryta").value;
-  }else if(vocabOrSentence === 'Sentences'){
-    if(document.getElementById("dynamiccolumnsentencesqueryta").value === ''){
+  } else if (vocabOrSentence === 'Sentences') {
+    if (document.getElementById("dynamiccolumnsentencesqueryta").value === '') {
       alert("Sentences Query cant be empty");
       return;
     }
@@ -3392,11 +3511,11 @@ function fillVocabsOrSentence(vocabOrSentence){
 
           for (var k = 0; k < maxCellSpeakCounter.value; k++) {
 
-            if(vocabsColumnIndex != -1 && row.cells[vocabsColumnIndex].innerText.trim() !== ''){
+            if (vocabsColumnIndex != -1 && row.cells[vocabsColumnIndex].innerText.trim() !== '') {
               continue;
             }
 
-            fillCellVocabsOrSentence(row.cells[j + 1],row.cells[j + 1].innerText,vocabOrSentence , queryString);
+            fillCellVocabsOrSentence(row.cells[j + 1], row.cells[j + 1].innerText, vocabOrSentence, queryString);
           }
 
         }
@@ -3405,11 +3524,11 @@ function fillVocabsOrSentence(vocabOrSentence){
   }
 }
 
-function fillCellVocabsOrSentence(selectedCell,selectedText , vocabOrSentence , queryString){
+function fillCellVocabsOrSentence(selectedCell, selectedText, vocabOrSentence, queryString) {
 
-//  const selectedRow = selectedCell.parentElement;
+  //  const selectedRow = selectedCell.parentElement;
 
-  var vocabData = getQueryResultArray(formatQueryString(queryString , selectedText));
+  var vocabData = getQueryResultArray(formatQueryString(queryString, selectedText));
 
   const vocabsColumnIndex = Array.from(myTablevar.rows[3].querySelectorAll("th")).findIndex(th => th.textContent.startsWith(vocabOrSentence));
   console.log("Index of 'Vocabs' column:", vocabsColumnIndex);
@@ -3424,12 +3543,12 @@ function fillCellVocabsOrSentence(selectedCell,selectedText , vocabOrSentence , 
   const sentenceCell = selectedRow.querySelector("td:nth-child(" + (vocabsColumnIndex + 1) + ")");
   const sentenceCellDiv = sentenceCell.querySelector("div");
 
-  console.log("sentenceCellDiv:", sentenceCellDiv);      
+  console.log("sentenceCellDiv:", sentenceCellDiv);
 
-  var sentenceText= "";
+  var sentenceText = "";
   console.log(vocabData.length);
-  for(let i=0;i<vocabData.length;i++){
-    sentenceText+=vocabData[i]+'\n';
+  for (let i = 0; i < vocabData.length; i++) {
+    sentenceText += vocabData[i] + '\n';
   }
 
   if (sentenceCellDiv) {

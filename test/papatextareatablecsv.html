@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV Export Example</title>
+    <!-- Include Papa.js from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+
+    <table border="1" id="htmlTable">
+        <thead>
+            <tr>
+                <th>Additional Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Additional Textarea 1 Data</td>
+            </tr>
+            <tr>
+                <td>Additional Textarea 1 Data</td>
+            </tr>
+            <tr>
+                <td>Additional Textarea 1 Data</td>
+            </tr>
+            <tr>
+                <td>Additional Textarea 1 Data</td>
+            </tr>
+            <tr>
+                <td>Additional Textarea 1 Data</td>
+            </tr>
+            <tr>
+                <td>Additional Textarea 1 Data</td>
+            </tr>
+            <tr>
+                <td>Additional Textarea 1 Data</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Select 1</th>
+                <th>Select 2</th>
+                <th>Select 3</th>
+                <th>Select 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                    </select>
+                </td>
+                <td>
+                    <select>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                    </select>
+                </td>
+                <td>
+                    <select>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                    </select>
+                </td>
+                <td>
+                    <select>
+                        <option value="Option 1">Option 1</option>
+                        <option value="Option 2">Option 2</option>
+                        <option value="Option 3">Option 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><textarea rows="10">Textarea 1 Data</textarea></td>
+                <td><textarea rows="10">Textarea 2 Data</textarea></td>
+                <td><textarea rows="10">Textarea 3 Data</textarea></td>
+                <td><textarea rows="10">Textarea 4 Data</textarea></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="exportButton">Export CSV</button>
+
+    <script>
+        document.getElementById('exportButton').addEventListener('click', function () {
+
+            const htmlTable = document.getElementById('htmlTable');
+
+            // Initialize an empty CSV array
+            const csvData = [];
+
+            // Get select values and textarea lines
+            //const selectValues = Array.from(document.querySelectorAll('select')).map(select => select.value);
+            const selectValues = document.querySelectorAll('select');
+            const textareaData = Array.from(document.querySelectorAll('textarea')).map(textarea => textarea.value.split('\n'));
+
+            // Create CSV header
+            //csvData.push(['Column 1', 'Column 2', 'Column 3', 'Column 4']);
+            //csvData.push([selectValues[0], selectValues[1], selectValues[2], selectValues[3]]);
+
+            var header = [];
+            for (let i = 0; i < selectValues.length; i++) {
+                header.push(selectValues[i].value);
+            }
+            console.log(header);
+            console.log(textareaData);
+            
+            csvData.push(header);
+            //csvData.push(header.slice(0,-1));
+            
+            
+            // Add rows to CSV
+            // for (let i = 0; i < textareaData.length; i++) {
+            //     var rowData = [];
+            //     for (let j = 0; j < textareaData[i].length; j++) {
+            //         rowData.push(textareaData[j]);
+            //     }
+            //     csvData.push(rowData);
+            //     //csvData.push([textareaData[0], textareaData[1], textareaData[2], textareaData[3]]);
+            // }
+
+            for (let i = 0; i < textareaData[0].length; i++) {
+                var rowData = [];
+                for (let j = 0; j < textareaData.length; j++) {
+                    rowData.push(textareaData[j][i]);
+                }
+                csvData.push(rowData);
+            }
+
+            console.log("csvData="+csvData);
+
+                            // Create a merged CSV array by combining HTML table data with CSV data
+                            const mergedCsvData = [];
+
+                            for (let i = 0; i < csvData.length; i++) {
+                    const csvRow = Object.values(csvData[i]);
+                    const row = htmlTable.rows[i + 1]; // Skip the header row
+                    const cells = row.getElementsByTagName('td');
+                    const htmlTableData = Array.from(cells).map(cell => cell.textContent);
+                    const mergedRow = [...htmlTableData, ...csvRow];
+                    mergedCsvData.push(mergedRow);
+                }
+
+
+                // Convert the merged CSV data to a CSV string using Papa.js
+                const csv = Papa.unparse(mergedCsvData);
+
+                    // Add a new line character '\n' after each row
+    const mergedCsvString = csv.split('\n').join('\n');
+console.log(mergedCsvString);
+
+            // Convert to CSV format using Papa.js
+            //const csv = Papa.unparse(csvData);
+
+            // Create a Blob containing the CSV data
+            const blob = new Blob([csv], { type: 'text/csv' });
+
+            // Create a download link and trigger the download
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'exported_data.csv';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    </script>
+</body>
+</html>
