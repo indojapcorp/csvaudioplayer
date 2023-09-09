@@ -1,43 +1,21 @@
-import sys
+# NoCacheHTTPServer.py
+
 import http.server
-import socketserver
-import os
-import signal
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
 
-PORT = 9000
+PORT = 9100
 
-# Custom Handler to reload the server on file changes
-class ReloadHandler(FileSystemEventHandler):
-    def on_any_event(self, event):
-        if event.is_directory:
-            return
-        if event.event_type in ['modified', 'created', 'deleted']:
-            print(f"File {event.src_path} has been {event.event_type}. Reloading server...")
-            os._exit(0)  # This will trigger a hard reload of the server
+class NoCacheHTTPRequestHandler(
+    http.server.SimpleHTTPRequestHandler
+):
+    def send_response_only(self, code, message=None):
+        super().send_response_only(code, message)
+        self.send_header('Cache-Control', 'no-store, must-revalidate')
+        #post-check=0, pre-check=0'
+        self.send_header('Expires', '0')
 
-def run_server():
-    handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", PORT), handler) as httpd:
-        print(f"Serving at port {PORT}")
+if __name__ == '__main__':
+    http.server.test(
+        HandlerClass=NoCacheHTTPRequestHandler,
+        port=PORT
+    )
 
-        def signal_handler(sig, frame):
-            print("Stopping server...")
-            httpd.shutdown()
-            httpd.server_close()
-            sys.exit(0)
-
-        signal.signal(signal.SIGINT, signal_handler)
-
-        observer = Observer()
-        observer.schedule(ReloadHandler(), path=".", recursive=True)
-        observer.start()
-        try:
-            httpd.serve_forever()
-        except KeyboardInterrupt:
-            observer.stop()
-        observer.join()
-
-if __name__ == "__main__":
-    run_server()

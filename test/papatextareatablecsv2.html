@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV Export Example</title>
+    <!-- Include Papa.js from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+
+    <table border="1" id="table1">
+        <thead>
+            <tr>
+                <th>TH1</th>
+                <th>TH2</th>
+                <th>TH3</th>
+                <th>TH4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    A
+                </td>
+                <td>
+                    B
+                </td>
+                <td>
+                    C
+                </td>
+                <td>
+                    D
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table border="1" id="table2">
+        <thead>
+            <tr>
+                <th>TH1</th>
+                <th>TH4</th>
+                <th>TH5</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    A2
+                </td>
+                <td>
+                    D2
+                </td>
+                <td>
+                    E
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="exportButton">Export CSV</button>
+
+
+</body>
+</html>

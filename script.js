@@ -539,10 +539,12 @@ function deleteSelectedRows() {
 
     if (checkBox != undefined && checkBox.checked) {
       table.deleteRow(i);
+      csvData.splice(i - 4, 1);
       rowCount--;
       i--;
     }
   }
+
   updateCounter(); // Update the selected record count
 }
 
@@ -556,6 +558,7 @@ function deleteNonselectedRows() {
 
     if (checkBox != undefined && !checkBox.checked) {
       table.deleteRow(i);
+      csvData.splice(i - 4, 1);
       rowCount--;
       i--;
     }
@@ -1302,7 +1305,7 @@ const filePopulateTableBtn = document.getElementById('filePopulateTableBtn');
 
 filePopulateTableBtn.addEventListener('click', () => {
 
-  if (tableNameSelect.selectedIndex > 0 || document.getElementById("dynamiccolumnmytablequeryta").value.trim() !== "") {
+  if (!translationProcessed && (tableNameSelect.selectedIndex > 0 || document.getElementById("dynamiccolumnmytablequeryta").value.trim() !== "")) {
 
     var checkboxes = document.getElementsByName("column");
     //var selectedColumnNames = [];
@@ -1319,6 +1322,7 @@ filePopulateTableBtn.addEventListener('click', () => {
     searchDictionary(tableNameSelect.value, selectedColumnNames);
   } else {
     populateTableNew(false);
+    translationProcessed = false;
   }
 
 });
@@ -1647,9 +1651,7 @@ function readCSVUsingPapa(file) {
   if (!file)
     return;
 
-  if (!transAppendToTableCheckbox.checked) {
-    csvData = [];
-  }
+  csvData = [];
 
   headers = [];
   headersLanguage = [];
@@ -1799,6 +1801,11 @@ function readJSONFromSQLite(data, currentPage, totalRecords) {
   headers.forEach(function () {
     headersLanguage.push('en');
   });
+
+
+
+
+
 
   for (var i = 0; i < jsonData.data.length; i++) {
 
@@ -1954,15 +1961,18 @@ function populateSQLLiteData() {
       cellDiv.setAttribute('contenteditable', 'true');
 
 
-      // Remove enclosing double quotes if present
-      let cellText = row[headers.indexOf(column)].trim().replaceAll('==TABS==', '\t').replaceAll('==NEW-LINE==', '\n');
-      if (cellText.startsWith('"') && cellText.endsWith('"')) {
-        cellText = cellText.slice(1, -1);
-      }
+      if (row[headers.indexOf(column)]) {
+        // Remove enclosing double quotes if present
+        let cellText = row[headers.indexOf(column)].trim().replaceAll('==TABS==', '\t').replaceAll('==NEW-LINE==', '\n');
+        if (cellText.startsWith('"') && cellText.endsWith('"')) {
+          cellText = cellText.slice(1, -1);
+        }
 
-      // Preserve new lines in the cell content
-      const lines = cellText.split('\\n');
-      cellDiv.innerHTML = lines.join('<br>');
+
+        // Preserve new lines in the cell content
+        const lines = cellText.split('\\n');
+        cellDiv.innerHTML = lines.join('<br>');
+      }
 
       cell.appendChild(cellDiv);
       tr.appendChild(cell);
@@ -2218,6 +2228,7 @@ function populateTableNew(isSQLite) {
   document.getElementById("recordCount").textContent = recordCount;
 
   //var uniqueCategories = [...new Set()];
+  console.log("csvData in poptab =" + csvData);
 
 
   csvData.forEach(function (row, rowno) {
@@ -2238,6 +2249,13 @@ function populateTableNew(isSQLite) {
       var cellDiv = document.createElement("div");
 
       cellDiv.setAttribute('contenteditable', 'true');
+
+      // console.log("headers=" + headers);
+      // console.log("row=" + row);
+      // console.log("column=" + column);
+      // console.log("headers.indexOf(column)=" + headers.indexOf(column));
+      // console.log("row[0]=" + row[0]);
+      // console.log("row[1]=" + row[1]);
 
       // Remove enclosing double quotes if present
       let cellText = row[headers.indexOf(column)].trim().replaceAll('==TABS==', '\t').replaceAll('==NEW-LINE==', '\n');
@@ -2538,7 +2556,7 @@ function transPrepareApplyDwdDataOriginal() {
 
 }
 
-function transPrepareApplyDwdData() {
+function transPrepareApplyDwdDataWorkingVersion2() {
 
   const srcCsvData = [];
 
@@ -2557,7 +2575,7 @@ function transPrepareApplyDwdData() {
   if (csvData.length == 0) {
     for (let i = 0; i < srcselectValues.length; i++) {
       const valueToAdd = srcselectValues[i].value.trim();
-      addToHeaders(valueToAdd);  
+      addToHeaders(valueToAdd);
       // var headerval = addToHeaders(srcselectValues[i].value);
       // console.log("headerval src"+headerval);
       // headers.push(headerval);
@@ -2607,11 +2625,15 @@ function transPrepareApplyDwdData() {
     //   continue;
     const csvRow = Object.values(transCsvData[i]);
     const myTablecsvRow = Object.values(csvData[i]);
+    console.log("csvRow length=" + csvRow.length);
+    console.log("mergedCsvData length=" + myTablecsvRow.length);
 
     const mergedRow = [...myTablecsvRow, ...csvRow];
     mergedCsvData.push(mergedRow);
   }
 
+  console.log("csvData=" + csvData);
+  console.log("transCsvData=" + transCsvData);
 
   console.log("mergedCsvData=" + mergedCsvData);
 
@@ -2629,25 +2651,187 @@ function transPrepareApplyDwdData() {
 
 }
 
+var translationProcessed = false;
+
+function transPrepareApplyDwdData() {
+
+  const srcCsvData = [];
+
+  const transCsvData = [];
+
+  //headers = [];
+  lines = [];
+  tableHeaders = [];
+
+
+  const selectValues = document.querySelectorAll('select[id^="tgtlang-"]');
+  const textareaData = Array.from(document.querySelectorAll('textarea[id^="tratext-popup-"]')).map(textarea => textarea.value.split('\n'));
+
+  var baseData = "";
+  for (let i = 0; i < headers.length; i++) {
+    baseData += headers[i] + ",";
+  }
+  baseData = baseData.slice(0, -1);
+  baseData += "\n";
+
+  for (let i = 0; i < csvData.length; i++) {
+    var rowData = csvData[i];
+    for (let j = 0; j < rowData.length; j++) {
+      baseData += rowData[j] + ",";
+    }
+    baseData = baseData.slice(0, -1);
+    baseData += "\n";
+  }
+  baseData = baseData.slice(0, -1);
+
+
+  var transData = "";
+
+  for (let i = 0; i < selectValues.length; i++) {
+
+    const valueToAdd = selectValues[i].value.trim();
+    if (!headerIncludes(valueToAdd)) {
+      addToHeaders(valueToAdd);
+    }
+    transData += valueToAdd + ",";
+  }
+  transData = transData.slice(0, -1);
+  transData += "\n";
+
+  for (let i = 0; i < textareaData[0].length; i++) {
+    for (let j = 0; j < textareaData.length; j++) {
+      transData += textareaData[j][i].replaceAll("\"", "") + ",";
+    }
+    transData = transData.slice(0, -1);
+    transData += "\n";
+  }
+  transData = transData.slice(0, -1);
+
+  // console.log("baseData len=" + baseData.split('\n').length);
+  // console.log("transData len=" + transData.split('\n').length);
+
+  if (transAppendToTableCheckbox.checked) {
+    var csv1 = Papa.parse(baseData, { header: true });
+    var csv2 = Papa.parse(transData, { header: true });
+
+    csv1.meta.fields = csv1.meta.fields.concat(csv2.meta.fields);
+    // csv1.data.forEach(function (row, index) {
+    //   Object.assign(row, csv2.data[index]);
+    // });
+
+    csv1.data.forEach(function (row, index) {
+      for (var key in csv2.data[index]) {
+        row[key] = csv2.data[index][key];
+      }
+    });
+
+
+
+
+    csv = Papa.unparse(csv1);
+ //   console.log("col merge csv=" + csv);
+  } else {
+
+
+    Papa.parse(baseData, {
+      header: true,
+      dynamicTyping: true,
+      complete: function (results1) {
+        Papa.parse(transData, {
+          header: true,
+          dynamicTyping: true,
+          complete: function (results2) {
+            // Merge the two CSVs
+            const mergedHeaders = mergeHeaders(results1.meta.fields, results2.meta.fields);
+            const mergedData = mergeData(results1.data, results2.data, mergedHeaders);
+
+            console.log(mergedHeaders);
+            // Convert merged data to CSV format
+            csv = Papa.unparse({
+              fields: mergedHeaders,
+              data: mergedData
+            });
+
+          }
+        });
+      }
+    });
+
+  }
+
+  // // Convert the merged CSV data to a CSV string using Papa.js
+  // csv = Papa.unparse(mergedCsvData);
+
+  // Add a new line character '\n' after each row
+  lines = csv.split('\n').join('\n');
+
+  console.log("lines=" + lines);
+  translationProcessed = true;
+  var filecolpopup = document.getElementById("colpopup");
+  filecolpopup.style.display = "block";
+
+}
+
+// Function to merge headers of two CSVs
+function mergeHeaders(headers1, headers2) {
+  const uniqueHeaders = new Set([...headers1, ...headers2]);
+  return Array.from(uniqueHeaders);
+}
+
+// Function to merge data of two CSVs
+function mergeData(data1, data2, mergedHeaders) {
+  const mergedData = [];
+
+  for (const row1 of data1) {
+    const mergedRow = {};
+
+    for (const header of mergedHeaders) {
+      if (row1[header] !== undefined) {
+        mergedRow[header] = row1[header];
+      } else {
+        mergedRow[header] = '-';
+      }
+    }
+
+    mergedData.push(mergedRow);
+  }
+
+  for (const row2 of data2) {
+    const mergedRow = {};
+
+    for (const header of mergedHeaders) {
+      if (row2[header] !== undefined) {
+        mergedRow[header] = row2[header];
+      } else {
+        mergedRow[header] = '-';
+      }
+    }
+
+    mergedData.push(mergedRow);
+  }
+
+  return mergedData;
+}
+
 function addToHeaders(element) {
   if (headerIncludes(element.trim())) {
-      let count = 1;
-      let newElement = `${element}-${String(count).padStart(2, '0')}`;
-      while (headerIncludes(newElement.trim())) {
-          count++;
-          newElement = `${element}-${String(count).padStart(2, '0')}`;
-      }
-      headers.push(newElement.trim());
-      //return true; // Element was added with numbering
+    let count = 1;
+    let newElement = `${element}-${String(count).padStart(2, '0')}`;
+    while (headerIncludes(newElement.trim())) {
+      count++;
+      newElement = `${element}-${String(count).padStart(2, '0')}`;
+    }
+    headers.push(newElement.toUpperCase().trim());
+    //return true; // Element was added with numbering
   } else {
-      headers.push(element.trim());
-      //return false; // Element was added directly
+    headers.push(element.toUpperCase().trim());
+    //return false; // Element was added directly
   }
 }
 
-function headerIncludes(valueToAdd){
-  for(let i=0;i<headers.length;i++){
-    if(headers[i].trim().startsWith(valueToAdd.trim())){
+function headerIncludes(valueToAdd) {
+  for (let i = 0; i < headers.length; i++) {
+    if (headers[i].toUpperCase().trim().startsWith(valueToAdd.toUpperCase().trim())) {
       return true;
     }
   }
@@ -2782,7 +2966,13 @@ async function translate(sourceLang, totalcols) {
   transPrepareApplyDwdData();
 }
 
-function addTransColumn() {
+function addmyTableCols(){
+    for(let i=1;i<headers.length;i++){
+      addTransColumn(headers[i]);
+    }
+}
+
+function addTransColumn(newLanguageCode="en") {
   var table = document.getElementById("transpopup-table");
   var rows = table.getElementsByTagName("tr");
   var columnNumber = rows[0].getElementsByTagName("td").length + 1;
@@ -2790,6 +2980,8 @@ function addTransColumn() {
   // Assuming you have a select element with the id "mySelect"
   var selectElement = document.getElementById("srclang");
   var options = selectElement.options;
+
+  
 
 
 
@@ -2825,15 +3017,22 @@ function addTransColumn() {
       var traoption = document.createElement("option");
       traoption.value = option.value;
       traoption.text = option.text;
+
+      if(option.value.trim() === newLanguageCode.trim()){
+        traoption.selected = true;
+      }
+      
       traselect.add(traoption);
     });
+
+    
 
     cell.appendChild(tralable);
     cell.appendChild(traselect);
     cell.appendChild(tratextarea);
     cell.appendChild(delButton);
     cell.appendChild(document.createElement("br"));
-
+   // traselect.value = newLanguageCode;
 
   }
 }

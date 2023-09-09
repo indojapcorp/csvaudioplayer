@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV Merge and Download Example</title>
+    <!-- Include Papa.js from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+
+    <button id="mergeAndDownloadButton">Merge and Download CSV</button>
+
+    <script>
+        // CSV data as strings
+        var csv1Data = `TH1,TH2,TH3,TH4
+A,B,C,D`;
+
+        var csv2Data = `TH5,TH1
+A,E`;
+csv1Data = `TH1
+A`;
+csv2Data = `TH5
+E`;
+        // Function to merge headers of two CSVs
+        function mergeHeaders(headers1, headers2) {
+            const uniqueHeaders = new Set([...headers1, ...headers2]);
+            return Array.from(uniqueHeaders);
+        }
+
+        // Function to merge data of two CSVs
+        function mergeData(data1, data2, mergedHeaders) {
+            const mergedData = [];
+
+            for (const row1 of data1) {
+                const mergedRow = {};
+
+                for (const header of mergedHeaders) {
+                    if (row1[header] !== undefined) {
+                        mergedRow[header] = row1[header];
+                    } else {
+                        mergedRow[header] = '-';
+                    }
+                }
+
+                mergedData.push(mergedRow);
+            }
+
+            for (const row2 of data2) {
+                const mergedRow = {};
+
+                for (const header of mergedHeaders) {
+                    if (row2[header] !== undefined) {
+                        mergedRow[header] = row2[header];
+                    } else {
+                        mergedRow[header] = '-';
+                    }
+                }
+
+                mergedData.push(mergedRow);
+            }
+
+            return mergedData;
+        }
+
+        // Function to generate and download a CSV file
+        function downloadCSV(csvContent, fileName) {
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', fileName);
+            document.body.appendChild(link);
+            link.click();
+
+            URL.revokeObjectURL(url);
+        }
+
+        console.log(csv1Data);
+        console.log(csv2Data);
+
+        // Add an event listener to the button
+        document.getElementById('mergeAndDownloadButton').addEventListener('click', function () {
+            Papa.parse(csv1Data, {
+                header: true,
+                dynamicTyping: true,
+                complete: function (results1) {
+                    Papa.parse(csv2Data, {
+                        header: true,
+                        dynamicTyping: true,
+                        complete: function (results2) {
+                            // Merge the two CSVs
+                            const mergedHeaders = mergeHeaders(results1.meta.fields, results2.meta.fields);
+                            const mergedData = mergeData(results1.data, results2.data, mergedHeaders);
+
+                            console.log(mergedHeaders);
+                            // Convert merged data to CSV format
+                            const mergedCSV = Papa.unparse({
+                                fields: mergedHeaders,
+                                data: mergedData
+                            });
+
+                            // Download the merged CSV as a file
+                            downloadCSV(mergedCSV, 'merged_data.csv');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
