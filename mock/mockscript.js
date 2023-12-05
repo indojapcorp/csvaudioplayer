@@ -21,14 +21,6 @@ const questionsData = [
   // Variable to store user's selected option for each question
 const userSelectedOptions = new Array(questionsData.length);
 
-// // Fetch data from JSON file
-// fetch('mockdata.json')
-//   .then(response => response.json())
-//   .then(data => {
-//     questionsData = data;
-//   })
-//   .catch(error => console.error('Error fetching data:', error));
-
 function startTest() {
   document.getElementById('startBtn').style.display = 'none';
   document.getElementById('testContainer').style.display = 'block';
@@ -56,15 +48,6 @@ function displayQuestion() {
   
     updateButtons();
   }
-  
-  
-function displayQuestionOld() {
-  const currentQuestionData = questionsData[currentQuestion];
-  document.getElementById('question').textContent = currentQuestionData.question;
-  for (let i = 0; i < 4; i++) {
-    document.getElementById(`option${i}`).textContent = currentQuestionData.options[i];
-  }
-}
 
 function nextQuestion() {
   const selectedOption = document.querySelector('input[name="option"]:checked');
@@ -174,7 +157,7 @@ function showResult() {
     if(!isConfirmed){
         return;
     }
-    
+
     closeReviewModal();
     const resultTable = document.getElementById('resultTable');
     resultTable.innerHTML = ''; // Clear existing content
@@ -227,32 +210,6 @@ function showResult() {
     `;
   }
   
-function showResultOld() {
-    const selectedOption = document.querySelector('input[name="option"]:checked');
-
-    userAnswers[currentQuestion] = parseInt(selectedOption.value);
-
-  const totalQuestions = questionsData.length;
-  const attemptedQuestions = userAnswers.filter(answer => typeof answer !== 'undefined').length;
-
-  const correctAnswers = userAnswers.reduce((count, answer, index) => {
-    const correctIndex = questionsData[index].correctAnswer;
-    const isCorrect = answer === correctIndex;
-    console.log("correctIndex="+correctIndex +" answer="+answer);
-
-    return count + (isCorrect ? 1 : 0);
-  }, 0);
-
-  document.getElementById('testContainer').style.display = 'none';
-  document.getElementById('resultContainer').style.display = 'block';
-  document.getElementById('summary').textContent = `
-    Total Questions: ${totalQuestions}
-    Attempted Questions: ${attemptedQuestions}
-    Correctly Answered: ${correctAnswers}
-  `;
-
-  }
-  
 function shuffleQuestions() {
     // Fisher-Yates (Knuth) Shuffle algorithm for shuffling questions
     for (let i = questionsData.length - 1; i > 0; i--) {
@@ -266,7 +223,6 @@ function shuffleOptions() {
     const currentQuestionData = questionsData[currentQuestion];
     const originalCorrectAnswer = currentQuestionData.options[currentQuestionData.correctAnswer];
     currentQuestionData.options = shuffleArray(currentQuestionData.options);
-    console.log(currentQuestionData.options);
     // Update correct answer with the new index
     currentQuestionData.correctAnswer = currentQuestionData.options.indexOf(originalCorrectAnswer);
   }
