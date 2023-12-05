@@ -1,0 +1,185 @@
+1. What is computing?
+Computing involves leveraging technology to process information and carry out diverse computations. It encompasses activities like storing data, analyzing information, and solving problems. Computing technology encompasses a range of devices such as computers and servers, along with the software and programming languages utilized to operate and interact with them.
+
+It also encompasses the study and development of algorithms, data structures, and other mathematical concepts used in computing.
+
+In short, computing is the process of utilizing technology to process data and make information more useful and meaningful. It plays a vital role in a wide range of fields, from business and science to entertainment and communication.
+
+2. What is cloud computing?
+Cloud computing is the distribution of computing services over the internet (“the cloud”), including servers, storage, libraries, connectivity, software, analytics, and intelligence, in order to provide speedier innovation, adaptable resources, and scale economies. 
+
+Cloud computing services can be categorized into three main types: Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS), and Software-as-a-Service (SaaS). As cloud computing continues to gain widespread recognition, businesses and organizations of various scales can now leverage its numerous advantages. These include cost savings, the ability to scale resources as needed, and improved operational efficiency.
+
+3. What are the main features of cloud services?
+Cloud services and cloud computing as a whole have a multitude of features, especially the ease of accessing and managing commercial software from anywhere around the globe.
+
+Easy centralization of all management related to the software to a central web service
+The design and development of web applications capable of handling multiple clients from anywhere around the world simultaneously
+The elimination of software upgrade downloads by centralizing and automating the updating process
+4. What is Google Cloud Platform?
+Google Cloud Platform (GCP) is a collection of cloud computing services offered by Google that runs on the same infrastructure that Google uses internally for its end-user products such as Google Search and YouTube.
+
+GCP offers a wide range of services, including computing, storage, networking, big data, machine learning, and the Internet of Things(IoT) that enable organizations to build, deploy, and scale applications on the same infrastructure as Google.
+
+Google Cloud Platform (GCP) offers a diverse range of tools and services that empower users to create, launch, and oversee their applications and data on Google’s infrastructure. These integrated services are purposefully designed to collaborate harmoniously, delivering a versatile and economically efficient solution suitable for businesses across all scales.
+
+With GCP, organizations can take advantage of the scalability, security, and performance of Google’s infrastructure to power their applications without the need to invest in and maintain their data centers.
+
+5. What are the advantages of using cloud computing?
+First, let us compare Google Cloud with AWS Cloud:
+
+Criteria	Google Cloud	AWS
+Data Centers	Relatively less	Large number
+Market Position	In top three	Market leader
+Entry in Cloud	Late entrant	Very early entrant
+The advantages of using cloud computing are many. Here we will discuss some of the most important advantages of the cloud. The cloud enables quick and seamless deployment, allowing you to start using services and applications in the shortest possible time frame.
+
+6. Mention platforms that are used for large-scale cloud computing.
+The platforms that are used for large-scale cloud computing are Amazon Web Services, Azure, Google Cloud Platform, and more.
+
+7. What are the different models for deployment in cloud computing?
+The various deployment models in cloud computing are private, public, and hybrid cloud.
+
+Cloud Deployment Models
+8. What Can a user gain from utility computing?
+Utility computing is a service wherein you get pay-as-you-go and on-demand services in which the provider offers to manage and operate the computing services, and you can choose which services to access, which are all deployed in the cloud.
+
+9. How do you ensure data is secure when you transfer it?
+To ensure that the data which is being transported is secure, you should check the implemented encryption key and that there is no leak in the data.
+
+10. Describe the security aspects that the cloud offers.
+Some of the important security aspects that the cloud offers are as listed below:
+
+Access Control: It offers control to the users who can control access to other users who enter the cloud ecosystem
+Identity Management: This provides authorization for the application services
+Authorization and Authentication: This security feature lets only authenticated and authorized users access the applications and data.
+11. What are system integrators in cloud computing?
+The cloud can consist of multiple components that can be complex. The system integrator in the cloud is the strategy that provides the process of designing the cloud and integrating the various components for creating a hybrid or private cloud network, among other things.
+
+
+12. What are the various components of the Google Cloud Platform?
+The various GCP components are as follows:
+
+Google Compute Engine
+Google Cloud Container Engine
+Google Cloud Storage
+Google Cloud App Engine
+Google Cloud Dataflow
+Google Cloud Machine Learning Engine
+Google BigQuery Service
+Google Cloud Job Discovery
+Google Cloud Endpoints
+Google Cloud Test Lab
+13. What are the main advantages of using Google Cloud Platform?
+Google Cloud Platform is gaining popularity among cloud professionals and users because of its advantages:
+
+GCP offers competitive pricing. 
+Google Cloud servers allow access to information from anywhere. 
+GCP has overall better performance and service compared to other hosting cloud services.
+Google Cloud provides speedy and efficient server and security updates.
+The security level of Google Cloud Platform is exemplary; the cloud platform and networks are secured and encrypted with various security measures.
+
+14. How does cloud computing provide on-demand functionality?
+As a technology, cloud computing was built on the foundation of providing functionality to all its users on demand at any time and from anywhere. With the latest advancements and easy availability of applications like Google Cloud, it has achieved that goal.
+
+A user on Google Cloud can view the files on the cloud on any device at any time from wherever they are connected to the internet.
+
+15. What are the various layers in the cloud architecture?
+The different layers that constitute the cloud architecture are as follows:cloud architecture
+Physical Layer: This constitutes the physical servers, network, and other aspects.
+Infrastructure Layer: This layer includes storage, virtualized layers, and so on.
+Platform Layer: This includes the operating system, apps, and other aspects.
+Application Layer: This is the layer that the end-user directly interacts with.
+16. What are the libraries and tools for cloud storage on GCP?
+JSON API and XML API are at the core level for the cloud storage on the Google Cloud Platform. But along with these, Google also provides the following to interact with cloud storage.
+
+Google Cloud Platform Console to perform basic operations on objects and buckets.
+Cloud Storage Client Libraries provide programming support for various languages. 
+Gsutil Command-line Tool provides a CLI for cloud storage.
+There are also a number of third-party libraries and tools, like Boto Library.
+
+17. What is “EUCALYPTUS” in the context of cloud computing?
+“EUCALYPTUS” stands for “Elastic Utility Computing Architecture for Linking Your Programs To Useful Systems”, an open-source cloud computing infrastructure used for deploying cloud clusters. Using “EUCALYPTUS”, you can build public, private, and hybrid cloud platforms. You can even have your own data center in the cloud, and this can be used to harness its functionality in your organization.
+
+
+18. What is Google Compute Engine?
+Google Cloud Engine is the basic component of the Google Cloud Platform. It is an IaaS that provides flexible Windows and Linux-based virtual machines that are self-managed and hosted on the Google infrastructure. The virtual machines can run on local, durable storage options and KVM.
+
+For the purpose of control and configuration, Google Cloud Engine also includes REST-based API. It integrates with other GCP technologies (Google Cloud Storage, Google App Engine, Google BigQuery, etc.) that help extend its computational ability, creating more complex and sophisticated applications.
+
+Learn about GCP architecture through our detailed blog!
+
+19. What are the different methods for the authentication of Google Compute Engine API?
+There are different methods for the authentication of Google Compute Engine API. They are as follows:
+
+Through the client library
+Using OAuth 2.0
+Directly using an access token
+Courses you may like
+
+IITRoorkee.jpgCloudArchitectMaster.jpgAWSMaster.jpg
+20. Why do you need the virtualization platform to implement the cloud?
+Virtualization lets you create virtual versions of storage, operating systems, applications, networks, and so on. If you use the right virtualization, it helps you augment your existing infrastructure. You are able to run multiple apps and operating systems on existing servers.
+
+virtualization platform
+
+21. What are some of the popular open-source cloud computing platforms?
+Some of the important open-source cloud computing platforms are listed as below:
+
+OpenStack
+Cloud Foundry
+Docker
+Apache Mesos
+KVM
+22. Explain the different modes of software as a service (SaaS).
+The two most important types of software as a service are listed below:different modes of software as a service (SaaS)
+Different Modes of Software as a Service (SaaS)
+
+Single Multi-Tenancy: In this type of SaaS, you have independent resources that you don’t share with anybody
+Fine Grain Multi-Tenancy: In this type of SaaS deployment, the resources are shared between multiple tenants even though the functionalities remain the same.
+23. What is the benefit of APIs in the cloud domain?
+Here, we list the important benefits of APIs with respect to the cloud domain:
+
+You don’t have to write the complete program.
+You can easily communicate between one application and another.
+You can easily create applications and link them to cloud services.
+It seamlessly connects two applications in a secure manner.
+ 
+
+Let’s move to the advanced section of Google Cloud Architect interview questions and answers.
+Understand and implement GCP skills, by enrolling in our Google Cloud Training in Bangalore!
+Advanced GCP Interview Questions for Experienced
+24. Mention what is the difference between elasticity and scalability in cloud computing.
+Scalability in the cloud is the way in which you increase the ability to service additional workloads either by adding new servers or accommodating them within the existing servers. Elasticity is the process by which you can either add or remove virtual machines depending on the requirement in order to avoid wastage of resources and reduce costs.
+
+25. What are the service accounts? How will you create one?
+This is one of the most common Google Cloud interview questions. Service accounts are special accounts related to a project. They are used for the authorization of Google Compute Engine in order to be able to perform on behalf of the user, thus receiving access to non-sensitive data.
+
+There are different service accounts offered by Google, but mainly, users prefer to use Google Cloud Platform Console and Google Compute Engine service accounts.
+
+The user doesn’t need to create a service account manually. It is automatically created by the Compute Engine whenever a new instance is created. Google Compute Engine also specifies the scope of the service account for that particular instance when it is created.
+
+26. What are projects in the context of Google Cloud?
+Projects are the containers that organize all the Google Compute resources. They comprise the world of compartments and are not meant for resource sharing. Projects may have different users and owners.
+
+27. Suppose you deleted your instance by mistake. Will you be able to retrieve it? If yes, how?
+While it is a very simple question, it is based on a deep understanding of the Google Cloud Platform. The answer is no. It is not possible to retrieve instances that have been deleted once. However, if it has been stopped, it can be retrieved by simply starting it again.
+
+28. What is Google BigQuery? What are the benefits of BigQuery for data warehouse practitioners?
+Google BigQuery is used as a data warehouse and stores all the analytical data in an organization. It organizes the data table into datasets.
+
+Some of the benefits of BigQuery for data warehouse practitioners are as follows:
+
+BigQuery allocates query and storage resources depending on the requirements and usage. Therefore, it doesn’t require the provisioning of resources before usage.
+It can store data in different formats for efficient storage management, for example, Google’s distributed file system, proprietary format, proprietary columnar format, query access pattern, etc.
+It is fully maintained and managed without any downtime or hindrance.
+It provides backup and disaster recovery at a broader level. Users can easily undo changes and revert to a previous state without making a request for backup recovery.
+29. What do you know about Google Cloud SDK?
+Google Cloud SDK (Software Development Kit) is a set of tools used in the management of applications and resources that are hosted on the Google Cloud Platform. It comprises the gcloud, gsutil, and bqcommand line tools.
+Google Cloud SDK runs only on specific platforms like Windows, Linux, and macOS and requires Python 2.7.x. Other specific tools in the kit may have additional requirements.
+
+30. What are the Google Cloud APIs? How can you access them?
+Google Cloud APIs are programmatic interfaces that allow users to add the power of everything (from storage access to image analysis based on machine learning) to Google Cloud-based applications.
+
+Accessing Google Cloud APIs
+Cloud APIs can be easily accessed with client libraries from server applications. A number of programming languages can be used to access Google Cloud APIs. One can use mobile applications via Firebase SDKs or through third-party clients. Google Cloud Platform Console Web UI or Google SDK command-line tools can also be used to access the Google Cloud APIs.

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chinese to Pinyin Converter</title>
+    <script src="https://cdn.jsdelivr.net/npm/pinyin4js@1.3.18/dist/pinyin4js.min.js"></script>
+
+</head>
+<body>
+    <h1>Chinese to Pinyin Converter</h1>
+    <input id="inputText"  value="我 不 是 美国人"></input>
+    <button onclick="convertToPinyin()">Convert to Pinyin</button>
+    <div id="outputPinyin"></div>
+    <script>
+        function convertToPinyin() {
+            const inputText = document.getElementById("inputText").value;
+            const outputPinyin = document.getElementById("outputPinyin");
+
+            // Use the pinyin library or an API for converting to Pinyin
+            //const pinyin = convertChineseToPinyin(inputText);
+
+             // Convert Chinese text to Pinyin using the pinyin-es library
+//   const pinyinArray = pinyin.get(inputText, {
+//     toneToNumber: true,
+//   });
+//   const pinyinArray = pinyin(chineseText, {
+//                 style: pinyin.STYLE_NORMAL, // You can use other styles as well
+//             });
+
+//   // Combine the Pinyin array into a string
+//   const pinyin = pinyinArray.join(' ');
+
+//             outputPinyin.innerText = pinyin;
+
+const pinyin = PinyinHelper.convertToPinyinString(inputText, '#', PinyinFormat.WITH_TONE_MARK);
+outputPinyin.innerText = pinyin;
+    // output: xià#mén#nǐ#hǎo#dà#shà#xià#mén
+    console.log(PinyinHelper.convertToPinyinString('厦门你好大厦厦门', '#', PinyinFormat.WITH_TONE_MARK))
+
+
+    //首字母风格
+    // output: xmnhdsxm
+    console.log(PinyinHelper.convertToPinyinString('厦门你好大厦厦门', '', PinyinFormat.FIRST_LETTER))
+    // or
+    console.log(PinyinHelper.getShortPinyin('厦门你好大厦厦门'))            
+        }
+
+        function convertChineseToPinyin(chineseText) {
+            // Replace this with your preferred method or library for Pinyin conversion
+            // You can use libraries like pinyin-es or pinyin.js
+            // Here, we use a simple mapping as an example
+            const pinyinMapping = {
+                '你好': 'nǐ hǎo',
+                '中国': 'zhōngguó',
+                // Add more mappings as needed
+            };
+
+            const words = chineseText.split(' ');
+            const pinyinWords = words.map(word => pinyinMapping[word] || word);
+            return pinyinWords.join(' ');
+        }
+    </script>
+</body>
+</html>

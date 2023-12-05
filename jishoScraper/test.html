@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Data Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>JSON Data Table</h1>
+    <table>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+    </table>
+
+    <script>
+        const jsonData = {
+            "found": true,
+            "query": "谷",
+            "uri": "https://jisho.org/word/%E8%B0%B7",
+            "tags": [
+                "Common word",
+                "JLPT N3",
+                "Wanikani level 5"
+            ],
+            "meanings": [
+                {
+                    "seeAlsoTerms": [],
+                    "sentences": [],
+                    "definition": "valley",
+                    "supplemental": [],
+                    "definitionAbstract": "",
+                    "tags": [
+                        "noun"
+                    ]
+                },
+                {
+                    "seeAlsoTerms": [],
+                    "sentences": [],
+                    "definition": "Valley",
+                    "supplemental": [],
+                    "definitionAbstract": "In geology, a valley or dale is a depression with predominant extent in one direction. A very deep river valley may be called a canyon or gorge. The terms U-shaped and V-shaped are descriptive terms of geography to characterize the form of valleys. Most valleys belong to one of these two main types or a mixture of them, (at least) with respect of the cross section of the slopes or hillsides.",
+                    "tags": [
+                        "wikipedia definition"
+                    ]
+                }
+            ],
+            "otherForms": [
+                {
+                    "kanji": "渓",
+                    "kana": "たに"
+                },
+                {
+                    "kanji": "谿",
+                    "kana": "たに"
+                }
+            ],
+            "audio": [
+                {
+                    "uri": "https://d1vjc5dkcd3yh2.cloudfront.net/audio/b9ff4f25c7a20f0f39131b3e3db0cd19.mp3",
+                    "mimetype": "audio/mpeg"
+                },
+                {
+                    "uri": "https://d1vjc5dkcd3yh2.cloudfront.net/audio_ogg/b9ff4f25c7a20f0f39131b3e3db0cd19.ogg",
+                    "mimetype": "audio/ogg"
+                }
+            ],
+            "notes": []
+        };
+
+        const table = document.querySelector('table');
+
+        function createTableRow(key, value) {
+            const row = document.createElement('tr');
+            const keyCell = document.createElement('td');
+            const valueCell = document.createElement('td');
+            keyCell.textContent = key;
+            valueCell.textContent = value;
+            row.appendChild(keyCell);
+            row.appendChild(valueCell);
+            table.appendChild(row);
+        }
+
+        for (const key in jsonData) {
+            if (Array.isArray(jsonData[key])) {
+                // Create a separate table for array objects
+                const subTable = document.createElement('table');
+                subTable.innerHTML = `<tr><th>${key}</th></tr>`;
+                jsonData[key].forEach((item, index) => {
+                    createTableRow(`Item ${index + 1}`, JSON.stringify(item));
+                });
+                const row = document.createElement('tr');
+                const cell = document.createElement('td');
+                cell.appendChild(subTable);
+                row.appendChild(cell);
+                table.appendChild(row);
+            } else {
+                createTableRow(key, JSON.stringify(jsonData[key]));
+            }
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yahoo News Scraper</title>
+    <script src="js/kuroshiro.min.js"></script>
+    <script src="js/kuroshiro-analyzer-kuromoji.min.js"></script>
+</head>
+
+<body>
+    <h1>Yahoo Japan News</h1>
+    <select id="navi-select">
+        <option value="">Select a Navigation Link</option>
+    </select>
+
+    <div>
+        <label for="tgtlanguage">Translate Language:</label>
+        <select id="tgtlanguage">
+            <option value="en-US">English (United States)</option>
+            <option value="en-IN">English (India)</option>
+            <option value="ja-JP">Japanese (Japan)</option>
+            <option value="fr-FR">French (France)</option>
+            <option value="es-ES">Spanish (Spain)</option>
+            <option value="de-DE">German (Germany)</option>
+            <option value="it-IT">Italian (Italy)</option>
+            <option value="zh-CN">Chinese (Simplified)</option>
+            <option value="ko">Korean</option>
+            <option value="hi-IN">Hindi</option>
+            <option value="mr-IN">Marathi</option>
+            <option value="kn-IN">Kannada</option>
+            <option value="ml-IN">Malayalam</option>
+            <option value="ta-IN">Tamil</option>
+            <option value="te-IN">Telugu</option>
+            <!-- Add all the languages available in tts here -->
+        </select>
+    </div>
+
+    <div>
+        <div class="option">
+            <label for="volume">Volume</label>
+            <input type="range" min="0" max="1" step="0.1" name="volume" id="volume" value="1">
+        </div>
+        <div class="option">
+            <label for="rate">Rate</label>
+            <input type="range" min="0.1" max="10" step="0.1" name="rate" id="rate" value="1">
+        </div>
+        <div class="option">
+            <label for="pitch">Pitch</label>
+            <input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
+        </div>
+    </div>
+    <div>
+        <button onclick="refresh()">Refresh</button>
+        <button onclick="speakAll()">Speak</button>
+        <button onclick="pause()">Pause</button>
+        <button onclick="resume()">Resume</button>
+        <button onclick="stopSpeak()">Stop</button>
+    </div>
+    <div id="news-container"></div>
+
+    <script>
+        var kuroshiroInstance;
+        var utterance = new SpeechSynthesisUtterance();
+
+
+        initializeKuroshiro().then(() => {
+            scrapeTopics();
+            //scrapeNews();
+        });
+
+        function speak(hid, divid) {
+
+
+            // console.log("hid in speak==" + hid.value);
+            // console.log("divid in speak==" + divid);
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(hid.value);
+            utterance.lang = "ja-JP";
+
+            // Get the attribute controls.
+            var volumeInput = document.getElementById('volume');
+            var rateInput = document.getElementById('rate');
+            var pitchInput = document.getElementById('pitch');
+            // Set the attributes.
+            utterance.volume = parseFloat(volumeInput.value);
+            utterance.rate = parseFloat(rateInput.value);
+            utterance.pitch = parseFloat(pitchInput.value);
+
+            // Set the background color to yellow
+            divid.style.backgroundColor = 'yellow';
+
+            utterance.onend = function () {
+                // Set the background color to its original state
+                divid.style.backgroundColor = ''; // Reset to default
+            };
+
+            // Speak the text
+            synth.speak(utterance);
+        }
+
+        function speakTrans(transhid, divid) {
+            // console.log("hid in speak==" + hid.value);
+            // console.log("divid in speak==" + divid);
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(transhid.value);
+            utterance.lang = document.getElementById("tgtlanguage").value;
+
+            // Get the attribute controls.
+            var volumeInput = document.getElementById('volume');
+            var rateInput = document.getElementById('rate');
+            var pitchInput = document.getElementById('pitch');
+            // Set the attributes.
+            utterance.volume = parseFloat(volumeInput.value);
+            utterance.rate = parseFloat(rateInput.value);
+            utterance.pitch = parseFloat(pitchInput.value);
+
+            // Set the background color to yellow
+            divid.style.backgroundColor = 'yellow';
+
+            utterance.onend = function () {
+                // Set the background color to its original state
+                divid.style.backgroundColor = ''; // Reset to default
+            };
+
+            // Speak the text
+            synth.speak(utterance);
+        }
+
+        let currentDivIndex = 0;
+        const synth = window.speechSynthesis;
+        var allDivs = [];
+
+        function refresh() {
+            // Get the select element
+            const selectElement = document.getElementById('navi-select');
+            // Create a new 'change' event
+            const changeEvent = new Event('change', {
+                bubbles: true, // Allows the event to bubble up through the DOM
+                cancelable: true, // Allows the event to be canceled
+            });
+
+            // Dispatch the 'change' event on the select element
+            selectElement.dispatchEvent(changeEvent);
+        }
+        function stopSpeak() {
+            window.speechSynthesis.cancel();
+            currentDivIndex = 0;
+            // Reset cell highlighting
+            for (var i = 0; i < allDivs.length; i++) {
+                allDivs[i].style.backgroundColor = '';
+            }
+            allDivs = [];
+        }
+        function pause() {
+            window.speechSynthesis.pause();
+        }
+
+        function resume() {
+            window.speechSynthesis.resume();
+        }
+        function speakAll() {
+            currentDivIndex = 0;
+            allDivs = document.querySelectorAll('.box');
+            console.log(allDivs.length);
+            speakAndHighlight();
+        }
+        function speakAllButtons() {
+            const buttons = document.querySelectorAll('.box button');
+            console.log(buttons.length);
+
+            if (currentDivIndex < buttons.length) {
+
+                buttons[currentDivIndex].click();
+                currentDivIndex++;
+                //setTimeout(speakAll, 2000);
+
+                // // Listen for the end of speech and continue to the next button
+                // synth.addEventListener('end', () => {
+                //     speakAll();
+                // });
+
+                // Listen for the end of speech event
+                synth.onend = () => {
+                    // Move to the next button
+                    speakAll();
+                    // Reset the onend handler
+                    synth.onend = null;
+                };
+
+            } else {
+                currentDivIndex = 0; // Reset index for the next time
+            }
+        }
+
+        async function scrapeTopics() {
+            try {
+                const proxyUrl = "http://localhost:3000/proxy?url=";
+                //const tatoebaApiUrl = `https://tatoeba.org/eng/api_v0/search?query=${encodeURIComponent(query)}&format=json&page=2`;
+                var tatoebaApiUrl = `https://www.yahoo.co.jp/`;
+                tatoebaApiUrl = `https://news.yahoo.co.jp/categories/business`;
+                //const tatoebaApiUrl = `https://tatoeba.org/api/v1/sentences/search?query=${encodeURIComponent(query)}&format=json`;
+                const url = proxyUrl + encodeURIComponent(tatoebaApiUrl);
+
+                console.log(kuroshiroInstance);
+                //const response = await fetch('https://www.yahoo.co.jp');
+                const response = await fetch(url);
+                const html = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+
+                // Find the main news div
+                //const newsDiv = doc.querySelector('div._2jjSS8r_I9Zd6O9NFJtDN-');
+                //const newsDiv = doc.querySelector('div[class*=sc-gJUIbn]');
+                //const newsDiv = doc.querySelector('div[class*=sc-jngARV]');
+
+                const newsDiv = doc.querySelector('section[id=uamods-topics]');
+                
+                
+                // const newsDivlis = newsDiv.querySelectorAll('li');
+                console.log("newsDiv.length="+newsDiv);
+
+                if (newsDiv) {
+
+                    // Get all <a> elements with class "sc-dlMDgC" under div id "snavi"
+                    const naviLinks = doc.querySelectorAll('div#snavi a[class*=sc-dlMDgC]');
+                    console.log("naviLinks.length="+naviLinks.length);
+
+                    // Get the select element
+                    const selectElement = document.getElementById('navi-select');
+
+                    // Populate the select element options with the <a> elements
+                    naviLinks.forEach((link) => {
+                        const option = document.createElement('option');
+                        option.value = `https://news.yahoo.co.jp` + link.getAttribute('href'); // Use href as option value
+                        option.textContent = link.textContent; // Use link text as option text
+                        selectElement.appendChild(option);
+                    });
+
+                    // Add an event listener for the "change" event of the select element
+                    selectElement.addEventListener('change', function () {
+                        // Log the selected option's value to the console
+                        //console.log('Selected Option Value:', selectElement.value);
+                        document.getElementById('news-container').innerHTML = ""
+                        scrapeNews(selectElement.value);
+                    });
+
+                }
+            } catch (error) {
+                console.error('An error occurred:', error);
+            }
+        }
+        // Function to scrape and display news data
+        async function scrapeNews(tatoebaApiUrl) {
+            try {
+                // Get the "news-container" element
+                const newsContainer = document.getElementById('news-container');
+
+
+                const proxyUrl = "http://localhost:3000/proxy?url=";
+                // var tatoebaApiUrl = `https://www.yahoo.co.jp/`;
+                // tatoebaApiUrl = `https://news.yahoo.co.jp/categories/business`;
+                const url = proxyUrl + encodeURIComponent(tatoebaApiUrl);
+
+                console.log(kuroshiroInstance);
+                //const response = await fetch('https://www.yahoo.co.jp');
+                const response = await fetch(url);
+                const html = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+
+                // Find the main news div
+                //const newsDiv = doc.querySelector('div._2jjSS8r_I9Zd6O9NFJtDN-');
+                //const newsDiv = doc.querySelector('div[class*=sc-gJUIbn]');
+                //const newsDiv = doc.querySelector('div[class*=sc-jngARV]');
+                const newsDiv = doc.querySelector('section[id=uamods-topics]');
+
+                // const newsDivlis = newsDiv.querySelectorAll('li');
+
+                if (newsDiv) {
+
+                    // // Get all <a> elements with class "sc-dlMDgC" under div id "snavi"
+                    // const naviLinks = doc.querySelectorAll('div#snavi a[class*=sc-dlMDgC]');
+
+                    // // Get the select element
+                    // const selectElement = document.getElementById('navi-select');
+
+                    // // Populate the select element options with the <a> elements
+                    // naviLinks.forEach((link) => {
+                    //     const option = document.createElement('option');
+                    //     option.value = `https://news.yahoo.co.jp` + link.getAttribute('href'); // Use href as option value
+                    //     option.textContent = link.textContent; // Use link text as option text
+                    //     selectElement.appendChild(option);
+                    // });
+
+
+
+                    const liElements = newsDiv.querySelectorAll('li');
+                    var lines = [];
+
+                    // Loop over the <li> elements and print their text to the console
+                    liElements.forEach((li) => {
+                        lines.push(li.textContent);
+                    });
+
+
+                    const convertedLines = [];
+
+                    async function processLines() {
+                        for (let i = 0; i < lines.length; i++) {
+                            const line = lines[i].replace("NEW", "");
+                            // Check if the line contains only numeric values
+                            if (!isNaN(line.trim()) || line.trim() === 'NEW') {
+                                continue; // Skip processing this line
+                            }
+
+                            try {
+                                // Convert each line to Romaji
+                                var furiganaLine = line;
+
+
+                                furiganaLine = await kuroshiroInstance.convert(line, { mode: "furigana", to: "hiragana" });
+
+                                const selectTargetLang = document.getElementById('tgtlanguage').value;
+
+                                // Translate each line
+                                const translatedText = await translateInBg(line, "ja-JP", selectTargetLang);
+                                //const translatedText = await translateInBg(line, storedsrclanguage, storedtgtlanguage);
+
+                                //console.log("translatedText==" + translatedText);
+                                const inputElement = document.createElement('input');
+                                inputElement.type = 'hidden';
+                                inputElement.id = 'hid' + i;
+                                inputElement.value = line;
+
+                                //console.log("translatedText==" + translatedText);
+                                const inputTransElement = document.createElement('input');
+                                inputTransElement.type = 'hidden';
+                                inputTransElement.id = 'transhid' + i;
+                                inputTransElement.value = translatedText;
+
+                                document.getElementById('news-container').appendChild(inputElement);
+                                document.getElementById('news-container').appendChild(inputTransElement);
+                                //var hiddenElement = "<input type='hidden' id='hid" + i + "' value='" + line + "'></input><button text='S' id='btnid" + i + "' onclick='speak(hid" + i + ")'/></button>";
+                                var hiddenElement = '&nbsp&nbsp&nbsp<button id=btnid' + i + ' onclick=speak(' + 'hid' + i + '' + ',lineDiv' + i + ')>S</button>';
+                                var hiddenTransElement = '&nbsp&nbsp&nbsp<button id=btntranid' + i + ' onclick=speakTrans(' + 'transhid' + i + '' + ',lineDiv' + i + ')>S</button>';
+                                var lineDivElement = '<div class=box id=lineDiv' + i + '>' + furiganaLine + hiddenElement + " <br>" + translatedText + hiddenTransElement + '</div>';
+
+                                // Push the converted line and translated text into convertedLines
+                                //convertedLines.push(furiganaLine + hiddenElement + " <br>" + translatedText);
+                                convertedLines.push(lineDivElement);
+                            } catch (error) {
+                                console.error("Error:", error);
+                            }
+                        }
+
+                        // Join the lines back together with new lines
+                        const romajiText = convertedLines.join('<br><br>');
+
+                        //console.log(romajiText);
+
+                        //document.getElementById('news-container').innerHTML = newsDiv.innerHTML;
+                        document.getElementById('news-container').innerHTML = document.getElementById('news-container').innerHTML + "<br><br><br>" + romajiText;
+
+                    }
+
+                    processLines();
+
+                    //                    var furiganaLine = await kuroshiroInstance.convert(newsDiv.textContent, { mode: "furigana", to: "hiragana" });
+
+                    // Display the news content in the "news-container" div
+                } else {
+                    console.error('News div not found.');
+                }
+            } catch (error) {
+                console.error('An error occurred:', error);
+            }
+
+        }
+
+        // Call the scrapeNews function to fetch and display news
+
+        async function initializeKuroshiro() {
+            kuroshiroInstance = new Kuroshiro();
+            const analyzer = new KuromojiAnalyzer({ dictPath: "https://indojapcorp.github.io/TechNotes/tts/js/dict" });
+            // kuroshiro2.init(analyzer);
+            await kuroshiroInstance.init(analyzer);
+            console.log("In initializeKuroshiro");
+        }
+
+        async function translateInBg(sourceText, sourceLang, targetLang) {
+
+            var finalstr = "";
+            var url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText);
+            var translatedString;
+            translatedString = await getStringFromJSON(url);
+            //console.log("ddfdf="+translatedString);
+            return translatedString;
+        }
+
+        function getStringFromJSON(url) {
+
+            return fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    let finalstr = '';
+                    data[0].forEach(val => {
+                        finalstr += val[0] + "\n";
+                    });
+                    return finalstr;
+                })
+                .catch(error => {
+                    console.log('Error:', error);
+                });
+
+        }
+
+        function speakAndHighlight() {
+
+            if (currentDivIndex >= allDivs.length) {
+                currentDivIndex = 0;
+                window.scrollTo({
+                    top: 0,
+                    left: 10,
+                    behavior: 'smooth'
+                });
+
+                return; // All cells have been spoken
+            }
+
+            var currentDiv = allDivs[currentDivIndex];
+
+            if (true) {
+                utterance.lang = "ja-JP";
+
+                // Get the attribute controls.
+                var volumeInput = document.getElementById('volume');
+                var rateInput = document.getElementById('rate');
+                var pitchInput = document.getElementById('pitch');
+                // Set the attributes.
+                utterance.volume = parseFloat(volumeInput.value);
+                utterance.rate = parseFloat(rateInput.value);
+                utterance.pitch = parseFloat(pitchInput.value);
+
+                utterance.text = document.getElementById("hid" + currentDivIndex).value;
+
+                window.speechSynthesis.speak(utterance);
+                utterance.onend = function () {
+                    setTimeout(function () {
+                        currentDiv.style.backgroundColor = ''; // Reset highlighting
+                        currentDivIndex++;
+                        speakAndHighlight(); // Speak the next cell
+                    }, 500);
+
+                };
+            }
+
+            if (true) {
+
+                currentDiv.style.backgroundColor = 'yellow';
+
+                var table = document.getElementById("news-container");
+
+                // Scroll to the cell being spoken
+                var cellRect = currentDiv.getBoundingClientRect();
+                var tableRect = table.getBoundingClientRect();
+                var cellTop = cellRect.top - tableRect.top;
+                var cellLeft = cellRect.left - tableRect.left;
+                var cellCenterX = cellLeft + cellRect.width / 2;
+                var cellCenterY = cellTop + cellRect.height / 2;
+                var scrollX = cellCenterX - window.innerWidth / 2;
+                var scrollY = cellCenterY - window.innerHeight / 2;
+
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+
+                window.scrollTo({
+                    top: scrollY + 60,
+                    left: scrollX,
+                    behavior: 'smooth'
+                });
+
+            }
+        }
+    </script>
+</body>
+
+</html>

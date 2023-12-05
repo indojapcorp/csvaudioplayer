@@ -1,0 +1,310 @@
+####
+1. Compare Cloud and On-premise Computing.
+Criteria	Cloud	On-premise
+Initial cost	Low	High
+Maintenance and support	Hassle-free	Needs attention
+Upgrade	Automatic	Manual
+Scalability	Excellent	Good
+Pay as you go	Yes	No
+####
+2. What is a Cloud?
+A cloud is a collaboration of networks, hardware, services, storage, and interfaces that help in delivering computing as a service. It has three users:
+
+End users
+Business management users
+Cloud service providers
+
+####
+3. What is Cloud Computing?
+It is an advanced-stage technology implemented so that the cloud provides its services globally as per the user requirements. It provides a method to access several servers worldwide.
+
+####
+4. What are some of the key features of Cloud Computing?
+Reliable
+Scalable
+Agile
+Location Independent
+Multi-tenant
+####
+5. What are the benefits of Cloud Computing?
+The main benefits of Cloud Computing are:
+
+Data backup and storage of data
+Powerful server capabilities
+Incremented productivity
+Cost-effective and time-saving
+
+####
+6. Mention the layers of PaaS architecture.
+Cloud Controller
+
+Automatically creates virtual machines and controllers
+Deploys applications
+Connects to services
+Automatically scales up and down
+Storage Services
+
+Object
+NoSQL
+Relational
+Block storage
+Applications Stored in Storage Services
+
+Simple-to-scale applications
+Easier recovery from failure
+####
+7. What are the cloud service models?
+Infrastructure as a Service (IaaS)
+Platform as a Service (PaaS)
+Software as a Service (SaaS)
+
+####
+8. Write about Function as a Service.
+FaaS provides users with a fully functional platform where they can create, manage and run their applications without having to worry about maintaining the infrastructure.
+
+####
+9. What are the components of Windows Azure?
+Windows Azure Platform Services
+
+Cloud
+SQL Azure
+App Fabric: Allows fabric cloud
+
+####
+10. What are the main constituents of the cloud ecosystem?
+Cloud service providers
+Cloud consumers
+Direct consumers
+####
+11. Who are the cloud consumers in a cloud ecosystem?
+People and teams who use different types of cloud services, within your organization.
+
+####
+12. Who are the direct consumers in a cloud ecosystem?
+The individuals who utilize the service provided by your company, build within a cloud environment.
+
+####
+13. Who are the Cloud service providers in a cloud ecosystem?
+Cloud service providers are the companies that sell their cloud services to others. Sometimes these companies also provide cloud services internally to their partners, employees, etc.
+
+####
+14. What are the differences occurred in distributed operations?
+FC: Master–Slave operations
+Nova: Parallel process and its shared database
+
+####
+15. Which agent is equivalent of Nova Compute?
+Azure Agent
+
+
+####
+16. Mention the reliability and availability of Cloud Computing.
+Use of Fault Domains:
+
+Two virtual machines are in a single fault domain if a single piece of hardware can bring down both virtual machines.
+Azure automatically distributes instances of a role across fault domains.
+Fault Domains
+Use of Upgrade Domains:
+
+When a new version of the software is rolled out, then only one up-gradation of the domain is done at a time.
+It ensures that any instance of the service is always available.
+There is an availability of the applications in multiple instances.
+Upgrade Domains
+Look into the Cloud Computing Tutorial by Intellipaat.
+
+Storage and Network Availability:
+
+Copies of data are stored in different domains.
+it is a mechanism to guard against DoS and DDoS attacks.
+Storage and Network
+Career Transition
+
+####
+17. Explain the Cloud Computing Architecture.
+Cloud Computing Architecture brings together two components of cloud computing – the front-end and the back-end. It is important to bring the correct services together for the benefit of both internal and external people. If need be, cloud management should be able to quickly make the required changes.
+
+####
+18. What are the Cloud Storage Levels?
+Files
+Blocks
+Datasets
+Objects
+Cloud Storage Levels
+
+####
+19. What are the serverless components in cloud computing with their advantages and disadvantages?
+These components allow you to create apps without the stress of managing the infrastructure.
+
+Advantages	Disadvantages
+Cost-effective	Can cause late responses
+Increases productivity	Not ideal for high-computing operations
+Scalable	More vulnerable when it comes to security
+No server management	Debugging is challenging
+
+####
+20. Give the best example of the open-source Cloud Computing.
+OpenStack
+
+####
+21. What are microservices and their importance in the cloud?
+Microservices help create apps that consist of codes that are independent of one another and the platform they were developed on.  Microservices are important in the cloud because of the following reasons:
+
+Each of them is built for a particular purpose. This makes app development simpler.
+They make changes easier and quicker.
+Their scalability makes it easier to adapt the service as needed.
+####
+22. What is an AMI? How do we implement it?
+AMI is Amazon Machine Image, which basically is a copy of your root file system. It feeds the information required to launch an instance.
+
+We implement AMI by specifying an AMI whenever we want to launch an instance. Multiple instances can be launched from a single AMI with the same configuration.
+In the case of launching instances with different configurations, we would need to launch different AMIs.
+
+AMI
+AMI includes one or more snapshots of your EBS volumes, in the case of instance-store-backed AMIs, along with a template for the root volume of your instance (like an operating system, an application server, and applications).
+
+It launches the permissions that decide which AWS accounts can use the AMI for launching instances. It also needs a block device mapping for specifying the volumes in order to attach them to the instances whenever they are launched.
+
+
+####
+23. Why Hybrid Clouds are so important?
+Cloud Bursting:
+Access capacity and specialized software are available in the public cloud and not in the private cloud.
+Examples: Virtual Amazon and Dynamo
+
+Leveraging the best of both public and private is the Hybrid Clouds.
+
+vCloud:
+
+It is a VMware cloud.
+It is expensive.
+It gives enterprise quality.
+OpenStack:
+
+It has commodity servers and storage.
+It is less reliable.
+We can run web servers on OpenStack.
+the database is built on vCloud.
+####
+24. List the platforms that are used for large-scale Cloud Computing.
+The platforms that are used for large-scale Cloud Computing are:
+
+Apache Hadoop
+MapReduce
+####
+25. Mention the different types of models used for the deployment in Cloud Computing.
+The different deployment models in Cloud Computing are:
+
+Private Cloud
+Public Cloud
+Community Cloud
+Hybrid Cloud
+
+####
+26. Explain security management in terms of Cloud Computing.
+Identity management access provides the authorization of application services.
+Access control permission is given to users to have complete controlling access of another user who is entering into the cloud environment.
+Authentication and Authorization permits only authorized and authenticated users to have access to the data and applications.
+####
+27. Which are the layers of Cloud Computing?
+The different layers used by cloud architecture are as follows:
+
+CLC or Cloud Controller
+Walrus
+Cluster Controller
+Storage Controller (SC)
+Node Controller (NC)
+####
+28. Explain the full form and the usage of 'Eucalyptus' in Cloud Computing.
+The full form of ‘Eucalyptus’ is ‘Elastic Utility Computing Architecture for Linking Your Programs to Useful Systems.
+
+Eucalyptus in Cloud Computing
+Eucalyptus is an open-source software infrastructure in Cloud Computing, which enables us to implement clusters on the Cloud Computing platform. It is mainly used to build public, hybrid, and private Clouds. It has the capability to convert one’s own data center into a private Cloud; it provides its functionalities to various other organizations.
+
+
+####
+29. Mention the names of some large cloud providers and databases.
+Google Bigtable
+Amazon Simple Database
+Cloud-based SQL (Sequential Query Language)
+
+####
+30. Explain the difference between cloud and traditional data centers.
+The traditional data center is expensive due to heating and hardware/software issues. Mostly, the expenditure is on the maintenance of the data centers.
+Cloud is scaled up when there is an increase in demand, hence such expenditure issues are not faced in Cloud Computing.
+
+####
+31. What is meant by Edge Computing?
+Edge computing is a part of the distributed computing structure. It brings companies closer to the sources of data. This benefits businesses by giving them better insights, good response time and better bandwidth.
+
+####
+32. What are the uses of APIs in cloud services?
+API in Cloud Services
+APIs (Application Programming Interfaces) are used to eliminate the necessity to write complete programs.
+Here, instructions are provided to make communication between one or more applications.
+Creation of applications is made easy and accessible for the link of cloud services with other systems.
+####
+33. Mention different data center deployments of Cloud Computing.
+Cloud Computing consists of different data centers as follows:
+
+Containerized data centers: Containerized data centers are packages that contain a consistent set of servers, network components, and storage delivered to large warehouse kind of facilities. Here, each deployment is relatively unique.
+Low-density data centers: Containerized data centers promote heavy density which in turn causes much heat and significant engineering troubles. Low-density data centers are the solution to this problem. Here, the equipment is established far apart so that it cools down the generated heat.
+
+####
+34. List down the three basic functioning clouds in Cloud Computing.
+Professional cloud
+Personal cloud
+Performance cloud
+####
+35. What are the characteristics of cloud architecture that differ from traditional cloud architecture?
+The characteristics are:
+
+In cloud, the hardware requirement is fulfilled as per the demand created for cloud architecture.
+Cloud architecture is capable of scaling up resources when there is a demand.
+Cloud architecture is capable of managing and handling dynamic workloads without any point of failure.
+####
+36. What are the building blocks of cloud architecture?
+Reference architecture
+Technical architecture
+Deployment operation architecture
+####
+37. Explain AWS.
+AWS stands for Amazon Web Services which is a collection of remote computing services also known as Cloud Computing. This technology is also known as IaaS or Infrastructure as a Service.
+
+
+####
+38. Mention the key components of AWS.
+The key components of AWS are as follows:
+
+AWS Route 53: AWS Route 53 is a DNS (Domain Name Server) web-based service platform.
+Simple E-mail Service: Sending of e-mail is done by using a RESTFUL API call or via regular SMTP (Simple Mail Transfer Protocol).
+Identity and Access Management: Improvised security and identity management are provided for an AWS account.
+Simple Storage Device (S3): It is a huge storage medium, widely used for AWS services.
+Elastic Compute Cloud (EC2): It allows on-demand computing resources for hosting applications and is essentially useful for unpredictable workloads.
+Elastic Block Stores (EBS): They are storage volumes attached to EC2 and allow the data lifespan of a single EC2.
+CloudWatch: Amazon CloudWatch is used to monitor AWS resources, and it allows administrators to view and collect the keys required. Access is provided so that one can set a notification alarm in the case of trouble.
+Go through the Challenges of Cloud Computing Blog to know about the challenges you can face while working.
+
+####
+39. Explain how you can vertically scale an Amazon instance.
+This is one of the essential features of AWS and cloud virtualization. We spinup a newly developed large instance where we pause that instance and detach the root EBS volume from the server and discard. Later, we stop our live instance and detach its root volume connected. here, we note down the unique device ID and attach the same root volume to the new server, and we restart it again. This results in a vertically scaled Amazon instance.
+
+####
+40. Explain the security usage in the Amazon Web Services model.
+AWS supports security groups.
+Access is provided to create a security group for a jump box with SSH access only for port 22 open. Later, a webserver group and a database group are created. The webserver group provides 80 and 443 from around the world, but only port 22 will be vital among the jump box group. The database group allows port 3306 from the webserver group and port 22 from the jump box group. The addition of any machines to the webserver group can store in the database. No one can directly SSH to any of our boxes.
+
+####
+41. What are reasons that make Amazon so big?
+In Amazon, the backup storage of EBS volumes is maintained by inserting the snapshot facility via an API call or via a GUI interface like Elasticfox.
+Performance is improved by using Linux software RAID and striping across four volumes.
+
+
+####
+42. How does Resource Replication take place in Cloud Computing?
+Resource Replication creates duplicates of the same resource. Replication is employed when a resource is needed more and more. The resource is virtualized to replicate cloud-based resources.
+
+####
+43. What is Containers as a Service (CaaS)?
+CaaS is a system that allows developers to run, scale, manage, upload, and organize containers by using virtualization.
+
+A container is a software pack. It allows teams to scale their apps to highly available cloud infrastructures.

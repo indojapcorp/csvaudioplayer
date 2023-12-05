@@ -1,0 +1,731 @@
+####
+1. What is Azure Cloud Service?
+Azure Cloud Service is a comprehensive platform provided by Microsoft for the development, deployment, and management of applications and services in the cloud. It furnishes businesses with a robust and scalable infrastructure, alleviating concerns associated with hardware maintenance and server management. Offering an array of features such as automated scaling, load balancing, and seamless integration with other Azure services, Azure Cloud Service caters to diverse programming languages and frameworks, thereby facilitating accessibility for developers.
+
+
+####
+2. Differentiate between Microsoft Azure and AWS.
+Features	Microsoft Azure	Amazon Web Services (AWS)
+Database services	Azure SQL Database	Amazon RDS
+Deployment services	Azure Virtual Machines	Amazon EC2
+Networking services	Load Balancer	Elastic Load Balancer
+Analytics	Azure Stream Analytics	Amazon Kinesis
+Backup Options	Azure Backup	Amazon Glacier
+Compliance	Azure Trust Center	AWS CLoudHSM
+Content Delivery Network (CDN)	Azure CDN	Amazon CloudFront
+Data Orchestration	Azure Data Factory	AWS Data Pipeline
+Hybrid Cloud Storage	StorSimple	AWS Storage Gateway
+Monitoring	Azure Operational Insights	Amazon CloudTrail
+NoSQL Database Options	Azure DocumentDB	Amazon DynamoDB
+####
+3. What is Azure DevOps?
+Azure DevOps is a SaaS platform that provides development services for creating work plans, working together on code, developing applications, and deploying them. It offers an end-to-end DevOps toolchain for the development and deployment of software. It integrates with a number of popular tools in the market and is a great way for setting up a DevOps toolchain.
+
+
+####
+4. What is Azure Active Directory (Azure AD)?
+Azure AD is a cloud-based IAM solution and directory by Microsoft. It brings together application access management, core directory services, and identity protection and turns them into a single solution. It helps employees of an organization sign in and access resources such as:
+
+External resources, including Microsoft 365, the Azure portal, and a big number of SaaS applications
+Internal resources, such as apps on a corporate network and intranet, as well as any cloud-based apps built by that organization
+Azure AD is intended for use by:
+
+IT Admins
+App Developers
+
+####
+5. What is Azure Data Factory?
+Azure Data Factory is a serverless and cloud-based data integration service and platform used for the creation of ETL and ELT pipelines. It helps in the creation of data-driven workflows for the planning and execution of data movements and data transformation at scale.
+
+####
+6. What is Azure Databricks?
+Azure Databricks is a Data Analytics platform that offers two environments for the development of data-intensive applications:
+
+Azure Databricks SQL Analytics
+Azure Databricks Workspace
+Azure Databricks’ integration with the security, compute, analytics, storage, and AI services that are natively provided by cloud providers facilitates the unification of data and AI workloads.
+Get 100% Hike!
+
+####
+7. What is Azure Data Lake?
+Azure Data Lake is a cloud platform that supports Big Data Analytics through its unlimited storage for structured, semi-structured, or unstructured data of all types and sizes.
+
+####
+8. What are Azure resources?
+Any entity managed by Azure can be referred to as an Azure resource. The following are some examples of Azure resources: Storage accounts, virtual networks, virtual machines, etc.
+
+####
+9. What are the roles implemented in Windows Azure?
+Web Role
+Worker Role
+Virtual Machine Role
+Roles in Azure
+Web Role: It gives a web solution that is front-end. This is like an ASP.NET application. While under facilitating, Azure gives IIS and required services.
+
+Worker Role: It gives solutions for background service. It can run long activities.
+
+Virtual Machine Role: The roles of both web and worker are executed on virtual machines. The Virtual Machine Roles give the client the capacity to modify the Azure Virtual Machine on which the web and worker roles are running.
+
+####
+10. What are the three principal segments of the Windows Azure platform?
+
+
+Windows Azure has three principal segments: Compute, Storage, and Fabric.
+
+A. Windows Azure Compute
+
+Windows Azure gives a code that can be managed by the hosting environment. It gives the calculation benefit through parts. Windows Azure backs three types of roles:
+
+Web roles utilized for web application programming and upheld by IIS7
+Worker roles utilized for foundation handling of web roles
+Virtual machine (VM) roles utilized for moving windows server applications to Windows Azure in a simple way
+B. Windows Azure Storage
+
+It gives four types of storage services:
+
+Queues for informing between web parts and worker roles
+Tables for storing structural data
+BLOBs (Binary Large Objects) to store contents, records, or vast information
+Windows Azure Drives (VHD) to mount a page BLOB. These can be transferred and downloaded by means of BLOBs
+C. Windows Azure AppFabric
+
+AppFabric provides five services:
+
+Service bus
+Access
+Caching
+Integration
+Composite
+Learn from the Azure DevOps Tutorial blog by Intellipaat.
+
+####
+11. Define Windows Azure AppFabric.
+Windows Azure AppFabric was a service platform introduced by Microsoft, designed for the development, deployment, and administration of applications in the cloud. AppFabric encompassed essential functionalities such as messaging, caching, and access control, enabling smooth integration and scalability of applications. However, Microsoft has since deprecated AppFabric, integrating its features into other Azure services.
+
+####
+12. What is the distinction between Windows Azure Queues and Windows Azure Service Bus Queues?
+
+
+Messaging Size:
+
+
+In terms of messaging size, Windows Azure Queues allow messages up to a maximum size of 64 KB, while Windows Azure Service Bus Queues support larger message sizes up to 256 KB. This means that Service Bus Queues offer greater flexibility for handling larger message payloads.
+
+
+
+Messaging Model:
+
+
+Windows Azure Queues follow a simple point-to-point messaging model. They are designed for asynchronous communication, where a sender enqueues a message that is later retrieved and processed by a single receiver. On the other hand, Windows Azure Service Bus Queues support both point-to-point and publish-subscribe messaging models. They allow multiple subscribers to receive and process messages, enabling more complex messaging scenarios.
+
+
+
+Protocol Supported:
+
+
+Windows Azure Queues primarily support the REST protocol, which allows applications to communicate with the queues using HTTP/HTTPS requests. On the other hand, Windows Azure Service Bus Queues support additional protocols, including Advanced Message Queuing Protocol (AMQP) and Message Queuing Telemetry Transport (MQTT). This broader protocol support offers developers more flexibility and choice when integrating with the queues.
+
+Career Transition
+
+####
+13. What is table storage in Windows Azure?
+Windows Azure table storage is a NoSQL key-value store offered by Azure for storing large amounts of structured, non-relational data.
+
+It uses RESTful API that allows us to create, read, update, and delete entities in a table. You can access the data using the Azure portal, Azure Storage Explorer, or programmatically using SDKs for various programming languages, such as .NET, Java, Node.js, Python, and more.
+
+Table Storage
+Table: A table is a collection of entities. Tables don’t uphold a blueprint on elements, which implies that a solitary table can contain substances that have distinctive arrangements of properties. A record can contain numerous tables.
+
+Entity: An entity is an arrangement of properties, like a database row. An entity can be up to 1 MB in size.
+
+Properties: A property is a name-value pair. Every entity can incorporate up to 252 properties to store data. Every entity likewise has three system properties that determine a segment key, a row key, and a timestamp.
+
+Become a master of Azure by going through this online Azure Training in Toronto!
+
+####
+14. What is autoscaling in Azure?
+Scaling by including extra instances is frequently referred to as scaling out. Windows Azure likewise supports scaling up by utilizing bigger roles rather than more role instances.
+
+By adding and expelling role instances to our Windows Azure application while it is running, we can adjust the execution of the application against its running costs.
+
+An autoscaling solution reduces the amount of manual work engaged in dynamically scaling an application.
+
+Learn end-to-end Azure concepts through the Microsoft Azure Course in Hyderabad to take your career to a whole new level!
+
+####
+15. What are the features of Windows Azure?
+Windows Azure has the following features:
+
+Scalability: Azure enables users to effortlessly adjust resource capacity in response to demand, facilitating easy scaling up or down as required.
+Virtual Machines: Users gain the ability to create and manage virtual machines (VMs) within the cloud, facilitating the deployment of diverse operating systems and software applications.
+Storage Options: Azure offers a selection of storage services, such as Blob Storage for unstructured data, File Storage for seamless file sharing, Queue Storage for efficient messaging, and Table Storage for flexible NoSQL key-value storage.
+App Services: Azure provides an effective platform-as-a-service (PaaS) solution for developing, deploying, and scaling web, mobile, and API applications. It encompasses Azure Web Apps, Mobile Apps, and API Apps.
+####
+16. What are the differences between a public cloud and a private cloud?
+Private clouds are those that are constructed solely for an individual enterprise. They enable a firm to have applications in the cloud while tending to concerns with respect to data security and control that is frequently ailing in a public cloud environment.
+
+Private cloud is otherwise called an internal cloud or enterprise cloud and dwells on the organization’s Intranet or hosted data center where the data is protected.
+
+
+####
+17. What is IaaS, PaaS, and SaaS?
+IaaS: IaaS is short for Infrastructure as a Service. It offers a range of capabilities, such as OS and network connectivity, that are at the infrastructural level. It follows a pay-per-use policy. It is used to host applications. Azure VM and VNET are examples of this kind of infrastructure.
+
+PaaS: PaaS is an acronym for Platform as a Service. It primarily includes underlying infrastructure abstraction that allows quicker development of applications without the hassle of hosting management. Azure web apps, cloud services, storage services, etc., are all examples of PaaS.
+
+SaaS: SaaS stands for Software as a Service.  These applications are delivered with the help of a service delivery model where applications are simply used by an organization. SaaS follows subscription-based payments or ads. Examples of SaaS are Gmail, Office 365, SharePoint Online, etc.
+
+####
+18. Is it possible to get a public DNS or IP address for the Azure Internal Load Balancer?
+No. Azure Internal Load Balancer supports only private IP addresses.
+
+####
+19. What is Azure Resource Manager?
+Azure Resource Manager, offered by Azure, provides management and application deployment in Azure. The management layer helps to build, modify, or delete resources in the Azure subscription account. It is useful while managing access controls, locks, and security of resources.
+
+####
+20. What is NSG?
+NSG or Network Security Group contains a list of ACL rules that allow or deny network traffic to subnets, network interface cards (NICs) linked to a subnet, or both. When an NSG is connected to a subnet, the ACL rules are for all virtual machines that are located in that subnet. The traffic restrictions to an individual NIC are achieved by linking the NSG directly to that NIC.
+
+
+####
+21. What is Azure Redis Cache?
+Azure Redis Cache is an in-memory Redis cache system by Azure that helps web applications to optimize performance. Data is fetched from the backend database and stored in the Redis cache for the first request. On subsequent requests, data is fetched from the Redis cache. Azure Redis cache provides powerful and secure caching mechanisms by using Azure Cloud.
+
+####
+22. Define Azure storage key
+Azure storage key is used to authenticate access to Azure storage service data depending on the project requirements. There are two types of storage keys that are used for authentication:
+
+Primary access key
+Secondary access key, to avoid downtime of the website or application
+####
+23. What is CSPack in Azure?
+CSPack is a command-line tool that generates the service package file and prepares an application for deployment in Azure or Compute Emulator. Every cloud service type project includes the cloud service configuration file, .cscfg file, generated using CSPack. It stores:
+
+The number of role instances for each role deployment
+The certificate thumbprints
+User-defined configurations
+Intermediate Azure Interview Questions
+####
+24. Why is Azure Diagnostics API necessary?
+Azure Diagnostics API helps to gather diagnostic data, such as system event logs and performance monitoring, from applications operating on Azure. Azure Diagnostics has to be enabled for the cloud service roles. The collected data can be later used for creating visual chart representations that enable better monitoring and create performance metric alerts.
+
+####
+25. What are the deployment environment options provided by Azure?
+There are two deployment environments:
+
+Staging environment: It is used to validate the changes of an application before making it live.
+Production environment: This is where applications go live and can be accessed by target users with a DNS-friendly URL.
+####
+26. What is Azure Blob Storage?
+Azure Blob (binary large object) storage is the object storage solution for the cloud. It is capable of storing large unstructured data in text or binary format and is suitable for serving documents, media, or text to the browser directly. The data is accessible from anywhere.
+
+The blobs are grouped into containers and tied to user accounts. This service has three components:
+
+Storage account: This can be a general storage account or a blob storage account registered in Microsoft Azure.
+Container: Containers are used for grouping blobs. Each container can store an unlimited number of blobs. The container name should be in lowercase.
+Blob: A blob is a file or document of any type and size. Three kinds of blobs are supported by Azure:
+Block blobs: Text and binary files up to 195GB, 50,000 blocks of maximum 4 MB each
+Append blobs: Appends operations such as logging data in log files
+Page blobs: For frequent read or write operations
+####
+27. What is a role instance in Azure?
+Role instance is a virtual machine where application code is run using running role configurations. Multiple instances of a role are also possible according to the definition in cloud service configuration files.
+
+
+####
+28. What is Windows Azure Portal?
+To run an application, a designer gets to the Windows Azure Portal through his/her web program by logging in with a Windows Live ID. The user at that point chooses whether to create a host account for running applications, a storage account for storing data, or both.
+
+Once the designer has a host account, he/she can utilize a Windows Azure Portal to submit applications to Windows Azure.
+
+####
+29. Explain Azure Fabric.
+Azure Fabric is the principal core concept. It gives a service called Azure Fabric Controller. It is called the OS for Azure since it handles/oversees:
+
+All roles (processing) and resources
+Sending and activating services
+Monitoring the health of all services
+Releasing and allocating resources
+Provisioning VM, terminating, etc.
+Patches get updated for the installed OS on VM in the most automated form
+####
+30. What do you comprehend about Hybrid Cloud?
+A hybrid cloud is a blend of internal and external cloud services, a mix of a private cloud joined with the utilization of public cloud services. This kind of cloud is most appropriate when you need to keep classified information in your vicinity (private cloud) and consume alternate services from a public cloud.
+
+Hybrid Cloud
+####
+31. What is a storage key?
+Storage keys or access keys are utilized as a validation mode for accessing the storage services account to control data based on our prerequisites. In Windows Azure, we have an alternative to give a primary access key and a secondary access key, despite the fact that we will utilize a solitary access key to confirm our application to the storage. The primary reason to give the secondary access key is to avoid downtime to the application.
+
+####
+32. What is Windows Azure Traffic Manager?
+It enables users to control the distribution of user traffic of installed Azure cloud services. There are three distinctive load-balancing strategies provided by Azure. The Manager who works on traffic applies a routing policy to the Domain Name Service (DNS) questions on your domain names and maps the DNS courses to the apt instances of your applications.
+
+####
+33. What is federation in SQL Azure?
+Organization in SQL Azure is introduced for scalability. Federation helps both managers and developers scale information. It helps managers by making repartitioning and redistributing information in a simpler manner. It enables developers in the layer of routing and sharing of information. It helps in routing without application downtime.
+
+####
+34. What is SQL Azure database?
+SQL Azure database is just an approach to getting associated with cloud services where you can store your database in the cloud. Microsoft Azure is the most ideal approach to utilizing PaaS, where you can have different databases on a similar account.
+
+Microsoft SQL Azure has a similar component to SQL Server, i.e., high accessibility, versatility, and security in the core.
+
+The Microsoft Azure SQL database has an element: it makes backups of each active database automatically. Consistently, a backup is taken and geo-repeated to empower the 1-hour recuperation point objective (RPO) for geo-restore.
+
+####
+35. What are the different types of Storage areas in Windows Azure?
+BLOB: BLOBs offer a component for storing a lot of content or binary data, for example, pictures, audio, and visual documents. They can scale up to 200 terabytes and can be acquired by utilizing RESTful APIs.
+
+Table: Tables represent storage areas across machines for information that is in the form of properties on the cloud.
+
+File: File Storage provides fully managed file shares in the cloud that can be accessed via the Server Message Block (SMB) protocol.
+
+Queue: Queue Storage is a messaging system used to facilitate communication between components of an application or different applications.
+
+Disk: Disk Storage offers durable and high-performance disk storage options for virtual machines.
+
+Archive: It provides a highly cost-effective solution for storing rarely accessed data that needs to be retained for a longer duration, typically for compliance, regulatory, or legal requirements.
+
+Check the Difference between Azure Availability Set and Azure Zone.
+
+
+####
+36. What is the concept of the table in Windows Azure?
+A table is a kind of Azure Storage where you can store your information. BLOBs are put in a compartment and an entity on a table.
+
+Following are the key concepts in a table:
+
+Tables allow structured data storage.
+There can be 0 to n numbers of tables in a storage account.
+Tables store information as an accumulation of elements.
+An element has an essential key and properties as a key–value pair.
+####
+37. How to secure Azure functions?
+One can secure Azure functions through the following:
+
+Security Center
+Log and monitor
+HTTPS
+Function access keys
+Authentication/authorization
+Permissions
+Secret management
+Set up usage quotas
+Data validation
+Error handling
+Disabled remote debugging
+Restricted CORS access
+Store the data encrypted
+Secure deployment
+Deployment credentials
+Disabled FTP
+Secure scm endpoint
+Continuous security validation
+Network security
+####
+38. What is Conditional Access in Azure?
+Conditional Access is used by Azure AD as a tool to make decisions, bring signals together, and impose organizational policies.
+
+Through Conditional Access policies, one can implement the right access controls whenever required to keep the organization secure and stay out of the users’ way when not needed.
+
+####
+39. When should you use a static IP address in Azure?
+In Azure, a static IP address is used when the address connected to the device is not to be changed.
+
+####
+40. How does Azure Site Recovery work?
+Site Recovery orchestrates and automates the replication of Azure VMs in different locations—on-premises machines to a secondary data center, and on-premises VMs and physical servers to Azure.
+
+It contributes to business continuity and disaster recovery (BCDR) by enabling access to apps from the secondary location in case of an outage at the primary site.
+
+
+####
+41. Why should you use Azure CDN?
+Azure CDN reduces the bandwidth and load time. It also helps speed up the responsiveness.
+
+####
+42. Explain the benefits of Azure Traffic Manager.
+Azure Traffic Manager has the following benefits:
+
+Optimized performance
+No downtime during the update or maintenance process
+Easily configurable on the Windows Azure portal
+####
+43. What is the difference between a library and a list?
+A library is an interface that enables the management and storage of a document created in Word, Excel, or PowerPoint. A list, on the other hand, is the representation of an item in a tabular format (with columns and rows). It can be attached with documents.
+
+####
+44. How many types of backups are there in Azure?
+Azure Backup includes three types of replications that keep both storage and data highly available.
+
+Geo-redundant storage (GRS): The default and recommended option that replicates data to a secondary region far from the primary location
+Locally redundant storage (LRS): Creates three copies of the data in a storage scale unit within a data center
+Zone-redundant storage (ZRS): Replicates the data in availability zones with data residency and resiliency in the same region and has no downtime
+####
+45. How can you have a common file-sharing system among multiple virtual machines?
+Azure files system is used as a common repository system for data sharing among virtual machines that are configured using protocols such as NFS, FTPS, SMB, etc.
+
+####
+46. What is the TFS build system in Azure?
+A build is the solution of an output. In Azure projects, you get the record with a .cspkg extension, that is, a Cloud Service Package is utilized for the deployment of your cloud administration.
+
+Build Servers: In general terms, a build server is a machine where you put your deployment packages.
+
+To utilize Team Foundation Build, you should have no less than one build machine. This machine can be a physical machine or a virtual machine.
+
+Build Controllers: Manufacture Controllers are the component in the build system that accepts the build requests from any task inside the group project. Each build controller is dedicated to a solitary team project collection. So, there is a balanced relationship between a team project and a build controller.
+
+Build Agents: Build Agents are components in the build system that accomplishes more processor-concentrated work.
+
+####
+47. What is Azure App Service?
+Azure App Service is a completely managed Platform-as-a-Service (PaaS) offering for proficient developers that conveys a rich arrangement of abilities to the web, mobile, and integration scenarios. Mobile apps in Azure App Service offer a very adaptable, universally accessible mobile application development platform for Enterprise Developers and System Integrators that conveys a rich set of capacities to mobile engineers.
+
+####
+48. What is profiling in Azure?
+Profiling is only a procedure for measuring the performance analysis of an application. It is normally done to guarantee that the application is sufficiently steady and can maintain overwhelming traffic.
+
+Visual Studio gives us different tools to do it by gathering the performance information from the application that likewise helps in troubleshooting issues.
+
+Once the profiling wizard is run, it sets up the execution session and collects the data of the sample.
+
+The profiling reports help in:
+
+Deciding the longest-running strategies inside the application
+Measuring the execution time of every strategy in the call stack
+Assessing memory allocation
+####
+49. What is cmdlet in Azure?
+A cmdlet is a lightweight command that is utilized as a part of the Microsoft PowerShell environment. The cmdlets are summoned by the Windows PowerShell to automate the scripts which are in the command line. Windows PowerShell runtime additionally invokes them automatically through Windows PowerShell APIs.
+
+####
+50. What is Windows Azure Scheduler?
+Windows Azure Scheduler enables you to invoke activities, for example, calling HTTP/S endpoints or presenting a message on a storage queue on any schedule.
+
+With Scheduler, you make jobs in the cloud that dependably call services both inside and outside of Windows Azure and execute those jobs on-demand, on a routinely repeating schedule, or assign them for a future date.
+
+####
+51. How can you create an HDInsight Cluster in Azure?
+To make an Azure HDInsight Cluster, open the Azure portal > click on New > select Data Services > click on HDInsight.
+
+Hadoop is the default and native execution of Apache Hadoop.
+
+HBase is an Apache open-source NoSQL database based on Hadoop that gives random access and solid consistency for a lot of unstructured data.
+
+Apache Storm is a distributed, fault-tolerant, open-source computation system that enables you to process data in real time.
+
+####
+52. What is Text Analytics API in Azure Machine?
+Content Analytics API is a part of content examination web administrations worked with Azure Machine Learning. The API can be utilized to analyze unstructured content for tasks such as sentiment analysis and key-phrase extraction.
+
+The API restores a numeric score between 0 and 1. Scores near 1 show positive sentiment, while scores near 0 demonstrate negative sentiment.
+
+The upside of this API is that another new model need not be planned and prepared; the user just needs to bring the data and call the service to get the sentiment results.
+
+####
+53. What is the Migration Assistant tool in Azure Websites?
+Migration Assistant tool will examine our IIS installation and recognize the sites that can be migrated to the cloud, featuring any components which can’t be migrated or are unsupported on the platform.
+
+Once broken down, this tool will likewise create sites and databases provided under the given Azure membership.
+
+####
+54. What is Azure Service Level Agreement (SLA)?
+The SLA ensures that, when you send two or more role instances for each role, access to your cloud service will be maintained not less than 99.95 percent of the time. Additionally, identification and re-correction activities will be started 99.9 percent of the time when a role instance’s procedure isn’t running.
+
+####
+55. How to add an administrator to the Azure portal?
+To add an administrator to the Azure portal, it has to be given the owner role. It will be able to manage only those resources in the subscription that are assigned to it. To add an administrator, follow these steps:
+
+Sign in to the Azure portal
+Go to the Hub menu and then to Subscription and select the subscription that the administrator will need access to
+Select Access control (IAM) in the subscription blade, and then click on Add
+Go to Select a role, and click on Owner
+Here, provide the email address of the user to be assigned as the owner
+Click on the user, and then click on Select
+####
+56. How to connect to Azure Database from SQL Management Studio?
+The first time you start the SQL Server Management Studio, the ‘Connect to Server dialog box’ opens up automatically. You can also open it manually by going to Object Explorer > Connect > Database Engine.
+Then, enter the following information in the Connect to Server window:
+Server Type Database Engine
+Server Name Enter the name of your Azure SQL Database or Azure Managed Instance
+Authentication SQL Server Authentication
+Login Enter the server account user ID
+Password Enter the server account password
+You can also choose to change the additional connection options by going to Options.
+Click on Connect after completing all the required fields
+
+If the firewall settings are not set up, a prompt appears to configure the same. Once signed in, provide the Azure account login information, and set the firewall rule. Then, click on OK.
+To verify if your Azure Database connection is successful, expand and explore Object Explorer for the server name, the SQL Server version, and the username.
+####
+57. How to create a virtual machine on Azure?
+To create a VM on Azure, you need to follow the below steps:
+
+Sign in to Azure
+Sign in to the Azure portal
+Search for virtual machines in the search box
+Under Services, select Virtual Machines
+Click on ‘Add’ on the Virtual Machines page
+In the Basics tab, under Project details, select the correct subscription, and choose Create new resource group
+Type myResourceGroup for the name
+Under Instance details, the Virtual machine name should be myVM
+Choose your Region [e.g., (US) East US]
+Choose Windows Server 2019 Datacenter for the Image
+Leave the rest as default
+Under Administrator account, enter a username and a password
+Under Inbound port rules, click on Allow selected ports, and then select HTTP (80) and RDP (3389) for Select inbound ports
+The rest will remain as default here
+Finally, click on the Review + create button
+Learn new Technologies
+
+####
+58. How to deploy SQL Database in Azure?
+Authenticate to the Azure portal
+Click on SQL Databases
+Click on Servers
+Click on a server name to connect to
+Press Configure
+Open SQL Server Management Studio
+Connect to Database services (usually, this happens by default)
+Finally, click on Connect
+####
+59. How to export users from Azure Active Directory?
+You can export users from Azure AD by following the below-mentioned steps:
+
+Install the Azure PowerShell module using the following cmdlet:
+install-module az
+To connect to Azure AD and Azure, run:
+Connect-azaccount
+To export, all users to a CSV file, run:
+Get-AzADUser | export-csv file.csv
+If you only need to export the first 10 users, then you can use:
+Get-AzADUser -First 10 |  export-csv file.csv
+To export all users after the first 2 users, you can use:
+
+####
+60. How to create a resource group in Azure?
+To create a resource group in Azure:
+
+Log in to the Azure portal
+In the menu on the left, select Resource groups
+In the Resource groups page, click on Add
+Fill in the details in the fields as follows:
+Subscription: Select your Microsoft Azure subscription
+Resource group name: Enter a unique name
+Resource details region: Select a location
+Click on Review + create
+Once validation is passed, click on Create to create your resource group
+That’s it in our blog on MS Azure interview questions and answers. Hope these Azure questions help you in your Azure Interview job preparation.
+
+####
+61. What are the differences between Azure Scale Sets and Availability Sets?
+The major difference is that Azure scale sets have identical VMs, and in the case of Availability sets, there is no hard and fast rule for the VMs to be identical. Let us see other differences here –
+
+
+####
+62. What are the different storage services available in Azure apart from Blob storage?
+Azure offers three other types of storage services, apart from Blob storage, table storage, queue Storage, and file storage.
+
+Azure table storage: It allows the deployment of applications with semi-structured data and a key-value store, which is NoSQL-based.
+Used when there is a requirement for applications with a flexible data schema
+Emphasis is on enterprise-level data and strongly follows consistent models
+Data is in terms of entities grouped under tables
+Azure queue storage: The message queue system is capable of handling large workloads through the development of flexible and durable applications.
+Ensures that the applications are scalable and less likely to have component failures
+The queue monitoring helps the application ensure that the requirements are met
+Azure file storage: It offers file sharing and access using server message block (SMB) protocol. The data is secured with SMB 3.0 and HTTPS.
+Improves the performance of on-premise applications
+Azure takes care of OS deployments and hardware management
+####
+63. What is the difference between Azure Table Storage and the Azure SQL service?
+The major difference is that Azure SQL uses a relational storage structure and Azure Table follows centralized structured data without relations. Other differences are –
+####
+64. Create a Virtual Machine with Azure CLI.
+Following is an example of how one can create a VM using Azure CLI:
+
+az vm create \
+
+--resource-group myResourceGroupName \
+
+--name myVM \
+
+--image Win19Datacenter \
+
+--public-ip-sku Standard \
+
+--admin-username AzureuserNAME \
+
+--admin-password AzurePASSWORD
+####
+65. How will you execute code with the help of Azure if there is no server?
+Azure Functions can execute code without a server. These services simplify complex orchestration and challenges. They help connect with other services without hard coding of integrations, which speeds up the development process.
+
+Developers can write and focus on the business logic code saving time and effort. Azure Application Insights can help analyze and monitor code performance as well as identify hiccups and failure points across various application components.
+
+You can also take up a Microsoft Azure free certification course and learn more about technology that has made major improvements in the cloud area.
+
+####
+66. What will you do in case of a drive failure?
+When a drive failure occurs, the following steps need to be performed:
+
+Ensure that the drive is not mounted so that Azure Storage is functioning without fail.
+Replace the drive so that it is remounted and formatted.
+Scenario-based Azure Interview Questions
+####
+67. What could be the reason for the client application to be disconnected from the cache?
+There could be two possible reasons:
+
+Client-end
+Redeployment of application
+Scaling operation by application
+Change in the client-side networking layer
+Transient errors in the client or network between the client and the server
+The crossing of bandwidth threshold limits
+Server-end
+Azure Redis Cache service had a failover from the primary node to the secondary node.
+The server instance where the cache was deployed had patching or maintenance.
+####
+68. How can you stop the high load issue on an application in cases of no man support on the flow?
+Azure VM Scale Sets can be used to define proper configurations and conditions and provide a new VM whenever there is a high load.
+
+The VM Scale Sets allow the developer to create and manage a group of load-balanced VMs. The scale sets can be configured in accordance with the demand of the application or a predefined schedule that automatically adjusts the number of VMs.
+
+Using scale sets ensures that the applications are highly available and enables the management, updation, and configuration of large VMs centrally. It also supports large-scale application development with big workloads, big data, and compute loads. Azure Scale Sets support up to 1,000 VMs and 600 VMs for custom VM images.
+
+####
+69. What would happen if tone reaches the maximum failed attempts for Azure ID authentication?
+In this situation, the Azure account will get locked depending on the protocol analyzing the entered password and the IP address from where the login is requested.
+
+####
+70. If you have an application running on the on-premise server and Azure East US region has a backup, will you be able to access the application via the Azure environment in case of an on-premise server application access failure?
+Yes. One can access the application by using the Site Recovery Service by Azure. It is capable of handling fail-over and fail-back scenarios between on-premise servers and Azure environments.
+
+####
+71. In case the front-end hosting of an application is done on Azure, if the user needs the database hosting to be done on an on-premise server due to security concerns, how will you handle the Azure connectivity?
+There are a few possibilities to resolve this:
+
+Azure VNET based point-to-site service can be used to connect one on-premise DB to an Azure-hosted application. This is valid where there are limited resources to be connected via VPN.
+In case of more resources for connection, site-to-site VPN or express routes are the solutions. Site-to-site might cause network latency as the VPN works only via public infrastructure, which is the Internet. In that case, express routes can be used as it has a dedicated leased line that solves latency issues.
+In case VNET is not preferred, Windows Communication Foundation (WCF) service can be developed and hosted on-premise. It will have CRUD operations intended solely for the database that is hosted on-premise. It uses the service bus relay that can build communication between the Azure-hosted app to the WCF service for database access.
+####
+72. You have an Azure subscription that contains an Azure Log Analytics workspace. You have a resource group that contains 100 virtual machines. The virtual machines run Linux. You need to collect events from the virtual machines to the log analytics workspace. Which type of data source should be configured in the workspace?
+The answer is Syslog, which is an event-logging protocol that is common to Linux. Applications will send messages that may be stored on the local machine or delivered to a Syslog collector. When the log analytics agent for Linux is installed, it configures the local Syslog daemon to forward messages to the agent. The agent then sends the message to Azure Monitor where a corresponding record is created.
+
+####
+73. You create a container image named Image1 on a developer workstation. You plan to create an Azure web app for containers named WebAppContainer that will use Image1. You need to upload Image1 to Azure. The solution must ensure that WebAppContainer can use Image1. To which storage type should you upload Image1?
+Image1 should be uploaded to the Azure container registry. The registry credentials are configured in the web app. The app service needs information about the registry and image to pull the private image. In the Azure portal, go to Container settings from the web app and update the Image source, Registry, and Save.
+
+####
+74. You have an Azure subscription that contains 100 virtual machines. You have a set of Pester tests in PowerShell that validate the virtual machine environment. You need to run the tests whenever there is an operating system update on the virtual machines. The solution must minimize implementation time and recurring costs. Which three resources should you use to implement the tests?
+The three resources to use to implement the test are the Azure Automation runbook, an alert rule, and an alert action group. Azure Automation runbooks can be called by using action groups or by using classic alerts to automate tasks based on alerts. Alerts are one of the key features of Azure Monitor. They allow alerts on actions within an Azure subscription.
+
+####
+75. You have an Azure App Service app. You need to implement tracing for the app. What should the tracing information include?
+Usage trends
+AJAX call responses
+Page load speed by browser server and browser exceptions
+What should you do?
+
+The Azure Application Insights site extension should be enabled in this scenario. For web pages, Application Insights JavaScript SDK automatically collects AJAX calls as dependencies.
+
+####
+76. You have an Azure virtual machine named VM1 and an Azure Active Directory (Azure AD) tenant named adatum.com. VM1 has the following settings:
+IP address: 10.10.0.10
+
+System-assigned managed identity: On
+You need to create a script that will run from within VM1 to retrieve the authentication token of VM1. Which address should you use in the script?
+
+The answer is 169.254.169.254. The code that is running on the VM can request a token from the Azure Instance Metadata Service identity endpoint, accessible only from within the VM:
+
+http://169.254.169.254/metadata/identity/oauth2/token
+####
+77. You are designing an Azure solution. The solution must meet the following requirements:
+Distribute traffic to different pools of dedicated virtual machines (VMs) based on rules
+Provide SSL offloading capabilities
+You need to recommend a solution to distribute network traffic. Which technology should you recommend?
+
+If you require SSL offloading, application layer treatment, or wish to delegate certificate management to Azure, Azure’s Layer 7 load balancer application gateway should be used.
+
+####
+78. You have an Azure Cosmos DB account named Account1. Account1 includes a database named DB1 that contains a container named Container1. The partition key for Container1 is set to /city. You plan to change the partition key for Container1. What should you do first?
+The Change Feed Processor and Bulk Executor Library, in Azure Cosmos DB, can be leveraged to achieve a live migration of data from one container to another. This allows the redistribution of data to match the desired new partition key scheme and make the relevant application changes afterward. Thus, achieving the effect of updating your partition key.
+
+####
+79. You have an Azure subscription that contains a resource group named RG1. RG1 contains multiple resources. You need to trigger an alert when the resources in RG1 consume US$1,000. What should you do?
+To trigger an alert when the resources in the RG1 resource group consume US$1,000 in your Azure subscription, you can follow these steps:
+
+Log in to the Azure portal using your credentials.
+Navigate to the Azure Monitor service. You can search for “Monitor” in the search bar at the top of the portal and select the “Monitor” result.
+In the Azure Monitor menu, locate and click on the “Alerts” section.
+Click on the “New alert rule” button to create a new alert rule.
+In the “Create rule” blade, you will need to configure the following settings:
+Scope: Select the appropriate subscription that contains the RG1 resource group.
+Condition: In the condition section, click on the “Add condition” button. Choose the appropriate metric that represents the cost consumption of resources in the RG1 resource group. For example, you can select “Total cost” or “Resource cost.” Set the condition to “Greater than” or “Greater than or equal to” and specify the threshold value of US$1,000.
+Action group: Configure the action group that will be triggered when the alert condition is met. An action group defines the actions to be taken when the alert fires, such as sending an email notification, SMS, or running a Logic App. If you haven’t set up an action group before, you can create a new one by clicking on the “Create action group” link.
+Alert details: Provide a meaningful name and description for the alert rule to easily identify it.
+Once you have configured all the necessary settings, click on the “Create alert rule” button to create the alert rule.
+
+Now, whenever the cost consumption of resources in the RG1 resource group exceeds or equals US$1,000, the alert rule will be triggered, and the defined action group will be notified accordingly.
+
+####
+80. You have an Azure Kubernetes Service (AKS) cluster named Clus1 in a resource group named RG1. An administrator plans to manage Clus1 from an Azure AD-joined device. You need to ensure that the administrator can deploy the YAML application manifest file for a container application. You install the Azure CLI on the device. Which command should you run next?
+kubectl apply –f appl.yaml
+The command applies a configuration change to a resource from a file or stdin.
+
+####
+81. Your company has the groups shown in the following table.
+Group	Number of Members
+Managers	10
+Sales	100
+Development	15
+The company has an Azure subscription that contains an Azure AD tenant named contoso.com. An administrator named Admin1 attempts to enable Enterprise State Roaming for all the users in the Managers group. Admin1 reports that the options for enterprise state roaming are unavailable from Azure AD. You verify that Admin1 is assigned the global administrator role. You need to ensure that Admin1 can enable enterprise state roaming. What should you do?
+
+Purchase an Azure AD Premium P1 license for each user in the Managers group. Enterprise state roaming is available to any organization with an Azure AD Premium or Enterprise Mobility + Security (EMS) license.
+
+####
+82. Your company has an office in Seattle. You have an Azure subscription that contains a virtual network named VNET1. You create a site-to-site VPN between the Seattle office and VNET1. VNET1 contains the subnets shown in the following table.
+Name	IP Address Space
+Subnet1	10.1.1.0/24
+GatewaySubnet	10.1.200.8/28
+You need to route all internet-bound traffic from Subnet1 to the Seattle office. What should you create?
+
+A route for Subnet1 that uses the virtual network gateway as the next hop should be created. A route with the 0.0.0.0/0 address prefix instructs Azure how to route traffic destined for an IP address that is not within the address prefix of any other route in a subnet’s route table.
+
+When a subnet is created, Azure creates a default route to the 0.0.0.0/0 address prefix, with the internet next hop type. We need to create a custom route in Azure to use a virtual network gateway in the Seattle office as the next hop.
+
+####
+83. You have an Azure web app named App1 that is configured to run between two and five instances. There are currently three instances of App1 running. App1 has the following autoscale rules: Increase the instance count by one when the CPU percentage is greater or equal to 80. Decrease the instance count by one when the CPU percentage is less than or equal to 60. You are evaluating the following CPU percentage of utilization for App1:
+####
+60 percent
+####
+55 percent
+####
+50 percent
+####
+45 percent
+You need to identify which utilizations will cause App1 to scale in.
+
+Azure Monitor autoscaling allows you to scale the number of running instances up or down, based on telemetry data or metrics. Scale-in occurs when the instances are decreased. For this rule, the instances are decreased when the CPU usage is 60 percent or lower. Hence, the answer is 45 percent, 50 percent, and 55 percent.
+
+####
+84. You have an on-premises network that contains a Hyper-V host named Host1. Host1 runs Windows Server 2016 and hosts 10 virtual machines that run Windows Server 2016. You plan to replicate the virtual machines to Azure by using Azure Site Recovery. You create a Recovery Services vault named ASR1 and a Hyper-V site named Site1. You need to add Host1 to ASR1. What should you do?
+Download the installation file for the Azure Site Recovery Provider. Download the vault registration key.
+Install the Azure Site Recovery Provider on Host1 and register the server.
+
+####
+85. You have an Azure subscription named Subscription1 that contains a virtual network named VNet1. VNet1 is in a resource group named RG1. Subscription1 has a user named User1. User1 has the following roles:
+Reader
+Security admin
+Security reader
+You need to ensure that User1 can assign the reader role for VNet1 to other users. What should you do?
+
+User1 should be assigned the owner role for VNet1.
+
+####
+86. A company hosts virtual machines (VMs) in an on-premises data center and in Azure. The on-premises and Azure-based VMs communicate using ExpressRoute. The company wants to be able to continue regular operations if the ExpressRoute connection fails. Failover connections must use the internet and must not require multiprotocol label switching (MPLS) support. You need to recommend a solution that provides continued operations. What should you recommend?
+In this case, a VPN connection should be set up.
+
+####
+87. You have a resource group named RG1. RG1 contains an Azure Storage account named storageaccount1 and a virtual machine named VM1 that runs Windows Server 2016. storageaccount1 contains the disk files for VM1. You apply a ReadOnly lock to RG1. What can you do from the Azure portal?
+View the keys of storageaccount1. ReadOnly allows authorized users to read a resource, but they cannot delete or update the resource. Applying this lock is similar to restricting all authorized users to the permissions granted by the reader role.

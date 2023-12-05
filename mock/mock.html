@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Test</title>
+    <link rel="stylesheet" href="mockstyles.css">
+</head>
+
+<body>
+    <div id="app">
+        <button id="startBtn" onclick="startTest()">Start Test</button>
+        <div id="testContainer" style="display: none;">
+            <h2 id="question"></h2>
+            <form id="optionsForm">
+                <label><input type="radio" name="option" value="0"> <span id="option0"></span></label><br>
+                <label><input type="radio" name="option" value="1"> <span id="option1"></span></label><br>
+                <label><input type="radio" name="option" value="2"> <span id="option2"></span></label><br>
+                <label><input type="radio" name="option" value="3"> <span id="option3"></span></label><br>
+            </form>
+            <button onclick="prevQuestion()" id="prevBtn" disabled>Previous</button>
+            <button onclick="nextQuestion()" id="nextBtn">Next</button>
+            <button onclick="showReview()" id="reviewBtn">Review</button>
+            <!--
+            <button onclick="showResult()" id="resultBtn" style="display: none;">Show Result</button>
+            -->
+        </div>
+        <div id="resultContainer" style="display: none;">
+            <h2>Test Summary</h2>
+            <p id="summary"></p>
+            <!-- Add this table in your HTML -->
+            <table id="resultTable">
+                <tr>
+                    <th>Question</th>
+                    <th>Original Answer</th>
+                    <th>User Answer</th>
+                    <th>Result</th>
+                </tr>
+            </table>
+
+        </div>
+
+        <!-- Add this modal HTML in your existing HTML -->
+        <div id="reviewModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeReviewModal()">&times;</span>
+                <h2>Review Questions</h2>
+                <p id="reviewsummary"></p>
+                <table id="reviewTable">
+                    <!-- Table content will be dynamically generated -->
+                </table>
+                <button onclick="showResult()" id="resultBtn">Show Result</button>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="mockscript.js"></script>
+</body>
+
+</html>

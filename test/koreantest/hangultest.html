@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Korean to Romaji Converter</title>
+</head>
+<body>
+    <h1>Korean to Romaji Converter</h1>
+    <input id="inputText" value="좋은 아침이에요"></input>
+    <button onclick="convertToRomaji()">Convert to Romaji</button>
+    <div id="outputRomaji"></div>
+    <script src="https://cdn.jsdelivr.net/npm/hangul-js@0.2.6/hangul.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aromanize@0.1.5/aromanize.min.js"></script>
+    <script>
+        function convertToRomaji() {
+            const inputText = document.getElementById("inputText").value;
+            const outputRomaji = document.getElementById("outputRomaji");
+
+            // Use the hangul-js library to convert to Romaji
+            const romaji = convertKoreanToRomaji(inputText);
+
+            outputRomaji.innerHTML = romaji;
+        }
+
+        function convertKoreanToRomaji(koreanText) {
+            // Remove spaces and non-Korean characters for accurate conversion
+            koreanText = koreanText.replace(/[^가-힣]/g, '');
+            const roman=Aromanize.romanize("안녕하세요?");
+            const latin = Aromanize.hangulToLatin("안녕하세요?", 'rr-translit');
+            //const romaji = Hangul.romanize(koreanText);
+            const romaji = Hangul.disassemble(koreanText) + "<br>"+roman+ "<br>"+latin;
+            return romaji;
+        }
+    </script>
+</body>
+</html>
